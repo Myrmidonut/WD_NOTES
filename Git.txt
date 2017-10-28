@@ -26,6 +26,7 @@ SHORT VERSION:
   git pull origin master	pull from GitHub
 
   git clone ...			clone a repository from an URL
+  git clone ... .		clones without creating a new folder
 
   git branch			list branches
   git branch ...		create branch
