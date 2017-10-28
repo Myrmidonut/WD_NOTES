@@ -27,8 +27,8 @@ OVERRIDE:
   </style>
 -----
 DIVS:
-  class="jumbotron"				adds spacing and formating to elements, main focus of the page
-  class="container"				adds spacing to elements, not full width on large windows
+  class="jumbotron"       adds spacing and formating to elements, main focus of the page
+  class="container"       adds spacing to elements, not full width on large windows
 -----
 GRID:
   dynamic layout, changes with window size
@@ -41,32 +41,32 @@ GRID:
       <div class="col-lg-2 pink">
 
   Bootstrap 3:
-  col-lg-1 ... 12	max container: 1170px, large desktops >=1200px
-  col-md-1 ... 12	max container: 970px, medium desktops >=992px
-  col-sm-1 ... 12	max container: 750px, tablets >=768px
-  col-xs-1 ... 12	max container: none, phones <768px
-			15px on each side
+  col-lg-1 ... 12 max container: 1170px, large desktops >=1200px
+  col-md-1 ... 12 max container: 970px, medium desktops >=992px
+  col-sm-1 ... 12 max container: 750px, tablets >=768px
+  col-xs-1 ... 12 max container: none, phones <768px
+      15px on each side
 
   Bootstrap 4:
-  col-xl-1 ... 12	max container: 1140px, large desktops >=1200px
-  col-lg-1 ... 12	max container: 960px, large desktops >=992px
-  col-md-1 ... 12	max container: 720px, medium desktops >=768px
-  col-sm-1 ... 12	max container: 540px, tablets >=576px
-  col-1 ... 12		max container: none, phones <576px
-			15px on each side
+  col-xl-1 ... 12 max container: 1140px, large desktops >=1200px
+  col-lg-1 ... 12 max container: 960px, large desktops >=992px
+  col-md-1 ... 12 max container: 720px, medium desktops >=768px
+  col-sm-1 ... 12 max container: 540px, tablets >=576px
+  col-1 ... 12    max container: none, phones <576px
+      15px on each side
 -----
 NAVBAR:
-  <nav class="navbar navbar-default">			navbar, across whole page
+  <nav class="navbar navbar-default">         navbar, across whole page
     navbar-inverse
-    navbar-fixed-top							stay on top of the page
-      style="margin-top: 70px"					add spacing because the navbar is out of the flow
-    <div class="navbar-header">					first entry on the left
-    <ul class="nav navbar-nav">					other entries on the left
+    navbar-fixed-top                          stay on top of the page
+      style="margin-top: 70px"                add spacing because the navbar is out of the flow
+    <div class="navbar-header">               first entry on the left
+    <ul class="nav navbar-nav">               other entries on the left
     <ul class="nav navbar-nav navbar-right">
 -----
 NAVBAR COLLAPSE:
-  <div class="collapse navbar-collapse" id="bs-nav-demo">						menu collapses for small windows
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"	shows menu button for collapsed menu
+  <div class="collapse navbar-collapse" id="bs-nav-demo">                       menu collapses for small windows
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  shows menu button for collapsed menu
   data-target="#bs-nav-demo" aria-expanded="false">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>
@@ -75,30 +75,30 @@ NAVBAR COLLAPSE:
   </button>
 -----
 FORMS:
-  class="form-inline"				label and inputs in one line
-  class="form-group"				adds spacing
-  class="row"						organized into a grid
-    class="col-sm-2"				
-  class="form-control"				inputs are designed
+  class="form-inline"         label and inputs in one line
+  class="form-group"          adds spacing
+  class="row"                 organized into a grid
+    class="col-sm-2"        
+  class="form-control"        inputs are designed
 -----
 TABLES:
-  class="table"						adds design
-  class="table-inverse"				inversed colours
-    class="thead-inverse"			
-  class="table-striped"				every other row is grey
-  class="table-bordered"			border around every cell
-  class="table-hover"				grey on mouse hover
-  class="table-responsive"			responsive
+  class="table"               adds design
+  class="table-inverse"       inversed colours
+    class="thead-inverse"     
+  class="table-striped"       every other row is grey
+  class="table-bordered"      border around every cell
+  class="table-hover"         grey on mouse hover
+  class="table-responsive"    responsive
 -----
 ALERTS:
-  class="alter"						messages in different colors
-  class="alert-warning"				example
-  class="alert-dismissible"			message that can be clicked away, needs a button
+  class="alter"               messages in different colors
+  class="alert-warning"       example
+  class="alert-dismissible"   message that can be clicked away, needs a button
 -----
-CARDS:	Bootstrap 4
-  <div class="row">					showcase, here 3 images with title, text, button under it
+CARDS:  Bootstrap 4
+  <div class="row">                       showcase, here 3 images with title, text, button under it
     <div class="col-sm-4>
-      <div class="card">				
+      <div class="card">        
         <img class="card-img-top" src="">
         <div class="card-block">
           class="card-title"
@@ -106,17 +106,17 @@ CARDS:	Bootstrap 4
           class="btn btn-primary"
 -----
 PROGRESS:
-  <progress class="progress" value="35" max="100"></progress>	shows a progress bar, different colors
+  <progress class="progress" value="35" max="100"></progress>   shows a progress bar, different colors
 -----
 MODALS:
-  class="modal"						dialog that shows over the content of the page
+  class="modal"               dialog that shows over the content of the page
   ...
 -----
 SCROLLSPY:
   
 -----
 THUMBNAIL:
-  <div class="thumbnail">			images scale to the grid, with borders
+  <div class="thumbnail">     images scale to the grid, with borders
 -----
 GLYPHICON:
   symbols for bootstrap

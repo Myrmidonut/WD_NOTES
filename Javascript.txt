@@ -24,18 +24,18 @@ EVENT BUBBLING:
   });
 -----
 COMMENTS:
-  //				one line comment
-  /* ... */			multi-line comment
+  //                one line comment
+  /* ... */         multi-line comment
 -----
-console.log(...);	outputs into the console
-\"					printed as "
+console.log(...);   outputs into the console
+\"                  printed as "
 -----
 LOGIC:
-  &&				and
-  ||				or
-  !					not
-  ==				equal, ignoring type, 1 == "1"
-  ===				equal, datatype and value
+  &&                and
+  ||                or
+  !                 not
+  ==                equal, ignoring type, 1 == "1"
+  ===               equal, datatype and value
 -----
 TRUE/FALSE:
   truthy values:
@@ -44,8 +44,8 @@ TRUE/FALSE:
   ""
   null
   undefined
-  NaN				Not a Number
-  everthing else is truthy, check with !!var
+  NaN               Not a Number
+                    everthing else is truthy, check with !!var
 -----
 PRIMITIVE DATATYPES::
   Numbers: 4  9.3  -10
@@ -55,17 +55,17 @@ PRIMITIVE DATATYPES::
   undefined
 -----
 STRINGS:
-  "ab" + "cd" == "abcd"		concatenation
-  "test".length				length of string
-  "\"test"\"				outputs "test"
-  "\\"						outputs \
+  "ab" + "cd" == "abcd"         concatenation
+  "test".length                 length of string
+  "\"test"\"                    outputs "test"
+  "\\"                          outputs \
     \ is the escape character
-  "test"[2]					access to the third character
-  name.indexOf("...")		checks where ... is in a string, -1 if not
-  name.charAt(...)			selects the character at a position
-    .toUpperCase()			capitalizes the character
-  name.slice(...)			removes everything before position ...
-  name.replace(/a/g , "b")	replaces all "a" with "b"
+  "test"[2]                     access to the third character
+  name.indexOf("...")           checks where ... is in a string, -1 if not
+  name.charAt(...)              selects the character at a position
+    .toUpperCase()              capitalizes the character
+  name.slice(...)               removes everything before position ...
+  name.replace(/a/g , "b")      replaces all "a" with "b"
 -----
 NAMING CONVENTION:
   lowerUpperUpper
@@ -74,123 +74,123 @@ VALUES:
   var name = "test";
   var number = 1;
   var test = true;
-  var name;				undefined
-  name = null;			undefined
+  var name;               undefined
+  name = null;            undefined
 -----
-Number(...);			converts to a number
+Number(...);              converts to a number
 -----
-ARRAYS:									ordered list of data
-  var myArray = [];						creates an empty array
-  var myArray = new Array();			creates an empty array
-  var myArray = [1, 2, 3];				creates an array
+ARRAYS:                                 ordered list of data
+  var myArray = [];                     creates an empty array
+  var myArray = new Array();            creates an empty array
+  var myArray = [1, 2, 3];              creates an array
     myArray[0] = ...;
-    myArray[3][4]						nested array
-    myArray.length;						number of entries
-    myArray.push(...);					adds an entry to the end, returns the new length
-    myArray.pop();						removes the last entry, returns the removed entry
-    myArray.unshift(...);				adds an entry to the beginning, returns the new length
-    myArray.shift();					removes the first entry
-    myArray.splice(a, b);				removes an entry, starts at a and deletes b entries
-    myArray.splice(a, 0, b);			add an entry at position a with the content b
-    myArray.splice(a, 1, b);			replace an entry at position a with content of b
-    myArray.indexOf(...);				returns the first index of that entry, -1 if not exists
-  var myArray2 = myArray.slice(1, 3);	copies parts of an array into a new one, 
-										starts at 1 and ends one before 3
-  var myArray2 = myArray.slice();		copies the whole array
-    myArray.forEach(function(name) {	looping over the entries in an array
-	...									and runs the function for the entries
-    } );								passed in via the variable "name"
+    myArray[3][4]                       nested array
+    myArray.length;                     number of entries
+    myArray.push(...);                  adds an entry to the end, returns the new length
+    myArray.pop();                      removes the last entry, returns the removed entry
+    myArray.unshift(...);               adds an entry to the beginning, returns the new length
+    myArray.shift();                    removes the first entry
+    myArray.splice(a, b);               removes an entry, starts at a and deletes b entries
+    myArray.splice(a, 0, b);            add an entry at position a with the content b
+    myArray.splice(a, 1, b);            replace an entry at position a with content of b
+    myArray.indexOf(...);               returns the first index of that entry, -1 if not exists
+  var myArray2 = myArray.slice(1, 3);   copies parts of an array into a new one, 
+                                        starts at 1 and ends one before 3
+  var myArray2 = myArray.slice();       copies the whole array
+    myArray.forEach(function(name) {    looping over the entries in an array
+  ...                                   and runs the function for the entries
+    } );                                passed in via the variable "name"
 -----
-if (typeof name == "undefined")	{}		checks if the variable called name exists
+if (typeof name == "undefined") {}      checks if the variable called name exists
 -----
 IF:
-  if (condition) {					if statement
+  if (condition) {                if statement
   } else if (condition) {
     } else {
       }
 -----
 FOR:
-  for (var i = 0; i < 3; i++) {		for loop
+  for (var i = 0; i < 3; i++) {   for loop
     statements
   }
 -----
 WHILE:
-  while (i < 3) {					while loop
+  while (i < 3) {                 while loop
     statements;
     i++
   }
 -----
 FUNCTIONS:
-  function name(arg1, arg2) {	creating the function
+  function name(arg1, arg2) {     creating the function
     ... 
-    return ...					optional, will stop the function
+    return ...                    optional, will stop the function
   }
-  name;							refering to the function
-  name(arg);					calling the function
-  setInterval(function() {		anonymous function, a function inside a function
+  name;                           refering to the function
+  name(arg);                      calling the function
+  setInterval(function() {        anonymous function, a function inside a function
     ...
   }, 2000);
 
-  Array.prototype.name = function(func) {	prototype, this to call on the array
+  Array.prototype.name = function(func) {     prototype, this to call on the array
     func(this[i]);
   }
 
   variables inside a function are only availabe in the function, scope!
 -----
 OBJECTS:
-  var name = {};						creating an object				
+  var name = {};                        creating an object        
   var person = {name: "Jim", age: 21};
-  person.age = 23;			
-  person["age"] = 23;					alternative to .age
+  person.age = 23;      
+  person["age"] = 23;                   alternative to .age
  
   object.friends[0].name;
 
-  object._name 							allowed
-    var prop = "color";			
-    object[prop} = "red"				allowed
-  object.1name							not allowed
+  object._name                          allowed
+    var prop = "color";     
+    object[prop} = "red"                allowed
+  object.1name                          not allowed
 
 array of objects:
 var movies = [
-	{
-		title: "In Bruges",
-		rating: 5,
-		hasWatched: true
-	},
-	{
-		title: "Frozen",
-		rating: 4.5,
-		hasWatched: false
-	}
+  {
+    title: "In Bruges",
+    rating: 5,
+    hasWatched: true
+  },
+  {
+    title: "Frozen",
+    rating: 4.5,
+    hasWatched: false
+  }
 ];
 -----
 METHODS:
   a function inside an object
 
-  obj.func = function() {		creating the method
+  obj.func = function() {         creating the method
     ...
   }
-  obj.func();					calling the method
+  obj.func();                     calling the method
 -----
 THIS:
-  this;							refers to the object in which the method is defined
+  this;                           refers to the object in which the method is defined
 -----
 CONSOLE:
-  alert("...");					shows a window with text, etc.
-  clear();						clears the console in chrome
-  console.log("...");			outputs to the console
-  prompt("...");				shows a window with an input
+  alert("...");                   shows a window with text, etc.
+  clear();                        clears the console in chrome
+  console.log("...");             outputs to the console
+  prompt("...");                  shows a window with an input
     var user = prompt("User");
 -----
 USEFUL FUNCTIONS:
-  Math.floor(...)				removes the decimals
-  Math.random()					random number between 0 and 1, e.g. 0.123, but not 1
-    Math.random() * 5			random number between 0 and 5, e.g. 2.123, but not 5!
-    Math.random() * 5 + 1		random number between 1 and 5, including 1 and 5
-  Math.floor(Math.random() * 6)	random number out of 1, 2, ..., 5
+  Math.floor(...)                     removes the decimals
+  Math.random()                       random number between 0 and 1, e.g. 0.123, but not 1
+    Math.random() * 5                 random number between 0 and 5, e.g. 2.123, but not 5!
+    Math.random() * 5 + 1             random number between 1 and 5, including 1 and 5
+  Math.floor(Math.random() * 6)       random number out of 1, 2, ..., 5
 
-  setTimeout(function, ms)		execution after time in ms
-  setInterval(function, ms)		repeated execution after time in ms
+  setTimeout(function, ms)            execution after time in ms
+  setInterval(function, ms)           repeated execution after time in ms
 
-  Date().getTime();				gets the current time
+  Date().getTime();                   gets the current time
     var start = new Date().getTime();
