@@ -3,36 +3,38 @@
   working directory - staging area - repository
 -----
 SHORT VERSION:
-  git init                      create .git folder
-  git status                    show changes
-  git add .                     add all files
-  git add -A                    add all files + untracked files
-  git add ...                   add specific file
-  git rm --cached ...           remove file
-  git commit -m "..."           create commit
-  git commit --amend -m "..."   add commit message late
+  git init                          create .git folder
+  git status                        show changes
+  git add .                         add all files
+  git add -A                        add all files + untracked files
+  git add ...                       add specific file
+  git rm --cached ...               remove file
+  git commit -m "..."               create commit
+  git commit --amend -m "..."       add commit message late
 
-  git log                       show history
-  git diff                      show differences between working and staging
+  git log                           show history
+  git diff                          show differences between working and staging
 
-  git show HEAD                 show most recent commit
-  git checkout HEAD ...         go back to most recent commit
-  git reset HEAD ...            remove changes from staging
-  git reset ...                 go back to an ID
+  git show HEAD                     show most recent commit
+  git checkout HEAD ...             go back to most recent commit
+  git reset HEAD ...                remove changes from staging
+  git reset ...                     go back to an ID
 
-  git remote add origin ...     access to GitHub URL
-  git remote -v                 details of remote
-  git push origin master        push to GitHub
-  git pull origin master        pull from GitHub
+  git remote add origin ...         access to GitHub URL
+  git remote -v                     details of remote
+  git push origin master            push to GitHub
+  git pull origin master            pull from GitHub
 
-  git clone ...                 clone a repository from an URL
-  git clone ... .               clones without creating a new folder
+  git clone ...                     clone a repository from an URL
+  git clone ... .                   clones without creating a new folder
 
-  git branch                    list branches
-  git branch ...                create branch
-  git branch -d ...             delete branch
-  git checkout ...              open branch
-  git merge ...                 merge branch into current branch
+  git branch                        list branches
+  git branch ...                    create branch
+  git branch -d ...                 delete branch
+  git checkout ...                  open branch
+  git merge ...                     merge branch into current branch
+  git fetch origin                  same as git pull origin master
+  git merge master origin/master    same as git merge master origin/master
   
   conflict:
     checkout branch
