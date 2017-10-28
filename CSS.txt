@@ -40,7 +40,7 @@ SPECIFICITY:
   more specific styles overwrite others
     id > class > type
     body p > p
-    !important > all				avoid using
+    !important > all						avoid using
       p {color: blue !important;}
 -----
   selector {
@@ -59,16 +59,16 @@ COMMENT:
 CLASS / ID:
   can be combined in one tag
 
-  .name {}				class selector, multiple occurences
+  .name {}						class selector, multiple occurences
     <... class="name1 name2">		
-  #name {}				id selector, once per page
+  #name {}						id selector, once per page
     <... id="name1 name2">		
-  * {}					star, whole page, "CSS Reset"
-  tag1.class1 {}			only tag1 with class1
-  tag1, tag2 {}				multiple selectors
-  tag1 tag2 {}				child selector, only tag2 inside tag1
-  tag1 + tag2 {}			adjacent selector, tag2 that comes after tag1
-  tag[] {}				attribute selector, no blanks before []
+  * {}							star, whole page, "CSS Reset"
+  tag1.class1 {}				only tag1 with class1
+  tag1, tag2 {}					multiple selectors
+  tag1 tag2 {}					child selector, only tag2 inside tag1
+  tag1 + tag2 {}				adjacent selector, tag2 that comes after tag1
+  tag[] {}						attribute selector, no blanks before []
   tag:first-of-type {}			only the first
   tag:nth-of-type(n) {}			only every n-th in every block
   tag:nth-child(2n) {}			every second one
@@ -76,37 +76,37 @@ CLASS / ID:
 BOX MODEL:
   Bootstrap: 12 grid
    _____________________________
-  |margin ______________________	between border and next element
+  |margin ______________________		between border and next element
   |      |border _______________
-  |      |      |padding _______	between content and border
+  |      |      |padding _______		between content and border
   |      |      |       |content
 
-  * {					show outlines around the boxes
+  * {									show outlines around the boxes
      outline: 1px solid red !important;
   }
 -----
 BOX:
-  left: 100px;				100px margin on the left side of the object
-  top: 100px;				100px margin at the top
+  left: 100px;					100px margin on the left side of the object
+  top: 100px;					100px margin at the top
 
-  margin: 100px;			border all around the object
+  margin: 100px;				border all around the object
   margin: 100px 50px;			top and bottom 100px, left and right to 50px
-  margin: 100px 50px 20px 10px		top, right, bottom, left
+  margin: 100px 50px 20px 10px	top, right, bottom, left
   margin-left: 150px;			one specific margin
-  margin: auto;				centers the element, requires a width
-  margin: 0 auto;			top/bottom = 0, left/right = auto
+  margin: auto;					centers the element, requires a width
+  margin: 0 auto;				top/bottom = 0, left/right = auto
 
-  border: 1px solid black;			width color style
+  border: 1px solid black;					width color style
   border-width: ...
   border-color: ...
   border-style: ridge solid dotted dashed	individual style top right bottom left
   border-left-color: ...
-  border-radius: 50px				creates a circle: radius = width/2 = 50%
+  border-radius: 50px						creates a circle: radius = width/2 = 50%
 
-  padding: 5px;				border inside an object
+  padding: 5px;								border inside an object
     size is width+margin+padding
-    body {margin: 0; padding: 0;}	removes default borders
-    p {margin: 0; padding: 0;}		removes default borders
+    body {margin: 0; padding: 0;}			removes default borders
+    p {margin: 0; padding: 0;}				removes default borders
       see css reset to set up pages
       for every browser
 
@@ -119,14 +119,14 @@ BOX:
   }
 -----
 POSITION:
-  float;				removes all styling
+  float;						removes all styling
   float: left; right;			floating, stacks
   clear: left; right; both;		reset floating
 
   position: relative;			move position, negative numbers possible
   position: absolute;			position ignores all other elements
-  position: fixed;			always stays fixed on the screen when scrolling
-  position: static;			default
+  position: fixed;				always stays fixed on the screen when scrolling
+  position: static;				default
 -----
 SIZE:
   width: 50%; 100px;
@@ -136,48 +136,48 @@ SIZE:
 DISPLAY:
   display: block;			takes the full width of the parent
   display: inline;			not full parent-width, but width is disabled
-  display: inline-block;		not full parent-width, with access to width
+  display: inline-block;	not full parent-width, with access to width
   display: none;			removes the element
-  visibility: hidden;			hides the element, still takes up space
+  visibility: hidden;		hides the element, still takes up space
 -----
 OPACITY:
   z-index: 1; 2;			overlapping order
   opacity: 0; 1;			transparancy, 0-1
 -----
 BACKGROUND:
-  background: black;			background-color: black;
+  background: black;				background-color: black;
   background: linear-gradient(		gradient, from top left to bottom right, from black to white
     to bottom right, black, white);	
-  background: url("...");		background-image: url("..."); image will be tiled
+  background: url("...");			background-image: url("..."); image will be tiled
   background-repeat: no-repeat;		prevents tiling
-  background-size: cover;		stretches to window
+  background-size: cover;			stretches to window
 -----
 COLORS:
   color: #FF0000; 
          #RedRedGreenGreenBlueBlue;
-         #FF0000			red
-         #00FF00			green
-         #0000FF			blue
-         #000000			black
-         #FFFFFF			white
-  color: rgb(0, 255, 0);		RGB
+         #FF0000					red
+         #00FF00					green
+         #0000FF					blue
+         #000000					black
+         #FFFFFF					white
+  color: rgb(0, 255, 0);			RGB
   color: rgba(0, 0, 0, 0.0-1.0);	RGBA, transperancy: alpha channel 0.0 - 1.0
 -----
 FONT:
-  font-family: Arial, Times, serif;	font with fallback fonts
+  font-family: Arial, Times, serif;		font with fallback fonts
   color: black;
   font-size: 200%;
-  font-weight: bold;			normal, bold, number from google fonts
-  font-style: italic;			normal, italic, oblique
-  text-decoration: none;		none, overline, underline, line-through
-  text-transform: uppercase;		uppercase, lowercase, capitalize
-  text-indent: 50px;			indent first line
+  font-weight: bold;					normal, bold, number from google fonts
+  font-style: italic;					normal, italic, oblique
+  text-decoration: none;				none, overline, underline, line-through
+  text-transform: uppercase;			uppercase, lowercase, capitalize
+  text-indent: 50px;					indent first line
   letter-spacing: 3px;
-  line-height: 0.8;			height of lines
+  line-height: 0.8;						height of lines
   direction: rtl;
   word-spacing: 10px;
-  text-align: left; center; right;	aligns inside the container
-  text-align: justify;			blocked text
+  text-align: left; center; right;		aligns inside the container
+  text-align: justify;					blocked text
 
   <link href="..." rel="stylesheet">	add a google font
   font-family: ...			
@@ -194,7 +194,7 @@ MOUSEOVER:
   tag:hover
 -----
 TRANSITION:
-  transition: all 0.3s;			transition effect on all elements of 0.3 seconds, background, etc.
+  transition: all 0.3s;				transition effect on all elements of 0.3 seconds, background, etc.
   -webkit-transition: all 0.3s;		required for Safari
   -moz-transition: all 0.3s;		required for Firefox
 -----
@@ -211,4 +211,4 @@ LISTS:
   list-style: none:			removes bulletpoints
   list-style-type: none			"
   float: left;				in one line
-  margin-right: 10px;			with a space
+  margin-right: 10px;		with a space

@@ -1,13 +1,13 @@
   PHP 7
 -----
 LOCAL WEBSERVER:
-  php -S localhost:8000			runs build-in webserver from php main folder
+  php -S localhost:8000		runs build-in webserver from php main folder
     -t foldername			specific sub folder
     -c php.ini				specific ini file
 -----
 FILES:
-  index.php				main page
-  php.ini				for errors, don't use in final
+  index.php					main page
+  php.ini					for errors, don't use in final
 -----
   <?php
     ...
@@ -17,16 +17,16 @@ PHP STATUS:
   phpinfo();
 -----
 INCLUDING FILES:
-  include("file.php");			from local file
+  include("file.php");				from local file
   file_get_contents("http://...");	from website
 -----
 OUTPUT:
-  echo "...";			prints to screen
-  echo $string1."...".$string2;	concatenation
-  print_r(...);			output something
+  echo "...";						prints to screen
+  echo $string1."...".$string2;		concatenation
+  print_r(...);						output something
 -----
 ERRORS:
-  php.ini			display error messages in the browser, disable for final!
+  php.ini							display error messages in the browser, disable for final!
     error_reporting = E_ALL
     display_errors = On
 -----
@@ -39,7 +39,7 @@ APPENDING:
   .=				add to a string
 -----
 VARIABLES:
-  $name = "...";		sets a variable
+  $name = "...";	sets a variable
   $name				accesses a variable
   $$name			accesses the variable with the name stored inside the variable
   !$name			check if variable exists or if it is empty
@@ -50,16 +50,16 @@ VARIABLES:
 ARRAYS:
   $myArray = array("...", "...");	creates an array
   print_r($myArray);
-  $myArray[0];				accesses a value
-  $myArray[0] = "...";			sets a value
+  $myArray[0];						accesses a value
+  $myArray[0] = "...";				sets a value
   $myArray[name] = "...";		
   $myArray = array(
     "index1" => "value1",
     "index2" => "value2"
   );
-  sizeof($myArray);			length of an array
-  $myArray[] = "...";			adds to the end of the array
-  unset($myArray["..."];		removes a value
+  sizeof($myArray);					length of an array
+  $myArray[] = "...";				adds to the end of the array
+  unset($myArray["..."];			removes a value
 -----
 IF:
   if (...) {
@@ -91,11 +91,11 @@ FUNCTION:
     return $test;
   }
 
-  name();				calling a function
+  name();							calling a function
 -----
 GET VARIABLES:
   $_GET					shows up in the URL as ?name=abc&password=123
-  $_GET["..."]				to access GET data
+  $_GET["..."]			to access GET data
 ----
 POST VARIABLES:
   $_POST				does not show up in the URL
@@ -107,5 +107,5 @@ EMAIL:
   $headers = "From ...";
 -----
 REMOVE SPACES:
-  $string = str_replace(' ', '', $string);	removes spaces
-  $string = preg_replace('/\s+/', '', $string);	removes all whitespace
+  $string = str_replace(' ', '', $string);			removes spaces
+  $string = preg_replace('/\s+/', '', $string);		removes all whitespace

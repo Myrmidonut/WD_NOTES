@@ -12,19 +12,19 @@
     <script Javascript>
   </body>
 </html>
-----------------------------------------------------
+-----
 COMMENTS:
-  <!--				comments, single or multiple lines
+  <!--					comments, single or multiple lines
     ...
   -->
 -----
 block elements			linebreak at the end
 inline elements			no linebreak
-<br/>				/ optional, to show a self closing tag
+<br/>					/ optional, to show a self closing tag
 -----
 CONTAINERS:
-  <span>...</span>		container, no linebreak
-  <div>...</div>		container, linebreak
+  <span>...</span>			container, no linebreak
+  <div>...</div>			container, linebreak
     <header>...</header>	HTML 5, same as a div
     <footer>...</footer>
     <section>...</section>
@@ -41,9 +41,9 @@ ENTITIES:			display symbols, etc.
 -----
 FORMATING:
   <h1>...</h1>			Header 1-6
-  <br>				linebreak
+  <br>					linebreak
   <p>...</p>			paragraph, linebreak
-  <strong>...</strong>		bold, preferable to
+  <strong>...</strong>	bold, preferable to
     <b>...</b>
   <em>...</em>			italic, preferable to
     <i>...</i>
@@ -52,7 +52,7 @@ FORMATING:
   <sup>...</sup>		supscript (hochgestellt)
   <sub>...</sub>		subscript
   <del>...</del>		crossed out
-  <hr>				line
+  <hr>					line
 -----
 LISTS:
   <ul>...</ul>			unordered list, points
@@ -62,7 +62,7 @@ LISTS:
   <ol start="10">		starts at 10
   <ol reversed>			reversed list
   <ol type="1">			symbols: 1, A, I, a, i
-  lists can be inside another list
+  						lists can be inside another list
 -----
 IMAGES:
   <img src="...">		image, local file or link
@@ -70,14 +70,14 @@ IMAGES:
     height="100"		scales height to 100 pixels
     align="left"		left of website
     align="right"		right of website
-    <p></p>			text under image
+    <p></p>				text under image
     alt="..."			adds a description to the image for search engines, visually impared users, etc.
 -----
 VIDEOS:
   <video src="...">...</video>	link to video file, ... only shows when the video can not be loaded
-    width="..."			width
-    height="..."		height
-    controls			show pause, play and skip
+    width="..."					width
+    height="..."				height
+    controls					show pause, play and skip
 -----
 FORMS:
   <form>...</form>		form, linebreak			
@@ -85,35 +85,35 @@ FORMS:
     method="post"		type of HTTP request
     method="GET"
 
-    <input>			input box, default is text
-      type="text"		text
-      type="number"		number
-      type="password"		password, hidden
-      type="email"		email
-      type="date"		date
-      type="color"		color
-      type="file"		file
-      type="checkbox"		checkbox
-        checked			default checked for cbox
+    <input>						input box, default is text
+      type="text"				text
+      type="number"				number
+      type="password"			password, hidden
+      type="email"				email
+      type="date"				date
+      type="color"				color
+      type="file"				file
+      type="checkbox"			checkbox
+        checked					default checked for cbox
       type="radio" name="..."	radio button, linked with "...", only one available
-      type="submit"		submit button	
+      type="submit"				submit button	
    
-      placeholder="..."		background writing in text, number, etc
-      pattern=".{5,10}"		min and max length of input
-      title="5 to 10"		error code for pattern
-      required			checks for the correct input
+      placeholder="..."			background writing in text, number, etc
+      pattern=".{5,10}"			min and max length of input
+      title="5 to 10"			error code for pattern
+      required					checks for the correct input
 
     <textarea rows="10" cold="10">...</textarea>	more boxes than "text"
 
-    <select>...</select>	dropdown
-      <option>...</option>	entries
-        selected		default selected
+    <select>...</select>			dropdown
+      <option>...</option>			entries
+        selected					default selected
 
-      name="..."		name for the data that will be send, shows up in URL as name=value
-      value="..."		data that will be send
+      name="..."					name for the data that will be send, shows up in URL as name=value
+      value="..."					data that will be send
 
     <label for="...">...</label>	label for a form, linked with for="..."
-    <input id="...">			for accessibilty, for= and id= has to be equal
+    <input id="...">				for accessibilty, for= and id= has to be equal
 
   EXAMPLE:
     <div>
@@ -124,37 +124,37 @@ FORMS:
 TABLES:
   <table>...</table>		table, border=1 only for testing
     <thead>...</thead>		headlines
-      <tr>...</tr>		  rows
-        <th>...</th>		  entries
+      <tr>...</tr>			rows
+        <th>...</th>		entries
     <tbody>...</tbody>		data cells
-      <tr>...</tr>		  rows
-        <td>...</td>		  entries
+      <tr>...</tr>			rows
+        <td>...</td>		entries
     <tfoot>...</tfoot>		footer
-      <tr>...</tr>		  rows
-        <td>...</td>		  entries
+      <tr>...</tr>			rows
+        <td>...</td>		entries
 
-  <table>			short version
+  <table>					short version
     <tr>
-      <th>...</th>		headline
+      <th>...</th>			headline
     </tr>
     <tr>
-      <td>...</td>		data cells
+      <td>...</td>			data cells
     </tr>
   </table>
 
-    colspan="..."		number of colums a cell needs
-    rowspan="..."		number of rows a cell needs
+    colspan="..."			number of colums a cell needs
+    rowspan="..."			number of rows a cell needs
 -----
 LINKS:
   <a href="...">...</a>		links, Text is clickable, local file or link
     <p id="...">
     href="./file.html"		./ represents the current folder
-    href="#..."			leads to an id="..." on the page
-    target="_blank"		opens a new tab
+    href="#..."				leads to an id="..." on the page
+    target="_blank"			opens a new tab
 -----
 IFRAMES:
   <iframe src="...">...</iframe>	insert a webpage, videos, etc.
     width="..."
     height="..."
-    frameborder="0"			no border around the page
+    frameborder="0"					no border around the page
     allowfullscreen

@@ -1,10 +1,10 @@
 SHORT VERSION:
-  rm -r workspace			delete everything
-  rvm install ruby			install latest ruby
-    rvm install 2.3.0			specific version
-  gem install rails			install latest rails
-    -v 5.0.0				specific version
-  rvm get stable			update rvm
+  rm -r workspace					delete everything
+  rvm install ruby					install latest ruby
+    rvm install 2.3.0				specific version
+  gem install rails					install latest rails
+    -v 5.0.0						specific version
+  rvm get stable					update rvm
   rvm gemset list
   rvm gemset create NAME
   rvm --default use ruby-2.3.0@NAME
@@ -17,20 +17,20 @@ Clean start:
 
 Setting up Ruby and Rails with Ruby Version Manager (RVM):
   inside workspace folder:
-    rvm install 2.3.0					install ruby with rvm
+    rvm install 2.3.0								install ruby with rvm
     rvm --default use 2.3.0
-    rvm gemset list					gemsets are sets of code
-    rvm gemset create saasapp				create our own gemset
+    rvm gemset list									gemsets are sets of code
+    rvm gemset create saasapp						create our own gemset
     rvm gemset list
     rails -v
-    rvm --default use ruby-2.3.0@saasapp		always use ruby 2.3.0 with our gemset
+    rvm --default use ruby-2.3.0@saasapp			always use ruby 2.3.0 with our gemset
     gem install rails -v 5.0.0 --no-ri --no-rdoc	install rails 5.0.0 gemset with lighter parameters
-    ruby -v						ruby version check
-    rails -v						rails version check
+    ruby -v											ruby version check
+    rails -v										rails version check
     rvm --default use ruby-2.3.0@saasapp		
-    rails new saasapp					rails new: creates a skeleton rails app
+    rails new saasapp								rails new: creates a skeleton rails app
     cd saasapp
-    touch .rvmrc					when entering the directory we use the correct version of ruby and rails
+    touch .rvmrc									when entering the directory we use the correct version of ruby and rails
     c9 .rvmrc
 
   inside .rvmrc file:
@@ -38,62 +38,62 @@ Setting up Ruby and Rails with Ruby Version Manager (RVM):
 
   inside saasapp folder:
     y
-    rvm rvmrc to .ruby-version				fast access when entering the directory
+    rvm rvmrc to .ruby-version						fast access when entering the directory
     rm .rvmrc
 -----
 Setting up Git:
   inside workspace folder:
-    git config --global user.name "First Last"		configure the computer with username and email
+    git config --global user.name "First Last"				configure the computer with username and email
     git config --global user.email your.email@address.com
 
   inside saasapp directory:
-    c9 README.md					modify file
+    c9 README.md											modify file
 
   inside README.md file:
     # README
     [Upskill](http://upskillcourses.com) Software-as-a-Service Ruby on Rails App
 
   inside saasapp folder:
-    git init						initial command for new project
-    git add .						add any changes that were done so far
-    git status						shows what is going to be commited
-    git commit -m "Initial commit"			create first snapshot with comment
+    git init											initial command for new project
+    git add .											add any changes that were done so far
+    git status											shows what is going to be commited
+    git commit -m "Initial commit"						create first snapshot with comment
 -----
 Adding SSH key to link Cloud9 and GitHub:
   inside workspace folder:
-    cat ~/.ssh/id_rsa.pub				creates SSH key for the machine
+    cat ~/.ssh/id_rsa.pub								creates SSH key for the machine
     copy key
 
   on GitHub:
-    add key on GitHub, Settings, SSH			Title: Cloud9
-    create new Repository				name: upskill_saas_tutorial
+    add key on GitHub, Settings, SSH					Title: Cloud9
+    create new Repository								name: upskill_saas_tutorial
     copy command:
       git remote add origin https://github.com/Myrmidonut/upskill_saas_tutorial.git
 
   in saasapp folder:
     git remote add origin https://github.com/Myrmidonut/upskill_saas_tutorial.git
-    git remote						veryfication
-    git remote -v					verification
-    git push origin master				sends entire code to GitHub
+    git remote											veryfication
+    git remote -v										verification
+    git push origin master								sends entire code to GitHub
 -----
 Starting Rails server:
   inside saasapp:
-    rails server -b $IP -p $PORT			best practice: bundle exec rails s -b $IP -p $PORT
+    rails server -b $IP -p $PORT						best practice: bundle exec rails s -b $IP -p $PORT
   in Cloud9:
     Preview, Prieview running application, open in browser
   ctrl + c to close the server
 -----
 Editing Gemfile:
   inside saasapp folder:
-    git checkout -b pages_and_layout			create a new branch for pages and layout
+    git checkout -b pages_and_layout				create a new branch for pages and layout
     Gemfile:
       change code
-  bundle install					read gemfile and update changes
-  bundle update						solve errors
-  git status						show changed files
-  git add .						add all changes
+  bundle install									read gemfile and update changes
+  bundle update										solve errors
+  git status										show changed files
+  git add .											add all changes
   git commit -m "Updated Gemfile for consistency"	create commit
-  git push origin pages_and_layout			upload new code
+  git push origin pages_and_layout					upload new code
 -----
 Gemfile:
   gem 'tool', 'version'

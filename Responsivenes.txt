@@ -30,12 +30,12 @@ BUTTONS:
 -----
 IMAGES:
   <img ...>
-    src="image.jpg"				as a fallback
-    srcset="small.jpg 500w, medium.jpg 1000w"	browser choses the image for the viewport size and DPR
-    srcset="small.jpg 1x, medium.jpg 2x"	browser choses the image for the DPR
-    sizes="(max-width: 400px) 100vw, (min-width: 401) 50vw"	image is full viewport width if browsers
-								viewport is 400 or less or half viewport
-								width if browsers viewport is more than 400
+    src="image.jpg"												as a fallback
+    srcset="small.jpg 500w, medium.jpg 1000w"					browser choses the image for the viewport size and DPR
+    srcset="small.jpg 1x, medium.jpg 2x"						browser choses the image for the DPR
+    sizes="(max-width: 400px) 100vw, (min-width: 401) 50vw"		image is full viewport width if browsers
+																viewport is 400 or less or half viewport
+																width if browsers viewport is more than 400
 -----
 PICTURES:
 <picture>
@@ -47,7 +47,7 @@ PICTURES:
 FLEXBOX:
   display: flex;
   flex-wrap: wrap;
-  order: 1;		default order: 0
+  order: 1;				default order: 0
 -----
 PATTERNS:
 column drop:

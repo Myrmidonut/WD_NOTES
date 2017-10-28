@@ -56,16 +56,16 @@ GRID:
 			15px on each side
 -----
 NAVBAR:
-  <nav class="navbar navbar-default">		navbar, across whole page
+  <nav class="navbar navbar-default">			navbar, across whole page
     navbar-inverse
-    navbar-fixed-top				stay on top of the page
-      style="margin-top: 70px"			  add spacing because the navbar is out of the flow
-    <div class="navbar-header">			first entry on the left
-    <ul class="nav navbar-nav">			other entries on the left
+    navbar-fixed-top							stay on top of the page
+      style="margin-top: 70px"					add spacing because the navbar is out of the flow
+    <div class="navbar-header">					first entry on the left
+    <ul class="nav navbar-nav">					other entries on the left
     <ul class="nav navbar-nav navbar-right">
 -----
 NAVBAR COLLAPSE:
-  <div class="collapse navbar-collapse" id="bs-nav-demo">			menu collapses for small windows
+  <div class="collapse navbar-collapse" id="bs-nav-demo">						menu collapses for small windows
   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"	shows menu button for collapsed menu
   data-target="#bs-nav-demo" aria-expanded="false">
     <span class="sr-only">Toggle navigation</span>
@@ -77,12 +77,12 @@ NAVBAR COLLAPSE:
 FORMS:
   class="form-inline"				label and inputs in one line
   class="form-group"				adds spacing
-  class="row"					organized into a grid
+  class="row"						organized into a grid
     class="col-sm-2"				
   class="form-control"				inputs are designed
 -----
 TABLES:
-  class="table"					adds design
+  class="table"						adds design
   class="table-inverse"				inversed colours
     class="thead-inverse"			
   class="table-striped"				every other row is grey
@@ -91,12 +91,12 @@ TABLES:
   class="table-responsive"			responsive
 -----
 ALERTS:
-  class="alter"					messages in different colors
+  class="alter"						messages in different colors
   class="alert-warning"				example
   class="alert-dismissible"			message that can be clicked away, needs a button
 -----
 CARDS:	Bootstrap 4
-  <div class="row">				showcase, here 3 images with title, text, button under it
+  <div class="row">					showcase, here 3 images with title, text, button under it
     <div class="col-sm-4>
       <div class="card">				
         <img class="card-img-top" src="">
@@ -109,7 +109,7 @@ PROGRESS:
   <progress class="progress" value="35" max="100"></progress>	shows a progress bar, different colors
 -----
 MODALS:
-  class="modal"					dialog that shows over the content of the page
+  class="modal"						dialog that shows over the content of the page
   ...
 -----
 SCROLLSPY:

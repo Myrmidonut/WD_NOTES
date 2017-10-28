@@ -14,11 +14,11 @@ allows manipulation of multiple elements of the same kind
 -----
 FILES:
   jquery.js
-  jquery.min.js					compressed, loads faster
+  jquery.min.js									compressed, loads faster
     suggested to put into lib/ folder
 -----
 CHECK:
-  <script type="text/javascript">		checks if jQuery is installed
+  <script type="text/javascript">				checks if jQuery is installed
     if (typeof jQuery == "undefined") {
       alert("jQuery is not installed!");
     } else {
@@ -27,7 +27,7 @@ CHECK:
   </script>
 -----
 SELECTION:
-  $("...")					needs css elements, #, ., returns a list, [..., ...]
+  $("...")						needs css elements, #, ., returns a list, [..., ...]
     div.test					div with class test
     ...:first					first tag of a kind
     ...:last					last tag of a kind
@@ -38,65 +38,65 @@ EXAMPLE:
 -----
 EVENTS:
   $("element")
-    .click(function() {...})			runs on mouseclick
-    .keypress(function() {...})			runs on keypress
-    .on("...", function() {...})		works with listeners on future elements
+    .click(function() {...})					runs on mouseclick
+    .keypress(function() {...})					runs on keypress
+    .on("...", function() {...})				works with listeners on future elements
     $("ul").on("click", "li", function(){...})	example, on has to run on ul for future lis
       "click"
       "keypress"
       "mouseenter"
       "mouseleave"
-    .hover(function() {...})			mouseover
+    .hover(function() {...})					mouseover
 
-  $(this)					refers to the one element that is accessed
+  $(this)										refers to the one element that is accessed
 -----
 MANIPULATION:
   $("element")
     .html()					gets the whole HTML, see innerHTML
-    .html("...") 				changes the whole HTML
-    .attr("...")				get the value of an attribute
-    .attr("...", "...")				changes an attribute
-    .css("...")					gets the value of the styling
-    .css("...", "...")				changes styling
+    .html("...") 			changes the whole HTML
+    .attr("...")			get the value of an attribute
+    .attr("...", "...")		changes an attribute
+    .css("...")				gets the value of the styling
+    .css("...", "...")		changes styling
     .text()					gets content of a tag, see text-content
-    .text("...")				changes content of a tag
+    .text("...")			changes content of a tag
     .val()					gets value of an element, see value
-    .val("...")					changes value of an element
+    .val("...")				changes value of an element
 
-    .addClass("...")				adds a class
-    .removeClass("...")				removes a class
-    .toggleClass("...")				toggles a class
+    .addClass("...")		adds a class
+    .removeClass("...")		removes a class
+    .toggleClass("...")		toggles a class
 
-    .remove()					removes an element from the page
-    .append("...")				adds text to the end of an element
+    .remove()				removes an element from the page
+    .append("...")			adds text to the end of an element
 -----
 EFFECTS:
   $("element")
     .fadeOut(duration, function(){})		fade out effect, optional duration in ms, optional function after fadeout
-      "slow", a number, etc.			values for duration
+      "slow", a number, etc.				values for duration
       elements stay as hidden on the page
-    .fadeIn(duration, function(){})		fade in effect
+    .fadeIn(duration, function(){})			fade in effect
     .fadeToggle(duration, function(){})		toggled fade effect
 
-    .hide()					removes the element from the flow
+    .hide()									removes the element from the flow
 
-    .slideDown()				element gets squished in height
-    .slideUp()					element gets increased in height
-    .slideToggle()				toggles slide
+    .slideDown()							element gets squished in height
+    .slideUp()								element gets increased in height
+    .slideToggle()							toggles slide
 
-    .animate({					animates an element, duration in ms, optional function
+    .animate({								animates an element, duration in ms, optional function
       property1: "value1",
       property2: "value2"
     }, duration, function(){})
 -----
-  alert("...");					opens a popup with text
+  alert("...");							opens a popup with text
 -----
   $("#circle").click(function() {		example
     alert("Clicked!");
     $("#circle").css("width", "100px");
   });
 -----
-  $("li").css({					example, multiple values
+  $("li").css({							example, multiple values
     fontSize: "10px",
     border: "3px dashed blue"
   });
