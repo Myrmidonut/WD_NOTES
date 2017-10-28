@@ -1,13 +1,13 @@
   PHP 7
 -----
 LOCAL WEBSERVER:
-  php -S localhost:8000   runs build-in webserver from php main folder
-    -t foldername         specific sub folder
-    -c php.inside         specific ini file
+  php -S localhost:8000             runs build-in webserver from php main folder
+    -t foldername                   specific sub folder
+    -c php.inside                   specific ini file
 -----
 FILES:
-  index.php               main page
-  php.ini                 for errors, don't use in final
+  index.php                         main page
+  php.ini                           for errors, don't use in final
 -----
   <?php
     ...
@@ -31,18 +31,18 @@ ERRORS:
     display_errors = On
 -----
 LOGIC:
-  &&                and
-  ||                or
-  ==                equal
+  &&                                and
+  ||                                or
+  ==                                equal
 -----
 APPENDING:
-  .=                add to a string
+  .=                                add to a string
 -----
 VARIABLES:
-  $name = "...";    sets a variable
-  $name             accesses a variable
-  $$name            accesses the variable with the name stored inside the variable
-  !$name            check if variable exists or if it is empty
+  $name = "...";                    sets a variable
+  $name                             accesses a variable
+  $$name                            accesses the variable with the name stored inside the variable
+  !$name                            check if variable exists or if it is empty
 -----
   $string = "...";
   $string = '...';
@@ -86,19 +86,19 @@ WHILE:                                          while loop
   }
 -----
 FUNCTION:
-  function name($arg1, $arg2) {   creates a function
+  function name($arg1, $arg2) {     creates a function
     ... ;
     return $test;
   }
 
-  name();                         calling a function
+  name();                           calling a function
 -----
 GET VARIABLES:
-  $_GET                           shows up in the URL as ?name=abc&password=123
-  $_GET["..."]                    to access GET data
+  $_GET                             shows up in the URL as ?name=abc&password=123
+  $_GET["..."]                      to access GET data
 ----
 POST VARIABLES:
-  $_POST                          does not show up in the URL
+  $_POST                            does not show up in the URL
 -----
 EMAIL:
   $emailTo = "...";
