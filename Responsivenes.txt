@@ -1,0 +1,97 @@
+hardware resolution / device pixel ratio = viewport
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+-----
+MEDIA-QUERY:
+  <link rel="stylesheet" media="screen and (min-width: 500px)" href="over500.css">
+
+  once the media-query is matched (width 500) over500.css gets loaded
+
+  in .css:
+  @media screen and (min-width: 500px) and (max-width: 600px) {
+    body {
+      color: blue;
+    }
+  }
+-----
+SIZES:
+  use relative sizes, and not absolute
+    width:100%;
+
+    width: 640px;
+    max-width: 100%
+-----
+BUTTONS:
+  48px size between buttons for mobile access
+    min-width: 48px;
+    min-height: 48px;
+-----
+IMAGES:
+  <img ...>
+    src="image.jpg"				as a fallback
+    srcset="small.jpg 500w, medium.jpg 1000w"	browser choses the image for the viewport size and DPR
+    srcset="small.jpg 1x, medium.jpg 2x"	browser choses the image for the DPR
+    sizes="(max-width: 400px) 100vw, (min-width: 401) 50vw"	image is full viewport width if browsers
+								viewport is 400 or less or half viewport
+								width if browsers viewport is more than 400
+-----
+PICTURES:
+<picture>
+  <source media="(min-width: 750px)" srcset="image1.jpeg" type="image/jpeg">	alternative imagesources, 
+  <source media="(min-width: 500px)" srcset="image2.jpeg" type="image/jpeg">	goes from top to bottom
+  <img src="...">					
+</picture>
+-----
+FLEXBOX:
+  display: flex;
+  flex-wrap: wrap;
+  order: 1;		default order: 0
+-----
+PATTERNS:
+column drop:
+  small: 3 stacked
+  medium: 2 side by side + 1 stacked
+  large: 3 side by side
+
+  .container {display: flex; flex-wrap: wrap;}
+  .box {width: 100%;}
+  @media screen and (min-width: 450px) {
+    .first {width: 25%;} .second {width: 75%;} }
+  @media screen and (min-width: 550px) {
+    .first, .third {width: 25%;} .second {width: 50%;} }
+
+mostly fluid:
+  small: 5 stacked
+  medium: 3 stacked + 2 side by side
+  large: 2 side by side + 3 side by side
+  very large: large + margins
+
+  .container {display: flex; flex-wrap: wrap;}
+  .box {width: 100%;}
+  @media screen and (min-width: 450px) {
+    .first, .second {width: 50%;} }
+  @media screen and (min-width: 550px) {
+    .first, .second {width: 75%;} .third, .fourth, .fifth {width: 33%} }
+  @media screen and (min-width: 700px) {
+    .container {width: 700px; margin-left: auto; margin-right: auto;} }
+
+layout shifter:
+  small: 4 stacked
+  medium: 1 + (2 stacked) side by side + 1 stacked
+  large: 1 + (2 stacked) + 1 side by side
+
+  .container {width: 100%; display: flex; flex-wrap: wrap;}
+  .box {width: 100%;}
+  @media screen and (min-width: 500px) {
+    .first: 50%;} #container2 {width: 50%;} }
+  @media screen and (min-width: 600px) {
+    .first {width: 25%; order: 1;} #container2 {width: 50%} .fourth {width: 25%; order: -1;} }
+
+off canvas:
+  small: 1 full + 1 hamburger menu
+  medium: 1 full + 1 overlapping
+  large: 2 side by side
+
+  navbar moving into the screen, hidden as a hamburger menu on small

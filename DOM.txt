@@ -1,0 +1,75 @@
+DOM:
+  Document Object Model
+-----
+HTML elements are turned into JavaScript objects
+-----
+SELECT:
+  document.getElementById("...")		selects the element by id
+  document.getElementsByClassName("...")	selects all elements by class, creates nodelist
+  document.getElementsByClassName("...")[...]	[] to select just one
+  document.getElementsByTagName("...")		selects all elements by tag, creates nodelist
+
+  document.querySelector("...")			needs CSS style selectors, #..., selects only the first one
+  document.querySelectorAll("...")		needs CSS style selectors, selects all elements, creates nodelist
+
+  var h1 = document.querySelector("h1");	selects h1 and saves it in a variable
+-----
+MANIPULATION:
+  tag.style.color = "blue";
+-----
+MANIPULATION WITH classList:			
+  tag.classList.add("...");			adds css-class/id to an element tag
+  tag.classList.remove("...");			removes it
+  tag.classList.toggle("...");			toggles it
+    document.body.classList.toggle("...")	example
+
+  .some-class {					example, adds color red to "highlight"
+    color: red;
+  }
+  var tag = document.getElementById("highlight");	
+  tag.classList.add("some-class");
+
+  .innerHTML = "...";		changes text or code inside a tag, includes code
+  .style			changes the styling of an element
+    .color = "..."
+    .fontSize = "..."
+    .top = "..."
+    .display = "..."
+      "none"			removes an element from the page
+      "block"			shows the element
+  .textContent = "...";		sets the text without code
+  .getAttribute("...");		
+  .setAttribute("...", "...");	changes attribute: name, value
+
+  .onclick;			action on clicking
+-----
+  document.getElementById("...").innerHTML = "...";
+  document.getElementById("...").onclick = function() {statements}
+-----
+EVENTS:
+  element.addEventListener("type", function);		runs a function when an event happens
+    click						mouseclicks
+    change						text input, mouseclicks, etc., needs to lose focus for change
+    input						same as above without need for focus loss
+    mouseover						mouse moves over an element, stays active
+    mouseout						mouse leaves an element
+
+  button.addEventListener("click", function() {		example, switches the style purple for body on and off
+    document.body.classList.toggle("purple");		
+  });
+
+  var button = document.querySelector("button");	example
+  var paragraph = document.querySelector("p");
+  button.addEventListener("click", function() {
+    paragraph.textContent = "someone clicked"; {);
+
+  var lis = document.querySelectorAll("li");		example
+  for (var i = 0; i < lis.length; i++) {
+    
+lis[i].addEventListener("click", function() {
+      
+this.style.color = "pink";
+
+    } );
+  
+}

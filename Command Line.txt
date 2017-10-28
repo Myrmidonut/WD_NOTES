@@ -1,0 +1,77 @@
+VIEWING:
+  cd			change to a directory
+			return to home directory (linux)
+    ..			go one higher
+    ../../test		to two higher and into test directory
+  pwd			show current directory
+  ls			list contents of a directory
+    -a			includes hidden
+    -l			details
+    -h			readable filesizes
+    -S			sort by size
+    -t			sort by modified time
+    -r			reverser order
+  history		outputs the last used commands
+-----
+CREATING:
+  touch			create a file
+  mkdir			create a folder
+  rm			remove a file
+  rm -r			remove a folder
+  cp			copy a file
+    -v			verbose output
+    -r			copy a folder
+    -f			force overwriting
+  mv			move/rename a file
+    files folder	move one or more files
+    file file		rename a file
+  ln			create links
+-----
+OPENING:
+  start			open a file in windows
+  open			open a file in linux
+  cat			open file in terminal
+  clear			clears ouput
+-----
+REDIRECTING:
+  ... | ...		pipe, sends output to input of a command
+  >			send output to a file, overwrites the contents
+  >>			send output to a file, appends the contents
+  <			get input from a file
+-----
+OUTPUT:
+  echo			prints to the screen
+  wc			outputs number of lines, words and characters
+-----
+SORTING, SEARCHING AND REPLACING:
+  sort			sort alphabetically
+  uniq			removes adjacent duplicate lines
+  grep ...		lists lines that contain a word
+    -i			case insensitive
+    -R			all files in a directory
+    -l			lists files that match
+  sed			find and replace
+    's/find/replace/'	the first instance in a line
+    's/find/replace/g'	all instances
+-----
+NANO:
+  nano file
+    ctrl + o
+    ctrl + x
+    ctrl + g
+-----
+BASH PROFILE:
+  ~/.bash_profile		contains environment settings
+    alias cmd2="cmd1"		set aliases for commands
+    USER="..."			set the name of the user
+    PS1="..."			set the style of the command prompt
+    HOME="..."			set the path to the home directory
+    PATH="..."			directories that contain commands, scripts, etc
+    Color:
+      PROMPT_COLOR="..."			set the color
+      export CLICOLOR=1				set colors for files, directories, etc.
+      export LSCOLORS=GxFxCxDxBxegedabagaced	
+    export VARIABLE="..."	set a variable to be accessible across programs
+  source ~/.bash_profile	activate the file
+  echo $...			output a variable
+  env				lists environment variables

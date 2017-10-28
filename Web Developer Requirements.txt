@@ -1,0 +1,20 @@
+page size
+page score
+loading time
+responsiveness
+mobile
+
+score of 95%, under 2-3 seconds
+
+*Disciplined application of best practises in PHP and WP development
+*Ability to troubleshoot network-level issues
+*Knowledge of the WordPress API's
+*Skilled use of git in teams
+*Use of the codex for troubleshooting
+*At least basic system administration knowledge: linux, apache
+*Basic mysql knowledge
+*Ability and tendency to delve into plugin, theme and core source when appropriate for troubleshooting
+*Ability to skilfully troubleshoot unfamiliar issues
+*PHP experience outside of the context of WordPress
+*Implimentation of orderly structured, well documented code when extending WordPress
+*Basic image-editing skills

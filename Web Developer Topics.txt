@@ -1,0 +1,56 @@
+Frontend Presentation:
+  HTML
+  CSS
+    Bootstrap
+    Foundation
+    Semantic UI
+  Sass
+
+Front-End Functionality:
+  DOM
+  JavaScript
+  JavaScript Libraries:
+    jQuery
+      Ajax
+    React
+    AngularJS
+    Animation/Sound:
+      Paper.js
+      Howler.js
+-----
+Back-End Functionality:
+  JavaScript Environments:
+    NodeJS
+      ExpressJS
+      PassportJS
+      mongoose
+  PHP
+    PHPStorm
+  Python
+  Ruby
+    Rails
+    RVM
+  Databases:
+    MongoDB
+    SQL
+    MySQL
+  CMS:
+    WordPress
+    Joomla
+    TYPO3
+-----
+Mobile:
+  Cordova
+-----
+Tools:
+  Git
+    GitHub
+  VirtualBox
+    Vagrant
+  Cloud9
+  Heroku
+  Sublime
+  Atom
+  Command Line
+-----
+REST

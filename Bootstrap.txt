@@ -1,0 +1,126 @@
+local file:
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+
+online:
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+Font Awesome for symbols:
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+script inside body:
+  jQuery:
+  <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
+
+  javascript for bootstrap, requires jQuery, has to come after jQuery:
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+-----
+VERSIONS:
+  Version 3 and 4 are different
+  javascript required for dropdown-menus, etc.
+-----
+OVERRIDE:
+  override after bootstrap with:
+  <style type="text/css">
+    .btn-danger {
+      color: orange;
+    }
+  </style>
+-----
+DIVS:
+  class="jumbotron"				adds spacing and formating to elements, main focus of the page
+  class="container"				adds spacing to elements, not full width on large windows
+-----
+GRID:
+  dynamic layout, changes with window size
+  based around 12 columns
+  4 sizes: large, medium, small, extrasmall
+  rows can be nested inside a column
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 pink">
+
+  Bootstrap 3:
+  col-lg-1 ... 12	max container: 1170px, large desktops >=1200px
+  col-md-1 ... 12	max container: 970px, medium desktops >=992px
+  col-sm-1 ... 12	max container: 750px, tablets >=768px
+  col-xs-1 ... 12	max container: none, phones <768px
+			15px on each side
+
+  Bootstrap 4:
+  col-xl-1 ... 12	max container: 1140px, large desktops >=1200px
+  col-lg-1 ... 12	max container: 960px, large desktops >=992px
+  col-md-1 ... 12	max container: 720px, medium desktops >=768px
+  col-sm-1 ... 12	max container: 540px, tablets >=576px
+  col-1 ... 12		max container: none, phones <576px
+			15px on each side
+-----
+NAVBAR:
+  <nav class="navbar navbar-default">		navbar, across whole page
+    navbar-inverse
+    navbar-fixed-top				stay on top of the page
+      style="margin-top: 70px"			  add spacing because the navbar is out of the flow
+    <div class="navbar-header">			first entry on the left
+    <ul class="nav navbar-nav">			other entries on the left
+    <ul class="nav navbar-nav navbar-right">
+-----
+NAVBAR COLLAPSE:
+  <div class="collapse navbar-collapse" id="bs-nav-demo">			menu collapses for small windows
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"	shows menu button for collapsed menu
+  data-target="#bs-nav-demo" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+-----
+FORMS:
+  class="form-inline"				label and inputs in one line
+  class="form-group"				adds spacing
+  class="row"					organized into a grid
+    class="col-sm-2"				
+  class="form-control"				inputs are designed
+-----
+TABLES:
+  class="table"					adds design
+  class="table-inverse"				inversed colours
+    class="thead-inverse"			
+  class="table-striped"				every other row is grey
+  class="table-bordered"			border around every cell
+  class="table-hover"				grey on mouse hover
+  class="table-responsive"			responsive
+-----
+ALERTS:
+  class="alter"					messages in different colors
+  class="alert-warning"				example
+  class="alert-dismissible"			message that can be clicked away, needs a button
+-----
+CARDS:	Bootstrap 4
+  <div class="row">				showcase, here 3 images with title, text, button under it
+    <div class="col-sm-4>
+      <div class="card">				
+        <img class="card-img-top" src="">
+        <div class="card-block">
+          class="card-title"
+          class="card-text"
+          class="btn btn-primary"
+-----
+PROGRESS:
+  <progress class="progress" value="35" max="100"></progress>	shows a progress bar, different colors
+-----
+MODALS:
+  class="modal"					dialog that shows over the content of the page
+  ...
+-----
+SCROLLSPY:
+  
+-----
+THUMBNAIL:
+  <div class="thumbnail">			images scale to the grid, with borders
+-----
+GLYPHICON:
+  symbols for bootstrap
+  treated like a font, can be adjusted
+  <span class="glyphicon glyphicon-camera" aria-hidden="true">
+-----
+BOOTSTRAP 4

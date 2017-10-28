@@ -1,0 +1,116 @@
+  make a commit for every logical change
+  
+  working directory - staging area - repository
+-----
+SHORT VERSION:
+  git init			create .git folder
+  git status			show changes
+  git add .			add all files
+  git add -A			add all files + untracked files
+  git add ...			add specific file
+  git rm --cached ...		remove file
+  git commit -m "..."		create commit
+  git commit --amend -m "..."	add commit message late
+
+  git log			show history
+  git diff			show differences between working and staging
+
+  git show HEAD			show most recent commit
+  git checkout HEAD ...		go back to most recent commit
+  git reset HEAD ...		remove changes from staging
+  git reset ...			go back to an ID
+
+  git remote add origin ...	access to GitHub URL
+  git remote -v			details of remote
+  git push origin master	push to GitHub
+  git pull origin master	pull from GitHub
+
+  git clone ...			clone a repository from an URL
+
+  git branch			list branches
+  git branch ...		create branch
+  git checkout ...		open branch
+  git merge ...			merge branch into current branch
+  
+  conflict:
+    checkout branch
+    merge master into branch
+    resolve conflicts
+    commit
+    checkout master
+    merge branch into master
+-----
+OVERVIEW:
+  repository			contains all commits
+  remote			refers to a repository, e.g. on GitHub
+  commit			contains a change in code
+  branch			label for different versions
+    master			main branch
+    origin/master		branch after a push/pull
+  clone				copy of a repository
+  fork				clone of a repository on GitHub
+  merge				combine different clones
+    fast-forward merge		reaching a commit from another commit
+-----
+FILES:
+  stored in .git folder
+-----
+START:
+  git clone				create copy of a repository
+  git init				creates an empty .git folder
+  git branch				show current branch
+    git branch -a			shows more information
+    git branch name			creates a new branch called name
+  git log --graph --oneline master name	show commits of two different branches in a short way
+-----
+BRANCH:
+  git branch				lists all branches
+  git branch name			create a branch called name
+  git checkout name			switches to the branch called name
+    git checkout -b name		create a branch called name and switches to it
+  git merge name1 name2			merges two branches
+    check manually for conflicts!
+    inside a file with conflict:
+      <<<<<<< HEAD
+      ||||||| merged common ancestors
+      =======
+      >>>>>>> master
+  git branch -d name			delete the branch called name
+  git checkout ID			switch the code to a commit
+-----
+STAGING AREA:
+  git status			shows the files that were changed since the last commit
+  git add			adds files to the staging area for the next commit
+  git add .			add all files
+  git add -A			add all files and untracked files
+  git reset			resets the staging area
+  git commit			creates a commit
+    -m "commit message"		adds a commit message
+-----
+COMPARING COMMITS:
+  git log			lists the recent commits
+  git diff ID_old ID2_new	compares two commits, shows as additions
+    git diff			compares staging area and working directory
+    git diff --staged		compares staging area and most recent commit
+-----
+COMMIT MESSAGE:
+  type: subject			feat/fix/docs/style/refactor/test/chore: <50 characters, first capuital letter, no period
+
+  body				optional, describes a commit in more detail
+
+  footer			optional, issue tracker ID
+-----
+GITHUB:
+  always pull manually
+  fork -> get clone URL
+  local:
+  clone with URL -> branch
+-----
+REMOTE REPOSITORY:
+  git remote				create an empty remote branch
+  git remote add origin URL		get the URL from the GitHub page, e.g. https://github.com/Myrmidonut/reflections.git
+  git remote -v				verbose output with more details
+  git push origin master		moves the local master branch to the remote origin branch
+  git pull origin master 		moves the remote origin branch to the local master branch
+    git fetch origin			same as above
+    git merge master origin/master
