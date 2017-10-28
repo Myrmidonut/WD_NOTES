@@ -3,7 +3,7 @@
   working directory - staging area - repository
 -----
 SHORT VERSION:
-  git init			create .git folder
+  git init	   		create .git folder
   git status			show changes
   git add .			add all files
   git add -A			add all files + untracked files
@@ -29,6 +29,7 @@ SHORT VERSION:
 
   git branch			list branches
   git branch ...		create branch
+  git branch -d ...     delete branch
   git checkout ...		open branch
   git merge ...			merge branch into current branch
   
@@ -36,6 +37,11 @@ SHORT VERSION:
     checkout branch
     merge master into branch
     resolve conflicts
+      << HEAD
+      ... current branch
+      ==
+      ... merged branch
+      >> branch
     commit
     checkout master
     merge branch into master
