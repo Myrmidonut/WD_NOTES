@@ -29,7 +29,7 @@ SHORT VERSION:
 
   git branch			list branches
   git branch ...		create branch
-  git branch -d ...     delete branch
+  git branch -d ...		delete branch
   git checkout ...		open branch
   git merge ...			merge branch into current branch
   
