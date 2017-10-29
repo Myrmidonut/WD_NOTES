@@ -26,6 +26,11 @@ OVERRIDE:
     }
   </style>
 -----
+LAYOUT:
+  nav:  .container
+  head: .jumbotron
+  main: .container
+-----
 DIVS:
   class="jumbotron"       adds spacing and formating to elements, main focus of the page
   class="container"       adds spacing to elements, not full width on large windows

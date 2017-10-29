@@ -78,6 +78,7 @@ VIDEOS:
     width="..."                 width
     height="..."                height
     controls                    show pause, play and skip
+    type="..."                  video format
 -----
 FORMS:
   <form>...</form>              form, linebreak     

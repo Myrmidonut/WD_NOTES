@@ -48,30 +48,30 @@ SPECIFICITY:
   }
 -----
 COMMENT:
-  /*                comment, over multiple lines
+  /*                                      comment, over multiple lines
     comment
   */        
 -----
-  10%               percentage of parent
-  10px              absolute
-  2.0em             2.0 times the parent element
+  10%                                     percentage of parent
+  10px                                    absolute
+  2.0em                                   2.0 times the parent element
 -----
 CLASS / ID:
   can be combined in one tag
 
-  .name {}                      class selector, multiple occurences
+  .name {}                                class selector, multiple occurences
     <... class="name1 name2">   
-  #name {}                      id selector, once per page
+  #name {}                                id selector, once per page
     <... id="name1 name2">    
-  * {}                          star, whole page, "CSS Reset"
-  tag1.class1 {}                only tag1 with class1
-  tag1, tag2 {}                 multiple selectors
-  tag1 tag2 {}                  child selector, only tag2 inside tag1
-  tag1 + tag2 {}                adjacent selector, tag2 that comes after tag1
-  tag[] {}                      attribute selector, no blanks before []
-  tag:first-of-type {}          only the first
-  tag:nth-of-type(n) {}         only every n-th in every block
-  tag:nth-child(2n) {}          every second one
+  * {}                                    star, whole page, "CSS Reset"
+  tag1.class1 {}                          only tag1 with class1
+  tag1, tag2 {}                           multiple selectors
+  tag1 tag2 {}                            child selector, only tag2 inside tag1
+  tag1 + tag2 {}                          adjacent selector, tag2 that comes after tag1
+  tag[] {}                                attribute selector, no blanks before []
+  tag:first-of-type {}                    only the first
+  tag:nth-of-type(n) {}                   only every n-th in every block
+  tag:nth-child(2n) {}                    every second one
 -----
 BOX MODEL:
   Bootstrap: 12 grid
@@ -86,63 +86,82 @@ BOX MODEL:
   }
 -----
 BOX:
-  left: 100px;                              100px margin on the left side of the object
-  top: 100px;                               100px margin at the top
+  left: 100px;                                  100px margin on the left side of the object
+  top: 100px;                                   100px margin at the top
 
-  margin: 100px;                            border all around the object
-  margin: 100px 50px;                       top and bottom 100px, left and right to 50px
-  margin: 100px 50px 20px 10px              top, right, bottom, left
-  margin-left: 150px;                       one specific margin
-  margin: auto;                             centers the element, requires a width
-  margin: 0 auto;                           top/bottom = 0, left/right = auto
+  margin: 100px;                                border all around the object
+  margin: 100px 50px;                           top and bottom, left and right
+  margin: 100px 50px 20px 10px                  top, right, bottom, left
+  margin-left: 150px;                           one specific margin
 
-  border: 1px solid black;                  width color style
+  margin: auto;                                 centers the element in its parent element
+  margin: 0 auto;                               top/bottom = 0, left/right = auto
+
+  left/right margins dont overlap, top and bottom margins overlap
+
+  border: 1px solid black;                      width style color
   border-width: ...
   border-color: ...
-  border-style: ridge solid dotted dashed   individual style top right bottom left
+  border-style: ridge; solid; dotted; dashed;   individual style top right bottom left
   border-left-color: ...
-  border-radius: 50px                       creates a circle: radius = width/2 = 50%
 
-  padding: 5px;                             border inside an object
-    size is width+margin+padding
-    body {margin: 0; padding: 0;}           removes default borders
-    p {margin: 0; padding: 0;}              removes default borders
-      see css reset to set up pages
-      for every browser
+  border-radius: 50px                           creates a circle: radius = width/2 = 50%
 
+  padding: 5px;                                 area between content and border
+  padding: 1px 2px;                             top and bottom, left and right
+  padding: 1px 2px 3px 4px;                     top, right, bottom, left
+  padding-top: 5px;                         
+
+  overflow: hidden; scroll; visible;            behaviour when windows are smaller than the element
+    children inherit parent behaviour
+
+  * {margin: 0; padding: 0;}                    removes default box values, clean start
+                                                see css reset to set up pages for every browser
   box-sizing:
-    content-box                             default, width/height include content
-    border-box                              width/height include content, padding and border
+    content-box                                 default, width/height include content
+    border-box                                  width/height include content, padding and border
+
+  size is width + margin + padding
 -----
   img:last-of-type {
     margin-right: 0;
   }
 -----
 POSITION:
-  float;                      removes all styling
-  float: left; right;         floating, stacks
-  clear: left; right; both;   reset floating
+  float;                              removes all styling
+  float: left; right;                 floating, stacks
+  clear: left; right; both;           reset floating
 
-  position: relative;         move position, negative numbers possible
-  position: absolute;         position ignores all other elements
-  position: fixed;            always stays fixed on the screen when scrolling
-  position: static;           default
+  position: relative;                 move position, negative numbers possible
+    top: 10px;                        adjust position after setting relative
+  position: absolute;                 position ignores all other elements
+  position: fixed;                    always stays fixed on the screen when scrolling
+  position: static;                   default
 -----
 SIZE:
-  width: 50%; 100px;
-  max-width: 700px;           never go over 700px
-  height: 100px;
+  width: 50%; 100px;                  width
+  min-width: 300px;
+  max-width: 700px;           
+
+  height: 100px;                      height
+  min-height: 100px;
+  max-height: 200px;
 -----
 DISPLAY:
-  display: block;             takes the full width of the parent
-  display: inline;            not full parent-width, but width is disabled
-  display: inline-block;      not full parent-width, with access to width
-  display: none;              removes the element
-  visibility: hidden;         hides the element, still takes up space
+  display: block;                     takes the full width of the parent
+    <h1> <p> <ul>
+  display: inline;                    not full parent-width, but width is disabled
+    <img> <a>
+  display: inline-block;              not full parent-width, with access to width
+  display: none;                      removes the element completely
+  display: flex;                      aligns elements horizontally
+    flex-wrap: wrap;                  adds linebreak to flex
+    justify-content: center;          centers flex elements
+  visibility: hidden; visible;        hides the element, still takes up space
 -----
 OPACITY:
-  z-index: 1; 2;              overlapping order
-  opacity: 0; 1;              transparancy, 0-1
+  z-index: 1; 2;                      overlapping order
+  opacity: 0; 1;                      transparancy, 0-1
 -----
 BACKGROUND:
   background: black;                  background-color: black;
@@ -186,7 +205,7 @@ LINKS:
   tag:hover {}        
   a:visited {}
   a:link {}
-  a:active {}               current website
+  a:active {}                         current website
   tag:first-letter {}
 -----
 MOUSEOVER:
@@ -194,9 +213,9 @@ MOUSEOVER:
   tag:hover
 -----
 TRANSITION:
-  transition: all 0.3s;           transition effect on all elements of 0.3 seconds, background, etc.
-  -webkit-transition: all 0.3s;   required for Safari
-  -moz-transition: all 0.3s;      required for Firefox
+  transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
+  -webkit-transition: all 0.3s;       required for Safari
+  -moz-transition: all 0.3s;          required for Firefox
 -----
 SHADOW:
   text-shadow: 0px 4px 3px rgba(0,0,0,0.4),     slight grey shadow
@@ -205,10 +224,10 @@ SHADOW:
   box-shadow: 4px 4px 10px gray;    
 -----
 OUTLINE:
-  outline: none             removes borders on buttons when clicked
+  outline: none                       removes borders on buttons when clicked
 -----
 LISTS:
-  list-style: none:         removes bulletpoints
-  list-style-type: none     "
-  float: left;              in one line
-  margin-right: 10px;       with a space
+  list-style: none:                   removes bulletpoints
+  list-style-type: none               "
+  float: left;                        in one line
+  margin-right: 10px;                 with a space
