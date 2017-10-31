@@ -104,7 +104,7 @@ FORMS:
       title="5 to 10"           error code for pattern
       required                  checks for the correct input
 
-    <textarea rows="10" cold="10">...</textarea>    more boxes than "text"
+    <textarea rows="10" cols="10">...</textarea>    text with multiple lines
 
     <select>...</select>          dropdown
       <option>...</option>        entries

@@ -118,8 +118,8 @@ BOX:
   * {margin: 0; padding: 0;}                    removes default box values, clean start
                                                 see css reset to set up pages for every browser
   box-sizing:
-    content-box                                 default, width/height include content
-    border-box                                  width/height include content, padding and border
+    content-box                                 default, width/height without padding, border
+    border-box                                  width/height includes padding and border
 
   size is width + margin + padding
 -----
@@ -127,25 +127,24 @@ BOX:
     margin-right: 0;
   }
 -----
-POSITION:
-  float;                              removes all styling
-  float: left; right;                 floating, stacks
-  clear: left; right; both;           reset floating
-
-  position: relative;                 move position, negative numbers possible
-    top: 10px;                        adjust position after setting relative
-  position: absolute;                 position ignores all other elements
-  position: fixed;                    always stays fixed on the screen when scrolling
-  position: static;                   default
------
 SIZE:
   width: 50%; 100px;                  width
   min-width: 300px;
   max-width: 700px;           
-
   height: 100px;                      height
   min-height: 100px;
   max-height: 200px;
+-----
+POSITION:
+  float;                              removes all styling
+  float: left; right;                 moves the element to this side, requires width
+  clear: left; right; both; none;     this side of an element will not touch another element
+  position: relative;                 move position, negative numbers possible
+    top: 10px;                        adjust position after setting relative
+  position: absolute;                 other elements will ignore this position
+  position: fixed;                    always stays fixed on the screen when scrolling
+  position: static;                   default
+  z-index: 1; 2;                      overlapping order
 -----
 DISPLAY:
   display: block;                     takes the full width of the parent
@@ -158,9 +157,6 @@ DISPLAY:
     flex-wrap: wrap;                  adds linebreak to flex
     justify-content: center;          centers flex elements
   visibility: hidden; visible;        hides the element, still takes up space
------
-OPACITY:
-  z-index: 1; 2;                      overlapping order
   opacity: 0; 1;                      transparancy, 0-1
 -----
 BACKGROUND:
@@ -181,6 +177,8 @@ COLORS:
          #FFFFFF                      white
   color: rgb(0, 255, 0);              RGB
   color: rgba(0, 0, 0, 0.0-1.0);      RGBA, transperancy: alpha channel 0.0 - 1.0
+  color: hsl(120, 60%, 70%);          HSL, hue in 0-360 degrees, saturation, lightness
+  color: hsla(34, 100%, 50%, 0.1);    HSLA, transperancy: alpha channel 0.0 - 1.0
 -----
 FONT:
   font-family: Arial, Times, serif;   font with fallback fonts
