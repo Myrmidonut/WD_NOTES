@@ -7,4 +7,4 @@ Reduce time spend on:
   thinking
   clicking
   trusting
-  entering information
+  entering information  

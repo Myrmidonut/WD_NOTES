@@ -1,0 +1,49 @@
+COMPILING:
+  sass main.scss main.css       input output
+-----
+NESTING SELECTORS:
+  .parent {                     SCSS
+    ...;
+    .child {
+      ...;
+    }
+  }
+
+  .parent {                     CSS
+    ...;
+  }
+  .parent .child {
+    ...;
+  }
+-----
+NESTING PROPERTIES:
+  font : {                      SCSS
+    size: ...;
+    decoration: ...;
+  }
+
+  font-size: ...;               CSS
+  font-decoration: ...;
+-----
+VARIABLES:
+  $color: white;          define a variable, at the top of the page
+  background: $color;     reference a variable
+-----
+DATA TYPES:
+  numbers:
+    8.11
+  strings:
+    "test"
+  booleans:
+    true, false
+  null:
+    empty value
+-----
+LISTS:
+  entry1 entry2;                    seperates by spaces
+  entry1, entry2;                   seperated by commas
+  "entry1 entry2" "entry3 entry4";  list of lists
+  $border: 4px solid black;         example
+-----
+MAPS:
+  (key1: value1, key2: value2);     key-value pairs, values can be lists or maps
