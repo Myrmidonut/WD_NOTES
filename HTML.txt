@@ -18,8 +18,10 @@ COMMENTS:
     ...
   -->
 -----
-block elements              linebreak at the end
-inline elements             no linebreak
+block elements              linebreak at the end, <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
+
+inline elements             no linebreak, <a> <button> <img> <input> <label> <span>    
+                          
 <br/>                       / optional, to show a self closing tag
 -----
 CONTAINERS:

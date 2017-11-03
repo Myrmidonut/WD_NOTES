@@ -1,0 +1,57 @@
+USE FULL PAGE:
+	body:
+		height: 100;
+		margin: 0;
+-----
+NAVBAR:
+    div:                                        full page width container at top
+        #header {
+            width:100%;
+            height:100px;
+        }
+
+        ul:                                     navbar on the right of the page
+            .navbar {
+                float: right;
+            }
+
+            li:                                 elements in navbar
+                .navli {
+                    display: inline-block;
+                    float: left;
+                    height: 30px;
+                    line-height: 30px;
+                }
+-----
+CENTERED HORIZONTALLY IMAGE:
+    img:
+        img {
+            display: block;
+            margin: auto;
+        }
+-----
+CENTERED BUTTONS NEXT TO EACH OTHER:
+    div:                                        space for buttons
+        #buttons {
+            text-align: center;
+        }
+
+        input:                                  buttons
+            .button {
+            }
+-----
+BOTTOM NAVBAR:
+    div:                                        full page width container at bottom
+        #footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+-----
+
+
+
+display: block;                                 elements are stacking, default for <div>
+display: inline-block;                          elements are next to each other
+
+display: list-item;                             default for <li>

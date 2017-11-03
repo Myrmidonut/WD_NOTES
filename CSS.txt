@@ -165,6 +165,16 @@ DISPLAY:
   
   opacity: 0; 1;                      transparancy, 0-1
 -----
+CENTERING:
+  text-align: center;                 text
+
+  display: block;                     image
+  margin: auto;
+
+  margin: auto;                       div, block element
+  width: 50%;
+
+-----
 GRID:
   takes up whole parent-width without a set width
   
@@ -241,7 +251,7 @@ FONT:
   alternative: @font-face ... at the top of the stylesheet, copied from google-font-link      
 -----
 LINKS:
-  tag:hover {}        
+  a:hover {}        
   a:visited {}
   a:link {}
   a:active {}                         current website
