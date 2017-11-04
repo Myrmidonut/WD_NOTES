@@ -1,7 +1,10 @@
 USE FULL PAGE:
-	body:
-		height: 100;
-		margin: 0;
+	html,body {
+        width: 100%;
+        height: 100%;
+        padding:0;
+        margin:0;
+    }
 -----
 NAVBAR:
     div:                                        full page width container at top
@@ -23,12 +26,84 @@ NAVBAR:
                     line-height: 30px;
                 }
 -----
-CENTERED HORIZONTALLY IMAGE:
-    img:
-        img {
-            display: block;
-            margin: auto;
-        }
+HORIZONTALLY AND VERTICALLY CENTERED IMAGE:
+.box-horizontal-vertical {
+    height: 100%;                   for vertical
+
+    display: flex;    
+    display: -webkit-box;
+    display: -ms-flexbox;
+
+          align-items: center;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+
+     justify-content: center;       for horizontal and vertical
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+}
+-----
+CENTER VERTICAL NEW:
+    vertical-align: middle;
+
+    The downside to this approach is that not all browsers support CSS FlexBox, although more and more are coming around to this new CSS layout method! In fact, all modern browsers today now support this CSS style. This means that your only concerns with Flexbox would be much older browser version. 
+
+    If you have issues with older browsers, the W3C recommends that you center text vertically in a container using the following method:
+
+    Place the elements to be centered inside a containing element, such as a div.
+    Set a minimum height on the containing element.
+    Declare that containing element as a table cell.
+    Set the vertical alignment to "middle."
+
+    For example, here is the CSS:
+
+    .vcenter {
+      min-height: 12em;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    And here is the HTML:
+
+    <div class="vcenter">
+        <p>This text is vertically centered in the box.</p>
+    </div>
+-----
+CENTERED IMAGE HORIZONTAL:
+    <img>
+
+    img {
+        display: block;
+        margin: auto;
+    }
+-----
+CENTER IMAGE VERTICAL:
+    <div class="container">
+        <img>
+    </div>
+
+    .container {
+      width: 100%;
+      height: 100%;
+      background: #EEE;
+      min-height: 250px;
+      position: relative;
+    }
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      margin: auto;
+    }
 -----
 CENTERED BUTTONS NEXT TO EACH OTHER:
     div:                                        space for buttons

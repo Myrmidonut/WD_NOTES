@@ -1,0 +1,99 @@
+
+/* STYLE RESET */
+html,body {
+    width: 100%;
+    height: 100%;
+    padding:0;
+    margin:0;
+}
+
+/* HORIZONTALLY CENTERED IMAGE */
+.imageCenterHorizontal {
+    border: 1px solid red;
+
+    display: block;
+    margin: auto;
+}
+
+/* HORIZONTALLY CENTERED IMAGE */
+.box-horizontal {
+    border: 1px solid red;
+
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+
+     justify-content: center;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;    
+}
+
+/* VERTICALLY CENTERED IMAGE */
+.box-vertical {
+    border: 1px solid red;
+
+    height: 100%;
+
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+
+          align-items: center;
+    -webkit-box-align: center;
+       -ms-flex-align: center; 
+}
+
+/* HORIZONTALLY AND VERTICALLY CENTERED IMAGE */
+.box-horizontal-vertical {
+    border: 1px solid red;
+
+    height: 100%;
+
+    display: flex;    
+    display: -webkit-box;
+    display: -ms-flexbox;
+
+          align-items: center;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+
+     justify-content: center;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+}
+
+
+
+
+
+
+/* VERTICALLY AND HORIZONTALLY CENTERED IMAGE */
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid red;
+
+    /*
+    min-height: 250px;
+    */
+}
+
+.imageCenterVertical {
+    /*
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    display: block;
+    */
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    margin: auto;
+}
+
