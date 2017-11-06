@@ -1,3 +1,32 @@
+$("element").action();
+.addClass("class1 class2");   add class
+.removeClass();               remove class
+.remove();                    remove element
+
+.appendTo();                  move one element to another element
+.clone();                     copy an element
+.clone().appendTo();          copy an element to another element
+
+.parent();                    access the parent of an element
+.children();                  access the children of an element
+
+.css("property", "value");    change css
+.prop();                      change html properties
+.html();                      change tags and text
+.text();                      change only text
+
+function chaining:
+  .clone().appendTo();
+
+
+
+  ("disabled", "true")
+
+  ...:nth-child(n)            target n-th child
+  ...:odd                     target even numbered elements, starts at 0, 2, 4, ...
+  ...:even                    target odd numbered elements
+
+-----
 helps with conforming to different browsers
 allows manipulation of multiple elements of the same kind
 -----

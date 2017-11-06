@@ -1,3 +1,40 @@
+BOOTSTRAP:
+    GRID:                                   create a row and split into fractions of 12 colums
+        <div class="row">                   row
+            <div class="col-md-6">          column 6
+                ...
+            </div>
+            <div class="col-md-6">          column 6
+                ...
+            </div>
+        </div>
+    -----
+    CONTAINER:
+        class="container-fluid"             mobile-responsive
+        class="well"                        border and background, creates depth
+    -----
+    FONT:
+        class="text-primary"                colored
+        class="text-center"                 centered horizontally
+    -----
+    IMAGE:
+        class="img-responsive"              fit width of screen
+    -----
+    BUTTON:
+        class="btn btn-primary"             blue color
+        class="btn btn-info"                lightblue color
+        class="btn btn-danger"              red color
+        class="btn btn-default"
+        class="btn btn-block"               fit width of screen
+    -----
+    INPUT:
+        class="form-control"                fit whole screen, design
+-----
+
+
+
+
+
 local file:
   <link rel="stylesheet" type="text/css" href="bootstrap.css">
 
@@ -14,9 +51,14 @@ script inside body:
   javascript for bootstrap, requires jQuery, has to come after jQuery:
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 -----
+RESPONSIVENESS FOR BOOTSTRAP ON MOBILE:
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+-----
 VERSIONS:
   Version 3 and 4 are different
-  javascript required for dropdown-menus, etc.
+  Javascript required for dropdown-menus, etc.
 -----
 OVERRIDE:
   override after bootstrap with:

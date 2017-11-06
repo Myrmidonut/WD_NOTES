@@ -1,0 +1,5 @@
+FONT AWESOME:
+    ICONS:
+        icons are used like fonts
+
+        <i class="fa fa-info-circle"></i>

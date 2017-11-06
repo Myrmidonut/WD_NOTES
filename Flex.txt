@@ -1,0 +1,65 @@
+FLEX-CONTAINER:
+  display: flex;            enables flex, CSS3
+
+  justify-content:          horizontal
+    flex-start;             all items at the beginning, default
+    flex-end;               all items at the end
+    center;                 all items centered together
+    space-between;          all items spread out
+    space-around;           all items spread out with space before and after
+
+  align-items:              vertical
+    flex-start;             all items at the top
+    flex-end;               all items at the bottom
+    center;                 all items centered
+    stretch;                all items take up whole height, default
+    baseline;               all items sit along a line
+
+  align-content:            multiple lines
+    flex-start;             all items at the top
+    flex-end;               all items at the bottom
+    center;                 all items centered
+    stretch;                all items stretch from top to bottom, default
+
+  flex-direction:
+    row;                    all items horizontal, default
+    row-reverse;            all items horizontal and reverse
+    column;                 all items vertical, axis are switched
+    column-reverse;         all items vertical and reverse, axis switched
+
+  flex-wrap:
+    nowrap;                 all items stay in one line
+    wrap;                   all items will wrap into next line
+    wrap-reverse;           all items will wrap into next line in reverse order
+-----
+FLEX-ITEM:
+  order:                    order from left to right
+    0;                      first, default
+    1;                      second
+    ...
+
+  flex-grow:
+    0;                      does not take up whole width, default
+    1;                      takes up whole width
+    ...                     items share the total, 1 + 2 = 3
+
+  flex-shrink:
+    0;                      does not shrink
+    1;                      shrinks to whole width, enabled with flex-grow: 1;
+
+  flex-basis:
+    auto;                   width is based on content, default
+    100px;                  fixed width;
+
+  flex: grow shrink basis;  shorthand
+  flex: default;            flex: 0 1 auto; default
+  flex: none;               flex: 0 0 auto;       
+  flex: auto;               flex: 1 1 auto;
+
+  align-self:               vertical
+    auto                    one item adapts to flex-container, or stretch without flex-container
+    flex-start              one item at the top
+    flex-end                one item at the bottom
+    center                  one item centered
+    baseline                one item sits along a line
+    stretch                 one item takes up whole height

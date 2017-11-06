@@ -1,10 +1,12 @@
 <?php
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="de-DE">
   <head>
     <title>...</title>
+    <link CSS>
     <link Bootstrap>
+    <meta charset="UTF-8">
   </head>
   <body>
     ... 
@@ -106,6 +108,9 @@ FORMS:
       title="5 to 10"           error code for pattern
       required                  checks for the correct input
 
+    <button>...</button>        button
+      type="submit"
+
     <textarea rows="10" cols="10">...</textarea>    text with multiple lines
 
     <select>...</select>          dropdown
@@ -115,6 +120,7 @@ FORMS:
       name="..."                  name for the data that will be send, shows up in URL as name=value
       value="..."                 data that will be send
 
+    <label><input>...</label>
     <label for="...">...</label>  label for a form, linked with for="..."
     <input id="...">              for accessibilty, for= and id= has to be equal
 

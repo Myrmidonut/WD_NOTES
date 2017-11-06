@@ -1,10 +1,10 @@
 USE FULL PAGE:
-	html,body {
-        width: 100%;
-        height: 100%;
-        padding:0;
-        margin:0;
-    }
+  html,body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+  }
 -----
 NAVBAR:
     div:                                        full page width container at top
@@ -42,6 +42,16 @@ HORIZONTALLY AND VERTICALLY CENTERED IMAGE:
     -webkit-box-pack: center;
        -ms-flex-pack: center;
 }
+
+  justify-content:
+    flex-start;       beginning of container, default
+    flex-end;         end of container
+    center;           center of container
+    space-between;    space between items
+    space-around;     space before, between and after items
+
+
+
 -----
 CENTER VERTICAL NEW:
     vertical-align: middle;

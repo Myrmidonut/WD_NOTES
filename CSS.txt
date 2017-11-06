@@ -1,11 +1,3 @@
-FRAMEWORKS:
-  Bootstrap
-  Foundation
-  Yaml
-  960 Grid
-  Susy
-  Sass
------
 INLINE CSS:
   <body>
     <tag style="color:red;"></tag>
@@ -19,29 +11,21 @@ INTERNAL CSS:
     </style>
   </head>
 -----
-SEPERATED CSS AND HTML:
+EXTERNAL CSS:
   <head>
     <link rel="stylesheet" type="text/css" href="name.css">
   </head>
 -----
-RESPONSIVENESS FOR BOOTSTRAP ON MOBILE:
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
------
 NORMALIZE:
   same layout on all browsers
------
-LAYOUT:
-  split in rows and colums first
 -----
 SPECIFICITY:
   later styles overwrite previous ones
   more specific styles overwrite others
-    id > class > type
-    body p > p
-    !important > all                      avoid using
-      p {color: blue !important;}
+
+  !important > inline > id > class > tag tag > tag
+
+  p {color: blue !important;}
 -----
   selector {
     property: value;
@@ -57,12 +41,12 @@ COMMENT:
   2.0em                                   2.0 times the parent element
 -----
 CLASS / ID:
-  can be combined in one tag
-
   .name {}                                class selector, multiple occurences
-    <... class="name1 name2">   
+    <... class="name1 name2">
+
   #name {}                                id selector, once per page
-    <... id="name1 name2">    
+    <... id="name1 name2">
+
   * {}                                    star, whole page, "CSS Reset"
   tag1.class1 {}                          only tag1 with class1
   tag1, tag2 {}                           multiple selectors
@@ -74,7 +58,6 @@ CLASS / ID:
   tag:nth-child(2n) {}                    every second one
 -----
 BOX MODEL:
-  Bootstrap: 12 grid
    _____________________________
   |margin ______________________          between border and next element
   |      |border _______________
@@ -115,8 +98,6 @@ BOX:
   overflow: hidden; scroll; visible;            behaviour when windows are smaller than the element
     children inherit parent behaviour
 
-  * {margin: 0; padding: 0;}                    removes default box values, clean start
-                                                see css reset to set up pages for every browser
   box-sizing:
     content-box                                 default, width/height without padding, border
     border-box                                  width/height includes padding and border
@@ -130,7 +111,8 @@ BOX:
 SIZE:
   width: 50%; 100px;                  width
   min-width: 300px;
-  max-width: 700px;           
+  max-width: 700px; 
+
   height: 100px;                      height
   min-height: 100px;
   max-height: 200px;
@@ -173,9 +155,8 @@ CENTERING:
 
   margin: auto;                       div, block element
   width: 50%;
-
 -----
-GRID:
+GRID CONTAINER:
   takes up whole parent-width without a set width
   
   <div class="grid">
@@ -196,7 +177,7 @@ GRID:
   grid-column-gap: 20px;              space between columns
   grid-gap: 10px 20px;                combined space between rows and columns
 -----
-GRID ELEMENTS:
+GRID ITEMS:
   .element { ... } :
   grid-row-start: 1;                  element starts in row 1
   grid-row-end: 3;                    and ends in row 2, not 3!
@@ -235,13 +216,16 @@ FONT:
   font-size: 200%;
   font-weight: bold;                  light (300), normal (400), bold (700)
   font-style: italic;                 normal, italic, oblique
+  
   text-decoration: none;              none, overline, underline, line-through
   text-transform: uppercase;          uppercase, lowercase, capitalize
+
   text-indent: 50px;                  indent first line
   letter-spacing: 3px;                space between letters, default: 0.25em
   line-height: 0.8; 12px;             height of lines, font-size + leading, unitless prefered
   direction: rtl;
   word-spacing: 10px;                 space between words
+
   text-align: left; center; right;    aligns inside the container
   text-align: justify;                blocked text
 

@@ -21,9 +21,11 @@ SHORT VERSION:
   git reset ...                     go back to an ID
 
   git remote add origin ...         access to GitHub URL
+  git remote add upstream ...       add upstream remote to a cloned repository to pull in changes
   git remote -v                     details of remote
   git push origin master            push to GitHub
   git pull origin master            pull from GitHub
+  git fetch --dry-run               shows changes to remote before a pull
 
   git clone ...                     clone a repository from an URL
   git clone ... .                   clones without creating a new folder
@@ -48,21 +50,30 @@ SHORT VERSION:
     commit
     checkout master
     merge branch into master
+
+  git config --global user.name "..."     name
+  git config --global user.email "..."    email
+  git config --global user.username ...   username for GitHub
 -----
 OVERVIEW:
   repository              contains all commits
-  remote                  refers to a repository, e.g. on GitHub
+  remote                  online repository, e.g. on GitHub
   commit                  contains a change in code
   branch                  label for different versions
     master                main branch
     origin/master         branch after a push/pull
   clone                   copy of a repository
-  fork                    clone of a repository on GitHub
+  fork                    copy of a repository on GitHub
   merge                   combine different clones
     fast-forward merge    reaching a commit from another commit
 -----
 FILES:
   stored in .git folder
+-----
+
+
+
+
 -----
 START:
   git clone                               create copy of a repository
