@@ -1,20 +1,21 @@
-.js file:
-<html>
-  <body>
-    <script type="text/javascript" src=".js"></script>
-  </body>
-</html>
+FILES:
+  external:
+    <html>
+      <body>
+        <script type="text/javascript" src=".js"></script>
+      </body>
+    </html>
 
-or directly inside html file:
-<html>
-  <body>
-    <script type="text/javascript">
-      ...
-    </script>
-  </body>
-</html>
+  internal:
+    <html>
+      <body>
+        <script type="text/javascript">
+          ...
+        </script>
+      </body>
+    </html>
 
-also possible inside <head></head> but it will be loaded before the HTML, better at the bottom
+  also possible inside <head></head> but it will be loaded before the HTML, better at the bottom
 -----
 EVENT BUBBLING:
   events inside multiple layers can trigger multiple times on different tags
@@ -24,60 +25,104 @@ EVENT BUBBLING:
   });
 -----
 COMMENTS:
-  //                one line comment
-  /* ... */         multi-line comment
+  //                                    one line comment
+  /* ... */                             multi-line comment
 -----
-console.log(...);   outputs into the console
-\"                  printed as "
+CONSOLE:
+  console.log(...);                     outputs into the console
+  \"                                    printed as "
+-----
+OPERATORS:
+  Arithmetic:
+    +
+    -
+    *
+    /
+    ++
+    --
+    %
+  Assignment:
+    =
+    +=                                    x = x + y
+    -=
+    *=
+    /=
+    %=
 -----
 LOGIC:
-  &&                and
-  ||                or
-  !                 not
-  ==                equal, ignoring type, 1 == "1"
-  ===               equal, datatype and value
+  &&                                    and
+  ||                                    or
+  !                                     not
+  ==                                    equal, ignoring type, 1 == "1"
+  ===                                   equal, datatype and value
 -----
-TRUE/FALSE:
-  truthy values:
-  false
-  0
-  ""
+DATATYPES:
+  Numbers                               4  9.3  -10
+  Strings                               "Hello World"  "43"
+  Booleans                              true  false
   null
   undefined
-  NaN               Not a Number
-                    everthing else is truthy, check with !!var
+  object
+  symbol
 -----
-PRIMITIVE DATATYPES::
-  Numbers: 4  9.3  -10
-  Strings: "Hello World"  "43"
-  Booleans: true  false
-  null
-  undefined
------
-STRINGS:
-  "ab" + "cd" == "abcd"         concatenation
-  "test".length                 length of string
-  "\"test"\"                    outputs "test"
-  "\\"                          outputs \
-    \ is the escape character
-  "test"[2]                     access to the third character
-  name.indexOf("...")           checks where ... is in a string, -1 if not
-  name.charAt(...)              selects the character at a position
-    .toUpperCase()              capitalizes the character
-  name.slice(...)               removes everything before position ...
-  name.replace(/a/g , "b")      replaces all "a" with "b"
+VARIABLES:
+  var name;                             undefined
+  var name = "test";                    string
+  var name = 1;                         number
+  var name = true;                      boolean
+
+  name = null;                          undefined
+
+  if (typeof name == "undefined") {}    checks if the variable called name exists
+
+  Number(...);                          converts to a number
 -----
 NAMING CONVENTION:
   lowerUpperUpper
+  $...
+  _...
+  a...
 -----
-VALUES:
-  var name = "test";
-  var number = 1;
-  var test = true;
-  var name;               undefined
-  name = null;            undefined
+BOOLEAN:
+  false:
+    false
+    0
+    ""
+    null
+    undefined
+    NaN
+
+  true:
+    everthing else, check with !!var
 -----
-Number(...);              converts to a number
+STRINGS:
+  myString = "...";
+  myString = '...';
+  "ab" + "cd" == "abcd"                 concatenation
+  \                                     escape character to use special characters in a string
+    \'                                  '
+    \"                                  "
+    \\                                  \
+    \n                                  newline
+    \r                                  carriage return
+    \t                                  tab
+    \b                                  backspace
+    \f                                  form feed
+
+  myString[2]                           access to the third character
+  "..."[2]
+
+  1 + "2" == 12                         number + string = string
+
+  strings are immutable, it is not possible to change individual letters
+
+  myString
+    .length                             length of string
+    .indexOf("...")                     checks where ... is in a string, -1 if not
+    .charAt(...)                        selects the character at a position
+    .toUpperCase()                      capitalizes the character
+    .slice(...)                         removes everything before position ...
+    .replace(/a/g , "b")                replaces all "a" with "b"
 -----
 ARRAYS:                                 ordered list of data
   var myArray = [];                     creates an empty array
@@ -101,33 +146,31 @@ ARRAYS:                                 ordered list of data
   ...                                   and runs the function for the entries
     } );                                passed in via the variable "name"
 -----
-if (typeof name == "undefined") {}      checks if the variable called name exists
------
 IF:
-  if (condition) {                if statement
+  if (condition) {                      if statement
   } else if (condition) {
     } else {
       }
 -----
 FOR:
-  for (var i = 0; i < 3; i++) {   for loop
+  for (var i = 0; i < 3; i++) {         for loop
     statements
   }
 -----
 WHILE:
-  while (i < 3) {                 while loop
+  while (i < 3) {                       while loop
     statements;
     i++
   }
 -----
 FUNCTIONS:
-  function name(arg1, arg2) {     creating the function
+  function name(arg1, arg2) {                 creating the function
     ... 
-    return ...                    optional, will stop the function
+    return ...                                optional, will stop the function
   }
-  name;                           refering to the function
-  name(arg);                      calling the function
-  setInterval(function() {        anonymous function, a function inside a function
+  name;                                       refering to the function
+  name(arg);                                  calling the function
+  setInterval(function() {                    anonymous function, a function inside a function
     ...
   }, 2000);
 
@@ -167,19 +210,19 @@ var movies = [
 METHODS:
   a function inside an object
 
-  obj.func = function() {         creating the method
+  obj.func = function() {             creating the method
     ...
   }
-  obj.func();                     calling the method
+  obj.func();                         calling the method
 -----
 THIS:
-  this;                           refers to the object in which the method is defined
+  this;                               refers to the object in which the method is defined
 -----
 CONSOLE:
-  alert("...");                   shows a window with text, etc.
-  clear();                        clears the console in chrome
-  console.log("...");             outputs to the console
-  prompt("...");                  shows a window with an input
+  alert("...");                       shows a window with text, etc.
+  clear();                            clears the console in chrome
+  console.log("...");                 outputs to the console
+  prompt("...");                      shows a window with an input
     var user = prompt("User");
 -----
 USEFUL FUNCTIONS:

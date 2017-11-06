@@ -1,3 +1,26 @@
+FLEX:
+  Flex-Container for a page with top, main and bottom:
+    #page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+  Flex-Container for main:
+    #main {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+-----
 INLINE CSS:
   <body>
     <tag style="color:red;"></tag>
