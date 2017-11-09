@@ -1,0 +1,146 @@
+if ... or ... :
+
+
+
+
+
+FILES:
+  #! /usr/bin/python              location of python
+-----
+LIBRARIES:
+  import ...                      importing a library
+    time
+    webbrowser
+    os                            renaming files, etc.
+    turtle                        creating lines, shapes, etc.
+    urllib                        conenction to website
+  import filename                 importing a file, for example for a class
+-----
+COMMENTS:
+  #                               one line comment
+-----
+VARIABLES:
+  name = 12
+-----
+STRINGS:
+  name = "...."                   create a string
+  name[0]                         access to first character
+  name[0:5]                       access to characters 0 to 4
+-----
+ARRAYS:
+  myArray = ["...", "..."]        create an array
+  myArray[1]                      access to one entry
+  myArray[0:5]                    access to entries 0 to 4
+
+  myArray = (1, 2, 3)             tuple, cannot be overwritten
+-----
+DICTIONARY:
+  name = {}                       2 dimensional array, not ordered
+  name[...] = ...                 key - value pair
+  name.keys()                     access to keys
+  name.values()                   access to values
+
+  list = {}                       example
+  list["Sam"] = 1
+  list["Otto"] = 2
+  for i in list:
+    print i + str(list[i])
+-----
+CASTING:
+  int(...)                        convert to integer
+  float(...)
+  str(...)
+-----
+FUNCTIONS:
+  def name():                     creating a function
+    command1()
+    command2()
+
+  name()                          calling the function
+-----
+IF:
+  if ...:                         if
+    command1
+    command2
+  elif ...:                       elif
+    command1
+    command2
+  else:                           else
+    command1
+    command2
+-----
+FOR:
+  for ... in ...:                 for
+    command1
+    command2
+
+  for i in range (3, 5):          example, 1 goes from 3 to 4
+    print i
+
+  test = ["a", "b", "c"]          example
+  for i in test:
+    print i
+-----
+WHILE:
+  while ...:                      while
+    command1
+    command2
+
+  x = 0                           example
+  while x < 10:                   
+    x += 1
+-----
+FUNCTIONS:
+  print("...") + ...              outputting to the screen
+
+  open("...")                     open a file
+  urllib.urlopen("...")           open a connection to a website
+  connection.read()
+  connection.close()
+  os.rename()                     rename a file
+  os.listdir(r"...")              read filenames in directory
+  os.getcwd()                     reads current working directory
+  os.chdir(r"...")                switch to the directory
+  windows.exitonclick()           close windows on mouse click
+
+  .is_integer()                   checks if a float is a whole number
+
+
+
+
+                                  
+-----
+in file media.pny
+class Movie():                                              creating a class, should be in its own file
+    """Text"""                                              __doc__ class variable
+    VALID_RATINGS = ["G", "PG"]                             class variable, allcaps for const
+    def __init__(self, movie_title, movie_story,            constructor, self
+    trailer_youtube):                   
+        self.title = movie_title                            instance variable
+        self.story = movie_story            
+        self.trailer_youtube_url = trailer_youtube  
+    def name(self):                                         instance method
+        webbrowser.open(self.trailer_youtube_url)
+
+toy_story = media.Movie("Toy Story", "Toys come to life",   creating an instance of the class
+            "Youtube Link")
+print(media.Movie.valid_ratings)
+print(toy_story.storyline)
+print(media.Movie.__doc__)                                  predefined class variable, doc
+print(media.Movie.__name__)                                 name of class
+print(media.Movie.__module__)                               name of module where the class is defined
+
+inheritance:
+class Parent():
+    def __init__(self, last_name):
+        print("Parent constructor Called")
+        self.last_name = last_name
+
+class Child(Parent):
+    def __init__(self, last_name, number_of_toys):
+        print("Child constructor Called")
+        Parent.__init__(self, last_name)                    Child calls Parent constructor
+        self.number_of_toys = number_of_toys
+
+method overriding:
+a method in Child with the same name as in Parent will override it

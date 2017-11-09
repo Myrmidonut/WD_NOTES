@@ -41,6 +41,7 @@ Back-End Functionality:
 -----
 Mobile:
   Cordova
+  ...
 -----
 Tools:
   Git
@@ -50,7 +51,4 @@ Tools:
   Cloud9
   Heroku
   Sublime
-  Atom
   Command Line
------
-REST

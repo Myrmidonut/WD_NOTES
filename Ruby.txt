@@ -1,26 +1,31 @@
-  ruby file.rb    run code
+FILES:
+  ruby file.rb                  run code from a file
+-----
+SHELL:
+  irb                           opens the interactive ruby shell
 -----
 COMMENTS:
-  #               single line
-  =begin          multiple lines
+  # ...                         single line
+  =begin                        multiple lines
     ...
   =end
 -----
 LOGIC:
-  <               smaller
-  >               greater
-  <=              smaller equal
-  >=              greater equal
-  ==              equal
-  !=              not equal
-  &&              true if both true
-  ||              true if either one true
-  !               negation
+  <                             smaller
+  >                             greater
+  <=                            smaller equal
+  >=                            greater equal
+  ==                            equal
+  !=                            not equal
+  &&                            true if both true
+  ||                            true if either one true
+  !                             negation
 -----
 STRINGS:
-  name = "test"   string creation
-  .length         length of the string
-  .capitalize     makes string uppercase
+  name = "test"                 string creation
+  "test #{...}"                 insert a variable inside a string
+  .length                       length of the string
+  .capitalize                   makes first character uppercase
 -----
 ARRAYS:
   test = ["a", 1, true, [1,2]]
@@ -40,15 +45,15 @@ HASH:
   .values                                     list of values
 -----
 OUTPUT:
-  print                     output without linebreak
-    print "\"               creates linebreak
-  puts                      output with linebreak
-    puts "abc" + "123"      concatenation
-    puts "test #{test}"     outputs test and the value of variable test
-                            puts outputs each entry in one line
+  print                                   output without linebreak
+    print "\"                             creates linebreak
+  puts                                    output with linebreak
+    puts "abc" + "123"                    concatenation
+    puts "test #{test}"                   outputs test and the value of variable test
+                                          puts outputs each entry in one line
 -----
 IF:
-  if condition              condition can be in ()
+  if condition                            condition can be in ()
     ...
   elseif condition
     ...
@@ -56,7 +61,7 @@ IF:
     ...
   end
 
-  condition ? statement1 : statemment2
+  condition ? statement1 : statemment2    alternative
 -----
 DO:
   .each do |i|      
@@ -67,9 +72,9 @@ DO:
     |i| ...
   }
 
-  .map { |i| i + 10 }         creates a new array
+  .map { |i| i + 10 }                       creates a new array
 
-  x.times do                  runs the loop x times
+  x.times do                                runs the loop x times
     ...
   end
 -----
@@ -78,8 +83,8 @@ UNLESS:
     ...
   end
 -----
-MEHTODS:
-  def name                    create the method
+METHODS:
+  def name                                  create the method
     statement1
     statement2
   end
@@ -88,24 +93,24 @@ MEHTODS:
     statement
   end
 
-  name                        runs the method
-  name(..., ...)              runs the method with arguments, () is optional
+  name                                      runs the method
+  name(..., ...)                            runs the method with arguments, () is optional
 -----
 CLASSES:
-  class Name                  capital letter is common for class names
+  class Name                                capital letter is common for class names
     attr_accessor :test   
-    def initialize(.., ..)    optional
-      @test                   instance variable, needs @
+    def initialize(.., ..)                  optional
+      @test                                 instance variable, needs @
     end
     def method
       ...
     end
   end
 
-  test = Name.new              creates a new object
+  test = Name.new                           creates a new object
   test.method
 
-  test.inspect                 shows the values of the object
+  test.inspect                              shows the values of the object
 -----
 INHERITANCE:
   class Admin < User                        Admin gets all methods from User
