@@ -2,20 +2,31 @@ FILES:
   external:
     <html>
       <body>
-        <script type="text/javascript" src=".js"></script>
+        <script src="name.js"></script>
       </body>
     </html>
 
   internal:
     <html>
       <body>
-        <script type="text/javascript">
+        <script>
           ...
         </script>
       </body>
     </html>
 
+  type="text/javascript"                for old HTML4
+
+  multiple <script></sript> possible
+
   also possible inside <head></head> but it will be loaded before the HTML, better at the bottom
+-----
+STRICT MODE
+  enables modern features
+  classes and modules automatically enable strict
+  no turning back
+
+  "use strict";                         at the top of the page to enable it
 -----
 EVENT BUBBLING:
   events inside multiple layers can trigger multiple times on different tags
@@ -25,12 +36,17 @@ EVENT BUBBLING:
   });
 -----
 COMMENTS:
-  //                                    one line comment
+  // ...                                one line comment
   /* ... */                             multi-line comment
 -----
 CONSOLE:
   console.log(...);                     outputs into the console
   \"                                    printed as "
+  alert("...");                         shows a window with text, etc.
+  clear();                              clears the console in chrome
+  console.log("...");                   outputs to the console
+  prompt("...");                        shows a window with a message and input
+    var user = prompt("User");
 -----
 OPERATORS:
   Arithmetic:
@@ -43,7 +59,7 @@ OPERATORS:
     %
   Assignment:
     =
-    +=                                    x = x + y
+    +=                                  x = x + y
     -=
     *=
     /=
@@ -55,33 +71,146 @@ LOGIC:
   !                                     not
   ==                                    equal, ignoring type, 1 == "1"
   ===                                   equal, datatype and value
+  !=                                    not equal, ignoring type
+  !==                                   not equal, datatype and value
 -----
-DATATYPES:
-  Numbers                               4  9.3  -10
-  Strings                               "Hello World"  "43"
-  Booleans                              true  false
-  null
-  undefined
-  object
-  symbol
+PRECEDENCE:
+  ()
+    ++
+    --
+      !
+         *
+         /
+         %
+           +
+           -
+             &&
+             ||
+-----
+DATA TYPES:
+  number                                integer or float, 4  9.3  -10
+    Infinity                            infinity, 1 / 0
+    NaN                                 computational error, "test" / 2
+  string                                "Hello World"  "43"
+  boolean                               true  false
+  objects                               collection of data
+  symbol                                unique identifiers for objects
+  null                                  represents empty, can be assigned to a variable
+  undefined                             value of a variable without assignment
+
+  typeof ...                            returns a string with the datatype, error: typeof(null) returns object
+  typeof(...)                           see above
+
+  if (typeof name == "undefined") {}    checks if the variable called name exists
+-----
+TYPE CONVERSION:
+  String(...)
+
+  Number(...)
+    undefined  -> NaN
+    null       -> 0
+    true/false -> 1/0
+    string     -> whitespace removed, becomes a number, empty becomes 0, error becomes NaN
+
+    mathematical operations create numbers, exception: + with a string creates a string
+
+  Boolean(...)
+    0         -> false
+    ""
+    null
+    undefined
+    NaN
 -----
 VARIABLES:
+  let name;                             new style
+
   var name;                             undefined
   var name = "test";                    string
   var name = 1;                         number
   var name = true;                      boolean
+  var name1 = "test",
+      name2 = 1;
+  var name = null;                      undefined
 
-  name = null;                          undefined
-
-  if (typeof name == "undefined") {}    checks if the variable called name exists
+  const name                            constant
+  const NAME = ...                      constant, value is known, best practice
 
   Number(...);                          converts to a number
+
+  scope:
+    var ...                             function, global
+    let ...                             { }
+    const ...                           { }
+
+  var are declared at the start of a block, but assignment happens at its position, even for var name = 1;
 -----
 NAMING CONVENTION:
   lowerUpperUpper
-  $...
-  _...
-  a...
+  can contain
+    $
+    _
+    letters
+    numbers
+  cannot start with a number
+-----
+NUMBERS:
+  let x = 1;                            integer
+  let x = 1.1;                          floating point
+  let x = 1e3;                          exponent, == 1000
+
+  7 / 0 == Infinity
+  null + 1 == 1
+  undefined + 1 == NaN
+-----
+STRINGS:
+  myString = "...";
+  myString = '...';
+  myString = `...`;                     allows embedding of variables and expressions into a string
+    `... ${...} ...`
+  "ab" + "cd" == "abcd"                 concatenation
+  \                                     escape character to use special characters in a string
+    \'                                  '
+    \"                                  "
+    \\                                  \
+    \n                                  newline
+    \r                                  carriage return
+    \t                                  tab
+    \b                                  backspace
+    \f                                  form feed
+
+  myString[2]                           access to the third character, UNSAFE! convert to array first
+  "..."[2]
+
+  1 + "2" == 12                         number + string = string
+  " -9\n" + 5 == " -9\n5"
+  " -9\n" - 5 == -14
+
+  strings are immutable, it is not possible to change individual letters
+-----
+STRING METHODS:
+  myString
+    .length                             length of string
+    .indexOf("...")                     returns first position of ... in a string, -1 if not
+      .indexOf("...",15)                includes starting position
+    .lastIndexOf("...")                 returns last position of ... in a string, -1 if not
+      .lastIndexOf("...",15)            includes starting position
+    .search("...")                      similar to indexOf, no second argument, with regular expressions
+    .charAt(5)                          returns the character at index 5
+    .charCodeAt(5)                      returns the unicode character at index 5
+    .slice(4)                           returns string starting at index 4
+      .slice(4, 8)                      returns string starting at index 4 until 8-1
+      .slice(-4)                        counts from the end of a string
+      .slice(-4, -8)                    counts from the end of a string
+    .substring(4)                       same as .slice but no negative indixes
+    .substr(4)                          returns string starting at index 4
+      .substr(4, 3)                     returns string starting at index 4 with length 3
+      .substr(-4, 3)                    counts from the end of a string
+    .replace("text1", "text2")          replaces the first text1 with text2
+      .replace(/text1/g , "text2")      replaces all text1 with text2
+      .replace(/text1/i , "text2")      replaces all text1 with text2, case insensetive
+    .toUpperCase()                      converts to uppercase
+    .toLowerCase()                      converts to lowercase
+    .concat("...", text2)               adds string
 -----
 BOOLEAN:
   false:
@@ -94,57 +223,84 @@ BOOLEAN:
 
   true:
     everthing else, check with !!var
------
-STRINGS:
-  myString = "...";
-  myString = '...';
-  "ab" + "cd" == "abcd"                 concatenation
-  \                                     escape character to use special characters in a string
-    \'                                  '
-    \"                                  "
-    \\                                  \
-    \n                                  newline
-    \r                                  carriage return
-    \t                                  tab
-    \b                                  backspace
-    \f                                  form feed
 
-  myString[2]                           access to the third character
-  "..."[2]
-
-  1 + "2" == 12                         number + string = string
-
-  strings are immutable, it is not possible to change individual letters
-
-  myString
-    .length                             length of string
-    .indexOf("...")                     checks where ... is in a string, -1 if not
-    .charAt(...)                        selects the character at a position
-    .toUpperCase()                      capitalizes the character
-    .slice(...)                         removes everything before position ...
-    .replace(/a/g , "b")                replaces all "a" with "b"
+  true + false == 1
+  let isGreater = 4 > 1;                isGreater == true
 -----
 ARRAYS:                                 ordered list of data
-  var myArray = [];                     creates an empty array
-  var myArray = new Array();            creates an empty array
-  var myArray = [1, 2, 3];              creates an array
-    myArray[0] = ...;
-    myArray[3][4]                       nested array
-    myArray.length;                     number of entries
-    myArray.push(...);                  adds an entry to the end, returns the new length
-    myArray.pop();                      removes the last entry, returns the removed entry
-    myArray.unshift(...);               adds an entry to the beginning, returns the new length
-    myArray.shift();                    removes the first entry
-    myArray.splice(a, b);               removes an entry, starts at a and deletes b entries
-    myArray.splice(a, 0, b);            add an entry at position a with the content b
-    myArray.splice(a, 1, b);            replace an entry at position a with content of b
-    myArray.indexOf(...);               returns the first index of that entry, -1 if not exists
-  var myArray2 = myArray.slice(1, 3);   copies parts of an array into a new one, 
-                                        starts at 1 and ends one before 3
-  var myArray2 = myArray.slice();       copies the whole array
-    myArray.forEach(function(name) {    looping over the entries in an array
-  ...                                   and runs the function for the entries
-    } );                                passed in via the variable "name"
+  var myArray = [];                     create an empty array
+  var myArray = new Array();            creates an empty array, slower
+  var myArray = [1, 2, "three"];        creates an array
+
+  myArray[0] = ...;                     modify element at index 0
+  myArray[3][4]                         nested array
+  myArray[[1, 2], [3, 4]]               nested array
+
+  adding elements at high indexes create undefined holes
+
+  typeof(...)                                               arrays appear as objects
+  Array.isArray(...)                                        check for an array
+  function isArray(x) {                                     check for an array in older browsers
+    return x.constructor.toString().indexOf("Array") > -1;
+  }
+  ... instanceof Array                                      returns true for arrays
+-----
+ARRAY METHODS:    
+  myArray
+    .length                             number of entries
+    .sort()                             sort an array from lowest to highest value
+    .toString()                         converts to a string with comma seperation
+    .join("...")                        converts to a string with given seperation
+    .push(...)                          adds an entry to the end, 
+      x = myArray.push("...");          x == new length
+    .pop()                              removes the last entry
+      x = myArray.pop();                x == removed entry
+    .shift()                            removes the first entry
+      x = myArray.shift();              x == removed entry
+    .unshift(...)                       adds an entry to the beginning
+      x = myArray.unshift("...");       x == new length
+    .splice(4, 2)                       removes 2 entries from index 4 on
+    .splice(2, 0, "...", "...")         removes 0 entries from index 2 on and add two entries
+    .concat(...)                        merges two arrays
+    .concat("...", "...")               merges values
+    .indexOf(...)                       returns the first index of that entry, -1 if not exists
+    .slice(1)                           slice an array at index 1
+    .slice(2, 3)                        slice an array at index 1 up to 3-1
+
+  delete myArray[5]                     changes element at index 5 to undefined
+
+  outputting an array converts it to a comma seperated string
+    
+  myArray.forEach(function(name) {      looping over the entries in an array
+    ...                                 and runs the function for the entries
+  } );                                  passed in via the variable "name"
+-----
+OBJECTS:
+  var name = {};                        creating an object        
+  var person = {name: "Jim", age: 21};
+  person.age = 23;      
+  person["age"] = 23;                   alternative to .age
+ 
+  object.friends[0].name;
+
+  object._name                          allowed
+    var prop = "color";     
+    object[prop} = "red"                allowed
+  object.1name                          not allowed
+
+  array of objects:
+  var movies = [
+    {
+      title: "In Bruges",
+      rating: 5,
+      hasWatched: true
+    },
+    {
+      title: "Frozen",
+      rating: 4.5,
+      hasWatched: false
+    }
+  ];
 -----
 IF:
   if (condition) {                      if statement
@@ -180,33 +336,6 @@ FUNCTIONS:
 
   variables inside a function are only availabe in the function, scope!
 -----
-OBJECTS:
-  var name = {};                        creating an object        
-  var person = {name: "Jim", age: 21};
-  person.age = 23;      
-  person["age"] = 23;                   alternative to .age
- 
-  object.friends[0].name;
-
-  object._name                          allowed
-    var prop = "color";     
-    object[prop} = "red"                allowed
-  object.1name                          not allowed
-
-array of objects:
-var movies = [
-  {
-    title: "In Bruges",
-    rating: 5,
-    hasWatched: true
-  },
-  {
-    title: "Frozen",
-    rating: 4.5,
-    hasWatched: false
-  }
-];
------
 METHODS:
   a function inside an object
 
@@ -217,13 +346,6 @@ METHODS:
 -----
 THIS:
   this;                               refers to the object in which the method is defined
------
-CONSOLE:
-  alert("...");                       shows a window with text, etc.
-  clear();                            clears the console in chrome
-  console.log("...");                 outputs to the console
-  prompt("...");                      shows a window with an input
-    var user = prompt("User");
 -----
 USEFUL FUNCTIONS:
   Math.floor(...)                     removes the decimals
