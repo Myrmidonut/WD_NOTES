@@ -49,14 +49,17 @@ CONSOLE:
     var user = prompt("User");
 -----
 OPERATORS:
+  unary - binary
+  operand - operator
   Arithmetic:
     +
     -
     *
     /
-    ++
+    ++                                  prefix: ++i (first increment, then used), postfix: i++
     --
     %
+    **                                  exponent
   Assignment:
     =
     +=                                  x = x + y
@@ -64,6 +67,24 @@ OPERATORS:
     *=
     /=
     %=
+-----
+COMPARISON:
+  returns true or false
+  
+  only null == only undefined
+
+  >
+  <
+  >=
+  <=
+  ==
+  ===
+
+  Comparing strings:
+    letter by letter
+    a > A
+    Z > A
+    breaks on greater letter, or longer string
 -----
 LOGIC:
   &&                                    and
@@ -73,19 +94,22 @@ LOGIC:
   ===                                   equal, datatype and value
   !=                                    not equal, ignoring type
   !==                                   not equal, datatype and value
+
+  x = a || b || c;                      return first true or last value
+  x = a && b && c;                      return first false or last value
 -----
 PRECEDENCE:
   ()
     ++
     --
       !
-         *
-         /
-         %
-           +
-           -
-             &&
-             ||
+        *
+        /
+        %
+          +
+          -
+            &&
+              ||
 -----
 DATA TYPES:
   number                                integer or float, 4  9.3  -10
@@ -113,9 +137,10 @@ TYPE CONVERSION:
     string     -> whitespace removed, becomes a number, empty becomes 0, error becomes NaN
 
     mathematical operations create numbers, exception: + with a string creates a string
+    +... == Number(...)
 
   Boolean(...)
-    0         -> false
+    0         -> all false
     ""
     null
     undefined
@@ -181,7 +206,8 @@ STRINGS:
   myString[2]                           access to the third character, UNSAFE! convert to array first
   "..."[2]
 
-  1 + "2" == 12                         number + string = string
+  1 + "2" == 12                         number + string == string
+  1 - "2" == -1                         number - string == number
   " -9\n" + 5 == " -9\n5"
   " -9\n" - 5 == -14
 
@@ -303,20 +329,68 @@ OBJECTS:
   ];
 -----
 IF:
-  if (condition) {                      if statement
+  if (condition) {                            if statement
+    ...
   } else if (condition) {
-    } else {
-      }
+    ...
+  } else {
+    ...
+  }
+
+  if(0) {...}                                 check for boolen type conversion
+-----
+SWITCH:
+  switch (expression) {                       switch statement
+    case choice1:
+      ...
+      break;
+
+    case choice2:
+      ...
+      break;
+
+    default:                                  optional
+      ...
+  }
+-----
+TERNARY:
+  (condition) ? statement1 : statement2;      ternary
+
+  if true run statement1, else run statement2
+  can be nested in statements
 -----
 FOR:
-  for (var i = 0; i < 3; i++) {         for loop
-    statements
+  for (init; end; increment) {                for loop
+    ...
   }
 -----
 WHILE:
-  while (i < 3) {                       while loop
-    statements;
-    i++
+  while (condition) {                         while loop
+    ...
+    increment;
+  }
+-----
+DO WHILE:
+  do {                                        do while loop, always run at least once
+    ...
+    increment;
+  } while (condition)
+-----
+BREAK CONTINUE LABEL:
+  if (condition) {                            break, leave whole loop
+    break;
+  }
+
+  if (condition) {                            continue, leave current iteration
+    continue;
+  }
+
+  label1: for () {                            label, leave both loops
+    for () {
+      if () {
+        break label1;
+      }
+    }
   }
 -----
 FUNCTIONS:
