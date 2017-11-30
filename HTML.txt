@@ -1,12 +1,16 @@
 <?php
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>                             for old browsers
 <html lang="de-DE">
   <head>
     <title>...</title>
     <link CSS>
     <link Bootstrap>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">                  character set
+    <meta name="author" content="...">
+    <meta name="description" content="...">
+    <meta ... for facebook links, twitter, ...
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab
   </head>
   <body>
     ... 
@@ -20,19 +24,26 @@ COMMENTS:
     ...
   -->
 -----
-block elements              linebreak at the end, <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
+block elements              in new line, linebreak at the end
+                            <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
 
-inline elements             no linebreak, <a> <button> <img> <input> <label> <span>    
+inline elements             no linebreak
+                            <a> <button> <img> <input> <label> <span>    
                           
 <br/>                       / optional, to show a self closing tag
 -----
 CONTAINERS:
   <span>...</span>          container, no linebreak
   <div>...</div>            container, linebreak
-    <header>...</header>    HTML 5, same as a div
-    <footer>...</footer>
+
+  <header>...</header>      HTML 5, same as a div
+  <nav>...</nav>
+  <main>...</main>
     <section>...</section>
     <article>...</article>
+    <div>...</div>
+    <aside>...</aside>
+  <footer>...</footer>
 -----
 ENTITIES:                   display symbols, etc.
   &lt;                      < 
@@ -44,7 +55,7 @@ ENTITIES:                   display symbols, etc.
   &nbsp;                    blank space, non-breaking space
 -----
 FORMATING:
-  <h1>...</h1>              Header 1-6
+  <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds
   <br>                      linebreak
   <p>...</p>                paragraph, linebreak
   <strong>...</strong>      bold, preferable to
@@ -67,6 +78,9 @@ LISTS:
   <ol reversed>             reversed list
   <ol type="1">             symbols: 1, A, I, a, i
                             lists can be inside another list
+  <dl>...</dl>              description list
+    <dt>...</dt>            headline
+      <dd>...</dd>          text
 -----
 IMAGES:
   <img src="...">           image, local file or link
@@ -107,6 +121,7 @@ FORMS:
       pattern=".{5,10}"         min and max length of input
       title="5 to 10"           error code for pattern
       required                  checks for the correct input
+      disabled                  no input possible
 
     <button>...</button>        button
       type="submit"
@@ -156,10 +171,18 @@ TABLES:
 -----
 LINKS:
   <a href="...">...</a>   links, Text is clickable, local file or link
-    <p id="...">
+    title="..."           tooltip
     href="./file.html"    ./ represents the current folder
-    href="#..."           leads to an id="..." on the page
+    href="#..."           leads to an id on the page
+    hreaf="test.html#..." leads to an id on another page
     target="_blank"       opens a new tab
+    download="..."        opens as a download with default filename
+    href="mailto:..."     link to email
+      mailto:...
+      ?cc=...
+      &bcc=...
+      &amp;subject=...
+      &amp;body=...
 -----
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc.
