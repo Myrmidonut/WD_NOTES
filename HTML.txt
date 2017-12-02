@@ -37,7 +37,7 @@ CONTAINERS:
   <div>...</div>            container, linebreak
 
   <header>...</header>      HTML 5, same as a div
-  <nav>...</nav>
+    <nav>...</nav>
   <main>...</main>
     <section>...</section>
     <article>...</article>
@@ -52,6 +52,7 @@ ENTITIES:                   display symbols, etc.
   &quot;                    "
   &apos;                    '
   &euro;                    €
+  &deg;                     °
   &nbsp;                    blank space, non-breaking space
 -----
 FORMATING:
@@ -68,6 +69,11 @@ FORMATING:
   <sub>...</sub>            subscript
   <del>...</del>            crossed out
   <hr>                      line
+
+  <time datetime="2016-01-20">...</time>  time and date
+  <abbr title="...">...</abbr>            abbrevations
+  <q cite="...">...</q>                   quotation
+  <cite>...</cite>                        citation
 -----
 LISTS:
   <ul>...</ul>              unordered list, points
@@ -90,13 +96,68 @@ IMAGES:
     align="right"           right of website
     <p></p>                 text under image
     alt="..."               adds a description to the image for search engines, visually impared users, etc.
+    alt=""                  for decorative images
+    title="..."             tooltip
+
+  <figure>                        HTML5 for keeping image and subtitle together
+    <img>...</img>
+    <figcaption>...</figcaption>
+  </figure>
+-----
+VECTOR GRAPHICS:
+  <svg width="..." height="...">
+    <rect width="100% height="100%" fill="green" />
+  </svg>
 -----
 VIDEOS:
-  <video src="...">...</video>  link to video file, ... only shows when the video can not be loaded
+  <video src="...">...</video>  embedded video file, ... only shows when the video can not be loaded
     width="..."                 width
     height="..."                height
     controls                    show pause, play and skip
     type="..."                  video format
+    autoplay                    autoplay
+    loop                        loop
+    muted                       starts muted
+    poster="..."                shows image for the video
+    preload                     buffer the video before playing
+      "none"
+      "auto"
+      "metadata"
+
+  <video controls>
+    <source src="..." type="video/mp4">   inside <video>, plays first available
+    <source src="..." type="video/webm">
+    <p>No codecs supported.</p>
+  </video>
+-----
+AUDIO:
+  <audio src="...">...</audio>  embedded audio file
+    controls
+    type="..."                  video format
+    autoplay                    autoplay
+    loop                        loop
+    muted                       starts muted
+    preload                     buffer the video before playing
+      "none"
+      "auto"
+      "metadata"
+
+  <audio controls>
+    <source src="..." type="audio/mp3">
+    <source src="..." type="audio/ogg">
+    <p>No codecs supported.</p>
+  </audio>
+-----
+VIDEO SUBTITLES:
+  <audio controls> or <video controls>
+    <source ...>
+    <track kind="subtitles" src="..." srclang="en">
+      subtitles
+      captions
+      descriptions
+  </audio> or </video>
+
+  Requires a WebVTT (.vtt) file.
 -----
 FORMS:
   <form>...</form>              form, linebreak     
@@ -185,8 +246,18 @@ LINKS:
       &amp;body=...
 -----
 IFRAMES:
-  <iframe src="...">...</iframe>  insert a webpage, videos, etc.
+  <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text
     width="..."
     height="..."
-    frameborder="0"               no border around the page
+    frameborder="0" or "1"        no border around the page
     allowfullscreen
+    sandbox                       higher security settings in modern browsers
+
+  load the iframe src after the rest of the page via JavaScript for speed
+
+  always use https for the embedded src!
+
+  always use sandbox!
+
+  <embed>                         rarely used, old style
+  <object>                        rarely used, old style

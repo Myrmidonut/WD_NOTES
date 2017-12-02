@@ -30,19 +30,26 @@ BUTTONS:
 -----
 IMAGES:
   <img ...>
-    src="image.jpg"                                             as a fallback
-    srcset="small.jpg 500w, medium.jpg 1000w"                   browser choses the image for the viewport size and DPR
-    srcset="small.jpg 1x, medium.jpg 2x"                        browser choses the image for the DPR
-    sizes="(max-width: 400px) 100vw, (min-width: 401) 50vw"     image is full viewport width if browsers
-                                                                viewport is 400 or less or half viewport
-                                                                width if browsers viewport is more than 400
+    src="..." alt="..."                   as a fallback
+    
+    srcset="small.jpg 500w,               browser choses the image for the viewport size and DPR
+            medium.jpg 1000w"
+    sizes="(max-width: 400px) 100vw,      image is full viewport width if browsers
+           (min-width: 401) 50vw"         viewport is 400 or less or half viewport
+                                          width if browsers viewport is more than 400
+                                          px instead of vw possible
+  alternative:
+    srcset="small.jpg 1x,                 browser choses the image for the DPR
+            medium.jpg 2x"
 -----
 PICTURES:
-<picture>
-  <source media="(min-width: 750px)" srcset="image1.jpeg" type="image/jpeg">    alternative imagesources, 
-  <source media="(min-width: 500px)" srcset="image2.jpeg" type="image/jpeg">    goes from top to bottom
-  <img src="...">         
-</picture>
+  <picture>
+    <source media="(min-width: 750px)" srcset="image1.jpeg" type="image/jpeg">    alternative imagesources, 
+    <source media="(min-width: 500px)" srcset="image2.jpeg" type="image/jpeg">    goes from top to bottom
+    <img src="...">         
+  </picture>
+
+  use <img> most of the time, <picture> only for art direction (cropped images)
 -----
 FLEXBOX:
   display: flex;
