@@ -39,6 +39,15 @@ EXTERNAL CSS:
     <link rel="stylesheet" type="text/css" href="name.css">
   </head>
 -----
+@-RULES:
+  @import "stlyes2.css";
+  @charset
+
+  @media
+  @document
+
+  @font-face
+-----
 NORMALIZE:
   same layout on all browsers
 -----
@@ -50,7 +59,7 @@ SPECIFICITY:
 
   p {color: blue !important;}
 -----
-  selector {
+  selector {                              declaration
     property: value;
   }
 -----
@@ -62,6 +71,7 @@ COMMENT:
   10%                                     percentage of parent
   10px                                    absolute
   2.0em                                   2.0 times the parent element
+  1em = 16px default, unless a different font size is set in the parent element 
 -----
 CLASS / ID:
   .name {}                                class selector, multiple occurences

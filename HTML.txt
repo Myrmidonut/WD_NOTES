@@ -88,6 +88,39 @@ LISTS:
     <dt>...</dt>            headline
       <dd>...</dd>          text
 -----
+TABLES:
+  <table>...</table>        table, border=1 only for testing
+    <thead>...</thead>      headlines
+      <tr>...</tr>          rows
+        <th>...</th>        entries
+    <tbody>...</tbody>      data cells
+      <tr>...</tr>          rows
+        <td>...</td>        entries
+    <tfoot>...</tfoot>      footer
+      <tr>...</tr>          rows
+        <td>...</td>        entries
+
+  <table>                   short version
+    <tr>
+      <th>...</th>          headline
+    </tr>
+    <tr>
+      <td>...</td>          data cells
+    </tr>
+  </table>
+
+  colspan="...">            number of colums a cell needs
+  rowspan="..."             number of rows a cell needs
+
+  
+  <colgroup>
+    <col style="background-color: yellow" span="...">
+    ...
+  </colgroup>
+
+  <table>
+    <caption>...<caption>   description at the top
+-----
 IMAGES:
   <img src="...">           image, local file or link
     width="100"             scales width to 100 pixels
@@ -160,7 +193,7 @@ VIDEO SUBTITLES:
   Requires a WebVTT (.vtt) file.
 -----
 FORMS:
-  <form>...</form>              form, linebreak     
+  <form>...</form>              form, linebreak, at least action and method
     action="..."                URL to send data to     
     method="post"               type of HTTP request
     method="GET"
@@ -205,30 +238,6 @@ FORMS:
       <label for="first_name">First Name</label>
       <input name="first_name" type="text">
     </div>
------
-TABLES:
-  <table>...</table>      table, border=1 only for testing
-    <thead>...</thead>    headlines
-      <tr>...</tr>        rows
-        <th>...</th>      entries
-    <tbody>...</tbody>    data cells
-      <tr>...</tr>        rows
-        <td>...</td>      entries
-    <tfoot>...</tfoot>    footer
-      <tr>...</tr>        rows
-        <td>...</td>      entries
-
-  <table>                 short version
-    <tr>
-      <th>...</th>        headline
-    </tr>
-    <tr>
-      <td>...</td>        data cells
-    </tr>
-  </table>
-
-    colspan="..."         number of colums a cell needs
-    rowspan="..."         number of rows a cell needs
 -----
 LINKS:
   <a href="...">...</a>   links, Text is clickable, local file or link
