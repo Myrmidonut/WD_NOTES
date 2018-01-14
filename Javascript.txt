@@ -192,7 +192,10 @@ STRINGS:
   myString = '...';
   myString = `...`;                     allows embedding of variables and expressions into a string
     `... ${...} ...`
+    
   "ab" + "cd" == "abcd"                 concatenation
+  myString += "ab";						ads a string to the end
+
   \                                     escape character to use special characters in a string
     \'                                  '
     \"                                  "
