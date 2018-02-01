@@ -66,9 +66,10 @@ SORTING, SEARCHING AND REPLACING:
 -----
 NANO:
   nano file
-    ctrl + o
-    ctrl + x
-    ctrl + g
+    ctrl + r            open
+    ctrl + o            save
+    ctrl + x            close
+    ctrl + g            help
 -----
 BASH PROFILE:
   ~/.bash_profile         contains environment settings
