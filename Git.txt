@@ -1,6 +1,8 @@
   one commit for every logical change
   
   working directory - staging area - repository
+
+  GitHub: https://github.com/Myrmidonut/repository.git
 -----
 SHORT VERSION:
   git init                          create .git folder
@@ -14,6 +16,7 @@ SHORT VERSION:
 
   git log                           show history
   git diff                          show differences between working and staging
+  git diff old new                  show differences between two commits, first four symbols
 
   git show HEAD                     show most recent commit
   git checkout HEAD ...             go back to most recent commit
