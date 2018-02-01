@@ -16,8 +16,12 @@ VIEWING:
 CREATING:
   touch           create a file
   mkdir           create a folder
+
   rm              remove a file
+  del             remove a file or folder, windows
   rm -r           remove a folder
+  del /s          remove all subfolders, windows
+
   cp              copy a file
     -v            verbose output
     -r            copy a folder
@@ -25,6 +29,7 @@ CREATING:
   mv              move/rename a file
     files folder  move one or more files
     file file     rename a file
+
   ln              create links
 -----
 OPENING:
