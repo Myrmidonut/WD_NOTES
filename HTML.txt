@@ -1,19 +1,26 @@
 <?php
 ?>
+
 <!DOCTYPE html>                             for old browsers
+
 <html lang="de-DE">
   <head>
     <title>...</title>
+
     <link CSS>
     <link Bootstrap>
+
     <meta charset="UTF-8">                  character set
+
     <meta name="author" content="...">
     <meta name="description" content="...">
     <meta ... for facebook links, twitter, ...
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab
   </head>
   <body>
-    ... 
+    ...
+
     <script jQuery>
     <script Javascript>
   </body>
@@ -59,18 +66,18 @@ FORMATING:
   <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds
   <br>                      linebreak
   <p>...</p>                paragraph, linebreak
-  <strong>...</strong>      bold, preferable to
-    <b>...</b>
-  <em>...</em>              italic, preferable to
-    <i>...</i>
-  <ins>...</ins>            underlined, preferable to
-    <u>...</u>
-  <sup>...</sup>            supscript (hochgestellt)
+
+  <strong>...</strong>      bold, old: <b>...</b>
+  <em>...</em>              italic, old: <i>...</i>
+  <ins>...</ins>            underlined, old: <u>...</u>
+  <sup>...</sup>            supscript
   <sub>...</sub>            subscript
   <del>...</del>            crossed out
+
   <hr>                      line
 
   <time datetime="2016-01-20">...</time>  time and date
+
   <abbr title="...">...</abbr>            abbrevations
   <q cite="...">...</q>                   quotation
   <cite>...</cite>                        citation
@@ -82,7 +89,7 @@ LISTS:
     <li>...</li>            entries
   <ol start="10">           starts at 10
   <ol reversed>             reversed list
-  <ol type="1">             symbols: 1, A, I, a, i
+  <ol type="1">             symbols: 1, a, A, i, I
                             lists can be inside another list
   <dl>...</dl>              description list
     <dt>...</dt>            headline
