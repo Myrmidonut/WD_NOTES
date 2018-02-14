@@ -34,7 +34,7 @@ COMMENTS:
 block elements              in new line, linebreak at the end
                             <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
 
-inline elements             no linebreak
+inline elements             no linebreaks
                             <a> <button> <img> <input> <label> <span>    
                           
 <br/>                       / optional, to show a self closing tag
@@ -127,6 +127,8 @@ TABLES:
 
   <table>
     <caption>...<caption>   description at the top
+
+  border="1"                shows border for testing
 -----
 IMAGES:
   <img src="...">           image, local file or link
@@ -202,8 +204,8 @@ VIDEO SUBTITLES:
 FORMS:
   <form>...</form>              form, linebreak, at least action and method
     action="..."                URL to send data to     
-    method="post"               type of HTTP request
-    method="GET"
+    method="post"               send data
+    method="get"                request data
 
     <input>                     input box, default is text
       type="text"               text
@@ -213,9 +215,9 @@ FORMS:
       type="date"               date
       type="color"              color
       type="file"               file
-      type="checkbox"           checkbox
+      type="checkbox"           checkbox, needs value
         checked                 default checked for cbox
-      type="radio" name="..."   radio button, linked with "...", only one available
+      type="radio" name="..."   radio button, linked with "...", only one available, needs value
       type="submit"             submit button 
    
       placeholder="..."         background writing in text, number, etc
@@ -233,8 +235,8 @@ FORMS:
       <option>...</option>        entries
         selected                  default selected
 
-      name="..."                  name for the data that will be send, shows up in URL as name=value
-      value="..."                 data that will be send
+    name="..."                    name for the data that will be send, shows up in URL as name=value
+    value="..."                   data that will be send, radio! checkbox!
 
     <label><input>...</label>
     <label for="...">...</label>  label for a form, linked with for="..."
@@ -247,14 +249,16 @@ FORMS:
     </div>
 -----
 LINKS:
-  <a href="...">...</a>   links, Text is clickable, local file or link
-    title="..."           tooltip
-    href="./file.html"    ./ represents the current folder
-    href="#..."           leads to an id on the page
-    hreaf="test.html#..." leads to an id on another page
-    target="_blank"       opens a new tab
-    download="..."        opens as a download with default filename
-    href="mailto:..."     link to email
+  <a href="...">...</a>         links, Text is clickable, local file or link
+    href="./file.html"          ./ represents the current folder
+    href="#..."                 leads to an id on the page
+    href="test.html#..."        leads to an id on another page
+
+    title="..."                 tooltip
+    target="_blank"             opens a new tab
+    download="..."              opens as a download with default filename
+
+    href="mailto:..."           link to email
       mailto:...
       ?cc=...
       &bcc=...
