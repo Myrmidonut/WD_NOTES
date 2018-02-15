@@ -30,26 +30,22 @@ BOOTSTRAP:
     INPUT:
         class="form-control"                fit whole screen, design
 -----
+INSTALLATION:
+  local file:
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
 
+  online:
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  script inside body:
+    jQuery:
+      <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
 
+    Javascript for Bootstrap, requires jQuery, has to come after jQuery:
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-local file:
-  <link rel="stylesheet" type="text/css" href="bootstrap.css">
-
-online:
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-Font Awesome for symbols:
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-script inside body:
-  jQuery:
-  <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
-
-  javascript for bootstrap, requires jQuery, has to come after jQuery:
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  Font Awesome for symbols:
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 -----
 RESPONSIVENESS FOR BOOTSTRAP ON MOBILE:
   <head>
@@ -123,7 +119,7 @@ NAVBAR COLLAPSE:
 -----
 FORMS:
   class="form-inline"         label and inputs in one line
-  class="form-group"          adds spacing
+  class="form-group"          keeps elements together and adds spacing around them
   class="row"                 organized into a grid
     class="col-sm-2"        
   class="form-control"        inputs are designed
