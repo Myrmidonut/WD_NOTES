@@ -30,22 +30,34 @@ BOOTSTRAP:
     INPUT:
         class="form-control"                fit whole screen, design
 -----
-INSTALLATION:
+INSTALLATION BOOTSTRAP 3.3.7:
   local file:
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
 
   online:
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <head>
+      ...
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
 
-  script inside body:
-    jQuery:
-      <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
+    <body>
+      ...
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+-----
+INSTALLATION BOOTSTRAP 4.0.0:
+  <head>
+    ...
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
 
-    Javascript for Bootstrap, requires jQuery, has to come after jQuery:
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  Font Awesome for symbols:
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <body>
+    ...
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 -----
 RESPONSIVENESS FOR BOOTSTRAP ON MOBILE:
   <head>
@@ -70,13 +82,14 @@ LAYOUT:
   main: .container
 -----
 DIVS:
-  class="jumbotron"       adds spacing and formating to elements, main focus of the page
+  class="jumbotron"       adds spacing and formating to elements, main focus, full width
   class="container"       adds spacing to elements, not full width on large windows
 -----
 GRID:
   dynamic layout, changes with window size
   based around 12 columns
-  4 sizes: large, medium, small, extrasmall
+  BS3: 4 sizes: large, medium, small, extrasmall
+  BS4: 4 sizes: extralarge, large, medium, small
   rows can be nested inside a column
 
   <div class="container">
@@ -98,31 +111,86 @@ GRID:
   col-1 ... 12    max container: none, phones <576px
       15px on each side
 -----
-NAVBAR:
+NAVBAR BOOSTRAP 3:
   <nav class="navbar navbar-default">         navbar, across whole page
     navbar-inverse
     navbar-fixed-top                          stay on top of the page
       style="margin-top: 70px"                add spacing because the navbar is out of the flow
+
     <div class="navbar-header">               first entry on the left
-    <ul class="nav navbar-nav">               other entries on the left
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav">               entries on the left
+    <ul class="nav navbar-nav navbar-right">  entries on the right
 -----
-NAVBAR COLLAPSE:
-  <div class="collapse navbar-collapse" id="bs-nav-demo">                       menu collapses for small windows
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  shows menu button for collapsed menu
-  data-target="#bs-nav-demo" aria-expanded="false">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
+NAVBAR COLLAPSE BOOTSTRAP 3:
+  <div class="navbar-header">                       
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  hamburger-button
+    data-target="#bs-nav-demo" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="bs-nav-demo">                        contains collapsing entries
+      <ul>...</ul>
+    </div>
+-----
+NAVBAR EXAMPLE BOOTSTRAP 3:
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-default">
+    <!-- SPACING LEFT AND RIGHT -->
+    <div class="container">
+      <!-- FIRST ENTRY ON THE LEFT -->
+      <div class="navbar-header">
+        <!-- COLLAPSING MENU INTO HAMBURGER-BUTTON -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- BRANDING LEFT-->
+        <a href="#" class="navbar-brand">Koffee</a>
+      </div>
+      <!-- ENTRIES THAT WILL BE COLLAPSED -->
+      <div class="collapse navbar-collapse" id="bs-nav-demo">
+        <!-- ENTRIES ON THE LEFT -->
+        <ul class="nav navbar-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <!-- ENTRIES ON THE RIGHT -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+-----
+BUTTONS:
+  <a>
+  <button>
+  <input>
+
+  class="btn"     
+    btn-primary               color: primary, danger, etc.
+    btn-outline-primary       outline color
+
+    btn-sm                    size: (3: xs) sm, lg
+
+    btn-block                 full parent width
+             
+  active                      appears pressed
+  disabled                    disabled
 -----
 FORMS:
-  class="form-inline"         label and inputs in one line
-  class="form-group"          keeps elements together and adds spacing around them
-  class="row"                 organized into a grid
-    class="col-sm-2"        
+  class="form-inline"         label and input in one line
+  class="form-group"          label and input stay together, spacing around them
   class="form-control"        inputs are designed
+
+  class="row"                 organized into a grid
+  class="col-sm-2"        
 -----
 TABLES:
   class="table"               adds design
@@ -165,5 +233,3 @@ GLYPHICON:
   symbols for bootstrap
   treated like a font, can be adjusted
   <span class="glyphicon glyphicon-camera" aria-hidden="true">
------
-BOOTSTRAP 4

@@ -14,26 +14,20 @@ VIEWING:
   history         outputs the last used commands
 -----
 CREATING:
-  touch           create a file
-  echo >          create a file, windows
+  touch           create a file (echo >)
   mkdir           create a folder
 
-  rm              remove a file
-  del             remove a file, windows
-  rm -r           remove a folder
-  rmdir /s        remove a folder, windows
+  rm              remove a file, del
+  rm -r           remove a folder, recursive (rmdir /s)
 
-  cp              copy a file
+  cp              copy a file (copy)
     -v            verbose output
     -r            copy a folder
     -f            force overwriting
-  copy            copy a file, windows
 
-  mv              move/rename a file
+  mv              move/rename a file (move, rename)
     files folder  move one or more files
     file file     rename a file
-  move            move a file, windows
-  rename          rename a file, windows
 
   ln              create links
 -----

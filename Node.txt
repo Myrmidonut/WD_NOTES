@@ -1,0 +1,2 @@
+FILES:
+  node file.js          run code from a file

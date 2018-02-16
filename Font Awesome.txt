@@ -1,5 +1,8 @@
 FONT AWESOME:
-    ICONS:
-        icons are used like fonts
 
-        <i class="fa fa-info-circle"></i>
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+  ICONS:
+    icons are used like fonts
+
+    <i class="fas fa-info-circle"></i>

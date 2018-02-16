@@ -1,19 +1,21 @@
 Client:
   sends HTTP-request for the URL
+
 DNS Server:
   translates URLs into IP address
   HTTP-request send to IP
+  
 Server:
   reads HTTP-request
   reacts with scripts
   sends http-response with HTML, CSS, JavaScript
 -----
 REQUESTS:
-  GET		retrieve data
-  POST		sending data
-  PUT		update data
-  PATCH		update data
-  DELETE	remove data
+  GET       retrieve data
+  POST      sending data
+  PUT       update data
+  PATCH     update data
+  DELETE    remove data
 
   COPY
   HEAD

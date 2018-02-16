@@ -235,6 +235,7 @@ BACKGROUND:
   background: url("...");             background-image: url("..."); image will be tiled
   background-repeat: no-repeat;       prevents tiling
   background-size: cover;             stretches to window
+  background-position: center         
 -----
 COLORS:
   color: #FF0000; 
