@@ -2,6 +2,7 @@ FILES:
   external:
     <html>
       <body>
+        ...
         <script src="name.js"></script>
       </body>
     </html>
@@ -161,11 +162,11 @@ VARIABLES:
   const NAME = ...                      constant, value is known, best practice
 
   Number(...);                          converts to a number
-
-  scope:
-    var ...                             function, global
-    let ...                             { }
-    const ...                           { }
+-----
+SCOPE:
+  var ...                               exists in the function or global
+  let ...                               exists in the block, { }
+  const ...                             exists in the block, { }
 
   var are declared at the start of a block, but assignment happens at its position, even for var name = 1;
 -----
@@ -194,7 +195,7 @@ STRINGS:
     `... ${...} ...`
     
   "ab" + "cd" == "abcd"                 concatenation
-  myString += "ab";						ads a string to the end
+  myString += "ab";                     ads a string to the end
 
   \                                     escape character to use special characters in a string
     \'                                  '
@@ -246,7 +247,7 @@ BOOLEAN:
     false
     0
     ""
-    null
+    null 
     undefined
     NaN
 
@@ -258,7 +259,7 @@ BOOLEAN:
 -----
 ARRAYS:                                 ordered list of data
   var myArray = [];                     create an empty array
-  var myArray = new Array();            creates an empty array, slower
+    var myArray = new Array();          creates an empty array, slower
   var myArray = [1, 2, "three"];        creates an array
 
   myArray[0] = ...;                     modify element at index 0
@@ -401,9 +402,11 @@ FUNCTIONS:
     ... 
     return ...                                optional, will stop the function
   }
-  name;                                       refering to the function
+
+  name;                                       passing the function on
   name(arg);                                  calling the function
-  setInterval(function() {                    anonymous function, a function inside a function
+
+  setInterval(function() {                    anonymous function, declare a function inside a function
     ...
   }, 2000);
 
