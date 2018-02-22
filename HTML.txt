@@ -1,22 +1,22 @@
 <?php
 ?>
 
-<!DOCTYPE html>                             for old browsers
+<!DOCTYPE html>                                   for old browsers
 
-<html lang="de-DE">
+<html lang="de-DE">                               language
   <head>
     <title>...</title>
 
     <link CSS>
     <link Bootstrap>
 
-    <meta charset="UTF-8">                  character set
+    <meta charset="UTF-8">                        character set
 
-    <meta name="author" content="...">
+    <meta name="author" content="...">            author, etc.
     <meta name="description" content="...">
     <meta ... for facebook links, twitter, ...
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab icon
   </head>
   <body>
     ...

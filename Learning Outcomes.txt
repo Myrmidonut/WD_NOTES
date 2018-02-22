@@ -1,0 +1,135 @@
+Web Development 101
+    The Basics
+        Command Line Basics
+            What is the command line?
+            How do you open it on your computer?
+            How can you navigate into a particular directory?
+            Where will cd on its own navigate you to?
+            Where will cd .. navigate you to?
+            How can you display the name of the directory you are currently in?
+            How can you display the contents of the directory you are currently in?
+            How can you create a new directory?
+            How can you create a new file?
+            How can you destroy a directory or file?
+            How can you rename a directory or file?
+
+    Git Basics
+        Git Basics
+            Name the git command used to get a full copy of an existing git repository from Github
+            Name the git command used to check the status of your files
+            Name the git command used to track files
+            Name the git command used to commit files
+            Name the git command used to view your commit history
+            Name the git command used to upload projects onto GitHub
+
+        Project: Practising Git Basics
+            Create a Git repository on GitHub and move it onto your local machine
+            Describe the difference between staging and committing changes
+            Describe the difference between committing your changes and pushing them onto GitHub
+            Check the status of your current repository from the command line
+            Look at the history of your previous commits from the command line
+
+    The Front End
+        Introduction to the Front End
+            What is the role of HTML in a web page?
+            What is the role of CSS in a web page?
+            What is the role of Javascript in a web page?
+
+        HTML and CSS Basics
+            Why do we separate HTML and CSS?
+            What are classes and IDs (and how are they different)?
+            What are elements?
+            What are tags?
+            What are attributes?
+            What are forms?
+            What is a div?
+            What are selectors?
+            What are properties?
+            What are values?
+            What is the “query string” in a URL and what does it do?
+            What is the difference between “pixels” and “ems”?
+            How do CSS styles for a particular element get inherited? i.e. how does an element get its “default” styles?
+            What are two CSS attributes you can change to push an element around on the page?
+            What are the three different ways to include CSS in your project or use CSS to style a particular element?
+            What is the “default stylesheet” or “user agent stylesheet”?
+            Why use a CSS reset file?
+
+        Developer Tools
+            You can open the developer tools in your browser.
+            You can select a specific html element in your page with dev tools.
+            You can you use developer tools to experiment with the css on specific elements on a web page.
+
+    JavaScript Basics
+        Fundamentals Part 1
+            How do you declare a variable in javascript?
+            What are three different ways to declare a variable?
+            Which one should you use when?
+            What are the rules for naming variables?
+            What are operators, operands, and operations?
+            What is concatenation and what happens when you add numbers and strings together?
+            What are the different type of operators in Javascript?
+            What is the difference between == and ===?
+            What are operator precedence values?
+            What are the increment/decrement operators?
+            What is the difference between prefixing and postfixing them?
+            What are assignment operators?
+            What is the “Unary +” Operator?
+
+        Fundamentals Part 2
+            What are the seven data types of javascript?
+            Which data type is NOT primitive?
+            What is the difference between single, double, and backtick quotes for strings?
+            Which type of quote lets you embed variables/expressions into a string?
+            How do you embed variables/expressions into a string?
+            How do you escape characters in a string?
+            What is the difference between slice/substring/substr?
+            What are methods?
+            What are the three logical operators and what do they stand for?
+            What are the comparison operators?
+            What is nesting?
+            What are truthy and falsy values?
+            What are the falsy values in Javascript?
+            What is the syntax for an if/else if/else conditional?
+            What is the syntax for a switch statement?
+            What is the syntax for a ternary operator?
+            What is the relationship between null and undefined?
+            What are conditionals?
+
+        DOM Manipulation
+            What is DOM in relation to a webpage?
+            What's the difference between a "node" and an "element"?
+            How do you target nodes with "selectors"?
+            What are the basic methods for finding/adding/removing and altering DOM nodes?
+            What is the difference between a "nodelist" and an "array of nodes"?
+            How do "events" and "listeners" work? What are three ways to use events in your code?
+            How does "bubbling" work?
+
+    The Back End
+        Introduction to the Back End
+            What the difference between front- and back-end development is
+    
+        Ruby Basics
+            What is an “interpreted” language?
+            What is IRB?
+            What are Objects?
+            What are Methods?
+            What are Classes?
+            What are Blocks?
+            What is an Array?
+            What is an Iterator?
+            What are hashes?
+            What is a library?
+            What is a gem?
+
+        Databases
+            What is a database?
+            What are relational databases?
+            How are relational databases different from XML?
+            What is SQL?
+            What is SQL used for?
+            What does CRUD stand for?
+            Why is the idea of “CRUD” so important for web apps?
+            How do you get all the records from a table in SQL?
+            How do you insert a record in SQL?
+            What is a primary key?
+            What is a foreign key?

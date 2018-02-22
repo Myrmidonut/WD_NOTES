@@ -55,9 +55,10 @@ SPECIFICITY:
   later styles overwrite previous ones
   more specific styles overwrite others
 
-  !important > inline > id > class > tag tag > tag
+  !important > inline > id > class, attribute > tag
+               1000     100  10                 1
 
-  p {color: blue !important;}
+  p {color: blue !important;}             overwrites everything
 -----
   selector {                              declaration
     property: value;
@@ -86,9 +87,11 @@ CLASS / ID:
   tag1.class1 {}                          only tag1 with class1
   tag1, tag2 {}                           multiple selectors
   tag1 tag2 {}                            child selector, only tag2 inside tag1
+  tag1 > tag2 {}                          child selector, only tag2 inside tag1, only first level deep
   tag1 + tag2 {}                          adjacent selector, tag2 that comes after tag1
 
   tag[attribute] {}                       attribute selector, no blanks before []
+  [attribute] {}                          tag not required
     a[href="..."]
     input[type="checkbox"]:checked
 
