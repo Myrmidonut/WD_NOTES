@@ -1,4 +1,0 @@
-Courses:
-
-Odin:
-JavaScript functions
