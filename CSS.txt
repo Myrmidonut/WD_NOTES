@@ -60,6 +60,7 @@ SPECIFICITY:
 
   p {color: blue !important;}             overwrites everything
 -----
+DECLARATION:
   selector {                              declaration
     property: value;
   }
@@ -75,11 +76,11 @@ COMMENT:
     1em = 16px                            default, unless a different font size is set in the parent element
   2.0rem                                  2.0 times the size of the root element
 -----
-CLASS / ID:
-  .name {}                                class selector, multiple occurences
+SELECTORS:
+  .name {}                                class, multiple occurences
     <... class="name1 name2">
 
-  #name {}                                id selector, once per page
+  #name {}                                id, once per page
     <... id="name1 name2">
 
   * {}                                    star, whole page, "CSS Reset"

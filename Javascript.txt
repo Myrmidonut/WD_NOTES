@@ -91,10 +91,10 @@ LOGIC:
   &&                                    and
   ||                                    or
   !                                     not
-  ==                                    equal, ignoring type, 1 == "1"
-  ===                                   equal, datatype and value
-  !=                                    not equal, ignoring type
-  !==                                   not equal, datatype and value
+  ===                                   equal, datatype and value, always prefered
+    ==                                  equal, ignoring type, 1 == "1"
+  !==                                   not equal, datatype and value, always prefered
+    !=                                  not equal, ignoring type
 
   x = a || b || c;                      return first true or last value
   x = a && b && c;                      return first false or last value
@@ -118,8 +118,9 @@ DATA TYPES:
     NaN                                 computational error, "test" / 2
   string                                "Hello World"  "43"
   boolean                               true  false
-  objects                               collection of data
-  symbol                                unique identifiers for objects
+  object                                collection of data
+    symbol                              unique identifiers for objects
+    array                               an ordered object
   null                                  represents empty, can be assigned to a variable
   undefined                             value of a variable without assignment
 

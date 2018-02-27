@@ -1,56 +1,94 @@
-<?php
-?>
+FILE:
+  <!DOCTYPE html>                                   for old browsers
 
-<!DOCTYPE html>                                   for old browsers
+  <html lang="de-DE">                               language: de, de-DE, en, en-US
+    <head>
+      <title>...</title>                            Text in browser tab and bookmark
 
-<html lang="de-DE">                               language
-  <head>
-    <title>...</title>
+      <link rel="stylesheet" href="...">            CSS
+      <link Bootstrap>
 
-    <link CSS>
-    <link Bootstrap>
+      <meta charset="UTF-8">                        character set
 
-    <meta charset="UTF-8">                        character set
+      <meta name="author" content="...">            author, etc.
+      <meta name="description" content="...">       SEO
+      <meta ... for facebook links, twitter, ...
 
-    <meta name="author" content="...">            author, etc.
-    <meta name="description" content="...">
-    <meta ... for facebook links, twitter, ...
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab icon
+    </head>
+    
+    <body>
+      ...
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab icon
-  </head>
-  <body>
-    ...
+      <script jQuery>
+      <script src="..."></script>                   Javascript
+    </body>
+  </html>
+-----
+FOLDERS:
+  project folder
+    index.html
 
-    <script jQuery>
-    <script Javascript>
-  </body>
-</html>
+    images folder
+      ...
+
+    styles folder
+      ...
+          
+    scripts folder
+      ...
+-----
+PLANNING:
+  common elements to every page:
+    header
+      title
+      logo
+    footer
+      contact details
+      copyright
+      links to terms and conditions
+      site language
+      accessibility
+
+  non-common elements:
+    main
+      content
+    aside
+      content
+
+  list the content
+  sort it into groups for different pages
+  create a rough sketch of the sitemap
 -----
 COMMENTS:
   <!--                      comments, single or multiple lines
     ...
   -->
 -----
-block elements              in new line, linebreak at the end
-                            <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
+ELEMENTS:
+  <tag attribute="value">content</tag>  element
 
-inline elements             no linebreaks
-                            <a> <button> <img> <input> <label> <span>    
+  block elements                        in new line, linebreak at the end
+                                        <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
+
+  inline elements                       no linebreaks
+                                        <a> <button> <img> <input> <label> <span>    
                           
-<br/>                       / optional, to show a self closing tag
+  <br/>                                 / optional, to show a self closing tag
 -----
 CONTAINERS:
-  <span>...</span>          container, no linebreak
-  <div>...</div>            container, linebreak
+  <header>                  global header
+  <nav>                     main navigation
+  <main>                    once per page
+    <article>               blocks that group more information
+      <header>              introduction
+      <section>             blocks that group less information
+        <header>            introduction
+  <aside>                   information indirectly related to main, can be inside main
+  <footer>                  end content
 
-  <header>...</header>      HTML 5, same as a div
-    <nav>...</nav>
-  <main>...</main>
-    <section>...</section>
-    <article>...</article>
-    <div>...</div>
-    <aside>...</aside>
-  <footer>...</footer>
+  <span>                    container, no linebreak
+  <div>                     container, linebreak
 -----
 ENTITIES:                   display symbols, etc.
   &lt;                      < 
@@ -63,34 +101,97 @@ ENTITIES:                   display symbols, etc.
   &nbsp;                    blank space, non-breaking space
 -----
 FORMATING:
-  <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds
+  <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds, SEO
   <br>                      linebreak
   <p>...</p>                paragraph, linebreak
 
   <strong>...</strong>      bold, old: <b>...</b>
   <em>...</em>              italic, old: <i>...</i>
   <ins>...</ins>            underlined, old: <u>...</u>
-  <sup>...</sup>            supscript
+  <sup>...</sup>            superscript
   <sub>...</sub>            subscript
   <del>...</del>            crossed out
 
   <hr>                      line
 
-  <time datetime="2016-01-20">...</time>  time and date
+  <time datetime="2016-01-20">...</time>    time and date
 
-  <abbr title="...">...</abbr>            abbrevations
-  <q cite="...">...</q>                   quotation
-  <cite>...</cite>                        citation
+  <abbr title="...">...</abbr>              abbrevation
+
+  <blockquote cite="...">...</blockquote>   blocked quotation
+  <q cite="...">...</q>                     inline quoteation
+  <cite>...</cite>                          citation, name of the source
+
+  <address>...</address>                    address of html document owner
+
+  <code>...</code>                          displaying computer code
+  <pre>...</pre>                            keeping whitespaces
+  <var>...</var>                            variable
+  <kbd>...</kbd>                            input
+  <samp>...</samp>                          output
+-----
+LINKS:
+  <a href="...">...</a>         links, text is clickable, local file or link
+    href="./file.html"          current folder
+    href="folder/file.html"     subfolder
+    href="../file.html"         parent folder
+
+    href="#..."                 leads to an id on the page
+    href="test.html#..."        leads to an id on another page
+
+    title="..."                 tooltip, accessibility, SEO
+    target="_blank"             opens a new tab
+    download="..."              opens as a download with default filename
+
+    href="mailto:..."           link to email
+      mailto:...
+      ?cc=...
+      &bcc=...
+      &amp;subject=...
+      &amp;body=...
+
+  don't write link in a link
+  don't repeat the URL
+  don't use the same text for different links
+  keep it short
+
+  use relative URLs when possible, shorter and faster
+
+  indicate that a link goes to a PDF, etc.
+-----
+IMAGES:
+  <img src="...">                 image, local file or link
+    width="100px"                 scales width to 100 pixels
+    height="100px"                scales height to 100 pixels
+    align="left"                  left of website
+    align="right"                 right of website
+    <p></p>                       text under image
+    alt="..."                     description of the image, don't repeat text, accessibility, SEO
+    alt=""                        for decorative images
+    title="..."                   tooltip, further information, actual article text prefered
+
+  <figure>                        HTML5 for keeping image and subtitle together
+    <img>...</img>
+    <figcaption>...</figcaption>  same as title="..."
+  </figure>
+
+  use HTML for images with meaning
+  use CSS for background images
+  use CSS for changing width and height
+  width and height create space even if the image isn't loaded (yet)
 -----
 LISTS:
   <ul>...</ul>              unordered list, points
     <li>...</li>            entries
+
   <ol>...</ol>              ordered list, numbers
     <li>...</li>            entries
+
   <ol start="10">           starts at 10
   <ol reversed>             reversed list
   <ol type="1">             symbols: 1, a, A, i, I
                             lists can be inside another list
+
   <dl>...</dl>              description list
     <dt>...</dt>            headline
       <dd>...</dd>          text
@@ -129,77 +230,6 @@ TABLES:
     <caption>...<caption>   description at the top
 
   border="1"                shows border for testing
------
-IMAGES:
-  <img src="...">           image, local file or link
-    width="100"             scales width to 100 pixels
-    height="100"            scales height to 100 pixels
-    align="left"            left of website
-    align="right"           right of website
-    <p></p>                 text under image
-    alt="..."               adds a description to the image for search engines, visually impared users, etc.
-    alt=""                  for decorative images
-    title="..."             tooltip
-
-  <figure>                        HTML5 for keeping image and subtitle together
-    <img>...</img>
-    <figcaption>...</figcaption>
-  </figure>
------
-VECTOR GRAPHICS:
-  <svg width="..." height="...">
-    <rect width="100% height="100%" fill="green" />
-  </svg>
------
-VIDEOS:
-  <video src="...">...</video>  embedded video file, ... only shows when the video can not be loaded
-    width="..."                 width
-    height="..."                height
-    controls                    show pause, play and skip
-    type="..."                  video format
-    autoplay                    autoplay
-    loop                        loop
-    muted                       starts muted
-    poster="..."                shows image for the video
-    preload                     buffer the video before playing
-      "none"
-      "auto"
-      "metadata"
-
-  <video controls>
-    <source src="..." type="video/mp4">   inside <video>, plays first available
-    <source src="..." type="video/webm">
-    <p>No codecs supported.</p>
-  </video>
------
-AUDIO:
-  <audio src="...">...</audio>  embedded audio file
-    controls
-    type="..."                  video format
-    autoplay                    autoplay
-    loop                        loop
-    muted                       starts muted
-    preload                     buffer the video before playing
-      "none"
-      "auto"
-      "metadata"
-
-  <audio controls>
-    <source src="..." type="audio/mp3">
-    <source src="..." type="audio/ogg">
-    <p>No codecs supported.</p>
-  </audio>
------
-VIDEO SUBTITLES:
-  <audio controls> or <video controls>
-    <source ...>
-    <track kind="subtitles" src="..." srclang="en">
-      subtitles
-      captions
-      descriptions
-  </audio> or </video>
-
-  Requires a WebVTT (.vtt) file.
 -----
 FORMS:
   <form>...</form>              form, linebreak, at least action and method
@@ -248,23 +278,6 @@ FORMS:
       <input name="first_name" type="text">
     </div>
 -----
-LINKS:
-  <a href="...">...</a>         links, Text is clickable, local file or link
-    href="./file.html"          ./ represents the current folder
-    href="#..."                 leads to an id on the page
-    href="test.html#..."        leads to an id on another page
-
-    title="..."                 tooltip
-    target="_blank"             opens a new tab
-    download="..."              opens as a download with default filename
-
-    href="mailto:..."           link to email
-      mailto:...
-      ?cc=...
-      &bcc=...
-      &amp;subject=...
-      &amp;body=...
------
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text
     width="..."
@@ -274,10 +287,75 @@ IFRAMES:
     sandbox                       higher security settings in modern browsers
 
   load the iframe src after the rest of the page via JavaScript for speed
-
-  always use https for the embedded src!
-
-  always use sandbox!
+  always use https for the embedded src
+  always use sandbox
 
   <embed>                         rarely used, old style
   <object>                        rarely used, old style
+-----
+VIDEOS:
+  <video src="...">...</video>    embedded video file, ... as fallback content
+    width="..."                   width
+    height="..."                  height
+    controls                      show pause, play and skip
+    type="..."                    video format
+      video/webm                  WebM: Ogg Vorbis audio + VP8/VP9 video, Firefox, Chrome
+      video/mp4                   MP4: AAC or MP3 audio + H.264 video, IE, Safari
+      video/ogg                   Ogg: Ogg Vorbis audio + Ogg Theora video, replaced by WebM
+    autoplay                      autoplay
+    loop                          loop
+    muted                         starts muted
+    poster="..."                  shows image for the video
+    preload                       buffer the video before playing
+      "none"
+      "auto"
+      "metadata"
+
+  <video>                                 plays first available codec
+    <source src="..." type="video/mp4">
+    <source src="..." type="video/webm">
+    <p>No codecs supported.</p>
+  </video>
+-----
+VIDEO SUBTITLES:
+  <audio> or <video
+    <source ...>
+    <track label="English" kind="subtitles" src="..." srclang="en">
+      subtitles                                                       translation
+      captions                                                        description of dialog and sounds
+      timed descriptions                                              description of the video
+  </audio> or </video>
+
+  Requires a WebVTT (.vtt) file.
+-----
+AUDIO:
+  <audio src="...">...</audio>    embedded audio file
+    controls
+    type="..."                    audio format
+    autoplay                      autoplay
+    loop                          loop
+    muted                         starts muted
+    preload                       buffer the video before playing
+      "none"
+      "auto"
+      "metadata"
+
+  <audio>                                 plays first available codec
+    <source src="..." type="audio/mp3">
+    <source src="..." type="audio/ogg">
+    <p>No codecs supported.</p>
+  </audio>
+-----
+VECTOR GRAPHICS:
+  <svg width="..." height="...">
+    <rect width="100% height="100%" fill="green" />
+  </svg>
+
+  <img src="..." alt="..." height="..." width="...">    quick way, can be nested, no manipulation
+
+  created using shapes and path information
+  created with algorithms
+  lightweight
+
+  raster images: Bitmap, PNG, JPEG, GIF
+  vector images: SVG

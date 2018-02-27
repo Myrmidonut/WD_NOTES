@@ -1,5 +1,0 @@
-index.html
-
-images folder
-styles folder
-scripts folder
