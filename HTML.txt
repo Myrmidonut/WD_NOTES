@@ -238,40 +238,61 @@ FORMS:
 
   set at least action and method  
 
-    <input>                     input box, default is text
-      type="text"               text
-      type="number"             number
-      type="password"           password, hidden
-      type="email"              email
-      type="date"               date
-      type="color"              color
-      type="file"               file
-      type="checkbox"           checkbox, needs value
-        checked                 default checked for checkbox
-      type="radio" name="..."   radio button, linked with "...", only one available, needs value
-      type="submit"             button, only text as label
-   
-      placeholder="..."         background writing in text, number, etc
-      pattern=".{5,10}"         min and max length of input
-      title="5 to 10"           error code for pattern
-      required                  checks for the correct input
-      disabled                  no input possible
+    <input>                       input box, default is text
+      type="text"                 text
+      type="number"               number
+        min="..."
+        max="..."
+        step="..."
+      type="password"             password, hidden
+      type="email"                email
+      type="date"                 date
+      type="color"                color, bad support
+      type="file"                 file
+        accept="image/*"          
+        multiple
+      type="range"                slider
+        min="..."
+        max="..."
+        step="..."
+      type="hidden"               data not visible to the user
+        name="..."
+        value="..."
+      type="image"                image button, submits x/y value of the click
 
-    <button>...</button>        button, preferred over type="submit"
-      type="submit"
-      type="reset"              resetting all forms is bad practice
-      type="button"
+      type="checkbox"             checkbox
+      type="radio"                radio button, multiples linked with name
+        name="..."
+        value="..."               required for meaningful data
+        checked                   default
 
-    <textarea>...</textarea>    text with multiple lines
+      type="submit"               button, only text as label
+
+      placeholder="..."           background writing
+      pattern=".{5,10}"           min and max length of input
+      title="5 to 10"             error code for pattern
+      required                    checks for the correct input
+
+      disabled                    no input possible
+      autofocus                   input focus on page load
+      name="..."                  name for the data that will be send, shows up in URL as name=value
+      value="..."                 data that will be send, radio! checkbox!
+
+    <button>...</button>          button, preferred over type="submit"
+      type="submit"               send form data
+      type="reset"                resetting all forms, bad practice
+      type="button"               custom behavior
+    <input type="button">         alternative
+
+    <textarea>...</textarea>      text with multiple lines
       rows="10"
       cols="10"
+      wrap="soft" "hard"
 
     <select>...</select>          dropdown
       <option>...</option>        entries
         selected                  default selected
-
-    name="..."                    name for the data that will be send, shows up in URL as name=value
-    value="..."                   data that will be send, radio! checkbox!
+        multiple                  chose more than one entry
 
     <label for="...">...</label>  label, linked with for="...", recommended
     <input id="...">              for accessibilty, for= and id= has to be equal

@@ -34,7 +34,7 @@ x            Assessment: Structuring planet data
         HTML forms
 x            Your first HTML form
 x            How to structure an HTML form
-            The native form widgets
+x            The native form widgets
             Sending form data
             Form validation
             How to build custom form widgets
