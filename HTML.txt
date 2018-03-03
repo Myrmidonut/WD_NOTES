@@ -197,45 +197,46 @@ LISTS:
       <dd>...</dd>          text
 -----
 TABLES:
-  <table>...</table>        table, border=1 only for testing
-    <thead>...</thead>      headlines
-      <tr>...</tr>          rows
-        <th>...</th>        entries
-    <tbody>...</tbody>      data cells
-      <tr>...</tr>          rows
-        <td>...</td>        entries
-    <tfoot>...</tfoot>      footer
-      <tr>...</tr>          rows
-        <td>...</td>        entries
+  <table>...</table>                table, border="1" for testing
+    <caption>...<caption>           description at the top, accessibility
 
-  <table>                   short version
-    <tr>
-      <th>...</th>          headline
-    </tr>
-    <tr>
-      <td>...</td>          data cells
-    </tr>
-  </table>
+    <colgroup>                      styling for columns
+      <col style="..." span="...">  number of styled columns
+      ...
+    </colgroup>
 
-  colspan="...">            number of colums a cell needs
-  rowspan="..."             number of rows a cell needs
+    <thead>...</thead>              headlines
+      <tr>...</tr>                  rows
+        <th>...</th>                entries, bold and centered, accessibility
+    <tbody>...</tbody>              data cells, always included
+      <tr>...</tr>                  rows
+        <th>...</th>                entries if neccessary
+        <td>...</td>                entries
+    <tfoot>...</tfoot>              footer, always shown at the bottom
+      <tr>...</tr>                  rows
+        <th>...</th>                entries if neccessary
+        <td>...</td>                entries
 
-  
-  <colgroup>
-    <col style="background-color: yellow" span="...">
-    ...
-  </colgroup>
+  colspan="...">                    number of columns a cell needs
+  rowspan="..."                     number of rows a cell needs
 
-  <table>
-    <caption>...<caption>   description at the top
+  <th scope="col">                  header for a column, accessibility
+  <th scope="row">                  header for a row
+  <th scope="colgroup">             header for multiple columns
+  <th scope="rowgroup">             header for multiple rows
 
-  border="1"                shows border for testing
+  <th id="test1">                   alternative, precise but more work
+  <td headers="test1 test2">
+
+  tables can be nested, but not advised regarding accessibility
 -----
 FORMS:
   <form>...</form>              form, linebreak, at least action and method
     action="..."                URL to send data to     
     method="post"               send data
     method="get"                request data
+
+  set at least action and method  
 
     <input>                     input box, default is text
       type="text"               text
@@ -246,9 +247,9 @@ FORMS:
       type="color"              color
       type="file"               file
       type="checkbox"           checkbox, needs value
-        checked                 default checked for cbox
+        checked                 default checked for checkbox
       type="radio" name="..."   radio button, linked with "...", only one available, needs value
-      type="submit"             submit button 
+      type="submit"             button, only text as label
    
       placeholder="..."         background writing in text, number, etc
       pattern=".{5,10}"         min and max length of input
@@ -256,10 +257,14 @@ FORMS:
       required                  checks for the correct input
       disabled                  no input possible
 
-    <button>...</button>        button
+    <button>...</button>        button, preferred over type="submit"
       type="submit"
+      type="reset"              resetting all forms is bad practice
+      type="button"
 
-    <textarea rows="10" cols="10">...</textarea>    text with multiple lines
+    <textarea>...</textarea>    text with multiple lines
+      rows="10"
+      cols="10"
 
     <select>...</select>          dropdown
       <option>...</option>        entries
@@ -268,15 +273,17 @@ FORMS:
     name="..."                    name for the data that will be send, shows up in URL as name=value
     value="..."                   data that will be send, radio! checkbox!
 
-    <label><input>...</label>
-    <label for="...">...</label>  label for a form, linked with for="..."
+    <label for="...">...</label>  label, linked with for="...", recommended
     <input id="...">              for accessibilty, for= and id= has to be equal
 
-  EXAMPLE:
-    <div>
-      <label for="first_name">First Name</label>
-      <input name="first_name" type="text">
-    </div>
+    <label for="...">             label alternative
+      ... <input id="...">
+    </label>
+
+    <form>
+      <fieldset>                  creates a border
+        <legend>                  title inside the border
+          ...
 -----
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text

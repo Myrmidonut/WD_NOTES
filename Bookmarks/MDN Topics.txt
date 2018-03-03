@@ -1,7 +1,6 @@
 x    Complete beginners start here!
 x        Getting started with the Web
-x            Getting started with the Web overview
-x           Installing basic software
+x            Installing basic software
 x            What will your website look like?
 x            Dealing with files
 x            HTML basics
@@ -12,7 +11,6 @@ x            How the Web works
 
     HTML — Structuring the Web
 x        Introduction to HTML
-x            Introduction to HTML overview
 x            Getting started with HTML
 x            What's in the head? Metadata in HTML
 x            HTML text fundamentals
@@ -23,22 +21,19 @@ x            Debugging HTML
 x            Assessment: Marking up a letter
 x            Assessment: Structuring a page of content
         Multimedia and embedding
-x            Multimedia and embedding overview
 x            Images in HTML
 x            Video and audio content
 x            From object to iframe — other embedding technologies
 x            Adding vector graphics to the Web
             Responsive images
             Assessment: Mozilla splash page
-        HTML tables
-            HTML tables overview
-            HTML table basics
-            HTML Table advanced features and accessibility
-            Assessment: Structuring planet data
+x        HTML tables
+x            HTML table basics
+x            HTML Table advanced features and accessibility
+x            Assessment: Structuring planet data
         HTML forms
-            HTML forms overview
-            Your first HTML form
-            How to structure an HTML form
+x            Your first HTML form
+x            How to structure an HTML form
             The native form widgets
             Sending form data
             Form validation
@@ -51,7 +46,6 @@ x            Adding vector graphics to the Web
 
     CSS — Styling the Web
         Introduction to CSS
-            Introduction to CSS overview
             How CSS works
             CSS syntax
             Selectors introduction
@@ -65,14 +59,12 @@ x            Adding vector graphics to the Web
             Debugging CSS
             Assessment: Fundamental CSS comprehension
         Styling text
-            Styling text overview
             Fundamental text and font styling
             Styling lists
             Styling links
             Web fonts
             Assessment: Typesetting a community school homepage
         Styling boxes
-            Styling boxes overview
             Box model recap
             Backgrounds
             Borders
@@ -81,7 +73,6 @@ x            Adding vector graphics to the Web
             Assessment: Creating fancy letterheaded paper
             Assessment: A cool-looking box
         CSS layout
-            CSS layout overview
             Introduction
             Floats
             Positioning
@@ -91,7 +82,6 @@ x            Adding vector graphics to the Web
 
     JavaScript — Dynamic client-side scripting
         JavaScript first steps
-            JavaScript first steps overview
             What is JavaScript?
             A first splash into JavaScript
             What went wrong? Troubleshooting JavaScript
@@ -102,7 +92,6 @@ x            Adding vector graphics to the Web
             Arrays
             Assessment: Silly story generator
         JavaScript building blocks
-            JavaScript building blocks overview
             Making decisions in your code — Conditionals
             Looping code
             Functions — Reusable blocks of code
@@ -111,7 +100,6 @@ x            Adding vector graphics to the Web
             Introduction to events
             Assessment: Image gallery
         Introducing JavaScript objects
-            Introducing JavaScript objects overview
             Object basics
             Object-oriented JavaScript for beginners
             Object prototypes
@@ -131,7 +119,6 @@ x            Adding vector graphics to the Web
 
     Accessibility — Make the web usable by everyone
         Accessibility guides
-            Accessibility overview
             What is accessibility?
             HTML: A good basis for accessibility
             CSS and JavaScript accessibility best practices
@@ -143,7 +130,6 @@ x            Adding vector graphics to the Web
 
     Tools and testing
         Cross browser testing
-            Cross browser testing overview
             Introduction to cross browser testing
             Strategies for carrying out testing
             Handling common HTML and CSS problems
@@ -155,13 +141,11 @@ x            Adding vector graphics to the Web
 
     Server-side website programming
         First steps
-            First steps overview
             Introduction to the server-side
             Client-Server overview
             Server-side web frameworks
             Website security
         Django web framework (Python)
-            Django web framework (Python) overview
             Introduction
             Setting up a development environment
             Tutorial: The Local Library website
@@ -178,7 +162,6 @@ x            Adding vector graphics to the Web
             Web application security
             Assessment: DIY mini blog
         Express Web Framework (node.js/JavaScript)
-            Express Web Framework (Node.js/JavaScript) overview
             Express/Node introduction
             Setting up a Node (Express) development environment
             Express tutorial: The Local Library website
