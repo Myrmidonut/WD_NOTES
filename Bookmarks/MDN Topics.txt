@@ -35,8 +35,8 @@ x            Assessment: Structuring planet data
 x            Your first HTML form
 x            How to structure an HTML form
 x            The native form widgets
-            Sending form data
-            Form validation
+x            Sending form data
+x            Form validation
             How to build custom form widgets
             Sending forms through JavaScript
             HTML forms in legacy browsers
@@ -46,13 +46,13 @@ x            The native form widgets
 
     CSS — Styling the Web
         Introduction to CSS
-            How CSS works
-            CSS syntax
-            Selectors introduction
-            Simple selectors
-            Attribute selectors
-            Pseudo-classes and pseudo-elements
-            Combinators and multiple selectors
+x            How CSS works
+x            CSS syntax
+x            Selectors introduction
+x            Simple selectors
+x            Attribute selectors
+x            Pseudo-classes and pseudo-elements
+x            Combinators and multiple selectors
             CSS values and units
             Cascade and inheritance
             The box model

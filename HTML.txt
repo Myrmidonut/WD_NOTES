@@ -231,12 +231,23 @@ TABLES:
   tables can be nested, but not advised regarding accessibility
 -----
 FORMS:
-  <form>...</form>              form, linebreak, at least action and method
-    action="..."                URL to send data to     
-    method="post"               send data
-    method="get"                request data
+  <form>...</form>                    form, linebreak, at least action and method
+    action="..."                      URL to send data to, send to same page without it
+                                      https to http(s): encrypted
+                                      http to http(s): not encrypted, browser warning
+    method="post"                     send data
+      URL/?name1=value1&name2=value2
+      enctype="multipart/for-data"    sending files
+    method="get"                      request data
 
-  set at least action and method  
+    set at least action and method
+
+    display data as plain text and not HTML when sending back to the user
+    careful with SQL requests
+    careful with HTTP headers and emails
+    all data to the sever without exception has to be checked and sanitized
+    limit incoming data, allowonly what is necessary
+    store uploaded files on a different server
 
     <input>                       input box, default is text
       type="text"                 text
@@ -266,12 +277,7 @@ FORMS:
         value="..."               required for meaningful data
         checked                   default
 
-      type="submit"               button, only text as label
-
       placeholder="..."           background writing
-      pattern=".{5,10}"           min and max length of input
-      title="5 to 10"             error code for pattern
-      required                    checks for the correct input
 
       disabled                    no input possible
       autofocus                   input focus on page load
@@ -283,6 +289,7 @@ FORMS:
       type="reset"                resetting all forms, bad practice
       type="button"               custom behavior
     <input type="button">         alternative
+           type="submit"          button, only text as label
 
     <textarea>...</textarea>      text with multiple lines
       rows="10"
@@ -305,6 +312,44 @@ FORMS:
       <fieldset>                  creates a border
         <legend>                  title inside the border
           ...
+-----
+FORMS VALIDATION:
+  display explicit error message
+  permissive input
+  point out the error
+
+  CSS:
+   input:valid                    
+   input:invalid                  
+
+  <input>
+    pattern="..."                 match for input
+      a                           a
+      1                           1
+      .                           any character
+      abc                         abc
+      a*                          a, zero or more times
+      a+                          a, one or more times
+      [^a]                        not a
+      a|b                         a or b
+      [abc]                       a, b or c
+      [^abc]                      not a, b or c
+      [a-z]                       any character from a to z
+      [A-Z]                       any character from A to Z
+      [A-Za-z]                    any character from A to Z and a to z
+      a{5}                        a five times
+      a{5,7}                      a five to seven times
+
+    title="5 to 10"               error code for pattern
+    required                      checks for the correct input
+
+    minlength="..."               minimum length
+    maxlength="..."               maximum length
+    min="..."                     minimum for type="number"
+    max="..."                     maximum for type="number"
+
+  Validate.js                     JavaScript library
+  Validation                      jQuery library
 -----
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text

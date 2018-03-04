@@ -40,13 +40,17 @@ EXTERNAL CSS:
   </head>
 -----
 @-RULES:
-  @import "stlyes2.css";
-  @charset
+  metadata:
+    @import "stlyes2.css";                imports a .css file
+    @charset                                
 
-  @media
-  @document
+  conditional information, nested statements:
+    @media                                only if the device matches the rule
+    @document                             only if the page matches the rule
+    @supports                             only if the browser supports the rule
 
-  @font-face
+  descriptive information:
+    @font-face                              
 -----
 NORMALIZE:
   same layout on all browsers
@@ -61,8 +65,8 @@ SPECIFICITY:
   p {color: blue !important;}             overwrites everything
 -----
 DECLARATION:
-  selector {                              declaration
-    property: value;
+  selector {                              ruleset with declaration block
+    property: value;                      declaration
   }
 -----
 COMMENT:
@@ -70,6 +74,7 @@ COMMENT:
     comment
   */        
 -----
+UNITS:
   10%                                     percentage of parent
   10px                                    absolute
   2.0em                                   2.0 times the size of the parent element
@@ -77,29 +82,48 @@ COMMENT:
   2.0rem                                  2.0 times the size of the root element
 -----
 SELECTORS:
-  .name {}                                class, multiple occurences
-    <... class="name1 name2">
+  simple:
+    element {}                            element
+    * {}                                  whole page, "CSS Reset"
+    .name {}                              class, multiple occurences
+    #name {}                              id, once per page
 
-  #name {}                                id, once per page
-    <... id="name1 name2">
+  multiple:
+    element1, element2 {}                 multiple elements
 
-  * {}                                    star, whole page, "CSS Reset"
+  attribute:
+    [attribute] {}                        attribute
+    [attribute="value"] {}                attribute and value
+    [attribute~="value"] {}               attribute and value out of a list of values
+    [attribute|="value"]                  attribute and value or value-, language codes
+    [attribute^="value"]                  attribute and value starts with value
+    [attribute$="value"]                  attribute and value that ends with value
+    [attribute*="value"]                  attribute and value that contains value
 
-  tag1.class1 {}                          only tag1 with class1
-  tag1, tag2 {}                           multiple selectors
-  tag1 tag2 {}                            child selector, only tag2 inside tag1
-  tag1 > tag2 {}                          child selector, only tag2 inside tag1, only first level deep
-  tag1 + tag2 {}                          adjacent selector, tag2 that comes after tag1
+  pseudo-class:
+    element:keyword {}                    only with a keyword
+      :hover
+      :visited
+      :active
+      :focus
 
-  tag[attribute] {}                       attribute selector, no blanks before []
-  [attribute] {}                          tag not required
-    a[href="..."]
-    input[type="checkbox"]:checked
+      :first-of-type {}                   only the first
+      :nth-of-type(n) {}                  only every n-th in every block
+      :nth-child(2n) {}                   every second one
 
-  tag:first-of-type {}                    only the first
-  tag:nth-of-type(n) {}                   only every n-th in every block
-  tag:nth-child(2n) {}                    every second one
-  tag:first-letter {}                     first letter
+  pseudo-element:
+    ::after {}
+    ::before {}
+    ::first-letter {}                     first letter
+    ::first-line {}                       first line
+    ::selection {}
+    ::backdrop {}
+
+  combinator:
+    element1 element2 {}                  element2 inside element1
+    element1 > element2 {}                element2 inside element1, first level only
+    element1 + element2 {}                element2 that comes directly after element1
+    element1 ~ element2 {}                element2 that comes after element1
 -----
 BOX MODEL:
    _____________________________
