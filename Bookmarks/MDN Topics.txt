@@ -45,7 +45,7 @@ x            Form validation
             Property compatibility table for form widgets
 
     CSS — Styling the Web
-        Introduction to CSS
+x        Introduction to CSS
 x            How CSS works
 x            CSS syntax
 x            Selectors introduction
@@ -53,13 +53,13 @@ x            Simple selectors
 x            Attribute selectors
 x            Pseudo-classes and pseudo-elements
 x            Combinators and multiple selectors
-            CSS values and units
-            Cascade and inheritance
-            The box model
-            Debugging CSS
-            Assessment: Fundamental CSS comprehension
+x            CSS values and units
+x            Cascade and inheritance
+x            The box model
+x            Debugging CSS
+x            Assessment: Fundamental CSS comprehension
         Styling text
-            Fundamental text and font styling
+x            Fundamental text and font styling
             Styling lists
             Styling links
             Web fonts
