@@ -60,10 +60,10 @@ x            Debugging CSS
 x            Assessment: Fundamental CSS comprehension
         Styling text
 x            Fundamental text and font styling
-            Styling lists
-            Styling links
-            Web fonts
-            Assessment: Typesetting a community school homepage
+x            Styling lists
+x            Styling links
+x            Web fonts
+x            Assessment: Typesetting a community school homepage
         Styling boxes
             Box model recap
             Backgrounds

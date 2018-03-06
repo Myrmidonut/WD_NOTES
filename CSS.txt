@@ -39,7 +39,7 @@ EXTERNAL CSS:
     <link rel="stylesheet" type="text/css" href="name.css">
   </head>
 -----
-@-RULES:
+@-RULES:                                  top of the file
   metadata:
     @import "stlyes2.css";                imports a .css file
     @charset                                
@@ -116,6 +116,7 @@ SELECTORS:
 
       :first-of-type {}                   the first element
       :nth-of-type(n) {}                  the n-th element
+      :first-child {}                     the first child
       :nth-child(n) {}                    the n-th child
         odd
         even
@@ -299,9 +300,17 @@ COLORS:
 FONTS:
   max 2 - 3 fonts per page
 
+  web fonts:
+    Google Fonts:
+      <link href="..." rel="stylesheet">
+    
+    local font:
+      @font-face {
+        font-family: "...";
+        src: url("...");
+      }
+
   font-family: "Arial", serif;        font with fallback fonts, serif, sans-serif, monospace
-    Google font link
-    @font-face
 
   color: black;
   font-size: 200%;
@@ -319,14 +328,45 @@ FONTS:
   word-spacing: 10px;                 space between words
 
   text-align: left; center; right;    aligns inside the container
-              justify;                spread out, blocked text   
+              justify;                spread out, blocked text
+-----
+LISTS:
+  ul / ol:
+    list-style-type: upper-roman;     type of bullet: none, square, circle, number, letter
+    list-style-position: inside;      position of bullets: default: outside, inside
+    list-style-image: url(...);       custom image for bullet
+      better use background instead
+    list-style: type image position;  default: disc none outside
+
+  ol:
+    start="..."                       starting number
+    reversed                          reversed counting
+
+  li:
+    value="..."                       specific value
 -----
 LINKS:
-  a:hover {}        
+  a {}                                reset: outline: none; text-decoration: none;
+  a:link {}       
   a:visited {}
-  a:link {}
-  a:active {}                         current website
-  tag:first-letter {}
+  a:focus {}                          selected with tab
+  a:hover {}                          border-bottom instead of underline
+  a:active {}                         while clicked down
+
+  a[href*="http"] {                   using a custom image for external links
+    background: url("...")            path to image
+                no-repeat
+                100%
+                0;
+    background-size: 16px 16px;       size of image
+    padding-right: 19px;              images don't overlap with links
+  }
+
+
+  keep the styling order, theybuild on each other
+  stay close to the default behaviour
+  only underline links
+  make them react to hovered, focused and active
 -----
 MOUSEOVER:
   tag:focus
