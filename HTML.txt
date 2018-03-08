@@ -25,20 +25,21 @@ FILE:
       <script src="..."></script>                   Javascript
     </body>
   </html>
------
+---------------------------------------------------------------------------------------------------
 FOLDERS:
-  project folder
+  /project
     index.html
+    ...
 
-    images folder
+    /images
       ...
 
-    styles folder
+    /styles
       ...
           
-    scripts folder
+    /scripts
       ...
------
+---------------------------------------------------------------------------------------------------
 PLANNING:
   common elements to every page:
     header
@@ -60,12 +61,12 @@ PLANNING:
   list the content
   sort it into groups for different pages
   create a rough sketch of the sitemap
------
+---------------------------------------------------------------------------------------------------
 COMMENTS:
   <!--                      comments, single or multiple lines
     ...
   -->
------
+---------------------------------------------------------------------------------------------------
 ELEMENTS:
   <tag attribute="value">content</tag>  element
 
@@ -76,7 +77,7 @@ ELEMENTS:
                                         <a> <button> <img> <input> <label> <span>    
                           
   <br/>                                 / optional, to show a self closing tag
------
+---------------------------------------------------------------------------------------------------
 CONTAINERS:
   <header>                  global header
   <nav>                     main navigation
@@ -90,7 +91,7 @@ CONTAINERS:
 
   <span>                    container, no linebreak
   <div>                     container, linebreak
------
+---------------------------------------------------------------------------------------------------
 ENTITIES:                   display symbols, etc.
   &lt;                      < 
   &gt;                      >
@@ -100,7 +101,7 @@ ENTITIES:                   display symbols, etc.
   &euro;                    €
   &deg;                     °
   &nbsp;                    blank space, non-breaking space
------
+---------------------------------------------------------------------------------------------------
 FORMATING:
   <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds, SEO
   <br>                      linebreak
@@ -130,15 +131,16 @@ FORMATING:
   <var>...</var>                            variable
   <kbd>...</kbd>                            input
   <samp>...</samp>                          output
------
+---------------------------------------------------------------------------------------------------
 LINKS:
-  <a href="...">...</a>         links, text is clickable, local file or link
-    href="./file.html"          current folder
-    href="folder/file.html"     subfolder
-    href="../file.html"         parent folder
+  <a>...</a>                    link, text is clickable
+    href="..."                  local file or link
+         "./file.html"          current folder
+         "folder/file.html"     subfolder
+         "../file.html"         parent folder
 
-    href="#..."                 leads to an id on the page
-    href="test.html#..."        leads to an id on another page
+         "#..."                 leads to an id on the page
+         "test.html#..."        leads to an id on another page
 
     title="..."                 tooltip, accessibility, SEO
     target="_blank"             opens a new tab
@@ -159,9 +161,10 @@ LINKS:
   use relative URLs when possible, shorter and faster
 
   indicate that a link goes to a PDF, etc.
------
+---------------------------------------------------------------------------------------------------
 IMAGES:
-  <img src="...">                 image, local file or link
+  <img>                           image
+    src="..."                     local file or link
     width="100px"                 scales width to 100 pixels
     height="100px"                scales height to 100 pixels
     align="left"                  left of website
@@ -180,7 +183,7 @@ IMAGES:
   use CSS for background images
   use CSS for changing width and height
   width and height create space even if the image isn't loaded (yet)
------
+---------------------------------------------------------------------------------------------------
 LISTS:
   <ul>...</ul>              unordered list, points
     <li>...</li>            entries
@@ -196,7 +199,7 @@ LISTS:
   <dl>...</dl>              description list
     <dt>...</dt>            headline
       <dd>...</dd>          text
------
+---------------------------------------------------------------------------------------------------
 TABLES:
   <table>...</table>                table, border="1" for testing
     <caption>...<caption>           description at the top, accessibility
@@ -230,7 +233,7 @@ TABLES:
   <td headers="test1 test2">
 
   tables can be nested, but not advised regarding accessibility
------
+---------------------------------------------------------------------------------------------------
 FORMS:
   <form>...</form>                    form, linebreak, at least action and method
     action="..."                      URL to send data to, send to same page without it
@@ -313,7 +316,7 @@ FORMS:
       <fieldset>                  creates a border
         <legend>                  title inside the border
           ...
------
+---------------------------------------------------------------------------------------------------
 FORMS VALIDATION:
   display explicit error message
   permissive input
@@ -351,7 +354,7 @@ FORMS VALIDATION:
 
   Validate.js                     JavaScript library
   Validation                      jQuery library
------
+---------------------------------------------------------------------------------------------------
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text
     width="..."
@@ -366,7 +369,7 @@ IFRAMES:
 
   <embed>                         rarely used, old style
   <object>                        rarely used, old style
------
+---------------------------------------------------------------------------------------------------
 VIDEOS:
   <video src="...">...</video>    embedded video file, ... as fallback content
     width="..."                   width
@@ -390,7 +393,7 @@ VIDEOS:
     <source src="..." type="video/webm">
     <p>No codecs supported.</p>
   </video>
------
+---------------------------------------------------------------------------------------------------
 VIDEO SUBTITLES:
   <audio> or <video
     <source ...>
@@ -401,7 +404,7 @@ VIDEO SUBTITLES:
   </audio> or </video>
 
   Requires a WebVTT (.vtt) file.
------
+---------------------------------------------------------------------------------------------------
 AUDIO:
   <audio src="...">...</audio>    embedded audio file
     controls
@@ -419,7 +422,7 @@ AUDIO:
     <source src="..." type="audio/ogg">
     <p>No codecs supported.</p>
   </audio>
------
+---------------------------------------------------------------------------------------------------
 VECTOR GRAPHICS:
   <svg width="..." height="...">
     <rect width="100% height="100%" fill="green" />
