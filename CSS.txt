@@ -108,27 +108,30 @@ SELECTORS:
     [attribute*="value"]                  attribute and value that contains value
 
   pseudo-class:
-    element:keyword {}                    only with a keyword
-      :hover
-      :visited
-      :active
-      :focus
+    element                            
+      :hover {}                           mouse over
+      :visited {}
+      :active {}
+      :focus {}                           mouse click
 
       :first-of-type {}                   the first element
       :nth-of-type(n) {}                  the n-th element
-      :first-child {}                     the first child
-      :nth-child(n) {}                    the n-th child
-        odd
-        even
+
+    element1 element2 
+      :first-child {}                     the first element2 inside element1
+      :nth-child(n) {}                    the n-th element2 inside element1
+        odd                               equal to 2n
+        even                              equal to 2n-1
         a formula like an+b, with a being the cycle size, n the counter and b the offset
 
   pseudo-element:
-    ::after {}
-    ::before {}
-    ::first-letter {}                     first letter
-    ::first-line {}                       first line
-    ::selection {}
-    ::backdrop {}
+    element
+      ::after {}
+      ::before {}
+      ::first-letter {}                   first letter
+      ::first-line {}                     first line
+      ::selection {}
+      ::backdrop {}
 
   combinator:
     element1 element2 {}                  element2 inside element1
@@ -148,31 +151,45 @@ BOX MODEL:
   }
 -----
 BOX:
-  left: 100px;                                  100px margin on the left side of the object
-  top: 100px;                                   100px margin at the top
+  margin:
+    left: 100px;                                  100px margin on the left side of the object
+    top: 100px;                                   100px margin at the top
 
-  margin: 100px;                                border all around the object
-  margin: 100px 50px;                           top and bottom, left and right
-  margin: 100px 50px 20px 10px                  top, right, bottom, left
-  margin-left: 150px;                           one specific margin
+    margin: 100px;                                border all around the object
+    margin: 100px 50px;                           top and bottom, left and right
+    margin: 100px 50px 20px 10px                  top, right, bottom, left
+    margin-left: 150px;                           one specific margin
 
-  margin: auto;                                 centers the element in its parent element, needs a width
-  margin: 0 auto;                               top/bottom = 0, left/right = auto
+    margin: auto;                                 centers the element in its parent element, needs a width
+    margin: 0 auto;                               top/bottom = 0, left/right = auto
 
-  left/right margins dont overlap, top and bottom margins overlap
+    top/bottom margins overlap, left/right don't
 
-  border: 1px solid black;                      width, style, color
-  border-width: ...
-  border-color: ...
-  border-style: ridge; solid; dotted; dashed;   individual style, top, right, bottom, left
-  border-left-color: ...
+  border:
+    border: 1px solid black;                      width, style, color
+    border-width: ...;
+    border-color: ...;
+    border-style: ridge; solid; dotted; dashed;   individual style, top, right, bottom, left
+    border-left-color: ...;
 
-  border-radius: 50px                           creates a circle: radius = width/2 = 50%
+    border-radius: 50px                           creates a circle: radius = width/2 = 50%
+                   20px / 50px;                   elliptical corners
+                   20px 10px 50px 0;              individual corners
 
-  padding: 5px;                                 area between content and border
-  padding: 1px 2px;                             top and bottom, left and right
-  padding: 1px 2px 3px 4px;                     top, right, bottom, left
-  padding-top: 5px;                         
+  border image:
+    border-image: url("...") 40 round;            shorthand
+    border-image-source: url("...");              image for border
+    border-image-slice: 40;                       image gets cut for corners and sides of the border
+    border-image-repeat: stretch;                 sides are stretched
+                         repeat;                  sides are repeated until filled
+                         round;                   sides are repeated and stretched until filled
+                         space;                   sides are repeated and spaced until filled
+
+  padding:
+    padding: 5px;                               area between content and border
+    padding: 1px 2px;                           top and bottom, left and right
+    padding: 1px 2px 3px 4px;                   top, right, bottom, left
+    padding-top: 5px;                         
 
   overflow:                                     content bigger than box
     auto;                                       hidden with scrollbars
@@ -186,10 +203,11 @@ BOX:
     content-box;                                content
 
   box-sizing:
-    content-box                                 default, box-size = width/height + margin + border + padding
-    border-box                                  box-size = width/height + margin
+    content-box                                 default, box-size = width/height + padding + border
+    border-box                                  box-size = width/height
 
-  outline                                       on top of the box, around the border
+  outline:                                      on top of the box, around the border
+    none;                                       no outline on buttons when clicked
 -----
   img:last-of-type {
     margin-right: 0;
@@ -203,6 +221,11 @@ SIZE:
   height: 100px;                      height of content
   min-height: 100px;
   max-height: 200px;
+
+  resizing image:                     image will shrink if its width is bigger than parents min-width
+    display: block;                   block
+    margin: 0 auto;                   center
+    max-width: 100%                   shrinking
 -----
 POSITION:
   float;                              removes the default element behaviour like new line, margin, etc.
@@ -219,17 +242,23 @@ POSITION:
   z-index: 1; 2;                      overlapping order
 -----
 DISPLAY:
-  display: block;                     takes the full width of the parent, in a new line with linebreak after
-    <h1> <p> <ul>
-  display: inline;                    not full parent-width, but width is disabled, can break into a new line
-    <img> <a>
-  display: inline-block;              not full parent-width, with access to width, in a new line
-  display: none;                      removes the element completely
+  display:
+    block;                            stacking, stays as a block, width/height available
+      <h1> <p> <ul>
+    inline;                           flowing, will break, width/height not available
+      <img> <a>
+    inline-block;                     flowing, stays as a block, width/height available
 
-  display: flex;                      aligns elements horizontally
-    flex-wrap: wrap;                  adds linebreak to flex
-    justify-content: center;          centers flex elements
-  
+    none;                             removes the element completely
+
+    table;                            table layout without using a table
+
+    flex;                             aligns elements evenly
+      flex-wrap: wrap;                adds linebreak to flex
+      justify-content: center;        centers flex elements
+    
+    grid;                             aligns elements in a grid
+
   visibility: hidden; visible;        hides the element, still takes up space
   
   opacity: 0;                         transparancy, 0.0 - 1.0
@@ -276,13 +305,29 @@ GRID ITEMS:
   grid-area: 2 / 3 / 4 / span 5;      row start / column start / row end / column end
 -----
 BACKGROUND:
-  background: black;                  background-color: black;
+  background: color image repeat position;  shorthand
+  background-color: black;            color, default: transparent, set as fallback
+  background-image: url("...");       image, image will be tiled
+  background-repeat: no-repeat;       no tiling
+                     repeat-x;        horizontal tiling
+                     repeat-y;        vertical iling
+  background-position: center;        horizontal position
+                       20px 20px;     horizontal and vertical position
+    px, em, %
+    left, center, right
+    top, center, bottom
+
+  background-size: cover;             stretches to element
+                   16px 16px;         stretches to size
+
   background: linear-gradient(        gradient, from top left to bottom right, from black to white
-    to bottom right, black, white); 
-  background: url("...");             background-image: url("..."); image will be tiled
-  background-repeat: no-repeat;       prevents tiling
-  background-size: cover;             stretches to window
-  background-position: center         
+    to bottom right, black, white);
+    to bottom, black, white 40%, black);  black, to white at 40% height, to black
+
+  background-attachment: scroll;      background scrolls with the page
+                         fixed;       background will not scroll
+                         local;       background scrolls with the element
+  background: ..., ...;               stack backgrounds, top to bottom
 -----
 COLORS:
   color: #FF0000; 
@@ -345,6 +390,24 @@ LISTS:
   li:
     value="..."                       specific value
 -----
+TABLES:
+  table:
+    table-layout: fixed;              columns are width of the headings, recommended
+    width: 100%;                      resize to parent
+    border-collapse: collapse;        no space between cell borders, recommended
+                     seperate;
+    border: ...;                      border around all, recommended
+
+  caption:
+    caption-side: bottom;             moves caption below the table
+
+  keep it simple and flexible
+  fixed table-layout with width on th
+  use collapsed borders
+  style thead, tbody and tfoot seperately
+  zebra striping for rows
+  align th and td
+-----
 LINKS:
   a {}                                reset: outline: none; text-decoration: none;
   a:link {}       
@@ -362,35 +425,41 @@ LINKS:
     padding-right: 19px;              images don't overlap with links
   }
 
-
-  keep the styling order, theybuild on each other
+  keep the styling order, they build on each other
   stay close to the default behaviour
   only underline links
   make them react to hovered, focused and active
------
-MOUSEOVER:
-  tag:focus
-  tag:hover
 -----
 TRANSITION:
   transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
   -webkit-transition: all 0.3s;       required for Safari
   -moz-transition: all 0.3s;          required for Firefox
 -----
-SHADOW:
-  text-shadow: 1px 1px 1px black;               horizontal offset, vertical offset, blur radius, color
-                                                negative values: to the left and top
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),     slight grey shadow
-               0px 8px 13px rgba(0,0,0,0.1),
-               0px 18px 23px rgba(0,0,0,0.1);
+SHADOWS:
+  text:
+    text-shadow: 1px 1px 1px black;                   horizontal offset, vertical offset, blur radius, color
+                                                      negative offset: to the left and top
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),         slight grey shadow
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
 
-  box-shadow: 4px 4px 10px gray;    
+  box:
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+                inset ...;                            shadow inside the box, offsets inverted 
+
+  filter:
+    filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7)); shadow that follows the exact shape
+    not supported in older browsers
 -----
-OUTLINE:
-  outline: none                       removes borders on buttons when clicked
+BLEND:
+  background-blend-mode: multiply;    blend background image with color
+
+  mix-blend-mode: multiply-mix;       blend background and content of elements
 -----
-LISTS:
-  list-style: none:                   removes bulletpoints
-  list-style-type: none               "
-  float: left;                        in one line
-  margin-right: 10px;                 with a space
+CLIP:
+  text + background:                        background takes shape of text
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  not standard CSS
+-----

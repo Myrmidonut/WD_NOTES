@@ -5,8 +5,9 @@ FILE:
     <head>
       <title>...</title>                            Text in browser tab and bookmark
 
+      <link Google Fonts>                           Google Fonts
       <link rel="stylesheet" href="...">            CSS
-      <link Bootstrap>
+      <link Bootstrap>                              Bootstrap
 
       <meta charset="UTF-8">                        character set
 

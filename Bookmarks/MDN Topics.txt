@@ -58,20 +58,20 @@ x            Cascade and inheritance
 x            The box model
 x            Debugging CSS
 x            Assessment: Fundamental CSS comprehension
-        Styling text
+x        Styling text
 x            Fundamental text and font styling
 x            Styling lists
 x            Styling links
 x            Web fonts
 x            Assessment: Typesetting a community school homepage
-        Styling boxes
-            Box model recap
-            Backgrounds
-            Borders
-            Styling tables
-            Advanced box effects
-            Assessment: Creating fancy letterheaded paper
-            Assessment: A cool-looking box
+x        Styling boxes
+x            Box model recap
+x            Backgrounds
+x            Borders
+x            Styling tables
+x            Advanced box effects
+x            Assessment: Creating fancy letterheaded paper
+x            Assessment: A cool-looking box
         CSS layout
             Introduction
             Floats
