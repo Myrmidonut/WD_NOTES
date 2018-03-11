@@ -74,6 +74,12 @@ SELECTORS:
   multiple:
     element1, element2 {}                 multiple elements
 
+  combinator:
+    element1 element2 {}                  element2 inside element1
+    element1 > element2 {}                element2 inside element1, first level only
+    element1 + element2 {}                element2 that comes directly after element1
+    element1 ~ element2 {}                element2 that comes after element1
+
   attribute:
     [attribute] {}                        attribute
     [attribute="value"] {}                attribute and value
@@ -91,6 +97,7 @@ SELECTORS:
       :focus {}                           mouse click
 
       :first-of-type {}                   the first element
+      :last-of-type {}                    the last element
       :nth-of-type(n) {}                  the n-th element
 
     element1 element2 
@@ -108,12 +115,6 @@ SELECTORS:
       ::first-line {}                     first line
       ::selection {}
       ::backdrop {}
-
-  combinator:
-    element1 element2 {}                  element2 inside element1
-    element1 > element2 {}                element2 inside element1, first level only
-    element1 + element2 {}                element2 that comes directly after element1
-    element1 ~ element2 {}                element2 that comes after element1
 ---------------------------------------------------------------------------------------------------
 BOX MODEL:
    _____________________________
@@ -139,6 +140,7 @@ BOX:
     margin: auto;                                 centers the element in its parent element, needs a width
     margin: 0 auto;                               top/bottom = 0, left/right = auto
 
+  margin collapsing:
     top/bottom margins overlap, left/right don't
 
   border:
@@ -184,10 +186,6 @@ BOX:
 
   outline:                                      on top of the box, around the border
     none;                                       no outline on buttons when clicked
----------------------------------------------------------------------------------------------------
-  img:last-of-type {
-    margin-right: 0;
-  }
 ---------------------------------------------------------------------------------------------------
 SIZE:
   width: 50%; 100px;                  width of content
@@ -329,7 +327,7 @@ LINKS:
   only underline links
   make them react to hovered, focused and active
 ---------------------------------------------------------------------------------------------------
-TRANSITION:
+TRANSITIONS:
   transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
   -webkit-transition: all 0.3s;       required for Safari
   -moz-transition: all 0.3s;          required for Firefox
@@ -362,26 +360,27 @@ CLIP:
 
   not standard CSS
 ---------------------------------------------------------------------------------------------------
-POSITION:
-  float;                              removes the default element behaviour like new line, margin, etc.
-  float: left; right;                 moves the element to this side, requires width
-  
-  clear: left; right; both; none;     this side of an element will not touch another element
-  
-  position: relative;                 move position, negative numbers possible
-    top: 10px;                        adjust position after setting relative
-  position: absolute;                 other elements will ignore this position
-  position: fixed;                    always stays fixed on the screen when scrolling
-  position: static;                   default
-  
-  z-index: 1; 2;                      overlapping order
----------------------------------------------------------------------------------------------------
 DISPLAY:
   display:
     block;                            stacking, stays as a block, width/height available
-      <h1> <p> <ul>
+      <div>                           width of parent
+      <hr>                            height of content
+      <ol>                            in new line
+      <ul>
+      <li>
+      <p>
+      <table>
+      <form>
+      <h1>
+
     inline;                           flowing, will break, width/height not available
-      <img> <a>
+      <a>                             width of content
+      <button>                        height of content
+      <img>                           on same line
+      <input>
+      <label>
+      <span> 
+
     inline-block;                     flowing, stays as a block, width/height available
 
     none;                             removes the element completely
@@ -461,26 +460,85 @@ FLEX:
 
 
 
------
+---------------------------------------------------------------------------------------------------
+FLOAT:
+  float:          element on one side of its parent, next ones will wrap around it
+    left;         left side of parent
+    right;        right side of parent
+    none;         default
+    inherit;      same as parent
+
+  clear:          stop an active float
+    left;         left side
+    right;        right side
+    both;         both sides, recommended
+
+  parent element requires a width
+  careful with float order
+  clear floats
+---------------------------------------------------------------------------------------------------
+POSITION:
+  position:
+    static;                 default
+
+    relative;               elements is moved relative to its normal position
+                            original space stays open
+
+    absolute;               element is moved relative to the context
+                            original space is removed
+
+      positioning context:
+        html                default
+        parent              with position: relative;
+
+    fixed;                  element is moved relative to the viewport
+                            original space is removed
+
+    sticky;                 relative/fixed hybrid, experimental
+
+  move the element away from this side:
+    top: ...;
+    bottom: ...;
+    left: ...;
+    right: ...;
+
+  z-index:                  overlapping order
+    auto; 0;                default, descending in source order
+    1; -1;                  higher numbers on top
+---------------------------------------------------------------------------------------------------
+CSS TABLES:
+  lay out elements as if they are inside a table
+
+  form
+    display: table;
+  form div
+    display: table-row;
+  form label, form input
+    display: table-cell;
+  form p
+    display: table-caption;
+    caption-side: bottom;
+---------------------------------------------------------------------------------------------------
+Display
 
 
 
 
-Float
+
+
+---------------------------------------------------------------------------------------------------
+FLEXBOX:
+  container
+    display: flex;      children height stretches to parents height
+                        children in one row
+
+  children
+    flex: 1;            children have equal space in a row
 
 
 
-
-
-Position
-
-
+---------------------------------------------------------------------------------------------------
+GRID:
 
 
 
-Flexbox
-
-
-
-
-Grid

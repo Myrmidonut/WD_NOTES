@@ -68,13 +68,28 @@ COMMENTS:
   -->
 ---------------------------------------------------------------------------------------------------
 ELEMENTS:
-  <tag attribute="value">content</tag>  element
+  <element attribute="value">           element
+    content
+  </element>
 
-  block elements                        in new line, linebreak at the end
-                                        <div> <hr> <ol> <ul> <li> <p> <table> <form> <h1>
+  block elements:                       in new line, linebreak, width of parent, height of content
+    <div>
+    <hr>
+    <ol>
+    <ul>
+    <li>
+    <p>
+    <table>
+    <form>
+    <h1>
 
-  inline elements                       no linebreaks
-                                        <a> <button> <img> <input> <label> <span>    
+  inline elements:                      no linebreak, width of content, height of content
+    <a>
+    <button>
+    <img>
+    <input>
+    <label>
+    <span>    
                           
   <br/>                                 / optional, to show a self closing tag
 ---------------------------------------------------------------------------------------------------
@@ -82,9 +97,9 @@ CONTAINERS:
   <header>                  global header
   <nav>                     main navigation
   <main>                    once per page
-    <article>               blocks that group more information
+    <section>               block that groups more information
       <header>              introduction
-      <section>             blocks that group less information
+      <article>             block that groups less information
         <header>            introduction
   <aside>                   information indirectly related to main, can be inside main
   <footer>                  end content
@@ -169,7 +184,7 @@ IMAGES:
     height="100px"                scales height to 100 pixels
     align="left"                  left of website
     align="right"                 right of website
-    <p></p>                       text under image
+    <p>...</p>                    text under image
     alt="..."                     description of the image, don't repeat text, accessibility, SEO
     alt=""                        for decorative images
     title="..."                   tooltip, further information, actual article text prefered
@@ -185,20 +200,24 @@ IMAGES:
   width and height create space even if the image isn't loaded (yet)
 ---------------------------------------------------------------------------------------------------
 LISTS:
-  <ul>...</ul>              unordered list, points
-    <li>...</li>            entries
+  unordered:
+    <ul>...</ul>            points
+      <li>...</li>          entries
 
-  <ol>...</ol>              ordered list, numbers
-    <li>...</li>            entries
+  ordered:
+    <ol>...</ol>            numbers
+      <li>...</li>          entries
 
-  <ol start="10">           starts at 10
-  <ol reversed>             reversed list
-  <ol type="1">             symbols: 1, a, A, i, I
-                            lists can be inside another list
+      start="10"            starts at 10
+      reversed              reversed list
+      type="1"              symbols: 1, a, A, i, I
 
-  <dl>...</dl>              description list
-    <dt>...</dt>            headline
-      <dd>...</dd>          text
+  description:
+    <dl>...</dl>              description list
+      <dt>...</dt>            headline
+        <dd>...</dd>          text
+
+  lists can be nested
 ---------------------------------------------------------------------------------------------------
 TABLES:
   <table>...</table>                table, border="1" for testing
@@ -282,7 +301,6 @@ FORMS:
         checked                   default
 
       placeholder="..."           background writing
-
       disabled                    no input possible
       autofocus                   input focus on page load
       name="..."                  name for the data that will be send, shows up in URL as name=value

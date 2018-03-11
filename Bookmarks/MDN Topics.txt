@@ -73,10 +73,10 @@ x            Advanced box effects
 x            Assessment: Creating fancy letterheaded paper
 x            Assessment: A cool-looking box
         CSS layout
-            Introduction
-            Floats
-            Positioning
-            Practical positioning examples
+x            Introduction
+x            Floats
+x            Positioning
+x            Practical positioning examples
             Flexbox
             Grids
 
