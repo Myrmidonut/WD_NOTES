@@ -20,13 +20,13 @@ x            Document and website structure
 x            Debugging HTML
 x            Assessment: Marking up a letter
 x            Assessment: Structuring a page of content
-        Multimedia and embedding
+x        Multimedia and embedding
 x            Images in HTML
 x            Video and audio content
 x            From object to iframe — other embedding technologies
 x            Adding vector graphics to the Web
-            Responsive images
-            Assessment: Mozilla splash page
+x            Responsive images
+x            Assessment: Mozilla splash page
 x        HTML tables
 x            HTML table basics
 x            HTML Table advanced features and accessibility
@@ -77,12 +77,12 @@ x            Introduction
 x            Floats
 x            Positioning
 x            Practical positioning examples
-            Flexbox
+x            Flexbox
             Grids
 
     JavaScript — Dynamic client-side scripting
         JavaScript first steps
-            What is JavaScript?
+x            What is JavaScript?
             A first splash into JavaScript
             What went wrong? Troubleshooting JavaScript
             Storing the information you need — Variables
@@ -116,6 +116,43 @@ x            Practical positioning examples
             Drawing graphics
             Video and audio APIs
             Client-side storage
+
+    Tutorials
+        Complete beginners
+            JavaScript basics
+            JavaScript first steps
+            JavaScript building blocks
+            Introducing JavaScript objects           
+        JavaScript Guide
+            Introduction
+            Grammar and types
+            Control flow and error handling
+            Loops and iteration
+            Functions
+            Expressions and operators
+            Numbers and dates
+            Text formatting
+            Regular expressions
+            Indexed collections
+            Keyed collections
+            Working with objects
+            Details of the object model
+            Iterators and generators
+            Meta programming
+        Intermediate
+            Introducing JavaScript objects
+            Client-side web APIs
+            A re-introduction to JavaScript
+            JavaScript data structures
+            Equality comparisons and sameness
+            Closures
+        Advanced
+            Inheritance and the prototype chain
+            Strict mode
+            JavaScript typed arrays
+            SIMD types
+            Memory Management
+            Concurrency model and Event Loop
 
     Accessibility — Make the web usable by everyone
         Accessibility guides

@@ -1,0 +1,121 @@
+HTML / CSS
+    Semantic HTML
+    CSS Box Model
+    CSS preprocessors
+    CSS Media Queries
+    Bootstrap
+
+JavaScript
+    DOM
+    JSON
+
+    language features
+        functional composition
+        prototypal inheritance
+        closures
+        event delegation
+        scope
+        higher-order functions
+
+    asynchronous control flow
+    promises
+    callbacks
+
+    code structure
+    modularize
+    webpack
+    browserify
+    gulp
+
+    one popular framework
+
+    jQuery
+
+    testing frameworks
+
+    (ES6 features)
+
+Back-End language
+    Node.js
+    Express
+
+    Ruby
+    Ruby on Rails
+    Sinatra
+
+    Python
+    Django
+    Flask
+
+    (Java)
+
+    (PHP)
+
+Databases and Web Storage
+    relational data
+    SQL
+
+    NoSQL
+    MongoDB
+
+    chosing the right one
+
+    connecting database and back-end
+
+    in-memory data stores
+    Redis
+    memchached
+
+    web storage
+    sessions
+    cookies
+    cached data
+
+    (scaling databases)
+    (ACID)
+    (ORM)
+
+HTTP and REST
+    REST
+    best practices for designing RESTful API
+    POST/GET
+    Chrome DevTools
+    SSL certificates
+    HTTP/2 and SPDY
+    WebSockets
+    (web Workers)
+    (Service Workers)
+
+Web Appication Architecture
+    platforms as a service
+    Heroku
+    AWS
+
+    performance optimization
+
+    web application architecture
+
+    designing web applications
+
+    MVC
+
+Git
+
+Basic Algorithms and Data Structures
+    improving algorithms and data structure skills
+
+    hash tables
+
+    trees
+    graphs
+
+    Big-O analysis
+
+    object vs array
+
+    caching
+    memory vs disk storaga
+
+    queues vs stacks
+
+-------------------

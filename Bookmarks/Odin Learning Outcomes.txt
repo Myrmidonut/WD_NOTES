@@ -133,3 +133,23 @@ Web Development 101
             How do you insert a record in SQL?
             What is a primary key?
             What is a foreign key?
+
+
+
+Ruby Programming
+
+
+Ruby on Rails
+
+
+
+HTML5 and CSS3
+
+
+
+JavaScript
+
+
+
+
+Getting Hired

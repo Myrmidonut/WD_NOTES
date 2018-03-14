@@ -454,3 +454,69 @@ VECTOR GRAPHICS:
 
   raster images: Bitmap, PNG, JPEG, GIF
   vector images: SVG
+---------------------------------------------------------------------------------------------------
+RESPONSIVENESS:
+  resolution switching          smaller image sizes for smaller screens
+  art direction                 cropped image for smaller screens
+
+  viewport = hardware resolution / device pixel ratio
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   get the real viewport width
+
+  use relative sizes instead of absolute sizes
+
+  buttons:
+    48px size between buttons for mobile access
+    min-width: 48px;
+    min-height: 48px;
+
+---------------------------------------------------------------------------------------------------
+RESPONSIVENESS WITH RESOLUTION SWITCHING:
+  <img>
+    srcset="... ...w"     set of images with sizes in w
+    sizes="... ...px"     media condition and default with width
+    src="..."             older browsers
+
+  check max-width
+  load image closest to size
+
+  <img>
+    srcset="... ...x"     set of images with pixelratio in x
+    src="..."             older browsers
+
+  check device pixel ratio
+  load image
+
+  example 1:
+    <img srcset="...320w.jpg 320w,
+                 ...480w.jpg 480w,
+                 ...800w.jpg 800w"
+         sizes="(max-width: 320px) 280px,
+                (max-width: 480px) 440px,
+                990px"
+         src="...800w.jpg" alt="...">
+
+  example 2:
+    <img srcset="...320w.jpg,
+                 ...480w.jpg 1.5x,
+                 ...640w.jpg 2x"
+         src="...640w.jpg" alt="...">
+---------------------------------------------------------------------------------------------------
+RESPONSIVENESS WITH ART DIRECTION:
+  <picture>...</picture>
+    <source media="(max-width: ...px)"    media condition
+            srcset="...">                 image
+    <source media="(min-width: ...px)"    media condition
+            srcset="...">                 image
+    <img src="..." alt="...">             older browsers
+
+  check width
+  display first result
+
+  example:
+    <picture>
+      <source media="(max-width: 799px)" srcset="...480w.jpg">
+      <source media="(min-width: 800px") srcset="...800w.jpg">
+      <img src="...800w.jpg" alt="...">
+    </picture>

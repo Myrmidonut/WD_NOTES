@@ -20,26 +20,26 @@ FILES:
 
   multiple <script></sript> possible
 
-  also possible inside <head></head> but it will be loaded before the HTML, better at the bottom
------
+  also possible inside <head> but it will be loaded before the HTML, better at the end of <body>
+---------------------------------------------------------------------------------------------------
 STRICT MODE
   enables modern features
   classes and modules automatically enable strict
   no turning back
 
   "use strict";                         at the top of the page to enable it
------
+---------------------------------------------------------------------------------------------------
 EVENT BUBBLING:
   events inside multiple layers can trigger multiple times on different tags
   $("span").click(function(event){
     ...
     event.stopPropagation();
   });
------
+---------------------------------------------------------------------------------------------------
 COMMENTS:
   // ...                                one line comment
   /* ... */                             multi-line comment
------
+---------------------------------------------------------------------------------------------------
 CONSOLE:
   console.log(...);                     outputs into the console
   \"                                    printed as "
@@ -48,10 +48,11 @@ CONSOLE:
   console.log("...");                   outputs to the console
   prompt("...");                        shows a window with a message and input
     var user = prompt("User");
------
+---------------------------------------------------------------------------------------------------
 OPERATORS:
   unary - binary
   operand - operator
+
   Arithmetic:
     +
     -
@@ -61,6 +62,7 @@ OPERATORS:
     --
     %
     **                                  exponent
+
   Assignment:
     =
     +=                                  x = x + y
@@ -68,37 +70,35 @@ OPERATORS:
     *=
     /=
     %=
------
+---------------------------------------------------------------------------------------------------
 COMPARISON:
   returns true or false
   
   only null == only undefined
 
-  >
-  <
-  >=
-  <=
-  ==
-  ===
+  >                                     greater than
+  <                                     less than
+  >=                                    greater or equal
+  <=                                    less or equal
+  ===                                   strict/identity equal, with type
+  ==                                    equal
+  !==                                   strict/identity not equal, with type
+  !=                                    not equal
 
-  Comparing strings:
+  comparing strings:
     letter by letter
     a > A
     Z > A
     breaks on greater letter, or longer string
------
+---------------------------------------------------------------------------------------------------
 LOGIC:
   &&                                    and
   ||                                    or
   !                                     not
-  ===                                   equal, datatype and value, always prefered
-    ==                                  equal, ignoring type, 1 == "1"
-  !==                                   not equal, datatype and value, always prefered
-    !=                                  not equal, ignoring type
 
   x = a || b || c;                      return first true or last value
   x = a && b && c;                      return first false or last value
------
+---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
     ++
@@ -111,7 +111,7 @@ PRECEDENCE:
           -
             &&
               ||
------
+---------------------------------------------------------------------------------------------------
 DATA TYPES:
   number                                integer or float, 4  9.3  -10
     Infinity                            infinity, 1 / 0
@@ -128,7 +128,7 @@ DATA TYPES:
   typeof(...)                           see above
 
   if (typeof name == "undefined") {}    checks if the variable called name exists
------
+---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
   String(...)
 
@@ -147,7 +147,7 @@ TYPE CONVERSION:
     null
     undefined
     NaN
------
+---------------------------------------------------------------------------------------------------
 VARIABLES:
   let name;                             new style
 
@@ -163,14 +163,14 @@ VARIABLES:
   const NAME = ...                      constant, value is known, best practice
 
   Number(...);                          converts to a number
------
+---------------------------------------------------------------------------------------------------
 SCOPE:
   var ...                               exists in the function or global
   let ...                               exists in the block, { }
   const ...                             exists in the block, { }
 
   var are declared at the start of a block, but assignment happens at its position, even for var name = 1;
------
+---------------------------------------------------------------------------------------------------
 NAMING CONVENTION:
   lowerUpperUpper
   can contain
@@ -179,7 +179,7 @@ NAMING CONVENTION:
     letters
     numbers
   cannot start with a number
------
+---------------------------------------------------------------------------------------------------
 NUMBERS:
   let x = 1;                            integer
   let x = 1.1;                          floating point
@@ -188,7 +188,7 @@ NUMBERS:
   7 / 0 == Infinity
   null + 1 == 1
   undefined + 1 == NaN
------
+---------------------------------------------------------------------------------------------------
 STRINGS:
   myString = "...";
   myString = '...';
@@ -217,7 +217,7 @@ STRINGS:
   " -9\n" - 5 == -14
 
   strings are immutable, it is not possible to change individual letters
------
+---------------------------------------------------------------------------------------------------
 STRING METHODS:
   myString
     .length                             length of string
@@ -242,7 +242,7 @@ STRING METHODS:
     .toUpperCase()                      converts to uppercase
     .toLowerCase()                      converts to lowercase
     .concat("...", text2)               adds string
------
+---------------------------------------------------------------------------------------------------
 BOOLEAN:
   false:
     false
@@ -257,7 +257,7 @@ BOOLEAN:
 
   true + false == 1
   let isGreater = 4 > 1;                isGreater == true
------
+---------------------------------------------------------------------------------------------------
 ARRAYS:                                 ordered list of data
   var myArray = [];                     create an empty array
     var myArray = new Array();          creates an empty array, slower
@@ -275,7 +275,7 @@ ARRAYS:                                 ordered list of data
     return x.constructor.toString().indexOf("Array") > -1;
   }
   ... instanceof Array                                      returns true for arrays
------
+---------------------------------------------------------------------------------------------------
 ARRAY METHODS:    
   myArray
     .length                             number of entries
@@ -305,7 +305,7 @@ ARRAY METHODS:
   myArray.forEach(function(name) {      looping over the entries in an array
     ...                                 and runs the function for the entries
   } );                                  passed in via the variable "name"
------
+---------------------------------------------------------------------------------------------------
 OBJECTS:
   var name = {};                        creating an object        
   var person = {name: "Jim", age: 21};
@@ -332,7 +332,7 @@ OBJECTS:
       hasWatched: false
     }
   ];
------
+---------------------------------------------------------------------------------------------------
 IF:
   if (condition) {                            if statement
     ...
@@ -343,7 +343,7 @@ IF:
   }
 
   if(0) {...}                                 check for boolen type conversion
------
+---------------------------------------------------------------------------------------------------
 SWITCH:
   switch (expression) {                       switch statement
     case choice1:
@@ -357,30 +357,30 @@ SWITCH:
     default:                                  optional
       ...
   }
------
+---------------------------------------------------------------------------------------------------
 TERNARY:
   (condition) ? statement1 : statement2;      ternary
 
   if true run statement1, else run statement2
   can be nested in statements
------
+---------------------------------------------------------------------------------------------------
 FOR:
   for (init; end; increment) {                for loop
     ...
   }
------
+---------------------------------------------------------------------------------------------------
 WHILE:
   while (condition) {                         while loop
     ...
     increment;
   }
------
+---------------------------------------------------------------------------------------------------
 DO WHILE:
   do {                                        do while loop, always run at least once
     ...
     increment;
   } while (condition)
------
+---------------------------------------------------------------------------------------------------
 BREAK CONTINUE LABEL:
   if (condition) {                            break, leave whole loop
     break;
@@ -397,7 +397,7 @@ BREAK CONTINUE LABEL:
       }
     }
   }
------
+---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   function name(arg1, arg2) {                 creating the function
     ... 
@@ -416,7 +416,7 @@ FUNCTIONS:
   }
 
   variables inside a function are only availabe in the function, scope!
------
+---------------------------------------------------------------------------------------------------
 METHODS:
   a function inside an object
 
@@ -424,10 +424,10 @@ METHODS:
     ...
   }
   obj.func();                         calling the method
------
+---------------------------------------------------------------------------------------------------
 THIS:
   this;                               refers to the object in which the method is defined
------
+---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
   Math.floor(...)                     removes the decimals
   Math.random()                       random number between 0 and 1, e.g. 0.123, but not 1

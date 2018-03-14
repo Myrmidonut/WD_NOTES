@@ -1,4 +1,3 @@
----------------------------------------------------------------------------------------------------
 STYLE:
   inline:
     <body>
@@ -70,6 +69,8 @@ SELECTORS:
     * {}                                  whole page, "CSS Reset"
     .name {}                              class, multiple occurences
     #name {}                              id, once per page
+
+    .name1.name2 {}                       has both classes
 
   multiple:
     element1, element2 {}                 multiple elements
@@ -388,14 +389,141 @@ DISPLAY:
     table;                            table layout without using a table
 
     flex;                             aligns elements evenly
-      flex-wrap: wrap;                adds linebreak to flex
-      justify-content: center;        centers flex elements
     
     grid;                             aligns elements in a grid
 
   visibility: hidden; visible;        hides the element, still takes up space
   
   opacity: 0;                         transparancy, 0.0 - 1.0
+---------------------------------------------------------------------------------------------------
+FLOAT:
+  float:          element on one side of its parent, next ones will wrap around it
+    left;         left side of parent
+    right;        right side of parent
+    none;         default
+    inherit;      same as parent
+
+  clear:          stop an active float
+    left;         left side
+    right;        right side
+    both;         both sides, recommended
+
+  parent element requires a width
+  careful with float order
+  clear floats
+---------------------------------------------------------------------------------------------------
+POSITION:
+  position:
+    static;                 default
+    relative;               elements is moved relative to its normal position
+                            original space stays open
+    absolute;               element is moved relative to the context
+                            original space is removed
+      positioning context:
+        html                default
+        parent              with position: relative;
+    fixed;                  element is moved relative to the viewport
+                            original space is removed
+    sticky;                 relative/fixed hybrid, experimental
+
+  move the element away from this side:
+    top: ...;
+    bottom: ...;
+    left: ...;
+    right: ...;
+
+  z-index:                  overlapping order
+    auto; 0;                default, descending in source order
+    1; -1;                  higher numbers on top
+---------------------------------------------------------------------------------------------------
+CSS TABLES:
+  lay out elements as if they are inside a table
+
+  form
+    display: table;
+  form div
+    display: table-row;
+  form label, form input
+    display: table-cell;
+  form p
+    display: table-caption;
+    caption-side: bottom;
+---------------------------------------------------------------------------------------------------
+FLEXBOX:
+  flex container:                 horizontal main axis
+    display:
+      flex;                       enable flexbox
+      inline-flex;                for inline elements
+
+    flex-flow: direction wrap;    shorthand
+    flex-direction:               main axis direction
+      row;                        default, horizontal
+      row-reverse;                horizontal reversed      
+      column;                     vertical
+      column-reverse;             vertical reversed
+    flex-wrap:                    flex items behaviour
+      wrap;                       flow into new line
+
+    align-items:                  position of items on cross-axis
+      stretch;                    default, stretched to container height or longest item
+      center;                     centered on cross axis
+      flex-start;                 start of cross axis
+      flex-end;                   end of cross axis
+      start;
+      end;
+
+    justify-content:              position of items on main axis
+      flex-start;                 default, start
+      flex-end;                   end
+      start;
+      end;
+      center;                     center
+      space-around;               even distribution with extra space
+      space-between;              even distribution
+
+  flex item:                      vertical cross axis
+    flex: grow shrink basis;      shorthand, prefered
+    flex-grow: ...;               amount of slots an item occupies, unitless
+    flex-shrink: ...;             overflowing behaviour, unitless
+    flex-basis: ...;              width of an item
+                auto;             uses set width
+
+    align-self:                   position of item on cross-axis
+      stretch;
+      center;
+      start;
+      end;
+
+    order:                        order of items
+      0;                          default
+      -1; 1;
+---------------------------------------------------------------------------------------------------
+GRID:
+  colums, rows, gutter between
+
+  use percentages
+
+  px to % conversion:
+  column width px / total width px = column width %
+  gutter width px / total width px = gutter width %
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALT:
+
+
 ---------------------------------------------------------------------------------------------------
 CENTERING:
   text-align: center;                 text
@@ -406,6 +534,12 @@ CENTERING:
   margin: auto;                       div, block element
   width: 50%;
 ---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 GRID CONTAINER:
   takes up whole parent-width without a set width
   
@@ -456,89 +590,3 @@ FLEX:
         justify-content: center;
         align-items: center;
     }
-
-
-
-
----------------------------------------------------------------------------------------------------
-FLOAT:
-  float:          element on one side of its parent, next ones will wrap around it
-    left;         left side of parent
-    right;        right side of parent
-    none;         default
-    inherit;      same as parent
-
-  clear:          stop an active float
-    left;         left side
-    right;        right side
-    both;         both sides, recommended
-
-  parent element requires a width
-  careful with float order
-  clear floats
----------------------------------------------------------------------------------------------------
-POSITION:
-  position:
-    static;                 default
-
-    relative;               elements is moved relative to its normal position
-                            original space stays open
-
-    absolute;               element is moved relative to the context
-                            original space is removed
-
-      positioning context:
-        html                default
-        parent              with position: relative;
-
-    fixed;                  element is moved relative to the viewport
-                            original space is removed
-
-    sticky;                 relative/fixed hybrid, experimental
-
-  move the element away from this side:
-    top: ...;
-    bottom: ...;
-    left: ...;
-    right: ...;
-
-  z-index:                  overlapping order
-    auto; 0;                default, descending in source order
-    1; -1;                  higher numbers on top
----------------------------------------------------------------------------------------------------
-CSS TABLES:
-  lay out elements as if they are inside a table
-
-  form
-    display: table;
-  form div
-    display: table-row;
-  form label, form input
-    display: table-cell;
-  form p
-    display: table-caption;
-    caption-side: bottom;
----------------------------------------------------------------------------------------------------
-Display
-
-
-
-
-
-
----------------------------------------------------------------------------------------------------
-FLEXBOX:
-  container
-    display: flex;      children height stretches to parents height
-                        children in one row
-
-  children
-    flex: 1;            children have equal space in a row
-
-
-
----------------------------------------------------------------------------------------------------
-GRID:
-
-
-
