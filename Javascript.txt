@@ -51,14 +51,14 @@ CONSOLE:
 ---------------------------------------------------------------------------------------------------
 OPERATORS:
   unary - binary
-  operand - operator
+  operand (number)
 
   Arithmetic:
     +
     -
     *
     /
-    ++                                  prefix: ++i (first increment, then used), postfix: i++
+    ++                                  prefix: ++i (first increment, then return), postfix: i++
     --
     %
     **                                  exponent
@@ -92,8 +92,8 @@ COMPARISON:
     breaks on greater letter, or longer string
 ---------------------------------------------------------------------------------------------------
 LOGIC:
-  &&                                    and
-  ||                                    or
+  &&                                    and, true if both true
+  ||                                    or, true if at least one is true
   !                                     not
 
   x = a || b || c;                      return first true or last value
@@ -111,6 +111,38 @@ PRECEDENCE:
           -
             &&
               ||
+---------------------------------------------------------------------------------------------------
+VARIABLES:
+  let name;                             new style
+
+  var name;                             undefined
+  var name = "test";                    string
+  var name = 1;                         number
+  var name = true;                      boolean
+  var name1 = "test",
+      name2 = 1;
+  var name = null;                      undefined
+
+  const name                            constant
+  const NAME = ...                      constant, value is known, best practice
+
+  hoisting:
+    declaration is at the start of the block
+    assignment is at the position in the code
+---------------------------------------------------------------------------------------------------
+SCOPE:
+  var ...                               exists in the function or global
+  let ...                               exists in the block, { }
+  const ...                             exists in the block, { }
+---------------------------------------------------------------------------------------------------
+NAMING CONVENTION:
+  lowerUpperUpper
+  can contain
+    $
+    _
+    letters
+    numbers
+  cannot start with a number
 ---------------------------------------------------------------------------------------------------
 DATA TYPES:
   number                                integer or float, 4  9.3  -10
@@ -131,6 +163,7 @@ DATA TYPES:
 ---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
   String(...)
+  .toString()
 
   Number(...)
     undefined  -> NaN
@@ -148,38 +181,6 @@ TYPE CONVERSION:
     undefined
     NaN
 ---------------------------------------------------------------------------------------------------
-VARIABLES:
-  let name;                             new style
-
-  var name;                             undefined
-  var name = "test";                    string
-  var name = 1;                         number
-  var name = true;                      boolean
-  var name1 = "test",
-      name2 = 1;
-  var name = null;                      undefined
-
-  const name                            constant
-  const NAME = ...                      constant, value is known, best practice
-
-  Number(...);                          converts to a number
----------------------------------------------------------------------------------------------------
-SCOPE:
-  var ...                               exists in the function or global
-  let ...                               exists in the block, { }
-  const ...                             exists in the block, { }
-
-  var are declared at the start of a block, but assignment happens at its position, even for var name = 1;
----------------------------------------------------------------------------------------------------
-NAMING CONVENTION:
-  lowerUpperUpper
-  can contain
-    $
-    _
-    letters
-    numbers
-  cannot start with a number
----------------------------------------------------------------------------------------------------
 NUMBERS:
   let x = 1;                            integer
   let x = 1.1;                          floating point
@@ -190,7 +191,7 @@ NUMBERS:
   undefined + 1 == NaN
 ---------------------------------------------------------------------------------------------------
 STRINGS:
-  myString = "...";
+  myString = "...";                     string literal
   myString = '...';
   myString = `...`;                     allows embedding of variables and expressions into a string
     `... ${...} ...`
@@ -218,31 +219,6 @@ STRINGS:
 
   strings are immutable, it is not possible to change individual letters
 ---------------------------------------------------------------------------------------------------
-STRING METHODS:
-  myString
-    .length                             length of string
-    .indexOf("...")                     returns first position of ... in a string, -1 if not
-      .indexOf("...",15)                includes starting position
-    .lastIndexOf("...")                 returns last position of ... in a string, -1 if not
-      .lastIndexOf("...",15)            includes starting position
-    .search("...")                      similar to indexOf, no second argument, with regular expressions
-    .charAt(5)                          returns the character at index 5
-    .charCodeAt(5)                      returns the unicode character at index 5
-    .slice(4)                           returns string starting at index 4
-      .slice(4, 8)                      returns string starting at index 4 until 8-1
-      .slice(-4)                        counts from the end of a string
-      .slice(-4, -8)                    counts from the end of a string
-    .substring(4)                       same as .slice but no negative indixes
-    .substr(4)                          returns string starting at index 4
-      .substr(4, 3)                     returns string starting at index 4 with length 3
-      .substr(-4, 3)                    counts from the end of a string
-    .replace("text1", "text2")          replaces the first text1 with text2
-      .replace(/text1/g , "text2")      replaces all text1 with text2
-      .replace(/text1/i , "text2")      replaces all text1 with text2, case insensetive
-    .toUpperCase()                      converts to uppercase
-    .toLowerCase()                      converts to lowercase
-    .concat("...", text2)               adds string
----------------------------------------------------------------------------------------------------
 BOOLEAN:
   false:
     false
@@ -260,10 +236,11 @@ BOOLEAN:
 ---------------------------------------------------------------------------------------------------
 ARRAYS:                                 ordered list of data
   var myArray = [];                     create an empty array
-    var myArray = new Array();          creates an empty array, slower
-  var myArray = [1, 2, "three"];        creates an array
+  var myArray = [1, "two", [3, 4]];     create an array
+  var myArray = new Array();            create an empty array, slower
 
   myArray[0] = ...;                     modify element at index 0
+
   myArray[3][4]                         nested array
   myArray[[1, 2], [3, 4]]               nested array
 
@@ -276,40 +253,11 @@ ARRAYS:                                 ordered list of data
   }
   ... instanceof Array                                      returns true for arrays
 ---------------------------------------------------------------------------------------------------
-ARRAY METHODS:    
-  myArray
-    .length                             number of entries
-    .sort()                             sort an array from lowest to highest value
-    .toString()                         converts to a string with comma seperation
-    .join("...")                        converts to a string with given seperation
-    .push(...)                          adds an entry to the end, 
-      x = myArray.push("...");          x == new length
-    .pop()                              removes the last entry
-      x = myArray.pop();                x == removed entry
-    .shift()                            removes the first entry
-      x = myArray.shift();              x == removed entry
-    .unshift(...)                       adds an entry to the beginning
-      x = myArray.unshift("...");       x == new length
-    .splice(4, 2)                       removes 2 entries from index 4 on
-    .splice(2, 0, "...", "...")         removes 0 entries from index 2 on and add two entries
-    .concat(...)                        merges two arrays
-    .concat("...", "...")               merges values
-    .indexOf(...)                       returns the first index of that entry, -1 if not exists
-    .slice(1)                           slice an array at index 1
-    .slice(2, 3)                        slice an array at index 1 up to 3-1
-
-  delete myArray[5]                     changes element at index 5 to undefined
-
-  outputting an array converts it to a comma seperated string
-    
-  myArray.forEach(function(name) {      looping over the entries in an array
-    ...                                 and runs the function for the entries
-  } );                                  passed in via the variable "name"
----------------------------------------------------------------------------------------------------
 OBJECTS:
-  var name = {};                        creating an object        
-  var person = {name: "Jim", age: 21};
-  person.age = 23;      
+  var name = {};                        create an empty object        
+  var person = {name: "Jim", age: 21};  create an object
+
+  person.age = 23;                      modify
   person["age"] = 23;                   alternative to .age
  
   object.friends[0].name;
@@ -333,7 +281,64 @@ OBJECTS:
     }
   ];
 ---------------------------------------------------------------------------------------------------
-IF:
+STRING METHODS:
+  myString
+    .length                             length of string
+    .indexOf("...")                     return first position of ... in a string, -1 if not
+      .indexOf("...",15)                includes starting position
+    .lastIndexOf("...")                 return last position of ... in a string, -1 if not
+      .lastIndexOf("...",15)            includes starting position
+    .search("...")                      similar to indexOf, no second argument, with regular expressions
+    .charAt(5)                          return the character at index 5
+    .charCodeAt(5)                      return the unicode character at index 5
+    .slice(4)                           return string starting at index 4
+      .slice(4, 8)                      return string starting at index 4 until 8-1
+      .slice(-4)                        count from the end of a string
+      .slice(-4, -8)                    count from the end of a string
+    .substring(4)                       same as .slice but no negative indixes
+    .substr(4)                          return string starting at index 4
+      .substr(4, 3)                     return string starting at index 4 with length 3
+      .substr(-4, 3)                    count from the end of a string
+    .replace("text1", "text2")          replace the text1 with text2
+      .replace(/text1/g , "text2")      replace all text1 with text2
+      .replace(/text1/i , "text2")      replace all text1 with text2, case insensetive
+    .toUpperCase()                      convert to uppercase
+    .toLowerCase()                      convert to lowercase
+    .concat("...", text2)               add string
+    .split("...")                       split at the character and convert into an array
+---------------------------------------------------------------------------------------------------
+ARRAY METHODS:    
+  myArray
+    .length                             number of entries
+    .sort()                             sort an array from lowest to highest value
+    .toString()                         convert to a string with comma seperation
+    .join("...")                        convert to a string with given seperation
+    .push(...)                          add an entry to the end, returns new length
+      .push(..., ...)                   multiple entries
+      x = myArray.push("...");          x == new length
+    .pop()                              remove the last entry, returns removed entry
+      x = myArray.pop();                x == removed entry
+    .unshift(...)                       add an entry to the beginning
+      x = myArray.unshift("...");       x == new length
+    .shift()                            remove the first entry
+      x = myArray.shift();              x == removed entry
+    .splice(4, 2)                       remove 2 entries from index 4 on
+    .splice(2, 0, "...", "...")         remove 0 entries from index 2 on and add two entries
+    .concat(...)                        merge two arrays
+    .concat("...", "...")               merge values
+    .indexOf(...)                       return the first index of that entry, -1 if not exists
+    .slice(1)                           slice an array at index 1
+    .slice(2, 3)                        slice an array at index 1 up to 3-1
+
+  delete myArray[5]                     changes element at index 5 to undefined
+
+  outputting an array converts it to a comma seperated string
+    
+  myArray.forEach(function(name) {      loop over the entries in an array
+    ...                                 and run the function for the entries
+  } );                                  passed in via the variable "name"
+---------------------------------------------------------------------------------------------------
+IF ELSE:
   if (condition) {                            if statement
     ...
   } else if (condition) {
@@ -348,7 +353,7 @@ SWITCH:
   switch (expression) {                       switch statement
     case choice1:
       ...
-      break;
+      break;                                  leave switch if it is a match
 
     case choice2:
       ...
@@ -368,6 +373,9 @@ FOR:
   for (init; end; increment) {                for loop
     ...
   }
+
+    if (...) break;                           exit the loop early
+    if (...) continue;                        jump to next iteration
 ---------------------------------------------------------------------------------------------------
 WHILE:
   while (condition) {                         while loop
@@ -429,14 +437,17 @@ THIS:
   this;                               refers to the object in which the method is defined
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
-  Math.floor(...)                     removes the decimals
-  Math.random()                       random number between 0 and 1, e.g. 0.123, but not 1
-    Math.random() * 5                 random number between 0 and 5, e.g. 2.123, but not 5!
-    Math.random() * 5 + 1             random number between 1 and 5, including 1 and 5
-  Math.floor(Math.random() * 6)       random number out of 1, 2, ..., 5
+  Number(...);                          converts to a number
 
-  setTimeout(function, ms)            execution after time in ms
-  setInterval(function, ms)           repeated execution after time in ms
+  Math.round();                         round to nearest whole number
+  Math.floor(...);                      removes the decimals
+  Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
+    Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
+    Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
+  Math.floor(Math.random() * 6);        random number out of 1, 2, ..., 5
 
-  Date().getTime();                   gets the current time
+  setTimeout(function, ms);             execution after time in ms
+  setInterval(function, ms);            repeated execution after time in ms
+
+  Date().getTime();                     gets the current time
     var start = new Date().getTime();

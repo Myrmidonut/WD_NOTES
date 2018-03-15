@@ -81,18 +81,18 @@ x            Flexbox
             Grids
 
     JavaScript — Dynamic client-side scripting
-        JavaScript first steps
+x        JavaScript first steps
 x            What is JavaScript?
-            A first splash into JavaScript
-            What went wrong? Troubleshooting JavaScript
-            Storing the information you need — Variables
-            Basic in JavaScript — Numbers and operators
-            Handling text — Strings in JavaScript
-            Useful string methods
-            Arrays
-            Assessment: Silly story generator
+x            A first splash into JavaScript
+x            What went wrong? Troubleshooting JavaScript
+x            Storing the information you need — Variables
+x            Basic in JavaScript — Numbers and operators
+x            Handling text — Strings in JavaScript
+x            Useful string methods
+x            Arrays
+x            Assessment: Silly story generator
         JavaScript building blocks
-            Making decisions in your code — Conditionals
+x            Making decisions in your code — Conditionals
             Looping code
             Functions — Reusable blocks of code
             Build your own function
@@ -118,11 +118,11 @@ x            What is JavaScript?
             Client-side storage
 
     Tutorials
-        Complete beginners
-            JavaScript basics
-            JavaScript first steps
-            JavaScript building blocks
-            Introducing JavaScript objects           
+x        Complete beginners (included in previous lessons)
+x            JavaScript basics
+x            JavaScript first steps
+x            JavaScript building blocks
+x            Introducing JavaScript objects           
         JavaScript Guide
             Introduction
             Grammar and types
