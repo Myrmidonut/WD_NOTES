@@ -93,10 +93,10 @@ x            Arrays
 x            Assessment: Silly story generator
         JavaScript building blocks
 x            Making decisions in your code — Conditionals
-            Looping code
-            Functions — Reusable blocks of code
-            Build your own function
-            Function return values
+x            Looping code
+x            Functions — Reusable blocks of code
+x            Build your own function
+x            Function return values
             Introduction to events
             Assessment: Image gallery
         Introducing JavaScript objects

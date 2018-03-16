@@ -73,3 +73,24 @@ this.style.color = "pink";
     } );
   
 }
+
+
+
+
+---------- MDN:
+
+document.querySelector()
+
+document.createElement()
+
+element.setAttribute()
+
+node.appendChild()
+
+node.textContent()
+
+node.removeChild()
+
+.onclick
+
+.onchange

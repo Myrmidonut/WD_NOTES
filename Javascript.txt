@@ -378,12 +378,14 @@ FOR:
     if (...) continue;                        jump to next iteration
 ---------------------------------------------------------------------------------------------------
 WHILE:
+  init;
   while (condition) {                         while loop
     ...
     increment;
   }
 ---------------------------------------------------------------------------------------------------
 DO WHILE:
+  init;
   do {                                        do while loop, always run at least once
     ...
     increment;
@@ -408,16 +410,18 @@ BREAK CONTINUE LABEL:
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   function name(arg1, arg2) {                 creating the function
-    ... 
-    return ...                                optional, will stop the function
+    ...;
+    return ...;                               optional, will stop the function
   }
 
   name;                                       passing the function on
-  name(arg);                                  calling the function
+  name();                                     calling the function immediately
 
-  setInterval(function() {                    anonymous function, declare a function inside a function
-    ...
-  }, 2000);
+  function() {                                anonymous function, used with an event
+    ...;
+  }
+
+    mybutton.onclick = function() {...}       anonymous function
 
   Array.prototype.name = function(func) {     prototype, this to call on the array
     func(this[i]);
@@ -437,10 +441,12 @@ THIS:
   this;                               refers to the object in which the method is defined
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
-  Number(...);                          converts to a number
+  Number(...);                          convert to a number
+
+  isNaN(...);                           check if not a number
 
   Math.round();                         round to nearest whole number
-  Math.floor(...);                      removes the decimals
+  Math.floor(...);                      remove the decimals
   Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
     Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
     Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
@@ -449,5 +455,5 @@ USEFUL FUNCTIONS:
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms
 
-  Date().getTime();                     gets the current time
+  Date().getTime();                     get the current time
     var start = new Date().getTime();
