@@ -254,32 +254,27 @@ ARRAYS:                                 ordered list of data
   ... instanceof Array                                      returns true for arrays
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
-  var name = {};                        create an empty object        
-  var person = {name: "Jim", age: 21};  create an object
+  var myObj = {};                             create an empty object        
+  var myObj = {prop: "value", ...};           create an object
+  var myObj = {prop: [...], ...};
+  var myObj = {prop: {prop: ..., ...}, ...};  subnamespace
+  var myOby = [{...}, {...}];                 array of objects
 
-  person.age = 23;                      modify
-  person["age"] = 23;                   alternative to .age
+
+  myObj.prop;                           calling a property
+  myObj.prop[0];                        calling an array property
+  myObj.meth();                         calling a method
+  myObj.prop.prop;                      calling subnamespace
+
+  myObj.prop = ...;                     modify
+  myObj["prop"] = ...                   alternative
+
+  myObj[prop] = value;                    
  
-  object.friends[0].name;
+  data items: properties
+  functions: methods
 
-  object._name                          allowed
-    var prop = "color";     
-    object[prop} = "red"                allowed
-  object.1name                          not allowed
-
-  array of objects:
-  var movies = [
-    {
-      title: "In Bruges",
-      rating: 5,
-      hasWatched: true
-    },
-    {
-      title: "Frozen",
-      rating: 4.5,
-      hasWatched: false
-    }
-  ];
+  .this                                 refers to the current object
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
   myString
@@ -432,13 +427,13 @@ FUNCTIONS:
 METHODS:
   a function inside an object
 
-  obj.func = function() {             creating the method
+  obj.func = function() {               creating the method
     ...
   }
-  obj.func();                         calling the method
+  obj.func();                           calling the method
 ---------------------------------------------------------------------------------------------------
 THIS:
-  this;                               refers to the object in which the method is defined
+  this;                                 refers to the object in which the method is defined
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
   Number(...);                          convert to a number

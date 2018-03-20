@@ -94,3 +94,66 @@ node.removeChild()
 .onclick
 
 .onchange
+
+element.style.backgroundColor = "..."
+
+-----
+
+document.querySelector("...")
+
+event handler property:
+  element
+    .onclick              click
+    .onfocus              focus
+    .onblur               unfocus
+    .ondbclick            doubleclick
+    .onmouseover          hover
+    .onmouseout           stop hover
+
+  window
+    .onkeypress           keypress up or down
+    .onkeydown            keypress down
+    .onkeyup              keypress up
+
+  element.setAttribute("...")   add attribute
+
+---
+
+don't use inline event handlers
+  <button onclick="bgchange()">...</button>
+
+---
+
+element.addEventListener("...", ...)       event and function as arguments
+element.removeEventListener("...", ...)    event and function as arguments
+
+multiple events on one element possible
+.onclick overwrites previous events
+
+---
+
+event object:
+  event / evt / e       common names, any name possible
+
+  function ...(e) {     
+    e.target ...        
+  }
+
+---
+
+default behaviour:
+  element.preventDefault()    prevent default behaviour
+
+---
+
+event bubbling and capture:
+  bubbling: browser default
+    run event on the element, then parent, ..., then on html
+
+  capturing:
+    run event on html, then child, ..., then on the element
+
+  element.stopPropagation()     stop event bubbling
+
+event delegation:
+  multiple elements with same behaviour: one event on the parent and bubble each child

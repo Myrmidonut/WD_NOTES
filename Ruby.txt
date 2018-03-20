@@ -1,15 +1,18 @@
 FILES:
   ruby file.rb                  run code from a file
------
+---------------------------------------------------------------------------------------------------
 SHELL:
-  irb                           opens the interactive ruby shell
------
+  irb                           open interactive ruby shell
+---------------------------------------------------------------------------------------------------
+COMMANDS:
+  clear                         clear bash
+---------------------------------------------------------------------------------------------------
 COMMENTS:
   # ...                         single line
   =begin                        multiple lines
     ...
   =end
------
+---------------------------------------------------------------------------------------------------
 LOGIC:
   <                             smaller
   >                             greater
@@ -17,108 +20,131 @@ LOGIC:
   >=                            greater equal
   ==                            equal
   !=                            not equal
-  &&                            true if both true
-  ||                            true if either one true
-  !                             negation
------
-STRINGS:
-  name = "test"                 string creation
-  "test #{...}"                 insert a variable inside a string
-  .length                       length of the string
-  .capitalize                   makes first character uppercase
------
-ARRAYS:
-  test = ["a", 1, true, [1,2]]
-  test[0]                       access to entries
-  test << "..."                 adds an entry to the end
-  .push("...")                  adds an entry to the end
-  .unshift                      adds an entry to the front
-  .shift                        removes the first entry
-  .pop                          removes the last entry
-  .last                         accesses the last entry
------
-HASH:
-  name = {:test1 => "...", :test2 => "..."}   keys and values, hashrockets
-  name = {test1: "...", test2: "..."}         new version
-  name[:test1]                                outputs values of a key
-  .keys                                       list of keys
-  .values                                     list of values
------
+  &&                            AND
+  ||                            OR
+  !                             NOT
+---------------------------------------------------------------------------------------------------
 OUTPUT:
-  print                                   output without linebreak
-    print "\"                             creates linebreak
-  puts                                    output with linebreak
-    puts "abc" + "123"                    concatenation
-    puts "test #{test}"                   outputs test and the value of variable test
-                                          puts outputs each entry in one line
------
+  print                         output without linebreak
+    print "\"                   create linebreak
+
+  puts                          output with linebreak
+    puts "abc" + "123"          concatenation
+    puts "test #{test}"         output test and the value of variable test
+---------------------------------------------------------------------------------------------------
+VARIABLES:
+  name = 1                      number
+  name = "test"                 string
+---------------------------------------------------------------------------------------------------
+NUMBERS:
+  20                            integer
+  20.0                          float
+---------------------------------------------------------------------------------------------------
+STRINGS:
+  name = "test"                 create string
+
+  "test #{...}"                 insert a variable inside a string
+
+  .length                       length of the string
+  .capitalize                   make first character uppercase
+---------------------------------------------------------------------------------------------------
+ARRAYS:
+  myArray = ["a", 1, true, [1,2]]   create array
+
+  myArray[0]                        access to entries
+
+  myArray << ...                    add an entry to the end
+    .push(...)                      add an entry to the end, more common
+    .unshift(...)                   add an entry to the front
+    .shift                          remove the first entry
+    .pop                            remove the last entry
+    .last                           access the last entry
+---------------------------------------------------------------------------------------------------
+HASH:
+  myHash = {test1: "...", test2: "..."}         key and value pairs
+  myHash = {:test1 => "...", :test2 => "..."}   old style, hashrocket: =>
+  
+  myHash[:test1]                                output values of a key
+
+  .keys                                         list of keys
+  .values                                       list of values
+---------------------------------------------------------------------------------------------------
 IF:
-  if condition                            condition can be in ()
+  if condition                              condition can be in ()
     ...
-  elseif condition
+  elsif condition
     ...
   else
     ...
   end
-
-  condition ? statement1 : statemment2    alternative
------
+---------------------------------------------------------------------------------------------------
+TERNARY:
+  condition ? statement1 : statemment2      alternative
+---------------------------------------------------------------------------------------------------
 DO:
-  .each do |i|      
+  myArray.each do |i|                       loop over array
     ...
   end
 
-  .each {
+  myArray.each {                            shorthand
     |i| ...
   }
 
-  .map { |i| i + 10 }                       creates a new array
-
-  x.times do                                runs the loop x times
+  myHash.each do |k, v|                     loop over hash, key and value
     ...
   end
------
+
+  myArray.map { |i| i + 10 }                create a new array from output
+
+  x.times do                                run the loop x times
+    ...
+  end
+---------------------------------------------------------------------------------------------------
 UNLESS:
   unless condition
     ...
   end
------
+---------------------------------------------------------------------------------------------------
 METHODS:
-  def name                                  create the method
-    statement1
-    statement2
-  end
-
-  def name (argument1, argument2) 
+  def myMethod                              create method, last statement will be returned
     statement
   end
 
-  name                                      runs the method
-  name(..., ...)                            runs the method with arguments, () is optional
------
+  def myMethod (argument1, argument2) 
+    statement
+  end
+
+  myMethod                                  run method
+  myMethod(..., ...)                        run method with arguments, () is optional
+---------------------------------------------------------------------------------------------------
 CLASSES:
-  class Name                                capital letter is common for class names
-    attr_accessor :test   
+  class myClass                             capital letter is common for class names
+    attr_accessor :test
+
     def initialize(.., ..)                  optional
-      @test                                 instance variable, needs @
+      @myVar = ...                          instance variable, needs @
     end
-    def method
+
+    def myMethod
       ...
     end
   end
 
-  test = Name.new                           creates a new object
-  test.method
+  test = myClass.new                        create a new object
+  test.myMethod
 
-  test.inspect                              shows the values of the object
------
+  test.inspect                              show the values of the object
+---------------------------------------------------------------------------------------------------
 INHERITANCE:
   class Admin < User                        Admin gets all methods from User
     def method                              method from User
-      super                                 adds new statements to the method
+      super                                 add new statements to the method
       statement
     end
   end
   admin_user = Admin.new("Jane", "Smith")
   puts admin_user.inspect
   admin_user.say_name
+---------------------------------------------------------------------------------------------------
+USEFUL METHODS:
+  Math.sqrt(...)                            square root

@@ -97,10 +97,10 @@ x            Looping code
 x            Functions — Reusable blocks of code
 x            Build your own function
 x            Function return values
-            Introduction to events
-            Assessment: Image gallery
+x            Introduction to events
+x            Assessment: Image gallery
         Introducing JavaScript objects
-            Object basics
+x            Object basics
             Object-oriented JavaScript for beginners
             Object prototypes
             Inheritance in JavaScript
@@ -167,9 +167,9 @@ x            Introducing JavaScript objects
 
     Tools and testing
         Cross browser testing
-            Introduction to cross browser testing
-            Strategies for carrying out testing
-            Handling common HTML and CSS problems
+-            Introduction to cross browser testing
+-            Strategies for carrying out testing
+-            Handling common HTML and CSS problems
             Handling common JavaScript problems
             Handling common accessibility problems
             Implementing feature detection

@@ -1,12 +1,12 @@
     PART 1 The JavaScript language
-        An introduction
-            An Introduction to JavaScript
-            Code editors
-            Developer console
+x        An introduction
+x            An Introduction to JavaScript
+x            Code editors
+x            Developer console
         JavaScript Fundamentals
-            Hello, world!
-            Code structure
-            The modern mode, "use strict"
+x            Hello, world!
+x            Code structure
+x            The modern mode, "use strict"
             Variables
             Data types
             Type Conversions

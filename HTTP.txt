@@ -1,5 +1,9 @@
 Client:
   sends HTTP-request for the URL
+    request URL
+    request method
+    status code
+    remote address
 
 DNS Server:
   translates URLs into IP address

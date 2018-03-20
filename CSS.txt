@@ -100,6 +100,7 @@ SELECTORS:
       :first-of-type {}                   the first element
       :last-of-type {}                    the last element
       :nth-of-type(n) {}                  the n-th element
+      :nth-child(n) {}                    every n-th element in a group of siblings
 
     element1 element2 
       :first-child {}                     the first element2 inside element1
