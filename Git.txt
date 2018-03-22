@@ -4,6 +4,16 @@
 
   GitHub: https://github.com/Myrmidonut/repository.git
 -----
+FIRST STEPS FOR NEW REPOSITORY:
+  git init
+  git add .
+  git commit -m "..."
+
+  create GitHub repository
+
+  git remote add origin https://github.com/Myrmidonut/xxx.git
+  git push origin master
+-----
 SHORT VERSION:
   git init                          create .git folder
   git status                        show changes

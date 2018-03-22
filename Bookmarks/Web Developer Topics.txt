@@ -1,19 +1,19 @@
 FRONT-END:
   PRESENTATION:
-    HTML
-    CSS
-      Bootstrap
+-   HTML
+-   CSS
+-     Bootstrap
       Foundation
       Semantic UI
     Sass
 
   FUNCTIONALITY:
-    DOM
-    JavaScript
+-   DOM
+-   JavaScript
     JavaScript Libraries:
       jQuery
         Ajax
-      React
+-     React
       AngularJS
       Animation/Sound:
         Paper.js
@@ -22,38 +22,45 @@ FRONT-END:
 BACK-END:
   FUNCTIONALITY:
     JavaScript Environments:
-      Node.js
-        npm
+-     Node.js
+-       npm
         ExpressJS
         PassportJS
         mongoose
-    PHP
-      PHPStorm
-    Python
-    Ruby
-      Rails
-      RVM
+-   PHP
+-     XAMPP
+-   Python
+-   Ruby
+-     Rails
+-     RVM
 
   DATABASES:
-    MongoDB
+    NoSQL
+-     MongoDB
     SQL
-    MySQL
+-     MySQL
+      MariaDB
 
   CMS:
     WordPress
     Joomla
     TYPO3
+
+  WEBSERVER:
+-   Apache
+    IIS
+    nginx
 --------------------------------------
 MOBILE:
   Cordova
   ...
 --------------------------------------
 TOOLS:
-  Git
-    GitHub
-  VirtualBox
+- Git
+-   GitHub
+- VirtualBox
     Vagrant
-  Cloud9
-  Heroku
-  Sublime
-  Command Line
+- Cloud9
+- Heroku
+- Sublime
+- Command Line

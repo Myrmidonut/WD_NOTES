@@ -1,0 +1,24 @@
+app/controllers/pages_controller.rb     controller file
+  def home                              name of the page
+  end
+
+  def about
+  end
+-----
+app/views/pages/home.html.erb           views file, matches controller name
+app/views/pages/about.html.erb
+-----
+config/routes.rb                        routes file, matches controller names
+  Rails.application.routes.draw do
+  root to: 'pages#home'                 
+  get 'about', to: 'pages#about'        
+
+-----
+Chain of accessing the website:
+  routes.rb -> pages_controller.rb -> home.html.erb
+-----
+app/views/layouts/application.html.erb
+  <body>
+    <%= yield %>                        home.html.erb gets injected
+-----
+app/assets/stylesheets/application.css  CSS file

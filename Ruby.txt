@@ -119,7 +119,7 @@ METHODS:
 ---------------------------------------------------------------------------------------------------
 CLASSES:
   class myClass                             capital letter is common for class names
-    attr_accessor :test
+    attr_accessor :test                     
 
     def initialize(.., ..)                  optional
       @myVar = ...                          instance variable, needs @
