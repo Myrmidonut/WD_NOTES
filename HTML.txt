@@ -15,6 +15,8 @@ FILE:
       <meta name="description" content="...">       SEO
       <meta ... for facebook links, twitter, ...
 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">    viewport
+
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   browser tab icon
     </head>
     
@@ -107,9 +109,9 @@ CONTAINERS:
   <header>                  global header
   <nav>                     main navigation
   <main>                    once per page
-    <section>               block that groups more information
+    <section>               block that groups more information, related content
       <header>              introduction
-      <article>             block that groups less information
+      <article>             block that groups less information, standalone content
         <header>            introduction
   <aside>                   information indirectly related to main, can be inside main
   <footer>                  end content
@@ -125,7 +127,7 @@ ENTITIES:                   display symbols, etc.
   &apos;                    '
   &euro;                    €
   &deg;                     °
-  &nbsp;                    blank space, non-breaking space
+  &nbsp;                    blank space, non-breaking space, keep number and unit together
 ---------------------------------------------------------------------------------------------------
 FORMATING:
   <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds, SEO
@@ -145,17 +147,20 @@ FORMATING:
 
   <abbr title="...">...</abbr>              abbrevation
 
-  <blockquote cite="...">...</blockquote>   blocked quotation
-  <q cite="...">...</q>                     inline quoteation
+  <blockquote cite="...">...</blockquote>   blocked quotation, indented
+  <q cite="...">...</q>                     inline quotation
   <cite>...</cite>                          citation, name of the source
 
   <address>...</address>                    address of html document owner
 
-  <code>...</code>                          displaying computer code
   <pre>...</pre>                            keeping whitespaces
+
+  <code>...</code>                          displaying computer code
   <var>...</var>                            variable
   <kbd>...</kbd>                            input
   <samp>...</samp>                          output
+
+  <bdo dir="rtl">...</bdo>                  text direction, right-to-left
 ---------------------------------------------------------------------------------------------------
 LINKS:
   <a>...</a>                    link, text is clickable
@@ -163,12 +168,14 @@ LINKS:
          "./file.html"          current folder
          "folder/file.html"     subfolder
          "../file.html"         parent folder
+         "/file.html"           root folder
 
          "#..."                 leads to an id on the page
          "test.html#..."        leads to an id on another page
 
     title="..."                 tooltip, accessibility, SEO
     target="_blank"             opens a new tab
+           "_self"              default, in same tab
     download="..."              opens as a download with default filename
 
     href="mailto:..."           link to email
@@ -186,6 +193,11 @@ LINKS:
   use relative URLs when possible, shorter and faster
 
   indicate that a link goes to a PDF, etc.
+
+  default styling:
+    unvisited: underline, blue
+    visited: underline, purple
+    active: underline, red
 ---------------------------------------------------------------------------------------------------
 IMAGES:
   <img>                           image
@@ -203,6 +215,14 @@ IMAGES:
     <img>...</img>
     <figcaption>...</figcaption>  same as title="..."
   </figure>
+
+  <img usemap="#...">                 image with clickable areas
+  <map name="...">                    matching name
+    <area shape="..."                 rect, circle
+          coords="...,...,...,..."    rect: 4, circle: 3
+          alt="..."
+          href="..." >
+  </map>
 
   use HTML for images with meaning
   use CSS for background images
@@ -268,9 +288,9 @@ FORMS:
     action="..."                      URL to send data to, send to same page without it
                                       https to http(s): encrypted
                                       http to http(s): not encrypted, browser warning
-    method="post"                     send data
+    method="post"                     send data, sensitive data
       URL/?name1=value1&name2=value2
-      enctype="multipart/for-data"    sending files
+      enctype="multipart/for-data"    sending data
     method="get"                      request data
 
     set at least action and method
@@ -279,7 +299,7 @@ FORMS:
     careful with SQL requests
     careful with HTTP headers and emails
     all data to the sever without exception has to be checked and sanitized
-    limit incoming data, allowonly what is necessary
+    limit incoming data, allow only what is necessary
     store uploaded files on a different server
 
     <input>                       input box, default is text
@@ -314,7 +334,9 @@ FORMS:
       disabled                    no input possible
       autofocus                   input focus on page load
       name="..."                  name for the data that will be send, shows up in URL as name=value
-      value="..."                 data that will be send, radio! checkbox!
+      value="..."                 initial value, data that will be send, radio! checkbox!
+      size="..."
+      maxlength="..."
 
     <button>...</button>          button, preferred over type="submit"
       type="submit"               send form data
@@ -464,6 +486,11 @@ VECTOR GRAPHICS:
 
   raster images: Bitmap, PNG, JPEG, GIF
   vector images: SVG
+---------------------------------------------------------------------------------------------------
+CANVAS:
+  <canvas id="..." width="..." height="..."></canvas>     empty canvas
+
+  drawing is done with JavaScript
 ---------------------------------------------------------------------------------------------------
 RESPONSIVENESS:
   resolution switching          smaller image sizes for smaller screens

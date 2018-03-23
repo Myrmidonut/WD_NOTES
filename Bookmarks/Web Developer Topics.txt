@@ -14,22 +14,21 @@ FRONT-END:
       jQuery
         Ajax
 -     React
-      AngularJS
-      Animation/Sound:
-        Paper.js
-        Howler.js
+-     AngularJS
+      Vue
 --------------------------------------
 BACK-END:
   FUNCTIONALITY:
     JavaScript Environments:
 -     Node.js
 -       npm
-        ExpressJS
+-       ExpressJS
         PassportJS
         mongoose
 -   PHP
 -     XAMPP
 -   Python
+      Django
 -   Ruby
 -     Rails
 -     RVM
@@ -39,7 +38,8 @@ BACK-END:
 -     MongoDB
     SQL
 -     MySQL
-      MariaDB
+      Microsoft SQL Server
+      PostgreSQL
 
   CMS:
     WordPress

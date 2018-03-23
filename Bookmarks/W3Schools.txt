@@ -1,81 +1,82 @@
-HTML
-    HTML5 Tutorial
-        HTML HOME
-        HTML Introduction
-        HTML Editors
-        HTML Basic
-        HTML Elements
-        HTML Attributes
-        HTML Headings
-        HTML Paragraphs
-        HTML Styles
-        HTML Formatting
-        HTML Quotations
-        HTML Comments
-        HTML Colors
-        HTML CSS
-        HTML Links
-        HTML Images
-        HTML Tables
-        HTML Lists
-        HTML Blocks
-        HTML Classes
-        HTML Id
-        HTML Iframes
-        HTML JavaScript
-        HTML File Paths
-        HTML Head
-        HTML Layout
-        HTML Responsive
-        HTML Computercode
-        HTML Entities
-        HTML Symbols
-        HTML Charset
-        HTML URL Encode
-        HTML XHTML
-    HTML Forms
-        HTML Forms
-        HTML Form Elements
-        HTML Input Types
-        HTML Input Attributes
-    HTML5
-        HTML5 Intro
-        HTML5 Support
-        HTML5 New Elements
-        HTML5 Semantics
-        HTML5 Migration
-        HTML5 Style Guide
-    HTML Graphics
-        HTML Canvas
-        HTML SVG
-        HTML Google Maps
-    HTML Media
-        HTML Media
-        HTML Video
-        HTML Audio
-        HTML Plug-ins
-        HTML YouTube
-    HTML APIs
-        HTML Geolocation
-        HTML Drag/Drop
-        HTML Web Storage
-        HTML Web Workers
-        HTML SSE
-    HTML Examples
-        HTML Examples
-        HTML Quiz
-        HTML Exercises
-        HTML Certificate
-        HTML Summary
-        HTML Accessibility
-CSS
+x HTML
+x    HTML5 Tutorial
+x        HTML HOME
+x        HTML Introduction
+x        HTML Editors
+x        HTML Basic
+x        HTML Elements
+x        HTML Attributes
+x        HTML Headings
+x        HTML Paragraphs
+x        HTML Styles
+x        HTML Formatting
+x        HTML Quotations
+x        HTML Comments
+x        HTML Colors
+x        HTML CSS
+x        HTML Links
+x        HTML Images
+x        HTML Tables
+x        HTML Lists
+x        HTML Blocks
+x        HTML Classes
+x        HTML Id
+x        HTML Iframes
+x        HTML JavaScript
+x        HTML File Paths
+x        HTML Head
+x        HTML Layout
+x        HTML Responsive
+x        HTML Computercode
+x        HTML Entities
+x        HTML Symbols
+x        HTML Charset
+x        HTML URL Encode
+x        HTML XHTML
+x    HTML Forms
+x        HTML Forms
+x        HTML Form Elements
+x        HTML Input Types
+x        HTML Input Attributes
+x    HTML5
+x        HTML5 Intro
+x        HTML5 Support
+x        HTML5 New Elements
+x        HTML5 Semantics
+x        HTML5 Migration
+x        HTML5 Style Guide
+x    HTML Graphics
+x        HTML Canvas
+x        HTML SVG
+x        HTML Google Maps
+x    HTML Media
+x        HTML Media
+x        HTML Video
+x        HTML Audio
+x        HTML Plug-ins
+x        HTML YouTube
+x    HTML APIs
+x        HTML Geolocation
+x        HTML Drag/Drop
+x        HTML Web Storage
+x        HTML Web Workers
+x        HTML SSE
+x    HTML Examples
+x        HTML Examples
+x        HTML Quiz
+x        HTML Exercises
+x        HTML Certificate
+x        HTML Summary
+x        HTML Accessibility
+
+ CSS
     CSS Tutorial
-        CSS HOME
-        CSS Introduction
-        CSS Syntax
-        CSS How To
-        CSS Colors
-        CSS Backgrounds
+x        CSS HOME
+x        CSS Introduction
+x        CSS Syntax
+x        CSS How To
+x        CSS Colors
+x        CSS Backgrounds
         CSS Borders
         CSS Margins
         CSS Padding
@@ -151,6 +152,7 @@ CSS
         CSS Quiz
         CSS Exercises
         CSS Certificate
+
 JAVASCRIPT
     JS Tutorial
         JS HOME
@@ -273,6 +275,7 @@ JAVASCRIPT
         JS Browser
         JS Quiz
         JS Certificate
+
 SQL
     SQL Tutorial
         SQL HOME
@@ -329,6 +332,7 @@ SQL
         SQL Views
         SQL Injection
         SQL Hosting
+
 BOOTSTRAP 4
     Bootstrap 4 Tutorial
         BS4 HOME
@@ -368,6 +372,7 @@ BOOTSTRAP 4
         BS4 Grid Large
         BS4 Grid XLarge
         BS4 Grid Examples
+
 NODE.JS
     Node.js Tutorial
         Node.js HOME

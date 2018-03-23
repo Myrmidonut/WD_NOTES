@@ -14,7 +14,7 @@ STYLE:
 
   external:
     <head>
-      <link rel="stylesheet" type="text/css" href="name.css">
+      <link rel="stylesheet" href="name.css">     type="text/css" not necessary
     </head>
 ---------------------------------------------------------------------------------------------------
 @-RULES:                                  top of the file
@@ -53,14 +53,14 @@ DECLARATION:
   }
 ---------------------------------------------------------------------------------------------------
 COMMENT:
-  /*                                      comment, over multiple lines
+  /*                                      comment, single or multiple lines
     comment
   */        
 ---------------------------------------------------------------------------------------------------
 UNITS:
-  10%                                     percentage of parent
-  10px                                    absolute
-  2.0em = 16px                            2.0 times the font-size of the parent element, default is 16px
+  ...%                                    percentage of parent
+  ...px                                   absolute
+  1.0em = 16px                            1.0 times the font-size of the parent element, default is 16px
   2.0rem                                  2.0 times the font-size of the root element
 ---------------------------------------------------------------------------------------------------
 SELECTORS:
@@ -205,28 +205,28 @@ SIZE:
 ---------------------------------------------------------------------------------------------------
 BACKGROUND:
   background: color image repeat position;  shorthand
-  background-color: black;            color, default: transparent, set as fallback
-  background-image: url("...");       image, image will be tiled
-  background-repeat: no-repeat;       no tiling
-                     repeat-x;        horizontal tiling
-                     repeat-y;        vertical iling
-  background-position: center;        horizontal position
-                       20px 20px;     horizontal and vertical position
+  background-color: black;                  color, default: transparent, set as fallback
+  background-image: url("...");             image, image will be tiled
+  background-repeat: no-repeat;             no tiling
+                     repeat-x;              horizontal tiling
+                     repeat-y;              vertical iling
+  background-position: center;              horizontal position
+                       20px 20px;           horizontal and vertical position
     px, em, %
     left, center, right
     top, center, bottom
 
-  background-size: cover;             stretches to element
-                   16px 16px;         stretches to size
+  background-size: cover;                   stretches to element
+                   16px 16px;               stretches to size
 
-  background: linear-gradient(        gradient, from top left to bottom right, from black to white
+  background: linear-gradient(              gradient, from top left to bottom right, from black to white
     to bottom right, black, white);
-    to bottom, black, white 40%, black);  black, to white at 40% height, to black
+    to bottom, black, white 40%, black);    black, to white at 40% height, to black
 
-  background-attachment: scroll;      background scrolls with the page
-                         fixed;       background will not scroll
-                         local;       background scrolls with the element
-  background: ..., ...;               stack backgrounds, top to bottom
+  background-attachment: scroll;            background scrolls with the page
+                         fixed;             background will not scroll
+                         local;             background scrolls with the element
+  background: ..., ...;                     stack backgrounds, top to bottom
 ---------------------------------------------------------------------------------------------------
 COLORS:
   color: #FF0000; 
@@ -240,6 +240,8 @@ COLORS:
   color: rgba(0, 0, 0, 0.0-1.0);      RGBA, transperancy: alpha channel 0.0 - 1.0
   color: hsl(120, 60%, 70%);          HSL, hue in 0-360 degrees, saturation, lightness
   color: hsla(34, 100%, 50%, 0.1);    HSLA, transperancy: alpha channel 0.0 - 1.0
+
+  same values are grayscale, rgb(120,120,120)
 ---------------------------------------------------------------------------------------------------
 FONTS:
   max 2 - 3 fonts per page

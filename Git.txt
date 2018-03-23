@@ -24,9 +24,10 @@ SHORT VERSION:
   git commit -m "..."               create commit
   git commit --amend -m "..."       add commit message late
 
-  git log                           show history
+  git log                           show commit history
   git diff                          show differences between working and staging
   git diff old new                  show differences between two commits, first four symbols
+  git diff HEAD                     show differences to last commit
 
   git show HEAD                     show most recent commit
   git checkout HEAD ...             go back to most recent commit
@@ -37,6 +38,7 @@ SHORT VERSION:
   git remote add upstream ...       add upstream remote to a cloned repository to pull in changes
   git remote -v                     details of remote
   git push origin master            push to GitHub
+  git push -u origin master         -u remembers parameters, use git push next time
   git pull origin master            pull from GitHub
   git fetch --dry-run               shows changes to remote before a pull
 
