@@ -70,44 +70,44 @@ x        HTML Summary
 x        HTML Accessibility
 
  CSS
-    CSS Tutorial
+x    CSS Tutorial
 x        CSS HOME
 x        CSS Introduction
 x        CSS Syntax
 x        CSS How To
 x        CSS Colors
 x        CSS Backgrounds
-        CSS Borders
-        CSS Margins
-        CSS Padding
-        CSS Height/Width
-        CSS Box Model
-        CSS Outline
-        CSS Text
-        CSS Fonts
-        CSS Icons
-        CSS Links
-        CSS Lists
-        CSS Tables
-        CSS Display
-        CSS Max-width
-        CSS Position
-        CSS Overflow
-        CSS Float
-        CSS Inline-block
-        CSS Align
-        CSS Combinators
-        CSS Pseudo-class
-        CSS Pseudo-element
-        CSS Opacity
-        CSS Navigation Bar
-        CSS Dropdowns
-        CSS Image Gallery
-        CSS Image Sprites
-        CSS Attr Selectors
-        CSS Forms
-        CSS Counters
-        CSS Website Layout
+x        CSS Borders
+x        CSS Margins
+x        CSS Padding
+x        CSS Height/Width
+x        CSS Box Model
+x        CSS Outline
+x        CSS Text
+x        CSS Fonts
+x        CSS Icons
+x        CSS Links
+x        CSS Lists
+x        CSS Tables
+x        CSS Display
+x        CSS Max-width
+x        CSS Position
+x        CSS Overflow
+x        CSS Float
+x        CSS Inline-block
+x        CSS Align
+x        CSS Combinators
+x        CSS Pseudo-class
+x        CSS Pseudo-element
+x        CSS Opacity
+x        CSS Navigation Bar
+x        CSS Dropdowns
+x        CSS Image Gallery
+x        CSS Image Sprites
+x        CSS Attr Selectors
+x        CSS Forms
+x        CSS Counters
+x        CSS Website Layout
     CSS Advanced
         CSS Rounded Corners
         CSS Border Images

@@ -1,0 +1,12 @@
+<head>
+  <link rel="stylesheet" href="...">
+</head>
+---------------------------------------------------------------------------------------------------
+Font Awesome:
+  <i class="fa fa-cloud"></i>
+
+Bootstrap:
+  <i class="glyphicon glyphicon-cloud"></i>
+
+Google:
+  <i class="material-icons">cloud</i>

@@ -22,6 +22,11 @@ FILES:
 
   also possible inside <head> but it will be loaded before the HTML, better at the end of <body>
 ---------------------------------------------------------------------------------------------------
+VERSIONS:
+  ECMAScript 5 = JavaScript 1.8.5
+  ECMAScript 6 = ECMAScript 2015 (const, let)
+  ECMAScript 7 = ECMAScript 2016
+---------------------------------------------------------------------------------------------------
 STRICT MODE
   enables modern features
   classes and modules automatically enable strict

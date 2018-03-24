@@ -62,6 +62,7 @@ UNITS:
   ...px                                   absolute
   1.0em = 16px                            1.0 times the font-size of the parent element, default is 16px
   2.0rem                                  2.0 times the font-size of the root element
+  1vw = 1% of viewport width
 ---------------------------------------------------------------------------------------------------
 SELECTORS:
   simple:
@@ -76,10 +77,10 @@ SELECTORS:
     element1, element2 {}                 multiple elements
 
   combinator:
-    element1 element2 {}                  element2 inside element1
-    element1 > element2 {}                element2 inside element1, first level only
-    element1 + element2 {}                element2 that comes directly after element1
-    element1 ~ element2 {}                element2 that comes after element1
+    element1 element2 {}                  descendant, element2 inside element1
+    element1 > element2 {}                child, element2 inside element1, first level only
+    element1 + element2 {}                adjacent, element2 that comes directly after element1
+    element1 ~ element2 {}                sibling, element2 that comes after element1
 
   attribute:
     [attribute] {}                        attribute
@@ -90,29 +91,35 @@ SELECTORS:
     [attribute$="value"]                  attribute and value that ends with value
     [attribute*="value"]                  attribute and value that contains value
 
+    element[attribute] {}                 element with attribute
+
   pseudo-class:
-    element                            
-      :hover {}                           mouse over
+    element
+      :link
       :visited {}
+      :hover {}                           mouse over
       :active {}
       :focus {}                           mouse click
 
-      :first-of-type {}                   the first element
-      :last-of-type {}                    the last element
-      :nth-of-type(n) {}                  the n-th element
+      :first-child {}                     first child element
+      :first-of-type {}                   first element
+      :last-of-type {}                    last element
+      :nth-of-type(n) {}                  n-th element
       :nth-child(n) {}                    every n-th element in a group of siblings
 
+      :lang
+
     element1 element2 
-      :first-child {}                     the first element2 inside element1
-      :nth-child(n) {}                    the n-th element2 inside element1
+      :first-child {}                     first element2 inside element1
+      :nth-child(n) {}                    n-th element2 inside element1
         odd                               equal to 2n
         even                              equal to 2n-1
         a formula like an+b, with a being the cycle size, n the counter and b the offset
 
   pseudo-element:
     element
-      ::after {}
-      ::before {}
+      ::after {content: ...;}             content after the element
+      ::before {content: ...;}            content before the element
       ::first-letter {}                   first letter
       ::first-line {}                     first line
       ::selection {}
@@ -142,14 +149,16 @@ BOX:
     margin: auto;                                 centers the element in its parent element, needs a width
     margin: 0 auto;                               top/bottom = 0, left/right = auto
 
-  margin collapsing:
-    top/bottom margins overlap, left/right don't
+    margin collapsing:
+      top/bottom margins overlap, left/right don't
+
+    negative values allowed
 
   border:
-    border: 1px solid black;                      width, style, color
+    border: width style color;                    shorthand
     border-width: ...;
-    border-color: ...;
     border-style: ridge; solid; dotted; dashed;   individual style, top, right, bottom, left
+    border-color: ...;
     border-left-color: ...;
 
     border-radius: 50px                           creates a circle: radius = width/2 = 50%
@@ -171,11 +180,14 @@ BOX:
     padding: 1px 2px 3px 4px;                   top, right, bottom, left
     padding-top: 5px;                         
 
-  overflow:                                     content bigger than box
+  overflow:                                     content bigger than box, needs block element with height
     auto;                                       hidden with scrollbars
     hidden;                                     hidden without scrollbars
     scroll;                                     hidden with scrollbars on both sides
-    visible;                                    shown outside the box
+    visible;                                    default, shown outside the box
+
+    overflow-x: ...;
+    overflow-y: ...;
 
   background-clip:                              color/image size
     border-box;                                 default, border + padding + content
@@ -187,7 +199,8 @@ BOX:
     border-box                                  box-size = width/height
 
   outline:                                      on top of the box, around the border
-    none;                                       no outline on buttons when clicked
+    outline: width style color;                 shorthand
+             none;                              no outline on buttons when clicked
 ---------------------------------------------------------------------------------------------------
 SIZE:
   width: 50%; 100px;                  width of content
@@ -244,6 +257,10 @@ COLORS:
   same values are grayscale, rgb(120,120,120)
 ---------------------------------------------------------------------------------------------------
 FONTS:
+  serif                                     Times New Roman, Georgia
+  sans-serif                                Arial, Verdana
+  monospace                                 Courier New, Lucida Console
+
   max 2 - 3 fonts per page
 
   web fonts:
@@ -256,33 +273,33 @@ FONTS:
         src: url("...");
       }
 
-  font-family: "Arial", serif;        font with fallback fonts, serif, sans-serif, monospace
+  color: black;                             color
 
-  color: black;
+  font: style variant weight size family;   shorthand, size: font-size/line-height
+  font-family: "Arial", serif;              font with fallback fonts, serif, sans-serif, monospace
   font-size: 200%;
-  font-weight: bold;                  light (300), normal (400), bold (700)
-  font-style: italic;                 normal, italic, oblique
+  font-weight: bold;                        light (300), normal (400), bold (700)
+  font-style: italic;                       normal, italic, oblique
   
-  text-decoration: none;              none, overline, underline, line-through
-  text-transform: uppercase;          uppercase, lowercase, capitalize, full-width
+  text-decoration: none;                    none, overline, underline, line-through
+  text-transform: uppercase;                uppercase, lowercase, capitalize, full-width
 
-  text-indent: 50px;                  indent first line
-  letter-spacing: 3px;                space between letters, default: 0.25em
-  line-height: 0.8; 12px;             height of lines, box / font-size = line-height
-                                      1.5 - 2 recommended
+  text-indent: 50px;                        indent first line
+  letter-spacing: 3px;                      space between letters, default: 0.25em
+  line-height: 0.8; 12px;                   height of lines, box / font-size = line-height
+                                            1.5 - 2 recommended
   direction: rtl;
-  word-spacing: 10px;                 space between words
+  word-spacing: 10px;                       space between words
 
-  text-align: left; center; right;    aligns inside the container
-              justify;                spread out, blocked text
+  text-align: left; center; right;          aligns inside the container
+              justify;                      spread out, blocked text
 ---------------------------------------------------------------------------------------------------
 LISTS:
   ul / ol:
+    list-style: type position image;  shorthand, default: disc none outside
     list-style-type: upper-roman;     type of bullet: none, square, circle, number, letter
-    list-style-position: inside;      position of bullets: default: outside, inside
-    list-style-image: url(...);       custom image for bullet
-      better use background instead
-    list-style: type image position;  default: disc none outside
+    list-style-position: inside;      position of bullets, default: outside, inside
+    list-style-image: url(...);       custom image for bullet, background: ...; prefered
 
   ol:
     start="..."                       starting number
@@ -311,7 +328,7 @@ TABLES:
 ---------------------------------------------------------------------------------------------------
 LINKS:
   a {}                                reset: outline: none; text-decoration: none;
-  a:link {}       
+  a:link {}
   a:visited {}
   a:focus {}                          selected with tab
   a:hover {}                          border-bottom instead of underline
@@ -326,6 +343,7 @@ LINKS:
     padding-right: 19px;              images don't overlap with links
   }
 
+  order has to be: link visited hover active
   keep the styling order, they build on each other
   stay close to the default behaviour
   only underline links
@@ -418,15 +436,12 @@ FLOAT:
 POSITION:
   position:
     static;                 default
-    relative;               elements is moved relative to its normal position
-                            original space stays open
-    absolute;               element is moved relative to the context
-                            original space is removed
+    relative;               elements is moved relative to its normal position, space stays open
+    absolute;               element is moved relative to the context, space is removed
       positioning context:
         html                default
         parent              with position: relative;
-    fixed;                  element is moved relative to the viewport
-                            original space is removed
+    fixed;                  element is moved relative to the viewport, space is removed
     sticky;                 relative/fixed hybrid, experimental
 
   move the element away from this side:
