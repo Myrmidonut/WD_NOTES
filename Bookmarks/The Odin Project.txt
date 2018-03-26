@@ -1,25 +1,25 @@
 Web Development 101
     The Basics
-        1. How this Course Will Work
-        2. Introduction to Web Development
-        3. Gearing Up
-        4. Join the Odin Community
-        5. How Does the Web Work?
-        6. Command Line Basics
+x        1. How this Course Will Work
+x        2. Introduction to Web Development
+x        3. Gearing Up
+x        4. Join the Odin Community
+x        5. How Does the Web Work?
+x        6. Command Line Basics
         7. Project: Installations
-    Git Basics
-        1. Introduction to Git
-        2. Git Basics
-        3. Project: Practicing Git Basics
-    The Front End
-        1. Introduction to the Front End
-        2. HTML and CSS Basics
-        3. Developer Tools
-        4. Project: HTML/CSS
+x    Git Basics
+x        1. Introduction to Git
+x        2. Git Basics
+x        3. Project: Practicing Git Basics
+x    The Front End
+x        1. Introduction to the Front End
+x        2. HTML and CSS Basics
+x        3. Developer Tools
+x        4. Project: HTML/CSS
     JavaScript Basics
-        1. Fundamentals Part 1
-        2. Fundamentals Part 2
-        3. Developer Tools 2
+x        1. Fundamentals Part 1
+x        2. Fundamentals Part 2
+x        3. Developer Tools 2
         4. Fundamentals Part 3
         5. Project: Rock Paper Scissors
         6. Clean Code

@@ -47,16 +47,16 @@ COMMENTS:
 ---------------------------------------------------------------------------------------------------
 CONSOLE:
   console.log(...);                     outputs into the console
-  \"                                    printed as "
-  alert("...");                         shows a window with text, etc.
   clear();                              clears the console in chrome
-  console.log("...");                   outputs to the console
-  prompt("...");                        shows a window with a message and input
-    var user = prompt("User");
+  alert(...);                           shows a window with text, etc.
+  prompt(...);                          shows a window with a message and input
+  confirm(...);                         shows a window with OK and Cancel
 ---------------------------------------------------------------------------------------------------
 OPERATORS:
-  unary - binary
-  operand (number)
+  unary                                 one operand, -5
+  binary                                two operands, 5 - 5
+
+  operand                               
 
   Arithmetic:
     +
@@ -67,6 +67,10 @@ OPERATORS:
     --
     %
     **                                  exponent
+
+  Concatenation:
+    "ab" + "cd" == "abcd"               if either is a string, the result becomes a string
+    myString += "ab";                   ads a string to the end
 
   Assignment:
     =
@@ -81,6 +85,8 @@ COMPARISON:
   
   only null == only undefined
 
+  conversion to numbers, except for strict (not) equal
+
   >                                     greater than
   <                                     less than
   >=                                    greater or equal
@@ -92,9 +98,9 @@ COMPARISON:
 
   comparing strings:
     letter by letter
-    a > A
-    Z > A
-    breaks on greater letter, or longer string
+    letter > number
+    z > a > Z > A > 9 > 0
+    stops at greater letter, or longer string
 ---------------------------------------------------------------------------------------------------
 LOGIC:
   &&                                    and, true if both true
@@ -150,26 +156,24 @@ NAMING CONVENTION:
   cannot start with a number
 ---------------------------------------------------------------------------------------------------
 DATA TYPES:
-  number                                integer or float, 4  9.3  -10
-    Infinity                            infinity, 1 / 0
-    NaN                                 computational error, "test" / 2
-  string                                "Hello World"  "43"
-  boolean                               true  false
-  object                                collection of data
-    symbol                              unique identifiers for objects
-    array                               an ordered object
-  null                                  represents empty, can be assigned to a variable
-  undefined                             value of a variable without assignment
+  primitive:
+    number                              integer or float, 4  9.3  -10
+      Infinity                          infinity, 1 / 0
+      NaN                               computational error, "test" / 2, makes everything NaN
+    string                              "Hello World"  "43"
+    boolean                             true  false
+    null                                represents empty, can be assigned to a variable
+    undefined                           value of a variable without assignment
+
+  complex:
+    object                              collection of data
+      symbol                            unique identifiers for objects
+      array                             an ordered object
 
   typeof ...                            return string with the datatype, error: typeof(null) returns object
   instanceof ...                        
 
   if (typeof name == "undefined") {}    checks if the variable called name exists
-
-  1 + "2" == "12"                       number + string == string
-  1 - "2" == -1                         number - string == number
-  " -9\n" + 5 == " -9\n5"
-  " -9\n" - 5 == -14
 ---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
   String(...)
@@ -184,12 +188,22 @@ TYPE CONVERSION:
     mathematical operations create numbers, exception: + with a string creates a string
     +... == Number(...)
 
+    addition with string creates string
+
+    1 + "2" == "12"                       number + string == string
+    1 - "2" == -1                         number - string == number
+    " -9\n" + 5 == " -9\n5"
+    " -9\n" - 5 == -14
+
   Boolean(...)
-    0         -> all false
-    ""
-    null
-    undefined
-    NaN
+    " "        -> true
+    "0"        -> true
+
+    0          -> false
+    ""         -> false
+    null       -> false
+    undefined  -> false
+    NaN        -> false
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   let x = 1;                            integer
@@ -205,9 +219,8 @@ STRINGS:
   myString = '...';
   myString = `...`;                     allows embedding of variables and expressions into a string
     `... ${...} ...`
-    
-  "ab" + "cd" == "abcd"                 concatenation
-  myString += "ab";                     ads a string to the end
+
+  "... ${...} ..."                      ${} is evaluated and converted into a string
 
   \                                     escape character to use special characters in a string
     \'                                  '
@@ -238,6 +251,8 @@ BOOLEAN:
 
   true + false == 1
   let isGreater = 4 > 1;                isGreater == true
+
+  result of comparison is boolean
 ---------------------------------------------------------------------------------------------------
 ARRAYS:                                 ordered list of data
   var myArray = [];                     create an empty array

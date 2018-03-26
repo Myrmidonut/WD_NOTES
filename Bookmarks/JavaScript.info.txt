@@ -8,15 +8,15 @@ x            Hello, world!
 x            Code structure
 x            The modern mode, "use strict"
 x            Variables
-            Data types
-            Type Conversions
-            Operators
-            Comparisons
-            Interaction: alert, prompt, confirm
-            Conditional operators: if, '?'
-            Logical operators
-            Loops: while and for
-            The "switch" statement
+x            Data types
+x            Type Conversions
+x            Operators
+x            Comparisons
+x            Interaction: alert, prompt, confirm
+x            Conditional operators: if, '?'
+x            Logical operators
+x            Loops: while and for
+x            The "switch" statement
             Functions
             Function expressions and arrows
             JavaScript specials
