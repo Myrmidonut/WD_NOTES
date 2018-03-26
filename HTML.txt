@@ -66,10 +66,10 @@ PLANNING:
 ---------------------------------------------------------------------------------------------------
 BROWSERS:
   Internet Explorer:
-     8: Windows 7
-     9: 
-    10: Windows 8
-    11: Windows 8.1
+     8: Windows 7     Mar 2009
+     9:               Mar 2011
+    10: Windows 8     Sep 2012
+    11: Windows 8.1   Oct 2013
     
   Edge:
     Windows 10

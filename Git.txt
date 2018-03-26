@@ -25,6 +25,7 @@ SHORT VERSION:
   git commit --amend -m "..."       add commit message late
 
   git log                           show commit history
+  git log --pretty=oneline          shorter style
   git diff                          show differences between working and staging
   git diff old new                  show differences between two commits, first four symbols
   git diff HEAD                     show differences to last commit

@@ -17,18 +17,23 @@ STYLE:
       <link rel="stylesheet" href="name.css">     type="text/css" not necessary
     </head>
 ---------------------------------------------------------------------------------------------------
-@-RULES:                                  top of the file
+@-RULES:                                      top of the file
   metadata:
-    @import "stlyes2.css";                imports a .css file
-    @charset                                
+    @import "stlyes2.css";                    imports a .css file
+    @charset
 
   conditional information, nested statements:
-    @media                                only if the device matches the rule
-    @document                             only if the page matches the rule
-    @supports                             only if the browser supports the rule
+    @media                                    only if the device matches the rule
+    @document                                 only if the page matches the rule
+    @supports                                 only if the browser supports the rule
 
   descriptive information:
-    @font-face                              
+    @font-face
+
+  example:
+    @media screen and (max-width: 900px) {    on screens that are 900px or less use these rules
+      ...
+    }
 ---------------------------------------------------------------------------------------------------
 SPECIFICITY:
   later styles overwrite previous ones
@@ -45,7 +50,6 @@ SPECIFICITY:
   ...: initial;                           same as the browser default, else set to inherit
   ...: unset;                             reset to default, inherit or otherwise initial
   }
-
 ---------------------------------------------------------------------------------------------------
 DECLARATION:
   selector {                              ruleset with declaration block
@@ -163,7 +167,7 @@ BOX:
 
     border-radius: 50px                           creates a circle: radius = width/2 = 50%
                    20px / 50px;                   elliptical corners
-                   20px 10px 50px 0;              individual corners
+                   20px 10px 50px 0;              top-left -right bottom-right -left
 
   border image:
     border-image: url("...") 40 round;            shorthand
@@ -229,17 +233,29 @@ BACKGROUND:
     left, center, right
     top, center, bottom
 
-  background-size: cover;                   stretches to element
+  background: ..., ...;                     stack backgrounds, top to bottom
+
+  background-size: cover;                   fills element, overflow
+                   contain;                 fills element, no overflow
                    16px 16px;               stretches to size
+
+  background-origin: border-box;            position, top left of border
+                     padding-box;           default
+                     content-box;           
+
+  background-clip: border-box;              area, default
+                   padding-box;
+                   content-box;
 
   background: linear-gradient(              gradient, from top left to bottom right, from black to white
     to bottom right, black, white);
     to bottom, black, white 40%, black);    black, to white at 40% height, to black
 
+  background: radial-gradient();
+
   background-attachment: scroll;            background scrolls with the page
                          fixed;             background will not scroll
                          local;             background scrolls with the element
-  background: ..., ...;                     stack backgrounds, top to bottom
 ---------------------------------------------------------------------------------------------------
 COLORS:
   color: #FF0000; 
@@ -468,53 +484,58 @@ CSS TABLES:
     caption-side: bottom;
 ---------------------------------------------------------------------------------------------------
 FLEXBOX:
-  flex container:                 horizontal main axis
-    display:
-      flex;                       enable flexbox
-      inline-flex;                for inline elements
+  flex container:                     horizontal main axis
+    display: flex;                    enable flexbox
+             inline-flex;             for inline elements
 
-    flex-flow: direction wrap;    shorthand
-    flex-direction:               main axis direction
-      row;                        default, horizontal
-      row-reverse;                horizontal reversed      
-      column;                     vertical
-      column-reverse;             vertical reversed
-    flex-wrap:                    flex items behaviour
-      wrap;                       flow into new line
+    flex-flow: direction wrap;        shorthand
 
-    align-items:                  position of items on cross-axis
-      stretch;                    default, stretched to container height or longest item
-      center;                     centered on cross axis
-      flex-start;                 start of cross axis
-      flex-end;                   end of cross axis
-      start;
-      end;
+    flex-direction: row;              main axis direction, default horizontal
+                    row-reverse;      horizontal reversed      
+                    column;           vertical
+                    column-reverse;   vertical reversed
 
-    justify-content:              position of items on main axis
-      flex-start;                 default, start
-      flex-end;                   end
-      start;
-      end;
-      center;                     center
-      space-around;               even distribution with extra space
-      space-between;              even distribution
+    flex-wrap: wrap;                  flex items behaviour, flow into new line
+               nowrap;
+               wrap-reverse;
 
-  flex item:                      vertical cross axis
-    flex: grow shrink basis;      shorthand, prefered
-    flex-grow: ...;               amount of slots an item occupies, unitless
-    flex-shrink: ...;             overflowing behaviour, unitless
-    flex-basis: ...;              width of an item
-                auto;             uses set width
+    align-items: stretch;             position of items on cross-axis, default, stretched to container height or longest item
+                 center;              centered on cross axis
+                 flex-start;          start of cross axis
+                 flex-end;            end of cross axis
+                 start;
+                 end;
 
-    align-self:                   position of item on cross-axis
-      stretch;
-      center;
-      start;
-      end;
+    align-content: space-between;     space around main axis
+                   space-around;
+                   stretch;
+                   center;
+                   flex-start;
+                   flex-end;
 
-    order:                        order of items
-      0;                          default
-      -1; 1;
+    justify-content: flex-start;      position of items on main axis, default, start       
+                     flex-end;        end
+                     start;
+                     end;
+                     center;          center
+                     space-around;    even distribution with extra space
+                     space-between;   even distribution
+
+  flex item:                          vertical cross axis
+    flex: grow shrink basis;          shorthand, prefered
+    flex-grow: ...;                   amount of slots an item occupies, unitless
+    flex-shrink: ...;                 overflowing behaviour, unitless
+    flex-basis: ...;                  width of an item
+                auto;                 uses set width
+
+    align-self: stretch;              position of item on cross-axis
+                center;
+                start;
+                end;
+
+    order: 0;                         order of items, default
+           -1;
+           1;
 ---------------------------------------------------------------------------------------------------
 GRID:
   colums, rows, gutter between

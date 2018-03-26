@@ -7,7 +7,7 @@ x            Developer console
 x            Hello, world!
 x            Code structure
 x            The modern mode, "use strict"
-            Variables
+x            Variables
             Data types
             Type Conversions
             Operators

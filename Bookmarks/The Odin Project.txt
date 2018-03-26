@@ -1,0 +1,373 @@
+Web Development 101
+    The Basics
+        1. How this Course Will Work
+        2. Introduction to Web Development
+        3. Gearing Up
+        4. Join the Odin Community
+        5. How Does the Web Work?
+        6. Command Line Basics
+        7. Project: Installations
+    Git Basics
+        1. Introduction to Git
+        2. Git Basics
+        3. Project: Practicing Git Basics
+    The Front End
+        1. Introduction to the Front End
+        2. HTML and CSS Basics
+        3. Developer Tools
+        4. Project: HTML/CSS
+    JavaScript Basics
+        1. Fundamentals Part 1
+        2. Fundamentals Part 2
+        3. Developer Tools 2
+        4. Fundamentals Part 3
+        5. Project: Rock Paper Scissors
+        6. Clean Code
+        7. Fundamentals Part 4
+        8. DOM manipulation
+        9. Project: Etch-a-Sketch project
+        10. Fundamentals Part 5
+        11. Project: Calculator
+    The Back End
+        1. Introduction to the Back End
+        2. Ruby Basics
+        3. Project: Ruby
+        4. Databases
+    Web Development Frameworks
+        1. Introduction to Frameworks
+        2. Ruby on Rails Basics
+        3. Project: Ruby on Rails
+    Pair Programming
+        1. Introduction to Pair Programming
+        2. Preparing to Remote Pair
+        3. Project: Pairing Project
+    Tying it All Together
+        1. Conclusion
+
+Ruby Programming
+    Basic Ruby
+        1. How this Course Will Work
+        2. Ruby Building Blocks
+        3. Project: Building Blocks
+        4. Advanced Ruby Building Blocks
+        5. Project: Advanced Building Blocks
+    Intermediate Ruby
+        1. Object Oriented Programming
+        2. Project: OOP
+        3. Files and Serialization
+        4. Project: Event Manager
+        5. Project: File I/O and Serialization
+    A Bit of Computer Science
+        1. A Very Brief Intro to CS
+        2. Recursive Methods
+        3. Project: Recursion
+        4. Common Data Structures and Algorithms
+        5. Project: Linked Lists
+        6. Project: Data Structures and Algorithms
+    Testing Ruby with RSpec
+        1. Introduction to RSpec
+        2. Project: Testing Your Ruby Code
+    Git
+        1. A Deeper Look at Git
+        2. Using Git in the Real World
+    Conclusion
+        1. Project: Ruby Final Project
+        2. Conclusion
+
+Ruby on Rails
+    The Track ahead
+        1. How this Course Will Work
+    Sinatra
+        1. Sinatra Basics
+        2. Project: Sinatra Project
+    Introduction to Rails
+        1. Project: Getting Your Feet Wet
+        2. A Railsy Web Refresher
+        3. Deployment
+        4. Project: Let's Get Building
+    Routes, Views, Controllers and Assets
+        1. Routing
+        2. Controllers
+        3. Views
+        4. The Asset Pipeline
+        5. Project: Basic Routes, Views and Controllers
+    Databases and Active Record
+        1. Databases and SQL
+        2. Project: SQL
+        3. Active Record Basics
+        4. Project: Building With Active Record
+    Forms and Authentication
+        1. Form Basics
+        2. Project: Forms
+        3. Sessions, Cookies, and Authentication
+        4. Project: Authentication
+    Advanced Forms and Active Record
+        1. Active Record Queries
+        2. Active Record Associations
+        3. Project: Associations
+        4. Active Record Callbacks
+        5. Project: Advanced Associations
+        6. Advanced Forms
+        7. Project: Building Advanced Forms
+    APIs, Mailers and Advanced Topics
+        1. APIs and Building Your Own
+        2. Working With External APIs
+        3. Project: APIs
+        4. Mailers
+        5. Project: Sending Confirmation Emails
+        6. Advanced Topics
+        7. Project: Final Project
+        8. Conclusion
+
+HTML5 and CSS3
+    Basic HTML Page Structure
+        1. How This Course Will Work
+        2. HTML5 Basics
+        3. Linking Internal and External Pages
+        4. Working with Images, Video and Other Media
+        5. Project: Embedding Images and Video
+        6. What's New in HTML5
+    Displaying and Inputting Data
+        1. Tables in HTML
+        2. Ordered and Unordered Lists
+        3. Forms for Collecting Data
+        4. Project: HTML Forms
+    CSS3
+        1. CSS3 Basics
+        2. The Box Model
+        3. Floats and Positioning
+        4. Project: Positioning and Floating Elements
+        5. Best Practices
+        6. Backgrounds and Gradients
+        7. Project: Building with Backgrounds and Gradients
+    Design and UX
+        1. Introduction to Design and UX
+        2. Fonts and Typography
+        3. CSS Grids
+        4. Project: Design Teardown
+    Responsive Design and CSS Frameworks
+        1. Responsive Design
+        2. Project: Building with Responsive Design
+        3. CSS Frameworks like Bootstrap and Foundation
+        4. Project: Using Bootstrap
+    Advanced CSS3
+        1. Animations, Subtle Effects and Compatibility
+        2. Using CSS Preprocessors to Save Time
+        3. Project: Design Your Own Grid-Based Framework
+        4. Conclusion
+
+Javascript
+    Introduction
+        1. How this course will work
+        2. A quick review
+    Organizing your JavaScript Code
+        1. Introduction
+        2. Objects and Object Constructors
+        3. Project: Library
+        4. Factory Functions and the Module Pattern
+        5. Project: Tic Tac Toe
+        6. Classes
+        7. ES6 Modules
+        8. Project: Restaurant Page
+        9. OOP Principles
+        10. Project: Todo List
+    JavaScript in the Real World
+        1. Linting
+        2. Dynamic User Interface Interactions
+        3. Forms
+        4. Webpack 2
+        5. ES?
+    Asynchronous JavaScript and APIs
+        1. JSON
+        2. Async
+        3. Working with APIs
+        4. Project: Weather App
+    Testing JavaScript
+        1. Testing Basics
+        2. Project: Testing Practice
+        3. More Testing
+        4. Project: Battleship
+    javascript and rails
+        1. Using Ruby on Rails For Your Back End
+        2. Project: Where's Waldo (A Photo Tagging App)
+    Finishing Up with Javascript
+        1. Project: Final Project
+        2. Conclusion
+
+Getting Hired
+    Preparing for Your Job Search
+        1. How This Course Will Work
+        2. Strategy
+        3. It Starts with YOU
+        4. What Companies Want
+        5. What You Can Do To Prepare
+        6. Project: Building Your Personal Website
+    Applying to and Interviewing for Jobs
+        1. Collecting Job Leads
+        2. Qualifying Job Leads
+        3. Project: Building Your Resume
+        4. Applying for Web Development Jobs
+        5. Preparing to Interview and Interviewing
+        6. Handling a Job Offer
+        7. Alternate Paths to a Web Development Job
+        8. Conclusion
+
+---------------------------------------------------------------------------------------------------
+
+LEARNING OUTCOMES:
+
+Web Development 101
+    The Basics
+        Command Line Basics
+            What is the command line?
+            How do you open it on your computer?
+            How can you navigate into a particular directory?
+            Where will cd on its own navigate you to?
+            Where will cd .. navigate you to?
+            How can you display the name of the directory you are currently in?
+            How can you display the contents of the directory you are currently in?
+            How can you create a new directory?
+            How can you create a new file?
+            How can you destroy a directory or file?
+            How can you rename a directory or file?
+
+    Git Basics
+        Git Basics
+            Name the git command used to get a full copy of an existing git repository from Github
+            Name the git command used to check the status of your files
+            Name the git command used to track files
+            Name the git command used to commit files
+            Name the git command used to view your commit history
+            Name the git command used to upload projects onto GitHub
+
+        Project: Practising Git Basics
+            Create a Git repository on GitHub and move it onto your local machine
+            Describe the difference between staging and committing changes
+            Describe the difference between committing your changes and pushing them onto GitHub
+            Check the status of your current repository from the command line
+            Look at the history of your previous commits from the command line
+
+    The Front End
+        Introduction to the Front End
+            What is the role of HTML in a web page?
+            What is the role of CSS in a web page?
+            What is the role of Javascript in a web page?
+
+        HTML and CSS Basics
+            Why do we separate HTML and CSS?
+            What are classes and IDs (and how are they different)?
+            What are elements?
+            What are tags?
+            What are attributes?
+            What are forms?
+            What is a div?
+            What are selectors?
+            What are properties?
+            What are values?
+            What is the “query string” in a URL and what does it do?
+            What is the difference between “pixels” and “ems”?
+            How do CSS styles for a particular element get inherited? i.e. how does an element get its “default” styles?
+            What are two CSS attributes you can change to push an element around on the page?
+            What are the three different ways to include CSS in your project or use CSS to style a particular element?
+            What is the “default stylesheet” or “user agent stylesheet”?
+            Why use a CSS reset file?
+
+        Developer Tools
+            You can open the developer tools in your browser.
+            You can select a specific html element in your page with dev tools.
+            You can you use developer tools to experiment with the css on specific elements on a web page.
+
+    JavaScript Basics
+        Fundamentals Part 1
+            How do you declare a variable in javascript?
+            What are three different ways to declare a variable?
+            Which one should you use when?
+            What are the rules for naming variables?
+            What are operators, operands, and operations?
+            What is concatenation and what happens when you add numbers and strings together?
+            What are the different type of operators in Javascript?
+            What is the difference between == and ===?
+            What are operator precedence values?
+            What are the increment/decrement operators?
+            What is the difference between prefixing and postfixing them?
+            What are assignment operators?
+            What is the “Unary +” Operator?
+
+        Fundamentals Part 2
+            What are the seven data types of javascript?
+            Which data type is NOT primitive?
+            What is the difference between single, double, and backtick quotes for strings?
+            Which type of quote lets you embed variables/expressions into a string?
+            How do you embed variables/expressions into a string?
+            How do you escape characters in a string?
+            What is the difference between slice/substring/substr?
+            What are methods?
+            What are the three logical operators and what do they stand for?
+            What are the comparison operators?
+            What is nesting?
+            What are truthy and falsy values?
+            What are the falsy values in Javascript?
+            What is the syntax for an if/else if/else conditional?
+            What is the syntax for a switch statement?
+            What is the syntax for a ternary operator?
+            What is the relationship between null and undefined?
+            What are conditionals?
+
+        DOM Manipulation
+            What is DOM in relation to a webpage?
+            What's the difference between a "node" and an "element"?
+            How do you target nodes with "selectors"?
+            What are the basic methods for finding/adding/removing and altering DOM nodes?
+            What is the difference between a "nodelist" and an "array of nodes"?
+            How do "events" and "listeners" work? What are three ways to use events in your code?
+            How does "bubbling" work?
+
+    The Back End
+        Introduction to the Back End
+            What the difference between front- and back-end development is
+    
+        Ruby Basics
+            What is an “interpreted” language?
+            What is IRB?
+            What are Objects?
+            What are Methods?
+            What are Classes?
+            What are Blocks?
+            What is an Array?
+            What is an Iterator?
+            What are hashes?
+            What is a library?
+            What is a gem?
+
+        Databases
+            What is a database?
+            What are relational databases?
+            How are relational databases different from XML?
+            What is SQL?
+            What is SQL used for?
+            What does CRUD stand for?
+            Why is the idea of “CRUD” so important for web apps?
+            How do you get all the records from a table in SQL?
+            How do you insert a record in SQL?
+            What is a primary key?
+            What is a foreign key?
+
+
+
+Ruby Programming
+
+
+Ruby on Rails
+
+
+
+HTML5 and CSS3
+
+
+
+JavaScript
+
+
+
+
+Getting Hired

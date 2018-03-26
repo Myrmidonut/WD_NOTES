@@ -109,14 +109,14 @@ x        CSS Forms
 x        CSS Counters
 x        CSS Website Layout
     CSS Advanced
-        CSS Rounded Corners
-        CSS Border Images
-        CSS Backgrounds
-        CSS Colors
-        CSS Gradients
-        CSS Shadows
-        CSS Text Effects
-        CSS Web Fonts
+x        CSS Rounded Corners
+x        CSS Border Images
+x        CSS Backgrounds
+x        CSS Colors
+x        CSS Gradients
+x        CSS Shadows
+x        CSS Text Effects
+x        CSS Web Fonts
         CSS 2D Transforms
         CSS 3D Transforms
         CSS Transitions
@@ -129,12 +129,12 @@ x        CSS Website Layout
         CSS Multiple Columns
         CSS User Interface
         CSS Variables
-        CSS Box Sizing
-        CSS Flexbox
+x        CSS Box Sizing
+x        CSS Flexbox
         CSS Media Queries
         CSS MQ Examples
     CSS Responsive
-        RWD Intro
+x        RWD Intro
         RWD Viewport
         RWD Grid View
         RWD Media Queries
@@ -146,27 +146,27 @@ x        CSS Website Layout
         Grid Intro
         Grid Container
         Grid Item
-    CSS Examples
-        CSS Templates
-        CSS Examples
-        CSS Quiz
-        CSS Exercises
-        CSS Certificate
+x    CSS Examples
+x        CSS Templates
+x        CSS Examples
+x        CSS Quiz
+x        CSS Exercises
+x        CSS Certificate
 
 JAVASCRIPT
     JS Tutorial
-        JS HOME
-        JS Introduction
-        JS Where To
-        JS Output
-        JS Statements
-        JS Syntax
-        JS Comments
-        JS Variables
-        JS Operators
-        JS Arithmetic
-        JS Assignment
-        JS Data Types
+x        JS HOME
+x        JS Introduction
+x        JS Where To
+x        JS Output
+x        JS Statements
+x        JS Syntax
+x        JS Comments
+x        JS Variables
+x        JS Operators
+x        JS Arithmetic
+x        JS Assignment
+x        JS Data Types
         JS Functions
         JS Objects
         JS Scope
