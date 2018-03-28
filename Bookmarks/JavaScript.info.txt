@@ -3,7 +3,7 @@ x        An introduction
 x            An Introduction to JavaScript
 x            Code editors
 x            Developer console
-        JavaScript Fundamentals
+x        JavaScript Fundamentals
 x            Hello, world!
 x            Code structure
 x            The modern mode, "use strict"
@@ -17,16 +17,16 @@ x            Conditional operators: if, '?'
 x            Logical operators
 x            Loops: while and for
 x            The "switch" statement
-            Functions
-            Function expressions and arrows
-            JavaScript specials
-        Code quality
-            Debugging in Chrome
-            Coding style
-            Comments
-            Ninja code
-            Automated testing with mocha
-            Polyfills
+x            Functions
+x            Function expressions and arrows
+x            JavaScript specials
+x        Code quality
+x            Debugging in Chrome
+x            Coding style
+x            Comments
+x            Ninja code
+x            Automated testing with mocha
+x            Polyfills
         Objects: the basics
             Objects
             Garbage collection

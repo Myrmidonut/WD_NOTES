@@ -20,10 +20,10 @@ x        4. Project: HTML/CSS
 x        1. Fundamentals Part 1
 x        2. Fundamentals Part 2
 x        3. Developer Tools 2
-        4. Fundamentals Part 3
-        5. Project: Rock Paper Scissors
-        6. Clean Code
-        7. Fundamentals Part 4
+x        4. Fundamentals Part 3
+x        5. Project: Rock Paper Scissors
+x        6. Clean Code
+x        7. Fundamentals Part 4
         8. DOM manipulation
         9. Project: Etch-a-Sketch project
         10. Fundamentals Part 5

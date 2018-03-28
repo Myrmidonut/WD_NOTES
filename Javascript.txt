@@ -49,7 +49,7 @@ CONSOLE:
   console.log(...);                     outputs into the console
   clear();                              clears the console in chrome
   alert(...);                           shows a window with text, etc.
-  prompt(...);                          shows a window with a message and input
+  prompt(..., ...);                     shows a window with a message (and default text) and input
   confirm(...);                         shows a window with OK and Cancel
 ---------------------------------------------------------------------------------------------------
 OPERATORS:
@@ -171,6 +171,8 @@ DATA TYPES:
       array                             an ordered object
 
   typeof ...                            return string with the datatype, error: typeof(null) returns object
+    "number"
+    
   instanceof ...                        
 
   if (typeof name == "undefined") {}    checks if the variable called name exists
@@ -321,11 +323,13 @@ STRING METHODS:
     .toLowerCase()                      convert to lowercase
     .concat("...", text2)               add string
     .split("...")                       split at the character and convert into an array
+      .split("")                        comma seperated individual entries
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:    
   myArray
     .length                             number of entries
     .sort()                             sort an array from lowest to highest value
+    .reverse()                          reverse an array
     .toString()                         convert to a string with comma seperation
     .join("...")                        convert to a string with given seperation
     .push(...)                          add an entry to the end, returns new length
@@ -339,7 +343,7 @@ ARRAY METHODS:
       x = myArray.shift();              x == removed entry
     .splice(4, 2)                       remove 2 entries from index 4 on
     .splice(2, 0, "...", "...")         remove 0 entries from index 2 on and add two entries
-    .concat(...)                        merge two arrays
+    .concat(...)                        merge two arrays, return new array
     .concat("...", "...")               merge values
     .indexOf(...)                       return the first index of that entry, -1 if not exists
     .slice(1)                           slice an array at index 1
@@ -424,25 +428,34 @@ BREAK CONTINUE LABEL:
   }
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
-  function name(arg1, arg2) {                 creating the function
+  function name(arg1, arg2 = "...") {         function declaration, with default value
     ...;
     return ...;                               optional, will stop the function
   }
 
+  let name = function func() {}               function expression
+  let name = function() {}                    anonymous function expression
+
+  let name = (...) => expression              arrow function, short version of declaration
+
   name;                                       passing the function on
   name();                                     calling the function immediately
-
-  function() {                                anonymous function, used with an event
-    ...;
-  }
-
-    mybutton.onclick = function() {...}       anonymous function
 
   Array.prototype.name = function(func) {     prototype, this to call on the array
     func(this[i]);
   }
 
   variables inside a function are only availabe in the function, scope!
+  a function does only one thing
+  no/empty return returns undefined
+  chose declaration over expression, can be called before declaration
+
+  naming:
+    get...
+    show...
+    calc...
+    create...
+    check...
 ---------------------------------------------------------------------------------------------------
 METHODS:
   a function inside an object
@@ -465,7 +478,7 @@ USEFUL FUNCTIONS:
   Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
     Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
     Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
-  Math.floor(Math.random() * 6);        random number out of 1, 2, ..., 5
+  Math.floor(Math.random() * 5 + 1);    random number out of 1, 2, ..., 5
 
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms

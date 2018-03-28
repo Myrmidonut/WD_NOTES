@@ -180,8 +180,8 @@ x        JS Data Types
         JS Dates
         JS Date Formats
         JS Date Methods
-        JS Arrays
-        JS Array Methods
+x        JS Arrays
+x        JS Array Methods
         JS Array Sort
         JS Booleans
         JS Comparisons
