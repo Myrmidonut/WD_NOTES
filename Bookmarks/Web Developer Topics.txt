@@ -25,6 +25,8 @@ BACK-END:
 -       ExpressJS
         PassportJS
         mongoose
+        webpack
+-       gulp
 -   PHP
 -     XAMPP
 -   Python

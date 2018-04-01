@@ -42,6 +42,8 @@ MANIPULATION:
   .setAttribute("...", "...");              change attribute: name, value
 
   .onclick;                                 action on clicking
+
+  .createElement("...")                     create element
 -----
   document.getElementById("...").innerHTML = "...";
   document.getElementById("...").onclick = function() {statements}
@@ -77,25 +79,64 @@ this.style.color = "pink";
 
 
 
----------- MDN:
+---------- NEW:
+MANIPULATION:
+  query selector:
+    element.querySelector(selector)               return reference to first selector
+    element.querySelectorAll(selector)            return nodelist with all selectors
 
-document.querySelector()
+  create element:
+    document.createElement(tag, options)          create element, optional options
 
-document.createElement()
+  append element:
+    parentNode.appendChild(childNode)             add childNode as last child of parentNode
+    parentNode.insertBefore(newNode, nextNode)    add newNode before nextNode in parentNode
 
-element.setAttribute()
+  remove element:
+    parentNode.removeChild(child)                 remove child from parentNode, return reference to child
 
-node.appendChild()
+  alter element:
+    .style.color = "..."                          add rule
+    .style.cssText = "..."                        add multiple rules, css style
+    .setAttribute("style", "...")                 add multiple rules
 
-node.textContent()
+    background-color -> backgroundColor           naming rules for CSS
 
-node.removeChild()
+  edit attribute:
+    .setAttribute("name", "value")                change name="value", or add it
+    .getAttribute("...")                          return value of attribute
+    .removeAttribute("...")                       remove attribute
+
+  class:
+    .classList.add("...")                         add class
+    .classList.remove("...")                      remove class
+    .classList.toggle("...")                      toggle class, prefered
+
+  content:
+    .textContent = "..."                          add plain text, prefered
+    .innerHTML = "..."                            add html text
+
+EVENTS:
+  attach functions to HTML elements
+  on_event_ property
+  event listener, prefered
+
+  .addEventListener("...", function() {...})
+    click
+    dblclick
+    keypress
+    keydown
+    keyup
+    mouseover
+
+
+
+
 
 .onclick
 
 .onchange
 
-element.style.backgroundColor = "..."
 
 -----
 

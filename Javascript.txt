@@ -47,6 +47,7 @@ COMMENTS:
 ---------------------------------------------------------------------------------------------------
 CONSOLE:
   console.log(...);                     outputs into the console
+  console.table(...);                   outputs into the console as a table
   clear();                              clears the console in chrome
   alert(...);                           shows a window with text, etc.
   prompt(..., ...);                     shows a window with a message (and default text) and input
@@ -124,7 +125,9 @@ PRECEDENCE:
               ||
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
-  let name;                             new style
+  let name;                             block-scope, prefered
+  const name                            block-scope constant
+  var name;                             global scope outside functions
 
   var name;                             undefined
   var name = "test";                    string
@@ -134,7 +137,6 @@ VARIABLES:
       name2 = 1;
   var name = null;                      undefined
 
-  const name                            constant
   const NAME = ...                      constant, value is known before execution
 
   hoisting:
@@ -277,26 +279,51 @@ ARRAYS:                                 ordered list of data
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
   var myObj = {};                             create an empty object        
-  var myObj = {prop: "value", ...};           create an object
-  var myObj = {prop: [...], ...};
-  var myObj = {prop: {prop: ..., ...}, ...};  subnamespace
+  var myObj = {key: "value", ...};            create an object, key: value pairs (properties)
+  var myObj = {"key key": ...}                multiword key
+  var myObj = {key: [...] };                  array key
+  var myObj = {key: function(){} };           method key
+  var myObj = {key: {key: ..., ...}, ...};    subnamespace
   var myOby = [{...}, {...}];                 array of objects
 
-
-  myObj.prop;                           calling a property
-  myObj.prop[0];                        calling an array property
+  myObj.key;                            calling a property
+  myObj.key[0];                         calling an array property
   myObj.meth();                         calling a method
-  myObj.prop.prop;                      calling subnamespace
+  myObj.key.key;                        calling subnamespace
+  myObj["key key"];                     calling multiword key
 
-  myObj.prop = ...;                     modify
-  myObj["prop"] = ...                   alternative
+  myObj.key = ...;                      modify
+  myObj["key"] = ...                    alternative
 
-  myObj[prop] = value;                    
+  myObj[key] = value;                    
  
+  .this                                 refers to the current object
+
+  delete myObj.key;                     delete property
+
+  "key" in myObj                        check if property exists
+
+  for...in loop:                        loop over all keys
+    for(let key in myObj) {
+      alert(key);
+      alert(user[key]);
+    }
+
+  function isEmpty(obj) {               check if object has no properties
+    for (let key in obj) {
+      return false;
+    } else return true;
+  }
+
   data items: properties
   functions: methods
 
-  .this                                 refers to the current object
+  last property can have a trailing comma, easier moving of properties
+
+  . notation is simpler
+  [] notation is more complex
+
+  const myObj {} it is still possible to change properties, only myObj itself is protected
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
   myString
@@ -319,6 +346,7 @@ STRING METHODS:
     .replace("text1", "text2")          replace the text1 with text2
       .replace(/text1/g , "text2")      replace all text1 with text2
       .replace(/text1/i , "text2")      replace all text1 with text2, case insensetive
+      .replace(/...|.../g , "...")      replace multiple texts
     .toUpperCase()                      convert to uppercase
     .toLowerCase()                      convert to lowercase
     .concat("...", text2)               add string
@@ -328,7 +356,10 @@ STRING METHODS:
 ARRAY METHODS:    
   myArray
     .length                             number of entries
+    .filter()                           create new array with filtered entries
+    .map()                              create new array after running function on every entry
     .sort()                             sort an array from lowest to highest value
+      .sort(function(a, b){return a-b}) sort with compare function for numbers
     .reverse()                          reverse an array
     .toString()                         convert to a string with comma seperation
     .join("...")                        convert to a string with given seperation
@@ -348,6 +379,11 @@ ARRAY METHODS:
     .indexOf(...)                       return the first index of that entry, -1 if not exists
     .slice(1)                           slice an array at index 1
     .slice(2, 3)                        slice an array at index 1 up to 3-1
+    .reduce()
+    .some()
+    .every()
+    .find()                             first entry that matches
+    .findIndex()
 
   delete myArray[5]                     changes element at index 5 to undefined
 

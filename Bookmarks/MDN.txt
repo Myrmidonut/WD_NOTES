@@ -124,8 +124,8 @@ x            JavaScript first steps
 x            JavaScript building blocks
 x            Introducing JavaScript objects           
         JavaScript Guide
-            Introduction
-            Grammar and types
+x            Introduction
+x            Grammar and types
             Control flow and error handling
             Loops and iteration
             Functions

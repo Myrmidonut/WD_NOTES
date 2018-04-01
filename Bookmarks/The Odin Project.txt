@@ -16,7 +16,7 @@ x        1. Introduction to the Front End
 x        2. HTML and CSS Basics
 x        3. Developer Tools
 x        4. Project: HTML/CSS
-    JavaScript Basics
+x    JavaScript Basics
 x        1. Fundamentals Part 1
 x        2. Fundamentals Part 2
 x        3. Developer Tools 2
@@ -24,12 +24,12 @@ x        4. Fundamentals Part 3
 x        5. Project: Rock Paper Scissors
 x        6. Clean Code
 x        7. Fundamentals Part 4
-        8. DOM manipulation
-        9. Project: Etch-a-Sketch project
-        10. Fundamentals Part 5
-        11. Project: Calculator
+x        8. DOM manipulation
+x        9. Project: Etch-a-Sketch project
+x        10. Fundamentals Part 5
+x        11. Project: Calculator
     The Back End
-        1. Introduction to the Back End
+x        1. Introduction to the Back End
         2. Ruby Basics
         3. Project: Ruby
         4. Databases
@@ -325,6 +325,7 @@ Web Development 101
     The Back End
         Introduction to the Back End
             What the difference between front- and back-end development is
+            Why you need to install Ruby but not Javascript
     
         Ruby Basics
             What is an “interpreted” language?
