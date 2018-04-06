@@ -28,13 +28,13 @@ x        8. DOM manipulation
 x        9. Project: Etch-a-Sketch project
 x        10. Fundamentals Part 5
 x        11. Project: Calculator
-    The Back End
+x    The Back End
 x        1. Introduction to the Back End
-        2. Ruby Basics
-        3. Project: Ruby
-        4. Databases
+x        2. Ruby Basics
+x        3. Project: Ruby
+x        4. Databases
     Web Development Frameworks
-        1. Introduction to Frameworks
+x        1. Introduction to Frameworks
         2. Ruby on Rails Basics
         3. Project: Ruby on Rails
     Pair Programming

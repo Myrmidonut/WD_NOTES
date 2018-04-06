@@ -10,6 +10,7 @@ FRONT-END:
   FUNCTIONALITY:
 -   DOM
 -   JavaScript
+-   JSON
     JavaScript Libraries:
       jQuery
         Ajax
@@ -22,18 +23,19 @@ BACK-END:
     JavaScript Environments:
 -     Node.js
 -       npm
--       ExpressJS
-        PassportJS
-        mongoose
+-       Express
         webpack
 -       gulp
--   PHP
--     XAMPP
--   Python
+    PHP
+      XAMPP
+    Python
       Django
 -   Ruby
 -     Rails
 -     RVM
+    ASP.NET
+    Perl
+      Mojolicious
 
   DATABASES:
     NoSQL

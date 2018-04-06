@@ -111,6 +111,22 @@ LOGIC:
   x = a || b || c;                      return first true or last value
   x = a && b && c;                      return first false or last value
 ---------------------------------------------------------------------------------------------------
+REGULAR EXPRESSIONS:
+  /.../
+  /.../g                global, all occurences
+  /.../i                case insensitive
+
+  /\d/                  one digit
+  /\d+/                 one or more digits
+
+  /\s/                  whitespace
+  /\r/                  return
+  /\n/                  newline
+  /\t/                  tab
+  /\f/                  form feed
+
+  invert using uppercase letter
+---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
     ++
@@ -172,6 +188,8 @@ DATA TYPES:
       symbol                            unique identifiers for objects
       array                             an ordered object
 
+  isNaN(...);                           check if not a number
+
   typeof ...                            return string with the datatype, error: typeof(null) returns object
     "number"
     
@@ -181,9 +199,11 @@ DATA TYPES:
 ---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
   String(...)
-  .toString()
+    .toString()
 
   Number(...)
+    .toNumber()
+
     undefined  -> NaN
     null       -> 0
     true/false -> 1/0
@@ -278,108 +298,134 @@ ARRAYS:                                 ordered list of data
   ... instanceof Array                                      returns true for arrays
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
-  var myObj = {};                             create an empty object        
-  var myObj = {key: "value", ...};            create an object, key: value pairs (properties)
-  var myObj = {"key key": ...}                multiword key
-  var myObj = {key: [...] };                  array key
-  var myObj = {key: function(){} };           method key
-  var myObj = {key: {key: ..., ...}, ...};    subnamespace
-  var myOby = [{...}, {...}];                 array of objects
+    var myObj = {property1, property2}
+      property = key: value
 
-  myObj.key;                            calling a property
-  myObj.key[0];                         calling an array property
-  myObj.meth();                         calling a method
-  myObj.key.key;                        calling subnamespace
-  myObj["key key"];                     calling multiword key
+  create:
+    var myObj = {};                             create an empty object        
+    var myObj = {key: "value", ...};            create an object, key: value pairs (properties)
+    var myObj = {"key key": "value"}            multiword key
 
-  myObj.key = ...;                      modify
-  myObj["key"] = ...                    alternative
+    var myObj = {key: [...] };                  array key
 
-  myObj[key] = value;                    
+    var myObj = {key: function(){} };           method key
+
+    var myObj = {key: {key: ..., ...}, ...};    subnamespace
+
+    var myOby = [{...}, {...}];                 array of objects
+
+  call:
+    myObj.key;                            calling a property
+    myObj.key[0];                         calling an array property
+    myObj.meth();                         calling a method
+    myObj.key.key;                        calling subnamespace
+    myObj["key key"];                     calling multiword key
+
+  modify:
+    myObj.key = ...;                      modify
+    myObj["key"] = ...                    alternative
+
+    myObj[key] = value;                    
  
-  .this                                 refers to the current object
+  this:
+    .this                                 refers to the current object
 
-  delete myObj.key;                     delete property
+  stuff:
+    .hasOwnProperty(...)                  check if property exists
 
-  "key" in myObj                        check if property exists
+    delete myObj.key;                     delete property
 
-  for...in loop:                        loop over all keys
-    for(let key in myObj) {
-      alert(key);
-      alert(user[key]);
+    "key" in myObj                        check if property exists
+
+    for...in loop:                        loop over all keys
+      for(let key in myObj) {
+        alert(key);
+        alert(user[key]);
+      }
+
+    function isEmpty(obj) {               check if object has no properties
+      for (let key in obj) {
+        return false;
+      } else return true;
     }
 
-  function isEmpty(obj) {               check if object has no properties
-    for (let key in obj) {
-      return false;
-    } else return true;
-  }
+  infos:
+    data items: properties
+    functions: methods
 
-  data items: properties
-  functions: methods
+    last property can have a trailing comma, easier moving of properties
 
-  last property can have a trailing comma, easier moving of properties
+    . notation is simpler
+    [] notation is more complex
 
-  . notation is simpler
-  [] notation is more complex
-
-  const myObj {} it is still possible to change properties, only myObj itself is protected
+    const myObj {} it is still possible to change properties, only myObj itself is protected
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
   myString
     .length                             length of string
+
     .indexOf("...")                     return first position of ... in a string, -1 if not
       .indexOf("...",15)                includes starting position
     .lastIndexOf("...")                 return last position of ... in a string, -1 if not
       .lastIndexOf("...",15)            includes starting position
     .search("...")                      similar to indexOf, no second argument, with regular expressions
+
     .charAt(5)                          return the character at index 5
     .charCodeAt(5)                      return the unicode character at index 5
     .slice(4)                           return string starting at index 4
       .slice(4, 8)                      return string starting at index 4 until 8-1
-      .slice(-4)                        count from the end of a string
+      .slice(-4)                        count the last 4 characters
       .slice(-4, -8)                    count from the end of a string
     .substring(4)                       same as .slice but no negative indixes
     .substr(4)                          return string starting at index 4
       .substr(4, 3)                     return string starting at index 4 with length 3
       .substr(-4, 3)                    count from the end of a string
+
     .replace("text1", "text2")          replace the text1 with text2
       .replace(/text1/g , "text2")      replace all text1 with text2
       .replace(/text1/i , "text2")      replace all text1 with text2, case insensetive
       .replace(/...|.../g , "...")      replace multiple texts
+
     .toUpperCase()                      convert to uppercase
     .toLowerCase()                      convert to lowercase
+
     .concat("...", text2)               add string
+
     .split("...")                       split at the character and convert into an array
-      .split("")                        comma seperated individual entries
+      .split("")                        split every character
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:    
   myArray
     .length                             number of entries
-    .filter()                           create new array with filtered entries
-    .map()                              create new array after running function on every entry
+
+    .filter(function(e) {return...});   create new array with filtered entries
+    .map(function(e) {return...});      create new array after running function on every entry
+    .reduce(function(prev, curr) {return...}, init);  condense array after function with init
     .sort()                             sort an array from lowest to highest value
-      .sort(function(a, b){return a-b}) sort with compare function for numbers
+    .sort(function(a, b) {return a-b}); sort with compare function for numbers, small to large
+
     .reverse()                          reverse an array
+
     .toString()                         convert to a string with comma seperation
     .join("...")                        convert to a string with given seperation
+
     .push(...)                          add an entry to the end, returns new length
       .push(..., ...)                   multiple entries
-      x = myArray.push("...");          x == new length
     .pop()                              remove the last entry, returns removed entry
-      x = myArray.pop();                x == removed entry
     .unshift(...)                       add an entry to the beginning
-      x = myArray.unshift("...");       x == new length
     .shift()                            remove the first entry
-      x = myArray.shift();              x == removed entry
+
     .splice(4, 2)                       remove 2 entries from index 4 on
     .splice(2, 0, "...", "...")         remove 0 entries from index 2 on and add two entries
+
     .concat(...)                        merge two arrays, return new array
     .concat("...", "...")               merge values
+
     .indexOf(...)                       return the first index of that entry, -1 if not exists
+
     .slice(1)                           slice an array at index 1
     .slice(2, 3)                        slice an array at index 1 up to 3-1
-    .reduce()
+
     .some()
     .every()
     .find()                             first entry that matches
@@ -464,27 +510,39 @@ BREAK CONTINUE LABEL:
   }
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
-  function name(arg1, arg2 = "...") {         function declaration, with default value
-    ...;
-    return ...;                               optional, will stop the function
-  }
+  declaration:
+    function myFunc(arg1, arg2 = "...") {         function declaration, with default value
+      ...;
+      return ...;                                 optional, will stop the function
+    }
 
-  let name = function func() {}               function expression
-  let name = function() {}                    anonymous function expression
+  return:
+    return comparison;                            return true or false
 
-  let name = (...) => expression              arrow function, short version of declaration
+  function expression:
+    let myFunc = function func() {}               function expression
+    let myFunc = function() {}                    anonymous function expression
 
-  name;                                       passing the function on
-  name();                                     calling the function immediately
+  event:
+    let myFunc = function(e) {e...}               function with event object
 
-  Array.prototype.name = function(func) {     prototype, this to call on the array
-    func(this[i]);
-  }
+  arrow function:
+    let myFunc = (...) => expression              arrow function, short version of declaration
 
-  variables inside a function are only availabe in the function, scope!
-  a function does only one thing
-  no/empty return returns undefined
-  chose declaration over expression, can be called before declaration
+  calling:
+    myFunc;                                       passing the function on
+    myFunc();                                     calling the function immediately
+
+  prototype:
+    Array.prototype.myFunc = function(func) {     prototype, this to call on the array
+      func(this[i]);
+    }
+
+  info:
+    variables inside a function are only availabe in the function, scope!
+    a function does only one thing
+    no/empty return returns undefined
+    chose declaration over expression, can be called before declaration
 
   naming:
     get...
@@ -494,27 +552,28 @@ FUNCTIONS:
     check...
 ---------------------------------------------------------------------------------------------------
 METHODS:
-  a function inside an object
+  info:
+    a function inside an object
 
-  obj.func = function() {               creating the method
-    ...
-  }
-  obj.func();                           calling the method
+  declaration:
+    obj.func = function() {             creating the method
+      ...
+    }
+
+  calling:
+    obj.func();                         calling the method
 ---------------------------------------------------------------------------------------------------
 THIS:
   this;                                 refers to the object in which the method is defined
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
-  Number(...);                          convert to a number
-
-  isNaN(...);                           check if not a number
-
   Math.round();                         round to nearest whole number
   Math.floor(...);                      remove the decimals
   Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
     Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
     Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
   Math.floor(Math.random() * 5 + 1);    random number out of 1, 2, ..., 5
+  Math.floor(Math.random() * (max - min + 1)) + min;    random number from min to max
 
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms

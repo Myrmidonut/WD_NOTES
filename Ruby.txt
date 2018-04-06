@@ -1,11 +1,22 @@
 FILES:
   ruby file.rb                  run code from a file
 ---------------------------------------------------------------------------------------------------
-SHELL:
-  irb                           open interactive ruby shell
----------------------------------------------------------------------------------------------------
 COMMANDS:
-  clear                         clear bash
+  irb                           open interactive ruby shell
+    clear
+    exit
+
+  ruby ...                      open file
+
+  gem search ...                search gem
+  gem install ...               install gem with dependencies
+  gem uninstall ...             unsinstall gem
+  gem list                      show installed gem
+  gem server                    show doc for installed gems in browser
+  gem fetch ...                 download gem without installing
+  gem unpack ...                extract gem
+
+  ri ...                        show doc for installed gem
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   # ...                         single line
@@ -20,54 +31,188 @@ LOGIC:
   >=                            greater equal
   ==                            equal
   !=                            not equal
-  &&                            AND
-  ||                            OR
-  !                             NOT
+  && / and                      and
+  || / or                       or
+  !  / not                      not
+
+  comparing string:
+    z > a
+    A > a
+    Z > A
 ---------------------------------------------------------------------------------------------------
 OUTPUT:
   print                         output without linebreak
     print "\"                   create linebreak
 
-  puts                          output with linebreak
+  puts                          output with linebreak, converts to string first
     puts "abc" + "123"          concatenation
-    puts "test #{test}"         output test and the value of variable test
+    puts "test #{test}"         output test and the value of variable test 
+---------------------------------------------------------------------------------------------------
+INPUT:
+  gets                          takes input including enter
+  gets.chomp                    cuts of enter
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
-  name = 1                      number
-  name = "test"                 string
+  string_case_is_used
+
+  my_var = 1                    number
+  my_var = "test"               string
+
+  nil                           empty value
+---------------------------------------------------------------------------------------------------
+SCOPE:
+  local                         method
+  instance                      instance, @...
+  class                         class, @@...
+  global                        everything, $...
+---------------------------------------------------------------------------------------------------
+CONVERSION:
+  .to_s                         to string
+  .to_i                         to integer, round down, until isnt possible and stops there, or zero
+  .to_f                         to float
+  .to_a                         to array
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
-  20                            integer
-  20.0                          float
+  integer and float:
+    20                            integer
+    20.0                          float
+
+    integers stay as integers:
+      9/2 = 4
+
+  operators:
+    **                            exponent
+    %                             modulus
+
+  format:
+    "%02d", 5 == "05"             d: integer, 0: lead with zeros, 2: take up 2 characters
+
+  random:
+    rand                          float from including 0.0 to excluding 1.0
+    rand(x)                       integer from including 0 to excluding x
+
+    srand x                       enter a seed, following random numbers stay the same for this seed
+    rand
+
+  math:
+    Math::PI                      pi
+    Math::E                       e
+    Math.sin(...)                 sin
+    Math.cos(...)                 cos
+    Math.tan(...)                 tan
+    Math.log(...)                 log
+    Math.sqrt(...)                root
 ---------------------------------------------------------------------------------------------------
 STRINGS:
-  name = "test"                 create string
+  declaration:
+    my_string = "..."             create string
 
-  "test #{...}"                 insert a variable inside a string
+  substring:
+    my_string[0..4]               substring
+    my_string[-4..-1]             substring, negative numbers are counting from the back
 
-  .length                       length of the string
-  .capitalize                   make first character uppercase
+  interpolation:
+    "... #{my_var}"               insert a variable/code inside a string
+
+  concatenation:
+    "..." + my_string + "..."
+    "..." * x                     repeat string x times
+
+  methods:
+    .length                       length of string
+
+    .capitalize                   first character upper case
+    .downcase                     all lower case
+    .upcase                       all upper case
+    .swapcase                     alternate upper and lower
+
+    .split                        split into array at spaces
+      .split(",")                 split at ,
+
+    .sub("...","...")             find and replace first
+    .gsub("...","...")            find and replace all
+
+    .center(...)                  center string, with line length
+    .ljust ...                    aligned left, with line length as spaces
+    .rjust ...                    aligned right, with line length as spaces
+
+  escape character:
+    \...
+    \\
+    \'
+---------------------------------------------------------------------------------------------------
+SYMBOLS:
+  :my_symbol                      stored only once, referenced, saves data
 ---------------------------------------------------------------------------------------------------
 ARRAYS:
-  myArray = ["a", 1, true, [1,2]]   create array
+  declaration:
+    my_array = ["a", 1, true, [1,2]]   create array
 
-  myArray[0]                        access to entries
+  entries:
+    my_array[0]                        access to entries
 
-  myArray << ...                    add an entry to the end
+  methods:
+    my_array << ...                 add an entry to the end
     .push(...)                      add an entry to the end, more common
     .unshift(...)                   add an entry to the front
     .shift                          remove the first entry
     .pop                            remove the last entry
+
+    .first                          first entry
     .last                           access the last entry
+    .max                            show highest entry
+    .include?(...)                  check if an entry is present, returns true
+
+    .sort                           sort lowest to highest
+    .shuffle                        randomize order
+
+    .join("...")                    create string with given seperation
+
+    .collect {|x| ...}              run block once for each entry
+
+    .lines                          split into lines
+    .bytes
+    .chars
 ---------------------------------------------------------------------------------------------------
 HASH:
-  myHash = {test1: "...", test2: "..."}         key and value pairs
-  myHash = {:test1 => "...", :test2 => "..."}   old style, hashrocket: =>
+  declaration:
+    my_hash = Hash.new(0)                         create hash
   
-  myHash[:test1]                                output values of a key
+    my_hash = {test1: "...", test2: "..."}        key and value pairs
+    my_hash = {"..." => "...", "..." => "..."}    old style, hashrocket: =>
+  
+  access:
+    my_hash[:test1]                               output values of a key
 
-  .keys                                         list of keys
-  .values                                       list of values
+  methods:
+    .keys                                         list of keys
+    .values                                       list of values
+    .length                                       amount of pairs
+---------------------------------------------------------------------------------------------------
+TIME:
+  Time.new                                        current time
+  Time.mktime(year, month, day, hour, minute)     specific time, one or more entries, rest are 0
+
+  my_time + x                                     add seconds
+---------------------------------------------------------------------------------------------------
+CLASS:
+  class my_object
+    attr_accessor :..., :...          define attributes for instances
+
+    def initialize                    called at creation
+      @... = ...
+    end
+
+    def my_method                     define methods
+      @var                            local instance variable
+      ...
+    end
+  end
+
+  instance:
+    my_instance = my_object.new         create instance
+
+    my_instance.my_method               call method on instance
 ---------------------------------------------------------------------------------------------------
 IF:
   if condition                              condition can be in ()
@@ -79,43 +224,72 @@ IF:
   end
 ---------------------------------------------------------------------------------------------------
 TERNARY:
-  condition ? statement1 : statemment2      alternative
+  condition ? statement1 : statemment2       alternative
 ---------------------------------------------------------------------------------------------------
-DO:
-  myArray.each do |i|                       loop over array
-    ...
-  end
+LOOPS:
+  for:
+    for i in 0..x                               for
+      ..
+    end
 
-  myArray.each {                            shorthand
-    |i| ...
-  }
+  while:
+    while i < 10 do                             while
+      ...
+      i += 1
+    end
 
-  myHash.each do |k, v|                     loop over hash, key and value
-    ...
-  end
+  unless:
+    unless condition                            unless
+      ...
+    end
 
-  myArray.map { |i| i + 10 }                create a new array from output
+  break                                         stop the loop
+  next                                          jump to next iteration
 
-  x.times do                                run the loop x times
-    ...
-  end
----------------------------------------------------------------------------------------------------
-UNLESS:
-  unless condition
-    ...
-  end
+  methods:
+    .times:
+      x.times do                                loop x times
+        ...
+      end
+
+      x.times do |i|                            loop x times with counter
+        ...
+      end
+
+    .each:
+      my_array.each do |i|                      loop over array with counter
+        ...
+      end
+
+      myArray.each {                            shorthand
+        |i| ...
+      }
+
+      my_hash.each do |k, v|                    loop over hash, key and value
+        ...
+      end
+
+    .map:
+      my_array.map { |i| i + 10 }               create a new array from output
 ---------------------------------------------------------------------------------------------------
 METHODS:
-  def myMethod                              create method, last statement will be returned
-    statement
-  end
+  declaration:
+    def my_method                           create method, last statement will be returned
+      ...
+    end
 
-  def myMethod (argument1, argument2) 
-    statement
-  end
+    def my_method(argument1, ...)           with arguments, () not necessary
+    def my_method(*arguments)               with variable number of arguments
+    def my_method(argument1=25)             with default value, can be overwritten in call
 
-  myMethod                                  run method
-  myMethod(..., ...)                        run method with arguments, () is optional
+  calling:
+    my_method                               run method
+    my_method(..., ...)                     run method with arguments, () is optional
+
+  ...!                                      change variable directly
+  ...?                                      return true or false, convention
+
+  methods always return the value of the last expression
 ---------------------------------------------------------------------------------------------------
 CLASSES:
   class myClass                             capital letter is common for class names
@@ -130,10 +304,47 @@ CLASSES:
     end
   end
 
+  @...                                      instance variable
+  @@...                                     class variable
+
   test = myClass.new                        create a new object
   test.myMethod
 
   test.inspect                              show the values of the object
+---------------------------------------------------------------------------------------------------
+PROC:
+  declaration:
+    my_proc = Proc.new do |...|             with parameter |...|
+      ...
+    end
+
+  calling:
+    my_proc.call "..."                      with parameter "..."
+
+  steps:
+    define method
+    make proc
+    call method with proc
+---------------------------------------------------------------------------------------------------
+BLOCK:
+  def my_block(&block)
+    block.call
+    block.call
+  end
+
+  my_block do
+    ...
+  end
+
+  alternative:
+    def my_block
+      yield
+      yield
+    end
+
+    my_block do
+      ...
+    end
 ---------------------------------------------------------------------------------------------------
 INHERITANCE:
   class Admin < User                        Admin gets all methods from User

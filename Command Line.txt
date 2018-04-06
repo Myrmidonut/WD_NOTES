@@ -1,3 +1,7 @@
+POWERSHELL:
+  powershell in explorer addressbar
+  start . in powershell to open explorer
+-----
 VIEWING:
   cd              change to a directory
                   return to home directory (linux)

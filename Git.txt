@@ -3,17 +3,52 @@
   working directory - staging area - repository
 
   GitHub: https://github.com/Myrmidonut/repository.git
------
+---------------------------------------------------------------------------------------------------
 FIRST STEPS FOR NEW REPOSITORY:
-  git init
-  git add .
-  git commit -m "..."
+  local -> GitHub:
+    git init
+    git add .
+    git commit -m "..."
 
-  create GitHub repository
+    create GitHub repository
 
-  git remote add origin https://github.com/Myrmidonut/xxx.git
-  git push origin master
------
+    git remote add origin https://github.com/Myrmidonut/xxx.git
+    git push origin master
+
+  GitHub -> local:
+    create GitHub repository
+
+    git clone https://github.com/Myrmidonut/xxx.git
+    git add .
+    git commit -m "..."
+    git push origin master
+---------------------------------------------------------------------------------------------------
+GITHUB:
+  README.md:
+    headline:
+      # ...                         first headline
+      ...
+      ## ...                        second headline
+      ...
+      ### ...                       third headline
+      ...
+
+    code:
+      ```
+      ...                           codeblock
+      ```
+
+    list:
+      * ...                         first entry
+      * ...                         second entry
+
+    link:
+      [...](http...)                link with title
+
+    formatting:
+      **...**                       bold
+      *...*                         cursive
+---------------------------------------------------------------------------------------------------
 SHORT VERSION:
   git init                          create .git folder
   git status                        show changes
@@ -45,6 +80,7 @@ SHORT VERSION:
 
   git clone ...                     clone a repository from an URL
   git clone ... .                   clones without creating a new folder
+  git clone -l "..."                clone local repository
 
   git branch                        list branches
   git branch ...                    create branch
@@ -70,7 +106,7 @@ SHORT VERSION:
   git config --global user.name "..."     name
   git config --global user.email "..."    email
   git config --global user.username ...   username for GitHub
------
+---------------------------------------------------------------------------------------------------
 OVERVIEW:
   repository              contains all commits
   remote                  online repository, e.g. on GitHub
@@ -82,15 +118,19 @@ OVERVIEW:
   fork                    copy of a repository on GitHub
   merge                   combine different clones
     fast-forward merge    reaching a commit from another commit
------
+---------------------------------------------------------------------------------------------------
 FILES:
   stored in .git folder
------
+---------------------------------------------------------------------------------------------------
 
 
 
 
------
+
+
+
+old:
+---------------------------------------------------------------------------------------------------
 START:
   git clone                               create copy of a repository
   git init                                creates an empty .git folder
@@ -98,7 +138,7 @@ START:
     git branch -a                         shows more information
     git branch name                       creates a new branch called name
   git log --graph --oneline master name   show commits of two different branches in a short way
------
+---------------------------------------------------------------------------------------------------
 BRANCH:
   git branch                        lists all branches
   git branch name                   create a branch called name
@@ -113,7 +153,7 @@ BRANCH:
       >>>>>>> master
   git branch -d name                delete the branch called name
   git checkout ID                   switch the code to a commit
------
+---------------------------------------------------------------------------------------------------
 STAGING AREA:
   git status                shows the files that were changed since the last commit
   git add                   adds files to the staging area for the next commit
@@ -122,26 +162,26 @@ STAGING AREA:
   git reset                 resets the staging area
   git commit                creates a commit
     -m "commit message"     adds a commit message
------
+---------------------------------------------------------------------------------------------------
 COMPARING COMMITS:
   git log                   lists the recent commits
   git diff ID_old ID2_new   compares two commits, shows as additions
     git diff                compares staging area and working directory
     git diff --staged       compares staging area and most recent commit
------
+---------------------------------------------------------------------------------------------------
 COMMIT MESSAGE:
   type: subject       feat/fix/docs/style/refactor/test/chore: <50 characters, first capital letter, no period
 
   body                optional, describes a commit in more detail
 
   footer              optional, issue tracker ID
------
+---------------------------------------------------------------------------------------------------
 GITHUB:
   always pull manually
   fork -> get clone URL
   local:
   clone with URL -> branch
------
+---------------------------------------------------------------------------------------------------
 REMOTE REPOSITORY:
   git remote                        create an empty remote branch
   git remote add origin URL         get the URL from the GitHub page, e.g. https://github.com/Myrmidonut/reflections.git
