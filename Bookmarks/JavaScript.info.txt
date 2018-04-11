@@ -30,22 +30,22 @@ x            Polyfills
         Objects: the basics
 x            Objects
             Garbage collection
-            Symbol type
-            Object methods, "this"
-            Object to primitive conversion
-            Constructor, operator "new"
+xx            Symbol type
+xx            Object methods, "this"
+xx            Object to primitive conversion
+xx            Constructor, operator "new"
         Data types
-            Methods of primitives
-            Numbers
-            Strings
-            Arrays
-            Array methods
-            Iterables
+x            Methods of primitives
+x            Numbers
+x            Strings
+x            Arrays
+x            Array methods
+xx            Iterables
             Map, Set, WeakMap and WeakSet
             Object.keys, values, entries
             Destructuring assignment
             Date and time
-            JSON methods, toJSON
+x            JSON methods, toJSON
         Advanced working with functions
             Recursion and stack
             Rest parameters and spread operator

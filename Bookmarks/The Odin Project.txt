@@ -35,7 +35,7 @@ x        3. Project: Ruby
 x        4. Databases
     Web Development Frameworks
 x        1. Introduction to Frameworks
-        2. Ruby on Rails Basics
+        2. Ruby on Rails Basics                 2, 4
         3. Project: Ruby on Rails
     Pair Programming
         1. Introduction to Pair Programming

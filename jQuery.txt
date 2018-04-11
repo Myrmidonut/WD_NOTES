@@ -1,131 +1,161 @@
-$("element").action();
-.addClass("class1 class2");   add class
-.removeClass();               remove class
-.remove();                    remove element
-
-.appendTo();                  move one element to another element
-.clone();                     copy an element
-.clone().appendTo();          copy an element to another element
-
-.parent();                    access the parent of an element
-.children();                  access the children of an element
-
-.css("property", "value");    change css
-.prop();                      change html properties
-.html();                      change tags and text
-.text();                      change only text
-
-function chaining:
-  .clone().appendTo();
-
-
-
-  ("disabled", "true")
-
-  ...:nth-child(n)            target n-th child
-  ...:odd                     target even numbered elements, starts at 0, 2, 4, ...
-  ...:even                    target odd numbered elements
-
------
-helps with conforming to different browsers
-allows manipulation of multiple elements of the same kind
------
-<html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      or:
-    <script type="text/javascript" src="jquery.min.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript" src="jQuery.js"></script>
-  </body>
-</html>
------
+SCRIPT:
+  <html>
+    <head>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        or:
+      <script src="jquery.min.js"></script>
+    </head>
+    <body>
+      <script src="jQuery.js"></script>
+    </body>
+  </html>
+---------------------------------------------------------------------------------------------------
 FILES:
-  jquery.js
-  jquery.min.js                                 compressed, loads faster
-                                                suggested to put into lib/ folder
------
-CHECK:
-  <script type="text/javascript">               checks if jQuery is installed
-    if (typeof jQuery == "undefined") {
-      alert("jQuery is not installed!");
-    } else {
-      alert("jQuery is installed correctly!")
-    }
-  </script>
------
-SELECTION:
-  $("...")            needs css elements, #, ., returns a list, [..., ...]
-    div.test          div with class test
-    ...:first         first tag of a kind
-    ...:last          last tag of a kind
-    .parent()         selects the enclosing tag
------
-EXAMPLE:
-  $("element").command(function() {...};          selects an element and runs a command on it
------
+  lib folder:
+    jquery.js
+    jquery.min.js               compressed, loads faster
+---------------------------------------------------------------------------------------------------
+SYNTAX:
+  $("element").action();
+---------------------------------------------------------------------------------------------------
+SELECTORS:
+  .addClass("class1 class2");   add class
+  .removeClass(...);            remove class
+  .toggleClass(...);            toggle class
+
+  .appendTo("...");             move element to another element
+  .clone();                     copy element
+  .clone().appendTo("...");     copy element to another element
+
+  .parent();                    parent of element
+  .children();                  children of element
+
+  ...:odd
+  ...:even
+
+  CSS pseudo selectros are available
+---------------------------------------------------------------------------------------------------
+READY:
+  $(document).ready(function() {...}    runs code after page is loaded
+---------------------------------------------------------------------------------------------------
+CHAINING:
+  .clone().appendTo();
+---------------------------------------------------------------------------------------------------
+MANIPULATION:
+  $("element")
+    .html()                           get whole HTML, see innerHTML
+    .html("...")                      change the whole HTML
+    .text()                           get content of element, see text-content
+    .text("...")                      change content of element
+
+    .prop("...");                     change html properties, for example "disabled"
+    .attr("...")                      get value of an attribute
+    .attr("...", "...")               change attribute
+
+    .css("...")                       get value of styling
+    .css("...", "...")                change styling
+    .css({...: "...", ...: "..."})    change blocks of styling
+
+    .val()                            get value of element, see value
+    .val("...")                       change value of element
+
+    .remove();                        remove element
+---------------------------------------------------------------------------------------------------
 EVENTS:
   $("element")
-    .click(function() {...})                      runs on mouseclick
-    .keypress(function() {...})                   runs on keypress
-    .on("...", function() {...})                  works with listeners on future elements
-    $("ul").on("click", "li", function(){...})    example, on has to run on ul for future lis
+    .click(function() {...})                      run on mouseclick
+    .keypress(function() {...})                   run on keypress
+    .hover(function() {...})                      mouseover
+
+    .on("...", function() {...})                  work with listeners on future elements
       "click"
       "keypress"
       "mouseenter"
       "mouseleave"
-    .hover(function() {...})                      mouseover
 
-  $(this)                                         refers to the one element that is accessed
------
-MANIPULATION:
-  $("element")
-    .html()                 gets the whole HTML, see innerHTML
-    .html("...")            changes the whole HTML
-    .attr("...")            get the value of an attribute
-    .attr("...", "...")     changes an attribute
-    .css("...")             gets the value of the styling
-    .css("...", "...")      changes styling
-    .text()                 gets content of a tag, see text-content
-    .text("...")            changes content of a tag
-    .val()                  gets value of an element, see value
-    .val("...")             changes value of an element
+  example:
+    $("ul").on("click", "li", function(){...})    on has to run on ul for future lis
 
-    .addClass("...")        adds a class
-    .removeClass("...")     removes a class
-    .toggleClass("...")     toggles a class
-
-    .remove()               removes an element from the page
-    .append("...")          adds text to the end of an element
------
+  $(this)                                         refer to the one element that is accessed
+---------------------------------------------------------------------------------------------------
 EFFECTS:
   $("element")
-    .fadeOut(duration, function(){})        fade out effect, optional duration in ms, optional function after fadeout
-      "slow", a number, etc.                values for duration
+    .fadeOut(duration, function(){})        fade out, opt duration in ms, opt function after fadeout
+      "slow", number, etc.                  values for duration
                                             elements stay as hidden on the page
-    .fadeIn(duration, function(){})         fade in effect
+    .fadeIn(duration, function(){})         fade in
     .fadeToggle(duration, function(){})     toggled fade effect
 
-    .hide()                                 removes the element from the flow
+    .hide()                                 remove element from the flow
 
     .slideDown()                            element gets squished in height
     .slideUp()                              element gets increased in height
-    .slideToggle()                          toggles slide
+    .slideToggle()                          toggle slide
 
-    .animate({                              animates an element, duration in ms, optional function
+    .animate({                              animate element, duration in ms, optional function
       property1: "value1",
       property2: "value2"
     }, duration, function(){})
------
-  alert("...");                           opens a popup with text
------
-  $("#circle").click(function() {         example
-    alert("Clicked!");
-    $("#circle").css("width", "100px");
+---------------------------------------------------------------------------------------------------
+JSON:
+  example:
+    let url = ...;
+    $.getJSON(url, function(e) {            run function on URL
+      $("#...").text(e.key.value);
+    });
+
+  JSON.stringify(e)                         create string from json file
+
+
+  $.ajax()
+    // The 'type' property sets the HTTP method.
+    // A value of 'PUT' or 'DELETE' will trigger a preflight request.
+    type: 'GET',
+
+    url: 'https://fcc-weather-api.glitch.me/api/current?lat=47&lon=15',
+
+    // The 'contentType' property sets the 'Content-Type' header.
+    // The JQuery default for this property is
+    // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
+    // a preflight. If you set this value to anything other than
+    // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
+    // you will trigger a preflight request.
+    contentType: 'text/plain',
+
+    xhrFields: {
+      // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
+      // This can be used to set the 'withCredentials' property.
+      // Set the value to 'true' if you'd like to pass cookies to the server.
+      // If this is enabled, your server must respond with the header
+      // 'Access-Control-Allow-Credentials: true'.
+      withCredentials: false
+    },
+
+    headers: {
+    },
+
+    success: function() {
+    },
+
+    error: function() {
+    }
   });
------
-  $("li").css({                           example, multiple values
-    fontSize: "10px",
-    border: "3px dashed blue"
-  });
+---------------------------------------------------------------------------------------------------
+GEOLOCATION:
+  navigator.geolocation.getCurrentPosition(function(position) {
+      $("#data").html("latitude: " + position.coords.latitude +
+                      "<br>longitude: " + position.coords.longitude);
+    });
+  }
+
+  -----
+  navigator.geolocation.getCurrentPosition(success, error, options);
+
+  function success(pos) {
+    var crd = pos.coords;
+
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  }

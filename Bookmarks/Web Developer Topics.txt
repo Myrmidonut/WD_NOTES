@@ -12,7 +12,7 @@ FRONT-END:
 -   JavaScript
 -   JSON
     JavaScript Libraries:
-      jQuery
+-     jQuery
         Ajax
 -     React
 -     AngularJS

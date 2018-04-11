@@ -1,3 +1,43 @@
+FILES:
+  +-app
+  | +-assets
+  | | +-images
+  | | +-javascripts
+  | | +-stylesheets
+  | +-controllers
+  | +-helpers
+  | +-mailers
+  | +-models
+  | +-views
+  +-config
+  +-db
+  +-features
+  +-lib
+  +-log
+  +-public
+  +-script
+  +-spec
+---------------------------------------------------------------------------------------------------
+VERSION:
+  5.2.0 (9. April 2018)
+---------------------------------------------------------------------------------------------------
+MVC:
+  Model           ActiveRecord                      data
+  View            ActionView          ActionPack    presentation
+  Controller      ActionController    ActionPack    decisions
+
+
+
+
+
+
+
+
+
+
+
+
+
 app/controllers/pages_controller.rb     controller file
   def home                              name of the page
   end

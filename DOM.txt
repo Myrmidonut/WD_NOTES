@@ -89,11 +89,11 @@ MANIPULATION:
     document.createElement(tag, options)          create element, optional options
 
   append element:
-    parentNode.appendChild(childNode)             add childNode as last child of parentNode
-    parentNode.insertBefore(newNode, nextNode)    add newNode before nextNode in parentNode
+    parentElement.appendChild(childElement)       add childNode as last child of parentNode
+    parentElement.insertBefore(newNode, nextNode) add newNode before nextNode in parentNode
 
   remove element:
-    parentNode.removeChild(child)                 remove child from parentNode, return reference to child
+    parentElement.removeChild(childElement)       remove child from parentNode, return reference to child
 
   alter element:
     .style.color = "..."                          add rule
@@ -130,7 +130,7 @@ EVENTS:
     mouseover
 
 
-
+window.open(..., "_blank");         open url in new window
 
 
 .onclick

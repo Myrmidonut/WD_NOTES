@@ -100,7 +100,7 @@ COMPARISON:
   comparing strings:
     letter by letter
     letter > number
-    z > a > Z > A > 9 > 0
+    special letters > z > a > Z > A > 9 > 0
     stops at greater letter, or longer string
 ---------------------------------------------------------------------------------------------------
 LOGIC:
@@ -113,17 +113,25 @@ LOGIC:
 ---------------------------------------------------------------------------------------------------
 REGULAR EXPRESSIONS:
   /.../
-  /.../g                global, all occurences
-  /.../i                case insensitive
+  /.../g              global, all occurences
+  /.../i              global, all occurences, case insensitive
 
-  /\d/                  one digit
-  /\d+/                 one or more digits
+  \d                  0-9
+  \D                  not 0-9
+  \w                  a-Z _
+  \W                  not a-Z _
+  [abc]               range
+  [a-c]               range
 
-  /\s/                  whitespace
-  /\r/                  return
-  /\n/                  newline
-  /\t/                  tab
-  /\f/                  form feed
+  \s                  whitespace
+  \S                  not whitespace
+
+  \r                  return
+  \n                  newline
+  \t                  tab
+  \f                  form feed
+
+  ...+                one or more
 
   invert using uppercase letter
 ---------------------------------------------------------------------------------------------------
@@ -188,8 +196,6 @@ DATA TYPES:
       symbol                            unique identifiers for objects
       array                             an ordered object
 
-  isNaN(...);                           check if not a number
-
   typeof ...                            return string with the datatype, error: typeof(null) returns object
     "number"
     
@@ -200,6 +206,7 @@ DATA TYPES:
 TYPE CONVERSION:
   String(...)
     .toString()
+    ..toString()            directly on a number
 
   Number(...)
     .toNumber()
@@ -230,36 +237,51 @@ TYPE CONVERSION:
     NaN        -> false
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
-  let x = 1;                            integer
-  let x = 1.1;                          floating point
-  let x = 1e3;                          exponent, == 1000
+  declaration:
+    let x = 1;                          integer
+    let x = 1.1;                        floating point
+    let x = 1e3;                        1 x 10³ == 1000
+    let x = -1e3;                       1 : 10³ == 1/1000
 
-  7 / 0 == Infinity
-  null + 1 == 1
-  undefined + 1 == NaN
+  unusual numbers:
+    7 / 0 == Infinity
+    null + 1 == 1
+    undefined + 1 == NaN
+
+  precision:
+    0.1 + 0.2 == 0.3                    false, actually: 0.30000000000000004
+    correction with .toFixed(2)
+
+  NaN / Infinite:
+    isNaN(...);                         check if NaN
+    isFinite(...);                      check if NaN, Infinity, -Infinity  
 ---------------------------------------------------------------------------------------------------
 STRINGS:
-  myString = "...";                     string literal
-  myString = '...';
-  myString = `...`;                     allows embedding of variables and expressions into a string
-    `... ${...} ...`
+  declaration:
+    myString = "...";               string literal, doublequotes
+    myString = '...';               string literal, singlequotes
+    myString = `...`;               string literal, backticks, can be mutiline
+      `... ${...} ...`              allows embedding of variables and expressions into a string
 
-  "... ${...} ..."                      ${} is evaluated and converted into a string
+  "... ${...} ..."                  ${} is evaluated and converted into a string
 
-  \                                     escape character to use special characters in a string
-    \'                                  '
-    \"                                  "
-    \\                                  \
-    \n                                  newline
-    \r                                  carriage return
-    \t                                  tab
-    \b                                  backspace
-    \f                                  form feed
+  escape character:
+    \                               escape character to use special characters in a string
+      \'                            '
+      \"                            "
+      \\                            \
+      \n                            newline
+      \r                            carriage return
+      \t                            tab
+      \b                            backspace
+      \f                            form feed
 
-  myString[2]                           access to the third character, UNSAFE! convert to array first
-  "..."[2]
+  characters:
+    myString[2]                     access to the third character, UNSAFE! convert to array first
+    "..."[2]
 
-  strings are immutable, it is not possible to change individual letters
+  infos:
+    strings are immutable, it is not possible to change individual letters
 ---------------------------------------------------------------------------------------------------
 BOOLEAN:
   false:
@@ -278,17 +300,19 @@ BOOLEAN:
 
   result of comparison is boolean
 ---------------------------------------------------------------------------------------------------
-ARRAYS:                                 ordered list of data
-  var myArray = [];                     create an empty array
-  var myArray = [1, "two", [3, 4]];     create an array
-  var myArray = new Array();            create an empty array, slower
+ARRAYS:                                   ordered list of data
+  declaration:
+    var myArray = [];                     create an empty array
+    var myArray = [1, "two", [3, 4]];     create an array
+    var myArray = new Array();            create an empty array, slower
 
-  myArray[0] = ...;                     modify element at index 0
+  modify:
+    myArray[0] = ...;                     modify element at index 0
 
-  myArray[3][4]                         nested array
-  myArray[[1, 2], [3, 4]]               nested array
+  nesting:
+    myArray[3][4]                         nested array
+    myArray[[1, 2], [3, 4]]               nested array
 
-  adding elements at high indexes create undefined holes
 
   typeof(...)                                               arrays appear as objects
   Array.isArray(...)                                        check for an array
@@ -296,12 +320,17 @@ ARRAYS:                                 ordered list of data
     return x.constructor.toString().indexOf("Array") > -1;
   }
   ... instanceof Array                                      returns true for arrays
+
+  info:
+    adding elements at high indexes create undefined holes
+    may end with a trailing comma
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
+  overview:
     var myObj = {property1, property2}
-      property = key: value
+    property = key: value
 
-  create:
+  declaration:
     var myObj = {};                             create an empty object        
     var myObj = {key: "value", ...};            create an object, key: value pairs (properties)
     var myObj = {"key key": "value"}            multiword key
@@ -314,6 +343,14 @@ OBJECTS:
 
     var myOby = [{...}, {...}];                 array of objects
 
+  constructor:
+    var MyObj = new function() {this.... = ...};    constructor, capitalized
+    .. = new function(args) {this.... = arg1;};     constructor with arguments
+
+  instance:
+    var myIns = new MyObj();                    instance
+    var myIns = new MyObj(...);                 instance with arguments
+
   call:
     myObj.key;                            calling a property
     myObj.key[0];                         calling an array property
@@ -325,7 +362,10 @@ OBJECTS:
     myObj.key = ...;                      modify
     myObj["key"] = ...                    alternative
 
-    myObj[key] = value;                    
+    myObj[key] = value;
+
+  method:
+    myMethod() {...}                      function not necessary inside objects
  
   this:
     .this                                 refers to the current object
@@ -360,155 +400,6 @@ OBJECTS:
 
     const myObj {} it is still possible to change properties, only myObj itself is protected
 ---------------------------------------------------------------------------------------------------
-STRING METHODS:
-  myString
-    .length                             length of string
-
-    .indexOf("...")                     return first position of ... in a string, -1 if not
-      .indexOf("...",15)                includes starting position
-    .lastIndexOf("...")                 return last position of ... in a string, -1 if not
-      .lastIndexOf("...",15)            includes starting position
-    .search("...")                      similar to indexOf, no second argument, with regular expressions
-
-    .charAt(5)                          return the character at index 5
-    .charCodeAt(5)                      return the unicode character at index 5
-    .slice(4)                           return string starting at index 4
-      .slice(4, 8)                      return string starting at index 4 until 8-1
-      .slice(-4)                        count the last 4 characters
-      .slice(-4, -8)                    count from the end of a string
-    .substring(4)                       same as .slice but no negative indixes
-    .substr(4)                          return string starting at index 4
-      .substr(4, 3)                     return string starting at index 4 with length 3
-      .substr(-4, 3)                    count from the end of a string
-
-    .replace("text1", "text2")          replace the text1 with text2
-      .replace(/text1/g , "text2")      replace all text1 with text2
-      .replace(/text1/i , "text2")      replace all text1 with text2, case insensetive
-      .replace(/...|.../g , "...")      replace multiple texts
-
-    .toUpperCase()                      convert to uppercase
-    .toLowerCase()                      convert to lowercase
-
-    .concat("...", text2)               add string
-
-    .split("...")                       split at the character and convert into an array
-      .split("")                        split every character
----------------------------------------------------------------------------------------------------
-ARRAY METHODS:    
-  myArray
-    .length                             number of entries
-
-    .filter(function(e) {return...});   create new array with filtered entries
-    .map(function(e) {return...});      create new array after running function on every entry
-    .reduce(function(prev, curr) {return...}, init);  condense array after function with init
-    .sort()                             sort an array from lowest to highest value
-    .sort(function(a, b) {return a-b}); sort with compare function for numbers, small to large
-
-    .reverse()                          reverse an array
-
-    .toString()                         convert to a string with comma seperation
-    .join("...")                        convert to a string with given seperation
-
-    .push(...)                          add an entry to the end, returns new length
-      .push(..., ...)                   multiple entries
-    .pop()                              remove the last entry, returns removed entry
-    .unshift(...)                       add an entry to the beginning
-    .shift()                            remove the first entry
-
-    .splice(4, 2)                       remove 2 entries from index 4 on
-    .splice(2, 0, "...", "...")         remove 0 entries from index 2 on and add two entries
-
-    .concat(...)                        merge two arrays, return new array
-    .concat("...", "...")               merge values
-
-    .indexOf(...)                       return the first index of that entry, -1 if not exists
-
-    .slice(1)                           slice an array at index 1
-    .slice(2, 3)                        slice an array at index 1 up to 3-1
-
-    .some()
-    .every()
-    .find()                             first entry that matches
-    .findIndex()
-
-  delete myArray[5]                     changes element at index 5 to undefined
-
-  outputting an array converts it to a comma seperated string
-    
-  myArray.forEach(function(name) {      loop over the entries in an array
-    ...                                 and run the function for the entries
-  } );                                  passed in via the variable "name"
----------------------------------------------------------------------------------------------------
-IF ELSE:
-  if (condition) {                            if statement
-    ...
-  } else if (condition) {
-    ...
-  } else {
-    ...
-  }
-
-  if(0) {...}                                 check for boolen type conversion
----------------------------------------------------------------------------------------------------
-SWITCH:
-  switch (expression) {                       switch statement
-    case choice1:
-      ...
-      break;                                  leave switch if it is a match
-
-    case choice2:
-      ...
-      break;
-
-    default:                                  optional
-      ...
-  }
----------------------------------------------------------------------------------------------------
-TERNARY:
-  (condition) ? statement1 : statement2;      ternary
-
-  if true run statement1, else run statement2
-  can be nested in statements
----------------------------------------------------------------------------------------------------
-FOR:
-  for (init; end; increment) {                for loop
-    ...
-  }
-
-    if (...) break;                           exit the loop early
-    if (...) continue;                        jump to next iteration
----------------------------------------------------------------------------------------------------
-WHILE:
-  init;
-  while (condition) {                         while loop
-    ...
-    increment;
-  }
----------------------------------------------------------------------------------------------------
-DO WHILE:
-  init;
-  do {                                        do while loop, always run at least once
-    ...
-    increment;
-  } while (condition)
----------------------------------------------------------------------------------------------------
-BREAK CONTINUE LABEL:
-  if (condition) {                            break, leave whole loop
-    break;
-  }
-
-  if (condition) {                            continue, leave current iteration
-    continue;
-  }
-
-  label1: for () {                            label, leave both loops
-    for () {
-      if () {
-        break label1;
-      }
-    }
-  }
----------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
     function myFunc(arg1, arg2 = "...") {         function declaration, with default value
@@ -516,8 +407,15 @@ FUNCTIONS:
       return ...;                                 optional, will stop the function
     }
 
+  calling:
+    myFunc;                                       passing the function on
+    myFunc();                                     calling the function immediately
+
   return:
     return comparison;                            return true or false
+
+  arguments:
+    arguments[]                                   array created from arguments
 
   function expression:
     let myFunc = function func() {}               function expression
@@ -529,13 +427,19 @@ FUNCTIONS:
   arrow function:
     let myFunc = (...) => expression              arrow function, short version of declaration
 
-  calling:
-    myFunc;                                       passing the function on
-    myFunc();                                     calling the function immediately
-
   prototype:
     Array.prototype.myFunc = function(func) {     prototype, this to call on the array
       func(this[i]);
+    }
+
+  callback:
+    function first(..., callback) {
+      ...
+      callback();                                 can contain arguments for second()
+    }
+
+    function second() {                           arguments from callback();
+      ...
     }
 
   info:
@@ -543,6 +447,7 @@ FUNCTIONS:
     a function does only one thing
     no/empty return returns undefined
     chose declaration over expression, can be called before declaration
+    arrow function uses this of outer function
 
   naming:
     get...
@@ -552,7 +457,7 @@ FUNCTIONS:
     check...
 ---------------------------------------------------------------------------------------------------
 METHODS:
-  info:
+  overview:
     a function inside an object
 
   declaration:
@@ -563,18 +468,236 @@ METHODS:
   calling:
     obj.func();                         calling the method
 ---------------------------------------------------------------------------------------------------
-THIS:
-  this;                                 refers to the object in which the method is defined
+NUMBER METHODS:
+  round:
+    Math.round();                         round to nearest whole number
+    Math.floor(...);                      round down
+    Math.ceil(...);                       round up
+    Math.trunc(...);                      remove decimal, not IE!
+
+  decimals:
+    Math.floor(x * 100) / 100);           
+    x.toFixed(2);                         round up or down, creates string, added zeros
+
+  random:
+    Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
+      Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
+      Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
+    Math.floor(Math.random() * 5 + 1);    random number out of 1, 2, ..., 5
+    Math.floor(Math.random() * (max - min + 1)) + min;    random number from min to max
+
+  min / max:
+    Math.max(..., ...);                   maximum of arguments
+    Math.min(..., ...);                   minimum of arguments
+
+  exponent:
+    Math.pow(base, exponent);             exponent
+
+  see Math library for  more
+---------------------------------------------------------------------------------------------------
+STRING METHODS:
+  length:
+    .length                             length of string
+
+  search:
+    .indexOf("...", ...)                return first position of ..., -1 if not, optional start
+    .lastIndexOf("...", ...)            return last position of ..., -1 if not, optional start
+    .search("...")                      see indexOf, no second argument, with regular expressions
+
+  search, modern:  
+    .includes("...", ...)               true if found, optional start
+    .startsWith("...")                  true if found at start
+    .endsWith("...")                    true if found at end
+
+  character:
+    .charAt(5)                          == [5], return the character at index 5
+    .charCodeAt(5)                      return the unicode character at index 5
+
+  substring:
+    .slice(..., ...)                    return string from start to optional exclusive end
+    .slice(-..., -...)                  negative values count from the end
+    .substring(..., ...)                see .slice, no negative indixes, starts at lower number
+    .substr(..., ...)                   return string from start with optional length
+    .substr(-..., ...)                  negative values count from the end
+
+  replace:
+    .replace("text1", "text2")          replace the text1 with text2
+    .replace(/text1/g , "text2")        replace all text1 with text2
+    .replace(/text1/i , "text2")        replace all text1 with text2, case insensetive
+    .replace(/...|.../g , "...")        replace multiple texts
+
+  convert:
+    .toUpperCase()                      convert to uppercase
+    .toLowerCase()                      convert to lowercase
+
+  add:
+    .concat("...", text2)               add string
+
+  split:
+    .split("...")                       split at the character and convert into an array
+    .split("")                          split every character
+---------------------------------------------------------------------------------------------------
+ARRAY METHODS:    
+  length:
+    .length                             number of entries, can be modified
+
+  reverse:
+    .reverse()                          reverse the array itself
+
+  convert to string:
+    .toString()                         convert to string with comma seperation
+    .join("...")                        convert to string with given seperation
+
+  add / remove:
+    .unshift(..., ...)                  add one or more entries to the beginning
+    .push(..., ...)                     add one or more entries to end
+    .shift()                            remove first entry, returns it
+    .pop()                              remove last entry, returns it
+
+    push/pop are fast, shift/unshift are slow
+
+  remove / insert:
+    .splice(..., ..., "...", "...")     start, optional cut amount, optional add elements
+    delete myArray[5]                   changes element at index 5 to undefined
+
+  subarray:
+    .slice(..., ...)                    return array from start to optional exclusive end
+
+  combine:
+    .concat(...)                        return merged array
+    .concat("...", "...")               merge values
+
+  search:
+    .indexOf(..., ...)                  return first index, optional start, -1 if not
+    .lastIndexOf(..., ...)              return last index, optional start, -1 if not
+    .includes(..., ...)                 return true if found, optional start
+
+    .find(function(item, index, array) {...})   search in array of objects, returns first item
+    .findIndex(function(...) {...})             see .find, returns index
+    .filter(function(e) {...})                  create new array with filtered entries
+
+  iterate:
+    .map(function(e) {...})                     create new array after running func on every entry
+    .forEach(function(e) {...})                 run function on every element
+    .reduce(function(prev, curr) {...}, init)   condense array after function with init
+    .some(function(e) {...})                    if at least one result is true, returns true                 
+    .every(function(e) {...})                   if all results are true, returns true
+    .fill(..., ..., ...)                        fill array with value, from start to end
+    .copyWithin(..., ..., ...)                  copies elements into target, from start to end
+
+  sort:
+    .sort()                               sort the array itself from lowest to highest value
+    .sort(function(a, b) {return a-b;});  sort with compare function for numbers, small to large
+
+
+  loop:
+    for ... of
+
+  outputting an array converts it to a comma seperated string
+---------------------------------------------------------------------------------------------------
+CONDITIONS:
+  IF ELSE:
+    if (condition) {                            if statement
+      ...
+    } else if (condition) {
+      ...
+    } else {
+      ...
+    }
+
+    if(0) {...}                                 check for boolen type conversion
+  -------------------------------------------------------------------------------------------------
+  SWITCH:
+    switch (expression) {                       switch statement
+      case choice1:
+        ...
+        break;                                  leave switch if it is a match
+
+      case choice2:
+        ...
+        break;
+
+      default:                                  optional
+        ...
+    }
+  -------------------------------------------------------------------------------------------------
+  TERNARY:
+    (condition) ? statement1 : statement2;      ternary
+
+    if true run statement1, else run statement2
+    can be nested in statements
+  -------------------------------------------------------------------------------------------------
+  BREAK CONTINUE LABEL:
+    if (condition) {                            break, leave whole loop
+      break;
+    }
+
+    if (condition) {                            continue, leave current iteration
+      continue;
+    }
+
+    label1: for () {                            label, leave both loops
+      for () {
+        if () {
+          break label1;
+        }
+      }
+    }
+---------------------------------------------------------------------------------------------------
+LOOPS:
+  FOR:
+    for (init; end; increment) {                for loop
+      ...
+    }
+
+      if (...) break;                           exit the loop early
+      if (...) continue;                        jump to next iteration
+  -------------------------------------------------------------------------------------------------
+  WHILE:
+    init;
+    while (condition) {                         while loop
+      ...
+      increment;
+    }
+  -------------------------------------------------------------------------------------------------
+  DO WHILE:
+    init;
+    do {                                        do while loop, always run at least once
+      ...
+      increment;
+    } while (condition)
+  -------------------------------------------------------------------------------------------------
+  FOR OF:
+    for (let char of "test") {
+      ...
+    }
+---------------------------------------------------------------------------------------------------
+JSON:
+  conversion:
+    JSON.parse(..., ...);                   convert JSON string to object, optional function
+
+    JSON.stringify(...);                    convert object to JSON string
+    JSON.stringify(value, replacer, space)  
+      value:    a value
+      replacer: array or function
+      space:    number for indentation
+
+    toJSON();
+
+  from URL:
+    var requestURL = "...";                       store URL
+    var request = new XMLHttpRequest();           create request object
+    request.open("GET", requestURL);              HTTP method, URL
+    request.responseType = "json";                server will return JSON
+      request.responseType = "text";              server only returns string
+    request.send();                               sends the request
+    request.onload = function() {                 waits for response before using it
+      var response = request.response;
+        var responseJson = JSON.parse(response);  use when server only returns string
+      ...
+    }
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
-  Math.round();                         round to nearest whole number
-  Math.floor(...);                      remove the decimals
-  Math.random();                        random number between 0 and 1, e.g. 0.123, but not 1
-    Math.random() * 5;                  random number between 0 and 5, e.g. 2.123, but not 5!
-    Math.random() * 5 + 1;              random number between 1 and 5, including 1 and 5
-  Math.floor(Math.random() * 5 + 1);    random number out of 1, 2, ..., 5
-  Math.floor(Math.random() * (max - min + 1)) + min;    random number from min to max
-
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms
 

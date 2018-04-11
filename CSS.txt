@@ -76,6 +76,16 @@ COMMENT:
     comment
   */        
 ---------------------------------------------------------------------------------------------------
+VARIABLES:
+  --...: ...;                             declaration
+  var(--..., ...)                         call, with optional fallback
+
+  :root {                                 makes variables available for the whole document
+  ...
+  }
+
+  overwrite :root variables in selectors
+---------------------------------------------------------------------------------------------------
 UNITS:
   ...%                                    percentage of parent
   ...px                                   absolute
@@ -137,7 +147,7 @@ SELECTORS:
 
   pseudo-element:
     element
-      ::after {content: ...;}             content after the element
+      ::after {content: ...;}             content after the element, can be empty
       ::before {content: ...;}            content before the element
       ::first-letter {}                   first letter
       ::first-line {}                     first line
@@ -265,8 +275,11 @@ BACKGROUND:
   background: linear-gradient(              gradient, from top left to bottom right, from black to white
     to bottom right, black, white);
     to bottom, black, white 40%, black);    black, to white at 40% height, to black
+    ...deg, ..., ...);                      with degree
 
-  background: radial-gradient();
+  background: repeating-linear-gradient()   repeating
+
+  background: radial-gradient();            radial
 
   background-attachment: scroll;            background scrolls with the page
                          fixed;             background will not scroll
@@ -382,12 +395,45 @@ LINKS:
 ---------------------------------------------------------------------------------------------------
 TRANSITIONS:
   transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
-  -webkit-transition: all 0.3s;       required for Safari
-  -moz-transition: all 0.3s;          required for Firefox
+---------------------------------------------------------------------------------------------------
+TRANSFORM:
+  transform: scale(...);              change size, unitless
+             skewX(...);              skew along Y-axis in degree
+             skewY(...);              skew along Y-axis in degree
+             rotate(...);             rotate in degree
+---------------------------------------------------------------------------------------------------
+ANIMATION:
+  animation-name: ...;                  name for keyframes
+  animation-duration: ...;              in ms or s
+  animatio-fill-mode: forwards;         animation stays at 100% after duration
+  animation-iteration-count: ...;       loop animation, unitless, infinite
+  animation-timing-function: ease;      slow, fast, slow, default
+                             ease-out;  fast, slow
+                             ease-in;   slow, fast
+                             linear;    constant
+                             cubic-bezier(x1, y1, x2, y2)
+
+  bezier-curve:                         p0:  0/0
+    |        p3                         p1: x1/y1
+    |  p1 p2                            p2: x2/y2
+     p0________                         p3   1/1
+    x: duration
+    y: change
+
+  @keyframes ... {                      match animation-name
+    0% {                                property at start
+      ...
+    }
+    100% {                              property at end
+      ...
+    }
+  }
+
+  top, bottom, left, right for moving elements
 ---------------------------------------------------------------------------------------------------
 SHADOWS:
   text:
-    text-shadow: 1px 1px 1px black;                   horizontal offset, vertical offset, blur radius, color
+    text-shadow: 1px 1px 1px 1px black;               X-offset, Y-offset, (blur/spread radius,) color
                                                       negative offset: to the left and top
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4),         slight grey shadow
                  0px 8px 13px rgba(0,0,0,0.1),
@@ -467,7 +513,7 @@ FLOAT:
 POSITION:
   position:
     static;                 default
-    relative;               elements is moved relative to its normal position, space stays open
+    relative;               element is moved relative to its normal position, space stays open
     absolute;               element is moved relative to the context, space is removed
       positioning context:
         html                default
@@ -505,36 +551,42 @@ FLEXBOX:
 
     flex-flow: direction wrap;        shorthand
 
-    flex-direction: row;              main axis direction, default horizontal
-                    row-reverse;      horizontal reversed      
-                    column;           vertical
-                    column-reverse;   vertical reversed
-
     flex-wrap: wrap;                  flex items behaviour, flow into new line
                nowrap;
                wrap-reverse;
 
-    align-items: stretch;             position of items on cross-axis, default, stretched to container height or longest item
-                 center;              centered on cross axis
-                 flex-start;          start of cross axis
-                 flex-end;            end of cross axis
-                 start;
-                 end;
+  horizontal main axis:
+    orientation:
+      flex-direction: row;              horizontal, default
+                      row-reverse;      horizontal reversed      
+                      column;           vertical
+                      column-reverse;   vertical reversed
 
-    align-content: space-between;     space around main axis
-                   space-around;
-                   stretch;
-                   center;
-                   flex-start;
-                   flex-end;
+    spacing of items:
+      align-content: space-between;     spacing of items
+                     space-around;
+                     stretch;
+                     center;
+                     flex-start;
+                     flex-end;
 
-    justify-content: flex-start;      position of items on main axis, default, start       
-                     flex-end;        end
-                     start;
-                     end;
-                     center;          center
-                     space-around;    even distribution with extra space
-                     space-between;   even distribution
+    position of items:
+      justify-content: flex-start;      start, default    
+                       flex-end;        end
+                       start;
+                       end;
+                       center;          center
+                       space-around;    even distribution with extra space
+                       space-between;   even distribution
+
+  vertical cross axis:
+    position of items:
+      align-items: stretch;             stretched to container height or longest item, default
+                   center;              centered on cross axis
+                   flex-start;          start of cross axis
+                   flex-end;            end of cross axis
+                   start;
+                   end;
 
   flex item:                          vertical cross axis
     flex: grow shrink basis;          shorthand, prefered

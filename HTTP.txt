@@ -13,14 +13,15 @@ Server:
   reads HTTP-request
   reacts with scripts
   sends http-response with HTML, CSS, JavaScript
------
+---------------------------------------------------------------------------------------------------
 REQUESTS:
   GET       retrieve data
   POST      sending data
+
   PUT       update data
-  PATCH     update data
   DELETE    remove data
 
+  PATCH
   COPY
   HEAD
   OPTIONS
@@ -31,3 +32,6 @@ REQUESTS:
   UNLOCK
   PROPFIND
   VIEW
+---------------------------------------------------------------------------------------------------
+AUTHENTICATION:
+  APIs can require authentication for requests

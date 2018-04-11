@@ -355,7 +355,7 @@ FORMS:
         selected                  default selected
         multiple                  chose more than one entry
 
-    <label for="...">...</label>  label, linked with for="...", recommended
+    <label for="...">...</label>  label, for = id, recommended
     <input id="...">              for accessibilty, for= and id= has to be equal
 
     <label for="...">             label alternative
