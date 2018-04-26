@@ -46,6 +46,10 @@ STYLE:
     @font-face
 
   example:
+    @media (max-width: 100px) {
+      ...
+    }
+
     @media screen and (max-width: 900px) {    on screens that are 900px or less use these rules
       ...
     }
@@ -612,11 +616,22 @@ GRID:
   px to % conversion:
   column width px / total width px = column width %
   gutter width px / total width px = gutter width %
+---------------------------------------------------------------------------------------------------
+RESPONSIVENESS:
+  image:
+    max-width: 100%;            fit container, dont stretch
+    display: block;             in own line
+    height: auto;               keep aspect ratio
 
+  image for retina display:
+    width / height at half of the original
 
+  units:
+    10vw                        10% viewport width
+    10vh                        10% viewport height
 
-
-
+    70vmin                      70% smaller viewport dimension
+    70vmax                      70% bigger viewport dimension
 
 
 

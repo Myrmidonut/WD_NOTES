@@ -26,37 +26,51 @@ MVC:
   View            ActionView          ActionPack    presentation
   Controller      ActionController    ActionPack    decisions
 
+  controller receives requests for the application
+  routing decides which controller receives the request
+  actions collect information for the view
+  view only displays information
+---------------------------------------------------------------------------------------------------
+create rails application:
+  rails new ...
 
+start server inside rails application folder:
+  bin/rails server                      unix
+  ruby bin\rails server                 windows
 
+  http://localhost:3000                 local server address
 
+minimum: controller + view
 
+create controller named Welcome, with action named index:
+  ruby bin\rails generate controller Welcome index
+---------------------------------------------------------------------------------------------------
+CONTROLLER FILE:
+  app/controllers/pages_controller.rb     controller file
+    def home                              name of the page
+    end
 
-
-
-
-
-
-
-
-app/controllers/pages_controller.rb     controller file
-  def home                              name of the page
-  end
-
-  def about
-  end
------
-app/views/pages/home.html.erb           views file, matches controller name
-app/views/pages/about.html.erb
------
-config/routes.rb                        routes file, matches controller names
-  Rails.application.routes.draw do
-  root to: 'pages#home'                 
-  get 'about', to: 'pages#about'        
-
------
+    def about
+    end
+---------------------------------------------------------------------------------------------------
+VIEWS FILE:
+  app/views/pages/home.html.erb           matches controller name
+  app/views/pages/about.html.erb
+---------------------------------------------------------------------------------------------------
+ROUTES FILE:
+  config/routes.rb                        matches controller names
+    Rails.application.routes.draw do            
+      get 'welcome/index'                 requests to welcome/index go to welcome controller index
+      root 'welcome#index'                requests to root go to welcome controller index
+    end
+---------------------------------------------------------------------------------------------------
 Chain of accessing the website:
   routes.rb -> pages_controller.rb -> home.html.erb
------
+---------------------------------------------------------------------------------------------------
+
+
+
+
 app/views/layouts/application.html.erb
   <body>
     <%= yield %>                        home.html.erb gets injected
