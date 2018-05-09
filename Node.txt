@@ -1,2 +1,72 @@
 FILES:
   node file.js          run code from a file
+---------------------------------------------------------------------------------------------------
+SETUP:
+  nvm install ...       install specific version
+  nvm use ...           use specific version
+---------------------------------------------------------------------------------------------------
+NPM:
+  search.nodejs.org     online repository/registry
+
+  npm help ...          open help pages
+
+  npm install           load dependencies from package.json
+  npm install ...       install module
+    --save              
+
+  npm init              create package.json
+  npm init --scope=...  with username
+    README.md with description
+    repository
+
+  npm ls                show installed dependencies
+
+  npm test              run test scripts
+
+  npm publish           send packages to registry, requires current version, sets "latest" tag
+  npm view ...          view details for a published package
+  npm version           update version number, commit to git, major.minor.patch
+  npm dist-tag add pkg@version tag    create new tag with version
+  npm outdated          check for updated packages
+  npm update            update all packages
+  npm uninstall         remove dependencies
+  npm uninstall --save  also remove from package.json
+    npm rm              short
+
+  npm whoami
+  npm adduser
+---------------------------------------------------------------------------------------------------
+PACKAGE.JSON:
+  "scripts": {...}          contains test scripts from modules
+    "test": "node test.js"  example test
+
+  "repository": {...}
+    "url": "..."            URL to project
+---------------------------------------------------------------------------------------------------
+README.MD
+  README.md contains written description of the project
+---------------------------------------------------------------------------------------------------
+BASIC START:
+  server.js:
+    const http = require('http');                           // import module
+
+    const hostname = '127.0.0.1';                           // set hostname (localhost)
+    const port = 3000;                                      // set port
+
+    const server = http.createServer(function(req, res) {   // create http server
+      res.statusCode = 200;                                 // response
+      res.setHeader('Content-Type', 'text/plain');          // response
+      res.end('Hello World\n');                             // response
+    });
+
+    server.listen(port, hostname, function() {              // assign hostname and port
+      console.log('Server running at http://'+ hostname + ':' + port + '/');
+    });
+
+  node server           start the server at http://127.0.0.1:3000/
+---------------------------------------------------------------------------------------------------
+process.argv[]                    arguments array
+
+let fs = require("fs");           enable file I/O
+let ... = fs.readFileSync(...);   (sync) read file
+let ... = fs.readFile(...);       (async) read file

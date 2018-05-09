@@ -577,8 +577,8 @@ FLEXBOX:
     position of items:
       justify-content: flex-start;      start, default    
                        flex-end;        end
-                       start;
-                       end;
+                       start;           ?
+                       end;             ?
                        center;          center
                        space-around;    even distribution with extra space
                        space-between;   even distribution
@@ -596,8 +596,8 @@ FLEXBOX:
     flex: grow shrink basis;          shorthand, prefered
     flex-grow: ...;                   amount of slots an item occupies, unitless
     flex-shrink: ...;                 overflowing behaviour, unitless
-    flex-basis: ...;                  width of an item
-                auto;                 uses set width
+    flex-basis: ...;                  width of an item before shrink/grow
+                auto;                 width equals content
 
     align-self: stretch;              position of item on cross-axis
                 center;

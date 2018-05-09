@@ -112,18 +112,39 @@ LOGIC:
   x = a && b && c;                      return first false or last value
 ---------------------------------------------------------------------------------------------------
 REGULAR EXPRESSIONS:
-  /.../
-  /.../g              global, all occurences
-  /.../i              global, all occurences, case insensitive
+  /.../               first occurence
+  /.../g              global occurence
+  /.../i              case insensitive
+
+  ...|...             one of these words
+
+  .                   any character
 
   \d                  0-9
   \D                  not 0-9
-  \w                  a-Z _
-  \W                  not a-Z _
+  \w                  a-z A-Z _ or: [a-zA-Z_]
+  \W                  not a-z A-Z _ or: [^a-zA-Z_]
+
   [abc]               range
   [a-c]               range
+  [a-c2-5]            multiple ranges
 
-  \s                  whitespace
+  [^...]              negation
+  ...+                one or more
+  ...*                zero or more times
+  ...?                zero or one time
+  ...?                shortest possible
+  ...{...}            exact amount
+  ...{...,}           min amount
+  ...{...,...}        min to max amount
+
+  ^...                only at the beginning
+  ...$                only at the end
+
+  (?=...)             exists            
+  (?!=...)            not exists
+
+  \s                  whitespace, including newline, etc.
   \S                  not whitespace
 
   \r                  return
@@ -131,9 +152,14 @@ REGULAR EXPRESSIONS:
   \t                  tab
   \f                  form feed
 
-  ...+                one or more
-
   invert using uppercase letter
+
+  match:
+    .match(...);              returns array with matched regex
+
+  test:
+    myRegex = /.../;
+    myRegex.test(...);        check if the expression exists in the variable
 ---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
@@ -493,6 +519,9 @@ NUMBER METHODS:
   exponent:
     Math.pow(base, exponent);             exponent
 
+  change base:
+    parseInt(..., ...);                   convert number using giving base
+
   see Math library for  more
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
@@ -703,3 +732,5 @@ USEFUL FUNCTIONS:
 
   Date().getTime();                     get the current time
     var start = new Date().getTime();
+
+  String.fromCharCode(...);             get value from ASCII code
