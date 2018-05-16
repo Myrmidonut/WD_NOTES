@@ -1,193 +1,94 @@
 DOM:
   Document Object Model
----------------------------------------------------------------------------------------------------
-HTML elements are turned into JavaScript objects
+
+  background-color -> backgroundColor       naming rules for CSS
 ---------------------------------------------------------------------------------------------------
 SELECT:
-  document.getElementById("...")                select id
-  document.getElementsByClassName("...")        select class, creates nodelist
-  document.getElementsByClassName("...")[...]   [] to select just one
-  document.getElementsByTagName("...")          select tag, creates nodelist
+  let ... = document...;
 
-  document.querySelector("...")                 needs CSS style selectors, #..., selects only the first one
-  document.querySelectorAll("...")              needs CSS style selectors, selects all elements, creates nodelist
-
-  var h1 = document.querySelector("h1");        selects h1 and saves it in a variable
----------------------------------------------------------------------------------------------------
-MANIPULATION WITH classList:      
-  tag.classList.add("...");                 adds css-class/id to an element tag
-  tag.classList.remove("...");              removes it
-  tag.classList.toggle("...");              toggles it
-    document.body.classList.toggle("...")   example
-
-  .some-class {                             example, adds color red to "highlight"
-    color: red;
-  }
-  var tag = document.getElementById("highlight"); 
-  tag.classList.add("some-class");
----------------------------------------------------------------------------------------------------
-MANIPULATION:
-  .innerHTML = "...";                       changes text or code inside a tag, includes code
-  .textContent = "...";                     sets the text without code
-
-  .style                                    change styling
-    .color = "..."
-    .fontSize = "..."
-    .top = "..."
-    .display = "..."
-      "none"                                remove element from page
-      "block"                               show element
-
-  .getAttribute("...");   
-  .setAttribute("...", "...");              change attribute: name, value
-
-  .onclick;                                 action on clicking
-
-  .createElement("...")                     create element
------
-  document.getElementById("...").innerHTML = "...";
-  document.getElementById("...").onclick = function() {statements}
------
-EVENTS:
-  element.addEventListener("type", function);     runs a function when an event happens
-    click                                         mouseclicks
-    change                                        text input, mouseclicks, etc., needs to lose focus for change
-    input                                         same as above without need for focus loss
-    mouseover                                     mouse moves over an element, stays active
-    mouseout                                      mouse leaves an element
-
-  button.addEventListener("click", function() {   example, switches the style purple for body on and off
-    document.body.classList.toggle("purple");   
-  });
-
-  var button = document.querySelector("button");  example
-  var paragraph = document.querySelector("p");
-  button.addEventListener("click", function() {
-    paragraph.textContent = "someone clicked"; {);
-
-  var lis = document.querySelectorAll("li");      example
-  for (var i = 0; i < lis.length; i++) {
-    
-lis[i].addEventListener("click", function() {
-      
-this.style.color = "pink";
-
-    } );
-  
-}
-
-
-
-
----------- NEW:
-MANIPULATION:
-  query selector:
-    element.querySelector(selector)               return reference to first selector
-    element.querySelectorAll(selector)            return nodelist with all selectors
-
-  create element:
-    document.createElement(tag, options)          create element, optional options
-
-  append element:
-    parentElement.appendChild(childElement)       add childNode as last child of parentNode
-    parentElement.insertBefore(newNode, nextNode) add newNode before nextNode in parentNode
-
-  remove element:
-    parentElement.removeChild(childElement)       remove child from parentNode, return reference to child
-
-  alter element:
-    .style.color = "..."                          add rule
-    .style.cssText = "..."                        add multiple rules, css style
-    .setAttribute("style", "...")                 add multiple rules
-
-    background-color -> backgroundColor           naming rules for CSS
-
-  edit attribute:
-    .setAttribute("name", "value")                change name="value", or add it
-    .getAttribute("...")                          return value of attribute
-    .removeAttribute("...")                       remove attribute
+  id:
+    document.getElementById("...")                select id
 
   class:
-    .classList.add("...")                         add class
-    .classList.remove("...")                      remove class
-    .classList.toggle("...")                      toggle class, prefered
+    document.getElementsByClassName("...")        select class, creates nodelist
 
-  content:
-    .textContent = "..."                          add plain text, prefered
-    .innerHTML = "..."                            add html text
+  element:
+    document.getElementsByTagName("...")          select tag, creates nodelist
 
+  universal:
+    document.querySelector("...")                 CSS selector, only the first one
+    document.querySelectorAll("...")              CSS selector, all elements, creates nodelist
+
+  nodelist:
+    array-like, [..., ...]  
+---------------------------------------------------------------------------------------------------
+CLASS/ID:      
+  .classList.add("...");                    add class/id to an element
+  .classList.remove("...");                 remove class/id
+  .classList.toggle("...");                 toggle class/id
+---------------------------------------------------------------------------------------------------
+MANIPULATE:
+  text:
+    .innerHTML = "...";                     change text and code, treats everything as text and code
+    .textContent = "...";                   change text, treats everything as text
+
+  style:
+    .style                                  change styling
+      .color = "..."
+    .style.cssText = "..."                  change multiple styles
+
+  attribute:
+    .getAttribute("...");   
+    .setAttribute("...", "...");            change attribute: name, value
+    .removeAttribute("...")                 remove attribute
+---------------------------------------------------------------------------------------------------
+CREATE:
+  document
+    .createElement(..., options)          create element, optional options
+    .appendChild(...)                     add as last child of parent
+    .insertBefore(new, next)              add before next inside parent
+    .removeChild(...)                     remove from parent, return reference to child
+---------------------------------------------------------------------------------------------------
+READ:
+  .value                                  get value
+---------------------------------------------------------------------------------------------------
 EVENTS:
-  attach functions to HTML elements
-  on_event_ property
-  event listener, prefered
-
-  .addEventListener("...", function() {...})
-    click
+  .addEventListener("...", ...);          run a function when an event happens
+    click                                 
     dblclick
+
     keypress
     keydown
     keyup
+
+    change                                works without focus change
+    input                                 same as above without need for focus loss
+    
     mouseover
+    mouseout
 
+  .removeEventListener("...", ...)        event and function as arguments
 
-window.open(..., "_blank");         open url in new window
+  default behaviour:
+    .preventDefault()                     prevent default behaviour
 
-
-.onclick
-
-.onchange
-
-
------
-
-document.querySelector("...")
-
-event handler property:
-  element
-    .onclick              click
-    .onfocus              focus
-    .onblur               unfocus
-    .ondbclick            doubleclick
-    .onmouseover          hover
-    .onmouseout           stop hover
+  event handler property:
+    element
+      .onclick                            click
+      .onfocus                            focus
+      .onblur                             unfocus
+      .ondbclick                          doubleclick
+      .onmouseover                        hover
+      .onmouseout                         stop hover
 
   window
-    .onkeypress           keypress up or down
-    .onkeydown            keypress down
-    .onkeyup              keypress up
+    .onkeypress                           keypress up or down
+    .onkeydown                            keypress down
+    .onkeyup                              keypress up
 
-  element.setAttribute("...")   add attribute
-
----
-
-don't use inline event handlers
-  <button onclick="bgchange()">...</button>
-
----
-
-element.addEventListener("...", ...)       event and function as arguments
-element.removeEventListener("...", ...)    event and function as arguments
-
-multiple events on one element possible
-.onclick overwrites previous events
-
----
-
-event object:
-  event / evt / e       common names, any name possible
-
-  function ...(e) {     
-    e.target ...        
-  }
-
----
-
-default behaviour:
-  element.preventDefault()    prevent default behaviour
-
----
-
-event bubbling and capture:
+  window.open(..., "_blank");             open url in new window
+---------------------------------------------------------------------------------------------------
+EVENT BUBBLING:
   bubbling: browser default
     run event on the element, then parent, ..., then on html
 
@@ -196,5 +97,5 @@ event bubbling and capture:
 
   element.stopPropagation()     stop event bubbling
 
-event delegation:
-  multiple elements with same behaviour: one event on the parent and bubble each child
+  event delegation:
+    multiple elements with same behaviour: one event on the parent and bubble each child

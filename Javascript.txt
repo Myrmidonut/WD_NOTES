@@ -607,7 +607,7 @@ ARRAY METHODS:
 
   iterate:
     .map(function(e) {...})                     create new array after running func on every entry
-    .forEach(function(e) {...})                 run function on every element
+    .forEach(function(e, i) {...})              run function on every element with index
     .reduce(function(prev, curr) {...}, init)   condense array after function with init
     .some(function(e) {...})                    if at least one result is true, returns true                 
     .every(function(e) {...})                   if all results are true, returns true
@@ -651,10 +651,9 @@ CONDITIONS:
     }
   -------------------------------------------------------------------------------------------------
   TERNARY:
-    (condition) ? statement1 : statement2;      ternary
+    condition ? statement1 : statement2;        ternary
 
-    if true run statement1, else run statement2
-    can be nested in statements
+    (...) ? (..., ...) : (..., ...);
   -------------------------------------------------------------------------------------------------
   BREAK CONTINUE LABEL:
     if (condition) {                            break, leave whole loop
