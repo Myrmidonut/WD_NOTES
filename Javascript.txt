@@ -532,6 +532,7 @@ STRING METHODS:
     .indexOf("...", ...)                return first position of ..., -1 if not, optional start
     .lastIndexOf("...", ...)            return last position of ..., -1 if not, optional start
     .search("...")                      see indexOf, no second argument, with regular expressions
+    .match(...)                         search regexp, return array
 
   search, modern:  
     .includes("...", ...)               true if found, optional start
@@ -541,6 +542,7 @@ STRING METHODS:
   character:
     .charAt(5)                          == [5], return the character at index 5
     .charCodeAt(5)                      return the unicode character at index 5
+    String.fromCharCode(...)            get chacracter from unicode
 
   substring:
     .slice(..., ...)                    return string from start to optional exclusive end
@@ -554,6 +556,7 @@ STRING METHODS:
     .replace(/text1/g , "text2")        replace all text1 with text2
     .replace(/text1/i , "text2")        replace all text1 with text2, case insensetive
     .replace(/...|.../g , "...")        replace multiple texts
+    .trim()                             remove leading and ending whitespace
 
   convert:
     .toUpperCase()                      convert to uppercase
@@ -561,6 +564,7 @@ STRING METHODS:
 
   add:
     .concat("...", text2)               add string
+    .repeat(...)                        repeat ... times
 
   split:
     .split("...")                       split at the character and convert into an array
@@ -597,18 +601,17 @@ ARRAY METHODS:
     .concat("...", "...")               merge values
 
   search:
-    .indexOf(..., ...)                  return first index, optional start, -1 if not
-    .lastIndexOf(..., ...)              return last index, optional start, -1 if not
-    .includes(..., ...)                 return true if found, optional start
-
-    .find(function(item, index, array) {...})   search in array of objects, returns first item
-    .findIndex(function(...) {...})             see .find, returns index
-    .filter(function(e) {...})                  create new array with filtered entries
+    .indexOf(..., ...)                        return first index, optional start, -1 if not
+    .lastIndexOf(..., ...)                    return last index, optional start, -1 if not
+    .includes(..., ...)                       return true if found, optional start
+    .find(function(e) {...})                  search in array of objects, return first entry
+    .findIndex(function(e) {...})             see .find, return index
 
   iterate:
+    .filter(function(e) {...})                  check every entry, create new array with passed
     .map(function(e) {...})                     create new array after running func on every entry
     .forEach(function(e, i) {...})              run function on every element with index
-    .reduce(function(prev, curr) {...}, init)   condense array after function with init
+    .reduce(function(prev, e) {...}, init)      condense array after function with init
     .some(function(e) {...})                    if at least one result is true, returns true                 
     .every(function(e) {...})                   if all results are true, returns true
     .fill(..., ..., ...)                        fill array with value, from start to end

@@ -68,3 +68,14 @@ TOOLS:
 - Heroku
 - Sublime
 - Command Line
+--------------------------------------
+STACKS:
+- MEAN:
+    MongoDB
+    Express
+    Angular
+    Node
+  MERN:
+    React
+  MEVN:
+    Vue

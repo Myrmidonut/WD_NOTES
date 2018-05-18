@@ -1,0 +1,61 @@
+INCLUDE:
+  var express = require("express");
+  var app = express();
+---------------------------------------------------------------------------------------------------
+STYLES:
+  app.use(express.static("public"));      search /public folder for stylesheets
+
+  views/partials/:
+    header.ejs:
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Demo App</title>
+          <link rel="stylesheet" href="/app.css">
+        </head>
+        <body>
+
+    footer.ejs:
+        </body>
+      </html>
+
+    views/
+      home.ejs:
+        <% include partials/header %>
+        ...
+        <% include partials/footer %>
+---------------------------------------------------------------------------------------------------
+FILES:
+  app.set("view engine", "ejs");          res.render does not need file endings
+---------------------------------------------------------------------------------------------------
+ROUTES:
+  order of routes matters!
+
+  GET:
+    app.get("...", function(req, res) {     create route with request and response
+      res.send("...");                      output
+    });
+
+    app.get("*", ...                        fallback route
+
+  POST:
+    app.post("/addfriend", function(req, res) {
+      res.send("...");
+    });
+
+  LISTEN:
+    app.listen(process.env.PORT, process.env.IP, function() {     for server
+      console.log("Server has started.");
+    });
+---------------------------------------------------------------------------------------------------
+ROUTES PARAMETERS:
+  app.get("/.../:test", function(req, res) {       :test is a wildcard
+    var ... = req.params.test;
+  });
+---------------------------------------------------------------------------------------------------
+REDIRECT:
+  res.redirect("...");                    load route
+---------------------------------------------------------------------------------------------------
+RENDER:
+  res.render("...");                      display a file from /views folder
+  res.render("...", {name: inputData});   usually name = inputData

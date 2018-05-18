@@ -6,22 +6,22 @@ SETUP:
   nvm use ...           use specific version
 ---------------------------------------------------------------------------------------------------
 NPM:
-  search.nodejs.org     online repository/registry
+  npmjs.com                     packages database
+  
+  npm help ...                  open help pages
 
-  npm help ...          open help pages
+  npm install                   load dependencies from package.json
+  npm install ...               install package/s
+  npm install --save ...        install package/s as dependency in package.json
 
-  npm install           load dependencies from package.json
-  npm install ...       install module
-    --save              
-
-  npm init              create package.json
-  npm init --scope=...  with username
+  npm init                      create package.json
+  npm init --scope=...          with username
     README.md with description
     repository
 
-  npm ls                show installed dependencies
+  npm ls                        show installed dependencies
 
-  npm test              run test scripts
+  npm test                      run test scripts
 
   npm publish           send packages to registry, requires current version, sets "latest" tag
   npm view ...          view details for a published package
@@ -45,6 +45,15 @@ PACKAGE.JSON:
 ---------------------------------------------------------------------------------------------------
 README.MD
   README.md contains written description of the project
+---------------------------------------------------------------------------------------------------
+INCLUDE:
+  var ... = require("...");     include a package
+---------------------------------------------------------------------------------------------------
+PACKAGES:
+  express         routing
+  ejs             inserting JS into HTML
+  body-parser     handling POST
+  request         API
 ---------------------------------------------------------------------------------------------------
 BASIC START:
   server.js:
