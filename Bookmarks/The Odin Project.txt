@@ -363,7 +363,106 @@ Ruby on Rails
 
 
 HTML5 and CSS3
+    Basic HTML Page Structure
+        HTML5 BASICS
+            How is an HTML5 document structured?
+            What are elements/tags?
+            What are element attributes?
+            How do you link to external files?
+            When should you use IDs vs Classes?
+            What attributes are required by image and links for them to be effective and accessible?
+            Where should your CSS live?
 
+        LINKING INTERNAL AND EXTERNAL PAGES
+            What’s the difference between internal links (/somepage) and external links (http://www.somesite.com/somepage)?
+            When on a webpage should you use the full URI (with the http://yoursite.com/somepath) and when should you use the relative path (/somepath)?
+            How do you navigate the document tree with links (../../someotherpage)?
+            How do you open links in external windows?
+            What are all the possible pseudo-states (e.g. :hover) of a link and when are they actually activated? How do you change styles based on them?
+
+        WORKING WITH IMAGES, VIDEO AND OTHER MEDIA
+            What are common attributes of image tags?
+            How do you load a smaller version of an image?
+            How do you get an image to fill up an element?
+            How do you save load times by using appropriately sized images?
+            When should you store images externally vs on your server?
+            What are the main types of image files and how are they different?
+            Which file types let you use animation?
+            Which file types let you use transparent colors?
+            Which file types are best for photos? Graphics?
+            Which file type lets you scale an image as big as you want without affecting file size (and why)?
+            What’s the difference between raster and vector images?
+            How do you add video to your page? (please don’t autoplay…)
+            How do you add audio to your page? (please don’t autoplay…)
+
+        PROJECT: EMBEDDING IMAGES AND VIDEO
+            -
+
+        What's New in HTML5
+            What are semantic tags and how are there more of them in HTML5?
+            What does the canvas element do for you?
+            Seriously, why is canvas potentially amazing?
+            What are the new video control features?
+            What are the new audio control features?
+            What is local storage and how is it used?
+            What are data attributes and how are they used?
+            For people who have already done Rails and maybe some JS, how can data attributes be used to pass off data from your back end to your front end?
+            What are the compatibility trade-offs of the new features?
+            Are there any performance trade-offs with the new features?
+            How does HTML5 fix the problem of needing Flash installed to play movies on many devices?
+
+    Displaying and Inputting Data
+        Tables in HTML
+            When should you use tables?
+            What is the structure of a table?
+            What are the special tags that dictate certain parts of a table, e.g. headers or captions?
+            How can you combine cells in a table?
+            Why do you need to be careful about your padding and borders in tables?
+            How do you align text within cells in a table?
+        Ordered and Unordered Lists
+            What is the basic list syntax?
+            How do you nest lists inside each other?
+        Forms for Collecting Data
+            Why are forms probably the most important part of your site?
+            How do you construct a basic form?
+            How do you specify which path the form gets submitted to?
+            When would you want to submit using GET vs POST requests?
+            What are all the possible form element types?
+            When should you use checkboxes instead of radio buttons?
+            When should you use a combobox/dropdown instead of a text field?
+            How do you make a very large text field?
+            How do you link elements with their labels?
+            How do you link element selections together (e.g. check boxes) so they are nicely formatted when your server receives them?
+            What should your “submit” button probably say instead of “submit”?
+        Project: HTML Forms
+            -
+
+    CSS3
+        CSS3 Basics
+        The Box Model
+        Floats and Positioning
+        Project: Positioning and Floating Elements
+        Best Practices
+        Backgrounds and Gradients
+        Project: Building with Backgrounds and Gradients
+
+    Design and UX
+        Introduction to Design and UX
+        Fonts and Typography
+        CSS Grids
+        Project: Design Teardown
+
+    Responsive Design and CSS Frameworks
+        Responsive Design
+        Project: Building with Responsive Design
+        CSS Frameworks like Bootstrap and Foundation
+        Project: Using Bootstrap
+
+    Advanced CSS3
+        1. Animations, Subtle Effects and Compatibility
+        Using CSS Preprocessors to Save Time
+        Project: Design Your Own Grid-Based Framework
+        Conclusion
 
 
 JavaScript
