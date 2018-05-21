@@ -7,10 +7,3 @@ FILES:
 CODE:
   <%= ... %>                run JS code and add to HTML
   <% ... %>                 run JS code
----------------------------------------------------------------------------------------------------
-INCLUDE:
-  <% include ... %>               include code from files inside another file
-
-  <% include partials/header %>
-  ...
-  <% include partials/footer %>

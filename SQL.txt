@@ -1,40 +1,33 @@
-MySQL       multi user, server based, open source
-SQLite      single user, file based
------
-SQL
+SQL:
   Structured Query Language
   used in most relational databases
------
-EXAMPLE:
-  CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
+---------------------------------------------------------------------------------------------------
+RELATIONAL VS NON-RELATIONAL:
+  relational database:
+    SQL
+    stores relationships between data
+    creates smaller tables for data groups
 
-  INSERT INTO groceries VALUES (1, "Bananas", 4, 7);
-  INSERT INTO groceries VALUES (2, "Peanut Butter", 1, 2);
-  INSERT INTO groceries VALUES (3, "Dark cocoloate bars", 2, 2);
-
-  SELECT * FROM groceries WHERE aisle > 5 ORDER BY aisle;
-
-  SELECT aisle, SUM(quantity) FROM groceries GROUP BY aisle;
------
-relational database: SQL, stores relationships between data, creates smaller tables for data groups
-non-relational database: MongoDB, stores data in documents
------
+  non-relational database:
+    NoSQL
+    MongoDB
+    stores data in documents
+    creates objects
+---------------------------------------------------------------------------------------------------
 STRUCTURE:
   database
     table
       row         set of related data
         column    data for a particular attribute
------
+---------------------------------------------------------------------------------------------------
 RDBMS:
   relational database management system
 
-  SQLite
+  SQLite          single user, file based
   MS SQL
   PostgreSQL
-  MySQL
-----
-
-----
+  MySQL           multi user, server based, open source
+---------------------------------------------------------------------------------------------------
 CREATE:
   CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT, ... INTEGER, ... REAL);   many data types
 
@@ -64,3 +57,14 @@ JOIN:
 UPDATE:
   UPDATE ... SET ... WHERE ...;
   DELETE FROM ... WHERE ...;
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
+
+  INSERT INTO groceries VALUES (1, "Bananas", 4, 7);
+  INSERT INTO groceries VALUES (2, "Peanut Butter", 1, 2);
+  INSERT INTO groceries VALUES (3, "Dark cocoloate bars", 2, 2);
+
+  SELECT * FROM groceries WHERE aisle > 5 ORDER BY aisle;
+
+  SELECT aisle, SUM(quantity) FROM groceries GROUP BY aisle;

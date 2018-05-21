@@ -28,6 +28,9 @@ STYLES:
 FILES:
   app.set("view engine", "ejs");          res.render does not need file endings
 ---------------------------------------------------------------------------------------------------
+INCLUDE:
+  include ...                             include HMTL code from another file
+---------------------------------------------------------------------------------------------------
 ROUTES:
   order of routes matters!
 
