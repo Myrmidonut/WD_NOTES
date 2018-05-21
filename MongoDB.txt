@@ -3,3 +3,31 @@ SHELL:
 ---------------------------------------------------------------------------------------------------
 STARTUP:
   ./mongod
+---------------------------------------------------------------------------------------------------
+SHUTDOWN:
+  ctrl-c
+
+  always shutdown on exciting c9
+---------------------------------------------------------------------------------------------------
+COMMANDS:
+  HELP:
+    help                                  list commands
+
+  DATABASE:
+    show dbs                              list databases
+    use ...                               switch database or create empty database
+
+  CREATE:
+    db.name.insert({...})                 create object in name colleciton
+
+  READ:
+    show collections                      list collections
+    db.name.find()                        list all objects in name collection
+    db.name.find({...: "..."})            search for matching objects
+
+  UPDATE:
+    db.name.update({...}, {...})          find object, overwrite object
+    db.name.update({...}, {$set: {...}})  find object, overwrite object and keep old data
+
+  DELETE:
+    db.name.remove({...})                 delete matching objects
