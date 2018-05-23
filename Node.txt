@@ -13,6 +13,7 @@ NPM:
   npm install                   load dependencies from package.json
   npm install ...               install package/s
   npm install --save ...        install package/s as dependency in package.json
+  npm install -g ...            install package/s globally
 
   npm init                      create package.json
   npm init --scope=...          with username
@@ -23,15 +24,17 @@ NPM:
 
   npm test                      run test scripts
 
-  npm publish           send packages to registry, requires current version, sets "latest" tag
-  npm view ...          view details for a published package
-  npm version           update version number, commit to git, major.minor.patch
-  npm dist-tag add pkg@version tag    create new tag with version
-  npm outdated          check for updated packages
-  npm update            update all packages
-  npm uninstall         remove dependencies
-  npm uninstall --save  also remove from package.json
-    npm rm              short
+  npm publish                   send to registry, requires current version, sets "latest" tag
+  npm view ...                  view details for a published package
+  npm version                   update version number, commit to git, major.minor.patch
+  npm dist-tag ls               show all versions
+  npm dist-tag add name@version tag    create new tag with version and name of package
+  npm dist-tag rm name tag      remove tag from name
+  npm outdated                  check for updated packages
+  npm update                    update all packages
+  npm uninstall                 remove dependencies
+  npm uninstall --save          also remove from package.json
+    npm rm                      short
 
   npm whoami
   npm adduser
