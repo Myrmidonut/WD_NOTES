@@ -1,0 +1,1 @@
+<form action="...?_method=PUT" method="POST">     override GET to use PUT or DELETE

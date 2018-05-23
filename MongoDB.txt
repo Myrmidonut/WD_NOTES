@@ -30,4 +30,5 @@ COMMANDS:
     db.name.update({...}, {$set: {...}})  find object, overwrite object and keep old data
 
   DELETE:
-    db.name.remove({...})                 delete matching objects
+    db.name.remove({...: "..."})          delete matching objects
+    db.name.drop()                        delete all objects

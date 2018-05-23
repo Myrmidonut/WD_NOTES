@@ -41,3 +41,11 @@ FIND:
       console.log(cats);
     }
   });
+
+  Cat.findById(id, callback)
+
+  Cat.findByIdAndUpdate(id, newData, callback)
+
+  Cat.findByIdAndRemove(id, callback)
+
+  Cat.findOne({...: "..."}, callback)

@@ -6,4 +6,5 @@ FILES:
 ---------------------------------------------------------------------------------------------------
 CODE:
   <%= ... %>                run JS code and add to HTML
-  <% ... %>                 run JS code
+  <%  ... %>                run JS code
+  <%- ... %>                run JS/HTML code and display it
