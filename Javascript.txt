@@ -459,6 +459,20 @@ FUNCTIONS:
     }
 
   callback:
+
+
+
+    function myFunc(arg, function(err, data) {
+      if (err) {
+        console.log(err);
+      } else {
+        ...;
+      }
+    });
+
+
+
+
     function first(..., callback) {
       ...
       callback();                                 can contain arguments for second()
@@ -467,6 +481,9 @@ FUNCTIONS:
     function second() {                           arguments from callback();
       ...
     }
+
+
+
 
   info:
     variables inside a function are only availabe in the function, scope!
@@ -575,22 +592,20 @@ ARRAY METHODS:
     .length                             number of entries, can be modified
 
   reverse:
-    .reverse()                          reverse the array itself
+    .reverse()                          M, reverse the array itself
 
   convert to string:
     .toString()                         convert to string with comma seperation
     .join("...")                        convert to string with given seperation
 
   add / remove:
-    .unshift(..., ...)                  add one or more entries to the beginning
-    .push(..., ...)                     add one or more entries to end
-    .shift()                            remove first entry, returns it
-    .pop()                              remove last entry, returns it
-
-    push/pop are fast, shift/unshift are slow
+    .unshift(..., ...)                  M, add one or more entries to the beginning
+    .push(..., ...)                     M, add one or more entries to end
+    .shift()                            M, remove first entry, returns it
+    .pop()                              M, remove last entry, returns it
 
   remove / insert:
-    .splice(..., ..., "...", "...")     start, optional cut amount, optional add elements
+    .splice(..., ..., "...", "...")     M, start, optional cut amount, optional add, returns cut
     delete myArray[5]                   changes element at index 5 to undefined
 
   subarray:
@@ -618,9 +633,10 @@ ARRAY METHODS:
     .copyWithin(..., ..., ...)                  copies elements into target, from start to end
 
   sort:
-    .sort()                               sort the array itself from lowest to highest value
+    .sort()                               M, sort the array itself from lowest to highest value
     .sort(function(a, b) {return a-b;});  sort with compare function for numbers, small to large
-
+      if (a[1] < b[1]) return -1;         compare nested arrays
+      if (a[1] > b[1]) return 1;
 
   loop:
     for ... of

@@ -40,6 +40,7 @@ BACK-END:
   DATABASES:
     NoSQL
 -     MongoDB
+        Mongoose
     SQL
 -     MySQL
       Microsoft SQL Server
