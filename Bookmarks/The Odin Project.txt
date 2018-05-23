@@ -121,16 +121,16 @@ Ruby on Rails
 
 HTML5 and CSS3
     Basic HTML Page Structure
-        1. How This Course Will Work
-        2. HTML5 Basics
-        3. Linking Internal and External Pages
-        4. Working with Images, Video and Other Media
+x        1. How This Course Will Work
+x        2. HTML5 Basics
+x        3. Linking Internal and External Pages
+x        4. Working with Images, Video and Other Media
         5. Project: Embedding Images and Video
-        6. What's New in HTML5
+x        6. What's New in HTML5
     Displaying and Inputting Data
-        1. Tables in HTML
-        2. Ordered and Unordered Lists
-        3. Forms for Collecting Data
+x        1. Tables in HTML
+x        2. Ordered and Unordered Lists
+x        3. Forms for Collecting Data
         4. Project: HTML Forms
     CSS3
         1. CSS3 Basics
@@ -439,12 +439,64 @@ HTML5 and CSS3
 
     CSS3
         CSS3 Basics
+            What are selectors?
+            In general, how specific should you be when targeting elements using selectors?
+            What’s the difference between using %, em and rem to specify sizes?
+            How do you select an element inside another element?
+            How can you shorten up a long batch of CSS that’s doing the same thing to many different elements by putting them all in one line?
+            How do you target the immediate child of an element?
+            How do you target a class inside a class?
+            How do you target a class inside an ID?
+            How would you target “all the links inside li elements that have the class bunny which are inside the unordered list with the id things-that-hop”?
+            What are the three ways to include CSS in your project?
+            How do you import an external stylesheet?
+            What is the browser’s default stylesheet?
+            What is a “CSS Reset” file and why is it helpful?
+            Which stylesheet has preference if you import multiple ones and there are overlapping styles?
+            What is the order of priority of selectors (e.g. if you specify that the <body> has color black but <h1> tags have the color blue but class main-title has the color red, which will be used by <body style="color:yellow"><h1 class="main-title" style="color:green">Howdy!</h1><body>?)
         The Box Model
+            What’s the difference between margin and padding?
+            How do borders affect the size of the box?
+            How can margins be used to center an element horizontally on the page?
+            What does it mean that “margins are collapsed”?
+            What is the difference between block, inline-block and inline elements when thinking about the box model?
+            When are you required to specify the width of an element vs letting the browser figure it out for you?
+            How do box shadows affect element box sizing?
+            How can you check an element’s box model in your developer tools (it’s a helpful graphic)?
         Floats and Positioning
+            What is the DOM?
+            How do elements get placed in the DOM by default?
+            How can you override element positioning using the position attribute?
+            When are you able to use the top left right and bottom attributes?
+            What is the difference between float and position?
+            Which element acts as the parent for a floated element?
+            What is the difference between floating right and floating left?
+            If you have a bunch of elements floated next to each other and you make the browser narrower, what happens?
+            What’s the practical difference between relative and absolute positioning?
+            Which element acts as the parent for an absolutely or relatively positioned element?
+            How would you set up a grid of 20x20 boxes on the page using floats? Using lists?
+            What are negative margins useful for?
         Project: Positioning and Floating Elements
+            -
         Best Practices
+            What is a “container <div>”?
+            When should you use <span> vs <div>?
+            When should you use id vs class?
+            What are good situations for breaking out styles into multiple classes?
+            How can you use margins for alignment?
         Backgrounds and Gradients
+            How do you set the background color?
+            Which color is used when elements are stacked on top of each other (on the z-axis)?
+            How do you set a partially transparent color? (rgba anyone?)
+            Where are gradients most commonly used in “real world” websites?
+            How do you set a gradient background?
+            How do you make an image the background of an element?
+            Why is it useful to make the image the background of an element instead of using a regular <img> tag?
+            How do you make a background image of a fixed size?
+            How do you make a background image repeat?
+            How do you get your page’s background image to fill the page even when you resize the browser?
         Project: Building with Backgrounds and Gradients
+            -
 
     Design and UX
         Introduction to Design and UX
