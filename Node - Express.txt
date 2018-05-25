@@ -56,6 +56,22 @@ ROUTES PARAMETERS:
     var ... = req.params.test;
   });
 ---------------------------------------------------------------------------------------------------
+MODELS/EXPORT:
+  /models folder:
+    campground.js:
+      var mongoose = require("mongoose");
+
+      var campgroundSchema = new mongoose.Schema({
+        name: String,
+        image: String,
+        description: String
+      });
+
+      module.exports = mongoose.model("Campground", campgroundSchema);
+
+  app.js:
+    var Campground = require("./models/campground");      campgrounds.js file
+---------------------------------------------------------------------------------------------------
 REDIRECT:
   res.redirect("...");                    load route
 ---------------------------------------------------------------------------------------------------

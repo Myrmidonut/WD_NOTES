@@ -17,13 +17,13 @@ COMMANDS:
     show dbs                              list databases
     use ...                               switch database or create empty database
 
-  CREATE:
-    db.name.insert({...})                 create object in name colleciton
-
   READ:
     show collections                      list collections
     db.name.find()                        list all objects in name collection
     db.name.find({...: "..."})            search for matching objects
+
+  CREATE:
+    db.name.insert({...})                 create object in name colleciton
 
   UPDATE:
     db.name.update({...}, {...})          find object, overwrite object
