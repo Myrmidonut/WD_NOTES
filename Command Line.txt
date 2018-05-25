@@ -31,7 +31,7 @@ CREATING:
 
   mv              move/rename a file (move, rename)
     files folder  move one or more files
-    file file     rename a file
+    old new       rename file/folder
 
   ln              create links
 -----
