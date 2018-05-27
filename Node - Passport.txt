@@ -1,0 +1,20 @@
+different entry points:
+  local
+  facebook
+  ...
+
+makes HTTP sessions have states (information stay)
+
+packages:
+  Passport
+  Passport Local
+  Passport Local mongoose
+
+  npm install express
+              mongoose
+              passport
+              passport-local
+              passport-local-mongoose
+              body-parser
+              express-session
+              ejs

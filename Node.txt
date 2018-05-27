@@ -53,6 +53,8 @@ INCLUDE:
   var ... = require("...");     include a package
 ---------------------------------------------------------------------------------------------------
 PACKAGES:
+  nodemon         restarts server on file changes
+  
   express         routing
   ejs             inserting JS into HTML
   body-parser     handling POST
