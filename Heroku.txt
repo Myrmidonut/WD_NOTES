@@ -1,0 +1,18 @@
+heroku login                    login
+
+git ...                         heroku needs a git repository
+
+heroku create                   create URL to heroku with git repository
+
+git remote -v                   show that heroku is a remote for git
+
+git push heroku master          push to heroku
+
+heroku logs                     show error logs
+
+package.json:                   required for node on heroku
+  "scripts": {
+    "start": "node app.js"
+  }
+
+heroku run ...                  run linux commands on heroku
