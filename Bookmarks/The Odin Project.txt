@@ -340,27 +340,103 @@ Web Development 101
             What is a library?
             What is a gem?
 
-        Databases
-            What is a database?
-            What are relational databases?
-            How are relational databases different from XML?
-            What is SQL?
-            What is SQL used for?
-            What does CRUD stand for?
-            Why is the idea of “CRUD” so important for web apps?
-            How do you get all the records from a table in SQL?
-            How do you insert a record in SQL?
-            What is a primary key?
-            What is a foreign key?
+        Project: Ruby
+            -
 
+    Web Development Frameworks
+        Introduction to Frameworks
+            What is a framework?
+            What’s the difference between a programming language and a framework?
+            What languages have frameworks?
 
+        Ruby on Rails Basics
+            What is Rails?
+            What language is Rails written in?
+            Refresher: What are gems?
+            What are the seven gems that make up Rails?
+            What is the purpose of the gemfile?
+            What is the command to create a new Rails app from the command line?
+            How is a GET request different from a POST request?
+            What is REST?
+            What is a view?
+            What is a controller?
+            What is a model?
+        Project: Ruby on Rails
+            -
+
+    Pair Programming
+        Introduction to Pair Programming
+            What is Pair Programming?
+            What are the benefits of Pair Programming?
+        Preparing to Remote Pair
+            -
+        Project: Pairing Project
+            -
+
+    Tying it All Together
+        Conclusion
+            -
 
 Ruby Programming
 
+Databases
+    Databases
+        What is a database?
+        What are relational databases?
+        How are relational databases different from XML?
+        What is SQL?
+        What is SQL used for?
+        What does CRUD stand for?
+        Why is the idea of “CRUD” so important for web apps?
+        How do you get all the records from a table in SQL?
+        How do you insert a record in SQL?
+        What is a primary key?
+        What is a foreign key?
+
+    Databases and SQL
+        Important Concepts:
+            What is the Primary Key?
+            What are Foreign Keys?
+            What is a Schema?
+        Statements:
+            SELECT
+            CREATE TABLE
+            DROP TABLE
+            CREATE INDEX
+            DROP INDEX
+            UPDATE
+            DELETE
+            INSERT INTO
+            CREATE DATABASE
+            DROP DATABASE
+            COMMIT (concept)
+            ROLLBACK (concept)
+        Clauses:
+            DISTINCT
+            WHERE
+            IN
+            AND
+            OR
+            BETWEEN
+            LIKE
+            ORDER BY
+            COUNT
+            Functions
+            GROUP BY
+            HAVING
+            AVG
+            COUNT
+            MIN
+            MAX
+            SUM
+        Other Stuff
+            What are Indexes good for?
+            What’s the difference between WHERE and HAVING?
+
+    Project: SQL
+        -
 
 Ruby on Rails
-
-
 
 HTML5 and CSS3
     Basic HTML Page Structure
