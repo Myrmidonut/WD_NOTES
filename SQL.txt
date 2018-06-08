@@ -29,11 +29,11 @@ RDBMS:
   MySQL           multi user, server based, open source
 ---------------------------------------------------------------------------------------------------
 CREATE:
-  CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT, ... INTEGER, ... REAL);   many data types
+  CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT, ... INTEGER, ... REAL);     create table
 
 INSERT:
-  INSERT INTO ... VALUES (..., ..., ...);         insert data
-  INSERT INTO ... (..., ...) VALUES (..., ...);   insert data for named columns
+  INSERT INTO ... VALUES (..., ..., ...);           insert data
+  INSERT INTO ... (..., ...) VALUES (..., ...);     insert data for named columns
 
 QUERY:
   SELECT * FROM ...;                  select all
