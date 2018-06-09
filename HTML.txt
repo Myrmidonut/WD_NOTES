@@ -366,6 +366,9 @@ FORMS:
       <fieldset>                  creates a border
         <legend>                  title inside the border
           ...
+
+    tabindex="..."                negative values only focus, for div...p...
+                                  1, 2, ..., -1, -2, ..., no tabindex, 0
 ---------------------------------------------------------------------------------------------------
 FORMS VALIDATION:
   display explicit error message
@@ -456,7 +459,8 @@ VIDEO SUBTITLES:
   Requires a WebVTT (.vtt) file.
 ---------------------------------------------------------------------------------------------------
 AUDIO:
-  <audio src="...">...</audio>    embedded audio file
+  <audio>...</audio>              embedded audio file
+    src="..."
     controls
     type="..."                    audio format
     autoplay                      autoplay

@@ -537,7 +537,7 @@ NUMBER METHODS:
     Math.pow(base, exponent);             exponent
 
   change base:
-    parseInt(..., ...);                   convert number using giving base
+    parseInt(..., ...);                   convert string to number, optional base
 
   see Math library for  more
 ---------------------------------------------------------------------------------------------------
@@ -670,7 +670,7 @@ CONDITIONS:
     }
   -------------------------------------------------------------------------------------------------
   TERNARY:
-    condition ? statement1 : statement2;        ternary
+    condition ? true : false;                   ternary, can be chained
 
     (...) ? (..., ...) : (..., ...);
   -------------------------------------------------------------------------------------------------
