@@ -349,9 +349,11 @@ FORMS:
       rows="10"
       cols="10"
       wrap="soft" "hard"
+      placeholder="..."
 
     <select>...</select>          dropdown
       <option>...</option>        entries
+        value="..."               data
         selected                  default selected
         multiple                  chose more than one entry
 
