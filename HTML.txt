@@ -304,6 +304,7 @@ FORMS:
 
     <input>                       input box, default is text
       type="text"                 text
+        name="..."                required to send data
       type="number"               number
         min="..."
         max="..."
@@ -326,8 +327,8 @@ FORMS:
 
       type="checkbox"             checkbox
       type="radio"                radio button, multiples linked with name
-        name="..."
-        value="..."               required for meaningful data
+        name="..."                shared data category
+        value="..."               unique value for data
         checked                   default
 
       placeholder="..."           background writing
@@ -443,8 +444,8 @@ VIDEOS:
       "auto"
       "metadata"
 
-  <video>                                 plays first available codec
-    <source src="..." type="video/mp4">
+  <video width height controls ...>         plays first available codec
+    <source src="..." type="video/mp4">     only src and type
     <source src="..." type="video/webm">
     <p>No codecs supported.</p>
   </video>

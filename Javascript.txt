@@ -175,9 +175,9 @@ PRECEDENCE:
               ||
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
-  let name;                             block-scope, prefered
-  const name                            block-scope constant
-  var name;                             global scope outside functions
+  let name;                             block-scope, prefered, cannot be redeclared
+  const NAME_NAME;                      block-scope, cannot be reassigned
+  var name;                             global scope, local scope inside function
 
   var name;                             undefined
   var name = "test";                    string
@@ -187,7 +187,7 @@ VARIABLES:
       name2 = 1;
   var name = null;                      undefined
 
-  const NAME = ...                      constant, value is known before execution
+  const NAME = ...;                     constant, value is known before execution
 
   hoisting:
     declaration is at the start of the block
