@@ -116,22 +116,33 @@ REGULAR EXPRESSIONS:
   /.../g              global occurence
   /.../i              case insensitive
 
-  ...|...             one of these words
+  ...|...             or
 
-  .                   any character
+  .                   any
 
-  \d                  0-9
-  \D                  not 0-9
-  \w                  a-z A-Z _ or: [a-zA-Z_]
-  \W                  not a-z A-Z _ or: [^a-zA-Z_]
+  (..)(..)..\1..\2    group, numbers indicate which group is repeated at which position
 
   [abc]               range
   [a-c]               range
   [a-c2-5]            multiple ranges
 
+  \d                  [0-9]
+  \D                  not \d or [^0-9]
+  \w                  [A-Za-z0-9_]
+  \W                  not \w or [^A-Za-z0-9_]
+
+  \s                  whitespace, including new line, carriage return, tab, form feed
+  \S                  not whitespace
+
+  \r                  return
+  \n                  newline
+  \t                  tab
+  \f                  form feed
+
   [^...]              negation
-  ...+                one or more
-  ...*                zero or more times
+  ...+                one or more times
+  ...*                zero or more times, longest possible
+  ...*?               zero or more times, shortest possible
   ...?                zero or one time
   ...?                shortest possible
   ...{...}            exact amount
@@ -144,22 +155,17 @@ REGULAR EXPRESSIONS:
   (?=...)             exists            
   (?!=...)            not exists
 
-  \s                  whitespace, including newline, etc.
-  \S                  not whitespace
-
-  \r                  return
-  \n                  newline
-  \t                  tab
-  \f                  form feed
-
   invert using uppercase letter
 
   match:
-    .match(...);              returns array with matched regex
+    .match(myRegex);            returns array with matched regex
 
   test:
     myRegex = /.../;
-    myRegex.test(...);        check if the expression exists in the variable
+    myRegex.test(...);          check if the expression exists in the variable
+
+  replace:
+    .replace(myRegex, "...");   replace text in a string
 ---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
