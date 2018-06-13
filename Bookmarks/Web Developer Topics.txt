@@ -5,7 +5,7 @@ FRONT-END:
 -     Bootstrap
       Foundation
       Semantic UI
-    Sass
+    SASS/SCSS
 
   FUNCTIONALITY:
 -   DOM
@@ -15,8 +15,8 @@ FRONT-END:
 -     jQuery
         Ajax
 -     React
--     AngularJS
-      Vue
+-     Angular
+-     Vue
 --------------------------------------
 BACK-END:
   FUNCTIONALITY:

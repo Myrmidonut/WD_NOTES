@@ -623,7 +623,7 @@ ARRAY METHODS:
     .findIndex(function(e) {...})             see .find, return index
 
   iterate:
-    .filter(function(e) {...})                  check every entry, create new array with passed
+    .filter(function(e) {...})                  check every entry, create new array with true entries
     .map(function(e) {...})                     create new array after running func on every entry
     .forEach(function(e, i) {...})              run function on every element with index
     .reduce(function(prev, e) {...}, init)      condense array after function with init
