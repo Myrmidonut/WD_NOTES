@@ -189,6 +189,9 @@ VARIABLES:
 
   const NAME = ...;                     constant, value is known before execution
 
+  const array;                          entries can still be changed
+  Object.freeze(array);                 entries are locked too
+
   hoisting:
     declaration is at the start of the block
     assignment is at the position in the code
@@ -200,6 +203,7 @@ SCOPE:
 ---------------------------------------------------------------------------------------------------
 NAMING CONVENTION:
   lowerUpperUpper
+  CONST_VARIABLE
   can contain
     $
     _
@@ -364,6 +368,7 @@ OBJECTS:
     var myObj = {key: [...] };                  array key
 
     var myObj = {key: function(){} };           method key
+    var myObj = {key() {} };                    shorter
 
     var myObj = {key: {key: ..., ...}, ...};    subnamespace
 
@@ -440,8 +445,15 @@ FUNCTIONS:
   return:
     return comparison;                            return true or false
 
-  arguments:
+  arguments with rest operator:
+    function myFunc(...args) {}                   variable number of arguments, stored in array args
     arguments[]                                   array created from arguments
+
+  arguments with spread operator:
+    arr = [...];
+    Math.max(...arr);                             spreads array when multiple arguments are needed
+
+    let arr2 = [...arr1];
 
   function expression:
     let myFunc = function func() {}               function expression
@@ -451,7 +463,8 @@ FUNCTIONS:
     let myFunc = function(e) {e...}               function with event object
 
   arrow function:
-    let myFunc = (...) => expression              arrow function, short version of declaration
+    let myFunc = (...) => {}                      arrow function, short version of declaration
+                                                  without {} return can be skipped
 
   prototype:
     Array.prototype.myFunc = function(func) {     prototype, this to call on the array
@@ -642,6 +655,10 @@ ARRAY METHODS:
     for ... of
 
   outputting an array converts it to a comma seperated string
+
+  example:
+    const squaredIntegers = arr.filter((e) => e >= 0 && e % 1 === 0).map((e) => e*e);
+      returns positive, whole numbers from an array and squares them
 ---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF ELSE:
@@ -752,3 +769,19 @@ USEFUL FUNCTIONS:
     var start = new Date().getTime();
 
   String.fromCharCode(...);             get value from ASCII code
+---------------------------------------------------------------------------------------------------
+IMPORT:
+  import { ... } from "...";      import a function from a file, ./...
+
+  import * as ... from ...;       import everything from a file into an object
+
+  import ... from "...";          import default value from a file
+---------------------------------------------------------------------------------------------------
+EXPORT:
+  export { ... };                 export a function
+  export const foo = "bar";       export a variable
+  export { ..., foo };            export multiple functions and variables
+
+  export default function ... (...) {   export one value with fallback for the file
+    return ...;
+  }
