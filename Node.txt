@@ -50,7 +50,7 @@ README.MD
   README.md contains written description of the project
 ---------------------------------------------------------------------------------------------------
 INCLUDE:
-  var ... = require("...");     include a package
+  var ... = require("...");       include a package
 ---------------------------------------------------------------------------------------------------
 PACKAGES:
   nodemon         restarts server on file changes

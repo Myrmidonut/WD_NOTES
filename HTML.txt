@@ -304,6 +304,7 @@ FORMS:
 
     <input>                       input box, default is text
       type="text"                 text
+        name="..."                required to send data
       type="number"               number
         min="..."
         max="..."
@@ -326,8 +327,8 @@ FORMS:
 
       type="checkbox"             checkbox
       type="radio"                radio button, multiples linked with name
-        name="..."
-        value="..."               required for meaningful data
+        name="..."                shared data category
+        value="..."               unique value for data
         checked                   default
 
       placeholder="..."           background writing
@@ -349,9 +350,11 @@ FORMS:
       rows="10"
       cols="10"
       wrap="soft" "hard"
+      placeholder="..."
 
     <select>...</select>          dropdown
       <option>...</option>        entries
+        value="..."               data
         selected                  default selected
         multiple                  chose more than one entry
 
@@ -366,6 +369,9 @@ FORMS:
       <fieldset>                  creates a border
         <legend>                  title inside the border
           ...
+
+    tabindex="..."                negative values only focus, for div...p...
+                                  1, 2, ..., -1, -2, ..., no tabindex, 0
 ---------------------------------------------------------------------------------------------------
 FORMS VALIDATION:
   display explicit error message
@@ -438,8 +444,8 @@ VIDEOS:
       "auto"
       "metadata"
 
-  <video>                                 plays first available codec
-    <source src="..." type="video/mp4">
+  <video width height controls ...>         plays first available codec
+    <source src="..." type="video/mp4">     only src and type
     <source src="..." type="video/webm">
     <p>No codecs supported.</p>
   </video>
@@ -456,7 +462,8 @@ VIDEO SUBTITLES:
   Requires a WebVTT (.vtt) file.
 ---------------------------------------------------------------------------------------------------
 AUDIO:
-  <audio src="...">...</audio>    embedded audio file
+  <audio>...</audio>              embedded audio file
+    src="..."
     controls
     type="..."                    audio format
     autoplay                      autoplay
