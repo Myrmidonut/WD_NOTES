@@ -18,3 +18,9 @@ score of 95%, under 2-3 seconds
 *PHP experience outside of the context of WordPress
 *Implimentation of orderly structured, well documented code when extending WordPress
 *Basic image-editing skills
+
+Jobs:
+Upworks
+indeed
+ziprecruiter
+telecommute

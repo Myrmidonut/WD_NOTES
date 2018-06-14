@@ -408,14 +408,16 @@ OBJECTS:
     .this                                 refers to the current object
 
   stuff:
-    .hasOwnProperty(...)                  check if property exists
+    .hasOwnProperty("...")                check if property exists
 
     delete myObj.key;                     delete property
+
+    Object.keys(...);                     create array containing all keys
 
     "key" in myObj                        check if property exists
 
     for...in loop:                        loop over all keys
-      for(let key in myObj) {
+      for (let key in myObj) {
         alert(key);
         alert(user[key]);
       }
@@ -620,15 +622,19 @@ ARRAY METHODS:
   add / remove:
     .unshift(..., ...)                  M, add one or more entries to the beginning
     .push(..., ...)                     M, add one or more entries to end
-    .shift()                            M, remove first entry, returns it
-    .pop()                              M, remove last entry, returns it
 
-  remove / insert:
-    .splice(..., ..., "...", "...")     M, start, optional cut amount, optional add, returns cut
+    .shift()                            M, remove first entry, returns it, return entry
+    .pop()                              M, remove last entry, returns it, return entry
+
+    .splice(..., ..., ...)              M, start, optional cut amount, optional adds, return cut arr
+
     delete myArray[5]                   changes element at index 5 to undefined
 
-  subarray:
+  extract:
     .slice(..., ...)                    return array from start to optional exclusive end
+
+  copy:
+    let arr1 = [..., ...arr2, ...];     copy with spread operator
 
   combine:
     .concat(...)                        return merged array
