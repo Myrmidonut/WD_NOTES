@@ -141,8 +141,12 @@ REGULAR EXPRESSIONS:
   ^...                only at the beginning
   ...$                only at the end
 
+  ^...$               exact match
+
   (?=...)             exists            
   (?!=...)            not exists
+
+  \b                  start or end of word
 
   \s                  whitespace, including newline, etc.
   \S                  not whitespace
@@ -367,7 +371,7 @@ OBJECTS:
 
     var myObj = {key: [...] };                  array key
 
-    var myObj = {key: function(){} };           method key
+    var myObj = {key: function() {} };          method key
     var myObj = {key() {} };                    shorter
 
     var myObj = {key: {key: ..., ...}, ...};    subnamespace
@@ -375,12 +379,67 @@ OBJECTS:
     var myOby = [{...}, {...}];                 array of objects
 
   constructor:
-    var MyObj = new function() {this.... = ...};    constructor, capitalized
-    .. = new function(args) {this.... = arg1;};     constructor with arguments
+    function MyObj() {                          constructor, capitalized
+      let ... = ...;                            private property, changed only inside constructor
+      this.name = ...;
+    };
+
+    function MyObj(name) {this.name = name};    constructor with arguments
 
   instance:
-    var myIns = new MyObj();                    instance
-    var myIns = new MyObj(...);                 instance with arguments
+    var myIns = new MyObj();                    create instance with constructor
+    var myIns = new MyObj(...);                 create instance with arguments
+
+    myIns instanceof MyObj;                     true if created with constructor, prefered
+    myIns.constructor === true                  true if created with constructor
+
+  prototype:
+    MyObj.prototype = {                         shared for all instances
+      constructor: MyObj,                       keep constructor definition
+      ...
+    };
+
+    MyObj.prototype.isPrototypeOf(myIns);       true if MyObj is the prototype for myIns
+    Object.prototype.isPrototypeOf(MyObj.prototype)
+
+  inheritance:
+    let parent = new Parent();                          not recommended
+
+    let parent = Object.create(Parent.prototype);       make instance of parent
+    Child.prototype = Object.create(Parent.prototype);  set prototype of child to instance of parent
+    Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
+
+    Child.prototype.name = function() {...};            add method after inheritance, overwrites
+
+  mixin:
+    let myMixin = function(obj) {         take object and give it a method, for unrelated objects
+      obj.name = function() {
+        ...;
+      }
+    };
+
+    myMixin(myObj);                       give myObj the method
+
+    myObj.name();                         use method
+
+  mixin module:
+    let myModule = (function() {          multiple mixins combined into a module
+      return {
+        myMixin1: function(obj) {
+          obj.name1 = function() {
+            ...;
+          };
+        },
+        myMixin2: function(obj) {
+          obj.name2 = function() {
+            ...;
+          };
+        }
+      }
+    })();
+
+    myModule.myMixin1(myIns);             set the method
+    myIns.name1();                        use method
 
   call:
     myObj.key;                            calling a property
@@ -455,16 +514,16 @@ FUNCTIONS:
 
     let arr2 = [...arr1];
 
-  function expression:
-    let myFunc = function func() {}               function expression
-    let myFunc = function() {}                    anonymous function expression
-
   event:
     let myFunc = function(e) {e...}               function with event object
 
   arrow function:
     let myFunc = (...) => {}                      arrow function, short version of declaration
                                                   without {} return can be skipped
+  function expression:
+    let myFunc = function func() {}               function expression
+    let myFunc = function() {}                    anonymous function expression
+    (function() {...})();                         executed anonymous function expression
 
   prototype:
     Array.prototype.myFunc = function(func) {     prototype, this to call on the array
@@ -472,9 +531,6 @@ FUNCTIONS:
     }
 
   callback:
-
-
-
     function myFunc(arg, function(err, data) {
       if (err) {
         console.log(err);
@@ -482,9 +538,6 @@ FUNCTIONS:
         ...;
       }
     });
-
-
-
 
     function first(..., callback) {
       ...
@@ -495,8 +548,16 @@ FUNCTIONS:
       ...
     }
 
+  currying:
+    function name(a, b) {                         not curried
+      return a + b;
+    }
 
-
+    function name(a) {                            curried, when argument b is available later on
+      return function(b) {
+        return a + b;
+      }
+    }
 
   info:
     variables inside a function are only availabe in the function, scope!
@@ -532,7 +593,7 @@ NUMBER METHODS:
     Math.trunc(...);                      remove decimal, not IE!
 
   decimals:
-    Math.floor(x * 100) / 100);           
+    Math.round(x * 100) / 100);           avoid float issues
     x.toFixed(2);                         round up or down, creates string, added zeros
 
   random:
@@ -548,6 +609,12 @@ NUMBER METHODS:
 
   exponent:
     Math.pow(base, exponent);             exponent
+
+  root:
+    Math.sqrt(...);                       root
+
+  pi:
+    Math.PI;                              pi
 
   change base:
     parseInt(..., ...);                   convert string to number, optional base
@@ -597,25 +664,30 @@ STRING METHODS:
     .repeat(...)                        repeat ... times
 
   split:
-    .split("...")                       split at the character and convert into an array
+    .split(...)                         return array, split at character, regex or string
     .split("")                          split every character
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:    
   length:
     .length                             number of entries, can be modified
 
+  copy:
+    .slice()                            return copy of array
+
   reverse:
     .reverse()                          M, reverse the array itself
 
   convert to string:
     .toString()                         convert to string with comma seperation
-    .join("...")                        convert to string with given seperation
+    .join("...")                        return string with given seperation
 
   add / remove:
     .unshift(..., ...)                  M, add one or more entries to the beginning
     .push(..., ...)                     M, add one or more entries to end
     .shift()                            M, remove first entry, returns it
     .pop()                              M, remove last entry, returns it
+
+    .concat(...)                        return array with pushed entries
 
   remove / insert:
     .splice(..., ..., "...", "...")     M, start, optional cut amount, optional add, returns cut
@@ -636,20 +708,32 @@ ARRAY METHODS:
     .findIndex(function(e) {...})             see .find, return index
 
   iterate:
-    .filter(function(e) {...})                  check every entry, create new array with passed
-    .map(function(e) {...})                     create new array after running func on every entry
+    .filter(function(e) {...})                  return array with passed, check every entry
+    .map(function(e) {...})                     return array, run function on every entry
     .forEach(function(e, i) {...})              run function on every element with index
-    .reduce(function(prev, e) {...}, init)      condense array after function with init
-    .some(function(e) {...})                    if at least one result is true, returns true                 
-    .every(function(e) {...})                   if all results are true, returns true
+    .reduce(function(accum, e) {...}, init)     return value after combining functions over all entries
+    .some(function(e) {...})                    return true if at least one result is true
+    .every(function(e) {...})                   return true if all results are true
     .fill(..., ..., ...)                        fill array with value, from start to end
     .copyWithin(..., ..., ...)                  copies elements into target, from start to end
 
   sort:
     .sort()                               M, sort the array itself from lowest to highest value
-    .sort(function(a, b) {return a-b;});  sort with compare function for numbers, small to large
+    .sort(function(a, b) {return b-a;});  sort high to low
+      return a-b                          sort low to high
+      return a>b                          sort alphabetically
+      return a<b                          sort reverse alphabetically
+
       if (a[1] < b[1]) return -1;         compare nested arrays
       if (a[1] > b[1]) return 1;
+
+  spread:
+    arr = [1, 2, 3]
+    ...arr                                spreads entries into individuals, for multiple arguments
+
+  destructure:
+    let [a,,,b] = [1,2,3,4]               a=1, b=4
+    let [a, b,, ...arr] = [1,2,3,4,5]     a=1, b=2, arr=[4,5]
 
   loop:
     for ... of

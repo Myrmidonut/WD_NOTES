@@ -1,7 +1,7 @@
   PHP 7
 -----
 LOCAL WEBSERVER:
-  php -S localhost:8000             runs build-in webserver from php main folder
+  php -S localhost:8000             run build-in webserver from php main folder
     -t foldername                   specific sub folder
     -c php.inside                   specific ini file
 -----
@@ -21,7 +21,7 @@ INCLUDING FILES:
   file_get_contents("http://...");  from website
 -----
 OUTPUT:
-  echo "...";                       prints to screen
+  echo "...";                       print to screen
   echo $string1."...".$string2;     concatenation
   print_r(...);                     output something
 -----
@@ -39,27 +39,27 @@ APPENDING:
   .=                                add to a string
 -----
 VARIABLES:
-  $name = "...";                    sets a variable
-  $name                             accesses a variable
-  $$name                            accesses the variable with the name stored inside the variable
+  $name = "...";                    set a variable
+  $name                             access a variable
+  $$name                            access a variable with the name stored inside the variable
   !$name                            check if variable exists or if it is empty
 -----
   $string = "...";
   $string = '...';
 -----
 ARRAYS:
-  $myArray = array("...", "...");   creates an array
+  $myArray = array("...", "...");   create an array
   print_r($myArray);
-  $myArray[0];                      accesses a value
-  $myArray[0] = "...";              sets a value
+  $myArray[0];                      access a value
+  $myArray[0] = "...";              set a value
   $myArray[name] = "...";   
   $myArray = array(
     "index1" => "value1",
     "index2" => "value2"
   );
   sizeof($myArray);                 length of an array
-  $myArray[] = "...";               adds to the end of the array
-  unset($myArray["..."];            removes a value
+  $myArray[] = "...";               add to the end of the array
+  unset($myArray["..."];            remove a value
 -----
 IF:
   if (...) {
@@ -86,12 +86,12 @@ WHILE:                                          while loop
   }
 -----
 FUNCTION:
-  function name($arg1, $arg2) {     creates a function
+  function name($arg1, $arg2) {     create a function
     ... ;
     return $test;
   }
 
-  name();                           calling a function
+  name();                           call a function
 -----
 GET VARIABLES:
   $_GET                             shows up in the URL as ?name=abc&password=123
@@ -107,5 +107,5 @@ EMAIL:
   $headers = "From ...";
 -----
 REMOVE SPACES:
-  $string = str_replace(' ', '', $string);        removes spaces
-  $string = preg_replace('/\s+/', '', $string);   removes all whitespace
+  $string = str_replace(' ', '', $string);        remove spaces
+  $string = preg_replace('/\s+/', '', $string);   remove all whitespace

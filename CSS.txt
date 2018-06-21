@@ -46,17 +46,23 @@ STYLE:
     @font-face
 
   @media:
-    @media (condition) {rules}
+    @media not|only mediatype and (condition and|or|not condition) {
+      rules;
+    }
+
+    mediatype:
+      screen
+
+    condition:
       max-width: ...
-      min-height: ...
+      min-width: ...
+      orientation: landscape/portrait
 
     example:
-      @media (max-width: 100px) {
-        ...
-      }
-
-      @media screen and (max-width: 900px) {   on screens that are 900px or less use these rules
-        ...
+      @media screen and (max-width: 900px) {
+        div {
+          display: none;
+        }
       }
 ---------------------------------------------------------------------------------------------------
 SPECIFICITY:
@@ -107,7 +113,7 @@ SELECTORS:
     element {}                            element
     * {}                                  whole page, "CSS Reset"
     .name {}                              class, multiple occurences
-    #name {}                              id, once per page
+    #name {}                              id, once per page, one per element
 
     .name1.name2 {}                       has both classes
 
@@ -350,7 +356,7 @@ FONTS:
 LISTS:
   ul / ol:
     list-style: type position image;  shorthand, default: disc none outside
-    list-style-type: upper-roman;     type of bullet: none, square, circle, number, letter
+    list-style-type: upper-roman;     type of bullet: none, disc, square, circle, number, letter
     list-style-position: inside;      position of bullets, default: outside, inside
     list-style-image: url(...);       custom image for bullet, background: ...; prefered
 
@@ -715,5 +721,5 @@ CENTERING:
   margin: auto;
 
   margin: auto;                       div, block element
-  width: 50%;
+  width: ...%;
 ---------------------------------------------------------------------------------------------------

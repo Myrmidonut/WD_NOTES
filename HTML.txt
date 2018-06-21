@@ -172,6 +172,7 @@ LINKS:
 
          "#..."                 leads to an id on the page
          "test.html#..."        leads to an id on another page
+         "#top"                 jumps to top of the page
 
     title="..."                 tooltip, accessibility, SEO
     target="_blank"             opens a new tab
