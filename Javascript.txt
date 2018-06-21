@@ -116,22 +116,35 @@ REGULAR EXPRESSIONS:
   /.../g              global occurence
   /.../i              case insensitive
 
-  ...|...             one of these words
+  ...|...             or
 
-  .                   any character
+  .                   any
 
-  \d                  0-9
-  \D                  not 0-9
-  \w                  a-z A-Z _ or: [a-zA-Z_]
-  \W                  not a-z A-Z _ or: [^a-zA-Z_]
+  (..)(..)..\1..\2    group, numbers indicate which group is repeated at which position
 
   [abc]               range
   [a-c]               range
   [a-c2-5]            multiple ranges
 
+  \d                  [0-9]
+  \D                  not \d or [^0-9]
+  \w                  [A-Za-z0-9_]
+  \W                  not \w or [^A-Za-z0-9_]
+
+  \s                  whitespace, including new line, carriage return, tab, form feed
+  \S                  not whitespace
+
+  \r                  return
+  \n                  newline
+  \t                  tab
+  \f                  form feed
+
+  \b                  start or enf of word
+
   [^...]              negation
-  ...+                one or more
-  ...*                zero or more times
+  ...+                one or more times
+  ...*                zero or more times, longest possible
+  ...*?               zero or more times, shortest possible
   ...?                zero or one time
   ...?                shortest possible
   ...{...}            exact amount
@@ -146,24 +159,17 @@ REGULAR EXPRESSIONS:
   (?=...)             exists            
   (?!=...)            not exists
 
-  \b                  start or end of word
-
-  \s                  whitespace, including newline, etc.
-  \S                  not whitespace
-
-  \r                  return
-  \n                  newline
-  \t                  tab
-  \f                  form feed
-
   invert using uppercase letter
 
   match:
-    .match(...);              returns array with matched regex
+    .match(myRegex);            returns array with matched regex
 
   test:
     myRegex = /.../;
-    myRegex.test(...);        check if the expression exists in the variable
+    myRegex.test(...);          check if the expression exists in the variable
+
+  replace:
+    .replace(myRegex, "...");   replace text in a string
 ---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
@@ -461,14 +467,16 @@ OBJECTS:
     .this                                 refers to the current object
 
   stuff:
-    .hasOwnProperty(...)                  check if property exists
+    .hasOwnProperty("...")                check if property exists
 
     delete myObj.key;                     delete property
+
+    Object.keys(...);                     create array containing all keys
 
     "key" in myObj                        check if property exists
 
     for...in loop:                        loop over all keys
-      for(let key in myObj) {
+      for (let key in myObj) {
         alert(key);
         alert(user[key]);
       }
@@ -681,20 +689,23 @@ ARRAY METHODS:
     .toString()                         convert to string with comma seperation
     .join("...")                        return string with given seperation
 
-  add / remove:
+  add:
     .unshift(..., ...)                  M, add one or more entries to the beginning
     .push(..., ...)                     M, add one or more entries to end
-    .shift()                            M, remove first entry, returns it
-    .pop()                              M, remove last entry, returns it
-
     .concat(...)                        return array with pushed entries
 
-  remove / insert:
-    .splice(..., ..., "...", "...")     M, start, optional cut amount, optional add, returns cut
+  remove:
+    .shift()                            M, remove first entry, returns it, return entry
+    .pop()                              M, remove last entry, returns it, return entry
+    .splice(..., ..., ...)              M, start, optional cut amount, optional adds, return cut arr
+
     delete myArray[5]                   changes element at index 5 to undefined
 
-  subarray:
+  extract:
     .slice(..., ...)                    return array from start to optional exclusive end
+
+  copy:
+    let arr1 = [..., ...arr2, ...];     copy with spread operator
 
   combine:
     .concat(...)                        return merged array

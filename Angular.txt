@@ -1,0 +1,5 @@
+ng serve                      start server
+
+ng generate component ...     create component ... inside src/app/
+ng g c ...                    shorthand
+
