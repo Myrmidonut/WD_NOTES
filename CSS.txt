@@ -123,8 +123,8 @@ SELECTORS:
   combinator:
     element1 element2 {}                  descendant, element2 inside element1
     element1 > element2 {}                child, element2 inside element1, first level only
-    element1 + element2 {}                adjacent, element2 that comes directly after element1
-    element1 ~ element2 {}                sibling, element2 that comes after element1
+    element1 + element2 {}                adjacent, element2 directly after element1
+    element1 ~ element2 {}                sibling, element2 after element1
 
   attribute:
     [attribute] {}                        attribute
@@ -139,10 +139,10 @@ SELECTORS:
 
   pseudo-class:
     element
-      :link
-      :visited {}
+      :link {}                            link
+      :visited {}                         visited link
       :hover {}                           mouse over
-      :active {}
+      :active {}                          while being clicked
       :focus {}                           mouse click
 
       :first-child {}                     first child element
