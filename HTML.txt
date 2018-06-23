@@ -153,9 +153,10 @@ FORMATING:
 
   <address>...</address>                    address of html document owner
 
-  <pre>...</pre>                            keeping whitespaces
+  <pre>...</pre>                            keep whitespaces
 
-  <code>...</code>                          displaying computer code
+  <code>...</code>                          display computer code
+  <pre><code>...</code></pre>               display computer code with whitespaces
   <var>...</var>                            variable
   <kbd>...</kbd>                            input
   <samp>...</samp>                          output

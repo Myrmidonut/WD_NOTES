@@ -1,41 +1,156 @@
-if ... or ... :
-
-
-
-
-
+CONSOLE:
+  python                          open console
+  quit()                          quit console
+---------------------------------------------------------------------------------------------------
 FILES:
   #! /usr/bin/python              location of python
------
-LIBRARIES:
-  import ...                      importing a library
-    time
-    webbrowser
-    os                            renaming files, etc.
-    turtle                        creating lines, shapes, etc.
-    urllib                        conenction to website
-  import filename                 importing a file, for example for a class
------
+  .py                             file ending
+---------------------------------------------------------------------------------------------------
+IMPORT:
+  libraries:
+    import ...                    importing a library
+      time
+      webbrowser
+      os                          renaming files, etc.
+      turtle                      creating lines, shapes, etc.
+      urllib                      connection to website
+
+  files:
+    import filename               importing a file, for example for a class
+---------------------------------------------------------------------------------------------------
 COMMENTS:
   #                               one line comment
------
-VARIABLES:
-  name = 12
------
-STRINGS:
-  name = "...."                   create a string
-  name[0]                         access to first character
-  name[0:5]                       access to characters 0 to 4
------
-ARRAYS:
-  myArray = ["...", "..."]        create an array
-  myArray[1]                      access to one entry
-  myArray[0:5]                    access to entries 0 to 4
+  '''                             multiple lines
+    ...
+  '''
+---------------------------------------------------------------------------------------------------
+LINE BREAK:
+  ... \                           the statement continues in the next line
+  ...
+---------------------------------------------------------------------------------------------------
+OPERATORS:
+  arithmetic:
+    +                     addition
+    -                     subtraction
+    *                     multiplication
+    /                     float division
+    //                    integer division
+    **                    exponent
+    %                     remainder
 
-  myArray = (1, 2, 3)             tuple, cannot be overwritten
------
+  assignment:
+    =
+    +=
+    -=
+    *=
+    /=
+    //=
+    %=
+    **=
+
+  type conversion:
+    integer and float becomes float
+---------------------------------------------------------------------------------------------------
+COMPARISON:
+  <                       smaller
+  >                       greater
+  <=                      smaller or equal
+  >=                      greater or equal
+  !=                      not equal
+  ==                      equal
+
+  comparing strings:
+    letter by letter
+    smaller letter means the string is smaller
+    shorter equal string means string is smaller
+---------------------------------------------------------------------------------------------------
+LOGIC:
+  add                     AND
+  or                      OR
+  not                     NOT
+---------------------------------------------------------------------------------------------------
+CASTING:
+  int(...)                convert to integer
+  float(...)
+  str(...)
+---------------------------------------------------------------------------------------------------
+VARIABLES:
+  ... = ...               assignment
+  ..., ... = ..., ...     multiple assignments
+  NAME = ...              constant
+
+  naming convention:
+    letters
+    underscore
+    numbers
+
+    begins with letter or underscore
+---------------------------------------------------------------------------------------------------
+DATA TYPES:
+  int
+  float
+  str
+  bool
+  list
+  dictionary
+---------------------------------------------------------------------------------------------------
+NUMBERS:
+  ... = 1                         integer
+  ... = 1.0                       floating point
+  ... = 1j                        complex
+        2 + 3j
+        9.11j
+---------------------------------------------------------------------------------------------------
+STRINGS:
+  ... = '...'                             single quotes
+  ... = "..."                             double quotes
+  ... = ""                                empty string
+  ...[...]                                return character at index ...
+  ...[...:...]                            return characters from index ... to ...
+  ...[:...]                               return characters up to index ...
+  ...[...:]                               return characters from index ... to the end
+    negative index counts from the end
+
+  escape characters:
+    \n                            newline
+    \t                            tab
+    \\                            \
+    \'                            '
+    \"                            "
+
+  concatenation:
+    "..." + "..."                 two strings
+    1 + "1"                       error
+
+  repetition:
+    "..." * ...                   repeat a string
+
+  membership:
+    "..." in ...                  check if string exists in another string
+    "..." not in ...              check if string not exists in another string
+
+  cannot change a character in a string
+  can add to the end
+---------------------------------------------------------------------------------------------------
+BOOLS:
+  True
+  False
+
+  falsy values:
+    None
+    False
+    0, 0.0
+    "", [], (), {}
+---------------------------------------------------------------------------------------------------
+LISTS:
+  myList = ["...", "..."]         create a list
+  myList[1]                       access to one entry
+  myList[0:5]                     access to entries 0 to 4
+
+  myList = (1, 2, 3)              tuple, cannot be overwritten
+---------------------------------------------------------------------------------------------------
 DICTIONARY:
-  name = {}                       2 dimensional array, not ordered
+  name = {}                       2 dimensional list, not ordered
   name[...] = ...                 key - value pair
   name.keys()                     access to keys
   name.values()                   access to values
@@ -45,19 +160,53 @@ DICTIONARY:
   list["Otto"] = 2
   for i in list:
     print i + str(list[i])
------
-CASTING:
-  int(...)                        convert to integer
-  float(...)
-  str(...)
------
+---------------------------------------------------------------------------------------------------
+CLASS:
+
+---------------------------------------------------------------------------------------------------
+NUMBER FUNCTIONS:
+  abs(...)                        return absolute value
+  pow(a, b)                       return a^b
+  round(..., ...)                 round to closest integer, optional decimal points
+  min(..., ...)                   return smallest
+  max(..., ...)                   return largest
+  format(..., "...")              change format of number
+    "5,.2f"                       total length: 5, , after three digits, 2 decimal points, float
+    "%"                           as percentage
+---------------------------------------------------------------------------------------------------
+MATH FUNCTIONS:
+  math.pi                         return pi
+  math.e                          return e
+  math.ceil(...)                  return next largest integer
+  math.floor(...)                 return next smallest integer
+  math.sqrt(...)                  return square root
+---------------------------------------------------------------------------------------------------
+STRING FUNCTIONS:
+  .len(...)                        length of string
+
+  search and replace:
+    .endswith(...)                  return true if ends with ...
+    .startswith(...)                return true if starts with ...
+    .find(...)                      return first index of ..., else return -1
+    .rfind(...)                     return last index of ..., else return -1
+    .count(...)                     return number of occurrences of ...
+    .replace(..., ...)              return new string with replaced substring 
+---------------------------------------------------------------------------------------------------
+INPUT / OUTPUT:
+  input:
+    var = input(prompt)           read from keyboard and convert to string
+
+  output:
+    print("text", var)            print to screen
+    print(..., sep="#")           print with given seperator
+
 FUNCTIONS:
   def name():                     creating a function
     command1()
     command2()
 
   name()                          calling the function
------
+---------------------------------------------------------------------------------------------------
 IF:
   if ...:                         if
     command1
@@ -68,7 +217,9 @@ IF:
   else:                           else
     command1
     command2
------
+
+  if ... or ... :
+---------------------------------------------------------------------------------------------------
 FOR:
   for ... in ...:                 for
     command1
@@ -80,7 +231,7 @@ FOR:
   test = ["a", "b", "c"]          example
   for i in test:
     print i
------
+---------------------------------------------------------------------------------------------------
 WHILE:
   while ...:                      while
     command1
@@ -89,8 +240,20 @@ WHILE:
   x = 0                           example
   while x < 10:                   
     x += 1
------
+---------------------------------------------------------------------------------------------------
 FUNCTIONS:
+  declaration:
+    ...(..., ...)
+
+
+
+
+
+
+
+
+
+
   print("...") + ...              outputting to the screen
 
   open("...")                     open a file
@@ -109,7 +272,7 @@ FUNCTIONS:
 
 
                                   
------
+---------------------------------------------------------------------------------------------------
 in file media.pny
 class Movie():                                              creating a class, should be in its own file
     """Text"""                                              __doc__ class variable

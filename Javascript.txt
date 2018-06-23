@@ -59,7 +59,7 @@ OPERATORS:
 
   operand                               
 
-  Arithmetic:
+  arithmetic:
     +
     -
     *
@@ -69,11 +69,11 @@ OPERATORS:
     %
     **                                  exponent
 
-  Concatenation:
+  concatenation:
     "ab" + "cd" == "abcd"               if either is a string, the result becomes a string
     myString += "ab";                   ads a string to the end
 
-  Assignment:
+  assignment:
     =
     +=                                  x = x + y
     -=
@@ -134,12 +134,14 @@ REGULAR EXPRESSIONS:
   \s                  whitespace, including new line, carriage return, tab, form feed
   \S                  not whitespace
 
+  \...                special characters like (, ), ...
+
   \r                  return
   \n                  newline
   \t                  tab
   \f                  form feed
 
-  \b                  start or enf of word
+  \b                  start or end of word
 
   [^...]              negation
   ...+                one or more times

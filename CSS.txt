@@ -408,6 +408,9 @@ LINKS:
   only underline links
   make them react to hovered, focused and active
 ---------------------------------------------------------------------------------------------------
+CODE:
+  white-space: pre;                   keep formatting
+---------------------------------------------------------------------------------------------------
 TRANSITIONS:
   transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
 ---------------------------------------------------------------------------------------------------

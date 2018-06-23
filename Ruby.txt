@@ -7,16 +7,22 @@ COMMANDS:
     exit
 
   ruby ...                      open file
+  ruby -v                       version
 
-  gem search ...                search gem
-  gem install ...               install gem with dependencies
-  gem uninstall ...             unsinstall gem
-  gem list                      show installed gem
-  gem server                    show doc for installed gems in browser
-  gem fetch ...                 download gem without installing
-  gem unpack ...                extract gem
+  rvm:
+    rvm list known
+    rvm install ruby-2.4.2
 
-  ri ...                        show doc for installed gem
+  gem:
+    gem search ...                search gem
+    gem install ...               install gem with dependencies
+    gem uninstall ...             uninstall gem
+    gem list                      show installed gem
+    gem server                    show doc for installed gems in browser
+    gem fetch ...                 download gem without installing
+    gem unpack ...                extract gem
+
+    ri ...                        show doc for installed gem
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   # ...                         single line

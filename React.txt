@@ -1,0 +1,73 @@
+uses JSX
+needs to be compiled with Babel
+
+needs exactly one parent element
+
+uses camelCase
+---------------------------------------------------------------------------------------------------
+VARIABLES:
+  const JSX = (                   () optional
+    <div>
+      <h1>...</h1>
+    </div>
+  );
+---------------------------------------------------------------------------------------------------
+COMMENTS:
+  {/* ... */}
+---------------------------------------------------------------------------------------------------
+CLASSES:
+  HTML class becomes className
+---------------------------------------------------------------------------------------------------
+TAGS:
+  self closing:
+    <br />                        no content
+
+  non self closing:
+    <div>...</div>                with content
+    or:
+    <div />                       no content
+---------------------------------------------------------------------------------------------------
+COMPONENTS:
+  capital letter
+  returns JSX or null
+
+  stateless function:                         only receive and render
+    const Name = function() {                 example, arrow function is common
+      return (
+        <div className="name" />
+      );  
+    };
+
+  ES6 class:
+    class Name extends React.Component {    example
+      constructor(props) {                  standard to include constructor(props)
+        super(props);                       calls constructor of parent (React.Component)
+      }
+
+      render() {                            render
+        return (                            return
+          <h1>Hi</h1>                       HTML
+        );
+      }
+    }
+
+  multiple:
+    create individual components Navbar and Dashboard
+
+    return (
+      <App>
+        <Navbar />        component
+        <Dashboard />     component
+      </App>
+    )
+---------------------------------------------------------------------------------------------------
+REACT DOM RENDER:
+  ReactDOM.render(componentToRender, targetNode)        JSX
+  ReactDOM.render(<ComponentToRender />, targetNode)    component
+
+  targetNode == document.getElementById("test")         example target
+---------------------------------------------------------------------------------------------------
+PROPS:
+  function:
+    const ... = (props) => 
+      <h1>Hello, {props.user}!</h1>
