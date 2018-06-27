@@ -5,6 +5,20 @@ needs exactly one parent element
 
 uses camelCase
 ---------------------------------------------------------------------------------------------------
+INSTALLATION:
+  npm:
+    npm install -g create-react-app       install automated react
+    create-react-app ...                  create folder and creates basic react app
+
+    npm start                             from inside react app folder
+
+    npm run build                         create optimized version in build folder
+
+  JS link:
+    React                                 components
+    ReactDOM                              rendering
+    Babel                                 JSX
+---------------------------------------------------------------------------------------------------
 VARIABLES:
   const JSX = (                   () optional
     <div>
@@ -30,44 +44,230 @@ TAGS:
 COMPONENTS:
   capital letter
   returns JSX or null
+  use stateless when possible
 
-  stateless function:                         only receive and render
-    const Name = function() {                 example, arrow function is common
+  stateless functional component:           only receive and render
+    function Name(props) {                  example, arrow function is common
+      ...;                                  JS
       return (
         <div className="name" />
       );  
     };
 
-  ES6 class:
-    class Name extends React.Component {    example
+  stateless component:
+    class Name extends React.Component {
       constructor(props) {                  standard to include constructor(props)
         super(props);                       calls constructor of parent (React.Component)
       }
 
       render() {                            render
+        ...;                                JS
         return (                            return
-          <h1>Hi</h1>                       HTML
+          <div>                             one parent div
+            <h1>Hi</h1>                     JSX
+          </div>
         );
       }
     }
+
+  stateful component:
+
 
   multiple:
     create individual components Navbar and Dashboard
 
     return (
       <App>
-        <Navbar />        component
-        <Dashboard />     component
+        <Navbar />                          component
+        <Dashboard />                       component
       </App>
     )
 ---------------------------------------------------------------------------------------------------
 REACT DOM RENDER:
-  ReactDOM.render(componentToRender, targetNode)        JSX
-  ReactDOM.render(<ComponentToRender />, targetNode)    component
+  ReactDOM.render(component, target)                    JSX
+  ReactDOM.render(<Component ...="..." />, target)      class Component with prop
 
-  targetNode == document.getElementById("test")         example target
+  target == document.getElementById("test")             example target
+
+  single page: one ReactDOM.render()
+  mixed multi page: one ReactDOM.render() per section
 ---------------------------------------------------------------------------------------------------
 PROPS:
-  function:
-    const ... = (props) => 
-      <h1>Hello, {props.user}!</h1>
+  from parent to child
+
+  parent: <... name="..." ...>
+
+  stateless functional:
+    child: ...(props)
+             ...{props.name}...
+
+  class:
+    child: ...(props)
+             ...{this.props.name}...
+
+  const ... = (props) =>                  pass properties to a function
+    <h1>Hello, {props.user}!</h1>         access: {props. ...}
+
+  default:
+    MyComponent.defaultProps = {name: "Jim"}
+
+    override with <... name={"Tom"} ...>
+
+  type:
+    MyComponent.propTypes = {name: PropTypes.func.isRequired}
+      func
+      bool
+      number
+      ...
+
+    check if property name is of PropTypes func for MyComponent
+    name is a required property for MyComponent (.isRequired)
+
+    import React, { PropTypes } from "react";
+---------------------------------------------------------------------------------------------------
+STATE:
+  update changes to the data
+  changes to the state trigger render again
+  requires class
+  local to class
+
+  class Name extends React.Component {    example
+      constructor(props) {
+        super(props);
+        this.state = {                    declaring state
+          name: "..."
+        }
+        this.test = this.test.bind(this);
+      }
+      test() {
+        this.setState({                   modifying state
+          name: "..."
+        });
+
+        this.state.name = "...";          alternative???
+      }
+    }
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  single page application:
+    <div id="app"></div>
+
+    function Person(props) {
+      return (
+        <div className="person">
+          <h1>{props.name}</h1>
+          <p>Your age: {props.age}</p>
+        </div>
+      );
+    }
+
+    var app = (
+      <div>
+        <Person name="Max" age="28" />
+        <Person name="Manu" age="29" />
+      </div>
+    );
+
+    ReactDOM.render(app, document.querySelector("#app"));
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class CampSite extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return (
+        <div>
+          <Camper/>
+        </div>
+      );
+    }
+  };
+
+  function Camper(props) {
+    return (
+      <p>{props.name}</p>
+    )
+  }
+
+  Camper.defaultProps = {
+    name: "CamperBot"
+  }
+
+  Camper.propTypes = {
+    name: PropTypes.string.isRequired
+  }
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class Counter extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        count: 0
+      };
+
+      this.increment = this.increment.bind(this);
+      this.decrement = this.decrement.bind(this);
+      this.reset = this.reset.bind(this);
+    }
+
+    increment() {
+      this.setState({
+        count: this.state.count + 1
+      });
+    };
+    
+    decrement() {
+      this.setState({
+        count: this.state.count - 1
+      });
+    };
+
+    reset() {
+      this.setState({
+        count: 0
+      });
+    };
+
+    render() {
+      return (
+        <div>
+          <button className='inc' onClick={this.increment}>Increment!</button>
+          <button className='dec' onClick={this.decrement}>Decrement!</button>
+          <button className='reset' onClick={this.reset}>Reset</button>
+          <h1>Current Count: {this.state.count}</h1>
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class ControlledInput extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        input: ''
+      };
+
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({
+        input: event.target.value
+      })
+    }
+
+    render() {
+      return (
+        <div>
+          <input value={this.state.input} onChange={this.handleChange} />
+          <h4>Controlled Input:</h4>
+          <p>{this.state.input}</p>
+        </div>
+      );
+    }
+  };

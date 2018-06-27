@@ -5,7 +5,7 @@ FRONT-END:
 -     Bootstrap
       Foundation
       Semantic UI
--   SASS/SCSS
+    SASS/SCSS
 
   FUNCTIONALITY:
 -   DOM
@@ -15,7 +15,6 @@ FRONT-END:
 -     jQuery
         Ajax
 -     React
--       JSX
 -       Redux
 -     Angular
 -     Vue
@@ -28,7 +27,7 @@ BACK-END:
 -       Express
         webpack
 -       gulp
-    PHP
+-   PHP
       XAMPP
 -   Python
       Django
@@ -36,9 +35,6 @@ BACK-END:
 -   Ruby
 -     Rails
 -     RVM
-    ASP.NET
-    Perl
-      Mojolicious
 
   DATABASES:
     NoSQL
@@ -58,10 +54,6 @@ BACK-END:
 -   Apache
     IIS
     nginx
---------------------------------------
-MOBILE:
-  Cordova
-  ...
 --------------------------------------
 TOOLS:
 - Git

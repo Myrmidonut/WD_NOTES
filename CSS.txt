@@ -718,11 +718,15 @@ RESPONSIVENESS:
     70vmax                      70% of bigger viewport dimension
 ---------------------------------------------------------------------------------------------------
 CENTERING:
-  text-align: center;                 text
+  text:
+    text-align: center;                 vertical
+    line-height: ...;                   horizontal, 100% of parent
 
-  display: block;                     image
-  margin: auto;
+  image:
+    display: block;
+    margin: auto;
 
-  margin: auto;                       div, block element
-  width: ...%;
+  div, block element:
+    margin: auto;
+    width: ...%;
 ---------------------------------------------------------------------------------------------------

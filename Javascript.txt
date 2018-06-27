@@ -118,23 +118,25 @@ REGULAR EXPRESSIONS:
 
   ...|...             or
 
-  .                   any
+  (...)               group, following regex is applied to the whole group
 
-  (..)(..)..\1..\2    group, numbers indicate which group is repeated at which position
+  (...)(...)...\2...\1    group, numbers indicate which group is repeated at that position
 
   [abc]               range
   [a-c]               range
   [a-c2-5]            multiple ranges
+
+  .                   anything
 
   \d                  [0-9]
   \D                  not \d or [^0-9]
   \w                  [A-Za-z0-9_]
   \W                  not \w or [^A-Za-z0-9_]
 
-  \s                  whitespace, including new line, carriage return, tab, form feed
-  \S                  not whitespace
+  \s                  space, including new line, carriage return, tab, form feed
+  \S                  not space
 
-  \...                special characters like (, ), ...
+  \...                special characters like ( )
 
   \r                  return
   \n                  newline
