@@ -30,7 +30,7 @@ COMMENTS:
   {/* ... */}
 ---------------------------------------------------------------------------------------------------
 CLASSES:
-  HTML class becomes className
+  className="..."
 ---------------------------------------------------------------------------------------------------
 TAGS:
   self closing:
@@ -41,7 +41,20 @@ TAGS:
     or:
     <div />                       no content
 ---------------------------------------------------------------------------------------------------
-COMPONENTS:
+STYLES:
+  stylesheet
+
+  inline:
+    <div style={{color: "green", fontSize: "16px"}}>...</div>
+
+  inline with variable:
+    const styles = {...: ..., ...: ...}
+    <div style={styles}>...</div>
+
+  uses camelCase
+  px values only need number, otherwise use "4em", etc.
+---------------------------------------------------------------------------------------------------
+STATELESS COMPONENTS:
   capital letter
   returns JSX or null
   use stateless when possible
@@ -59,7 +72,6 @@ COMPONENTS:
       constructor(props) {                  standard to include constructor(props)
         super(props);                       calls constructor of parent (React.Component)
       }
-
       render() {                            render
         ...;                                JS
         return (                            return
@@ -69,9 +81,6 @@ COMPONENTS:
         );
       }
     }
-
-  stateful component:
-
 
   multiple:
     create individual components Navbar and Dashboard
@@ -83,6 +92,20 @@ COMPONENTS:
       </App>
     )
 ---------------------------------------------------------------------------------------------------
+STATEFUL COMPONENTS:
+  class Name extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        ...: ...,
+        ...: ...
+      }
+    }
+    render() {
+      return <div>...</div>
+    }
+  }
+---------------------------------------------------------------------------------------------------
 REACT DOM RENDER:
   ReactDOM.render(component, target)                    JSX
   ReactDOM.render(<Component ...="..." />, target)      class Component with prop
@@ -91,6 +114,11 @@ REACT DOM RENDER:
 
   single page: one ReactDOM.render()
   mixed multi page: one ReactDOM.render() per section
+
+  can use if/else inside render
+  {this.state.display === true && <h1>Displayed!</h1>}  render only if true
+
+  conditionals inside return
 ---------------------------------------------------------------------------------------------------
 PROPS:
   from parent to child
@@ -130,6 +158,7 @@ STATE:
   changes to the state trigger render again
   requires class
   local to class
+  access methods inside the class with this.name
 
   class Name extends React.Component {    example
       constructor(props) {
@@ -147,6 +176,35 @@ STATE:
         this.state.name = "...";          alternative???
       }
     }
+---------------------------------------------------------------------------------------------------
+LIFECYCLE:
+  mount:
+    first page load
+  re-render:
+    state changes
+
+  componentWillMount()                  called before render when component is mounted to DOM
+
+  componentDidMount()                   called after mounted to DOM
+                                        calls to setState trigger a new render
+                                        API or server calls
+                                        event listeners, add and remove for best practice
+                                      
+  componentWillReceiveProps(nextProps)  called when component receices new props
+                                        new prop as argument (nextProps) and compare with his.props
+
+  shouldComponentUpdate(nextProps, nextState)    re-render component if it returns true    
+
+  componentWillUpdate()
+
+  componentDidUpdate()                  called after component re-renders
+
+  componentWillUnmount()
+---------------------------------------------------------------------------------------------------
+SERVER:
+  ReactDOMServer.renderToString(<App />);
+
+  render page on server and send to client
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
   single page application:
@@ -271,3 +329,287 @@ EXAMPLE:
       );
     }
   };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class MyForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        input: '',
+        submit: ''
+      };
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({
+        input: event.target.value
+      });
+    }
+
+    handleSubmit(event) {
+      this.setState({
+        submit: this.state.input
+      });
+    }
+
+    render() {
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input value={this.state.input} onChange={this.handleChange} />
+            <button type='submit'>Submit!</button>
+          </form>
+          <h1>{this.state.submit}</h1>
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class MyApp extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: 'CamperBot'
+      }
+    }
+    render() {
+      return (
+         <div>
+           <Navbar name={this.state.name} />
+         </div>
+      );
+    }
+  };
+
+  class Navbar extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+      <div>
+        <h1>Hello, my name is: {this.props.name}</h1>
+      </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const inputStyle = {
+    width: 235,
+    margin: 5
+  }
+
+  class MagicEightBall extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        userInput: '',
+        randomIndex: ''
+      }
+      this.ask = this.ask.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+    }
+    ask() {
+      if (this.state.userInput) {
+        this.setState({
+          randomIndex: Math.floor(Math.random() * 20),
+          userInput: ''
+        });
+      }
+    }
+    handleChange(event) {
+      this.setState({
+        userInput: event.target.value
+      });
+    }
+    render() {
+      const possibleAnswers = [
+        'It is certain',
+        'It is decidedly so',
+        'Without a doubt', 
+        'Yes, definitely',
+        'You may rely on it',
+        'As I see it, yes',
+        'Outlook good',
+        'Yes',
+        'Signs point to yes',
+        'Reply hazy try again',
+        'Ask again later',
+        'Better not tell you now',
+        'Cannot predict now',
+        'Concentrate and ask again',
+        'Don\'t count on it', 
+        'My reply is no',
+        'My sources say no',
+        'Most likely',
+        'Outlook not so good',
+        'Very doubtful'
+      ];
+      const answer = possibleAnswers[this.state.randomIndex]; // << change code here
+      return (
+        <div>
+          <input
+            type="text"
+            value={this.state.userInput}
+            onChange={this.handleChange}
+            style={inputStyle} /><br />
+          <button onClick={this.ask}>
+            Ask the Magic Eight Ball!
+          </button><br />
+          <h3>Answer:</h3>
+          <p>
+            { /* change code below this line */ }
+            {answer}
+            { /* change code above this line */ }
+          </p>
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class Results extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <h1>
+          {this.props.fiftyFifty ? "You win!" : "You lose!"}
+        </h1>
+      )
+    };
+  };
+
+  class GameOfChance extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        counter: 1
+      }
+      this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick() {
+      this.setState({
+        counter: this.state.counter + 1
+      });
+    }
+    render() {
+      let expression = Math.random()> 0.5;
+      return (
+        <div>
+          <button onClick={this.handleClick}>Play Again</button>
+          <Results fiftyFifty = {this.expression}/>
+          <p>{'Turn: ' + this.state.counter}</p>
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const textAreaStyles = {
+    width: 235,
+    margin: 5
+  };
+
+  class MyToDoList extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        userInput: "",
+        toDoList: []
+      }
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleSubmit() {
+      const itemsArray = this.state.userInput.split(',');
+      this.setState({
+        toDoList: itemsArray
+      });
+    }
+
+    handleChange(e) {
+      this.setState({
+        userInput: e.target.value
+      });
+    }
+
+    render() {
+      const items = this.state.toDoList.map(function(e) {
+        return <li>{e}</li>;
+      });
+
+      return (
+        <div>
+
+          <textarea
+            onChange={this.handleChange}
+            value={this.state.userInput}
+            style={textAreaStyles}
+            placeholder="Separate Items With Commas" /><br />
+
+          <button onClick={this.handleSubmit}>Create List</button>
+
+          <h1>My "To Do" List:</h1>
+
+          <ul>
+            {items}
+          </ul>
+
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  class DisplayMessages extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        input: '',
+        messages: []
+      }
+
+      this.handleChange = this.handleChange.bind(this);
+      this.submitMessage = this.submitMessage.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({
+        input: event.target.value
+      })
+    }
+
+    submitMessage() {
+      let newMessages = [...this.state.messages, this.state.input];
+      this.setState({
+        input: "",
+        messages: newMessages
+      })
+    }
+
+    render() {
+      return (
+        <div>
+          <h2>Type in a new Message:</h2>
+          <input value={this.state.input} onChange={this.handleChange} />
+          <button type="submit" onClick={this.submitMessage}>Submit</button>
+          <ul>
+            {
+              this.state.messages.map(function(e) {
+                return <li>{e}</li>
+              })
+            }
+          </ul>
+        </div>
+      );
+    }
+  };
+---------------------------------------------------------------------------------------------------

@@ -459,6 +459,7 @@ SHADOWS:
                  0px 18px 23px rgba(0,0,0,0.1);
 
   box:
+    box-shadow: 0 0 35px rgba(0,0,0,0.3);             allround
     box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
                 inset ...;                            shadow inside the box, offsets inverted 
 

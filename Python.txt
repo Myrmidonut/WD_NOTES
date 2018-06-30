@@ -63,6 +63,9 @@ COMPARISON:
     letter by letter
     smaller letter means the string is smaller
     shorter equal string means string is smaller
+
+  comparing lists:
+    needs same type of elements
 ---------------------------------------------------------------------------------------------------
 LOGIC:
   add                     AND
@@ -93,6 +96,8 @@ DATA TYPES:
   bool
   list
   dictionary
+
+  type(...)                       check data type
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   ... = 1                         integer
@@ -104,12 +109,10 @@ NUMBERS:
 STRINGS:
   ... = '...'                             single quotes
   ... = "..."                             double quotes
-  ... = ""                                empty string
-  ...[...]                                return character at index ...
-  ...[...:...]                            return characters from index ... to ...
-  ...[:...]                               return characters up to index ...
-  ...[...:]                               return characters from index ... to the end
-    negative index counts from the end
+  ... = ""                                empty 
+
+  characters:
+    ...[...]                              return character at index ...
 
   escape characters:
     \n                            newline
@@ -125,10 +128,6 @@ STRINGS:
   repetition:
     "..." * ...                   repeat a string
 
-  membership:
-    "..." in ...                  check if string exists in another string
-    "..." not in ...              check if string not exists in another string
-
   cannot change a character in a string
   can add to the end
 ---------------------------------------------------------------------------------------------------
@@ -143,11 +142,24 @@ BOOLS:
     "", [], (), {}
 ---------------------------------------------------------------------------------------------------
 LISTS:
-  myList = ["...", "..."]         create a list
-  myList[1]                       access to one entry
-  myList[0:5]                     access to entries 0 to 4
+  ... = ["...", ...]              create a list
+  ... = []                        create empty list
 
-  myList = (1, 2, 3)              tuple, cannot be overwritten
+  elements:
+    ...[...]                      return element at index
+    ...[-...]                     return element at index counting backwards
+    ...[...:...]                  return elements ... to ...
+
+  tuple:
+    ... = (..., ..., ...)         cannot be overwritten
+
+  concatenation:
+    ... = ... + ...               return new list with combined elements
+    ... += ...                    combine elements
+
+  repetition:
+    ... = ... * ...               add multiple times
+    ... *= ...                    
 ---------------------------------------------------------------------------------------------------
 DICTIONARY:
   name = {}                       2 dimensional list, not ordered
@@ -162,17 +174,28 @@ DICTIONARY:
     print i + str(list[i])
 ---------------------------------------------------------------------------------------------------
 CLASS:
-
+  class ...
+    data
+    methods
 ---------------------------------------------------------------------------------------------------
-NUMBER FUNCTIONS:
-  abs(...)                        return absolute value
-  pow(a, b)                       return a^b
-  round(..., ...)                 round to closest integer, optional decimal points
-  min(..., ...)                   return smallest
-  max(..., ...)                   return largest
-  format(..., "...")              change format of number
-    "5,.2f"                       total length: 5, , after three digits, 2 decimal points, float
-    "%"                           as percentage
+NUMBER METHODS:
+  absolute:
+    abs(...)                      return absolute value
+
+  exponent:
+    pow(a, b)                     return a^b
+
+  round:
+    round(..., ...)               round to closest integer, optional decimal points
+
+  min max:
+    min(..., ...)                 return smallest
+    max(..., ...)                 return largest
+  
+  format:
+    format(..., "...")            change format of number
+      "5,.2f"                     total length: 5, , after three digits, 2 decimal points, float
+      "%"                         as percentage
 ---------------------------------------------------------------------------------------------------
 MATH FUNCTIONS:
   math.pi                         return pi
@@ -181,24 +204,104 @@ MATH FUNCTIONS:
   math.floor(...)                 return next smallest integer
   math.sqrt(...)                  return square root
 ---------------------------------------------------------------------------------------------------
-STRING FUNCTIONS:
-  .len(...)                        length of string
+STRING METHODS:
+  .len(...)                       length of string
 
-  search and replace:
-    .endswith(...)                  return true if ends with ...
-    .startswith(...)                return true if starts with ...
-    .find(...)                      return first index of ..., else return -1
-    .rfind(...)                     return last index of ..., else return -1
-    .count(...)                     return number of occurrences of ...
-    .replace(..., ...)              return new string with replaced substring 
+  search:
+    .endswith(...)                return true if ends with ...
+    .startswith(...)              return true if starts with ...
+    .find(...)                    return first index of ..., else return -1
+    .rfind(...)                   return last index of ..., else return -1
+    .count(...)                   return number of occurrences of ...
+
+  membership:
+    "..." in ...                  check if string exists in another string
+    "..." not in ...              check if string not exists in another string
+
+  replace:
+    .replace(..., ...)            return new string with replaced substring
+
+  slice:
+    ...[...:...]                  return characters from index ... to ...
+    ...[:...]                     return characters up to index ...
+    ...[...:]                     return characters from index ... to the end
+    negative index counts from the end
+
+  convert:
+    .upper()                      return new string in uppercase
+    .lower()                      return new string in lowercase
+    .capitalize()                 retrun new string with first char capitalized
+    .title()                      return new string with first char of every word capitalized
+    .swapcase()                   return new string after swapping upper and lower
+    .strip()                      return new string with no whitespace at beginning and end
+    .strip("..."")                return new string with no ... at beginning and end
+
+  ascii:
+    ord("...")                    return ASCII for character
+    chr(...)                      return character for ASCII
+
+  format:
+    .center(...)                  return new string centered with total length
+    .ljust(...)                   return new string on the left with total length
+    .rjust(...)                   return new string on the right with total length
+    format(..., "...")
+---------------------------------------------------------------------------------------------------
+LIST METHODS:
+  list():
+    ... = list(..., ...)          create list from entries
+          list("...")             split string and create list
+          list(range(...))        create list with range
+
+  length:
+    len(...)                      return number of elements
+
+  sum:
+    sum(...)                      return sum of elements
+
+  min max:
+    min(...)                      return smallest value
+    max(...)                      return greatest value
+
+  slice:
+    ...[...:...]                  return list from ... to ...-1
+    ...[:...]                     return list from start to ...-1
+    ...[...:]                     return list from ... to end
+
+  membership:
+    ... in ...                    return true if element exists
+    ... not in ...                return true if element not exists
+
+  comprehension:
+    ... = [expression for item in iterable if condition]
+
+  add:
+    .appends(...)                 add to end of list
+    .insert(..., ...)             insert at index, item
+    .extends([...])               add elements to the end
+    .extends("...")               split string and add to the end
+
+  remove:
+    .remove(...)                  remove first occurrence
+    .pop()                        return last element and remove it
+    .pop([...])                   return element at index and remove it
+    .clear()                      remove all elements
+
+  search:
+    .index(...)                   return index of first occurence
+    .count(...)                   return number of times element is found
+
+  sort:
+    .sort()                       sort low to high
+    .reverse()                    reverse order
 ---------------------------------------------------------------------------------------------------
 INPUT / OUTPUT:
   input:
     var = input(prompt)           read from keyboard and convert to string
 
   output:
-    print("text", var)            print to screen
+    print("text", var)            print to screen, with newline
     print(..., sep="#")           print with given seperator
+    print(..., end="...")         print with given symbol at the end
 
 FUNCTIONS:
   def name():                     creating a function
@@ -208,10 +311,10 @@ FUNCTIONS:
   name()                          calling the function
 ---------------------------------------------------------------------------------------------------
 IF:
-  if ...:                         if
+  if condition:                   if
     command1
     command2
-  elif ...:                       elif
+  elif condition:                 elif
     command1
     command2
   else:                           else
@@ -225,21 +328,42 @@ FOR:
     command1
     command2
 
-  for i in range (3, 5):          example, 1 goes from 3 to 4
-    print i
+  example:
+    test = ["a", "b", "c"]        example
+    for i in test:
+      print i
 
-  test = ["a", "b", "c"]          example
-  for i in test:
-    print i
+  range:
+    range(...)                    from 0 to ...-1
+    range(..., ...)               from ... to ...-1, can be negative
+    range(..., ..., ...)          from ... to ...-1 with increment/decrement
+
+    example:
+      for i in range (3, 11, 2):
+        print i                   i is 3, 5, 7, 9
 ---------------------------------------------------------------------------------------------------
 WHILE:
-  while ...:                      while
+  while condition:                while
     command1
     command2
 
-  x = 0                           example
-  while x < 10:                   
-    x += 1
+  example:
+    x = 0
+    while x < 10:                   
+      x += 1
+---------------------------------------------------------------------------------------------------
+BREAK CONTINUE:
+  break:
+    for ...:                      exit parent loop if break gets called
+      if ...:
+        break
+      ...
+
+  continue:
+    for ...:                      jump to next iteration is continue gets called
+      if ...:
+        continue
+      ...
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:

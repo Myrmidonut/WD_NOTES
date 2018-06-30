@@ -5,6 +5,8 @@ FRONT-END:
 -     Bootstrap
       Foundation
       Semantic UI
+      Bulma
+      Materialize
     SASS/SCSS
 
   FUNCTIONALITY:
