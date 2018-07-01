@@ -7,8 +7,8 @@ FILES:
   .py                             file ending
 ---------------------------------------------------------------------------------------------------
 IMPORT:
-  libraries:
-    import ...                    importing a library
+  modules:
+    import ...                    importing a module
       time
       webbrowser
       os                          renaming files, etc.
@@ -17,6 +17,23 @@ IMPORT:
 
   files:
     import filename               importing a file, for example for a class
+
+  selected:
+    from ... import ..., ...      only import the specified methods, variables
+    from ... import *             import everything
+
+  call:
+    moduleName.methodName()       when using import
+    methodName()                  when using from ... import
+
+  content:
+    classes
+    functions
+    variables
+    constants
+    ...
+
+  later methods overwrite earlier ones with same call name
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   #                               one line comment
@@ -89,13 +106,36 @@ VARIABLES:
 
     begins with letter or underscore
 ---------------------------------------------------------------------------------------------------
+SCOPE:
+  local:
+    variables are only available inside the function where they are declared
+    overwrites global variables only inside a function
+
+  global:
+    variables are available anywhere
+---------------------------------------------------------------------------------------------------
 DATA TYPES:
-  int
-  float
-  str
   bool
-  list
-  dictionary
+
+  number:
+    int
+    long
+    float
+    complex
+
+  sequence:
+    str
+    bytes
+    byte array                    mutable
+    list                          mutable
+    tuple
+ 
+  set:
+    set                           mutable
+    frozen
+
+  mapping:
+    dict                          mutable
 
   type(...)                       check data type
 ---------------------------------------------------------------------------------------------------
@@ -142,16 +182,14 @@ BOOLS:
     "", [], (), {}
 ---------------------------------------------------------------------------------------------------
 LISTS:
-  ... = ["...", ...]              create a list
-  ... = []                        create empty list
+  create:
+    ... = ["...", ...]            create a list
+    ... = []                      create empty list
 
   elements:
     ...[...]                      return element at index
     ...[-...]                     return element at index counting backwards
     ...[...:...]                  return elements ... to ...
-
-  tuple:
-    ... = (..., ..., ...)         cannot be overwritten
 
   concatenation:
     ... = ... + ...               return new list with combined elements
@@ -160,6 +198,40 @@ LISTS:
   repetition:
     ... = ... * ...               add multiple times
     ... *= ...                    
+---------------------------------------------------------------------------------------------------
+TUPLES:
+  immutable list
+
+  create:
+    ... = (..., ..., ...)         create a tuple, optional brackets
+    ... = ()                      empty tuple
+    ... = (...,)                  tuple with one element
+    ..., ... = (..., ...)         assign multiple variables
+---------------------------------------------------------------------------------------------------
+SETS:
+  unordered list
+  unique elements
+  more efficient than a list
+
+  create:
+    ... = {..., ...}              duplicate elements are removed
+
+  add(...)                        add an element
+  remove(...)                     remove an element
+  discard(...)                    like remove, but ignores error for not found
+  update(...)                     add multiple elements like list, tuple, string
+  clear()                         remove all elements
+
+  .issubset(...)                  return true if all elements are part of ...
+  .issuperset(...)                return true if all elements of ... are available
+  .union(...)                     return new set of combined elements
+  ... = ... | ...                 union
+  .intersection(...)              return new set with elements in both sets
+  ... = ... & ...                 intersection
+  .difference(...)                return new set with elements from ... removed
+  ... = ... - ...                 difference
+  .symmetric_difference(...)      return new set with elements that are only in one set
+  ... = ... ^ ...                 symmetric difference
 ---------------------------------------------------------------------------------------------------
 DICTIONARY:
   name = {}                       2 dimensional list, not ordered
@@ -302,13 +374,6 @@ INPUT / OUTPUT:
     print("text", var)            print to screen, with newline
     print(..., sep="#")           print with given seperator
     print(..., end="...")         print with given symbol at the end
-
-FUNCTIONS:
-  def name():                     creating a function
-    command1()
-    command2()
-
-  name()                          calling the function
 ---------------------------------------------------------------------------------------------------
 IF:
   if condition:                   if
@@ -367,7 +432,21 @@ BREAK CONTINUE:
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
-    ...(..., ...)
+    def ...(..., ...):            zero or more arguments
+      ...
+      return ...                  optional, terminate, return None without
+
+    def ...(...=...)              with default value for argument
+
+  call:
+    ...(...)                      call
+    ...(...=...)                  call with keyword, order not important
+
+    ... = ...(...)                call with assignment of return value
+
+  always call after declaration
+  if the argument is mutable, changes will be applied to it
+---------------------------------------------------------------------------------------------------
 
 
 
@@ -378,7 +457,6 @@ FUNCTIONS:
 
 
 
-  print("...") + ...              outputting to the screen
 
   open("...")                     open a file
   urllib.urlopen("...")           open a connection to a website
@@ -390,12 +468,7 @@ FUNCTIONS:
   os.chdir(r"...")                switch to the directory
   windows.exitonclick()           close windows on mouse click
 
-  .is_integer()                   checks if a float is a whole number
-
-
-
-
-                                  
+  .is_integer()                   checks if a float is a whole number                                
 ---------------------------------------------------------------------------------------------------
 in file media.pny
 class Movie():                                              creating a class, should be in its own file
@@ -431,3 +504,12 @@ class Child(Parent):
 
 method overriding:
 a method in Child with the same name as in Parent will override it
+
+
+guide:
+  missing:
+    objects
+    inheritance
+    file
+    exception
+    dictionary
