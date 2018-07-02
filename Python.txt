@@ -1,9 +1,8 @@
-CONSOLE:
+SHELL:
   python                          open console
   quit()                          quit console
 ---------------------------------------------------------------------------------------------------
 FILES:
-  #! /usr/bin/python              location of python
   .py                             file ending
 ---------------------------------------------------------------------------------------------------
 IMPORT:
@@ -14,6 +13,7 @@ IMPORT:
       os                          renaming files, etc.
       turtle                      creating lines, shapes, etc.
       urllib                      connection to website
+      math                        mathematics
 
   files:
     import filename               importing a file, for example for a class
@@ -138,6 +138,7 @@ DATA TYPES:
     dict                          mutable
 
   type(...)                       check data type
+  isinstance(..., ...)            check if object belongs to a class, or data type
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   ... = 1                         integer
@@ -214,6 +215,7 @@ SETS:
   more efficient than a list
 
   create:
+    ... = set()                   create empty set
     ... = {..., ...}              duplicate elements are removed
 
   add(...)                        add an element
@@ -234,22 +236,69 @@ SETS:
   ... = ... ^ ...                 symmetric difference
 ---------------------------------------------------------------------------------------------------
 DICTIONARY:
-  name = {}                       2 dimensional list, not ordered
-  name[...] = ...                 key - value pair
-  name.keys()                     access to keys
-  name.values()                   access to values
+  2 dimensional list, not ordered
 
-  list = {}                       example
-  list["Sam"] = 1
-  list["Otto"] = 2
-  for i in list:
-    print i + str(list[i])
+  create:
+    ... = {}                      empty
+    ... = {                       with key, value pairs
+      "..." : "...",
+      "..." : "...",
+    }
+
+  elements:
+    ...[...]                      show value for a key
+    ...[...] = ...                add/update element
+    del ...[...]                  delete element
+    len(...)                      return number of elements
+    ... in ...                    return true if exists
+    ... not in...                 return true if not exists
+
+  methods:
+    .keys()                       return all keys
+    .values()                     return all values
+    .items                        return tuples of elements
+    .get(..., ...)                return value for key, else None, optional default instead of None
+    .pop(...)                     return value for key and remove key
+    .popitem()                    return a random element as tuple and remove it
+    ... = ....copy()              create copy
+    .clear()                      remove all elements
 ---------------------------------------------------------------------------------------------------
-CLASS:
-  class ...
-    data
-    methods
----------------------------------------------------------------------------------------------------
+CLASS OBJECT:
+  create:
+    class ...(...):               capital letter, optional inherited parent class
+      def __init__(self, ...):    constructor, optional, automatic creation of empty constructor
+        self. ...                 
+        self.__... = ...          private, only available inside the object
+      def ...(self, ...):         instance method
+        ...
+
+  object:
+    ... = ...(...)                creat object from class with constructor argument
+
+    .attribute
+    .method(arguments)
+
+  getter:
+    def get_...(self):            accessor method
+      return self....
+
+  setter:
+    det set_...(self, ...):       mutator method
+      #validation
+      self.... = ...
+
+  inheritance:
+    class ...(..., ...):          inherits all methods of parent classes (..., ...)
+      super().__init__()          calls parents class methods
+      ...
+
+    can overwrite parents methods
+
+    object class:
+      __new__()                   creates object
+      __init__()                  initialize attributes
+      __str__()                   return string representing the object
+  ---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   absolute:
     abs(...)                      return absolute value
@@ -447,18 +496,31 @@ FUNCTIONS:
   always call after declaration
   if the argument is mutable, changes will be applied to it
 ---------------------------------------------------------------------------------------------------
+FILE HANDLING:
+  open:
+    ... = open("...", "...")      path and mode, returns object
+      "r"                         read
+      "w"                         write, creates the file, or overwrites it
+      "a"                         append, creates the file, or adds data to the end
 
+    with open("...", "...") as file_object:   closes the file automatically
+      ...
 
+  close:
+    .close()
 
+  methods:
+    .read(...)                    return string of specified amount of characters, or whole file
+    .readline()                   return string of single line
+    .readlines()                  return list of strings of lines
+    .write(...)                   return number of characters written after writing
+    .seek(..., ...)               move file pointer
+    .tell()                       return position of file pointer
 
-
-
-
-
-
-
-
-  open("...")                     open a file
+  os.path                         module
+    .isfile(...)                  return true if file exists at path
+---------------------------------------------------------------------------------------------------
+STUFF:
   urllib.urlopen("...")           open a connection to a website
   connection.read()
   connection.close()
@@ -470,46 +532,3 @@ FUNCTIONS:
 
   .is_integer()                   checks if a float is a whole number                                
 ---------------------------------------------------------------------------------------------------
-in file media.pny
-class Movie():                                              creating a class, should be in its own file
-    """Text"""                                              __doc__ class variable
-    VALID_RATINGS = ["G", "PG"]                             class variable, allcaps for const
-    def __init__(self, movie_title, movie_story,            constructor, self
-    trailer_youtube):                   
-        self.title = movie_title                            instance variable
-        self.story = movie_story            
-        self.trailer_youtube_url = trailer_youtube  
-    def name(self):                                         instance method
-        webbrowser.open(self.trailer_youtube_url)
-
-toy_story = media.Movie("Toy Story", "Toys come to life",   creating an instance of the class
-            "Youtube Link")
-print(media.Movie.valid_ratings)
-print(toy_story.storyline)
-print(media.Movie.__doc__)                                  predefined class variable, doc
-print(media.Movie.__name__)                                 name of class
-print(media.Movie.__module__)                               name of module where the class is defined
-
-inheritance:
-class Parent():
-    def __init__(self, last_name):
-        print("Parent constructor Called")
-        self.last_name = last_name
-
-class Child(Parent):
-    def __init__(self, last_name, number_of_toys):
-        print("Child constructor Called")
-        Parent.__init__(self, last_name)                    Child calls Parent constructor
-        self.number_of_toys = number_of_toys
-
-method overriding:
-a method in Child with the same name as in Parent will override it
-
-
-guide:
-  missing:
-    objects
-    inheritance
-    file
-    exception
-    dictionary

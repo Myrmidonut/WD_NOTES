@@ -1,3 +1,14 @@
 INSTALLATION:
   react-redux package
 -----------
+STORE:
+  keeps strack of all components states
+
+    const store = Redux.createStore()
+
+    const reducer = (state = 5) => {
+      return state;
+    }
+-------
+ACTION:
+  
