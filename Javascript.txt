@@ -835,11 +835,11 @@ LOOPS:
       ...
     }
 ---------------------------------------------------------------------------------------------------
-JSON:
+JSON AJAX:
   conversion:
-    JSON.parse(..., ...);                   convert JSON string to object, optional function
+    JSON.parse(..., ...);                         JSON string to object, optional function
 
-    JSON.stringify(...);                    convert object to JSON string
+    JSON.stringify(...);                          object to JSON string
     JSON.stringify(value, replacer, space)  
       value:    a value
       replacer: array or function
@@ -848,16 +848,14 @@ JSON:
     toJSON();
 
   from URL:
-    var requestURL = "...";                       store URL
-    var request = new XMLHttpRequest();           create request object
-    request.open("GET", requestURL);              HTTP method, URL
-    request.responseType = "json";                server will return JSON
-      request.responseType = "text";              server only returns string
-    request.send();                               sends the request
-    request.onload = function() {                 waits for response before using it
-      var response = request.response;
-        var responseJson = JSON.parse(response);  use when server only returns string
-      ...
+    let reqURL = "...";                           store URL
+    let req = new XMLHttpRequest();               create request object
+    req.open("GET", reqURL, true);                initialize request, HTTP method, URL, async true
+    req.responseType = "json";                    server will return JSON, "", "text", ...
+    req.send();                                   send request
+    req.onload = function() {                     wait for response before using it
+      let res = req.response;                     when server returns JSON object
+      ...                                         use data
     }
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
