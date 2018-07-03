@@ -40,11 +40,28 @@ NPM:
   npm adduser
 ---------------------------------------------------------------------------------------------------
 PACKAGE.JSON:
-  "scripts": {...}          contains test scripts from modules
-    "test": "node test.js"  example test
-
-  "repository": {...}
-    "url": "..."            URL to project
+  "name": "...",
+  "author": "...",
+  "version": "...",             semantic version: major.minor.patch, minor and patch dont break
+  "license": "...",             MIT, BSD, ...
+  "description": "...",
+  "keywords": ["...", "..."],
+  "main": "server.js",          entry point
+  "scripts": {                  build and test scripts from modules
+    "build": "node app.js"      build command
+    "test": "node test.js"      example test
+  },
+  "repository": {
+    "type": "...",              git
+    "url": "..."                URL to project
+  },
+  "dependecies": {              used modules
+    "...": "...",               "~..." latest patch, "^..." latest minor
+    "...": "..."
+  },
+  "engines": {
+    "...": "..."
+  }
 ---------------------------------------------------------------------------------------------------
 README.MD
   README.md contains written description of the project
@@ -53,6 +70,12 @@ INCLUDE:
   var ... = require("...");       include a package
 ---------------------------------------------------------------------------------------------------
 PACKAGES:
+  build in:
+    http                  server
+    file system           files
+    path                  directories
+    assertion testing     code tests
+
   nodemon         restarts server on file changes
   
   express         routing

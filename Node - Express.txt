@@ -3,7 +3,7 @@ USE:
   var app = express();
 ---------------------------------------------------------------------------------------------------
 STYLES:
-  app.use(express.static("public"));      search /public folder for stylesheets
+  app.use(express.static("public"));                  search /public folder for stylesheets
 
   views/partials/:
     header.ejs:
@@ -32,24 +32,42 @@ INCLUDE:
   include ...                             include HMTL code from another file
 ---------------------------------------------------------------------------------------------------
 ROUTES:
-  order of routes matters!
+  order of routes matters
+  call function when route is matched
 
   GET:
-    app.get("...", function(req, res) {     create route with request and response
-      res.send("...");                      output
+    app.get("...", function(req, res) {                           route with request and response
+      res.send("...");                                            output
     });
 
-    app.get("*", ...                        fallback route
+    app.get("*", ...                                              fallback route
 
   POST:
-    app.post("/addfriend", function(req, res) {
+    app.post("...", function(req, res) {
       res.send("...");
     });
 
+  USE:
+    app.use()                                                     runs on all requests
+
   LISTEN:
-    app.listen(process.env.PORT, process.env.IP, function() {     for server
+    app.listen(process.env.PORT, process.env.IP, function() {     server
       console.log("Server has started.");
     });
+
+  res.send("...")                                                 send text
+  res.sendFile(...)                                               send a file with absolute path
+  res.json(...)                                                   send a json object
+
+  let absolutePath = __dirname + "relativePath/file.ext"          create absolute path
+
+  req.method
+  req.path
+  req.ip
+  req.query
+    ?first=firstname&last=lastname
+    req.query.first
+    req.query.last
 ---------------------------------------------------------------------------------------------------
 ROUTES PARAMETERS:
   app.get("/.../:test", function(req, res) {       :test is a wildcard
@@ -70,11 +88,32 @@ MODELS/EXPORT:
       module.exports = mongoose.model("Campground", campgroundSchema);
 
   app.js:
-    var Campground = require("./models/campground");      campgrounds.js file
+    var Campground = require("./models/campground");                        campgrounds.js file
 ---------------------------------------------------------------------------------------------------
 REDIRECT:
   res.redirect("...");                    load route
 ---------------------------------------------------------------------------------------------------
 RENDER:
-  res.render("...");                      display a file from /views folder
-  res.render("...", {name: inputData});   usually name = inputData
+  res.render("...");                        display a file from /views folder
+  res.render("...", {name: inputData});     usually name = inputData
+---------------------------------------------------------------------------------------------------
+MIDDLEWARE:
+  app.METHOD(path, middlewareFunction)      optional path
+
+  express.static(path)                      setting up folders for stylesheets, scripts, images
+
+  middlewareFunction:
+    request object, response object, next function in the cycle
+
+    app.use(function(req, res, next) {
+      ...;
+      next();
+    })
+---------------------------------------------------------------------------------------------------
+ENV:
+  process.env                        global node object
+
+  strings
+  uppercase
+  underscores
+  no spaces around =

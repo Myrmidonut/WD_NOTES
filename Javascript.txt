@@ -847,7 +847,7 @@ JSON AJAX:
 
     toJSON();
 
-  from URL:
+  from API:
     let reqURL = "...";                           store URL
     let req = new XMLHttpRequest();               create request object
     req.open("GET", reqURL, true);                initialize request, HTTP method, URL, async true
@@ -857,6 +857,26 @@ JSON AJAX:
       let res = req.response;                     when server returns JSON object
       ...                                         use data
     }
+
+  to API:
+    let req = new XMLHttpRequest();
+    req.open("POST", reqUrl, true);
+    req.setRequestHeader("Content-Type", "text/plain");
+    req.onreadystatechange = function() {
+      if (req.readyState == 4 && req.status == 200) {       successful request
+        ...
+      }
+    }
+    req.send(username);                                     send the data
+---------------------------------------------------------------------------------------------------
+LOCATION:
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      document.getElementById('data').innerHTML = 
+        "latitude: " + position.coords.latitude + 
+        "<br>longitude: " + position.coords.longitude;
+    });
+  }
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
   setTimeout(function, ms);             execution after time in ms

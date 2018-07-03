@@ -1,3 +1,5 @@
 form sends data into request "body"
 
 parse request "body" for use
+
+app.use(bodyParser.urlencoded({extended: false}))
