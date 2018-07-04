@@ -5,47 +5,87 @@ INSTALL:
   npm install mongoose --save
 ---------------------------------------------------------------------------------------------------
 USE:
-  var mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 ---------------------------------------------------------------------------------------------------
 CONNECT:
-  mongoose.connect("mongodb://localhost/...");      connects to database or creates it first
+  mongoose.connect("mongodb://localhost/...");     connects to database or creates it first
 ---------------------------------------------------------------------------------------------------
 SCHEMA:
-  var catSchema = new mongoose.Schema({
+  const catSchema = new mongoose.Schema({          define object for models
     name: String,
     age: Number,
     temperament: String
   });
 ---------------------------------------------------------------------------------------------------
 MODEL:
-  var Cat = mongoose.model("Cat", catSchema);
+  const Cat = mongoose.model("Cat", catSchema);           create instance of schema, a document
+  const Cat = mongoose.model("Cat", { name: String });    create directly
 ---------------------------------------------------------------------------------------------------
-CREATE:
-  Cat.create({
-    name: "Snow White",
-    age: 15,
-    temperament: "Bland"
-  }, function(err, cat) {
+CRUD:
+  Create Read Update Delete
+---------------------------------------------------------------------------------------------------
+CREATE - SAVE:
+  save:
+    const kitty = new Cat({name: "..."});
+    kitty.save(function (err, data) {
+      if (err) {
+        ...;
+      } else {
+        ...;
+      }
+    });
+
+  create:
+    Cat.create({name: "..."}, function(err, data) {     can use array of objects for multiple creates
+      if (err) {
+        ...;
+      } else {
+        ...;
+      }
+    });
+---------------------------------------------------------------------------------------------------
+READ - FIND:
+  Cat.find({...}, function(err, data) {       search object, return array of matches
     if (err) {
-      console.log(err);
+      ...;
     } else {
-      console.log(cat);
+      ...;
     }
   });
+
+  .findById({_id: ...}, callback)             search by mongoDB _id
+  .findById(id, callback)                     equivalent
+  .findOne({...}, callback)                   return only one match
+
+  without callback the query is not executed and can be stored for chaining
+    .find()
+    .sort("...", -1)                          sort by key, optional descending
+    .limit(...)                               show only ... results
+    .select("... ...")                        show only these keys
+    .exec(callback)                           run the callback
 ---------------------------------------------------------------------------------------------------
-FIND:
-  Cat.find({}, function(err, cats) {
+UPDATE:
+  Cat.updateOne({...}, {...}, function(err, res) {          overwrite
     if (err) {
-      console.log(err);
+      ...;
     } else {
-      console.log(cats);
+      ...;
     }
   });
 
-  Cat.findById(id, callback)
+  .update()
+  .updateMany()
 
-  Cat.findByIdAndUpdate(id, newData, callback)
+  .findOneAndUpdate({...}, {...}, {new: true}, callback)    new: true passes updated to callback
+  .findByIdAndUpdate(id, ..., callback)
+---------------------------------------------------------------------------------------------------
+DELETE:
+  Cat.deleteOne({...}, function(err) {      delete if matching filter
+    if (err) return handleError(err);
+  });
 
-  Cat.findByIdAndRemove(id, callback)
-
-  Cat.findOne({...: "..."}, callback)
+  .remove()                                 return object with result and number of deleted items
+  .deleteMany()
+  .findByIdAndDelete(id, callback)
+  .findByIdAndRemove(id, callback)
+---------------------------------------------------------------------------------------------------
