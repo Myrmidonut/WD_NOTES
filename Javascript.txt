@@ -882,8 +882,9 @@ USEFUL FUNCTIONS:
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms
 
-  Date().getTime();                     get the current time
-    var start = new Date().getTime();
+  let date = new Date();                get current date and time
+  date.getTime();                       get the time
+  date.get...();                        get various values
 
   String.fromCharCode(...);             get value from ASCII code
 ---------------------------------------------------------------------------------------------------
