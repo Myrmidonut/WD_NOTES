@@ -1,0 +1,20 @@
+USE:
+  let multer = require("multer");
+  let upload = multer();
+---------------------------------------------------------------------------------------------------
+REQUEST:
+  req.body        form field
+  req.file        file
+  req.files       files
+
+  fieldname: name from the form input
+---------------------------------------------------------------------------------------------------
+ROUTES:
+  app.post("...", upload.single(fieldname), function(req, res) {});
+    single file stored in req.file
+
+  upload.array(fieldname, maxCount)
+    array of files stored in req.files
+
+  upload.fields([{...: ..., ...: ...}, {...: ..., ...: ...}])
+    mix of files, object with arrays of files stored in req.files

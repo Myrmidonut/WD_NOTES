@@ -45,7 +45,7 @@ CREATE - SAVE:
     });
 ---------------------------------------------------------------------------------------------------
 READ - FIND:
-  Cat.find({...}, function(err, data) {       search object, return array of matches
+  Cat.find({...}, function(err, data) {       search
     if (err) {
       ...;
     } else {
@@ -53,9 +53,11 @@ READ - FIND:
     }
   });
 
-  .findById({_id: ...}, callback)             search by mongoDB _id
-  .findById(id, callback)                     equivalent
-  .findOne({...}, callback)                   return only one match
+  data = data.toObject()                      convert document to object to access keys and values
+
+  .find({...}, callback)                      return array with all matches
+  .findOne({...}, callback)                   return object with first match
+  .findById(id, callback)                     return object that matches mongoDB _id
 
   without callback the query is not executed and can be stored for chaining
     .find()
@@ -76,8 +78,10 @@ UPDATE:
   .update()
   .updateMany()
 
-  .findOneAndUpdate({...}, {...}, {new: true}, callback)    new: true passes updated to callback
+  .findOneAndUpdate({...}, {...}, {new: true}, callback)    {new: true} passes updated to callback
   .findByIdAndUpdate(id, ..., callback)
+
+  {$push: {array: element}}                                 push element to array
 ---------------------------------------------------------------------------------------------------
 DELETE:
   Cat.deleteOne({...}, function(err) {      delete if matching filter

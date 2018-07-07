@@ -54,12 +54,10 @@ ROUTES:
     app.listen(process.env.PORT, process.env.IP, function() {     server
       console.log("Server has started.");
     });
-
-  res.send("...")                                                 send text
-  res.sendFile(...)                                               send a file with absolute path
-  res.json(...)                                                   send a json object
-
-  let absolutePath = __dirname + "relativePath/file.ext"          create absolute path
+---------------------------------------------------------------------------------------------------
+REQUEST:
+  req.headers                               header data of request object
+  req.body.form_name                        data send with form
 
   req.method
   req.path
@@ -69,8 +67,16 @@ ROUTES:
     req.query.first
     req.query.last
 ---------------------------------------------------------------------------------------------------
+RESPONSE:
+  res.send("...")                           send text, string, object, array
+  res.sendFile(...)                         send a file with absolute path
+  res.json(...)                             send a json object
+  res.redirect("...")                       send to website
+
+  let absolutePath = __dirname + "relativePath/file.ext"          create absolute path
+---------------------------------------------------------------------------------------------------
 ROUTES PARAMETERS:
-  app.get("/.../:test", function(req, res) {       :test is a wildcard
+  app.get("/.../:test", function(req, res) {     :test is a wildcard
     var ... = req.params.test;
   });
 ---------------------------------------------------------------------------------------------------
