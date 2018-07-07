@@ -79,6 +79,10 @@ ROUTES PARAMETERS:
   app.get("/.../:test", function(req, res) {     :test is a wildcard
     var ... = req.params.test;
   });
+
+  can use regexp for routes:
+    ?, +, *, ()
+    -, . are literal
 ---------------------------------------------------------------------------------------------------
 MODELS/EXPORT:
   /models folder:

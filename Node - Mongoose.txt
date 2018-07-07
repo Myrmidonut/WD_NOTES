@@ -63,7 +63,7 @@ READ - FIND:
     .find()
     .sort("...", -1)                          sort by key, optional descending
     .limit(...)                               show only ... results
-    .select("... ...")                        show only these keys
+    .select("... ...")                        show only these keys, "-... -..." to exclude
     .exec(callback)                           run the callback
 ---------------------------------------------------------------------------------------------------
 UPDATE:

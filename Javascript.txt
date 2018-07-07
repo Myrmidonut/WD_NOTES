@@ -165,6 +165,9 @@ REGULAR EXPRESSIONS:
 
   invert using uppercase letter
 
+  escape with:
+    \\...
+
   match:
     .match(myRegex);            returns array with matched regex
 
@@ -706,7 +709,7 @@ ARRAY METHODS:
     delete myArray[5]                   changes element at index 5 to undefined
 
   extract:
-    .slice(..., ...)                    return array from start to optional exclusive end
+    .slice(..., ...)                    return array from start to optional exclusive end, index
 
   copy:
     let arr1 = [..., ...arr2, ...];     copy with spread operator
