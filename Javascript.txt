@@ -533,8 +533,9 @@ FUNCTIONS:
     let myFunc = function(e) {e...}               function with event object
 
   arrow function:
-    let myFunc = (...) => {}                      arrow function, short version of declaration
+    let myFunc = (e) => {}                        arrow function, short version of declaration
                                                   without {} return can be skipped
+
   function expression:
     let myFunc = function func() {}               function expression
     let myFunc = function() {}                    anonymous function expression

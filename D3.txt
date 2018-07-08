@@ -1,0 +1,29 @@
+INSTALLATION:
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+-------
+use D3 methods to display data
+------
+d3
+  .select("...")          get first element
+  .selectAll("...")       get all elements
+
+  .append("...")          add element
+
+  .text()                 get text
+  .text("...")            set text
+  .text((e) => ...)       set text with callback
+
+  .data(...)              add data to dataset, []
+  .enter()                create an element for each dataset element
+  
+  example:
+    const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+    d3.select("body")
+      .selectAll("h2")
+      .data(dataset)
+      .enter()
+      .append("h2")
+      .text("New Title");
+---------
+  .style("...", "...")        set css, property, value
+  .style("...", (e) => ...)   set css with callback
