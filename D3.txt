@@ -1,29 +1,135 @@
 INSTALLATION:
   <script src="https://d3js.org/d3.v5.min.js"></script>
--------
-use D3 methods to display data
-------
-d3
+---------------------------------------------------------------------------------------------------
+use d3 methods to display data
+can be chained
+can be set to variables
+
+inside <script...</script>
+
+d3.select()
+  .data()
+  ...
+---------------------------------------------------------------------------------------------------
+SELECT:
   .select("...")          get first element
   .selectAll("...")       get all elements
 
   .append("...")          add element
 
+  .data(...)              add data to dataset, []
+  .enter()                iterates over elements
+---------------------------------------------------------------------------------------------------
+TEXT:
   .text()                 get text
   .text("...")            set text
   .text((e) => ...)       set text with callback
-
-  .data(...)              add data to dataset, []
-  .enter()                create an element for each dataset element
-  
-  example:
-    const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
-    d3.select("body")
-      .selectAll("h2")
-      .data(dataset)
-      .enter()
-      .append("h2")
-      .text("New Title");
----------
-  .style("...", "...")        set css, property, value
+---------------------------------------------------------------------------------------------------
+STYLE:
+  .style("...", "...")        set css: property, value
   .style("...", (e) => ...)   set css with callback
+
+  .attr("...", "...")         set attribute
+    class
+    fill                      set color
+    transform
+      translate
+  .attr("...", (e) => ...)    set attribute with callback
+---------------------------------------------------------------------------------------------------
+SVG:
+  .append("svg")              create SVG area
+  .append("...")              add shape
+    rect                      attr: center: x, y, dimensions: width, height
+    circle                    attr: center: cx, cy, radius: r
+    text
+    title
+    g                         group. simple shape
+
+  .attr("...", ...)           unitless, counts from top left of svg area
+  .attr("...", (e, i) => {    with callback
+    e is data point
+    i is index of data point in array
+  })
+---------------------------------------------------------------------------------------------------
+SCALE:
+  const scale = d3
+    .scaleLinear()            linear scale for quantative data
+    .domain([..., ...]);      range of dataset
+    .range([..., ...]);       range of display
+
+  const output = scale(...);  scaling number
+
+  .min(..., (e) => ...)       find min of dataset
+  .max(..., (e) => ...)       find max of dataset
+
+  .axisLeft(...)
+  .axisBottom(...)
+  .call()
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+  d3.select("body")
+    .selectAll("h2")
+    .data(dataset)
+    .enter()
+    .append("h2")
+    .text("New Title");
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const dataset = [
+                [ 34,     78 ],
+                [ 109,   280 ],
+                [ 310,   120 ],
+                [ 79,   411 ],
+                [ 420,   220 ],
+                [ 233,   145 ],
+                [ 333,   96 ],
+                [ 222,    333 ],
+                [ 78,    320 ],
+                [ 21,   123 ]
+              ];
+  
+  const w = 500;
+  const h = 500;
+  const padding = 60;
+  
+  const xScale = d3.scaleLinear()
+                   .domain([0, d3.max(dataset, (d) => d[0])])
+                   .range([padding, w - padding]);
+  
+  const yScale = d3.scaleLinear()
+                   .domain([0, d3.max(dataset, (d) => d[1])])
+                   .range([h - padding, padding]);
+  
+  const svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+  
+  svg.selectAll("circle")
+     .data(dataset)
+     .enter()
+     .append("circle")
+     .attr("cx", (d) => xScale(d[0]))
+     .attr("cy",(d) => yScale(d[1]))
+     .attr("r", (d) => 5);
+  
+  svg.selectAll("text")
+     .data(dataset)
+     .enter()
+     .append("text")
+     .text((d) =>  (d[0] + "," + d[1]))
+     .attr("x", (d) => xScale(d[0] + 10))
+     .attr("y", (d) => yScale(d[1]))
+  
+  const xAxis = d3.axisBottom(xScale);
+  
+  svg.append("g")
+     .attr("transform", "translate(0," + (h - padding) + ")")
+     .call(xAxis);
+
+  const yAxis = d3.axisLeft(yScale);
+
+  svg.append("g")
+     .attr("transform", "translate(" + (w - padding) + ", 0)")
+     .call(yAxis)
