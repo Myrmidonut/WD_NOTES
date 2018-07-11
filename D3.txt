@@ -1,70 +1,143 @@
 INSTALLATION:
   <script src="https://d3js.org/d3.v5.min.js"></script>
 ---------------------------------------------------------------------------------------------------
-use d3 methods to display data
-can be chained
-can be set to variables
+OVERVIEW:
+  use d3 methods to display data
+  can be chained
+  can be set to variables
+  uses coordinates
+    (0, 0) is always top left
+  inside <script>...</script>
 
-inside <script...</script>
-
-d3.select()
-  .data()
-  ...
+  d3.select()
+    .data()
+    ...
 ---------------------------------------------------------------------------------------------------
 SELECT:
-  .select("...")          get first element
-  .selectAll("...")       get all elements
+  can be nested
 
-  .append("...")          add element
-
-  .data(...)              add data to dataset, []
-  .enter()                iterates over elements
+  .select("...")              get first element, css selector
+  .selectAll("...")           get all elements, css selector
 ---------------------------------------------------------------------------------------------------
-TEXT:
-  .text()                 get text
-  .text("...")            set text
-  .text((e) => ...)       set text with callback
+ELEMENTS:
+  .append("...")              add element to the end
+  .insert("...")              add element
+  .remove()                   remove element
 ---------------------------------------------------------------------------------------------------
-STYLE:
-  .style("...", "...")        set css: property, value
-  .style("...", (e) => ...)   set css with callback
-
-  .attr("...", "...")         set attribute
+MANIPULATE:
+  .text("...")                get/set text, callback
+  .html("...")                get/set inner HTML
+  .style("...", "...")        get/set css: property, value, callback
+  .attr("...", "...")         set attribute, callback
     class
     fill                      set color
     transform
       translate
-  .attr("...", (e) => ...)    set attribute with callback
+  .property("...", "...")     get/set property
+  .attr("...", "...")         get/set attribute
+  .classed("...", ...)        get/add/remove class, true/false
+---------------------------------------------------------------------------------------------------
+EVENTS:
+  .on("...", ...)             Add or remove event listeners to capture event types like click, mouseover, mouseout etc.
+    mouseover
+    mouseout
+  selection.dispatch()        Captures event types like click, mouseover, mouseout. Typenames is the eventname, listener is the event listener
+  d3.event                    Event object to access standard event fields such as timestamp or methods like preventDefault
+  d3.mouse(container)         Gets the x and y coordinates of the current mouse position in the specified DOM element.
+  d3.touch()                  Gets the touch coordinates to a container
+---------------------------------------------------------------------------------------------------
+ANIMATIONS:
+  .transition()               this schedules a transition for the selected elements
+    .duration(...)            duration specifies the animation duration in milliseconds for each element
+    .ease(...)                ease specifies the easing function, example: linear, elastic, bounce
+    .delay(...)               delay specifies the delay in animation in milliseconds for each element
+---------------------------------------------------------------------------------------------------
+TRANSFORM:
+  .attr("transform", (e, i) => "translate(0," + i * ... + ")" )
+    scale
+    rotate
+    skewX
+    skewY
+---------------------------------------------------------------------------------------------------
+DATA:
+  .data(...)                  add data, array or function
+  .enter()                    create elements to match data
+  .exit()                     remove elements to match data
+    .remove()                 initiate removal
+  .datum(...)                 ?
+
+  .csv(..., ..., ...)         URL, optional function, optional callback
+  .json(..., ...)             URL, callback
+  .tsv(..., ...)              URL, callback
+  .xml(..., ...)              URL, callback
+
+  callback:
+    function(error, data) {
+      if (err) ...
+      else d3.select...
+    }
 ---------------------------------------------------------------------------------------------------
 SVG:
-  .append("svg")              create SVG area
-  .append("...")              add shape
-    rect                      attr: center: x, y, dimensions: width, height
-    circle                    attr: center: cx, cy, radius: r
-    text
-    title
-    g                         group. simple shape
+  area:
+    const width = ...;              width of area
+    const height = ...;             height of area
+    const svg = d3.select("...")    container element
+      .append("svg")                create area
+      .attr("width", width)         set area width
+      .attr("height", height)       set area height
 
-  .attr("...", ...)           unitless, counts from top left of svg area
-  .attr("...", (e, i) => {    with callback
-    e is data point
-    i is index of data point in array
-  })
+  shapes:
+    svg.append("...")               add shape
+      rect                          attr: top-left corner: x, y, dimensions: width, height
+      circle                        attr: center: cx, cy, radius: r
+      ellipse                       attr: center: cx, cx, radius: rx, ry
+      text                          attr: position: x, y, style/color: stroke, black
+        .text("...")                add the text
+      title
+      line                          attr: start and end: x1, y1, x2, y2, style/color: stroke, black
+
+      g                             group of shapes to add effects, etc. to all of them
+
+  styles:
+    .attr("...")
+      fill
+      stroke
+      stroke-width
+      opacity
+      font-family
+      font-size
+
+    default: black, no stroke
 ---------------------------------------------------------------------------------------------------
 SCALE:
-  const scale = d3
-    .scaleLinear()            linear scale for quantative data
-    .domain([..., ...]);      range of dataset
-    .range([..., ...]);       range of display
+  const scale = d3.scaleLinear()    linear scale for quantative data
+    .domain([..., ...]);            range of data
+    .range([..., ...]);             range of axis
 
-  const output = scale(...);  scaling number
+      d3.min(...)                   minimum of data
+      d3.max(...)                   maximum of data
 
-  .min(..., (e) => ...)       find min of dataset
-  .max(..., (e) => ...)       find max of dataset
+  const output = scale(...);        scaling number
+---------------------------------------------------------------------------------------------------
+AXES:
+  horizontal and vertical
+  line
+  ticks
+  label
+  uses scale
 
-  .axisLeft(...)
+  .axisTop(...)
   .axisBottom(...)
+  .axisLeft(...)
+  .axisRight(...)
+  
   .call()
+---------------------------------------------------------------------------------------------------
+CALLBACKS:
+  ...((e, i) => ... this)
+    e:    element
+    i:    index
+    this: DOM object
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
   const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
@@ -77,22 +150,26 @@ EXAMPLE:
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
   const dataset = [
-                [ 34,     78 ],
-                [ 109,   280 ],
-                [ 310,   120 ],
-                [ 79,   411 ],
-                [ 420,   220 ],
-                [ 233,   145 ],
-                [ 333,   96 ],
-                [ 222,    333 ],
-                [ 78,    320 ],
-                [ 21,   123 ]
-              ];
-  
+                    [ 34,     78 ],
+                    [ 109,   280 ],
+                    [ 310,   120 ],
+                    [ 79,    411 ],
+                    [ 420,   220 ],
+                    [ 233,   145 ],
+                    [ 333,    96 ],
+                    [ 222,   333 ],
+                    [ 78,    320 ],
+                    [ 21,    123 ]
+                  ];
   const w = 500;
   const h = 500;
   const padding = 60;
   
+  const svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
   const xScale = d3.scaleLinear()
                    .domain([0, d3.max(dataset, (d) => d[0])])
                    .range([padding, w - padding]);
@@ -101,17 +178,12 @@ EXAMPLE:
                    .domain([0, d3.max(dataset, (d) => d[1])])
                    .range([h - padding, padding]);
   
-  const svg = d3.select("body")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
-  
   svg.selectAll("circle")
      .data(dataset)
      .enter()
      .append("circle")
      .attr("cx", (d) => xScale(d[0]))
-     .attr("cy",(d) => yScale(d[1]))
+     .attr("cy", (d) => yScale(d[1]))
      .attr("r", (d) => 5);
   
   svg.selectAll("text")
@@ -123,13 +195,43 @@ EXAMPLE:
      .attr("y", (d) => yScale(d[1]))
   
   const xAxis = d3.axisBottom(xScale);
+  const yAxis = d3.axisLeft(yScale);
   
   svg.append("g")
      .attr("transform", "translate(0," + (h - padding) + ")")
      .call(xAxis);
 
-  const yAxis = d3.axisLeft(yScale);
-
   svg.append("g")
      .attr("transform", "translate(" + (w - padding) + ", 0)")
      .call(yAxis)
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+  const w = 500;
+  const h = 100;
+  
+  const svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+  
+  svg.selectAll("rect")
+     .data(dataset)
+     .enter()
+     .append("rect")
+     .attr("x", (d, i) => i * 30)
+     .attr("y", (d, i) => h - 3 * d)
+     .attr("width", 25)
+     .attr("height", (d, i) => d * 3)
+     .attr("fill", "navy")
+     .attr("class", "bar")
+     .append("title")
+     .text((e) => e)
+
+  svg.selectAll("text")
+     .data(dataset)
+     .enter()
+     .append("text")
+     .text((d) => d)
+     .attr("x", (d, i) => i * 30)
+     .attr("y", (d, i) => h - (d * 3 + 3))
