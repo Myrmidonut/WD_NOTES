@@ -793,6 +793,10 @@ CONDITIONS:
     condition ? true : false;                   ternary, can be chained
 
     (...) ? (..., ...) : (..., ...);
+
+    function checkSign(num) {
+      return (num > 0) ? "positive" : num < 0 ? "negative" : "zero";
+    }
   -------------------------------------------------------------------------------------------------
   BREAK CONTINUE LABEL:
     if (condition) {                            break, leave whole loop
@@ -838,6 +842,23 @@ LOOPS:
     for (let char of "test") {
       ...
     }
+---------------------------------------------------------------------------------------------------
+TIME DATE:
+  YYYY-MM-DD                            ISO standard
+  YYYY-MM-DDTHH:MM:SS
+
+  let date = new Date();                get current date and time, create date object
+    date.getTime();                     milliseconds since jan 1, 1970
+      .getFullYear()                    YYYY
+      .getMonth()                       0-11
+      .getDate()                        1-31
+      .getDay()                         0-6
+      .getHours()                       0-23
+      .getMinutes()                     0-59
+      .getSeconds()                     0-59
+      .getMilliseconds()                0-999
+
+  let msec = Date.parse("...");         convert to milliseconds:
 ---------------------------------------------------------------------------------------------------
 JSON AJAX:
   conversion:
@@ -885,10 +906,6 @@ LOCATION:
 USEFUL FUNCTIONS:
   setTimeout(function, ms);             execution after time in ms
   setInterval(function, ms);            repeated execution after time in ms
-
-  let date = new Date();                get current date and time
-  date.getTime();                       get the time
-  date.get...();                        get various values
 
   String.fromCharCode(...);             get value from ASCII code
 ---------------------------------------------------------------------------------------------------

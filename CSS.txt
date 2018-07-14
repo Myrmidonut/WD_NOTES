@@ -466,6 +466,11 @@ SHADOWS:
   filter:
     filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7)); shadow that follows the exact shape
     not supported in older browsers
+
+  big container:
+    box-shadow: 2px 2px 20px;
+  small container:
+    box-shadow: 1px 1px 10px;
 ---------------------------------------------------------------------------------------------------
 BLEND:
   background-blend-mode: multiply;    blend background image with color
@@ -724,10 +729,15 @@ CENTERING:
     line-height: ...;                   horizontal, 100% of parent
 
   image:
-    display: block;
+    display: block;                     horizontal
     margin: auto;
 
   div, block element:
-    margin: auto;
+    margin: auto;                       horizontal
     width: ...%;
+
+    height: 100%;                       vertical, check parent height
+    display: flex;
+    justify-content: center;
+    align-items: center;
 ---------------------------------------------------------------------------------------------------

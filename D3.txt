@@ -13,6 +13,47 @@ OVERVIEW:
     .data()
     ...
 ---------------------------------------------------------------------------------------------------
+STRUCTURE:
+  d3.json(url, function(error, data) {
+    if (error) console.log(error);
+    else {
+      const width = 1200;
+      const height = 500;
+      const padding = 70;
+
+      const svg = d3.select("#graph")
+                    ...
+      
+      const xScale = d3.scaleTime()
+                       ...
+      
+      const yScale = d3.scaleLinear()
+                       ...
+      
+      const xAxis = d3.axisBottom(xScale);
+      const yAxis = d3.axisRight(yScale);
+      
+      const tooltip = d3.select("#graph")
+                        ...
+          
+      // chart          
+      svg.selectAll("rect")
+         ...
+
+      // x-axis
+      svg.append("g")
+         ...
+
+      // y-axis
+      svg.append("g")
+         ...
+      
+      // title
+      svg.append("text")
+         ...
+    }
+  })
+---------------------------------------------------------------------------------------------------
 SELECT:
   can be nested
 
@@ -38,19 +79,23 @@ MANIPULATE:
   .classed("...", ...)        get/add/remove class, true/false
 ---------------------------------------------------------------------------------------------------
 EVENTS:
-  .on("...", ...)             Add or remove event listeners to capture event types like click, mouseover, mouseout etc.
+  .on("...", ...)             event listener click, callback
     mouseover
     mouseout
+    click
   selection.dispatch()        Captures event types like click, mouseover, mouseout. Typenames is the eventname, listener is the event listener
   d3.event                    Event object to access standard event fields such as timestamp or methods like preventDefault
   d3.mouse(container)         Gets the x and y coordinates of the current mouse position in the specified DOM element.
   d3.touch()                  Gets the touch coordinates to a container
 ---------------------------------------------------------------------------------------------------
 ANIMATIONS:
-  .transition()               this schedules a transition for the selected elements
-    .duration(...)            duration specifies the animation duration in milliseconds for each element
-    .ease(...)                ease specifies the easing function, example: linear, elastic, bounce
-    .delay(...)               delay specifies the delay in animation in milliseconds for each element
+  .transition()               transition effect
+    .duration(...)            animation duration in ms
+    .ease(...)                easing function
+      linear
+      elastic
+      bounce
+    .delay(...)               delay in animation in ms
 ---------------------------------------------------------------------------------------------------
 TRANSFORM:
   .attr("transform", (e, i) => "translate(0," + i * ... + ")" )
@@ -81,6 +126,7 @@ SVG:
   area:
     const width = ...;              width of area
     const height = ...;             height of area
+    
     const svg = d3.select("...")    container element
       .append("svg")                create area
       .attr("width", width)         set area width
@@ -92,32 +138,44 @@ SVG:
       circle                        attr: center: cx, cy, radius: r
       ellipse                       attr: center: cx, cx, radius: rx, ry
       text                          attr: position: x, y, style/color: stroke, black
-        .text("...")                add the text
-      title
+        .text(...)
+      title                         add tooltip, fades in/out
+        .text(...)
       line                          attr: start and end: x1, y1, x2, y2, style/color: stroke, black
 
       g                             group of shapes to add effects, etc. to all of them
 
+    for bar chart to avoid "waves":
+      .attr("width", 1 + width / data.length)
+
   styles:
-    .attr("...")
+    .style("...")
       fill
       stroke
       stroke-width
       opacity
       font-family
       font-size
+      text-anchor                   start, middle, end
+      alignment-baseline            ideographic, middle, hanging
 
     default: black, no stroke
 ---------------------------------------------------------------------------------------------------
 SCALE:
-  const scale = d3.scaleLinear()    linear scale for quantative data
-    .domain([..., ...]);            range of data
-    .range([..., ...]);             range of axis
+  const xScale = d3.scaleLinear()         linear scale for quantative data
+                   .domain([..., ...])    range of data, min and max
+                   .range([..., ...]);    range of axis, min and max
 
-      d3.min(...)                   minimum of data
-      d3.max(...)                   maximum of data
+  d3.min(...)                             minimum of data
+  d3.max(...)                             maximum of data
 
-  const output = scale(...);        scaling number
+  for dates:
+    .domain([ d3.min(data, e => new Date(e[0])), d3.max(data, e => new Date(e[0])) ])
+    .attr("x", (e) => xScale(new Date(e[0])) )
+
+  // Parse the date / time
+  var parseDate = d3.time.format("%d-%b-%y").parse;
+  var formatTime = d3.time.format("%e %B");
 ---------------------------------------------------------------------------------------------------
 AXES:
   horizontal and vertical
@@ -126,27 +184,80 @@ AXES:
   label
   uses scale
 
-  .axisTop(...)
+  const xAxis = d3.axisBottom(scale)          create axis using scale
+    .scale(scale)                             scale alternative
+    .tickFormat(d3.timeFormat("%M:%S"))       tick format
+
+  svg.append("g")                             add group
+    .attr("transform", "translate(50, 10)")   50px to right and 10px to bottom of origin
+    .call(xAxis);                             insert axis
+
   .axisBottom(...)
   .axisLeft(...)
   .axisRight(...)
-  
-  .call()
+---------------------------------------------------------------------------------------------------
+TIMES:
+  x: e.Year in YYYY
+  y: e.Time in "MM:SS"
+
+  const formatTime = d3.timeFormat("%M:%S");
+  const parseTime = d3.timeParse("%M:%S");
+
+  const xScale = d3.scaleTime()
+                   .domain([ d3.min(data, e => Date.parse(e.Year)) , ... ])
+                   ...
+
+  const yScale = d3.scaleTime()
+                   .domain([ d3.min(data, e => parseTime(e.Time)) , ... ])
+                   ...
+
+  const xAxis = d3.axisBottom(xScale);
+  const yAxis = d3.axisLeft(yScale).tickFormat(formatTime);
+
+  svg.selectAll("circle")
+   .attr("cx", e => xScale(Date.parse(e.Year)))
+   .attr("cy", e => yScale(parseTime(e.Time)))
+---------------------------------------------------------------------------------------------------
+TOOLTIP:
+  #tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  const tooltip = d3.select("#graph")
+                    .append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+
+  svg.selectAll("...")
+     ...
+     .on("mouseover", (e) => {
+       tooltip.transition()
+              .duration(200)
+              .style("opacity", .9);
+       tooltip.html(...)
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 28) + "px");
+     })
+     .on("mouseout", (e) => {
+       tooltip.transition()
+              .duration(500)
+              .style("opacity", 0);
+     });
 ---------------------------------------------------------------------------------------------------
 CALLBACKS:
   ...((e, i) => ... this)
     e:    element
     i:    index
     this: DOM object
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
-  d3.select("body")
-    .selectAll("h2")
-    .data(dataset)
-    .enter()
-    .append("h2")
-    .text("New Title");
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
   const dataset = [
@@ -206,32 +317,144 @@ EXAMPLE:
      .call(yAxis)
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
-  const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
-  const w = 500;
-  const h = 100;
-  
-  const svg = d3.select("body")
+  const data = req.response.data;
+
+  const width = 1200;
+  const height = 500;
+  const padding = 70;
+
+  const svg = d3.select("#graph")
                 .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+                .attr("width", width)
+                .attr("height", height);
   
+  const xScale = d3.scaleTime()
+                   .domain([ d3.min(data, e => new Date(e[0])), d3.max(data, e => new Date(e[0])) ])
+                   .range([ padding, width - padding ]);
+  
+  const yScale = d3.scaleLinear()
+                   .domain([ 0, d3.max(data, (e) => e[1]) ])
+                   //.domain([ d3.min(data, (e) => e[1]), d3.max(data, (e) => e[1]) ])
+                   .range([ height-padding, padding ]);
+  
+  const xAxis = d3.axisBottom(xScale);
+  const yAxis = d3.axisRight(yScale);
+  
+  const tooltip = d3.select("#graph")
+                    .append("div")
+                    .attr("id", "tooltip")
+                    .style("opacity", 0);
+                
   svg.selectAll("rect")
-     .data(dataset)
+     .data(data)
      .enter()
      .append("rect")
-     .attr("x", (d, i) => i * 30)
-     .attr("y", (d, i) => h - 3 * d)
-     .attr("width", 25)
-     .attr("height", (d, i) => d * 3)
-     .attr("fill", "navy")
+     .attr("x", (e) => xScale(new Date(e[0])) )
+     .attr("y", (e) => yScale(e[1]) )
+     //.attr("width", 1 + width / data.length)
+     .attr("width", 5 )
+     .attr("height", (e) => height - padding - yScale(e[1]) )
      .attr("class", "bar")
-     .append("title")
-     .text((e) => e)
+     .attr("data-date", (e) => e[0])
+     .attr("data-gdp", (e) => e[1])
+  
+     .on("mouseover", (e) => {
+       tooltip.transition()
+              .duration(200)
+              .style("opacity", .9);
+       tooltip.html("Date: " + e[0] + "<br>" + "GDP: " + e[1])
+              .attr("data-date", e[0])
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 42) + "px");
+     })
+  
+     .on("mouseout", (e) => {
+       tooltip.transition()
+              .duration(500)
+              .style("opacity", 0);
+     });
 
-  svg.selectAll("text")
-     .data(dataset)
-     .enter()
-     .append("text")
-     .text((d) => d)
-     .attr("x", (d, i) => i * 30)
-     .attr("y", (d, i) => h - (d * 3 + 3))
+  svg.append("g")
+     .attr("transform", "translate(2," + (height - padding) + ")")
+     .attr("id", "x-axis")
+     .style("font-size", 15)
+     .call(xAxis);
+
+  svg.append("g")
+     .attr("transform", "translate(" + (width - padding + 3) + ", 0)")
+     .attr("id", "y-axis")
+     .style("font-size", 15)
+     .call(yAxis);
+  
+  svg.append("text")
+     .attr("x", 100)
+     .attr("y", 100)
+     .text("US GDP from 1947 to 2015 in billions of Dollars.")
+     .style("font-family", "Lato")
+     .style("font-size", "25")
+     .attr("id", "title");
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const data = ...;
+  const margin = 200;
+  const width = 600 - margin;
+  const height = 500 - margin;
+
+  const svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+  svg.append("text")
+     .attr("transform", "translate(100,0)")
+     .attr("x", 50)
+     .attr("y", 50)
+     .attr("font-size", "24px")
+     .text("XYZ Foods Stock Price")
+
+  var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+      yScale = d3.scaleLinear().range([height, 0]);
+
+  var g = svg.append("g")
+             .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+  d3.csv("XYZ.csv", function(error, data) {
+      if (error) {
+          throw error;
+      }
+
+      xScale.domain(data.map(function(d) { return d.year; }));
+      yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+      g.append("g")
+       .attr("transform", "translate(0," + height + ")")
+       .call(d3.axisBottom(xScale))
+       .append("text")
+       .attr("y", height - 250)
+       .attr("x", width - 100)
+       .attr("text-anchor", "end")
+       .attr("stroke", "black")
+       .text("Year");
+
+      g.append("g")
+       .call(d3.axisLeft(yScale).tickFormat(function(d){
+           return "$" + d;
+       })
+       .ticks(10))
+       .append("text")
+       .attr("transform", "rotate(-90)")
+       .attr("y", 6)
+       .attr("dy", "-5.1em")
+       .attr("text-anchor", "end")
+       .attr("stroke", "black")
+       .text("Stock Price");
+
+      g.selectAll(".bar")
+       .data(data)
+       .enter().append("rect")
+       .attr("class", "bar")
+       .attr("x", function(d) { return xScale(d.year); })
+       .attr("y", function(d) { return yScale(d.value); })
+       .attr("width", xScale.bandwidth())
+       .attr("height", function(d) { return height - yScale(d.value); });
+  });
