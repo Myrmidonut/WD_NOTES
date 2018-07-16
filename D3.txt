@@ -160,6 +160,12 @@ SVG:
       alignment-baseline            ideographic, middle, hanging
 
     default: black, no stroke
+
+  transform:
+    .attr("transform", "...")       adjust position
+      translate(..., ...)           move to x, y
+      rotate(...)                   rotate in degrees
+      scale(...)                    scale attributes by factor
 ---------------------------------------------------------------------------------------------------
 SCALE:
   const xScale = d3.scaleLinear()         linear scale for quantative data
@@ -184,17 +190,33 @@ AXES:
   label
   uses scale
 
-  const xAxis = d3.axisBottom(scale)          create axis using scale
-    .scale(scale)                             scale alternative
-    .tickFormat(d3.timeFormat("%M:%S"))       tick format
+  const xAxis = d3.axisBottom(scale)                              create axis using scale
+                  .axisBottom(...)                                alternatives
+                  .axisLeft(...)
+                  .axisRight(...)
+                  .tickFormat(d3.timeFormat("%M:%S"))             tick format
 
-  svg.append("g")                             add group
-    .attr("transform", "translate(50, 10)")   50px to right and 10px to bottom of origin
-    .call(xAxis);                             insert axis
+  svg.append("g")                                                 add group
+    .attr("transform", "translate(50, 10)")                       set position
+    .call(xAxis);                                                 insert axis
 
-  .axisBottom(...)
-  .axisLeft(...)
-  .axisRight(...)
+  labels:
+    svg.append("text")                                            x-axis
+       .attr("x", width / 2)
+       .attr("y", (height - padding / 2) + 7)
+       .style("text-anchor", "middle")
+       .style("alignment-baseline", "middle")
+       .style("font-family", "Lato")
+       .style("font-weight", "bold")
+       .text("Years");
+    
+      svg.append("text")                                          y-axis
+         .attr("transform", "translate(20, 200) rotate(-90)")     translate instead of x, y
+         .style("text-anchor", "middle")
+         .style("alignment-baseline", "middle")
+         .style("font-family", "Lato")
+         .style("font-weight", "bold")
+         .text("Time in minutes");
 ---------------------------------------------------------------------------------------------------
 TIMES:
   x: e.Year in YYYY
@@ -219,38 +241,36 @@ TIMES:
    .attr("cy", e => yScale(parseTime(e.Time)))
 ---------------------------------------------------------------------------------------------------
 TOOLTIP:
-  #tooltip {
+  #tooltip {                                                CSS
     position: absolute;
-    text-align: center;
-    width: 60px;
-    height: 28px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
+    text-align: left;
+    padding: 5px;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    background: lightgray;
+    border-radius: 2px;
     pointer-events: none;
   }
 
-  const tooltip = d3.select("#graph")
+  const tooltip = d3.select("#graph")                       create divs
                     .append("div")
                     .attr("class", "tooltip")
-                    .style("opacity", 0);
+                    .style("opacity", 0);                   opacity 0
 
-  svg.selectAll("...")
+  svg.selectAll("...")                                      add to individual shapes
      ...
-     .on("mouseover", (e) => {
+     .on("mouseover", (e) => {                              mouseover
        tooltip.transition()
-              .duration(200)
-              .style("opacity", .9);
+              .duration(200)                                fade in
+              .style("opacity", .9);                        opacity 0.9
        tooltip.html(...)
               .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 28) + "px");
+              .style("top", (d3.event.pageY - 28) + "px");  
      })
-     .on("mouseout", (e) => {
+     .on("mouseout", (e) => {                               mouseout
        tooltip.transition()
-              .duration(500)
-              .style("opacity", 0);
+              .duration(500)                                fade out
+              .style("opacity", 0);                         opacity 0
      });
 ---------------------------------------------------------------------------------------------------
 CALLBACKS:

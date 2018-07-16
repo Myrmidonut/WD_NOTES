@@ -1,23 +1,64 @@
-uses JSX
-needs to be compiled with Babel
+OVERVIEW:
+  uses JSX
+  uses camelCase
+  filenames are capitalized
 
-needs exactly one parent element
+  single page:
+    one HTML page
+    content rerendered on client
+    usually one ReactDOM.render() call
 
-uses camelCase
+  multi page:
+    multiple HTML pages
+    content rendered on server
+    one ReactDOM.render() per widget
 ---------------------------------------------------------------------------------------------------
 INSTALLATION:
-  npm:
-    npm install -g create-react-app       install automated react
-    create-react-app ...                  create folder and creates basic react app
-
-    npm start                             from inside react app folder
-
+  create-react-app:
+    npm install -g create-react-app       install automated react app generator
+    create-react-app ...                  create folder with basic react app
+    npm start                             start server running the app
     npm run build                         create optimized version in build folder
 
   JS link:
     React                                 components
     ReactDOM                              rendering
     Babel                                 JSX
+---------------------------------------------------------------------------------------------------
+FOLDERS:
+  node_modules
+  public
+    index.html
+  src
+    App.js
+    index.js
+---------------------------------------------------------------------------------------------------
+FILES:
+  App.js:
+    import React, { Component } from 'react';
+    import './App.css';
+
+    class App extends Component {
+      render() {
+        return (
+          <div className="App">
+            ...
+          </div>
+        );
+      }
+    }
+
+    export default App;
+
+  index.js:
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import './index.css';
+    import App from './App';
+    import registerServiceWorker from './registerServiceWorker';
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+    registerServiceWorker();
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
   const JSX = (                   () optional
@@ -31,6 +72,9 @@ COMMENTS:
 ---------------------------------------------------------------------------------------------------
 CLASSES:
   className="..."
+---------------------------------------------------------------------------------------------------
+JSX:
+  ... {...} ...                   use simple code inside "HTML"
 ---------------------------------------------------------------------------------------------------
 TAGS:
   self closing:
@@ -54,17 +98,50 @@ STYLES:
   uses camelCase
   px values only need number, otherwise use "4em", etc.
 ---------------------------------------------------------------------------------------------------
+INTERNAL CODE:
+  return (
+    <div className="App">
+      <h1>Hi, I am a React App</h1>
+    </div>
+  );
+
+  equivalent to internal:
+    return React.createElement("div", {className: "App"},
+             React.createElement("h1", null, "Headline"));
+---------------------------------------------------------------------------------------------------
+COMPONENTS:
+  a function that returns JSX
+  return one root element per component
+
+  stateless
+  stateful
+
+  Person/Person.js:
+    import React from "react";
+    const person = () => {
+      return <p>I'm a Person!</p>
+    };
+    export default person;
+
+  App.js:
+    return (
+      <Person />
+    )
+---------------------------------------------------------------------------------------------------
 STATELESS COMPONENTS:
   capital letter
   returns JSX or null
   use stateless when possible
 
   stateless functional component:           only receive and render
-    function Name(props) {                  example, arrow function is common
+    const name = (props) => {               example
       ...;                                  JS
       return (
-        <div className="name" />
-      );  
+        <div>
+          ...
+          {props.children}                  use content inside <name>...</name> in App.js
+        </div>
+      )
     };
 
   stateless component:
@@ -156,26 +233,27 @@ PROPS:
 STATE:
   update changes to the data
   changes to the state trigger render again
-  requires class
+  declared only inside class
   local to class
   access methods inside the class with this.name
+  use stateless functional components whenever possible
 
   class Name extends React.Component {    example
-      constructor(props) {
-        super(props);
-        this.state = {                    declaring state
-          name: "..."
-        }
-        this.test = this.test.bind(this);
+    constructor(props) {
+      super(props);
+      this.state = {                      declaring state
+        name: "..."
       }
-      test() {
-        this.setState({                   modifying state
-          name: "..."
-        });
-
-        this.state.name = "...";          alternative???
-      }
+      this.test = this.test.bind(this);
     }
+    test() {
+      this.setState({                     modifying state
+        name: "..."
+      });
+
+      this.state.name = "...";            alternative???
+    }
+  }
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
   mount:
