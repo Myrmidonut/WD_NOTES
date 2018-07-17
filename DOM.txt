@@ -22,10 +22,15 @@ SELECT:
   nodelist:
     array-like, [..., ...]  
 ---------------------------------------------------------------------------------------------------
-CLASS/ID:      
-  .classList.add("...");                    add class/id to an element
-  .classList.remove("...");                 remove class/id
-  .classList.toggle("...");                 toggle class/id
+CREATE:
+  document
+    .createElement("...", options)          create element, optional options
+    .appendChild("...")                     add as last child of parent
+    .insertBefore(new, next)                add before next inside parent
+    .removeChild("...")                     remove from parent, return reference to child
+---------------------------------------------------------------------------------------------------
+READ:
+  .value                                    get value
 ---------------------------------------------------------------------------------------------------
 MANIPULATE:
   text:
@@ -42,15 +47,10 @@ MANIPULATE:
     .setAttribute("...", "...");            change attribute: name, value
     .removeAttribute("...")                 remove attribute
 ---------------------------------------------------------------------------------------------------
-CREATE:
-  document
-    .createElement(..., options)          create element, optional options
-    .appendChild(...)                     add as last child of parent
-    .insertBefore(new, next)              add before next inside parent
-    .removeChild(...)                     remove from parent, return reference to child
----------------------------------------------------------------------------------------------------
-READ:
-  .value                                  get value
+CLASS / ID:      
+  .classList.add("...");                    add class/id to an element
+  .classList.remove("...");                 remove class/id
+  .classList.toggle("...");                 toggle class/id
 ---------------------------------------------------------------------------------------------------
 EVENTS:
   .addEventListener("...", ...);          run a function when an event happens

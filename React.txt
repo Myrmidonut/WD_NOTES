@@ -24,12 +24,16 @@ INSTALLATION:
     React                                 components
     ReactDOM                              rendering
     Babel                                 JSX
+
+  Chrome:
+    React Developer Tools                 can display details for react components
 ---------------------------------------------------------------------------------------------------
 FOLDERS:
   node_modules
-  public
+  public                                  static files
     index.html
-  src
+    favicon.ico
+  src                                     dynamic files
     App.js
     index.js
 ---------------------------------------------------------------------------------------------------
@@ -37,6 +41,7 @@ FILES:
   App.js:
     import React, { Component } from 'react';
     import './App.css';
+    import ... from "./components/...";           use components
 
     class App extends Component {
       render() {
@@ -60,13 +65,6 @@ FILES:
     ReactDOM.render(<App />, document.getElementById('root'));
     registerServiceWorker();
 ---------------------------------------------------------------------------------------------------
-VARIABLES:
-  const JSX = (                   () optional
-    <div>
-      <h1>...</h1>
-    </div>
-  );
----------------------------------------------------------------------------------------------------
 COMMENTS:
   {/* ... */}
 ---------------------------------------------------------------------------------------------------
@@ -74,7 +72,7 @@ CLASSES:
   className="..."
 ---------------------------------------------------------------------------------------------------
 JSX:
-  ... {...} ...                   use simple code inside "HTML"
+  {...}                           run code in HTML
 ---------------------------------------------------------------------------------------------------
 TAGS:
   self closing:
@@ -110,78 +108,40 @@ INTERNAL CODE:
              React.createElement("h1", null, "Headline"));
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
-  a function that returns JSX
-  return one root element per component
-
-  stateless
-  stateful
-
-  Person/Person.js:
-    import React from "react";
-    const person = () => {
-      return <p>I'm a Person!</p>
-    };
-    export default person;
-
-  App.js:
-    return (
-      <Person />
-    )
----------------------------------------------------------------------------------------------------
-STATELESS COMPONENTS:
   capital letter
   returns JSX or null
+  returns one root element per component
   use stateless when possible
 
-  stateless functional component:           only receive and render
-    const name = (props) => {               example
+  /components/Name.js:
+    import React from "react";
+    ...                                     component Name
+    export default Name;
+
+  stateless functional component:
+    const Name = (props) => {               static render
       ...;                                  JS
       return (
         <div>
           ...
           {props.children}                  use content inside <name>...</name> in App.js
         </div>
-      )
+      );
     };
 
-  stateless component:
-    class Name extends React.Component {
-      constructor(props) {                  standard to include constructor(props)
-        super(props);                       calls constructor of parent (React.Component)
+  stateful:
+    class Name extends React.Component {    dynamic render
+      constructor(props) {
+        super(props);
+        this.state = {
+          ...: ...,
+          ...: ...
+        }
       }
-      render() {                            render
-        ...;                                JS
-        return (                            return
-          <div>                             one parent div
-            <h1>Hi</h1>                     JSX
-          </div>
-        );
-      }
-    }
-
-  multiple:
-    create individual components Navbar and Dashboard
-
-    return (
-      <App>
-        <Navbar />                          component
-        <Dashboard />                       component
-      </App>
-    )
----------------------------------------------------------------------------------------------------
-STATEFUL COMPONENTS:
-  class Name extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        ...: ...,
-        ...: ...
+      render() {
+        return <div>...</div>
       }
     }
-    render() {
-      return <div>...</div>
-    }
-  }
 ---------------------------------------------------------------------------------------------------
 REACT DOM RENDER:
   ReactDOM.render(component, target)                    JSX

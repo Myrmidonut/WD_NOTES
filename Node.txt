@@ -67,7 +67,7 @@ README.MD
   README.md contains written description of the project
 ---------------------------------------------------------------------------------------------------
 INCLUDE:
-  var ... = require("...");       include a package
+  const ... = require("...");       include a package
 ---------------------------------------------------------------------------------------------------
 PACKAGES:
   build in:
@@ -87,23 +87,23 @@ PACKAGES:
   multer                  handling files from forms
 ---------------------------------------------------------------------------------------------------
 BASIC START:
-  server.js:
-    const http = require('http');                           // import module
+  app.js:
+    const http = require('http');                           import module
 
-    const hostname = '127.0.0.1';                           // set hostname (localhost)
-    const port = 3000;                                      // set port
+    const hostname = '127.0.0.1';                           set hostname (localhost)
+    const port = 3000;                                      set port
 
-    const server = http.createServer(function(req, res) {   // create http server
-      res.statusCode = 200;                                 // response
-      res.setHeader('Content-Type', 'text/plain');          // response
-      res.end('Hello World\n');                             // response
+    const server = http.createServer((req, res) => {        create http server
+      res.statusCode = 200;                                 response
+      res.setHeader('Content-Type', 'text/plain');          response
+      res.end('Hello World\n');                             response
     });
 
-    server.listen(port, hostname, function() {              // assign hostname and port
+    server.listen(port, hostname, () => {                   assign hostname and port
       console.log('Server running at http://'+ hostname + ':' + port + '/');
     });
 
-  node server           start the server at http://127.0.0.1:3000/
+  node app.js                                               start server at http://127.0.0.1:3000/
 ---------------------------------------------------------------------------------------------------
 process.argv[]                    arguments array
 

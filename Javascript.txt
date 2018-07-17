@@ -307,10 +307,8 @@ STRINGS:
   declaration:
     myString = "...";               string literal, doublequotes
     myString = '...';               string literal, singlequotes
-    myString = `...`;               string literal, backticks, can be mutiline
+    myString = `...`;               string literal, backticks, multiline
       `... ${...} ...`              allows embedding of variables and expressions into a string
-
-  "... ${...} ..."                  ${} is evaluated and converted into a string
 
   escape character:
     \                               escape character to use special characters in a string
@@ -910,16 +908,16 @@ USEFUL FUNCTIONS:
   String.fromCharCode(...);             get value from ASCII code
 ---------------------------------------------------------------------------------------------------
 IMPORT:
-  import { ... } from "...";      import a function from a file, ./...
+  import { ..., ... } from "...";       import functions from a file, ./...
 
-  import * as ... from ...;       import everything from a file into an object
+  import * as ... from ...;             import everything from a file into an object
 
-  import ... from "...";          import default value from a file
+  import ... from "...";                import default value from a file
 ---------------------------------------------------------------------------------------------------
 EXPORT:
-  export { ... };                 export a function
-  export const foo = "bar";       export a variable
-  export { ..., foo };            export multiple functions and variables
+  export { ... };                       export a function
+  export const foo = "bar";             export a variable
+  export { ..., foo };                  export multiple functions and variables
 
   export default function ... (...) {   export one value with fallback for the file
     return ...;
