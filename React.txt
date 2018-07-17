@@ -96,14 +96,14 @@ STYLES:
   uses camelCase
   px values only need number, otherwise use "4em", etc.
 ---------------------------------------------------------------------------------------------------
-INTERNAL CODE:
+BEHIND THE SCENES CODE:
   return (
     <div className="App">
       <h1>Hi, I am a React App</h1>
     </div>
   );
 
-  equivalent to internal:
+  equivalent to behind the scenes:
     return React.createElement("div", {className: "App"},
              React.createElement("h1", null, "Headline"));
 ---------------------------------------------------------------------------------------------------
@@ -131,13 +131,16 @@ COMPONENTS:
 
   stateful:
     class Name extends React.Component {    dynamic render
-      constructor(props) {
-        super(props);
-        this.state = {
+      constructor(props) {                  constructor
+        super(props);                       required
+        this.state = {                      set states
           ...: ...,
           ...: ...
         }
       }
+
+      ...                                   methods
+
       render() {
         return <div>...</div>
       }
@@ -192,7 +195,7 @@ PROPS:
 ---------------------------------------------------------------------------------------------------
 STATE:
   update changes to the data
-  changes to the state trigger render again
+  changes to the state trigger re-render
   declared only inside class
   local to class
   access methods inside the class with this.name
@@ -216,28 +219,22 @@ STATE:
   }
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
-  mount:
-    first page load
-  re-render:
-    state changes
+  mount                                 first page load 
+  re-render                             state changes
 
   componentWillMount()                  called before render when component is mounted to DOM
-
   componentDidMount()                   called after mounted to DOM
                                         calls to setState trigger a new render
                                         API or server calls
                                         event listeners, add and remove for best practice
-                                      
+  componentWillUnmount()
+
   componentWillReceiveProps(nextProps)  called when component receices new props
                                         new prop as argument (nextProps) and compare with his.props
 
   shouldComponentUpdate(nextProps, nextState)    re-render component if it returns true    
-
   componentWillUpdate()
-
   componentDidUpdate()                  called after component re-renders
-
-  componentWillUnmount()
 ---------------------------------------------------------------------------------------------------
 SERVER:
   ReactDOMServer.renderToString(<App />);
