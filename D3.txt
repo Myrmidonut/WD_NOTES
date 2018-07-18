@@ -1,5 +1,7 @@
 INSTALLATION:
   <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js
 ---------------------------------------------------------------------------------------------------
 OVERVIEW:
   use d3 methods to display data
@@ -17,6 +19,7 @@ STRUCTURE:
   d3.json(url, function(error, data) {
     if (error) console.log(error);
     else {
+      const ... = data;
       const width = 1200;
       const height = 500;
       const padding = 70;
@@ -233,7 +236,7 @@ TIMES:
                    .domain([ d3.min(data, e => parseTime(e.Time)) , ... ])
                    ...
 
-  const xAxis = d3.axisBottom(xScale);
+  const xAxis = d3.axisBottom(xScale).tickFormat(formatTime);
   const yAxis = d3.axisLeft(yScale).tickFormat(formatTime);
 
   svg.selectAll("circle")
@@ -280,18 +283,7 @@ CALLBACKS:
     this: DOM object
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
-  const dataset = [
-                    [ 34,     78 ],
-                    [ 109,   280 ],
-                    [ 310,   120 ],
-                    [ 79,    411 ],
-                    [ 420,   220 ],
-                    [ 233,   145 ],
-                    [ 333,    96 ],
-                    [ 222,   333 ],
-                    [ 78,    320 ],
-                    [ 21,    123 ]
-                  ];
+  const dataset = [[34, 78], ...];
   const w = 500;
   const h = 500;
   const padding = 60;
@@ -337,8 +329,7 @@ EXAMPLE:
      .call(yAxis)
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
-  const data = req.response.data;
-
+  const data = ...;
   const width = 1200;
   const height = 500;
   const padding = 70;
