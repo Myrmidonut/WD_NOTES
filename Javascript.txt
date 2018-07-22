@@ -733,6 +733,7 @@ ARRAY METHODS:
     .every(function(e) {...})                   return true if all results are true
     .fill(..., ..., ...)                        fill array with value, from start to end
     .copyWithin(..., ..., ...)                  copies elements into target, from start to end
+    let uniq = [...new Set(myArr)];             remove duplicate entries, keep order
 
   sort:
     .sort()                               M, sort the array itself from lowest to highest value
