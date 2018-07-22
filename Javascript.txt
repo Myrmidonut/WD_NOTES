@@ -270,6 +270,7 @@ TYPE CONVERSION:
 
     1 + "2" == "12"                       number + string == string
     1 - "2" == -1                         number - string == number
+    1 * "2" == 2                          number * string == number
     " -9\n" + 5 == " -9\n5"
     " -9\n" - 5 == -14
 
