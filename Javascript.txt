@@ -726,15 +726,15 @@ ARRAY METHODS:
     .findIndex(function(e) {...})             see .find, return index
 
   iterate:
-    .filter(function(e) {...})                  return array with passed, check every entry
-    .map(function(e) {...})                     return array, run function on every entry
-    .forEach(function(e, i) {...})              run function on every element with index
-    .reduce(function(accum, e) {...}, init)     return value after combining functions over all entries
-    .some(function(e) {...})                    return true if at least one result is true
-    .every(function(e) {...})                   return true if all results are true
-    .fill(..., ..., ...)                        fill array with value, from start to end
-    .copyWithin(..., ..., ...)                  copies elements into target, from start to end
-    let uniq = [...new Set(myArr)];             remove duplicate entries, keep order
+    .filter(e => {...})                       return array with passed, check every entry
+    .map(e => {...})                          return array, run function on every entry
+    .forEach((e, i) => {...})                 run function on every element with index
+    .reduce((total, e) => {...}, init)        return value after iterating into total, optional init
+    .some(e => {...})                         return true if at least one result is true
+    .every(e => {...})                        return true if all results are true
+    .fill(..., ..., ...)                      fill array with value, from start to end
+    .copyWithin(..., ..., ...)                copies elements into target, from start to end
+    let uniq = [...new Set(myArr)];           remove duplicate entries, keep order
 
   sort:
     .sort()                               M, sort the array itself from lowest to highest value
