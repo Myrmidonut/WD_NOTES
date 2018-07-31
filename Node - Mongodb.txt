@@ -1,0 +1,64 @@
+ODM:
+  Object Data Mapper
+---------------------------------------------------------------------------------------------------
+INSTALL:
+  npm install mongodb --save
+---------------------------------------------------------------------------------------------------
+USE:
+  const mongoClient = require("mongodb").MongoClient;
+  const url = "..."                                       set URL
+  const dbName = "..."                                    set database name
+---------------------------------------------------------------------------------------------------
+CONNECT:
+  mongoClient.connect(url, (err, db) => {         connect to database
+    const collection = db.collection("...")       select collection by name
+    ...                                           run mongodb commands
+  });
+---------------------------------------------------------------------------------------------------
+CRUD:
+  Create Read Update Delete
+---------------------------------------------------------------------------------------------------
+CREATE:
+  collection.insert({...}, callback)
+
+  collection.insertOne({...})
+  collection.insertMany([{a : 1}, {a : 2}], callback);
+  colelction.findAndModify({...}, {}, )
+
+  res.json(result.ops[0])                                     send result back
+---------------------------------------------------------------------------------------------------
+READ - FIND:
+  collection.find().toArray(callback))                        find all entries
+  collection.find({'a': 3}).toArray(callback);                find first matching entry
+  collection.find({_id: ObjectId("...")}).toArray(callback);  find by id
+    .limit(...)                                               find first two
+
+  collection.findOne({...}, callback)
+---------------------------------------------------------------------------------------------------
+UPDATE:
+  collection.update({...}, {...}, callback)                   update
+    ({...}, {$push: {...: ...}}, callback)                    push fields to array
+    ({...}, {$set: {...: ...}}, callback)                     overwrite fields
+
+  collection.updateOne
+  collection.updateMany
+---------------------------------------------------------------------------------------------------
+DELETE:
+  collection.remove(callback);                                delete all entries in collection
+  collection.remove({...}, {...}, callback)                   delete one entry
+  
+  collection.findOneAndDelete({...}, callback)     
+  collection.deleteOne({ a : 3 }, function(err, result) {})   
+---------------------------------------------------------------------------------------------------
+INDEX:
+  const indexCollection = function(db, callback) {      
+    db.collection('documents').createIndex(
+      { "a": 1 },
+        null,
+        function(err, results) {
+          console.log(results);
+          callback();
+      }
+    );
+  };
+---------------------------------------------------------------------------------------------------

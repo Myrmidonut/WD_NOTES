@@ -1,0 +1,47 @@
+OVERVIEW:
+  secure Express apps by setting HTTP headers
+---------------------------------------------------------------------------------------------------
+INSTALLATION:
+  "helmet": "^3.12.1"
+
+  const helmet = require("helmet");
+---------------------------------------------------------------------------------------------------
+USE:
+  complete:
+    app.use(helmet());                    not: `noCache()`, `contentSecurityPolicy()`,
+
+  individual:
+    app.use(helmet.hidePoweredBy());                        remove site information from headers
+    app.use(helmet.hidePoweredBy({setTo: 'PHP 4.2.0'}))     set site information
+    app.use(helmet.frameguard({action: "deny"}));           disable iframe clickjacking
+    app.use(helmet.xssFilter());                            prevent script injection
+    app.use(helmet.noSniff());                              disable content-type bypass
+    app.use(helmet.ieNoOpen());                             prevent IE from opening untrusted HTML
+    const ninetyDaysInMilliseconds = 90*24*60*60*1000;      use HTTPS
+    app.use(helmet.hsts({
+      maxAge: ninetyDaysInMilliseconds,
+      force: true
+    }));
+    app.use(helmet.dnsPrefetchControl());                   disable DNS prefetching, slow!
+    app.use(helmet.noCache());                              disable client caching, slow!
+    app.use(helmet.contentSecurityPolicy({                  whitelist for scripts, stylesheets, ...
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "trusted-cdn.com"]
+      }
+    }));
+
+  multiple:
+    app.use(helmet({
+      frameguard: {                       enable and configure
+        action: 'deny'
+      },
+      contentSecurityPolicy: {            enable and configure
+        directives: {
+          defaultSrc: ["'self'"],
+          styleSrc: ['style.com'],
+        }
+    },
+    dnsPrefetchControl: false             disable
+    }))
+---------------------------------------------------------------------------------------------------

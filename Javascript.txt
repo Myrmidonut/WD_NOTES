@@ -893,6 +893,16 @@ JSON AJAX:
       }
     }
     req.send(username);                                     send the data
+
+  fetch:
+    fetch("...")
+      .then(function(response) {
+        return response.json();
+      }).then(function(jsonData) {
+        console.log(jsonData[0].content);
+      }).catch(function(err) {
+        console.log("Opps, Something went wrong!", err);
+      })
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {

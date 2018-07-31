@@ -35,6 +35,12 @@ ROUTES:
   order of routes matters
   call function when route is matched
 
+  ROUTE:
+    app.route("...")                                              multiple routes to same URL
+      .get(function(req,res) {...})
+      .post(function(req,res) {...})
+      ...
+
   GET:
     app.get("...", function(req, res) {                           route with request and response
       res.send("...");                                            output
@@ -57,7 +63,7 @@ ROUTES:
 ---------------------------------------------------------------------------------------------------
 REQUEST:
   req.headers                               header data of request object
-  req.body.form_name                        data send with form
+  req.body                                  data send with form
 
   req.method
   req.path

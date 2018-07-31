@@ -1,0 +1,42 @@
+INSTALLATION:
+  "chai": "^3.5.0",
+	"chai-http": "^3.0.0"
+----------
+TESTS:
+  unit tests:
+    tests/1_unit-tests.js
+
+  functional tests:
+    tests/2_functional-tests.js
+    
+      var chaiHttp = require('chai-http');
+      var chai = require('chai');
+      var assert = chai.assert;
+      var server = require('../server');
+
+      chai.use(chaiHttp);
+
+      suite('Functional Tests', function() {
+
+        test('#example Test GET /api/books', function(done){
+          chai.request(server)
+            .get('/api/books')
+            .post("...")
+
+            .send({...: ...})                                       post form data
+
+            .end(function(err, res){
+
+              assert.equal(res.status, 200);                        status
+
+              assert.isArray(res.body, "...");                      is an array
+
+              assert.property(res.body, '_id', "...");              has a property
+
+              assert.equal(res.text, "...")                         for res.send
+
+              done();
+            });
+        });
+      
+      }
