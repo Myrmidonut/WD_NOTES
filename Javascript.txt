@@ -308,7 +308,7 @@ STRINGS:
   declaration:
     myString = "...";               string literal, doublequotes
     myString = '...';               string literal, singlequotes
-    myString = `...`;               string literal, backticks, multiline
+    myString = `...`;               string literal, backticks, template literal, multiline
       `... ${...} ...`              allows embedding of variables and expressions into a string
 
   escape character:
@@ -895,14 +895,14 @@ JSON AJAX:
     req.send(username);                                     send the data
 
   fetch:
-    fetch("...")
-      .then(function(response) {
-        return response.json();
-      }).then(function(jsonData) {
-        console.log(jsonData[0].content);
-      }).catch(function(err) {
-        console.log("Opps, Something went wrong!", err);
-      })
+      fetch(url)
+        .then(response => {
+          return response.json();
+        }).then(jsonData => {
+          console.log(jsonData);
+        }).catch(err => {
+          console.log("Error: ", err);
+        })
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {

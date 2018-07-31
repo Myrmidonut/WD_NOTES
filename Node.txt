@@ -82,10 +82,12 @@ PACKAGES:
   ejs                     inserting JS into HTML
   body-parser             handling form POST
   request                 API
-  mongoose                accessing MongoDB
+  mongoose                MongoDB
+  mongodb                 MongoDB
   dns                     DNS lookup, dns.lookup(url, function(err, data) {});
   multer                  handling files from forms
   helmet                  site security
+  node-fetch              enable fetch
 ---------------------------------------------------------------------------------------------------
 BASIC START:
   app.js:

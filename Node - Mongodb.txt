@@ -19,36 +19,43 @@ CRUD:
   Create Read Update Delete
 ---------------------------------------------------------------------------------------------------
 CREATE:
-  collection.insert({...}, callback)
+  collection
+    .insert({...: ..., ...: ...}, callback)           create
+      result.ops[0]                                   return
 
-  collection.insertOne({...})
-  collection.insertMany([{a : 1}, {a : 2}], callback);
-  colelction.findAndModify({...}, {}, )
-
-  res.json(result.ops[0])                                     send result back
+    .insertOne({...})
+    .insertMany([{a : 1}, {a : 2}], callback);
 ---------------------------------------------------------------------------------------------------
 READ - FIND:
-  collection.find().toArray(callback))                        find all entries
-  collection.find({'a': 3}).toArray(callback);                find first matching entry
-  collection.find({_id: ObjectId("...")}).toArray(callback);  find by id
-    .limit(...)                                               find first two
+  collection
+    .find().toArray(callback))                        find all entries
+    .find({'a': 3}).toArray(callback);                find first matching entry
+    .find({_id: ObjectId("...")}).toArray(callback);  find by id
+    .find({...: ...}, query).toArray(callback))       find entries, filter with query (1/0)
+      result[0]                                       result
 
-  collection.findOne({...}, callback)
+
+    .findOne({...}, callback)
 ---------------------------------------------------------------------------------------------------
 UPDATE:
-  collection.update({...}, {...}, callback)                   update
-    ({...}, {$push: {...: ...}}, callback)                    push fields to array
-    ({...}, {$set: {...: ...}}, callback)                     overwrite fields
+  collection
+    .update({...}, {...}, callback)                   update, return number of updated documents
+           ({...}, {$push: {...: ...}}, callback)     push fields to array
+           ({...}, {$set: {...: ...}}, callback)      overwrite fields
+  
+    .findOneAndUpdate({...}, {new: true}, callback)   update, return updated document
+      result.value                                    result
 
-  collection.updateOne
-  collection.updateMany
+    .updateOne
+    .updateMany
 ---------------------------------------------------------------------------------------------------
 DELETE:
-  collection.remove(callback);                                delete all entries in collection
-  collection.remove({...}, {...}, callback)                   delete one entry
+  collection
+    .remove(callback);                                delete all entries in collection
+    .remove({...}, {...}, callback)                   delete one entry
   
-  collection.findOneAndDelete({...}, callback)     
-  collection.deleteOne({ a : 3 }, function(err, result) {})   
+    .findOneAndDelete({...}, callback)     
+    .deleteOne({ a : 3 }, function(err, result) {})   
 ---------------------------------------------------------------------------------------------------
 INDEX:
   const indexCollection = function(db, callback) {      
