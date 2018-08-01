@@ -12,7 +12,8 @@ USE:
 
   individual:
     app.use(helmet.hidePoweredBy());                        remove site information from headers
-    app.use(helmet.hidePoweredBy({setTo: 'PHP 4.2.0'}))     set site information
+    app.use(helmet.hidePoweredBy({setTo: "PHP 4.2.0"}))     set site information
+    app.use(helmet.referrerPolicy({policy: "same-origin"}));  only the site can send the referrer
     app.use(helmet.frameguard({action: "deny"}));           disable iframe clickjacking
     app.use(helmet.xssFilter());                            prevent script injection
     app.use(helmet.noSniff());                              disable content-type bypass
