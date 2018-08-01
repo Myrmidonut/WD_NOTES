@@ -6,11 +6,11 @@ INSTALL:
 ---------------------------------------------------------------------------------------------------
 USE:
   const mongoClient = require("mongodb").MongoClient;
-  const url = "..."                                       set URL
-  const dbName = "..."                                    set database name
+  const URL = "..."                                       set URL
+            = process.env.DB                              set DB="..." inside .env file
 ---------------------------------------------------------------------------------------------------
 CONNECT:
-  mongoClient.connect(url, (err, db) => {         connect to database
+  mongoClient.connect(URL, (err, db) => {         connect to database
     const collection = db.collection("...")       select collection by name
     ...                                           run mongodb commands
   });
@@ -34,6 +34,10 @@ READ - FIND:
     .find({...: ...}, query).toArray(callback))       find entries, filter with query (1/0)
       result[0]                                       result
 
+    .find()
+    .sort({...: ...})                                 time: -1 for descending
+    .limit(...)
+    .toArray()
 
     .findOne({...}, callback)
 ---------------------------------------------------------------------------------------------------
