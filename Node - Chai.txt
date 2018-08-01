@@ -16,25 +16,21 @@ TESTS:
 
       chai.use(chaiHttp);
 
-      suite('Functional Tests', function() {
+      suite("Functional Tests", function() {
 
-        test('#example Test GET /api/books', function(done){
+        test("Test Description", function(done) {
           chai.request(server)
-            .get('/api/books')
+            .get("...")                                             address
             .post("...")
-
+            .query({...: ..., ...: ...})                            send with form
             .send({...: ...})                                       post form data
-
-            .end(function(err, res){
-
-              assert.equal(res.status, 200);                        status
-
-              assert.isArray(res.body, "...");                      is an array
-
-              assert.property(res.body, '_id', "...");              has a property
-
-              assert.equal(res.text, "...")                         for res.send
-
+            .end(function(err, res) {
+              assert
+                .equal(res.status, 200);                            status
+                .isArray(res.body, "...");                          is an array
+                .property(res.body, "_id");                         has a property
+                .equal(res.text, "...")                             for res.send
+                .isAtLeast(..., ...)                                greater than or equal
               done();
             });
         });
