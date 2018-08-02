@@ -24,14 +24,14 @@ CREATE:
       result.ops[0]                                   return
 
     .insertOne({...})
-    .insertMany([{a : 1}, {a : 2}], callback);
+    .insertMany([{a : 1}, {a : 2}], callback)
 ---------------------------------------------------------------------------------------------------
 READ - FIND:
   collection
     .find().toArray(callback))                        find all entries
-    .find({'a': 3}).toArray(callback);                find first matching entry
-    .find({_id: ObjectId("...")}).toArray(callback);  find by id
-    .find({...: ...}, query).toArray(callback))       find entries, filter with query (1/0)
+    .find({'a': 3}).toArray(callback)                 find first matching entry
+    .find({_id: ObjectId("...")}).toArray(callback)   find by id
+    .find({...: ...}, {...: 0/1}).toArray(callback))  find entries with filter
       result[0]                                       result
 
     .find()
@@ -39,23 +39,26 @@ READ - FIND:
     .limit(...)
     .toArray()
 
-    .findOne({...}, callback)
+    .findOne({...}, callback)                         find first match
+      result                                          result
 ---------------------------------------------------------------------------------------------------
 UPDATE:
   collection
-    .update({...}, {...}, callback)                   update, return number of updated documents
-           ({...}, {$push: {...: ...}}, callback)     push fields to array
-           ({...}, {$set: {...: ...}}, callback)      overwrite fields
+    .update({...}, {...}, callback)                         update, return number of updated documents
+           ({...}, {$push: {...: ...}}, callback)           push fields to array
+           ({...}, {$set: {...: ...}}, callback)            overwrite fields
   
-    .findOneAndUpdate({...}, {new: true}, callback)   update, return updated document
-      result.value                                    result
+    .findOneAndUpdate({...}, {...}, callback)               update
+      upsert: true                                          create document if not found
+      returnOriginal: false                                 return updated document
+      result.value === {...} or null                        result
 
     .updateOne
     .updateMany
 ---------------------------------------------------------------------------------------------------
 DELETE:
   collection
-    .remove(callback);                                delete all entries in collection
+    .remove(callback)                                 delete all entries in collection
     .remove({...}, {...}, callback)                   delete one entry
   
     .findOneAndDelete({...}, callback)     

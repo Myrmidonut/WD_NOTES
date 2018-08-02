@@ -711,8 +711,8 @@ ARRAY METHODS:
     delete myArray[5]                   changes element at index 5 to undefined
 
   extract:
-    .slice(..., ...)                    return array from start to optional exclusive end, index
-
+    .slice(..., ...)                    return array from index to optional exclusive index
+                                        negative index counts from back
   copy:
     let arr1 = [..., ...arr2, ...];     copy with spread operator
 
