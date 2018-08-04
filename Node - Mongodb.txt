@@ -5,12 +5,12 @@ INSTALL:
   npm install mongodb --save
 ---------------------------------------------------------------------------------------------------
 USE:
-  const mongoClient = require("mongodb").MongoClient;
+  const MongoClient = require("mongodb").MongoClient;
   const URL = "..."                                       set URL
             = process.env.DB                              set DB="..." inside .env file
 ---------------------------------------------------------------------------------------------------
 CONNECT:
-  mongoClient.connect(URL, (err, db) => {         connect to database
+  MongoClient.connect(URL, (err, db) => {         connect to database
     const collection = db.collection("...")       select collection by name
     ...                                           run mongodb commands
   });

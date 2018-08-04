@@ -22,17 +22,31 @@ TESTS:
           chai.request(server)
             .get("...")                                             address
             .post("...")
-            .query({...: ..., ...: ...})                            send with form
-            .send({...: ...})                                       post form data
+
+            .query({...: ..., ...: ...})                            ?...=...
+            .send({...: ...})                                       form data
+
             .end(function(err, res) {
               assert
                 .equal(res.status, 200);                            status
                 .isArray(res.body, "...");                          is an array
-                .property(res.body, "_id");                         has a property
+                .property(res.body, "_id");                         has property
+                .notProperty(..., ...)                              has not property
+                .propertyVal(..., ..., ...)                         has property with value
                 .equal(res.text, "...")                             for res.send
                 .isAtLeast(..., ...)                                greater than or equal
+                .isAtMost(..., ...)                                 less than or equal
+                .isAbove
+                .isBelow
               done();
             });
         });
       
       }
+-------------
+res.status
+res.body
+res.text
+---------
+inside test:
+  this.timeout(5000);
