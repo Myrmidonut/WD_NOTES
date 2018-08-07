@@ -29,13 +29,15 @@ INSTALLATION:
     React Developer Tools                 can display details for react components
 ---------------------------------------------------------------------------------------------------
 FOLDERS:
-  node_modules
+  node_modules                            npm dependencies
   public                                  static files
     index.html
     favicon.ico
   src                                     dynamic files
-    App.js
-    index.js
+    App.css                               specific css rules
+    App.js                                component
+    index.js                              renders App.js
+    index.css                             general css rules
 ---------------------------------------------------------------------------------------------------
 FILES:
   App.js:

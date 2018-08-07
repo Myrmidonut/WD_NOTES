@@ -926,13 +926,14 @@ IMPORT:
 
   import * as ... from ...;             import everything from a file into an object
 
-  import ... from "...";                import default value from a file
+  import ... from "...";                import default value from a file, can have another name
 ---------------------------------------------------------------------------------------------------
 EXPORT:
   export { ... };                       export a function
   export const foo = "bar";             export a variable
   export { ..., foo };                  export multiple functions and variables
 
+  export default ...;
   export default function ... (...) {   export one value with fallback for the file
     return ...;
   }
