@@ -38,18 +38,21 @@ FOLDERS:
     App.js                                component
     index.js                              renders App.js
     index.css                             general css rules
+    Component1                            folder for a component
+      Component1.js                       file for a component
 ---------------------------------------------------------------------------------------------------
 FILES:
   App.js:
     import React, { Component } from 'react';
     import './App.css';
-    import ... from "./components/...";           use components
+    import Component1 from "./Component1/Component1";           import a component
 
     class App extends Component {
       render() {
         return (
           <div className="App">
             ...
+            <Component1 />
           </div>
         );
       }

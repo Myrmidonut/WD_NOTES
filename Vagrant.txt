@@ -1,6 +1,0 @@
-vagrant status      status of virtual machine
-vagrant suspend     saves the vitual machine and puts it to sleep
-vagrant up          wakes/boots the virtual machine up
-vagrant ssh         connects to the virtual machine
-vagrant halt        saves the virtual machine and shuts it down, slow
-vagrant destroy     doesn't save and deletes the virtual machine
