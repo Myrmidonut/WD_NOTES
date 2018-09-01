@@ -40,6 +40,7 @@ FOLDERS:
     index.css                             general css rules
     Component1                            folder for a component
       Component1.js                       file for a component
+      Component1.css                      component styling
 ---------------------------------------------------------------------------------------------------
 FILES:
   App.js:
@@ -89,14 +90,17 @@ TAGS:
     <div />                       no content
 ---------------------------------------------------------------------------------------------------
 STYLES:
-  stylesheet
+  external:
+    className="..."
+    import "./Style.css";             inside component file
 
   inline:
     <div style={{color: "green", fontSize: "16px"}}>...</div>
 
   inline with variable:
-    const styles = {...: ..., ...: ...}
-    <div style={styles}>...</div>
+    inside render:
+      const styles = {...}
+      <div style={styles}>...</div>
 
   uses camelCase
   px values only need number, otherwise use "4em", etc.
@@ -123,7 +127,7 @@ COMPONENTS:
     ...                                     component Name
     export default Name;
 
-  stateless functional component:
+  functional:                               stateless
     const Name = (props) => {               static render
       ...;                                  JS
       return (
@@ -134,7 +138,7 @@ COMPONENTS:
       );
     };
 
-  stateful:
+  class:                                    stateful
     class Name extends React.Component {    dynamic render
       constructor(props) {                  constructor
         super(props);                       required
@@ -166,20 +170,15 @@ REACT DOM RENDER:
   conditionals inside return
 ---------------------------------------------------------------------------------------------------
 PROPS:
-  from parent to child
+  pass data or functions around
 
-  parent: <... name="..." ...>
+  parent:
+    <... name="..." ...>
 
-  stateless functional:
-    child: ...(props)
-             ...{props.name}...
-
-  class:
-    child: ...(props)
-             ...{this.props.name}...
-
-  const ... = (props) =>                  pass properties to a function
-    <h1>Hello, {props.user}!</h1>         access: {props. ...}
+  child:
+    {props.name}                          stateless functional
+    {this.props.name}                     class
+    {props.children}                      anything inside the tags of the component call
 
   default:
     MyComponent.defaultProps = {name: "Jim"}
@@ -206,22 +205,34 @@ STATE:
   access methods inside the class with this.name
   use stateless functional components whenever possible
 
-  class Name extends React.Component {    example
+  class Name extends React.Component {        example
     constructor(props) {
       super(props);
-      this.state = {                      declaring state
+      this.state = {                          declare state
         name: "..."
       }
       this.test = this.test.bind(this);
     }
     test() {
-      this.setState({                     modifying state
+      this.setState({                         modify state
         name: "..."
       });
 
-      this.state.name = "...";            alternative???
+      this.state.name = "...";                alternative???
     }
   }
+---------------------------------------------------------------------------------------------------
+EVENTS:
+  name = (newName) => {                                     method
+    this.setState({
+      ...
+    })
+  }
+
+  <button onClick={() => this.name("...")}>...</button>     faster
+
+  pass method to component:
+    <Component1 click={this.name.bind(this, "...")} />      accessed with props.click
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
   mount                                 first page load 
