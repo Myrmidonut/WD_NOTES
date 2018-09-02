@@ -38,9 +38,9 @@ FOLDERS:
     App.js                                component
     index.js                              renders App.js
     index.css                             general css rules
-    Component1                            folder for a component
-      Component1.js                       file for a component
-      Component1.css                      component styling
+    Component1                            component
+      Component1.js                       code
+      Component1.css                      style
 ---------------------------------------------------------------------------------------------------
 FILES:
   App.js:
@@ -90,9 +90,12 @@ TAGS:
     <div />                       no content
 ---------------------------------------------------------------------------------------------------
 STYLES:
-  external:
-    className="..."
-    import "./Style.css";             inside component file
+  external:                             stylesheets are global
+    inside component folder:
+      Style.css
+      component:
+        className="..."
+        import "./Style.css";
 
   inline:
     <div style={{color: "green", fontSize: "16px"}}>...</div>
@@ -204,6 +207,7 @@ STATE:
   local to class
   access methods inside the class with this.name
   use stateless functional components whenever possible
+  create copy of state, change it, update old state
 
   class Name extends React.Component {        example
     constructor(props) {
@@ -233,6 +237,45 @@ EVENTS:
 
   pass method to component:
     <Component1 click={this.name.bind(this, "...")} />      accessed with props.click
+---------------------------------------------------------------------------------------------------
+RENDER CONDITIONALLY:
+  set condition inside render but before return
+  render variables inside return
+
+  example:
+    render() {
+      let persons = null;               reset
+
+      if (this.state.showPersons) {     condition
+        persons = (
+          <div>
+            ...
+          </div>
+        )
+      }
+
+      return (
+        <div>
+          {persons}                     render
+        </div>
+      );
+    }
+---------------------------------------------------------------------------------------------------
+LISTS:
+  needs a key for efficient DOM updates
+  use map for lists with element and index
+
+  persons = (
+    <div>
+      {this.state.persons.map((person, index) => {
+        return <Person 
+          click={() => this.deletePersonHandler(index)}
+          name={person.name}
+          age={person.age} 
+          key={person.id} />
+      })}
+    </div>
+  )
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
   mount                                 first page load 
