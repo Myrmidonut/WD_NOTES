@@ -29,18 +29,22 @@ INSTALLATION:
     React Developer Tools                 can display details for react components
 ---------------------------------------------------------------------------------------------------
 FOLDERS:
-  node_modules                            npm dependencies
-  public                                  static files
+  node_modules/                            npm dependencies
+  public/                                  static files
     index.html
     favicon.ico
-  src                                     dynamic files
-    App.css                               specific css rules
-    App.js                                component
-    index.js                              renders App.js
-    index.css                             general css rules
-    Component1                            component
-      Component1.js                       code
-      Component1.css                      style
+  src/                                     dynamic files
+    assets/                                images, etc.
+    components/                            components
+      Component1/
+        Component1.js
+        Component1.css
+    containers/                            containers
+      App.js
+      App.css
+      App.test.js
+    index.js                               renders App.js
+    index.css                              general css rules
 ---------------------------------------------------------------------------------------------------
 FILES:
   App.js:
@@ -141,7 +145,7 @@ COMPONENTS:
       );
     };
 
-  class:                                    stateful
+  class:                                    stateful, access to state and lifecycle
     class Name extends React.Component {    dynamic render
       constructor(props) {                  constructor
         super(props);                       required
@@ -281,13 +285,14 @@ LIFECYCLE:
   mount                                 first page load 
   re-render                             state changes
 
-  componentWillMount()                  called before render when component is mounted to DOM
-  componentDidMount()                   called after mounted to DOM
-                                        calls to setState trigger a new render
-                                        API or server calls
-                                        event listeners, add and remove for best practice
-  componentWillUnmount()
+  constructor(props)                    call super(props), set up state
+  componentWillMount()                  update state, optimize
+  render()                              prepare and structure JSX for DOM
+    render child components
+  componentDidMount()                   API or server calls, dont update state
 
+  componentDidCatch()
+  componentWillUnmount()
   componentWillReceiveProps(nextProps)  called when component receices new props
                                         new prop as argument (nextProps) and compare with his.props
 
@@ -300,410 +305,92 @@ SERVER:
 
   render page on server and send to client
 ---------------------------------------------------------------------------------------------------
-EXAMPLE:
-  single page application:
-    <div id="app"></div>
+MODULES:
+  use css modules for local css styling:
+    npm run eject                           get access to configuration
 
-    function Person(props) {
-      return (
-        <div className="person">
-          <h1>{props.name}</h1>
-          <p>Your age: {props.age}</p>
-        </div>
-      );
-    }
+    config/webpack.config.dev.js,           change these files
+    config/webpack.config.prod.js:
+      - module
+        - test: /\.css$/
+          - options:
+            modules: true,
+            localIdentName: '[name]__[local]__[hash:base64:5]'
 
-    var app = (
-      <div>
-        <Person name="Max" age="28" />
-        <Person name="Manu" age="29" />
-      </div>
-    );
+    import classes from "/.App.css";        change css import
+    <div className={classes.App}>           change to use the class .App from App.css
 
-    ReactDOM.render(app, document.querySelector("#app"));
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class CampSite extends React.Component {
-    constructor(props) {
-      super(props);
-    }
+    :global .Post {...}                     set global styling
+    className="Post"
 
-    render() {
-      return (
-        <div>
-          <Camper/>
-        </div>
-      );
-    }
-  };
+  Radium:
+    add styling functionality
 
-  function Camper(props) {
-    return (
-      <p>{props.name}</p>
-    )
-  }
+    import Radium from "radium";
+    ...
+    export default Radium(App);
 
-  Camper.defaultProps = {
-    name: "CamperBot"
-  }
-
-  Camper.propTypes = {
-    name: PropTypes.string.isRequired
-  }
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class Counter extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        count: 0
-      };
-
-      this.increment = this.increment.bind(this);
-      this.decrement = this.decrement.bind(this);
-      this.reset = this.reset.bind(this);
-    }
-
-    increment() {
-      this.setState({
-        count: this.state.count + 1
-      });
-    };
-    
-    decrement() {
-      this.setState({
-        count: this.state.count - 1
-      });
+    const style = {
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     };
 
-    reset() {
-      this.setState({
-        count: 0
-      });
-    };
+    for media queries and transformations:
+      App.js:
+        import Radium, { StyleRoot } from "radium";
 
-    render() {
-      return (
-        <div>
-          <button className='inc' onClick={this.increment}>Increment!</button>
-          <button className='dec' onClick={this.decrement}>Decrement!</button>
-          <button className='reset' onClick={this.reset}>Reset</button>
-          <h1>Current Count: {this.state.count}</h1>
-        </div>
-      );
-    }
-  };
+        return (
+          <StyleRoot>
+            <div>
+              ...
+            </div>
+          </StyleRoot>
+        );
+
+      Component.js:
+        const style = {
+          "@media (min-width: 500px)": {
+            width: "450px"
+          }
+        }
 ---------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class ControlledInput extends React.Component {
-    constructor(props) {
-      super(props);
+DEBUGGING:
+  chrome dev tools, sources:
+    go to App.js file
+    select linenumber to create a breakpoint
+    check values, go to next step in code
 
-      this.state = {
-        input: ''
-      };
+  React Developer Tools extension:
+    chrome dev tools, react
+    inspect state, props
 
-      this.handleChange = this.handleChange.bind(this);
-    }
+  error boundary (React 16):
+    src/ErrorBoundary/ErrorBoundary.js:
+      import React, { Component } from "react";
 
-    handleChange(event) {
-      this.setState({
-        input: event.target.value
-      })
-    }
+      class ErrorBoundary extends Component {
+        state = {
+          hasError: false,
+          errorMessage: ""
+        }
 
-    render() {
-      return (
-        <div>
-          <input value={this.state.input} onChange={this.handleChange} />
-          <h4>Controlled Input:</h4>
-          <p>{this.state.input}</p>
-        </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class MyForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        input: '',
-        submit: ''
-      };
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
+        componentDidCatch = (error, info) => {
+          this.setState({hasError: true, errorMessage: error})
+        }
 
-    handleChange(event) {
-      this.setState({
-        input: event.target.value
-      });
-    }
-
-    handleSubmit(event) {
-      this.setState({
-        submit: this.state.input
-      });
-    }
-
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input value={this.state.input} onChange={this.handleChange} />
-            <button type='submit'>Submit!</button>
-          </form>
-          <h1>{this.state.submit}</h1>
-        </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class MyApp extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        name: 'CamperBot'
-      }
-    }
-    render() {
-      return (
-         <div>
-           <Navbar name={this.state.name} />
-         </div>
-      );
-    }
-  };
-
-  class Navbar extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-    render() {
-      return (
-      <div>
-        <h1>Hello, my name is: {this.props.name}</h1>
-      </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  const inputStyle = {
-    width: 235,
-    margin: 5
-  }
-
-  class MagicEightBall extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        userInput: '',
-        randomIndex: ''
-      }
-      this.ask = this.ask.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-    }
-    ask() {
-      if (this.state.userInput) {
-        this.setState({
-          randomIndex: Math.floor(Math.random() * 20),
-          userInput: ''
-        });
-      }
-    }
-    handleChange(event) {
-      this.setState({
-        userInput: event.target.value
-      });
-    }
-    render() {
-      const possibleAnswers = [
-        'It is certain',
-        'It is decidedly so',
-        'Without a doubt', 
-        'Yes, definitely',
-        'You may rely on it',
-        'As I see it, yes',
-        'Outlook good',
-        'Yes',
-        'Signs point to yes',
-        'Reply hazy try again',
-        'Ask again later',
-        'Better not tell you now',
-        'Cannot predict now',
-        'Concentrate and ask again',
-        'Don\'t count on it', 
-        'My reply is no',
-        'My sources say no',
-        'Most likely',
-        'Outlook not so good',
-        'Very doubtful'
-      ];
-      const answer = possibleAnswers[this.state.randomIndex]; // << change code here
-      return (
-        <div>
-          <input
-            type="text"
-            value={this.state.userInput}
-            onChange={this.handleChange}
-            style={inputStyle} /><br />
-          <button onClick={this.ask}>
-            Ask the Magic Eight Ball!
-          </button><br />
-          <h3>Answer:</h3>
-          <p>
-            { /* change code below this line */ }
-            {answer}
-            { /* change code above this line */ }
-          </p>
-        </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class Results extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-    render() {
-      return (
-        <h1>
-          {this.props.fiftyFifty ? "You win!" : "You lose!"}
-        </h1>
-      )
-    };
-  };
-
-  class GameOfChance extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        counter: 1
-      }
-      this.handleClick = this.handleClick.bind(this);
-    }
-    handleClick() {
-      this.setState({
-        counter: this.state.counter + 1
-      });
-    }
-    render() {
-      let expression = Math.random()> 0.5;
-      return (
-        <div>
-          <button onClick={this.handleClick}>Play Again</button>
-          <Results fiftyFifty = {this.expression}/>
-          <p>{'Turn: ' + this.state.counter}</p>
-        </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  const textAreaStyles = {
-    width: 235,
-    margin: 5
-  };
-
-  class MyToDoList extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        userInput: "",
-        toDoList: []
-      }
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleSubmit() {
-      const itemsArray = this.state.userInput.split(',');
-      this.setState({
-        toDoList: itemsArray
-      });
-    }
-
-    handleChange(e) {
-      this.setState({
-        userInput: e.target.value
-      });
-    }
-
-    render() {
-      const items = this.state.toDoList.map(function(e) {
-        return <li>{e}</li>;
-      });
-
-      return (
-        <div>
-
-          <textarea
-            onChange={this.handleChange}
-            value={this.state.userInput}
-            style={textAreaStyles}
-            placeholder="Separate Items With Commas" /><br />
-
-          <button onClick={this.handleSubmit}>Create List</button>
-
-          <h1>My "To Do" List:</h1>
-
-          <ul>
-            {items}
-          </ul>
-
-        </div>
-      );
-    }
-  };
----------------------------------------------------------------------------------------------------
-EXAMPLE:
-  class DisplayMessages extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        input: '',
-        messages: []
+        render() {
+          if (this.state.hasError) {
+            return <h1>{this.state.errorMessage}</h1>
+          } else {
+            return this.props.children;
+          }
+        }
       }
 
-      this.handleChange = this.handleChange.bind(this);
-      this.submitMessage = this.submitMessage.bind(this);
-    }
+      export default ErrorBoundary;
 
-    handleChange(event) {
-      this.setState({
-        input: event.target.value
-      })
-    }
-
-    submitMessage() {
-      let newMessages = [...this.state.messages, this.state.input];
-      this.setState({
-        input: "",
-        messages: newMessages
-      })
-    }
-
-    render() {
-      return (
-        <div>
-          <h2>Type in a new Message:</h2>
-          <input value={this.state.input} onChange={this.handleChange} />
-          <button type="submit" onClick={this.submitMessage}>Submit</button>
-          <ul>
-            {
-              this.state.messages.map(function(e) {
-                return <li>{e}</li>
-              })
-            }
-          </ul>
-        </div>
-      );
-    }
-  };
+    wrap returned component inside <ErrorBoundary>...</ErrorBoundary>
+    move key prop to ErrorBoundary
 ---------------------------------------------------------------------------------------------------
