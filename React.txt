@@ -28,21 +28,31 @@ INSTALLATION:
   Chrome:
     React Developer Tools                 can display details for react components
 ---------------------------------------------------------------------------------------------------
+WORKFLOW:
+  create-react-app ...
+  npm run eject
+    adjust files
+  npm start
+  delete demo files
+  create folders, files
+---------------------------------------------------------------------------------------------------
 FOLDERS:
   node_modules/                            npm dependencies
   public/                                  static files
-    index.html
-    favicon.ico
+    index.html                             html page
+    favicon.ico                            favicon
   src/                                     dynamic files
     assets/                                images, etc.
-    components/                            components
+    components/                            stateless components
       Component1/
         Component1.js
         Component1.css
-    containers/                            containers
+    containers/                            stateful components
       App.js
       App.css
       App.test.js
+    hoc/                                   higher order components
+      Aux.js
     index.js                               renders App.js
     index.css                              general css rules
 ---------------------------------------------------------------------------------------------------
@@ -94,20 +104,26 @@ TAGS:
     <div />                       no content
 ---------------------------------------------------------------------------------------------------
 STYLES:
-  external:                             stylesheets are global
+  external:                                   global stylesheet
     inside component folder:
       Style.css
       component:
-        className="..."
         import "./Style.css";
+        className="..."
+    
+    with css modules:                         local stylesheet, prefered method
+      Style.css
+      component:
+        import classes from "./Style.css";
+        className={classes.Name}
 
   inline:
     <div style={{color: "green", fontSize: "16px"}}>...</div>
 
-  inline with variable:
-    inside render:
-      const styles = {...}
-      <div style={styles}>...</div>
+    with variable:
+      inside render:
+        const styles = {...}
+        <div style={styles}>...</div>
 
   uses camelCase
   px values only need number, otherwise use "4em", etc.
@@ -124,7 +140,6 @@ BEHIND THE SCENES CODE:
              React.createElement("h1", null, "Headline"));
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
-  capital letter
   returns JSX or null
   returns one root element per component
   use stateless when possible
@@ -135,7 +150,7 @@ COMPONENTS:
     export default Name;
 
   functional:                               stateless
-    const Name = (props) => {               static render
+    const name = (props) => {               static render, lowercase
       ...;                                  JS
       return (
         <div>
@@ -146,7 +161,7 @@ COMPONENTS:
     };
 
   class:                                    stateful, access to state and lifecycle
-    class Name extends React.Component {    dynamic render
+    class Name extends React.Component {    dynamic render, uppercase
       constructor(props) {                  constructor
         super(props);                       required
         this.state = {                      set states
@@ -265,6 +280,23 @@ RENDER CONDITIONALLY:
       );
     }
 ---------------------------------------------------------------------------------------------------
+HIGHER ORDER COMPONENT:
+  return:
+    one parent element:
+      <div>...</div>
+
+    multiple adjacent elements:
+      array with keys
+
+      wrap in higher order component:
+        Component.js:
+          import Aux from "../../hoc/Aux";
+          <Aux>...</Aux>
+
+        hoc/Aux.js:
+          const aux = (props) => props.children;
+          export default aux;
+---------------------------------------------------------------------------------------------------
 LISTS:
   needs a key for efficient DOM updates
   use map for lists with element and index
@@ -281,24 +313,46 @@ LISTS:
     </div>
   )
 ---------------------------------------------------------------------------------------------------
-LIFECYCLE:
-  mount                                 first page load 
-  re-render                             state changes
+TYPE VALIDATION:
+  npm install --save prop-prop-types        install
 
-  constructor(props)                    call super(props), set up state
-  componentWillMount()                  update state, optimize
-  render()                              prepare and structure JSX for DOM
-    render child components
-  componentDidMount()                   API or server calls, dont update state
+  import PropTypes from "prop-types";       import
+
+  class Name extends Component {...}        create class
+
+  Name.propTypes = {                        check prop types
+    type: PropTypes.string.isRequired
+  }
+---------------------------------------------------------------------------------------------------
+LIFECYCLE:
+  mount                                   first page load 
+  re-render                               state changes
+
+  Create:
+    constructor(props)                    call super(props), set up state
+    componentWillMount()                  update state, optimize
+    render()                              prepare and structure JSX for DOM
+      render child components
+    componentDidMount()                   API or server calls, dont update state
+
+    componentWillUnmount()                before removing component
+
+  Update external:
+    componentWillReceiveProps(nextProps)          component receives new props
+    shouldComponentUpdate(nextProps, nextState)   re-render component if it returns true    
+    componentWillUpdate()
+    render()
+      render child components
+    componentDidUpdate()                          called after component re-renders
+
+  Update internal:
+    shouldComponentUpdate(nextProps, nextState)
+    componentWillUpdate()
+    render()
+      render child components
+    componentDidUpdate()
 
   componentDidCatch()
-  componentWillUnmount()
-  componentWillReceiveProps(nextProps)  called when component receices new props
-                                        new prop as argument (nextProps) and compare with his.props
-
-  shouldComponentUpdate(nextProps, nextState)    re-render component if it returns true    
-  componentWillUpdate()
-  componentDidUpdate()                  called after component re-renders
 ---------------------------------------------------------------------------------------------------
 SERVER:
   ReactDOMServer.renderToString(<App />);
@@ -313,9 +367,10 @@ MODULES:
     config/webpack.config.prod.js:
       - module
         - test: /\.css$/
-          - options:
-            modules: true,
-            localIdentName: '[name]__[local]__[hash:base64:5]'
+          - use:
+            - options:
+              modules: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
 
     import classes from "/.App.css";        change css import
     <div className={classes.App}>           change to use the class .App from App.css
