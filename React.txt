@@ -145,7 +145,7 @@ COMPONENTS:
   use stateless when possible
 
   /components/Name.js:
-    import React from "react";
+    import React, { Component } from "react";
     ...                                     component Name
     export default Name;
 
@@ -161,17 +161,9 @@ COMPONENTS:
     };
 
   class:                                    stateful, access to state and lifecycle
-    class Name extends React.Component {    dynamic render, uppercase
-      constructor(props) {                  constructor
-        super(props);                       required
-        this.state = {                      set states
-          ...: ...,
-          ...: ...
-        }
-      }
-
+    class Name extends React {              dynamic render, uppercase
+      state = {...}                         set state
       ...                                   methods
-
       render() {
         return <div>...</div>
       }
@@ -229,19 +221,22 @@ STATE:
   create copy of state, change it, update old state
 
   class Name extends React.Component {        example
-    constructor(props) {
+    state = {                                 set state
+      name: "..."
+    }
+
+    constructor(props) {                      old
       super(props);
-      this.state = {                          declare state
+      this.state = {
         name: "..."
       }
       this.test = this.test.bind(this);
     }
+
     test() {
       this.setState({                         modify state
         name: "..."
       });
-
-      this.state.name = "...";                alternative???
     }
   }
 ---------------------------------------------------------------------------------------------------
@@ -314,6 +309,8 @@ LISTS:
   )
 ---------------------------------------------------------------------------------------------------
 TYPE VALIDATION:
+  check if the data passed in through props has the expected type
+
   npm install --save prop-prop-types        install
 
   import PropTypes from "prop-types";       import

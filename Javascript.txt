@@ -243,14 +243,16 @@ DATA TYPES:
       symbol                            unique identifiers for objects
       array                             an ordered object
 
-  typeof ...                            return string with the datatype, error: typeof(null) returns object
-    "number"
-  
-  Array.isArray(...)                    return true if array
+  type check:
+    typeof ...                            return string with the datatype, error: typeof(null) returns object
+      "number"
     
-  instanceof ...                        
+    Array.isArray(...)                    return true if array
+    
+    ... instanceof ...                    return true if data is instanceof type
+      myArr instanceof Array
 
-  if (typeof name == "undefined") {}    checks if the variable called name exists
+    if (typeof name == "undefined") {}    checks if the variable called name exists
 ---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
   String(...)
@@ -937,3 +939,12 @@ EXPORT:
   export default function ... (...) {   export one value with fallback for the file
     return ...;
   }
+---------------------------------------------------------------------------------------------------
+LOCAL STORAGE:
+  sessionStorage                            as long as the browser stays open
+  localStorage                              permanent
+    .setItem('colorSetting', '#a4509b');
+    .getItem
+    .removeItem
+    .key
+    .length)
