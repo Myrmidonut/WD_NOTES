@@ -151,21 +151,27 @@ COMPONENTS:
 
   functional:                               stateless
     const name = (props) => {               static render, lowercase
-      ...;                                  JS
+      ...                                   JS
       return (
         <div>
           ...
+          {props.name}
           {props.children}                  use content inside <name>...</name> in App.js
         </div>
-      );
-    };
+      )
+    }
 
   class:                                    stateful, access to state and lifecycle
     class Name extends React {              dynamic render, uppercase
       state = {...}                         set state
       ...                                   methods
       render() {
-        return <div>...</div>
+        return (
+          <div>
+            ...
+            {this.props.name}
+          </div>
+        )
       }
     }
 ---------------------------------------------------------------------------------------------------
