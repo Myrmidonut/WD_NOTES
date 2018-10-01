@@ -726,8 +726,8 @@ ARRAY METHODS:
     .indexOf(..., ...)                        return first index, optional start, -1 if not
     .lastIndexOf(..., ...)                    return last index, optional start, -1 if not
     .includes(..., ...)                       return true if found, optional start
-    .find(function(e) {...})                  search in array of objects, return first entry
-    .findIndex(function(e) {...})             see .find, return index
+    .find(e => {...})                         search in array of objects, return first entry
+    .findIndex(e => {...})                    see .find, return index
 
   iterate:
     .filter(e => {...})                       return array with passed, check every entry

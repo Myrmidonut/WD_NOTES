@@ -236,8 +236,10 @@ DATES:
                    .domain([ d3.min(data, e => parseTime(e.Time)) , ... ])
                    ...
 
-  const xAxis = d3.axisBottom(xScale).tickFormat(formatTime);
-  const yAxis = d3.axisLeft(yScale).tickFormat(formatTime);
+  const xAxis = d3.axisBottom(xScale)
+                  .tickFormat(formatTime);
+  const yAxis = d3.axisLeft(yScale)
+                  .tickFormat(formatTime);
 
   svg.selectAll("circle")
    .attr("cx", e => xScale(Date.parse(e.Year)))
