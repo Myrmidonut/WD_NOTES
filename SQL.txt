@@ -28,6 +28,12 @@ RDBMS:
   PostgreSQL
   MySQL           multi user, server based, open source
 ---------------------------------------------------------------------------------------------------
+DATABASE:
+  mysql -u root                       open interface
+  show databases;                     list databases
+  create database ...;                create a database
+  use ...;                            open database
+---------------------------------------------------------------------------------------------------
 CREATE:
   CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT, ... INTEGER, ... REAL);     create table
 

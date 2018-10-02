@@ -725,8 +725,8 @@ RESPONSIVENESS:
 ---------------------------------------------------------------------------------------------------
 CENTERING:
   text:
-    text-align: center;                 vertical
-    line-height: ...;                   horizontal, 100% of parent
+    text-align: center;                 horizontal
+    line-height: ...;                   vertical, 100% of parent
 
   image:
     display: block;                     horizontal

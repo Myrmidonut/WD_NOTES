@@ -9,22 +9,42 @@ LOCAL WEBSERVER:
 FILES:
   index.php                         main page
   php.ini                           for errors, don't use in final
----------------------------------------------------------------------------------------------------
-  <?php
-    ...
-  ?>
+
+  seperate concerns:
+    index.view.php                  html
+
+    index.php                       php
+      ...
+      require "index.view.php";
 ---------------------------------------------------------------------------------------------------
 PHP STATUS:
   phpinfo();
 ---------------------------------------------------------------------------------------------------
 INCLUDING FILES:
-  include("file.php");              from local file
-  file_get_contents("http://...");  from website
+  require "file.php";               import local file, stop on error
+  include "file.php";               import local file, warning on error
+
+  file_get_contents("http://...");  import website
+---------------------------------------------------------------------------------------------------
+CODE:
+  <?php
+    ...
+  ?>                                no closing tag for pure php
+---------------------------------------------------------------------------------------------------
+COMMENTS:
+  //                                single line
+  /* ... */                         multiple lines
 ---------------------------------------------------------------------------------------------------
 OUTPUT:
-  echo "...";                       print to screen
-  echo $string1."...".$string2;     concatenation
-  print_r(...);                     output something
+  echo "...";                       output a string
+  echo '...';
+  <?= "..."; ?>                     shorthand for <?php echo "..." ?>
+
+  echo $var1 . "..." . $var2;       concatenation
+  echo "... $var";                  output with variable
+
+  var_dump(...);                    output any variable details
+  print_r(...);                     alternative
 ---------------------------------------------------------------------------------------------------
 ERRORS:
   php.ini                           display error messages in the browser, disable for final!
@@ -34,65 +54,102 @@ ERRORS:
 LOGIC:
   &&                                and
   ||                                or
+  !                                 not
   ==                                equal
 ---------------------------------------------------------------------------------------------------
-APPENDING:
-  .=                                add to a string
----------------------------------------------------------------------------------------------------
 VARIABLES:
-  $name = "...";                    set a variable
-  $name                             access a variable
-  $$name                            access a variable with the name stored inside the variable
-  !$name                            check if variable exists or if it is empty
+  $var = "...";                     create a variable
+  $var                              access a variable
+
+  $$var                             access a variable with the name stored inside the variable
+  !$var                             check if variable exists or if it is empty
 ---------------------------------------------------------------------------------------------------
-  $string = "...";
-  $string = '...';
+BOOLEANS:
+  true
+  false
+
+  $var
+  !$var
+---------------------------------------------------------------------------------------------------
+STRINGS:
+  $myStr = "...";                  create a string
+  $myStr = '...';                  alternative
+
+  .=                               add to a string
+
+  ucwords(...)                     uppercase
 ---------------------------------------------------------------------------------------------------
 ARRAYS:
-  $myArray = array("...", "...");   create an array
-  print_r($myArray);
-  $myArray[0];                      access a value
-  $myArray[0] = "...";              set a value
-  $myArray[name] = "...";   
-  $myArray = array(
-    "index1" => "value1",
-    "index2" => "value2"
-  );
-  sizeof($myArray);                 length of an array
-  $myArray[] = "...";               add to the end of the array
-  unset($myArray["..."];            remove a value
+  declaration:
+    $myArr = [];                   create empty array
+    $myArr = ["...", "..."]        create array
+
+  elements:
+    $myArr[0];                     access an element
+    $myArr[0] = "...";             create/change an element
+
+    $myArr[] = "...";              add to the end of the array
+    unset($myArr["..."];           remove an element
+
+  associative array:
+    declaration:
+      $myArr = ["..." => ...,      key, value pairs
+                "..." => ...]
+
+    elements:
+      $myArr["..."]                access value
+      $myArr["..."] = "...";       create/change value
+
+  methods:
+    sizeof($myArr);                length of an array
 ---------------------------------------------------------------------------------------------------
-IF:
-  if (...) {
-    ...;
-  } else {
-    ...;
-  }
+CONDITIONS:
+  IF:
+    if (...) {
+      ...;
+    } else {
+      ...;
+    }
+  --------------------------------------------------------------------------------------------------
+  TERNARY:
+    ... ? ... : ...                         if true do first, otherwise second
 ---------------------------------------------------------------------------------------------------
-FOR:
-  for ($i = 0; $i < 10; $i++){                  for loop
-    ...;
-  }
+LOOPS:
+  FOR:
+    for ($i = 0; $i < 10; $i++){              for loop
+      ...;
+    }
+  --------------------------------------------------------------------------------------------------
+  FOREACH:
+    foreach ($myArr as $ele) {                loop over array
+      ...;
+    }
+
+    foreach ($myArr as $key => $value) {      loop over associative array
+      ...;
+    }
+
+    in HTML:
+      <?php foreach ($myArr as $key => $value) : ?>
+        <li><?= $key $value; ?></li>
+      <?php endforeach; ?>
+  --------------------------------------------------------------------------------------------------
+  WHILE:                                       while loop
+    $i = 0;
+    while ($i < 10) {
+      ...;
+      i++;
+    }
 ---------------------------------------------------------------------------------------------------
-FOREACH:
-  foreach ($array_name as $key => $value) {     foreach loop
-    ...;
-  }
----------------------------------------------------------------------------------------------------
-WHILE:                                          while loop
-  $i = 0;
-  while ($i < 10) {
-    ...;
-    i++;
-  }
----------------------------------------------------------------------------------------------------
-FUNCTION:
-  function name($arg1, $arg2) {     create a function
+FUNCTIONS:
+  function myFunc($arg1, $arg2) {     create a function
     ... ;
     return $test;
   }
 
-  name();                           call a function
+  myFunc();                           call a function
+
+  dd                                  "die and dump"
 ---------------------------------------------------------------------------------------------------
 GET VARIABLES:
   $_GET                             shows up in the URL as ?name=abc&password=123
@@ -110,3 +167,7 @@ EMAIL:
 REMOVE SPACES:
   $string = str_replace(' ', '', $string);        remove spaces
   $string = preg_replace('/\s+/', '', $string);   remove all whitespace
+---------------------------------------------------------------------------------------------------
+
+  htmlspecialchars(...);            sanitize
+
