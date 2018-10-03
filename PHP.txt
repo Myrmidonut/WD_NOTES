@@ -25,6 +25,11 @@ INCLUDING FILES:
   include "file.php";               import local file, warning on error
 
   file_get_contents("http://...");  import website
+
+  bootstrap:
+    bootstrap.php
+      require "...";
+      ...
 ---------------------------------------------------------------------------------------------------
 CODE:
   <?php
@@ -103,6 +108,35 @@ ARRAYS:
   methods:
     sizeof($myArr);                length of an array
 ---------------------------------------------------------------------------------------------------
+CLASS:
+  class ... {
+    public function __construct() {
+
+    }
+
+    protected ...
+    public ...
+    public static ...
+  }
+
+  $connection = new Connection();       public
+  $connection->make();
+
+  Connection::make();                   public static
+
+  Example:
+    class Task {
+      protected $description;
+
+      protected $completed = false;
+
+      public function __construct($description) {
+        $this -> description = $description;
+      }
+    }
+
+    $task = new Task("Go to the store");
+---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF:
     if (...) {
@@ -168,6 +202,6 @@ REMOVE SPACES:
   $string = str_replace(' ', '', $string);        remove spaces
   $string = preg_replace('/\s+/', '', $string);   remove all whitespace
 ---------------------------------------------------------------------------------------------------
-
+  die("...");                       halt execution and output ...
   htmlspecialchars(...);            sanitize
 

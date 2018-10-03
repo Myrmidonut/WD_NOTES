@@ -16,9 +16,10 @@ RELATIONAL VS NON-RELATIONAL:
 ---------------------------------------------------------------------------------------------------
 STRUCTURE:
   database
-    table
-      row         set of related data
-        column    data for a particular attribute
+    schema
+      table
+        row         set of related data
+          column    data for a particular attribute
 ---------------------------------------------------------------------------------------------------
 RDBMS:
   relational database management system
@@ -28,14 +29,38 @@ RDBMS:
   PostgreSQL
   MySQL           multi user, server based, open source
 ---------------------------------------------------------------------------------------------------
+GUIS:
+  Sequel Pro (Mac)
+  Querious (Mac)
+  Navicat
+  MySQL Workbench (free)
+  phpMyAdmin (free)
+  Adminer (free)
+---------------------------------------------------------------------------------------------------
 DATABASE:
   mysql -u root                       open interface
-  show databases;                     list databases
+
   create database ...;                create a database
   use ...;                            open database
+  show databases;                     list databases
+
+  show tables;                        list tables in database
+  describe ...;                       list columns in table
+
+  create table ... (...);             create table
+  drop table ...;                     delete table
+  insert into ... (...);              create row for table
+  select * from ...;                  show all rows for table
 ---------------------------------------------------------------------------------------------------
 CREATE:
-  CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT, ... INTEGER, ... REAL);     create table
+  CREATE TABLE ... (id INTEGER PRIMARY KEY, ... TEXT);    create table, (col_name type modifier)
+    id INTEGER PRIMARY KEY AUTO_INCREMENT                 unique number for entries
+    ... TEXT NOT NULL                                     entries need a value
+
+    integer
+    text
+    real
+    boolean
 
 INSERT:
   INSERT INTO ... VALUES (..., ..., ...);           insert data
