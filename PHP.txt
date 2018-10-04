@@ -137,6 +137,23 @@ CLASS:
 
     $task = new Task("Go to the store");
 ---------------------------------------------------------------------------------------------------
+FUNCTIONS:
+  function myFunc($arg1, $arg2) {     create a function
+    ... ;
+    return $test;
+  }
+
+  myFunc();                           call a function
+
+  dd                                  "die and dump"
+---------------------------------------------------------------------------------------------------
+ARRAY METHODS:
+  array_filter($..., function ($...) {...});      return array of filtered elements
+
+  array_map(function ($...) {...}, $...);         return array after running function on elements
+
+  array_column(..., ...);                         return array with values for specified key
+---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF:
     if (...) {
@@ -175,16 +192,6 @@ LOOPS:
       i++;
     }
 ---------------------------------------------------------------------------------------------------
-FUNCTIONS:
-  function myFunc($arg1, $arg2) {     create a function
-    ... ;
-    return $test;
-  }
-
-  myFunc();                           call a function
-
-  dd                                  "die and dump"
----------------------------------------------------------------------------------------------------
 GET VARIABLES:
   $_GET                             shows up in the URL as ?name=abc&password=123
   $_GET["..."]                      to access GET data
@@ -205,3 +212,6 @@ REMOVE SPACES:
   die("...");                       halt execution and output ...
   htmlspecialchars(...);            sanitize
 
+  var_dump($_SERVER);
+
+  trim(..., "...")                  trim whitespace, optional characters to trim
