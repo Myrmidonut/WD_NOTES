@@ -125,8 +125,8 @@ ENTITIES:                   display symbols, etc.
   &amp;                     &
   &quot;                    "
   &apos;                    '
-  &euro;                    €
-  &deg;                     °
+  &euro;                    â‚¬
+  &deg;                     Â°
   &nbsp;                    blank space, non-breaking space, keep number and unit together
 ---------------------------------------------------------------------------------------------------
 FORMATING:

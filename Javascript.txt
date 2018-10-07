@@ -636,7 +636,8 @@ NUMBER METHODS:
     Math.PI;                              pi
 
   change base:
-    parseInt(..., ...);                   convert string to number, optional base
+    parseInt(..., ...);                   convert string to whole number, optional base
+    parseFloat(..., ...);                 convert string to decimal number
 
   see Math library for  more
 ---------------------------------------------------------------------------------------------------
