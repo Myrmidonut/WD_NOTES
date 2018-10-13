@@ -37,7 +37,7 @@ GUIS:
   phpMyAdmin (free)
   Adminer (free)
 ---------------------------------------------------------------------------------------------------
-DATABASE:
+CONSOLE COMMANDS:
   mysql -u root                       open interface
 
   create database ...;                create a database

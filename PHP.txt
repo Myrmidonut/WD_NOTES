@@ -23,9 +23,6 @@ COMPOSER:
   rebuild:
     composer dump-autoload
 ---------------------------------------------------------------------------------------------------
-LARAVEL:
-  composer global require "laravel/installer"
----------------------------------------------------------------------------------------------------
 LOCAL WEBSERVER:
   php -S localhost:8000             run build-in webserver from php main folder
       -t foldername                 specific sub folder

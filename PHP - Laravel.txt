@@ -1,0 +1,20 @@
+COMMANDS:
+  artisan                           command line interface
+  composer global require "laravel/installer"
+
+  laravel new ...                   create new project
+  php artisan serve                 open local webserver
+
+  php artisan migrate               initialize database from /database/migrations/
+---------------------------------------------------------------------------------------------------
+FILES AND FOLDERS;
+  /routes/                          routes
+    web.php                         entrypoint
+
+  /resources/views/                 views
+    welcome.blade.php               
+
+  /.env                             keys for database, etc
+---------------------------------------------------------------------------------------------------
+BLADE:
+  @foreach ...                      <?php foreach ... ?>

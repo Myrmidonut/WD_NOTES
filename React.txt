@@ -231,6 +231,26 @@ PROPS:
     {this.props.name}                     class
     {props.children}                      anything inside the tags of the component call
 
+  how to pass props:
+    class App ... :
+      state = {}                                          set state
+      func1() {}                                          set function
+      func2() {}                                          set function
+
+      render() {return(                                   pass props
+        <Comp1
+          name1={this.state.}                             state
+          name2={this.func1()}                            function text
+          name3={() => this.func2()} />                   function click
+      )}
+
+    class Comp1 ... :
+      render() {return(                                   access props
+        <div>{this.props.name1}</div>                     
+        <div>{this.props.name2}</div>
+        <button onClick={this.props.name3}></button>
+      )}
+
   default:
     MyComponent.defaultProps = {name: "Jim"}
 
@@ -262,14 +282,6 @@ STATE:
       name: "..."
     }
 
-    constructor(props) {                      old
-      super(props);
-      this.state = {
-        name: "..."
-      }
-      this.test = this.test.bind(this);
-    }
-
     test() {
       this.setState({                         modify state
         name: "..."
@@ -278,16 +290,7 @@ STATE:
   }
 ---------------------------------------------------------------------------------------------------
 EVENTS:
-  name = (newName) => {                                     method
-    this.setState({
-      ...
-    })
-  }
-
-  <button onClick={() => this.name("...")}>...</button>     faster
-
-  pass method to component:
-    <Component1 click={this.name.bind(this, "...")} />      accessed with props.click
+  <button onClick={this.props.handleClick}>...</button>
 ---------------------------------------------------------------------------------------------------
 RENDER CONDITIONALLY:
   set condition inside render but before return
