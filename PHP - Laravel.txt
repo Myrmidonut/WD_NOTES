@@ -6,6 +6,26 @@ COMMANDS:
   php artisan serve                 open local webserver
 
   php artisan migrate               initialize database from /database/migrations/
+
+  php artisan help ...              show details for commands
+
+  composer dump-autoload            reload in case of error
+---------------------------------------------------------------------------------------------------
+MVC:
+  Model:
+    fetching data
+
+  View:
+    presentation
+
+  Controller:
+    delegate
+
+  php artisan make:controller PostsController       controller
+  php artisan make:model Post                       model
+  php artisan make:migration create_posts_table     migration
+
+  php artisan make:model Post -mc                   model + migration + controller
 ---------------------------------------------------------------------------------------------------
 FILES AND FOLDERS;
   /routes/                          routes
@@ -17,4 +37,127 @@ FILES AND FOLDERS;
   /.env                             keys for database, etc
 ---------------------------------------------------------------------------------------------------
 BLADE:
-  @foreach ...                      <?php foreach ... ?>
+  replace <?php ... ?>  with @...
+
+  <?php foreach ($tasks as $task) : ?>    PHP
+    <li><?= $task; ?>
+  <?php endforeach; ?>
+
+  @foreach ($tasks as $task)              Blade
+    <li>{{ $task }}</li>
+  @endforeach
+---------------------------------------------------------------------------------------------------
+ROUTES:
+  get:
+    Route::get('/', function () {       main page: /
+      return view('welcome', [          /resources/views/welcome.blade.php
+        "name" => "World"               passes data along
+      ]);
+    });
+
+    return view("welcome")->with("name", "World");    alternative
+
+    $name = "World";                                  alternative
+    return view("welcome", ["name" => $name]);
+
+    $name = "World";                                  alternative
+    return view("welcome", compact("name"));
+
+  wildcard:
+    Route::get("/tasks/{id}", function() {});         {...} can be anything
+
+  subfolders:
+    return view("tasks/id");
+    return view("tasks.id");                          alternative
+
+  controllers:
+    Route::get("/tasks", "TasksController@index");
+
+    /app/Http/Controllers/                            folder for controllers
+
+    php artisan make:controller TasksController       create a controlelr file
+---------------------------------------------------------------------------------------------------
+CONTROLLERS:
+  wildcard:
+    public function show($id) {                       longer
+      $task = Task::find($id);
+    
+      return view("tasks.show", compact("task"));
+    }
+
+    public function show(Task $task) {                shorter, wildcard = {task}
+      return view("tasks.show", compact("task"));
+    }
+---------------------------------------------------------------------------------------------------
+VIEWS:
+  /resources/views/
+    layout.blade.php:
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>My Application</title>
+        </head>
+        <body>
+          @yield("content")
+        </body>
+      </html>
+
+    index.blade.php:
+      @extends ("layout")
+      @section ("content")
+        test 
+      @endsection
+---------------------------------------------------------------------------------------------------
+DATABASE:
+  migration:
+    php artisan make:migration create_tasks_table     create file in /database/migrations/
+
+    php artisan migrate                               add a new migration
+    php artisan migrate:refresh                       roll back and migrate
+    php artisan migrate:reset                         roll back without migrate
+
+  migration file:
+    $table->increments('id');
+    $table->text("body");
+    $table->boolean("completed")->default(false);     default
+    $table->timestamps();
+
+  query:
+    $... = DB::table("...")->get();                   query the database
+
+    get()
+    where()
+    latest()
+    find()
+---------------------------------------------------------------------------------------------------
+TINKER:
+  php artisan tinker                      CLI to interact with the application
+
+  App\Task::all()                         show all Tasks
+  App\Task::where("id", ">", 2)->get()    show specific Tasks
+  App\Task::pluck("body")                 show specific field
+  App\Task::pluck("body")->first()        only the first one
+---------------------------------------------------------------------------------------------------
+ELOQUENT:
+  php artisan make:model Task             create /app/Task.php model
+
+  web.php:
+    use App\Task;                                       set namespace
+
+    Route::get('/tasks', function () {
+      //$tasks = DB::table("tasks")->latest()->get();   old style
+
+      $tasks = Task::all();                             Eloquent style
+
+      return view('tasks.index', compact("tasks"));
+    });
+
+  php artisan make:model Task -m          create model and migration
+  adjust migration file
+  php artisan migrate
+
+  add functions to the model file
+
+  query scopes:
+    wrapper around a query
+---------------------------------------------------------------------------------------------------

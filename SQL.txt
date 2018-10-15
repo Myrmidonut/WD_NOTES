@@ -58,9 +58,11 @@ CREATE:
     ... TEXT NOT NULL                                     entries need a value
 
     integer
-    text
+    string
+    text            longer than string
     real
     boolean
+    timestamp
 
 INSERT:
   INSERT INTO ... VALUES (..., ..., ...);           insert data
