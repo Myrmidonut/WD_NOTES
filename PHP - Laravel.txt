@@ -78,6 +78,9 @@ ROUTES:
     php artisan make:controller TasksController       create a controlelr file
 ---------------------------------------------------------------------------------------------------
 CONTROLLERS:
+  php artisan make:controller ...                     create controller in /app/Http/Controllers
+    -r                                                with functions
+
   wildcard:
     public function show($id) {                       longer
       $task = Task::find($id);
@@ -161,3 +164,23 @@ ELOQUENT:
   query scopes:
     wrapper around a query
 ---------------------------------------------------------------------------------------------------
+FORMS:
+  <form>
+    {{ csrf_field() }}                      cross-site protection, creates a token
+    ...
+  </form>
+---------------------------------------------------------------------------------------------------
+request()->all()                            show request data
+request("title")
+request(["titel", "body"])
+
+
+---------------------------------------------------------------------------------------------------
+VALIDATION:
+  in route function:
+    $this->validate(request(), [
+      "title" => "required",
+      ...
+    ]);
+---------------------------------------------------------------------------------------------------
+toFormattedDateString()                       makes dates readable
