@@ -184,3 +184,4 @@ VALIDATION:
     ]);
 ---------------------------------------------------------------------------------------------------
 toFormattedDateString()                       makes dates readable
+diffForHumans()                               elapsed time
