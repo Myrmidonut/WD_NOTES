@@ -11,6 +11,18 @@ COMMANDS:
 
   composer dump-autoload            reload in case of error
 ---------------------------------------------------------------------------------------------------
+FILES AND FOLDERS;
+  /app/                             models
+  /app/Http/Controllers/            controllers
+  /app/Http/Middleware/             middleware
+  /config/                          configurations using .env
+  /database/migrations/             migrations
+  /public/                          images, etc.
+  /resources/views/                 views 
+  /routes/                          routes
+
+  /.env                             keys for database, etc
+---------------------------------------------------------------------------------------------------
 MVC:
   Model:
     fetching data
@@ -27,14 +39,24 @@ MVC:
 
   php artisan make:model Post -mc                   model + migration + controller
 ---------------------------------------------------------------------------------------------------
-FILES AND FOLDERS;
-  /routes/                          routes
-    web.php                         entrypoint
+WORKFLOW:
+  create route to controller:                              /routes/web.php
+    Route::get("/projects", "ProjectsController@index");
 
-  /resources/views/                 views
-    welcome.blade.php               
+  create controller for view:                              /app/Http/Controllers/Controller.php
+    php artisan make:controller ProjectsController
 
-  /.env                             keys for database, etc
+    class ProjectsController extends Controller {
+      public function index() {
+        return view("projects/index");
+      }
+    }
+
+  create view:                                             /resources/views/welcome.blade.php
+
+  configure .env for database:                             /.env
+  create migration for database:                           /database/migrations/2018...php
+  create model to get data:                                /app/User.php
 ---------------------------------------------------------------------------------------------------
 VIEWS:
   /resources/views/
@@ -53,8 +75,8 @@ VIEWS:
 
     index.blade.php:                            content page
       @extends ("layout")
-      @section("title", "Home Page")            title, in one line
-      @section ("content")                      content
+      @section("title", "Home Page")            title, single line
+      @section ("content")                      content, multiple lines
         ...
       @endsection
 ---------------------------------------------------------------------------------------------------
@@ -95,6 +117,9 @@ ROUTES:
     return view("tasks/id");
     return view("tasks.id");                          alternative
 
+  all in one:
+    Route::resource("...", "...");                    creates all routes
+
   with controllers:
     Route::get("/tasks", "TasksController@index");
 
@@ -104,6 +129,8 @@ ROUTES:
     /app/Http/Controllers/                            folder for controllers
 
     php artisan make:controller TasksController       create a controlelr file
+
+  php artisan route:list                              show all routes
 ---------------------------------------------------------------------------------------------------
 CONTROLLERS:
   gets called by route:
@@ -112,7 +139,7 @@ CONTROLLERS:
   declares functions and returns views:
     class PagesController extends Controller {        controller
       public function home() {                        function
-        return view("welcome", [                      return view
+        return view("welcome", [                      return view, in /resources/views/
           "foo" => "bar"                              optional data
         ]);
       }
@@ -120,6 +147,7 @@ CONTROLLERS:
 
   php artisan make:controller ...                     create controller in /app/Http/Controllers
     -r                                                with functions
+    -m ...                                            with model
 
   wildcard:
     public function show($id) {                       longer
@@ -131,18 +159,53 @@ CONTROLLERS:
     public function show(Task $task) {                shorter, wildcard = {task}
       return view("tasks.show", compact("task"));
     }
+
+  namespace:
+    namespace App\Http\Controllers;
+
+    use App\Project;                                  imports model
+
+  naming conventions:
+    GET	        /photos	              @index	    photos.index
+    GET	        /photos/create	      @create	    photos.create
+    POST	      /photos	              @store	    photos.store
+    GET	        /photos/{photo}	      @show	      photos.show
+    GET	        /photos/{photo}/edit	@edit	      photos.edit
+    PUT/PATCH	  /photos/{photo}	      @update	    photos.update
+    DELETE	    /photos/{photo}	      @destroy	  photos.destroy
+
+  return:
+    "...";                        string
+    [...]                         array
+
+    response("...")
+
+    view("...");                  open page after get
+
+    redirect("...");              open page after post
+
+    request()                     creates array
+      ->all();                    everything
+      ->input("name");            user input
+      ->query("name");            query
+      ->only("...", "...");       subset
+      ->except("...", "...");     subset
+      ->file(")
 ---------------------------------------------------------------------------------------------------
 DATABASE:
   migration:
     php artisan make:migration create_tasks_table     create file in /database/migrations/
 
     php artisan migrate                               add a new migration
-    php artisan migrate:refresh                       roll back and migrate
-    php artisan migrate:reset                         roll back without migrate
+    php artisam migrate:fresh                         drop all tables and migrate
+    php artisan migrate:refresh                       reset and migrate
+    php artisan migrate:rollback                      undo last migration
+    php artisan migrate:reset                         undo all migrations
 
   migration file:
     $table->increments('id');
-    $table->text("body");
+    $table->string("title");
+    $table->text("body");                             longer
     $table->boolean("completed")->default(false);     default
     $table->timestamps();
 
@@ -153,6 +216,7 @@ DATABASE:
     where()
     latest()
     find()
+    findOrFail()
 ---------------------------------------------------------------------------------------------------
 TINKER:
   php artisan tinker                      CLI to interact with the application
@@ -162,6 +226,19 @@ TINKER:
   App\Task::pluck("body")                 show specific field
   App\Task::pluck("body")->first()        only the first one
 ---------------------------------------------------------------------------------------------------
+MODEL:
+  one model for each database table
+
+  /app/Project.php
+
+  use in controller:
+    $projects = \App\Project::all();
+
+  class Project extends Model {
+    protected $fillable = ["title", "description"];     only allows these fields to go through
+    protected $guarded = [];                            
+  }
+---------------------------------------------------------------------------------------------------
 ELOQUENT:
   php artisan make:model Task                           create /app/Task.php model
 
@@ -169,7 +246,7 @@ ELOQUENT:
     use App\Task;                                       set namespace
 
     Route::get('/tasks', function () {
-      //$tasks = DB::table("tasks")->latest()->get();   old style
+      $tasks = DB::table("tasks")->latest()->get();     old style
 
       $tasks = Task::all();                             Eloquent style
 
@@ -186,25 +263,28 @@ ELOQUENT:
     wrapper around a query
 ---------------------------------------------------------------------------------------------------
 FORMS:
-  <form>
-    {{ csrf_field() }}                    cross-site protection, creates a token
+  <form method="post" action="/">
+    {{ csrf_field() }}                        cross-site protection, creates a token
+    @csrf                                     blade
+
+    {{ method_field("patch") }}               use for PATCH, PUT, DELETE
+    @method("delete")                         blade
+
+    <input ... value="{{ old("title") }}">    save data in case or error
     ...
   </form>
 ---------------------------------------------------------------------------------------------------
-REQUEST:
-  request()->all()                        show request data
-  request("title")
-  request(["titel", "body"])
----------------------------------------------------------------------------------------------------
 VALIDATION:
   in route function inside controller:
-    $this->validate(request(), [
-      "title" => "required",
-      ...
+    request()->validate([
+      "title" => ["required", "min:3"],
+      "description" => ["required", "max:255"]
     ]);
 
+    creates $errors array
+
     name="password_confirmed":
-      "required|confirmed"                check if password and password_confirmed are equal
+      "password" => "required|confirmed"      check if password and password_confirmed are equal
 ---------------------------------------------------------------------------------------------------
 TIME DATE:
   Carbon:
@@ -225,3 +305,4 @@ AUTHENTICATION:
       /resources/views/auth/...
 
       /app/Http/Controllers/HomeController.php
+---------------------------------------------------------------------------------------------------
