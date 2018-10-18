@@ -36,22 +36,47 @@ FILES AND FOLDERS;
 
   /.env                             keys for database, etc
 ---------------------------------------------------------------------------------------------------
+VIEWS:
+  /resources/views/
+    layout.blade.php:                           layout page
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>
+            @yield("title", "Default Title")    inserts title here, with default
+          </title>
+        </head>
+        <body>
+          @yield("content")                     inserts content here
+        </body>
+      </html>
+
+    index.blade.php:                            content page
+      @extends ("layout")
+      @section("title", "Home Page")            title, in one line
+      @section ("content")                      content
+        ...
+      @endsection
+---------------------------------------------------------------------------------------------------
 BLADE:
-  replace <?php ... ?>  with @...
+  code replacements, with sanitization:
+    @...                                    <?php ... ?>
+    {{ ... }}                               <?= ... ?>
 
-  <?php foreach ($tasks as $task) : ?>    PHP
-    <li><?= $task; ?>
-  <?php endforeach; ?>
+  examples:
+    <?php foreach ($tasks as $task) : ?>    PHP
+      <li><?= $task; ?>
+    <?php endforeach; ?>
 
-  @foreach ($tasks as $task)              Blade
-    <li>{{ $task }}</li>
-  @endforeach
+    @foreach ($tasks as $task)              Blade
+      <li>{{ $task }}</li>
+    @endforeach
 ---------------------------------------------------------------------------------------------------
 ROUTES:
   get:
-    Route::get('/', function () {       main page: /
-      return view('welcome', [          /resources/views/welcome.blade.php
-        "name" => "World"               passes data along
+    Route::get('/', function () {                     listen to this URL
+      return view('welcome', [                        sends to this view
+        "name" => "World"                             passes data along
       ]);
     });
 
@@ -70,14 +95,29 @@ ROUTES:
     return view("tasks/id");
     return view("tasks.id");                          alternative
 
-  controllers:
+  with controllers:
     Route::get("/tasks", "TasksController@index");
+
+    ...->name("home");                                used in controller for redirect
+      return redirect()->home();
 
     /app/Http/Controllers/                            folder for controllers
 
     php artisan make:controller TasksController       create a controlelr file
 ---------------------------------------------------------------------------------------------------
 CONTROLLERS:
+  gets called by route:
+    Route::get("/", "PagesController@home");          route
+
+  declares functions and returns views:
+    class PagesController extends Controller {        controller
+      public function home() {                        function
+        return view("welcome", [                      return view
+          "foo" => "bar"                              optional data
+        ]);
+      }
+    }
+
   php artisan make:controller ...                     create controller in /app/Http/Controllers
     -r                                                with functions
 
@@ -91,25 +131,6 @@ CONTROLLERS:
     public function show(Task $task) {                shorter, wildcard = {task}
       return view("tasks.show", compact("task"));
     }
----------------------------------------------------------------------------------------------------
-VIEWS:
-  /resources/views/
-    layout.blade.php:
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>My Application</title>
-        </head>
-        <body>
-          @yield("content")
-        </body>
-      </html>
-
-    index.blade.php:
-      @extends ("layout")
-      @section ("content")
-        test 
-      @endsection
 ---------------------------------------------------------------------------------------------------
 DATABASE:
   migration:
@@ -142,7 +163,7 @@ TINKER:
   App\Task::pluck("body")->first()        only the first one
 ---------------------------------------------------------------------------------------------------
 ELOQUENT:
-  php artisan make:model Task             create /app/Task.php model
+  php artisan make:model Task                           create /app/Task.php model
 
   web.php:
     use App\Task;                                       set namespace
@@ -155,7 +176,7 @@ ELOQUENT:
       return view('tasks.index', compact("tasks"));
     });
 
-  php artisan make:model Task -m          create model and migration
+  php artisan make:model Task -m                        create model and migration
   adjust migration file
   php artisan migrate
 
@@ -166,22 +187,41 @@ ELOQUENT:
 ---------------------------------------------------------------------------------------------------
 FORMS:
   <form>
-    {{ csrf_field() }}                      cross-site protection, creates a token
+    {{ csrf_field() }}                    cross-site protection, creates a token
     ...
   </form>
 ---------------------------------------------------------------------------------------------------
-request()->all()                            show request data
-request("title")
-request(["titel", "body"])
-
-
+REQUEST:
+  request()->all()                        show request data
+  request("title")
+  request(["titel", "body"])
 ---------------------------------------------------------------------------------------------------
 VALIDATION:
-  in route function:
+  in route function inside controller:
     $this->validate(request(), [
       "title" => "required",
       ...
     ]);
+
+    name="password_confirmed":
+      "required|confirmed"                check if password and password_confirmed are equal
 ---------------------------------------------------------------------------------------------------
-toFormattedDateString()                       makes dates readable
-diffForHumans()                               elapsed time
+TIME DATE:
+  Carbon:
+    use Carbon\Carbon;
+
+    Carbon::parse($month)->month          convert string to number
+
+  toFormattedDateString()                 makes dates readable
+  diffForHumans()                         elapsed time
+---------------------------------------------------------------------------------------------------
+AUTHENTICATION:
+  php artisan make:auth                         creates login and register
+
+    creates:
+      /routes/web.php:
+        Auth::routes();
+
+      /resources/views/auth/...
+
+      /app/Http/Controllers/HomeController.php
