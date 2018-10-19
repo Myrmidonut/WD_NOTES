@@ -53,6 +53,10 @@ INCLUDING FILES:
       require "...";
       ...
 ---------------------------------------------------------------------------------------------------
+NAMESPACE:
+  use App\...;                      single
+  use App\{..., ...};               multiple
+---------------------------------------------------------------------------------------------------
 CODE:
   <?php
     ...
@@ -87,6 +91,12 @@ LOGIC:
 VARIABLES:
   $var = "...";                     create a variable
   $var                              access a variable
+
+  specify type:
+    int $var = 1;                   "1" gets translated
+    bool $var = true;               1, "test" gets translated
+
+    declare(strict_type=1);         disable translating
 
   $$var                             access a variable with the name stored inside the variable
   !$var                             check if variable exists or if it is empty
@@ -175,14 +185,21 @@ FUNCTIONS:
 
   myFunc();                           call a function
 
-  dd                                  "die and dump"
+  closure:                            anonymous function
+    myFunc(..., function() {...});    as callback
+
+    $var = function() {...};          as assignment
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:
-  array_filter($..., function ($...) {...});      return array of filtered elements
+  array_filter($..., function ($...) {...});        return array of filtered elements
 
-  array_map(function ($...) {...}, $...);         return array after running function on elements
+  array_map(function ($...) {...}, $...);           return array after running function on elements
 
-  array_column(..., ...);                         return array with values for specified key
+  array_column(..., ...);                           return array with values for specified key
+
+  sort($...);                                       sort alphabetically
+  rsort($...);                                      sort reverse alphabetically
+  usort($..., function($a, $b) {return $a <=> $b;}  sort by greater, return -1, 0, 1
 ---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF:
@@ -191,16 +208,19 @@ CONDITIONS:
     } else {
       ...;
     }
-  --------------------------------------------------------------------------------------------------
+  
   TERNARY:
-    ... ? ... : ...                         if true do first, otherwise second
+    ... ? ... : ...                           if true do first, otherwise second
+
+  NULL COALESCE:
+    $var ?? "test"                            if $var doesn't exist use "test"
 ---------------------------------------------------------------------------------------------------
 LOOPS:
   FOR:
     for ($i = 0; $i < 10; $i++){              for loop
       ...;
     }
-  --------------------------------------------------------------------------------------------------
+  
   FOREACH:
     foreach ($myArr as $ele) {                loop over array
       ...;
@@ -214,7 +234,7 @@ LOOPS:
       <?php foreach ($myArr as $key => $value) : ?>
         <li><?= $key $value; ?></li>
       <?php endforeach; ?>
-  --------------------------------------------------------------------------------------------------
+  
   WHILE:                                       while loop
     $i = 0;
     while ($i < 10) {
@@ -247,3 +267,5 @@ REMOVE SPACES:
 
   trim(..., "...")                  trim whitespace, optional characters to trim
   parse_url(..., PHP_URL_PATH);     retrieve section of a URL
+
+  dd                                "die and dump"
