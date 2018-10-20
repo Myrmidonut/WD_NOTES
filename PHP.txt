@@ -87,6 +87,7 @@ LOGIC:
   ||                                or
   !                                 not
   ==                                equal
+  !=                                not equal
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
   $var = "...";                     create a variable
@@ -113,44 +114,31 @@ STRINGS:
   $myStr = '...';                     alternative
 
   .=                                  add to a string
-
-  methods:
-    ucwords(...);                     uppercase
-
-    sprintf("%s %s", "...", "...")    create string with attached placeholders
-      %s string
-
-    explode("...", ...);              split at seperator and return as array
 ---------------------------------------------------------------------------------------------------
 ARRAYS:
   declaration:
-    $myArr = [];                   create empty array
-    $myArr = ["...", "..."];       create array
+    $myArr = [];                      create empty array
+    $myArr = ["...", "..."];          create array
 
   elements:
-    $myArr[0];                     access an element
-    $myArr[0] = "...";             create/change an element
+    $myArr[0];                        access an element
+    $myArr[0] = "...";                create/change an element
 
-    $myArr[] = "...";              add to the end of the array
-    unset($myArr["..."];           remove an element
+    $myArr[] = "...";                 add to the end of the array
+    unset($myArr["..."];              remove an element
 
   associative array:
     declaration:
-      $myArr = ["..." => ...,      key, value pairs
+      $myArr = ["..." => ...,         key, value pairs
                 "..." => ...]
 
     elements:
-      $myArr["..."]                access value
-      $myArr["..."] = "...";       create/change value
-
-  methods:
-    sizeof($myArr);                length of an array
-    array_keys($...);              return array of keys
-    implode("...", ...);           return string of elements with seperator
+      $myArr["..."]                   access value
+      $myArr["..."] = "...";          create/change value
 ---------------------------------------------------------------------------------------------------
 CLASS:
-  class ... {
-    public function __construct() {
+  class ... {                               capitalized
+    public function __construct($...) {     constructor method, runs on instantiating, receives arg
 
     }
 
@@ -159,10 +147,16 @@ CLASS:
     public static ...
   }
 
-  $connection = new Connection();       public
-  $connection->make();
+  instance:
+    $... = new ...(...);                    create instance of class with arg
+    $...->...;                              access class variable
+    $...->...();                            access class method
 
-  Connection::make();                   public static
+    $this                                   refers to the instance itself
+      public $var;                          example
+      $this->var = ...;
+
+  Connection::make();                       public static
 
   Example:
     class Task {
@@ -178,32 +172,69 @@ CLASS:
     $task = new Task("Go to the store");
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
-  function myFunc($arg1, $arg2) {     create a function
+  function myFunc($arg1, $arg2 = ...) {     create a function, with arg and default value
     ... ;
     return $test;
   }
 
-  myFunc();                           call a function
+  myFunc();                                 call a function
 
-  closure:                            anonymous function
-    myFunc(..., function() {...});    as callback
+  closure:                                  anonymous function
+    myFunc(..., function() {...});          as callback
 
-    $var = function() {...};          as assignment
+    $var = function() {...};                as assignment
+---------------------------------------------------------------------------------------------------
+EXCEPTIONS:
+  try {
+    ...;
+  } catch (...) {                     (... | ...) multiple exceptions
+    ...;
+  }
+---------------------------------------------------------------------------------------------------
+STRING METHODS:
+  strlen(...);                      length
+  str_word_count(...);              number of words
+  strrev(...);                      reverse
+  strpos(..., ...);                 return position of text, otherwise FALSE
+  str_replace(..., ..., ...);       replace text with text in string
+
+  ucwords(...);                     uppercase
+
+  sprintf("%s %s", "...", "...")    create string with attached placeholders
+    %s string
+
+  explode("...", ...);              split at seperator and return as array
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:
   array_filter($..., function ($...) {...});        return array of filtered elements
-
   array_map(function ($...) {...}, $...);           return array after running function on elements
-
   array_column(..., ...);                           return array with values for specified key
 
-  sort($...);                                       sort alphabetically
-  rsort($...);                                      sort reverse alphabetically
+  sort array:
+    sort($...);                                     ascending
+    rsort($...);                                    descending
+  
+  sort associative array:
+    ksort($...);                                    ascending by key
+    asort($...);                                    ascending by value
+    krsort($...);                                   descending by key
+    arsort($...);                                   descending by value
+    
   usort($..., function($a, $b) {return $a <=> $b;}  sort by greater, return -1, 0, 1
+
+  sizeof($..., COUNT_RECURSIVE);    length of an array, optional recursive count
+  count($...);                      see sizeof()  
+  array_keys($...);                 return array of keys
+  implode("...", ...);              return string of elements with seperator
+  list($..., $...) = $...;          create variables that correspond to array elements
+  [$..., $...] = $...;              alternative
+  ["..." => $...] = $...;           for associative array
 ---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF:
     if (...) {
+      ...;
+    } elseif {
       ...;
     } else {
       ...;
@@ -211,6 +242,16 @@ CONDITIONS:
   
   TERNARY:
     ... ? ... : ...                           if true do first, otherwise second
+
+  SWITCH:
+    switch (...) {                            value to check
+      case ...:                               if match
+        ...;                                  run code
+        break;                                exit switch
+      ...
+      default:
+        ...                                   default code
+    }
 
   NULL COALESCE:
     $var ?? "test"                            if $var doesn't exist use "test"
@@ -239,8 +280,15 @@ LOOPS:
     $i = 0;
     while ($i < 10) {
       ...;
-      i++;
+      $i++;
     }
+
+  DO WHILE:                                    do while loop
+    $i = 0;
+    do {
+      ...;
+      $i++;
+    } while ($i < 10);
 ---------------------------------------------------------------------------------------------------
 GLOBAL VARIABLES:
   $_GET                             shows up in the URL as ?name=abc&password=123
@@ -251,6 +299,23 @@ GLOBAL VARIABLES:
   $_SERVER
 
   $_REQUEST
+---------------------------------------------------------------------------------------------------
+DATE TIME:
+  date("...", ...)                  format, optional timestamp, otherwise now
+    d                               day, 01 - 31
+    m                               month, 01 - 12
+    Y                               year 0000
+    l                               weekday
+    / . -                           seperator
+
+    h                               hour, 01 - 12
+    i                               minute, 00 - 59
+    s                               second, 00 - 59
+    a                               am pm
+    :                               seperator
+
+  mktime(h,m,s, m,d,y)              convert values to unix timestamp
+  strtotime("...")                  convert string to unix timestamp
 ---------------------------------------------------------------------------------------------------
 EMAIL:
   $emailTo = "...";

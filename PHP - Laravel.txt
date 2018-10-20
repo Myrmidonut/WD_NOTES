@@ -263,12 +263,12 @@ ELOQUENT:
     wrapper around a query
 ---------------------------------------------------------------------------------------------------
 FORMS:
-  <form method="post" action="/">
+  <form method="POST" action="/">
     {{ csrf_field() }}                        cross-site protection, creates a token
     @csrf                                     blade
 
-    {{ method_field("patch") }}               use for PATCH, PUT, DELETE
-    @method("delete")                         blade
+    {{ method_field("PATCH") }}               use for PATCH, PUT, DELETE
+    @method("PATCH")                          blade
 
     <input ... value="{{ old("title") }}">    save data in case or error
     ...
