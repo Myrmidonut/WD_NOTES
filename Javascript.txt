@@ -1,5 +1,5 @@
 FILES:
-  external:
+  internal:
     <html>
       <body>
         ...
@@ -7,7 +7,7 @@ FILES:
       </body>
     </html>
 
-  internal:
+  external:
     <html>
       <body>
         <script>
@@ -255,11 +255,13 @@ DATA TYPES:
     if (typeof name == "undefined") {}    checks if the variable called name exists
 ---------------------------------------------------------------------------------------------------
 TYPE CONVERSION:
-  String(...)
+  to string:
+    String(...)
     .toString()
     ..toString()            directly on a number
 
-  Number(...)
+  to number:
+    Number(...)
     .toNumber()
 
     undefined  -> NaN
@@ -267,26 +269,27 @@ TYPE CONVERSION:
     true/false -> 1/0
     string     -> whitespace removed, becomes a number, empty becomes 0, error becomes NaN
 
-    mathematical operations create numbers, exception: + with a string creates a string
-    +... == Number(...)
+  mathematical operations create numbers, exception: + with a string creates a string
+  +... == Number(...)
 
-    addition with string creates string
+  addition with string creates string
 
-    1 + "2" == "12"                       number + string == string
-    1 - "2" == -1                         number - string == number
-    1 * "2" == 2                          number * string == number
-    " -9\n" + 5 == " -9\n5"
-    " -9\n" - 5 == -14
+  1 + "2" == "12"                       number + string == string
+  1 - "2" == -1                         number - string == number
+  1 * "2" == 2                          number * string == number
+  " -9\n" + 5 == " -9\n5"
+  " -9\n" - 5 == -14
 
-  Boolean(...)
-    " "        -> true
-    "0"        -> true
+  to boolean:
+    Boolean(...)
+      " "        -> true
+      "0"        -> true
 
-    0          -> false
-    ""         -> false
-    null       -> false
-    undefined  -> false
-    NaN        -> false
+      0          -> false
+      ""         -> false
+      null       -> false
+      undefined  -> false
+      NaN        -> false
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   declaration:
@@ -348,9 +351,11 @@ BOOLEAN:
   true + false == 1
   let isGreater = 4 > 1;                isGreater == true
 
-  result of comparison is boolean
+  result of comparison is a boolean
 ---------------------------------------------------------------------------------------------------
-ARRAYS:                                   ordered list of data
+ARRAYS:
+  ordered list of data
+
   declaration:
     var myArray = [];                     create an empty array
     var myArray = [1, "two", [3, 4]];     create an array
@@ -376,6 +381,8 @@ ARRAYS:                                   ordered list of data
     may end with a trailing comma
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
+  unordered list of data
+
   overview:
     var myObj = {property1, property2}
     property = key: value
@@ -522,15 +529,16 @@ FUNCTIONS:
   return:
     return comparison;                            return true or false
 
-  arguments with rest operator:
-    function myFunc(...args) {}                   variable number of arguments, stored in array args
-    arguments[]                                   array created from arguments
+  arguments:
+    rest operator:
+      function myFunc(...args) {}                 variable number of arguments, stored in array args
+      arguments[]                                 array created from arguments
 
-  arguments with spread operator:
-    arr = [...];
-    Math.max(...arr);                             spreads array when multiple arguments are needed
+    spread operator:
+      arr = [...];
+      Math.max(...arr);                           spreads array when multiple arguments are needed
 
-    let arr2 = [...arr1];
+      let arr2 = [...arr1];
 
   event:
     let myFunc = function(e) {e...}               function with event object
@@ -597,12 +605,12 @@ METHODS:
     a function inside an object
 
   declaration:
-    obj.func = function() {             creating the method
+    obj.func = function() {               creating the method
       ...
     }
 
   calling:
-    obj.func();                         calling the method
+    obj.func();                           calling the method
 ---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   round:
@@ -657,8 +665,8 @@ STRING METHODS:
     .endsWith("...")                    true if found at end
 
   character:
-    .charAt(5)                          == [5], return the character at index 5
-    .charCodeAt(5)                      return the unicode character at index 5
+    .charAt(...)                        return the character at index, == [...]
+    .charCodeAt(...)                    return the unicode character at index
     String.fromCharCode(...)            get chacracter from unicode
 
   substring:
@@ -779,7 +787,7 @@ CONDITIONS:
     }
 
     if(0) {...}                                 check for boolen type conversion
-  -------------------------------------------------------------------------------------------------
+  ------------------------------
   SWITCH:
     switch (expression) {                       switch statement
       case choice1:
@@ -793,7 +801,7 @@ CONDITIONS:
       default:                                  optional
         ...
     }
-  -------------------------------------------------------------------------------------------------
+  ------------------------------
   TERNARY:
     condition ? true : false;                   ternary, can be chained
 
@@ -802,7 +810,7 @@ CONDITIONS:
     function checkSign(num) {
       return (num > 0) ? "positive" : num < 0 ? "negative" : "zero";
     }
-  -------------------------------------------------------------------------------------------------
+  ------------------------------
   BREAK CONTINUE LABEL:
     if (condition) {                            break, leave whole loop
       break;
@@ -822,29 +830,29 @@ CONDITIONS:
 ---------------------------------------------------------------------------------------------------
 LOOPS:
   FOR:
-    for (init; end; increment) {                for loop
+    for (init; end; increment) {
       ...
     }
 
       if (...) break;                           exit the loop early
       if (...) continue;                        jump to next iteration
-  -------------------------------------------------------------------------------------------------
+  ------------------------------
   WHILE:
     init;
-    while (condition) {                         while loop
+    while (condition) {
       ...
       increment;
     }
-  -------------------------------------------------------------------------------------------------
+  ------------------------------
   DO WHILE:
     init;
-    do {                                        do while loop, always run at least once
+    do {                                        always run at least once
       ...
       increment;
     } while (condition)
-  -------------------------------------------------------------------------------------------------
-  FOR OF:
-    for (let char of "test") {
+  ------------------------------
+  FOR OF:                                       
+    for (let char of "test") {                  on iterable objects
       ...
     }
 ---------------------------------------------------------------------------------------------------
@@ -866,7 +874,7 @@ TIME DATE:
   let msec = Date.parse("...");         convert to milliseconds:
 ---------------------------------------------------------------------------------------------------
 JSON AJAX:
-  conversion:
+  CONVERSION:
     JSON.parse(..., ...);                         JSON string to object, optional function
 
     JSON.stringify(...);                          object to JSON string
@@ -876,8 +884,8 @@ JSON AJAX:
       space:    number for indentation
 
     toJSON();
-
-  from API:
+  ------------------------------
+  FROM API:
     let reqURL = "...";                           store URL
     let req = new XMLHttpRequest();               create request object
     req.open("GET", reqURL, true);                initialize request, HTTP method, URL, async true
@@ -887,8 +895,8 @@ JSON AJAX:
       let res = req.response;                     when server returns JSON object
       ...                                         use data
     }
-
-  to API:
+  ------------------------------
+  TO API:
     let req = new XMLHttpRequest();
     req.open("POST", reqUrl, true);
     req.setRequestHeader("Content-Type", "text/plain");
@@ -898,16 +906,16 @@ JSON AJAX:
       }
     }
     req.send(username);                                     send the data
-
-  fetch:
-      fetch(url)
-        .then(response => {
-          return response.json();
-        }).then(jsonData => {
-          console.log(jsonData);
-        }).catch(err => {
-          console.log("Error: ", err);
-        })
+  ------------------------------
+  FETCH:
+    fetch(url)
+      .then(response => {
+        return response.json();
+      }).then(jsonData => {
+        console.log(jsonData);
+      }).catch(err => {
+        console.log("Error: ", err);
+      })
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {

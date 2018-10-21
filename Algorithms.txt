@@ -1,0 +1,131 @@
+BIG O NOTATION:
+  calculate the performance of an algorithm
+  time and space complexity
+  ------------------------------
+  TIME COMPLEXITY:
+    how many calculations
+
+    reductions:
+      O(2n)           => O(n)
+      O(500)          => O(1)
+      O(13n²)         => O(n²)
+      O(n + n)        => O(n)
+      O(n + 19)       => O(n)
+      O(1000n + 50)   => O(n)
+      O(n² + 5n + 8)  => O(n²)
+
+    rules:
+      arithmetic operation    => constant
+      variable assignment     => constant
+      array element by index  => constant
+      object element by key   => constant
+      
+      loop                    => length of loop times inside of loop
+
+    time:
+      faster            slower
+      O(1)
+        O(log n)
+                O(n)
+                        O(nlog n)
+                          O(n²)
+  ------------------------------
+  SPACE COMPLEXITY:
+    how many items
+
+    auxillary space complexity: only algorithm without inputs
+
+    rules:
+      primitives        => constant
+        boolean
+        number
+        undefined
+        null
+      strings           => O(n), n = length
+      array             => O(n), n = length
+      object            => O(n), n = number of keys
+  ------------------------------
+  LOGARITHM:
+    log_2(a) = b  => 2^b = a
+  ------------------------------
+  ARRAYS (JS):
+    ordered -> slow
+
+    Access          => O(1)
+    Insert
+      beginning     => O(n)     .shift
+      end           => O(1)     .push
+    Remove
+      beginning     => O(n)     .unshift
+      end           => O(1)     .pop
+    Search          => O(n)     for unsorted
+
+    Methods:
+      .push         => O(1)
+      .pop          => O(1)
+      .shift        => O(n)
+      .unshift      => O(n)
+      .concat       => O(n)
+      .slice        => O(n)
+      .splice       => O(n)
+      .sort         => O(n * log n)
+      iterators     => O(n)
+        .forEach
+        .map
+        .filter
+        .reduce
+  ------------------------------
+  OBJECTS (JS):
+    unordered -> very fast
+
+    Access              => O(1)
+    Insert              => O(1)
+    Remove              => O(1)
+    Search              => O(n)
+
+    Methods:
+      Object.keys()     => O(n)
+      Object.values()   => O(n)
+      Object.entries()  => O(n)
+      .hasOwnProperty   => O(1)
+---------------------------------------------------------------------------------------------------
+PROBLEMS:
+  understand
+  explore examples
+  break it down
+  solve and simplify
+  look back and refactor
+
+  UNDERSTAND:
+    Restate in own words.
+
+    What are the inputs?
+      no input
+      too many inputs
+      large numbers
+      integer, float, string, ...
+
+    What are the outputs?
+      integer, float, string, etc.
+
+    Is there enough information to go from input to output?
+      0 for not enough inputs
+
+    How to label the important parts?
+      many variables
+  ------------------------------
+  REFACTOR:
+    Check the result?
+
+    Derive the result differently?
+
+    Understand it at a glance?
+
+    Use result for other problems?
+
+    Improve performance?
+
+    Other ways of refactoring?
+
+    Solutions by others?
+---------------------------------------------------------------------------------------------------
