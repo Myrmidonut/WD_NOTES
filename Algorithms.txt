@@ -21,6 +21,8 @@ BIG O NOTATION:
       object element by key   => constant
       
       loop                    => length of loop times inside of loop
+      
+      two loops are better than nested loops
 
     time:
       faster            slower
@@ -115,17 +117,88 @@ PROBLEMS:
       many variables
   ------------------------------
   REFACTOR:
-    Check the result?
-
-    Derive the result differently?
-
-    Understand it at a glance?
-
-    Use result for other problems?
-
-    Improve performance?
-
-    Other ways of refactoring?
-
-    Solutions by others?
+    Check the result.
+    Derive the result differently.
+    Understand it at a glance.
+    Use result for other problems.
+    Improve performance.
+    Other ways of refactoring.
+    Solutions by others.
 ---------------------------------------------------------------------------------------------------
+PATTERNS:
+  Frequency Counter:
+    find elements and their frequency
+
+    examples:
+      check if one array consists of squared elements of another array
+      check if one string is an anagram of another string
+
+    solution:
+      create two objects of unique elements and their frequency and compare them
+      Time: 3 loops -> O(n)
+
+  Multiple Pointers;
+    requires sorted array
+
+    examples:
+      find pairs of elements in an array
+      count unique values in an array
+
+    solution:
+      2 pointers, in-/decrement both until a pair meets a criteria, move to next pair
+      Time: 1 loop -> O(n)
+      Space: O(1)
+
+  Sliding Window:
+    find subsets
+    
+    examples:
+      unique consecutive elements
+      sum of n consecutive elements
+
+    solution:
+      create subset and move through array by removing first and adding new element to subset
+      Time: 2 loops -> O(n)
+
+  Divide and Conquer:
+    create subsets and repeat the process on these subsets
+---------------------------------------------------------------------------------------------------
+SEARCH:
+  Linear Search:
+    check every element
+    Time: O(n)
+
+  Binary Search:
+    sorted data
+    cut in half, compare searchelement with last element of first half, repeat
+    Time: O(log n)
+---------------------------------------------------------------------------------------------------
+RECURSION:
+  a process that calls itself until it reaches the basecase and ends the recursion
+  split into basecase and recursion, both have a return
+
+  Helper Method:
+    wrap around initial variable and recursive function
+
+  Pure Recursion:
+    
+
+  Javascript:
+    function calls are managed by the call stack
+
+  Example:
+    function countDown(num) {
+      if (num <= 0) {
+        console.log("Done!");
+        return;
+      }
+      console.log(num);
+      num--;
+      countDown(num);
+    }
+
+  Example:
+    function sumRange(num) {
+      if (num === 0) return 1;
+      return num + sumRange(num - 1);
+    }

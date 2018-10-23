@@ -36,10 +36,14 @@ IMPORT:
   later methods overwrite earlier ones with same call name
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
-  #                               one line comment
+  #                               single line
   '''                             multiple lines
     ...
   '''
+---------------------------------------------------------------------------------------------------
+CODE BLOCKS:
+  using indentation
+  4 spaces recommended
 ---------------------------------------------------------------------------------------------------
 LINE BREAK:
   ... \                           the statement continues in the next line
@@ -88,19 +92,26 @@ LOGIC:
   add                     AND
   or                      OR
   not                     NOT
----------------------------------------------------------------------------------------------------
-CASTING:
-  int(...)                convert to integer
-  float(...)
-  str(...)
+
+  chaining:
+    ... <= ... < ...
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
   ... = ...               assignment
   ..., ... = ..., ...     multiple assignments
-  NAME = ...              constant
+  NAME = ...              "constant", constants do not exist
+
+  ...: ... = 20           set datatype, python 3.6
+  age: int = 20
+
+  id(...)                 return memory location
+
+  scope:
+    local                 declared and available anywhere in a function, overwrites global
+    global                available anywhere
 
   naming convention:
-    letters
+    lowercase letters
     underscore
     numbers
 
@@ -115,7 +126,11 @@ SCOPE:
     variables are available anywhere
 ---------------------------------------------------------------------------------------------------
 DATA TYPES:
-  bool
+  dynamically typed               data type is set automatically
+  strongly typed                  no automatic type conversion
+
+  boolean:
+    bool
 
   number:
     int
@@ -137,23 +152,46 @@ DATA TYPES:
   mapping:
     dict                          mutable
 
-  type(...)                       check data type
+  casting:
+    int(...)                      convert to integer
+    float(...)
+    bool(...)
+    str(...)
+
+  type(...)                       return data type
   isinstance(..., ...)            check if object belongs to a class, or data type
+---------------------------------------------------------------------------------------------------
+BOOLEAN:
+  values:
+    True
+    False
+
+  falsy values:
+    ""
+    0, 0.0
+    [], (), {}
+    None                          null
+    False
+
+  truthy values:
+    everything else
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   ... = 1                         integer
   ... = 1.0                       floating point
-  ... = 1j                        complex
-        2 + 3j
-        9.11j
+  ... = 2j                        complex
+  ... = 2 + 3j
+  ... = 9.11j
 ---------------------------------------------------------------------------------------------------
 STRINGS:
-  ... = '...'                             single quotes
-  ... = "..."                             double quotes
-  ... = ""                                empty 
+  ... = '...'                     single quotes
+  ... = "..."                     double quotes
+  ... = ""                        empty
+  ... = """..."""                 multiple lines
 
   characters:
-    ...[...]                              return character at index ...
+    ...[...]                      return character at index
+    ...[-...]                     return character at index counting backwards
 
   escape characters:
     \n                            newline
@@ -165,22 +203,13 @@ STRINGS:
   concatenation:
     "..." + "..."                 two strings
     1 + "1"                       error
+    f"{...} {...}"                using expressions
 
   repetition:
     "..." * ...                   repeat a string
 
   cannot change a character in a string
   can add to the end
----------------------------------------------------------------------------------------------------
-BOOLS:
-  True
-  False
-
-  falsy values:
-    None
-    False
-    0, 0.0
-    "", [], (), {}
 ---------------------------------------------------------------------------------------------------
 LISTS:
   create:
@@ -237,10 +266,11 @@ SETS:
 ---------------------------------------------------------------------------------------------------
 DICTIONARY:
   2 dimensional list, not ordered
+  key value pairs
 
   create:
     ... = {}                      empty
-    ... = {                       with key, value pairs
+    ... = {                       with key value pairs
       "..." : "...",
       "..." : "...",
     }
@@ -326,7 +356,8 @@ MATH FUNCTIONS:
   math.sqrt(...)                  return square root
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
-  .len(...)                       length of string
+  length:
+    .len(...)                     length of string
 
   search:
     .endswith(...)                return true if ends with ...
@@ -396,10 +427,10 @@ LIST METHODS:
     ... = [expression for item in iterable if condition]
 
   add:
-    .appends(...)                 add to end of list
+    .append(...)                  add to end of list
     .insert(..., ...)             insert at index, item
-    .extends([...])               add elements to the end
-    .extends("...")               split string and add to the end
+    .extend([...])                add elements to the end
+    .extend("...")                split string and add to the end
 
   remove:
     .remove(...)                  remove first occurrence
@@ -418,74 +449,81 @@ LIST METHODS:
 INPUT / OUTPUT:
   input:
     var = input(prompt)           read from keyboard and convert to string
+    var = input("x: ")            with label
 
   output:
     print("text", var)            print to screen, with newline
     print(..., sep="#")           print with given seperator
-    print(..., end="...")         print with given symbol at the end
+    print(..., end="...")         print with given symbol at the end, "" for no newline
 ---------------------------------------------------------------------------------------------------
-IF:
-  if condition:                   if
-    command1
-    command2
-  elif condition:                 elif
-    command1
-    command2
-  else:                           else
-    command1
-    command2
+CONDITIONS:
+  IF:
+    if ...:                       if
+      ...
+    elif ...:                     elif
+      ...
+    else:                         else
+      ...
 
-  if ... or ... :
+    pass                          empty block
+  ------------------------------
+  TERNARY:
+    ... = ... if ... else ...     statement1, condition, statement2
 ---------------------------------------------------------------------------------------------------
-FOR:
-  for ... in ...:                 for
-    command1
-    command2
-
-  example:
-    test = ["a", "b", "c"]        example
-    for i in test:
-      print i
-
-  range:
-    range(...)                    from 0 to ...-1
-    range(..., ...)               from ... to ...-1, can be negative
-    range(..., ..., ...)          from ... to ...-1 with increment/decrement
+LOOPS:
+  FOR:
+    for ... in ...:               element in iterable data
+      ...
 
     example:
-      for i in range (3, 11, 2):
-        print i                   i is 3, 5, 7, 9
----------------------------------------------------------------------------------------------------
-WHILE:
-  while condition:                while
-    command1
-    command2
+      test = ["a", "b", "c"]
+      for i in test:
+        print i
 
-  example:
-    x = 0
-    while x < 10:                   
-      x += 1
----------------------------------------------------------------------------------------------------
-BREAK CONTINUE:
-  break:
-    for ...:                      exit parent loop if break gets called
-      if ...:
-        break
-      ...
+    range:
+      range(...)                  from 0 to exclusive ...
+      range(..., ...)             from ... to exclusive ..., can be negative
+      range(..., ..., ...)        from ... to exclusive ... with increment/decrement
 
-  continue:
-    for ...:                      jump to next iteration is continue gets called
-      if ...:
-        continue
-      ...
+      example:
+        for i in range (3, 11, 2):
+          print i                 i is 3, 5, 7, 9
+  ------------------------------
+  WHILE:
+    while ...:                    condition
+      ...                         statements
+
+    example:
+      x = 0
+      while x < 10:                   
+        x += 1
+  ------------------------------
+  BREAK CONTINUE:
+    break:
+      for ...:                      exit parent loop if break gets called
+        if ...:
+          break
+        ...
+
+    continue:
+      for ...:                      jump to next iteration is continue gets called
+        if ...:
+          continue
+        ...
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
-    def ...(..., ...):            zero or more arguments
+    def ...(..., ...) -> ...:     optional arguments, optional return type
       ...
       return ...                  optional, terminate, return None without
+      return (..., ...)           multiple values as tuple
 
-    def ...(...=...)              with default value for argument
+    arguments:
+      ...(... = ...)              default
+      ...(...: ...)               data type
+      ...(...: ... = ...)         default data type
+      ...(*...)                   variable arguments as tuple
+      ...(**...)                  variable arguments as keywords
 
   call:
     ...(...)                      call
@@ -532,3 +570,14 @@ STUFF:
 
   .is_integer()                   checks if a float is a whole number                                
 ---------------------------------------------------------------------------------------------------
+
+
+def fizz_buzz(input):
+    if input % 3 == 0 and input % 5 == 0:
+         return "fizzbuzz"
+    elif input % 3 == 0:
+        return "fizz"
+    elif input % 5 == 0:
+        return "buzz"
+    else:
+        return input
