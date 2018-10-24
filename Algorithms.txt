@@ -24,13 +24,14 @@ BIG O NOTATION:
       
       two loops are better than nested loops
 
-    time:
-      faster            slower
-      O(1)
-        O(log n)
-                O(n)
-                        O(nlog n)
-                          O(n²)
+    fast                                            slow
+    O(1)
+      O(log n)
+            O(n)
+                      O(nlog n)
+                                        O(n²)
+                                                O(2^n)
+                                                    O(n!)
   ------------------------------
   SPACE COMPLEXITY:
     how many items
@@ -136,7 +137,7 @@ PATTERNS:
     solution:
       create two objects of unique elements and their frequency and compare them
       Time: 3 loops -> O(n)
-
+  ------------------------------
   Multiple Pointers;
     requires sorted array
 
@@ -148,7 +149,7 @@ PATTERNS:
       2 pointers, in-/decrement both until a pair meets a criteria, move to next pair
       Time: 1 loop -> O(n)
       Space: O(1)
-
+  ------------------------------
   Sliding Window:
     find subsets
     
@@ -159,19 +160,9 @@ PATTERNS:
     solution:
       create subset and move through array by removing first and adding new element to subset
       Time: 2 loops -> O(n)
-
+  ------------------------------
   Divide and Conquer:
     create subsets and repeat the process on these subsets
----------------------------------------------------------------------------------------------------
-SEARCH:
-  Linear Search:
-    check every element
-    Time: O(n)
-
-  Binary Search:
-    sorted data
-    cut in half, compare searchelement with last element of first half, repeat
-    Time: O(log n)
 ---------------------------------------------------------------------------------------------------
 RECURSION:
   a process that calls itself until it reaches the basecase and ends the recursion
@@ -185,7 +176,7 @@ RECURSION:
 
   Javascript:
     function calls are managed by the call stack
-
+  ------------------------------
   Example:
     function countDown(num) {
       if (num <= 0) {
@@ -202,3 +193,147 @@ RECURSION:
       if (num === 0) return 1;
       return num + sumRange(num - 1);
     }
+
+    function fib(num) {
+      if (num <= 2) return 1;
+  
+      return fib(num - 1) + fib(num - 2);
+    }
+---------------------------------------------------------------------------------------------------
+SEARCH:
+  Linear Search:
+    go through whole dataset, check every element
+
+    Best:     O(1)
+    Average:  O(n)
+    Worst:    O(n)
+  ------------------------------
+  Binary Search:
+    divide and conquer
+    sorted
+    pointers at beginning, middle and end
+    check if value is bigger or smaller than middle
+    discard one half and move pointer to middle
+    repeat
+
+    Best:     O(1)
+    Average:  O(log n)
+    Worst:    O(log n)
+  ------------------------------
+  Naive String Search:
+    2 loops
+    first loops over bigger string
+    second loops over smaller string, starts at first loops position
+
+    O(n²)
+  ------------------------------
+  KNP:
+
+---------------------------------------------------------------------------------------------------
+PRIMITIVE SORT:
+  Insertion > Bubble > Selection
+
+  average time complexity of O(n²)
+
+  Insertion/Bubble:
+    fast on nearly sorted arrays
+    good for streams of data
+  ------------------------------
+  BUBBLE SORT:
+    largest element moves to the end
+
+    compare two elements and swap if wrong order
+    check next pair
+
+    Time:
+      Best:     O(n)
+      Average:  O(n²)
+      Worst:    O(n²)
+
+    Space:      O(1)
+
+    Code:
+      function bubbleSort(arr) {
+        let noSwaps;
+
+        for (let i = arr.length; i > 0; i--) {
+          noSwaps = true;
+
+          for (let j = 0; j < i - 1; j++) {
+            if (arr[j] > arr[j+1]) {
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr [j + 1] = temp;
+              noSwaps = false;
+            }
+          }
+
+          if (noSwaps) break;
+        }
+
+        return arr;
+      }
+  ------------------------------
+  SELECTION SORT:
+    smallest element moves to the front
+
+    set first element to be the smallest
+    compare with next elements
+    find new smallest element
+    move to front afer whole pass
+    repeat with next element
+
+    Time:
+      Best:     O(n²)
+      Average:  O(n²)
+      Worst:    O(n²)
+
+    Space:      O(1)
+
+    Code:
+      function selectionSort(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          let lowest = i;
+
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[lowest]) {
+                lowest = j;
+            }
+          }
+
+          if (i !== lowest) {
+            let temp = arr[i];
+            arr[i] = arr[lowest];
+            arr[lowest] = temp;
+          }
+        }
+
+        return arr;
+      }
+  ------------------------------
+  INSERTION SORT:
+    check if next element is bigger than elements in previous subarray
+    repeat
+
+    Time:
+      Best:     O(n)
+      Average:  O(n²)
+      Worst:    O(n²)
+
+    Space:      O(1)
+
+    Code:
+      function insertionSort(arr) {
+        for (let i = 1; i < arr.length; i++) {
+          let currentVal = arr[i];
+
+          for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            arr[j + 1] = arr[j];
+          }
+
+          arr[j + 1] = currentVal;
+        }
+
+        return arr;
+      }
+---------------------------------------------------------------------------------------------------
