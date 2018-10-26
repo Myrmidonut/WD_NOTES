@@ -401,6 +401,12 @@ OBJECTS:
 
     var myOby = [{...}, {...}];                 array of objects
 
+
+-----
+class ???
+
+
+
   constructor:
     function MyObj() {                          constructor, capitalized
       let ... = ...;                            private property, changed only inside constructor
@@ -464,6 +470,12 @@ OBJECTS:
     myModule.myMixin1(myIns);             set the method
     myIns.name1();                        use method
 
+
+    ------
+    object ???
+
+
+
   call:
     myObj.key;                            calling a property
     myObj.key[0];                         calling an array property
@@ -477,11 +489,27 @@ OBJECTS:
 
     myObj[key] = value;
 
+
+    -------
+    class ???
+
+
+
+
   method:
     myMethod() {...}                      function not necessary inside objects
  
   this:
     .this                                 refers to the current object
+
+
+
+
+-----
+object ???
+
+
+
 
   stuff:
     .hasOwnProperty("...")                check if property exists
@@ -514,6 +542,44 @@ OBJECTS:
     [] notation is more complex
 
     const myObj {} it is still possible to change properties, only myObj itself is protected
+---------------------------------------------------------------------------------------------------
+CLASS:
+  capital letter
+
+  blueprint
+  when created with new keyword make object called instance
+  constructor method runs when instance is created
+  instance methods
+  class methods use static keyword
+
+  static method:
+    no instantiating
+    cannot be called through class instance
+    often used for utility functions
+
+  Example:
+    class Student {
+      constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tardies = 0;
+        this.scores = [];
+      }
+
+      fullName() {
+        return `Full name is: ${this.firstName} ${this.lastName}`;
+      }
+
+      static enrollStudents(...students) {
+        return "Enrolling students";
+      }
+    }
+
+    let firstStudent = new Student("John", "Smith");
+    let secondStudent = new Student("Jane", "Doe");
+
+    firstStudent.fullName();
+    Student.enrollStudents([firstStudent, secondStudent]);
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
