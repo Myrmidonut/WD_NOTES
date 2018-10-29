@@ -1,0 +1,53 @@
+fcc projects on github and github pages:
+  1 responsive web design:
+    1
+    2
+    3
+    4
+    5
+  2: javascript algorithms and data structures:
+    1
+    2
+    3
+    4
+    5
+  3:  front end libraries (react, needs production build):
+    1
+    2
+    3
+    4
+    5
+  4: data visualization
+    1
+    2
+    3
+    4
+    5
+
+fcc projects on github and glitch:
+  5: apis and microservices
+    1
+    2
+    3
+    4
+    5
+  6: information security and quality assurance
+    1
+    2
+    3
+    4
+    5
+
+portfolio seperate on github with projects
+
+course project on heroku
+
+portfolio:
+cards with preview image, description, link to github code, link to live pages
+rework skills, make logos, add hover text, organize into frontend/backend
+
+projects:
+on github (pages)
+update code
+remove fcc tester
+add styling for backend
