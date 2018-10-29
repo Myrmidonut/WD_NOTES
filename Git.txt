@@ -19,6 +19,7 @@ FIRST STEPS FOR NEW REPOSITORY:
     create GitHub repository
 
     git clone https://github.com/Myrmidonut/xxx.git
+    add files
     git add .
     git commit -m "..."
     git push origin master

@@ -1,53 +1,59 @@
 fcc projects on github and github pages:
   1 responsive web design:
-    1
-    2
-    3
-    4
-    5
-  2: javascript algorithms and data structures:
-    1
-    2
-    3
-    4
-    5
-  3:  front end libraries (react, needs production build):
-    1
-    2
-    3
-    4
-    5
-  4: data visualization
-    1
-    2
-    3
-    4
-    5
+    1 Build a Tribute Page
+    2 Build a Survey Form
+    3 Build a Product Landing Page
+    4 Build a Technical Documentation Page
+    5 Build a Personal Portfolio Webpage
 
+  2: javascript algorithms and data structures:
+    1 Palindrome Checker
+    2 Roman Numeral Converter
+    3 Caesars Cipher
+    4 Telephone Number Validator
+    5 Cash Register
+
+  3:  front end libraries (react, needs production build):
+    1 Build a Random Quote Machine
+    2 Build a Markdown Previewer
+    3 Build a Drum Machine
+    4 Build a JavaScript Calculator
+    5 Build a Pomodoro Clock
+
+  4: data visualization
+    1 Visualize Data with a Bar Chart
+    2 Visualize Data with a Scatterplot Graph
+    3 Visualize Data with a Heat Map
+    4 Visualize Data with a Choropleth Map
+    5 Visualize Data with a Treemap Diagram
+---------------------------------------------------------------------------------------------------
 fcc projects on github and glitch:
   5: apis and microservices
-    1
-    2
-    3
-    4
-    5
+    1 Timestamp Microservice
+    2 Request Header Parser Microservice
+    3 URL Shortener Microservice
+    4 Exercise Tracker
+    5 File Metadata Microservice
+
   6: information security and quality assurance
-    1
-    2
-    3
-    4
-    5
-
-portfolio seperate on github with projects
-
-course project on heroku
-
+    1 Metric-Imperial Converter
+    2 Issue Tracker
+    3 Personal Library
+    4 Stock Price Checker
+    5 Anonymous Message Board
+---------------------------------------------------------------------------------------------------
+course project:
+  on heroku
+---------------------------------------------------------------------------------------------------
 portfolio:
-cards with preview image, description, link to github code, link to live pages
-rework skills, make logos, add hover text, organize into frontend/backend
-
+  seperate on github with projects
+  cards with preview image, description, link to github code, link to live pages
+  rework skills, make logos, add hover text, organize into frontend/backend
+---------------------------------------------------------------------------------------------------
 projects:
-on github (pages)
-update code
-remove fcc tester
-add styling for backend
+  on github (pages)
+  update code
+  remove fcc tester
+  remove codepen files
+  add styling for backend
+---------------------------------------------------------------------------------------------------

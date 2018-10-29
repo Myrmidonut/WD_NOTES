@@ -525,3 +525,16 @@ RADIX SORT:
     }
 ---------------------------------------------------------------------------------------------------
 DATA STRUCTURES:
+  SINGLY LINKED LIST:
+    start at head
+    connected with a node to following element via next pointer
+    end at tail
+    no index
+    no random Access
+
+    good for insert and delete
+
+    Code:
+      class Node {
+
+      }
