@@ -28,6 +28,22 @@ INSTALLATION:
   Chrome:
     React Developer Tools                 can display details for react components
 ---------------------------------------------------------------------------------------------------
+GITHUB PAGES:
+  create repository on GitHub without readme
+  create local repository, link to GitHub
+
+  npm install --save gh-pages
+
+  package.json:
+    "homepage": "https://username.github.io/repository/",
+
+    "scripts": {
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build"
+    }
+
+  npm run deploy
+---------------------------------------------------------------------------------------------------
 WORKFLOW:
   create-react-app ...
   npm run eject

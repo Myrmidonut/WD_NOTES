@@ -120,7 +120,7 @@ DATA:
   .xml(..., ...)              URL, callback
 
   callback:
-    function(error, data) {
+    function(error, response) {
       if (err) ...
       else d3.select...
     }

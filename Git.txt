@@ -10,13 +10,13 @@ FIRST STEPS FOR NEW REPOSITORY:
     git add .
     git commit -m "..."
 
-    create GitHub repository
+    create GitHub repository without readme
 
     git remote add origin https://github.com/Myrmidonut/xxx.git
     git push origin master
 
   GitHub -> local:
-    create GitHub repository
+    create GitHub repository with readme
 
     git clone https://github.com/Myrmidonut/xxx.git
     add files

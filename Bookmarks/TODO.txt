@@ -13,7 +13,7 @@ fcc projects on github and github pages:
     4 Telephone Number Validator
     5 Cash Register
 
-  3:  front end libraries (react, needs production build):
+  3: front end libraries (react, needs production build):
     1 Build a Random Quote Machine
     2 Build a Markdown Previewer
     3 Build a Drum Machine

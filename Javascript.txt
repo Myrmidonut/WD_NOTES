@@ -49,9 +49,13 @@ CONSOLE:
   console.log(...);                     outputs into the console
   console.table(...);                   outputs into the console as a table
   clear();                              clears the console in chrome
+
   alert(...);                           shows a window with text, etc.
   prompt(..., ...);                     shows a window with a message (and default text) and input
   confirm(...);                         shows a window with OK and Cancel
+---------------------------------------------------------------------------------------------------
+ERRORS:
+  if(error) throw error;                stops execution and outputs error message
 ---------------------------------------------------------------------------------------------------
 OPERATORS:
   unary                                 one operand, -5
