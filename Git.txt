@@ -74,6 +74,7 @@ SHORT VERSION:
   git remote add origin ...         access to GitHub URL
   git remote add upstream ...       add upstream remote to a cloned repository to pull in changes
   git remote -v                     details of remote
+  git remote set-url origin ...     change GitHub URL
   git push origin master            push to GitHub
   git push -u origin master         -u remembers parameters, use git push next time
   git pull origin master            pull from GitHub
