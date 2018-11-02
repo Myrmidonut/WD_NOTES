@@ -943,7 +943,7 @@ TIME DATE:
 
   let msec = Date.parse("...");         convert to milliseconds:
 ---------------------------------------------------------------------------------------------------
-JSON AJAX:
+JSON API:
   CONVERSION:
     JSON.parse(..., ...);                         JSON string to object, optional function
 
@@ -978,14 +978,25 @@ JSON AJAX:
     req.send(username);                                     send the data
   ------------------------------
   FETCH:
-    fetch(url)
-      .then(response => {
-        return response.json();
-      }).then(jsonData => {
-        console.log(jsonData);
-      }).catch(err => {
-        console.log("Error: ", err);
-      })
+    fetch(...)                      URL
+      .then(...)                    type of response
+      .then(...)                    use data from response
+      .catch(...)                   error handling
+
+    methods for response:
+      clone()                       create clone of response
+      redirect()                    create new response with different URL
+      arrayBuffer()                 return promise that resolves with an ArrayBuffer
+      formData()                    return promise that resolves with FormData object
+      blob()                        return promise that resolves with a Blob
+      text()                        return promise that resolves with a string
+      json()                        return promise that resolves JSON
+
+    example:
+      fetch(url)
+      .then(response => response.json())
+      .then(data => console.log(data[0]))
+      .catch(error => console.log(error))
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {

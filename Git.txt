@@ -23,6 +23,9 @@ FIRST STEPS FOR NEW REPOSITORY:
     git add .
     git commit -m "..."
     git push origin master
+
+  commits:
+    git diff HEAD
 ---------------------------------------------------------------------------------------------------
 GITHUB:
   README.md:

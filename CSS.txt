@@ -469,8 +469,14 @@ SHADOWS:
 
   big container:
     box-shadow: 2px 2px 20px;
+                5px 5px 20px;
   small container:
     box-shadow: 1px 1px 10px;
+
+  button:
+    box-shadow: 3px 3px 3px gray;
+    box-shadow: inset 1px 1px 1px gray;               hover
+    box-shadow: inset 3px 3px 3px gray;               active
 ---------------------------------------------------------------------------------------------------
 BLEND:
   background-blend-mode: multiply;    blend background image with color

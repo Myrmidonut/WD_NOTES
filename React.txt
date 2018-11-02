@@ -197,7 +197,7 @@ COMPONENTS:
     export default Name;
 
   functional:                               stateless
-    const name = (props) => {               static render, lowercase
+    const Name = (props) => {               static render, lowercase
       ...                                   JS
       return (
         <div>

@@ -56,4 +56,5 @@ projects:
   remove fcc tester
   remove codepen files
   add styling for backend
+  react: switch to functional components
 ---------------------------------------------------------------------------------------------------
