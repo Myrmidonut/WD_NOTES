@@ -304,9 +304,17 @@ STATE:
       });
     }
   }
+
+  reset:
+    initialState = this.state;
+
+    clear() {
+      this.setState(this.initialState)
+    }
 ---------------------------------------------------------------------------------------------------
 EVENTS:
-  <button onClick={this.props.handleClick}>...</button>
+  onClick={this.props.handleClick}
+  onChange={this.props.handleChange}
 ---------------------------------------------------------------------------------------------------
 RENDER CONDITIONALLY:
   set condition inside render but before return
@@ -330,6 +338,53 @@ RENDER CONDITIONALLY:
         </div>
       );
     }
+---------------------------------------------------------------------------------------------------
+HTML:
+  dangerouslySetInnerHTML={{__html: marked(props.text)}}      insert HTML
+
+  e.target.value                                              get content of element
+---------------------------------------------------------------------------------------------------
+TWO WAY INTERACTION:
+  const Editor = (props) => {
+    return (
+      <div>
+        <textarea 
+          value={props.text}                        state
+          onChange={props.onChange} />              onChange
+      </div>
+    )
+  }
+
+  class App extends Component {
+    state = {                                       state
+      text: demoText
+    }
+
+    changeHandler = (e) => {                        change handler
+      this.setState({
+        text: e.target.value                        set state from target value
+      })
+    }
+
+    render() {
+      return (
+        <div className="App">
+          <Editor 
+            text={this.state.text}                  state
+            onChange={this.changeHandler} />        onChange
+          <Preview 
+            text={this.state.text} />
+        </div>
+      );
+    }
+  }
+---------------------------------------------------------------------------------------------------
+INTERVAL:
+  this.interval = setInterval(() => {               setInterval
+    ...
+  }, 1000);
+  
+  clearInterval(this.interval);                     clearInterval
 ---------------------------------------------------------------------------------------------------
 HIGHER ORDER COMPONENT:
   return:
@@ -378,17 +433,17 @@ TYPE VALIDATION:
   }
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
-  mount                                   first page load 
-  re-render                               state changes
+  mount                                           first page load 
+  re-render                                       state changes
 
   Create:
-    constructor(props)                    call super(props), set up state
-    componentWillMount()                  update state, optimize
-    render()                              prepare and structure JSX for DOM
+    constructor(props)                            call super(props), set up state
+    componentWillMount()                          update state, optimize
+    render()                                      prepare and structure JSX for DOM
       render child components
-    componentDidMount()                   API or server calls, dont update state
+    componentDidMount()                           API or server calls, dont update state
 
-    componentWillUnmount()                before removing component
+    componentWillUnmount()                        before removing component
 
   Update external:
     componentWillReceiveProps(nextProps)          component receives new props
