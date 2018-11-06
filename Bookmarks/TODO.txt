@@ -29,18 +29,18 @@ fcc projects on github and github pages:
 ---------------------------------------------------------------------------------------------------
 fcc projects on github and glitch:
   5: apis and microservices
-    1 Timestamp Microservice
-    2 Request Header Parser Microservice
-    3 URL Shortener Microservice
-    4 Exercise Tracker
-    5 File Metadata Microservice
-
+    1 Timestamp Microservice, no test
+    2 Request Header Parser Microservice, no test
+    5 File Metadata Microservice, no test
+    3 URL Shortener Microservice, no test
+    4 Exercise Tracker, TEST PASS
+    
   6: information security and quality assurance
-    1 Metric-Imperial Converter
-    2 Issue Tracker
-    3 Personal Library
-    4 Stock Price Checker
-    5 Anonymous Message Board
+    1 Metric-Imperial Converter, TEST PASS
+    2 Issue Tracker, TEST PASS
+    3 Personal Library, TEST PASS
+    4 Stock Price Checker, TEST PASS, FUNCTIONAL TESTS CHECK FAIL
+    5 Anonymous Message Board, TEST PASS (faulty test)
 ---------------------------------------------------------------------------------------------------
 course project:
   on heroku
@@ -49,6 +49,7 @@ portfolio:
   seperate on github with projects
   cards with preview image, description, link to github code, link to live pages
   rework skills, make logos, add hover text, organize into frontend/backend
+  one favourite project per cert, others in a subfolder aside
 ---------------------------------------------------------------------------------------------------
 projects:
   on github (pages)
@@ -57,4 +58,6 @@ projects:
   remove codepen files
   add styling for backend
   react: switch to functional components
+  <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+  by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 ---------------------------------------------------------------------------------------------------
