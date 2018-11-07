@@ -64,8 +64,8 @@ ROUTES:
 REQUEST:
   req.headers                               header data of request object
   req.body                                  data send with form
-  req.params                                /:...
-  req.query
+  req.params                                wildcard in the url /:...
+  req.query                                 queries in the url
     ?first=firstname&last=lastname
       req.query.first
       req.query.last

@@ -29,18 +29,18 @@ fcc projects on github and github pages:
 ---------------------------------------------------------------------------------------------------
 fcc projects on github and glitch:
   5: apis and microservices
-    1 Timestamp Microservice, no test
-    2 Request Header Parser Microservice, no test
-    5 File Metadata Microservice, no test
-    3 URL Shortener Microservice, no test
-    4 Exercise Tracker, TEST PASS
+    1 Timestamp Microservice --- NO TEST
+    2 Request Header Parser Microservice --- NO TEST
+    5 File Metadata Microservice --- NO TEST
+    3 URL Shortener Microservice --- NO TEST
+    4 Exercise Tracker --- TEST PASS
     
   6: information security and quality assurance
-    1 Metric-Imperial Converter, TEST PASS
-    2 Issue Tracker, TEST PASS
-    3 Personal Library, TEST PASS
-    4 Stock Price Checker, TEST PASS, FUNCTIONAL TESTS CHECK FAIL
-    5 Anonymous Message Board, TEST PASS (faulty test)
+    1 Metric-Imperial Converter --- TEST PASS
+    2 Issue Tracker --- TEST PASS
+    3 Personal Library --- TEST PASS
+    4 Stock Price Checker --- TEST PASS, FUNCTIONAL TESTS CHECK FAIL
+    5 Anonymous Message Board --- TEST PASS (faulty test)
 ---------------------------------------------------------------------------------------------------
 course project:
   on heroku
@@ -52,12 +52,13 @@ portfolio:
   one favourite project per cert, others in a subfolder aside
 ---------------------------------------------------------------------------------------------------
 projects:
-  on github (pages)
-  update code
-  remove fcc tester
-  remove codepen files
-  add styling for backend
-  react: switch to functional components
+  on github (pages) --- DONE
+  update code --- DONE
+  remove fcc tester --- DONE
+  remove codepen files --- DONE
+  add styling for backend --- 5: DONE --- 6: NOT DONE
+  react: switch to functional components --- DONE
+  
   <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
   by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 ---------------------------------------------------------------------------------------------------
