@@ -67,10 +67,12 @@ EVENTS:
     mouseover
     mouseout
 
+    submit                                form submit
+
   .removeEventListener("...", ...)        event and function as arguments
 
   default behaviour:
-    .preventDefault()                     prevent default behaviour
+    e.preventDefault()                    prevent default behaviour
 
   event handler property:
     element

@@ -28,6 +28,14 @@ STYLES:
 FILES:
   app.set("view engine", "ejs");          res.render does not need file endings
 ---------------------------------------------------------------------------------------------------
+FOLDERS:
+  /public/                                css, images
+  /views/                                 html
+  /middlewares/                           middleware
+  /models/                                database access
+  /controllers/                           routes
+  /routes/                                routes
+---------------------------------------------------------------------------------------------------
 INCLUDE:
   include ...                             include HMTL code from another file
 ---------------------------------------------------------------------------------------------------

@@ -164,8 +164,8 @@ REGULAR EXPRESSIONS:
 
   ^...$               exact match
 
-  (?=...)             exists            
-  (?!=...)            not exists
+  (?=...)             positive lookahead, exists            
+  (?!=...)            negative lookahead, not exists
 
   invert using uppercase letter
 
@@ -943,60 +943,53 @@ TIME DATE:
 
   let msec = Date.parse("...");         convert to milliseconds:
 ---------------------------------------------------------------------------------------------------
-JSON API:
-  CONVERSION:
-    JSON.parse(..., ...);                         JSON string to object, optional function
+JSON:
+  JSON.parse(..., ...);                         JSON string to object, optional function
 
-    JSON.stringify(...);                          object to JSON string
-    JSON.stringify(value, replacer, space)  
-      value:    a value
-      replacer: array or function
-      space:    number for indentation
+  JSON.stringify(...);                          object to JSON string
+  JSON.stringify(value, replacer, space)  
+    value:    a value
+    replacer: array or function
+    space:    number for indentation
 
-    toJSON();
-  ------------------------------
-  FROM API:
-    let reqURL = "...";                           store URL
-    let req = new XMLHttpRequest();               create request object
-    req.open("GET", reqURL, true);                initialize request, HTTP method, URL, async true
-    req.responseType = "json";                    server will return JSON, "", "text", ...
-    req.send();                                   send request
-    req.onload = function() {                     wait for response before using it
-      let res = req.response;                     when server returns JSON object
-      ...                                         use data
-    }
-  ------------------------------
-  TO API:
-    let req = new XMLHttpRequest();
-    req.open("POST", reqUrl, true);
-    req.setRequestHeader("Content-Type", "text/plain");
-    req.onreadystatechange = function() {
-      if (req.readyState == 4 && req.status == 200) {       successful request
-        ...
+  toJSON();
+---------------------------------------------------------------------------------------------------
+FETCH:
+  fetch(...)                                    URL
+    .then(...)                                  type of response
+    .then(...)                                  use data from response
+    .catch(...)                                 error handling
+
+  type of response:
+    .clone()                                    create clone of response
+    .redirect()                                 create new response with different URL
+    .arrayBuffer()                              return promise that resolves with an ArrayBuffer
+    .formData()                                 return promise that resolves with FormData object
+    .blob()                                     return promise that resolves with a Blob
+    .text()                                     return promise that resolves with a string
+    .json()                                     return promise that resolves JSON
+
+  Example:
+    fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data[0]))
+    .catch(error => console.log(error))
+
+  Example json or text response:
+    fetch(url)        
+    .then(response => response.text())
+    .then(data => {
+      try {
+        const jsonReturn = JSON.parse(data);
+        
+        element1.textContent = jsonReturn.string;
+        element2.textContent = JSON.stringify(jsonReturn);
+      } catch(err) {
+        result.textContent = data;
+        jsonResult.textContent = data;
       }
-    }
-    req.send(username);                                     send the data
-  ------------------------------
-  FETCH:
-    fetch(...)                      URL
-      .then(...)                    type of response
-      .then(...)                    use data from response
-      .catch(...)                   error handling
-
-    methods for response:
-      clone()                       create clone of response
-      redirect()                    create new response with different URL
-      arrayBuffer()                 return promise that resolves with an ArrayBuffer
-      formData()                    return promise that resolves with FormData object
-      blob()                        return promise that resolves with a Blob
-      text()                        return promise that resolves with a string
-      json()                        return promise that resolves JSON
-
-    example:
-      fetch(url)
-      .then(response => response.json())
-      .then(data => console.log(data[0]))
-      .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {
