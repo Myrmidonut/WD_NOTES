@@ -32,7 +32,7 @@ READ - FIND:
     .find({'a': 3}).toArray(callback)                 find first matching entry
     .find({_id: ObjectId("...")}).toArray(callback)   find by id
     .find({...: ...}, {...: 0/1}).toArray(callback))  find entries with filter
-      result[0]                                       result
+      result[0]                                       return
 
     .find()
     .sort({...: ...})                                 time: -1 for descending
@@ -40,7 +40,7 @@ READ - FIND:
     .toArray()
 
     .findOne({...}, callback)                         find first match
-      result                                          result
+      result                                          return
 ---------------------------------------------------------------------------------------------------
 UPDATE:
   collection
@@ -51,7 +51,7 @@ UPDATE:
     .findOneAndUpdate({...}, {...}, callback)               update
       upsert: true                                          create document if not found
       returnOriginal: false                                 return updated document
-      result.value === {...} or null                        result
+      result.value === {...} or null                        return
 
     .updateOne
     .updateMany
@@ -61,8 +61,8 @@ DELETE:
     .remove(callback)                                 delete all entries in collection
     .remove({...}, {...}, callback)                   delete one entry
   
-    .findOneAndDelete({...}, callback)     
-    .deleteOne({ a : 3 }, function(err, result) {})   
+    .findOneAndDelete({...}, callback)
+    .deleteOne({ a : 3 }, function(err, result) {})
 ---------------------------------------------------------------------------------------------------
 INDEX:
   const indexCollection = function(db, callback) {      

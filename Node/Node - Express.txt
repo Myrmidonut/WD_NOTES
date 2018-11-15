@@ -35,9 +35,27 @@ FOLDERS:
   /models/                                database access
   /controllers/                           routes
   /routes/                                routes
+
+  process.cwd()                           directory of the node process
+  __dirname                               directory of the script file
 ---------------------------------------------------------------------------------------------------
 INCLUDE:
   include ...                             include HMTL code from another file
+---------------------------------------------------------------------------------------------------
+SETUP:
+  server.js:                                                    default setup
+    const express = require("express");
+    const apiRoutes = require('./routes/api.js');               enable /routes/api.js with app.route
+    app.use(express.static("public"));                          search in /public/ for css, script
+    app.route("/")                                              initial route
+      .get((req, res) => {
+        res.sendFile(process.cwd() + '/views/index.html')
+      })
+    apiRoutes(app);                                             load routes file
+    app.listen(process.env.PORT || 3000, () => {                start server
+      console.log("Listening on port " + process.env.PORT);
+    }
+    module.exports = app;
 ---------------------------------------------------------------------------------------------------
 ROUTES:
   order of routes matters
@@ -71,9 +89,9 @@ ROUTES:
 ---------------------------------------------------------------------------------------------------
 REQUEST:
   req.headers                               header data of request object
-  req.body                                  data send with form
   req.params                                wildcard in the url /:...
-  req.query                                 queries in the url
+  req.body                                  form fields with GET
+  req.query                                 form fields with POST, queries in the url
     ?first=firstname&last=lastname
       req.query.first
       req.query.last

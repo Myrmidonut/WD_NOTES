@@ -59,6 +59,8 @@ READ - FIND:
   .findOne({...}, callback)                   return object with first match
   .findById(id, callback)                     return object that matches mongoDB _id
 
+  .distinct("...", callback)                  return array with unique matches for the field
+
   without callback the query is not executed and can be stored for chaining
     .find()
     .sort("...", -1)                          sort by key, optional descending

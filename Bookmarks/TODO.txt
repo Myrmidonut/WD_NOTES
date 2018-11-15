@@ -29,17 +29,17 @@ fcc projects on github and github pages:
 ---------------------------------------------------------------------------------------------------
 fcc projects on github and glitch:
   5: apis and microservices
-    1 Timestamp Microservice
-    2 Request Header Parser Microservice
-    5 File Metadata Microservice
-    3 URL Shortener Microservice
-    4 Exercise Tracker
+    1 Timestamp Microservice --- DONE
+    2 Request Header Parser Microservice --- DONE
+    5 File Metadata Microservice --- DONE
+    3 URL Shortener Microservice --- DONE
+    4 Exercise Tracker --- DONE
     
   6: information security and quality assurance
-    1 Metric-Imperial Converter
-    2 Issue Tracker
-    3 Personal Library
-    4 Stock Price Checker --- TEST PASS, FUNCTIONAL TESTS CHECK FAIL
+    1 Metric-Imperial Converter -- DONE
+    2 Issue Tracker --- DONE
+    3 Personal Library --- DONE
+    4 Stock Price Checker --- DONE
     5 Anonymous Message Board --- TEST PASS (faulty test)
 ---------------------------------------------------------------------------------------------------
 course project:
@@ -59,19 +59,47 @@ projects:
   add styling for backend --- 5: DONE --- 6: NOT DONE
   react: switch to functional components --- DONE
   
-  <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
   by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 ---------------------------------------------------------------------------------------------------
 show state borders on 4-4
 
-padding for <code> on 5-all
-links/forms for example api calls on 5-all
-header/footer/main on 5-all
+padding for <code> on 5-all --- DONE
+links/forms for example api calls on 5-all --- DONE
+header/footer/main on 5-all --- DONE
 
-show available conversions on 6-1
-jquery on 6-2
-get list of issues on 6-2
-style, layout, jquery on 6-3, 6-4, 6-5
-functional tests on 6-4
-faulty test on 6-5
-header/footer/main on 6-all
+6-1: --- DONE
+show available conversions --- DONE
+
+6-2:
+jquery on 6-2 --- DONE
+  fetch not sending formdata --- DONE
+  issue.html with jquery --- DONE
+get list of issues on 6-2 --- DONE
+get list of projects on 6-2 --- DONE
+empty project not added to list of projects --- INTENDED
+sort issues by open/closed --- IGNORED
+open project and create project forms --- DONE
+
+6-3:
+border around each book --- DONE
+border around comments inside book border --- DONE
+update comment count on book --- DONE
+add comment layout --- DONE
+reload after delete book -- DONE
+new comment shows on top of list, ok after reload --- DONE
+tests --- DONE
+
+6-4: --- DONE
+multiple stocks liked --- DONE
+multiple stocks not returning re_likes for both --- DONE
+single not returning updated for found-updated --- DONE
+check for mongodb code instead of mongoose --- DONE
+functional tests on 6-4 --- DONE
+
+6-5:
+faulty test
+
+all:
+style, layout, jquery
+header/footer/main

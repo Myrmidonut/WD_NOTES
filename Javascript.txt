@@ -955,10 +955,17 @@ JSON:
   toJSON();
 ---------------------------------------------------------------------------------------------------
 FETCH:
-  fetch(...)                                    URL
-    .then(...)                                  type of response
-    .then(...)                                  use data from response
-    .catch(...)                                 error handling
+  fetch(..., {                                              URL
+    method: "post",                                         method
+    body: new URLSearchParams(new FormData(submitForm))     for post
+    })                     
+  .then(...)                                                type of response
+  .then(...)                                                use data from response
+  .catch(...)                                               error handling
+
+  body can be:
+    string (JSON.stringify), needs headers: {"Content-type": "application/json"}
+    URLSearchParamsFormData
 
   type of response:
     .clone()                                    create clone of response
@@ -990,6 +997,25 @@ FETCH:
       }
     })
     .catch(error => console.log(error))
+
+  Example post form data:
+    const submitForm = document.getElementById("submitForm");
+    const jsonResult = document.getElementById("jsonResult");
+    const url = "/api/issues/apitest";
+
+    submitForm.addEventListener("submit", e => {
+      e.preventDefault();
+      
+      fetch(url, {
+        method: 'post',
+        body: new URLSearchParams(new FormData(submitForm))
+      })
+      .then(response => response.text())
+      .then(data => {
+        jsonResult.textContent = data;
+      })
+      .catch(error => console.log(error))
+    })
 ---------------------------------------------------------------------------------------------------
 LOCATION:
   if (navigator.geolocation) {

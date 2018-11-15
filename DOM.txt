@@ -31,6 +31,8 @@ CREATE:
 ---------------------------------------------------------------------------------------------------
 READ:
   .value                                    get value
+  .innerHTML                                get content
+  .id                                       get id
 ---------------------------------------------------------------------------------------------------
 MANIPULATE:
   text:
@@ -73,6 +75,9 @@ EVENTS:
 
   default behaviour:
     e.preventDefault()                    prevent default behaviour
+
+  form:
+    .reset()                              set fields to default
 
   event handler property:
     element

@@ -558,6 +558,12 @@ POSITION:
     left: ...;
     right: ...;
 
+  vertical-align: ...;      align item vertically with other items in parent
+    top
+    middle
+    bottom
+    ...
+
   z-index:                  overlapping order
     auto; 0;                default, descending in source order
     1; -1;                  higher numbers on top
