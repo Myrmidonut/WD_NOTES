@@ -963,6 +963,17 @@ FETCH:
   .then(...)                                                use data from response
   .catch(...)                                               error handling
 
+  fetch object:
+    method - GET, POST, PUT, DELETE, HEAD
+    url - URL of the request
+    headers - associated Headers object
+    referrer - referrer of the request
+    mode - cors, no-cors, same-origin
+    credentials - should cookies go with the request? omit, same-origin
+    redirect - follow, error, manual
+    integrity - subresource integrity value
+    cache - cache mode (default, reload, no-cache)
+
   body can be:
     string (JSON.stringify), needs headers: {"Content-type": "application/json"}
     URLSearchParamsFormData
@@ -975,6 +986,7 @@ FETCH:
     .blob()                                     return promise that resolves with a Blob
     .text()                                     return promise that resolves with a string
     .json()                                     return promise that resolves JSON
+    .error()                                    returns object associated with a network error
 
   Example:
     fetch(url)

@@ -98,8 +98,13 @@ check for mongodb code instead of mongoose --- DONE
 functional tests on 6-4 --- DONE
 
 6-5:
-faulty test
+faulty test --- DONE
+update user stories
+jquery on board
+jquery on thread
+use partials
 
 all:
 style, layout, jquery
 header/footer/main
+check for partials possibility
