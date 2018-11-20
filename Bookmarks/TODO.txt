@@ -99,12 +99,17 @@ functional tests on 6-4 --- DONE
 
 6-5:
 faulty test --- DONE
-update user stories
+update user stories --- DONE
 jquery on board
 jquery on thread
-use partials
+use partials --- DONE
+show list of boards --- DONE
+stay on board page after new reply --- INTENDED
 
 all:
-style, layout, jquery
+back to previous page links
+style
+layout
+jquery
 header/footer/main
 check for partials possibility

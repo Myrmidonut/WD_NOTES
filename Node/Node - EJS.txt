@@ -8,3 +8,35 @@ CODE:
   <%= ... %>                run JS code and add to HTML
   <%  ... %>                run JS code
   <%- ... %>                run JS/HTML code and display it
+---------------------------------------------------------------------------------------------------
+PARTIALS:
+  needs / for CSS/JS files
+
+  views/partials/:
+    header.ejs:
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Demo App</title>
+          <link rel="stylesheet" href="/...">       CSS
+        </head>
+        <body>
+
+    footer.ejs:
+          <script src="/..."></script>              JS
+        </body>
+      </html>
+
+  views/
+    home.ejs:
+      <% include partials/header %>
+      ...
+      <% include partials/footer %>
+
+  server.js:
+    const ejs = require("ejs");
+
+    app.set("view engine", "ejs");          res.render does not need file endings
+
+    app.route('/')
+      .get((req, res) => res.render(process.cwd() + '/views/index.ejs'));
