@@ -15,8 +15,8 @@ fcc projects on github and github pages:
 
   3: front end libraries (react, needs production build):
     1 Build a Random Quote Machine --- DONE
-    2 Build a Markdown Previewer
-    3 Build a Drum Machine
+    2 Build a Markdown Previewer --- DONE
+    3 Build a Drum Machine --- DONE
     4 Build a JavaScript Calculator --- DONE
     5 Build a Pomodoro Clock
 
@@ -56,6 +56,8 @@ projects:
   landscape mode
   favicons
   improve styling on frontend libraries
+  improve styling on responsive
+  rework JS
   github readme
   on github (pages) --- DONE
   update code --- DONE
@@ -70,28 +72,30 @@ projects:
 
 
 --------------------------------------------
-
-
+3-1:
+favicon --- DONE
 --------------------------------------------
-calculator:
-bigger font on buttons
-
+3-4:
+bigger font on buttons --- DONE
+favicon --- DONE
 --------------------------------------------
-show state borders on 4-4
+4-4:
+show state borders
 --------------------------------------------
-padding for <code> on 5-all --- DONE
-links/forms for example api calls on 5-all --- DONE
-header/footer/main on 5-all --- DONE
+5-all:
+padding for <code> --- DONE
+links/forms for example api calls --- DONE
+header/footer/main --- DONE
 --------------------------------------------
-6-1: --- DONE
+6-1:
 show available conversions --- DONE
 
 6-2:
-jquery on 6-2 --- DONE
-  fetch not sending formdata --- DONE
-  issue.html with jquery --- DONE
-get list of issues on 6-2 --- DONE
-get list of projects on 6-2 --- DONE
+jquery --- DONE
+fetch not sending formdata --- DONE
+issue.html with jquery --- DONE
+get list of issues --- DONE
+get list of projects --- DONE
 empty project not added to list of projects --- INTENDED
 sort issues by open/closed --- IGNORED
 open project and create project forms --- DONE
@@ -105,7 +109,7 @@ reload after delete book -- DONE
 new comment shows on top of list, ok after reload --- DONE
 tests --- DONE
 
-6-4: --- DONE
+6-4:
 multiple stocks liked --- DONE
 multiple stocks not returning re_likes for both --- DONE
 single not returning updated for found-updated --- DONE
@@ -121,7 +125,7 @@ use partials --- DONE
 show list of boards --- DONE
 stay on board page after new reply --- INTENDED
 
-all:
+6-all:
 back to previous page links --- DONE
 style --- DONE
 layout --- DONE
