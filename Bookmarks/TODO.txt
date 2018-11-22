@@ -14,10 +14,10 @@ fcc projects on github and github pages:
     5 Cash Register
 
   3: front end libraries (react, needs production build):
-    1 Build a Random Quote Machine
+    1 Build a Random Quote Machine --- DONE
     2 Build a Markdown Previewer
     3 Build a Drum Machine
-    4 Build a JavaScript Calculator
+    4 Build a JavaScript Calculator --- DONE
     5 Build a Pomodoro Clock
 
   4: data visualization
@@ -36,11 +36,11 @@ fcc projects on github and glitch:
     4 Exercise Tracker --- DONE
     
   6: information security and quality assurance
-    1 Metric-Imperial Converter -- DONE
-    2 Issue Tracker --- DONE
-    3 Personal Library --- DONE
-    4 Stock Price Checker --- DONE
-    5 Anonymous Message Board --- TEST PASS (faulty test)
+    1 Metric-Imperial Converter -- DONE --- CHECKED
+    2 Issue Tracker --- DONE --- CHECKED
+    3 Personal Library --- DONE --- CHECKED
+    4 Stock Price Checker --- DONE --- CHECKED
+    5 Anonymous Message Board --- DONE ---CHECKED
 ---------------------------------------------------------------------------------------------------
 course project:
   on heroku
@@ -52,22 +52,37 @@ portfolio:
   one favourite project per cert, others in a subfolder aside
 ---------------------------------------------------------------------------------------------------
 projects:
+  check on sizzy.co
+  landscape mode
+  favicons
+  improve styling on frontend libraries
+  github readme
   on github (pages) --- DONE
   update code --- DONE
   remove fcc tester --- DONE
   remove codepen files --- DONE
-  add styling for backend --- 5: DONE --- 6: NOT DONE
+  add styling for backend --- 5: DONE --- 6: DONE
   react: switch to functional components --- DONE
   
   <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
   by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 ---------------------------------------------------------------------------------------------------
-show state borders on 4-4
 
+
+--------------------------------------------
+
+
+--------------------------------------------
+calculator:
+bigger font on buttons
+
+--------------------------------------------
+show state borders on 4-4
+--------------------------------------------
 padding for <code> on 5-all --- DONE
 links/forms for example api calls on 5-all --- DONE
 header/footer/main on 5-all --- DONE
-
+--------------------------------------------
 6-1: --- DONE
 show available conversions --- DONE
 
@@ -100,16 +115,16 @@ functional tests on 6-4 --- DONE
 6-5:
 faulty test --- DONE
 update user stories --- DONE
-jquery on board
-jquery on thread
+jquery on board --- DONE
+jquery on thread --- DONE
 use partials --- DONE
 show list of boards --- DONE
 stay on board page after new reply --- INTENDED
 
 all:
-back to previous page links
-style
-layout
-jquery
-header/footer/main
-check for partials possibility
+back to previous page links --- DONE
+style --- DONE
+layout --- DONE
+jquery --- DONE
+header/footer/main --- DONE
+check for partials possibility --- DONE

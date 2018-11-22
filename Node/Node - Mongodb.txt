@@ -31,7 +31,7 @@ READ - FIND:
     .find().toArray(callback))                        find all entries
     .find({'a': 3}).toArray(callback)                 find first matching entry
     .find({_id: ObjectId("...")}).toArray(callback)   find by id
-    .find({...: ...}, {...: 0/1}).toArray(callback))  find entries with filter
+    .find({...: ...}, {...: 0/1}).toArray(callback))  find entries, 0 to hide fields
       result[0]                                       return
 
     .find()

@@ -27,6 +27,7 @@ CREATE:
     .createElement("...", options)          create element, optional options
     .appendChild("...")                     add as last child of parent
     .insertBefore(new, next)                add before next inside parent
+    .insertBefore(new, next.nextSibling);   add after next inside parent
     .removeChild("...")                     remove from parent, return reference to child
 ---------------------------------------------------------------------------------------------------
 READ:
