@@ -120,6 +120,12 @@ CONTAINERS:
   <div>                     container, linebreak
 ---------------------------------------------------------------------------------------------------
 ENTITIES:                   display symbols, etc.
+  &#43;                     plus
+  &#8722;                   minus
+  &#215;                    multiply
+  &#247;                    divide
+  &#61;                     equals
+  
   &lt;                      < 
   &gt;                      >
   &amp;                     &

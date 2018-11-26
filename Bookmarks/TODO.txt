@@ -18,7 +18,7 @@ fcc projects on github and github pages:
     2 Build a Markdown Previewer --- DONE
     3 Build a Drum Machine --- DONE
     4 Build a JavaScript Calculator --- DONE
-    5 Build a Pomodoro Clock
+    5 Build a Pomodoro Clock --- DONE
 
   4: data visualization
     1 Visualize Data with a Bar Chart
@@ -78,6 +78,16 @@ favicon --- DONE
 3-4:
 bigger font on buttons --- DONE
 favicon --- DONE
+--------------------------------------------
+3-5:
+timer font color to opposite
+session top --- DONE
+headline --- DONE
+favicon --- DONE
+responsive --- DONE
+background less tall --- DONE
+font stand off ground --- DONE
+timer speed for final --- DONE
 --------------------------------------------
 4-4:
 show state borders

@@ -59,6 +59,8 @@ EVENTS:
   .addEventListener("...", ...);          run a function when an event happens
     click                                 
     dblclick
+    mouseover
+    mouseout
 
     keypress
     keydown
@@ -66,9 +68,6 @@ EVENTS:
 
     change                                works without focus change
     input                                 same as above without need for focus loss
-    
-    mouseover
-    mouseout
 
     submit                                form submit
 
