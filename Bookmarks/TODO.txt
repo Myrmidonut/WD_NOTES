@@ -50,6 +50,19 @@ portfolio:
   cards with preview image, description, link to github code, link to live pages
   rework skills, make logos, add hover text, organize into frontend/backend
   one favourite project per cert, others in a subfolder aside
+
+  showcase:
+    fcc
+      1: Product Landing Page
+      2: algorithms
+      3: pomodoro Clock
+      4: Heat Map or Choropleth Map
+      5: Exercise Tracker ???
+      6: Personal Library or Anonymous Message Board
+    Yelp Camp
+    PHP Laravel ??? - Etch-a-sketch
+    Python Django ???
+    Etch a Sketch
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
@@ -69,76 +82,99 @@ projects:
   <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
   by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 ---------------------------------------------------------------------------------------------------
-
-
+Campgrounds:
+  ---
+--------------------------------------------
+Etch-a-Sketch:
+  frontend:
+    favicon
+    font
+    show grid size
+    show global last sketches
+    interface:
+      reset
+      save
+      load
+      favourites
+      change grid size
+      colors for background and squares
+      intensity slider
+    mobile view with interface button
+  backend:
+    laravel
+    mongodb - mlab ???
+    mysql ???
+    heroku
 --------------------------------------------
 3-1:
-favicon --- DONE
---------------------------------------------
+  favicon --- DONE
+
 3-4:
-bigger font on buttons --- DONE
-favicon --- DONE
---------------------------------------------
+  bigger font on buttons --- DONE
+  favicon --- DONE
+
 3-5:
-timer font color to opposite
-session top --- DONE
-headline --- DONE
-favicon --- DONE
-responsive --- DONE
-background less tall --- DONE
-font stand off ground --- DONE
-timer speed for final --- DONE
+  timer font color to opposite
+  session top --- DONE
+  headline --- DONE
+  favicon --- DONE
+  responsive --- DONE
+  background less tall --- DONE
+  font stand off ground --- DONE
+  timer speed for final --- DONE
 --------------------------------------------
 4-4:
-show state borders
+  show state borders
 --------------------------------------------
 5-all:
-padding for <code> --- DONE
-links/forms for example api calls --- DONE
-header/footer/main --- DONE
+  padding for <code> --- DONE
+  links/forms for example api calls --- DONE
+  header/footer/main --- DONE
 --------------------------------------------
 6-1:
-show available conversions --- DONE
+  show available conversions --- DONE
 
 6-2:
-jquery --- DONE
-fetch not sending formdata --- DONE
-issue.html with jquery --- DONE
-get list of issues --- DONE
-get list of projects --- DONE
-empty project not added to list of projects --- INTENDED
-sort issues by open/closed --- IGNORED
-open project and create project forms --- DONE
+  jquery --- DONE
+  fetch not sending formdata --- DONE
+  issue.html with jquery --- DONE
+  get list of issues --- DONE
+  get list of projects --- DONE
+  empty project not added to list of projects --- INTENDED
+  sort issues by open/closed --- IGNORED
+  open project and create project forms --- DONE
 
 6-3:
-border around each book --- DONE
-border around comments inside book border --- DONE
-update comment count on book --- DONE
-add comment layout --- DONE
-reload after delete book -- DONE
-new comment shows on top of list, ok after reload --- DONE
-tests --- DONE
+  border around each book --- DONE
+  border around comments inside book border --- DONE
+  update comment count on book --- DONE
+  add comment layout --- DONE
+  reload after delete book -- DONE
+  new comment shows on top of list, ok after reload --- DONE
+  tests --- DONE
 
 6-4:
-multiple stocks liked --- DONE
-multiple stocks not returning re_likes for both --- DONE
-single not returning updated for found-updated --- DONE
-check for mongodb code instead of mongoose --- DONE
-functional tests on 6-4 --- DONE
+  multiple stocks liked --- DONE
+  multiple stocks not returning re_likes for both --- DONE
+  single not returning updated for found-updated --- DONE
+  check for mongodb code instead of mongoose --- DONE
+  functional tests on 6-4 --- DONE
 
 6-5:
-faulty test --- DONE
-update user stories --- DONE
-jquery on board --- DONE
-jquery on thread --- DONE
-use partials --- DONE
-show list of boards --- DONE
-stay on board page after new reply --- INTENDED
+  faulty test --- DONE
+  update user stories --- DONE
+  jquery on board --- DONE
+  jquery on thread --- DONE
+  use partials --- DONE
+  show list of boards --- DONE
+  stay on board page after new reply --- INTENDED
+  in board, event listeners get duplicated --- DONE
+  in board, create reply shows json --- DONE
 
 6-all:
-back to previous page links --- DONE
-style --- DONE
-layout --- DONE
-jquery --- DONE
-header/footer/main --- DONE
-check for partials possibility --- DONE
+  back to previous page links --- DONE
+  style --- DONE
+  layout --- DONE
+  jquery --- DONE
+  header/footer/main --- DONE
+  check for partials possibility --- DONE
