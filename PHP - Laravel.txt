@@ -153,7 +153,7 @@ ROUTES:
     return view("tasks.id");                          alternative
   --------------------
   all in one:
-    Route::resource("...", "...");                    creates all routes
+    Route::resource("...", "...");                    create all routes with URL and controller
   --------------------
   with controllers:
     Route::get("/tasks", "TasksController@index");
@@ -163,16 +163,23 @@ ROUTES:
 
     /app/Http/Controllers/                            folder for controllers
 
-    php artisan make:controller TasksController       create a controlelr file
+    php artisan make:controller TasksController       create a controller file
   --------------------
   php artisan route:list                              show all routes
+  --------------------
+  naming conventions:
+    GET	        /photos	              @index	    photos.index      show all photos
+    GET	        /photos/create	      @create	    photos.create     show form to add photo
+    GET	        /photos/{photo}	      @show	      photos.show       show single photo
+    GET	        /photos/{photo}/edit	@edit	      photos.edit       show form to edit photo
+    POST	      /photos	              @store	    photos.store      save photo
+    PUT/PATCH	  /photos/{photo}	      @update	    photos.update     update photo
+    DELETE	    /photos/{photo}	      @destroy	  photos.destroy    delete photo
 ---------------------------------------------------------------------------------------------------
 CONTROLLERS:
   called in routes file
   declares functions
   returns views
-
-  php artisan make:controller PagesController         create controller
 
   Route:
     Route::get("/", "PagesController@home");          create route
@@ -185,7 +192,7 @@ CONTROLLERS:
         ]);
       }
     }
-
+  --------------------
   php artisan make:controller ...                     create controller in /app/Http/Controllers
     -r                                                with functions
     -m ...                                            with model
@@ -194,26 +201,17 @@ CONTROLLERS:
     public function show($id) {                       longer
       $task = Task::find($id);
     
-      return view("tasks.show", compact("task"));
+      return view("tasks/show", compact("task"));
     }
 
     public function show(Task $task) {                shorter, wildcard = {task}
-      return view("tasks.show", compact("task"));
+      return view("tasks/show", compact("task"));
     }
   --------------------
   namespace:
     namespace App\Http\Controllers;
 
     use App\Project;                                  imports model
-  --------------------
-  naming conventions:
-    GET	        /photos	              @index	    photos.index
-    GET	        /photos/create	      @create	    photos.create
-    POST	      /photos	              @store	    photos.store
-    GET	        /photos/{photo}	      @show	      photos.show
-    GET	        /photos/{photo}/edit	@edit	      photos.edit
-    PUT/PATCH	  /photos/{photo}	      @update	    photos.update
-    DELETE	    /photos/{photo}	      @destroy	  photos.destroy
   --------------------
   return:
     "...";                        string
@@ -225,7 +223,8 @@ CONTROLLERS:
 
     redirect("...");              open page after post
 
-    request()                     creates array
+    request()                     creates array from form filed with name="..."
+    request("...")                specific field
       ->all();                    everything
       ->input("name");            user input
       ->query("name");            query
@@ -303,14 +302,22 @@ TINKER:
 MODEL:
   one model for each database table
 
+  php artisan make_model ...                            create model
+    -m                                                  with migration
+    -f                                                  with factory
+
   /app/Project.php
 
   use in controller:
     $projects = \App\Project::all();
 
+  with namespace:
+    use App\Project;
+    $projects = Project::all();
+
   class Project extends Model {
-    protected $fillable = ["title", "description"];     only allows these fields to go through
-    protected $guarded = [];                            
+    protected $fillable = ["title", "description"];     only allows these fields
+    protected $guarded = [];                            allow everything except these fields
   }
 ---------------------------------------------------------------------------------------------------
 ELOQUENT:
@@ -324,7 +331,7 @@ ELOQUENT:
 
       $tasks = Task::all();                             Eloquent style
 
-      return view('tasks.index', compact("tasks"));
+      return view('tasks/index', compact("tasks"));
     });
   --------------------
   php artisan make:model Task -m                        create model and migration
@@ -337,16 +344,21 @@ ELOQUENT:
     wrapper around a query
 ---------------------------------------------------------------------------------------------------
 FORMS:
-  <form method="POST" action="/">
+  <form method="post" action="/">
     {{ csrf_field() }}                        cross-site protection, creates a token
     @csrf                                     blade
 
-    {{ method_field("PATCH") }}               use for PATCH, PUT, DELETE
-    @method("PATCH")                          blade
+    {{ method_field("patch") }}               use for PATCH, PUT, DELETE
+    @method("patch")                          blade
 
     <input ... value="{{ old("title") }}">    save data in case or error
     ...
   </form>
+---------------------------------------------------------------------------------------------------
+DATABASE:
+  $project = Project::find($id);
+    find(...)
+    findOrFail(...)
 ---------------------------------------------------------------------------------------------------
 VALIDATION:
   in route function inside controller:
@@ -380,9 +392,3 @@ AUTHENTICATION:
 
       /app/Http/Controllers/HomeController.php
 ---------------------------------------------------------------------------------------------------
-RECAP:
-  routes in /routes/wep.php
-  controllers in /app/Http/Controllers/
-  generate controller with php artisan make:controller MyController
-  resources like sass or js in /resources/
-  views in /resources/views/
