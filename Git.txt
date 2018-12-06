@@ -13,7 +13,7 @@ FIRST STEPS FOR NEW REPOSITORY:
     create GitHub repository without readme
 
     git remote add origin https://github.com/Myrmidonut/xxx.git
-    git push origin master
+    git push -u origin master
 
   GitHub -> local:
     create GitHub repository with readme

@@ -1,7 +1,14 @@
+install Heroku CLI
+
+heroku login                    save account details
+---------------------------------------------------------------------------------------------------
 heroku login                    login
 
-git ...                         heroku needs a git repository
+git init                        heroku needs a git repository
+git add .
+git commit -m "initial commit"
 
+---- node:
 heroku create                   create URL to heroku with git repository
 
 git remote -v                   show that heroku is a remote for git
@@ -16,3 +23,31 @@ package.json:                   required for node on heroku
   }
 
 heroku run ...                  run linux commands on heroku
+---------------------------------------------------------------------------------------------------
+LARAVEL:
+  Git:
+    git init
+    git add .
+    git commit -m "initial commit"
+
+  Procfile:
+    web: vendor/bin/heroku-php-apache2 public/
+    git add Procfile
+    git commit -m "Procfile for Heroku"
+
+  New app:
+    heroku create
+
+  Encryption key:
+    php artisan key:generate --show
+    heroku config:set APP_KEY = ...
+
+  Buildpack:
+    heroku buildpacks:set heroku/php
+
+  Push to Heroku:
+    git push heroku master
+
+  Launch:
+    heroku open
+---------------------------------------------------------------------------------------------------

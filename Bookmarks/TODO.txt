@@ -71,7 +71,7 @@ projects:
   improve styling on frontend libraries
   improve styling on responsive
   rework JS
-  github readme
+  github readme, images of the interface, etc.
   on github (pages) --- DONE
   update code --- DONE
   remove fcc tester --- DONE
@@ -87,24 +87,70 @@ Campgrounds:
 --------------------------------------------
 Etch-a-Sketch:
   frontend:
+    react --- DONE
     favicon
     font
     show grid size
     show global last sketches
+    register:
+      username
+      password
+      email
+    login:
+      username
+      password
+      email
+    logout
     interface:
       reset
       save
       load
-      favourites
-      change grid size
-      colors for background and squares
-      intensity slider
+      favourite
+      show favourites
+      like
+      show likes
+      settings:
+        change grid size
+        colors for background and squares
+        intensity slider
+        set default
     mobile view with interface button
+
   backend:
-    laravel
-    mongodb - mlab ???
-    mysql ???
-    heroku
+    laravel --- DONE
+    heroku --- DONE
+
+  database:
+    elephantsql
+    postgresql
+
+    tables:
+      account:
+        username string
+        password string
+        email string
+        account_id iterator
+        saves array
+          drawing_id
+        favourites array
+          drawing_id
+        grid_default array
+          grid_size number
+          colors string
+          intensity number
+
+      drawing:
+        drawing_id iterator
+        created_by account_id
+        created_at date
+        updated_at date
+        likes number
+        favourites number
+        data object
+          squares array
+          grid_size number
+          colors string
+          intensity number
 --------------------------------------------
 3-1:
   favicon --- DONE

@@ -7,6 +7,11 @@ COMMANDS:
   php artisan serve                 open local webserver
   --------------------
   composer dump-autoload            reload in case of error
+
+  php artisan cache:clear
+  php artisan route:cache
+  php artisan view:clear
+  php artisan config:cache
 ---------------------------------------------------------------------------------------------------
 FILES AND FOLDERS:
   /app                              application
@@ -86,9 +91,30 @@ WORKFLOW:
     DB_USERNAME=root
     DB_PASSWORD=
 
-  create migration for database:                            /database/migrations/2018...php
+  create model and migration:
+    php artisan make:model Project -m                       /app/Project.php
+                                                            /database/migrations/....php
+---------------------------------------------------------------------------------------------------
+REACT:
+  php artisan preset none                                       remove Vue and Bootstrap
+  php artisan preset react                                      add React
+  npm install                                                   install dependencies
+  npm run dev                                                   compile app
 
-  create model to get data:                                 /app/User.php
+  changes:
+    /resources/js/components/Example.js                         rename to App.js, change code
+
+    /resources/js/app.js
+      require('./components/Example');                          rename tp App
+
+    /resources/views/app.blade.php
+      <meta name="csrf-token" content="{{ csrf_token() }}">     csrf token
+      <link href="css/app.css" rel="stylesheet">                load CSS
+      <div id="app"></div>                                      react entry component
+      <script src="js/app.js"></script>                         load React bundle
+
+    /routes/web.php
+      app                                                       change to app
 ---------------------------------------------------------------------------------------------------
 VIEWS:
   /resources/views/                             main folder
@@ -356,9 +382,45 @@ FORMS:
   </form>
 ---------------------------------------------------------------------------------------------------
 DATABASE:
-  $project = Project::find($id);
-    find(...)
-    findOrFail(...)
+  read:
+    Project::find($id);
+      find(...)
+      findOrFail(...)
+
+    DB::table("...")->
+      get();
+      where("...", "...")->first();
+      count();
+      max("...");
+      min("...");
+      avg("...");
+      sum("...");
+      exists();
+      doesntExists();
+      select("...", "...")->get();
+
+      orderBy("...", "...")->get();
+      latest();
+      first();
+
+  create:
+    DB::table("...")->
+      insert(["..." => "...", "..." => "..."]);
+
+  update:
+    DB::table("...")->
+      where("...", "...")->update(["..." => "..."]);
+      increment("...");
+      decrement("...");
+
+  delete:
+    DB::table("...")->
+      delete();
+      where("...", "...")->delete();
+---------------------------------------------------------------------------------------------------
+SEEDER:
+  php artisan make:seeder ...                 create seed class
+  php artisan db:seed --class=...             populate database with dummy data, same name as above
 ---------------------------------------------------------------------------------------------------
 VALIDATION:
   in route function inside controller:

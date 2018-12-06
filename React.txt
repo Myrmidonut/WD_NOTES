@@ -311,6 +311,13 @@ STATE:
     clear() {
       this.setState(this.initialState)
     }
+
+  old:
+    constructor() {
+      this.state = {
+        test: 1
+      }
+    }
 ---------------------------------------------------------------------------------------------------
 EVENTS:
   onClick={this.props.handleClick}
