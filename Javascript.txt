@@ -946,7 +946,7 @@ TIME DATE:
 JSON:
   JSON.parse(..., ...);                         JSON string to object, optional function
 
-  JSON.stringify(...);                          object to JSON string
+  JSON.stringify(...);                          create string from object
   JSON.stringify(value, replacer, space)  
     value:    a value
     replacer: array or function

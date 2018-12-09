@@ -100,12 +100,13 @@ REACT:
   php artisan preset react                                      add React
   npm install                                                   install dependencies
   npm run dev                                                   compile app
+  npm run watch                                                 show changes
 
   changes:
     /resources/js/components/Example.js                         rename to App.js, change code
 
     /resources/js/app.js
-      require('./components/Example');                          rename tp App
+      require('./components/Example');                          rename to App
 
     /resources/views/app.blade.php
       <meta name="csrf-token" content="{{ csrf_token() }}">     csrf token
@@ -240,13 +241,10 @@ CONTROLLERS:
     use App\Project;                                  imports model
   --------------------
   return:
-    "...";                        string
-    [...]                         array
-
-    response("...")
+    ...;                          string
+    [...];                        array
 
     view("...");                  open page after get
-
     redirect("...");              open page after post
 
     request()                     creates array from form filed with name="..."

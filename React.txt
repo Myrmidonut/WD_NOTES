@@ -253,19 +253,24 @@ PROPS:
       func1() {}                                          set function
       func2() {}                                          set function
 
-      render() {return(                                   pass props
-        <Comp1
-          name1={this.state.}                             state
-          name2={this.func1()}                            function text
-          name3={() => this.func2()} />                   function click
-      )}
+      render() {                                          pass props
+        return (
+          <Comp1
+            name1={this.state.}                           state
+            name2={this.func1()}                          function text
+            name3={() => this.func2()}                    function click
+          />
+        )
+      }
 
     class Comp1 ... :
-      render() {return(                                   access props
-        <div>{this.props.name1}</div>                     
-        <div>{this.props.name2}</div>
-        <button onClick={this.props.name3}></button>
-      )}
+      render() {                                          access props
+        return (
+          <div>{this.props.name1}</div>
+          <div>{this.props.name2}</div>
+          <button onClick={this.props.name3}></button>
+        )
+      }
 
   default:
     MyComponent.defaultProps = {name: "Jim"}
@@ -313,10 +318,14 @@ STATE:
     }
 
   old:
-    constructor() {
+    constructor(props) {
+      super(props);
+
       this.state = {
         test: 1
       }
+
+      this.handleChange = this.handleChange.bind(this)
     }
 ---------------------------------------------------------------------------------------------------
 EVENTS:

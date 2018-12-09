@@ -512,13 +512,9 @@ DISPLAY:
       <span> 
 
     inline-block;                     flowing, stays as a block, width/height available
-
     none;                             removes the element completely
-
     table;                            table layout without using a table
-
     flex;                             aligns elements evenly
-    
     grid;                             aligns elements in a grid
 
   visibility: hidden; visible;        hides the element, still takes up space
@@ -610,8 +606,6 @@ FLEXBOX:
     position of items:
       justify-content: flex-start;      start, default    
                        flex-end;        end
-                       start;           ?
-                       end;             ?
                        center;          center
                        space-around;    even distribution with extra space
                        space-between;   even distribution
@@ -636,6 +630,11 @@ FLEXBOX:
                 center;
                 start;
                 end;
+
+    justif-self: stretch;             position of item on main-axis
+                 center;
+                 start;
+                 end;
 
     order: 0;                         order of items, default
            -1;

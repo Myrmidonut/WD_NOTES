@@ -71,7 +71,11 @@ projects:
   improve styling on frontend libraries
   improve styling on responsive
   rework JS
-  github readme, images of the interface, etc.
+  github:
+    readme
+    images of the interface
+    description
+    link to live
   on github (pages) --- DONE
   update code --- DONE
   remove fcc tester --- DONE
@@ -87,38 +91,52 @@ Campgrounds:
 --------------------------------------------
 Etch-a-Sketch:
   frontend:
-    react --- DONE
+    react
     favicon
     font
-    show grid size
-    show global last sketches
-    register:
-      username
-      password
-      email
-    login:
-      username
-      password
-      email
-    logout
-    interface:
-      reset
-      save
-      load
-      favourite
-      show favourites
-      like
-      show likes
-      settings:
-        change grid size
-        colors for background and squares
-        intensity slider
-        set default
+
+    navbar:
+      gallery:
+        recent sketches
+        popular sketches
+          by favourites
+          by likes
+        own sketches
+          delete
+        favourites number
+        likes number
+        smaller previews
+
+      drawing:
+        save
+          name
+        delete
+        settings:
+          change grid size
+          colors for background and squares
+          shape
+          intensity slider
+          set as default
+          load default
+        reset
+        undo
+
+      account:
+        register:
+          username
+          password
+          email
+        login:
+          username
+          password
+          email
+        logout
+
     mobile view with interface button
 
   backend:
-    laravel --- DONE
-    heroku --- DONE
+    Laravel
+    heroku
 
   database:
     elephantsql
@@ -134,23 +152,24 @@ Etch-a-Sketch:
           drawing_id
         favourites array
           drawing_id
-        grid_default array
-          grid_size number
-          colors string
-          intensity number
+        grid_size integer
+        colors string
+        intensity integer
+        shape string
 
       drawing:
         drawing_id iterator
         created_by account_id
-        created_at date
-        updated_at date
-        likes number
-        favourites number
-        data object
-          squares array
-          grid_size number
-          colors string
-          intensity number
+        created_at timestamp
+        updated_at timestamp
+        title string
+        likes integer
+        favorites integer
+        squares array
+        grid_size integer
+        colors string
+        intensity integer
+        shape string
 --------------------------------------------
 3-1:
   favicon --- DONE
