@@ -361,6 +361,7 @@ FORMS:
       placeholder="..."
 
     <select>...</select>          dropdown
+      name="..."
       <option>...</option>        entries
         value="..."               data
         selected                  default selected

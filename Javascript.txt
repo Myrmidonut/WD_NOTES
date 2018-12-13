@@ -767,39 +767,39 @@ STRING METHODS:
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:    
   length:
-    .length                             number of entries, can be modified
+    .length                                   number of entries, can be modified
 
   copy:
-    .slice()                            return copy of array
+    .slice()                                  return copy of array
 
   reverse:
-    .reverse()                          M, reverse the array itself
+    .reverse()                                M, reverse the array itself
 
   convert to string:
-    .toString()                         convert to string with comma seperation
-    .join("...")                        return string with given seperation
+    .toString()                               convert to string with comma seperation
+    .join("...")                              return string with given seperation
 
   add:
-    .unshift(..., ...)                  M, add one or more entries to the beginning
-    .push(..., ...)                     M, add one or more entries to end
-    .concat(...)                        return array with pushed entries
+    .unshift(..., ...)                        M, add one or more entries to the beginning
+    .push(..., ...)                           M, add one or more entries to end
+    .concat(...)                              return array with pushed entries
 
   remove:
-    .shift()                            M, remove first entry, returns it, return entry
-    .pop()                              M, remove last entry, returns it, return entry
-    .splice(..., ..., ...)              M, start, optional cut amount, optional adds, return cut arr
+    .shift()                                  M, remove first entry, returns it, return entry
+    .pop()                                    M, remove last entry, returns it, return entry
+    .splice(..., ..., ...)                    M, start, opt cut amount, opt adds, return cut arr
 
-    delete myArray[5]                   changes element at index 5 to undefined
+    delete myArray[5]                         changes element at index 5 to undefined
 
   extract:
-    .slice(..., ...)                    return array from index to optional exclusive index
-                                        negative index counts from back
+    .slice(..., ...)                          return array from index to optional exclusive index
+                                              negative index counts from back
   copy:
-    let arr1 = [..., ...arr2, ...];     copy with spread operator
+    let arr1 = [..., ...arr2, ...];           copy with spread operator
 
   combine:
-    .concat(...)                        return merged array
-    .concat("...", "...")               merge values
+    .concat(...)                              return merged array
+    .concat("...", "...")                     merge values
 
   search:
     .indexOf(..., ...)                        return first index, optional start, -1 if not
@@ -820,22 +820,22 @@ ARRAY METHODS:
     let uniq = [...new Set(myArr)];           remove duplicate entries, keep order
 
   sort:
-    .sort()                               M, sort the array itself from lowest to highest value
-    .sort(function(a, b) {return b-a;});  sort high to low
-      return a-b                          sort low to high
-      return a>b                          sort alphabetically
-      return a<b                          sort reverse alphabetically
+    .sort()                                   M, sort the array itself from lowest to highest value
+    .sort(function(a, b) {return b-a;});      sort high to low
+      return a-b                              sort low to high
+      return a>b                              sort alphabetically
+      return a<b                              sort reverse alphabetically
 
-      if (a[1] < b[1]) return -1;         compare nested arrays
+      if (a[1] < b[1]) return -1;             compare nested arrays
       if (a[1] > b[1]) return 1;
 
   spread:
     arr = [1, 2, 3]
-    ...arr                                spreads entries into individuals, for multiple arguments
+    ...arr                                    spreads entries into individuals, for multiple arg
 
   destructure:
-    let [a,,,b] = [1,2,3,4]               a=1, b=4
-    let [a, b,, ...arr] = [1,2,3,4,5]     a=1, b=2, arr=[4,5]
+    let [a,,,b] = [1,2,3,4]                   a=1, b=4
+    let [a, b,, ...arr] = [1,2,3,4,5]         a=1, b=2, arr=[4,5]
 
   loop:
     for ... of
@@ -957,8 +957,13 @@ JSON:
 FETCH:
   fetch(..., {                                              URL
     method: "post",                                         method
-    body: new URLSearchParams(new FormData(submitForm))     for post
-    })                     
+    body: new URLSearchParams(                              required for post
+        new FormData(formElement)                           data from form
+        {
+          name: "test"                                      manual fields
+        }
+      )
+    })
   .then(...)                                                type of response
   .then(...)                                                use data from response
   .catch(...)                                               error handling

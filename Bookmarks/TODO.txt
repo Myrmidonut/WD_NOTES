@@ -127,7 +127,6 @@ Etch-a-Sketch:
           password
           email
         login:
-          username
           password
           email
         logout
@@ -143,33 +142,35 @@ Etch-a-Sketch:
     postgresql
 
     tables:
-      account:
-        username string
+      user:
+        id increment
+        name string
+        email string unique
+        email_verified_at timestamp nullable
         password string
-        email string
-        account_id iterator
-        saves array
-          drawing_id
-        favourites array
-          drawing_id
+        rememberToken -
+        timestamps -
+
+        default_grid_size integer default("32")
+        default_colors string default("green white")
+        default_intensity string default("0.1")
+        default_shape string default("square")
+
+      drawing:
+        data string (json array)
+        drawing_id increment
+        created_by user_id
+        created_at timestamp
+        updated_at timestamp
+        title string
+
         grid_size integer
         colors string
         intensity integer
         shape string
 
-      drawing:
-        drawing_id iterator
-        created_by account_id
-        created_at timestamp
-        updated_at timestamp
-        title string
         likes integer
         favorites integer
-        squares array
-        grid_size integer
-        colors string
-        intensity integer
-        shape string
 --------------------------------------------
 3-1:
   favicon --- DONE

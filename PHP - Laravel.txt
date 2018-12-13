@@ -12,6 +12,8 @@ COMMANDS:
   php artisan route:cache
   php artisan view:clear
   php artisan config:cache
+  --------------------
+  error_log(...)                    output to artisan window
 ---------------------------------------------------------------------------------------------------
 FILES AND FOLDERS:
   /app                              application
@@ -182,6 +184,16 @@ ROUTES:
   all in one:
     Route::resource("...", "...");                    create all routes with URL and controller
   --------------------
+  return:
+
+  --------------------
+  example:
+    Route::post("/save", function(Request $request) {
+      $method = $request->all();
+
+      return($method);
+    });
+  --------------------
   with controllers:
     Route::get("/tasks", "TasksController@index");
 
@@ -256,6 +268,11 @@ CONTROLLERS:
       ->except("...", "...");     subset
       ->file(")
 ---------------------------------------------------------------------------------------------------
+MODELS:
+  /app/                                   folder for model files
+
+  php artisan make:model ...              create model file
+---------------------------------------------------------------------------------------------------
 MIGRATIONS:
   version control for databases
 
@@ -297,11 +314,6 @@ error with XAMPP:
     }
   
   delete table and run migrate again
----------------------------------------------------------------------------------------------------
-MODELS:
-  /app/                                   folder for model files
-
-  php artisan make:model ...              create model file
 ---------------------------------------------------------------------------------------------------
 TINKER:
   interact with the application
@@ -444,11 +456,11 @@ TIME DATE:
 AUTHENTICATION:
   php artisan make:auth                         creates login and register
 
-    creates:
-      /routes/web.php:
-        Auth::routes();
+  creates:
+    /routes/web.php:
+      Auth::routes();
 
-      /resources/views/auth/...
+    /resources/views/auth/...
 
-      /app/Http/Controllers/HomeController.php
+    /app/Http/Controllers/HomeController.php
 ---------------------------------------------------------------------------------------------------
