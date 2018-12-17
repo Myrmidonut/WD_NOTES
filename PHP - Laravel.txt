@@ -325,7 +325,6 @@ TINKER:
 
   App\Task::all()                             show all Tasks
   App\Task::first()
-  App\Task::latest()
   App\Task::where("id", ">", 2)->get()        show specific Tasks
   App\Task::pluck("body")                     show specific field
   App\Task::pluck("body")->first()            only the first one
@@ -378,6 +377,14 @@ ELOQUENT:
   --------------------
   query scopes:
     wrapper around a query
+  --------------------
+  methods:
+    public function ... (Request $request) {}
+    $request->
+      all()                                             everything
+      take(...)                                         first elements
+      take(-...)                                        last elements
+      sortBy("...")                                     sort by field
 ---------------------------------------------------------------------------------------------------
 FORMS:
   <form method="post" action="/">
@@ -464,3 +471,5 @@ AUTHENTICATION:
 
     /app/Http/Controllers/HomeController.php
 ---------------------------------------------------------------------------------------------------
+PASSPORT:
+  php artisan passport:client --personal        create personal access client

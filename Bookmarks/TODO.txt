@@ -59,10 +59,12 @@ portfolio:
       4: Heat Map or Choropleth Map
       5: Exercise Tracker ???
       6: Personal Library or Anonymous Message Board
+
     Yelp Camp
-    PHP Laravel ??? - Etch-a-sketch
+
+    Etch-a-sketch
+
     Python Django ???
-    Etch a Sketch
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
@@ -90,11 +92,67 @@ Campgrounds:
   ---
 --------------------------------------------
 Etch-a-Sketch:
+  main and background colors
+    color picker
+    rgb?
+    add db entries
+  styling
+  token???
+  gallery
+    likes
+    favorites
+    title
+    owner
+    open on click
+  drawing
+    like
+    favorite
+    delete if owner
+    copy to own
+    eraser
+  show account name
+  value on settings sliders
+  show drawing title in gallery and drawingboard
+
+  bugs:
+    first settings update after page refresh reloads drawingboard --- DONE
+    save needs two presses to update board --- DONE
+    reset twice breaks drawingboard --- DONE
+    going back from gallery deletes current drawing --- DONE
+    drawing not working correctly after gallery --- DONE
+    authentication not working on heroku, localhost ? --- DONE
+    show personal drawings in gallery --- DONE
+
+    settings back to default after gallery
+    changing gridSize not resetting board
+    save drawing requires title
+    login resets current drawing with defaults
+    personal gallery not loading without login
+    logging in on gallery shows error from setting default values of hidden settings component
+    saving drawing after opening from gallery reloads whole page
+    performance!!!
+
+  heroku:
+    saveDrawing post /api/save 500
+
+    works:
+      login
+      register
+      account
+      gallery
+
+  save a drawing
+    title
+    username if authenticated
+      delete/edit by owner
+    anonymous if not authenticated
+      delete/edit by anyone
+  --------------------
   frontend:
     react
     favicon
     font
-
+    --------------------
     navbar:
       gallery:
         recent sketches
@@ -103,10 +161,11 @@ Etch-a-Sketch:
           by likes
         own sketches
           delete
+          edit
         favourites number
         likes number
         smaller previews
-
+      --------------------
       drawing:
         save
           name
@@ -120,7 +179,7 @@ Etch-a-Sketch:
           load default
         reset
         undo
-
+      --------------------
       account:
         register:
           username
@@ -130,17 +189,17 @@ Etch-a-Sketch:
           password
           email
         logout
-
+    --------------------
     mobile view with interface button
-
+  --------------------
   backend:
     Laravel
     heroku
-
+  --------------------
   database:
     elephantsql
     postgresql
-
+    --------------------
     tables:
       user:
         id increment
@@ -155,7 +214,7 @@ Etch-a-Sketch:
         default_colors string default("green white")
         default_intensity string default("0.1")
         default_shape string default("square")
-
+      --------------------
       drawing:
         data string (json array)
         drawing_id increment

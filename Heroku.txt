@@ -50,4 +50,14 @@ LARAVEL:
 
   Launch:
     heroku open
+
+  Passport:
+    composer.json:
+      scripts:
+        "post-install-cmd": [ 
+          "php artisan clear-compiled",
+          "chmod -R 777 storage", 
+          "php artisan passport:keys"
+        ]
+    push to heroku
 ---------------------------------------------------------------------------------------------------
