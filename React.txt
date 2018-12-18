@@ -256,9 +256,8 @@ PROPS:
       render() {                                          pass props
         return (
           <Comp1
-            name1={this.state.}                           state
-            name2={this.func1()}                          function text
-            name3={() => this.func2()}                    function click
+            name1={this.state.ele}                        state
+            name2={this.func1}                            function
           />
         )
       }
@@ -266,9 +265,9 @@ PROPS:
     class Comp1 ... :
       render() {                                          access props
         return (
-          <div>{this.props.name1}</div>
-          <div>{this.props.name2}</div>
-          <button onClick={this.props.name3}></button>
+          <div>{this.props.name}</div>
+          <button onClick={this.props.name2}></button>    function
+          <button onClick={() => this.props.name2(e)}     function with argument
         )
       }
 

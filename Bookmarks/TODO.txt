@@ -123,14 +123,24 @@ Etch-a-Sketch:
     authentication not working on heroku, localhost ? --- DONE
     show personal drawings in gallery --- DONE
 
-    settings back to default after gallery
-    changing gridSize not resetting board
-    save drawing requires title
-    login resets current drawing with defaults
-    personal gallery not loading without login
-    logging in on gallery shows error from setting default values of hidden settings component
-    saving drawing after opening from gallery reloads whole page
+    settings back to app default after gallery
+    changing gridSize not clearing board, clear after second resize --- DONE
+    save drawing requires title --- DONE
+    login resets current drawing with defaults --- DONE
+    personal gallery not loading without login --- DONE
+    logging in on gallery shows error from setting default values of hidden settings component --- DONE
+    saving drawing after opening from gallery reloads whole page --- DONE
     performance!!!
+    large drawings too big for border on gallery
+    settings saved instantly --- DONE
+    change reset to clear --- DONE
+    change settings position --- DONE
+    load more - buttons for galleries
+    keep only latest and personal galleries
+    grid items border same color as background
+    save drawing needs title when logging in after creating image
+    setting for showing borders around dots
+    minify app.js
 
   heroku:
     saveDrawing post /api/save 500
