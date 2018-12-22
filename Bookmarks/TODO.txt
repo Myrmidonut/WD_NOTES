@@ -93,33 +93,32 @@ Campgrounds:
 --------------------------------------------
 Etch-a-Sketch:
   features:
-    main and background colors
-      color picker
-      rgb?
-      add db entries --- DONE
-    styling
-    token???
-    gallery
-      likes
-      favorites
-      title
-      owner
-      open on click --- DONE
-    drawing
-      like
-      favorite
-      delete if owner --- DONE
-      copy to own
-      eraser
-    load more - buttons for galleries
-    setting for showing borders around dots
-    minify app.js
+    color picker --- DONE
+    add db entries --- DONE
+    styling --- DONE
+    open on click in gallery --- DONE
+    delete drawing if owner --- DONE
+    copy drawing to own --- DONE
+    eraser --- DONE
     draw on first click --- DONE
-    lock to high grid size
-    hover effect on buttons
-    show account name
-    value on settings sliders
-    show drawing title in gallery and drawingboard
+    hover effect on buttons --- DONE
+    show only 5 latest personal --- DONE
+
+    removed:
+      setting for showing borders around dots --- REMOVED
+      value on settings sliders --- REMOVED
+      90s mode, white on blue colors --- REMOVED
+      lock to high grid size --- REMOVED
+
+    open:
+      token???
+      gallery title
+      gallery owner
+      load more - buttons for galleries
+      minify app.js
+      show account name
+      show drawing title in gallery and drawingboard
+      serverside authentication on saving
   --------------------
   bugs:
     first settings update after page refresh reloads drawingboard --- DONE
@@ -146,11 +145,17 @@ Etch-a-Sketch:
     settings open after gallery --- DONE
     settings overlay modal --- DONE
     close settings when clicking somewhere else --- DONE
+    gallery hight goes out of bounds --- DONE
+    settings dont change after gallery, grid size, intensity -> settings into new component --- DONE
+    settings back to app default after gallery --- DONE
+    large drawings too big for border on gallery --- DONE
+    opacity going above 1.0 --- DONE
 
-    performance!!!
-    settings back to app default after gallery
-    large drawings too big for border on gallery
-    gallery hight goes out of bounds
+    open:
+      load/save settings timeout crossover
+  --------------------
+  check on firefox
+  performance
   --------------------
   heroku:
     saveDrawing post /api/save 500

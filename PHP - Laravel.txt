@@ -403,6 +403,7 @@ DATABASE:
     Project::find($id);
       find(...)
       findOrFail(...)
+      firstOrNew(...)
 
     DB::table("...")->
       get();
