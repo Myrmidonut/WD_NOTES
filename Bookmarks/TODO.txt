@@ -103,6 +103,8 @@ Etch-a-Sketch:
     draw on first click --- DONE
     hover effect on buttons --- DONE
     show only 5 latest personal --- DONE
+    show register and login error for unique mail --- DONE
+    serverside authentication on saving --- DONE
 
     removed:
       setting for showing borders around dots --- REMOVED
@@ -111,14 +113,18 @@ Etch-a-Sketch:
       lock to high grid size --- REMOVED
 
     open:
-      token???
       gallery title
       gallery owner
-      load more - buttons for galleries
-      minify app.js
       show account name
       show drawing title in gallery and drawingboard
-      serverside authentication on saving
+
+      load more - buttons for galleries
+      show success for register / login
+      login after register
+
+      minify app.js
+      
+      token
   --------------------
   bugs:
     first settings update after page refresh reloads drawingboard --- DONE
@@ -153,6 +159,7 @@ Etch-a-Sketch:
 
     open:
       load/save settings timeout crossover
+      c password field is required too wide
   --------------------
   check on firefox
   performance
