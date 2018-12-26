@@ -1,5 +1,46 @@
-ng serve                      start server
+INSTALLATION:
+  npm install -g @angular/cli
+---------------------------------------------------------------------------------------------------
+NEW PROJECT:
+  ng new ...                  create new project      
+---------------------------------------------------------------------------------------------------
+STRUCTURES:
+  ng g modules ...            create modules
+  ng g component ...          create component
+  ...
+---------------------------------------------------------------------------------------------------
+BUILD:
+  ng serve                    preview app in debug mode
+  ng serve --prod             preview app in production mode
 
-ng generate component ...     create component ... inside src/app/
-ng g c ...                    shorthand
+  ng build                    write app in debug mode
+  ng build --prod             write app for production
 
+  options:
+    --port ...                set port
+    --host ...                set ip, default: localhost
+---------------------------------------------------------------------------------------------------
+FILES AND FOLDERS:
+  e2e                         end to end testing
+  
+  node_modules                dependencies
+  
+  src                         source code
+  src/app                     components, etc.
+  src/assets                  images, fonts, etc.
+  src/environments            environment variables
+  src/index.html              app root
+  src/main.ts                 entry point for app
+  src/polyfills.ts            polyfills
+  src/styles.css              global css
+  src/test.ts                 testing
+  src/tsconfig.app.json       typescript config
+  src/tsconfig.spec.json      typescript testing config
+
+  .angular-cli.json           angular-cli config
+  .gitignore                  excludes for git
+  karma.conf.js               Jasmine and Karma testing config
+  package.json                dependencies
+  protactor.conf.js           protactor testing config
+  tsconfig.json               typescript 
+---------------------------------------------------------------------------------------------------
