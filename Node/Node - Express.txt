@@ -2,8 +2,10 @@ USE:
   var express = require("express");
   var app = express();
 ---------------------------------------------------------------------------------------------------
-STYLES:
-  app.use(express.static("public"));                  search /public folder for stylesheets
+FILES:
+  app.use(express.static("public"));              search /public folder for images, css, js...
+  app.use("/public", express.static("public"))    /public/... to acces the files
+  app.use('/static', express.static(path.join(__dirname, 'public')))    absolute path
 ---------------------------------------------------------------------------------------------------
 FOLDERS:
   /public/                                css, images
@@ -23,15 +25,20 @@ SETUP:
   server.js:                                                    default setup
     const express = require("express");
     const apiRoutes = require('./routes/api.js');               enable /routes/api.js with app.route
+
     app.use(express.static("public"));                          search in /public/ for css, script
+
     app.route("/")                                              initial route
       .get((req, res) => {
         res.sendFile(process.cwd() + '/views/index.html')
       })
+
     apiRoutes(app);                                             load routes file
+
     app.listen(process.env.PORT || 3000, () => {                start server
       console.log("Listening on port " + process.env.PORT);
     }
+
     module.exports = app;
 ---------------------------------------------------------------------------------------------------
 ROUTES:
