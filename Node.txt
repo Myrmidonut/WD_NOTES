@@ -2,6 +2,7 @@ FILES:
   node file.js          run code from a file
 ---------------------------------------------------------------------------------------------------
 SETUP:
+  nvm install node      install latest version
   nvm install ...       install specific version
   nvm use ...           use specific version
 ---------------------------------------------------------------------------------------------------

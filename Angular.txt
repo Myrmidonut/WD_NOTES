@@ -10,8 +10,9 @@ STRUCTURES:
   ...
 ---------------------------------------------------------------------------------------------------
 BUILD:
-  ng serve                    preview app in debug mode
+  ng serve                    preview app in debug mode         
   ng serve --prod             preview app in production mode
+    --open                    launch in browser
 
   ng build                    write app in debug mode
   ng build --prod             write app for production
@@ -26,7 +27,7 @@ FILES AND FOLDERS:
   node_modules                dependencies
   
   src                         source code
-  src/app                     components, etc.
+  src/app                     folders for components, etc.
   src/assets                  images, fonts, etc.
   src/environments            environment variables
   src/index.html              app root
@@ -44,3 +45,57 @@ FILES AND FOLDERS:
   protactor.conf.js           protactor testing config
   tsconfig.json               typescript 
 ---------------------------------------------------------------------------------------------------
+COMPONENTS:
+  ng generate component ...                       create
+
+  files:
+    TypeScript                                    logic
+    HTML                                          view
+    CSS                                           style
+
+  TypeScript:
+    example.component.ts                          filename
+
+    import { Component, OnInit } from "@angular/core";    content
+
+    @Component({                                  decorator
+      selector: "app-example",                    call component with this name
+      templateUrl: "./example.component.html",
+      styleUrls: ["./example.component.css"]
+    })
+    export class ExampleComponent {
+      constructor () { }                          constructor
+      ngOnInit() { }                              lifecycle-hook
+      ...                                         custom functions
+    }
+
+  HTML:
+    example.component.html                        filename
+
+    <p>
+      example works!
+    </p>
+
+  CSS:
+    example.component.css                         filename
+---------------------------------------------------------------------------------------------------
+DATA-BINDING:
+  use data from the logig in the view
+  
+  HTML:
+    <button title="{{color}}">      
+      {{color}}
+    </button>
+
+    [title]="color"                 alternative
+
+  TS:
+    constructor() {
+      this.color = this.generateRandomColor();
+    }
+
+    generateRandomColor() {
+      return "#" + (Math.random() * 0xFFFFFF << 0).toString(16);
+    }
+
+    public color: string;
