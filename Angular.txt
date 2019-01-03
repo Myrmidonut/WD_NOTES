@@ -80,7 +80,7 @@ COMPONENTS:
     example.component.css                         filename
 ---------------------------------------------------------------------------------------------------
 DATA-BINDING:
-  use data from the logig in the view
+  use data from the logic in the view
   
   HTML:
     <button title="{{color}}">      
