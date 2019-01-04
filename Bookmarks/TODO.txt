@@ -60,9 +60,10 @@ portfolio:
       5: Exercise Tracker ???
       6: Personal Library or Anonymous Message Board
 
-    Yelp Camp
-
-    Etch-a-sketch
+    Projects:
+      Yelp Camp
+      Etch-a-Sketch
+      Secret Santa
 
     Python Django ???
 ---------------------------------------------------------------------------------------------------
@@ -105,6 +106,7 @@ Etch-a-Sketch:
     show only 5 latest personal --- DONE
     show register and login error for unique mail --- DONE
     serverside authentication on saving --- DONE
+    load more - buttons for galleries --- DONE
 
     removed:
       setting for showing borders around dots --- REMOVED
@@ -113,17 +115,17 @@ Etch-a-Sketch:
       lock to high grid size --- REMOVED
 
     open:
+      show success for register / login
+      login after register
+      show loading on gallery buttons
+      minify app.js
+      favicon
+
       gallery title
       gallery owner
       show account name
       show drawing title in gallery and drawingboard
-
-      load more - buttons for galleries
-      show success for register / login
-      login after register
-
-      minify app.js
-      
+      mobile
       token
   --------------------
   bugs:
