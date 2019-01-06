@@ -265,6 +265,41 @@ Etch-a-Sketch:
         likes integer
         favorites integer
 --------------------------------------------
+Secret Santa:
+  register
+    email, unique
+    username, unique
+    password
+    confirm password
+  login
+    email
+    password
+  create new group
+    title
+    invite with link in email
+  owner
+    notification when all accepted/declined
+    start secret santa generation
+  participant
+    join from email link
+    accept/decline
+    create wishlist
+    view partner and wishlist
+    get notification on start, wishlist update
+    email on start, wishlist update?
+
+  mongodb - mlab
+  angular/react
+  express
+
+  routes:
+    get /
+    post authenticate /login
+    post validate /register
+    post authenticate /group/new
+    post authenticate /group/{id} (join group)
+    update authenticate /group/{id} (accept/decline, wishlist)
+--------------------------------------------
 3-1:
   favicon --- DONE
 
