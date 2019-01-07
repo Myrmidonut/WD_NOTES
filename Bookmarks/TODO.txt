@@ -160,6 +160,8 @@ Etch-a-Sketch:
     opacity going above 1.0 --- DONE
 
     open:
+      gallery on small screens too high
+      gallery background not covering whole screen
       load/save settings timeout crossover
       c password field is required too wide
   --------------------
@@ -291,6 +293,7 @@ Secret Santa:
   mongodb - mlab
   angular/react
   express
+  passport
 
   routes:
     get /
