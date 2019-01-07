@@ -54,7 +54,7 @@ portfolio:
   showcase:
     fcc
       1: Product Landing Page
-      2: algorithms
+      2: Algorithms
       3: Pomodoro Clock
       4: Heat Map or Choropleth Map
       5: Exercise Tracker ???
