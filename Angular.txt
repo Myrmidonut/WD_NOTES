@@ -5,7 +5,7 @@ NEW PROJECT:
   ng new ...                  create new project      
 ---------------------------------------------------------------------------------------------------
 STRUCTURES:
-  ng g modules ...            create modules
+  ng g modules ...            create module
   ng g component ...          create component
   ...
 ---------------------------------------------------------------------------------------------------
@@ -13,6 +13,7 @@ BUILD:
   ng serve                    preview app in debug mode         
   ng serve --prod             preview app in production mode
     --open                    launch in browser
+    -o
 
   ng build                    write app in debug mode
   ng build --prod             write app for production
