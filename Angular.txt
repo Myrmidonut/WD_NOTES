@@ -5,8 +5,13 @@ NEW PROJECT:
   ng new ...                  create new project      
 ---------------------------------------------------------------------------------------------------
 STRUCTURES:
+<<<<<<< HEAD
   ng g modules ...            create module
   ng g component ...          create component
+=======
+  ng generate modules ...     create modules
+  ng generate component ...   create component
+>>>>>>> 8192ea1ffb5844b967918d778b89ce9266251831
   ...
 ---------------------------------------------------------------------------------------------------
 BUILD:
@@ -47,48 +52,52 @@ FILES AND FOLDERS:
   tsconfig.json               typescript 
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
-  ng generate component ...                       create
+  ng generate component ...                               create component
 
   files:
-    TypeScript                                    logic
-    HTML                                          view
-    CSS                                           style
+    TypeScript                                            logic
+      example.component.ts
+    HTML                                                  view
+      example.component.html
+    CSS                                                   style
+      example.component.css
 
   TypeScript:
-    example.component.ts                          filename
-
     import { Component, OnInit } from "@angular/core";    content
 
-    @Component({                                  decorator
-      selector: "app-example",                    call component with this name
-      templateUrl: "./example.component.html",
-      styleUrls: ["./example.component.css"]
+    @Component({                                          decorator
+      selector: "app-example",                            component selector
+      templateUrl: "./example.component.html",            component template
+      styleUrls: ["./example.component.css"]              component css
     })
+
     export class ExampleComponent {
-      constructor () { }                          constructor
-      ngOnInit() { }                              lifecycle-hook
-      ...                                         custom functions
+      constructor () { }                                  constructor
+      ngOnInit() { }                                      lifecycle-hook
+      ...                                                 custom functions
     }
 
   HTML:
-    example.component.html                        filename
-
     <p>
-      example works!
+      ...
     </p>
 
   CSS:
-    example.component.css                         filename
+    p {
+      ...;
+    }
 ---------------------------------------------------------------------------------------------------
 DATA-BINDING:
   use data from the logic in the view
+
+  {{...}}                                       binding from the logic
   
   HTML:
     <button title="{{color}}">      
       {{color}}
     </button>
 
-    [title]="color"                 alternative
+    [title]="color"                             alternative
 
   TS:
     constructor() {
@@ -100,3 +109,34 @@ DATA-BINDING:
     }
 
     public color: string;
+---------------------------------------------------------------------------------------------------
+TWO-WAY-BINDING:
+  data flows from view to logic and back
+  needs to be enabled:
+    app.module.ts
+      import { FormsModule } from "@anguler/forms";     import
+      
+      imports: [
+        FormsModule
+      ]
+
+  [(ngModel)]="..."                                     binding
+---------------------------------------------------------------------------------------------------
+PIPES:
+  {{... | ...}}                           modify bindings using pipe operator
+    uppercase
+---------------------------------------------------------------------------------------------------
+DIRECTIVES:
+  repeat:
+    <li *ngFor="let hero of heroes">      loop over heroes
+      {{hero.name}}
+    </li>
+
+  condition:
+    <li *ngIf="selectedHero">...</li>     display if true
+---------------------------------------------------------------------------------------------------
+EVENTS:
+  <li (click)="...">                      execute function on click
+---------------------------------------------------------------------------------------------------
+CLASSES:
+  [class.selected]="hero === selectedHero"    if hero = selectedHero add class selected
