@@ -21,6 +21,27 @@ BUILD:
     --port ...                set port
     --host ...                set ip, default: localhost
 ---------------------------------------------------------------------------------------------------
+MEAN:
+  ng new ...
+  npm install --save express
+  create app.js
+  node app.js
+
+  app.js:
+    const express = require('express')
+    const path    = require("path")
+
+    const app = express()
+    const port = 3000
+
+    app.use(express.static(path.join(__dirname, "dist/my-app")))
+
+    app.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname, "dist/my-app/index.html"))
+    })
+
+    app.listen(port, () => console.log(`Server running on port ${port}!`))
+---------------------------------------------------------------------------------------------------
 FILES AND FOLDERS:
   e2e                         end to end testing
   
