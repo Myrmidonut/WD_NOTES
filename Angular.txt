@@ -9,14 +9,17 @@ STRUCTURES:
   ng generate component ...   create component
   ...
 ---------------------------------------------------------------------------------------------------
-BUILD:
+SERVE:
   ng serve                    preview app in debug mode         
   ng serve --prod             preview app in production mode
     --open                    launch in browser
     -o
-
+---------------------------------------------------------------------------------------------------
+BUILD:
   ng build                    write app in debug mode
-  ng build --prod             write app for production
+    /dist
+  ng build --prod             write app for production, reduced filesize
+    /dist
 
   options:
     --port ...                set port
@@ -25,8 +28,10 @@ BUILD:
 MEAN:
   ng new ...
   npm install --save express
-  create app.js
-  node app.js
+  create app.js with project name
+  ng build
+  node app.js (run page with backend)
+  ng serve (run just frontend with watching changes)
 
   app.js:
     const express = require('express')
@@ -106,14 +111,11 @@ COMPONENTS:
 DATA-BINDING:
   use data from the logic in the view
 
-  {{...}}                                       binding from the logic
+  {{...}}                                                         binding from the logic
   
-  HTML:
-    <button title="{{color}}">      
-      {{color}}
-    </button>
-
-    [title]="color"                             alternative
+  HTML:                                                           property binding
+    <button [title]="color">...</button>                          typescript
+    <button title="{{color}}">...</button>                        javascript
 
   TS:
     constructor() {
@@ -139,20 +141,191 @@ TWO-WAY-BINDING:
   [(ngModel)]="..."                                     binding
 ---------------------------------------------------------------------------------------------------
 PIPES:
-  {{... | ...}}                           modify bindings using pipe operator
+  {{... | ...}}                                         modify bindings using pipe operator
     uppercase
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
   repeat:
-    <li *ngFor="let hero of heroes">      loop over heroes
+    <li *ngFor="let hero of heroes">                    loop over heroes
       {{hero.name}}
     </li>
 
   condition:
-    <li *ngIf="selectedHero">...</li>     display if true
+    <li *ngIf="selectedHero">...</li>                   display if true
 ---------------------------------------------------------------------------------------------------
 EVENTS:
-  <li (click)="...">                      execute function on click
+  <li (click)="...()">                                  execute function on click
+
+  event types:
+    (focus)
+    (blur)
+    (submit) 
+    (scroll)
+
+    (cut)
+    (copy)
+    (paste)
+
+    (keydown)
+    (keypress)
+    (keyup)
+
+    (mouseenter)
+    (mousedown)
+    (mouseup)
+
+    (click)
+    (dblclick)
+
+    (drag)
+    (dragover)
+    (drop)
 ---------------------------------------------------------------------------------------------------
-CLASSES:
-  [class.selected]="hero === selectedHero"    if hero = selectedHero add class selected
+STYLING:
+  class:
+    single:
+      <h1 [class.gray]="grayStyle">...</h1>                     if grayStyle is true add class gray
+
+    multiple:
+      <h1 [ngClass]="{
+        'gray': grayStyle,
+        'large': !grayStyle
+      }">...</h1>
+  --------------------
+  style:
+    single:
+      <h1 [style.color]="grayStyle ? 'gray' : 'black'>...</h1>
+
+    multiple:
+      <h1 [ngStyle]="{
+        'color': grayStyle ? 'gray' : 'black',
+        'font-size': !grayStyle ? '1em' : '4em'
+      }">...</h1>
+---------------------------------------------------------------------------------------------------
+ROUTING:
+  <a routerLink="...">...</a>                                         link
+
+  app-routing.module.ts:
+    import { HomeComponent } from "./home/home.component";            import component
+    import { ContactComponent } from "./contact/contact.component";
+
+    const routes: Routes = [
+      { path: "", component: HomeComponent },                         connect route and component
+      { path: "contact", component: ContactComponent }
+    ];
+---------------------------------------------------------------------------------------------------
+SERVICES:
+  allow code to be accessed from different components
+
+  ng generate service data                                 create service
+
+  data.service.ts:
+    export class DataService {
+      myFunction() {                                       add function, etc.
+        return console.log("first clicked");
+      }
+    }
+
+  home.component.ts:
+    import { DataService } from "../data.service";        import service
+
+    constructor(private data: DataService) { }            make data available
+
+    firstClick() {
+      this.data.myFunction();                             access function
+    }
+---------------------------------------------------------------------------------------------------
+HTTP CLIENT:
+  app.module.ts:
+    import { HttpClientModule } from "@angular/common/http";      import
+
+    imports: [
+      HttpClientModule                                            add to imports
+    ]
+
+  data.service.ts:
+    import { HttpClient } from "@angular/common/http";            import
+
+    constructor(private http: HttpClient) { }                     make http available
+
+    getUsers() {
+      return this.http.get("https://reqres.in/api/users")         make get request
+    }
+---------------------------------------------------------------------------------------------------
+LIFECYCLE HOOKS:
+  ngOnInit                        on component load
+---------------------------------------------------------------------------------------------------
+FORMS:
+  two approaches:
+    template driven
+    reactive                      more control
+
+  app.module.ts:
+    import { ReactiveFormsModule } from "@angular/forms";                   import
+
+    imports: [
+      ReactiveFormsModule                                                   add to imports
+    ]
+  
+  contact.component.ts:
+    import { FormBuilder, FormGroup, Validators } from "@angular/forms";    import
+
+    messageForm: FormGroup;
+    submitted = false;
+    success = false;
+
+    constructor(private formBuilder: FormBuilder) {
+      this.messageForm = this.formBuilder.group({
+        name: ["", Validators.required],
+        message: ["", Validators.required]
+      })
+    }
+
+    onSubmit() {
+      this.submitted = true;
+
+      if (this.messageForm.invalid) {
+        return;
+      }
+
+      this.success = true;
+    }
+
+  contact.component.html:
+    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">
+          Your name is required.
+        </div>
+      </div>
+    </label>
+
+    <label>
+      Message:
+      <input type="text" formControlName="message">
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">
+          A message is required.
+        </div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta">
+
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong>
+    <span>{{ messageForm.controls.name.value }}</span>
+
+    <strong>Message:</strong>
+    <span>{{ messageForm.controls.message.value }}</span>
+  </div>
+---------------------------------------------------------------------------------------------------
+DEPENDENCY INJECTION:
+  add imports to constructor()

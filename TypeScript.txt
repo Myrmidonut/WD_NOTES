@@ -1,0 +1,44 @@
+FILES:
+  .ng                                         file ending
+---------------------------------------------------------------------------------------------------
+VARIABLES:
+  var ...: string = "...";                    declaration with type
+  const
+  let
+
+  types:
+    string                                    string
+    number                                    integer
+    boolean                                   boolean
+    any                                       dynamic type
+    void                                      no type
+
+    string[]                                  array of strings
+
+  undefined
+---------------------------------------------------------------------------------------------------
+INTERFACES:
+  custom data type
+
+  interface MyInterface {                     create interface
+    myName: string;                           property
+    myOpt?: number;                           optional property
+    readonly myRead: boolean;                 read only property
+  }
+
+  var ...: MyInterface = {                    create instance of interface
+    myName: "..."
+  }
+---------------------------------------------------------------------------------------------------
+CLASSES:
+
+
+---------------------------------------------------------------------------------------------------
+FUNCTIONS:
+  var ... = function(...: ..., ...: ...): ... {     arguments and return type
+    ...
+  }
+
+  var ... = function(...=..., ...?: ...): ... {     default value, optional argument
+    ...
+  }

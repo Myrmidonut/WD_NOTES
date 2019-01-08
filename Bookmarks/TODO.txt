@@ -291,7 +291,8 @@ Secret Santa:
     email on start, wishlist update?
 
   mongodb - mlab
-  angular/react
+  angular
+  scss
   express
   passport
 

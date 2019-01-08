@@ -393,92 +393,17 @@ OBJECTS:
 
   declaration:
     var myObj = {};                             create an empty object        
-    var myObj = {key: "value", ...};            create an object, key: value pairs (properties)
-    var myObj = {"key key": "value"}            multiword key
+    var myObj = {...: ..., ...: ...};           create an object, key: value pairs (properties)
+    var myObj = {"... ...": ...}                multiword key
 
-    var myObj = {key: [...] };                  array key
+    var myObj = {...: [...] };                  array key
 
-    var myObj = {key: function() {} };          method key
-    var myObj = {key() {} };                    shorter
+    var myObj = {...: function() {} };          method key
+    var myObj = {...() {} };                    shorter
 
-    var myObj = {key: {key: ..., ...}, ...};    subnamespace
+    var myObj = {...: {...: ..., ...: ...}};    subnamespace
 
     var myOby = [{...}, {...}];                 array of objects
-
-
------
-class ???
-
-
-
-  constructor:
-    function MyObj() {                          constructor, capitalized
-      let ... = ...;                            private property, changed only inside constructor
-      this.name = ...;
-    };
-
-    function MyObj(name) {this.name = name};    constructor with arguments
-
-  instance:
-    var myIns = new MyObj();                    create instance with constructor
-    var myIns = new MyObj(...);                 create instance with arguments
-
-    myIns instanceof MyObj;                     true if created with constructor, prefered
-    myIns.constructor === true                  true if created with constructor
-
-  prototype:
-    MyObj.prototype = {                         shared for all instances
-      constructor: MyObj,                       keep constructor definition
-      ...
-    };
-
-    MyObj.prototype.isPrototypeOf(myIns);       true if MyObj is the prototype for myIns
-    Object.prototype.isPrototypeOf(MyObj.prototype)
-
-  inheritance:
-    let parent = new Parent();                          not recommended
-
-    let parent = Object.create(Parent.prototype);       make instance of parent
-    Child.prototype = Object.create(Parent.prototype);  set prototype of child to instance of parent
-    Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
-
-    Child.prototype.name = function() {...};            add method after inheritance, overwrites
-
-  mixin:
-    let myMixin = function(obj) {         take object and give it a method, for unrelated objects
-      obj.name = function() {
-        ...;
-      }
-    };
-
-    myMixin(myObj);                       give myObj the method
-
-    myObj.name();                         use method
-
-  mixin module:
-    let myModule = (function() {          multiple mixins combined into a module
-      return {
-        myMixin1: function(obj) {
-          obj.name1 = function() {
-            ...;
-          };
-        },
-        myMixin2: function(obj) {
-          obj.name2 = function() {
-            ...;
-          };
-        }
-      }
-    })();
-
-    myModule.myMixin1(myIns);             set the method
-    myIns.name1();                        use method
-
-
-    ------
-    object ???
-
-
 
   call:
     myObj.key;                            calling a property
@@ -492,28 +417,6 @@ class ???
     myObj["key"] = ...                    alternative
 
     myObj[key] = value;
-
-
-    -------
-    class ???
-
-
-
-
-  method:
-    myMethod() {...}                      function not necessary inside objects
- 
-  this:
-    .this                                 refers to the current object
-
-
-
-
------
-object ???
-
-
-
 
   stuff:
     .hasOwnProperty("...")                check if property exists
@@ -584,6 +487,75 @@ CLASS:
 
     firstStudent.fullName();
     Student.enrollStudents([firstStudent, secondStudent]);
+
+  constructor:
+    function MyObj() {                          constructor, capitalized
+      let ... = ...;                            private property, changed only inside constructor
+      this.name = ...;
+    };
+
+    function MyObj(name) {this.name = name};    constructor with arguments
+
+  instance:
+    var myIns = new MyObj();                    create instance with constructor
+    var myIns = new MyObj(...);                 create instance with arguments
+
+    myIns instanceof MyObj;                     true if created with constructor, prefered
+    myIns.constructor === true                  true if created with constructor
+
+  prototype:
+    MyObj.prototype = {                         shared for all instances
+      constructor: MyObj,                       keep constructor definition
+      ...
+    };
+
+    MyObj.prototype.isPrototypeOf(myIns);       true if MyObj is the prototype for myIns
+    Object.prototype.isPrototypeOf(MyObj.prototype)
+
+  inheritance:
+    let parent = new Parent();                          not recommended
+
+    let parent = Object.create(Parent.prototype);       make instance of parent
+    Child.prototype = Object.create(Parent.prototype);  set prototype of child to instance of parent
+    Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
+
+    Child.prototype.name = function() {...};            add method after inheritance, overwrites
+
+  mixin:
+    let myMixin = function(obj) {         take object and give it a method, for unrelated objects
+      obj.name = function() {
+        ...;
+      }
+    };
+
+    myMixin(myObj);                       give myObj the method
+
+    myObj.name();                         use method
+
+  mixin module:
+    let myModule = (function() {          multiple mixins combined into a module
+      return {
+        myMixin1: function(obj) {
+          obj.name1 = function() {
+            ...;
+          };
+        },
+        myMixin2: function(obj) {
+          obj.name2 = function() {
+            ...;
+          };
+        }
+      }
+    })();
+
+    myModule.myMixin1(myIns);             set the method
+    myIns.name1();                        use method
+
+  method:
+    myMethod() {...}                      function not necessary inside objects
+ 
+  this:
+    .this                                 refers to the current object
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
@@ -921,8 +893,13 @@ LOOPS:
       increment;
     } while (condition)
   ------------------------------
+  FOR IN:
+    for (let char in "test") {                  on iterable objects, index
+      ...
+    }
+  ------------------------------
   FOR OF:                                       
-    for (let char of "test") {                  on iterable objects
+    for (let char of "test") {                  on iterable objects, value
       ...
     }
 ---------------------------------------------------------------------------------------------------
