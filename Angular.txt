@@ -14,6 +14,8 @@ SERVE:
   ng serve --prod             preview app in production mode
     --open                    launch in browser
     -o
+  
+  http://localhost:4200/      local server address
 ---------------------------------------------------------------------------------------------------
 BUILD:
   ng build                    write app in debug mode
@@ -150,6 +152,8 @@ DIRECTIVES:
       {{hero.name}}
     </li>
 
+      *ngFor="let hero of heroes; let i = index"        loop with index
+
   condition:
     <li *ngIf="selectedHero">...</li>                   display if true
 ---------------------------------------------------------------------------------------------------
@@ -159,7 +163,7 @@ EVENTS:
   event types:
     (focus)
     (blur)
-    (submit) 
+    (submit)
     (scroll)
 
     (cut)
@@ -260,72 +264,74 @@ FORMS:
     template driven
     reactive                      more control
 
-  app.module.ts:
-    import { ReactiveFormsModule } from "@angular/forms";                   import
+    reactive:
+      import in app.module.ts
+      import and use in component
 
-    imports: [
-      ReactiveFormsModule                                                   add to imports
-    ]
-  
-  contact.component.ts:
-    import { FormBuilder, FormGroup, Validators } from "@angular/forms";    import
+      FormControl                       control one input field
+      FormGroup                         control one form
+      FormBuilder                       easier control, control() group() array()
+      Validator                         validate inputs
 
-    messageForm: FormGroup;
-    submitted = false;
-    success = false;
+  Example:
+    app.module.ts:
+      import { ReactiveFormsModule } from "@angular/forms";                   import
 
-    constructor(private formBuilder: FormBuilder) {
-      this.messageForm = this.formBuilder.group({
-        name: ["", Validators.required],
-        message: ["", Validators.required]
-      })
-    }
+      imports: [
+        ReactiveFormsModule                                                   add to imports
+      ]
+    
+    contact.component.ts:
+      import { FormBuilder, FormGroup, Validators } from "@angular/forms";    import
 
-    onSubmit() {
-      this.submitted = true;
+      messageForm: FormGroup;
+      submitted = false;
+      success = false;
 
-      if (this.messageForm.invalid) {
-        return;
+      constructor(private formBuilder: FormBuilder) {                         make formbuilder available
+        this.messageForm = this.formBuilder.group({                           setup form data
+          name: ["", Validators.required],
+          message: ["", Validators.required]
+        })
       }
 
-      this.success = true;
-    }
+      onSubmit() {                                                            submit function
+        this.submitted = true;
+        if (this.messageForm.invalid) {
+          return;
+        }
+        this.success = true;
+      }
 
-  contact.component.html:
-    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
-    <h5 *ngIf="success">Your form is valid!</h5>
-
-    <label>
-      Name:
-      <input type="text" formControlName="name">
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="messageForm.controls.name.errors.required">
-          Your name is required.
-        </div>
+    contact.component.html:
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">                create form
+        <h5 *ngIf="success">Your form is valid!</h5>
+        <label>
+          Name:
+          <input type="text" formControlName="name">
+          <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+            <div *ngIf="messageForm.controls.name.errors.required">
+              Your name is required.
+            </div>
+          </div>
+        </label>
+        <label>
+          Message:
+          <input type="text" formControlName="message">
+          <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+            <div *ngIf="messageForm.controls.message.errors.required">
+              A message is required.
+            </div>
+          </div>
+        </label>
+        <input type="submit" value="Send message" class="cta">
+      </form>
+      <div *ngIf="submitted" class="results">
+        <strong>Name:</strong>
+        <span>{{ messageForm.controls.name.value }}</span>
+        <strong>Message:</strong>
+        <span>{{ messageForm.controls.message.value }}</span>
       </div>
-    </label>
-
-    <label>
-      Message:
-      <input type="text" formControlName="message">
-      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
-        <div *ngIf="messageForm.controls.message.errors.required">
-          A message is required.
-        </div>
-      </div>
-    </label>
-
-    <input type="submit" value="Send message" class="cta">
-
-  </form>
-
-  <div *ngIf="submitted" class="results">
-    <strong>Name:</strong>
-    <span>{{ messageForm.controls.name.value }}</span>
-
-    <strong>Message:</strong>
-    <span>{{ messageForm.controls.message.value }}</span>
-  </div>
 ---------------------------------------------------------------------------------------------------
 DEPENDENCY INJECTION:
   add imports to constructor()

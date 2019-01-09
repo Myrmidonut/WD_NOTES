@@ -14,8 +14,12 @@ VARIABLES:
     void                                      no type
 
     string[]                                  array of strings
+    number[]                                  array of integers
+    any[]                                     array of dynamic types
 
   undefined
+
+  enum
 ---------------------------------------------------------------------------------------------------
 INTERFACES:
   custom data type

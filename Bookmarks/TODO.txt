@@ -276,25 +276,30 @@ Secret Santa:
   login
     email
     password
+  my groups
+    owner
+      notification when all accepted/declined
+      start secret santa generation
+    participant
+      join from email link
+      join with title and code
+      accept/decline
+      create wishlist
+      view partner and wishlist
+      get notification on start, wishlist update
+      email on start, wishlist update?
   create new group
-    title
-    invite with link in email
-  owner
-    notification when all accepted/declined
-    start secret santa generation
-  participant
-    join from email link
-    accept/decline
-    create wishlist
-    view partner and wishlist
-    get notification on start, wishlist update
-    email on start, wishlist update?
-
+    set title
+    generate invite code
+    invite by email
+  
   mongodb - mlab
   angular
   scss
   express
   passport
+  
+  mobile first
 
   routes:
     get /
@@ -303,6 +308,33 @@ Secret Santa:
     post authenticate /group/new
     post authenticate /group/{id} (join group)
     update authenticate /group/{id} (accept/decline, wishlist)
+
+  components:
+    nav
+      register
+      login
+      my groups
+    main
+      groups
+      create group
+      join group
+    groups
+      list
+    group
+      set ready
+      leave
+      wishlist
+      partner
+      settings
+    create
+      name
+      code
+      generate
+      invite
+    join
+      name
+      code
+    footer
 --------------------------------------------
 3-1:
   favicon --- DONE
