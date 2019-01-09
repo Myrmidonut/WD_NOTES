@@ -207,14 +207,14 @@ STYLING:
       }">...</h1>
 ---------------------------------------------------------------------------------------------------
 ROUTING:
-  <a routerLink="...">...</a>                                         link
+  <a routerLink="..." name="...">...</a>                                         link
 
   app-routing.module.ts:
     import { HomeComponent } from "./home/home.component";            import component
     import { ContactComponent } from "./contact/contact.component";
 
     const routes: Routes = [
-      { path: "", component: HomeComponent },                         connect route and component
+      { path: "", component: HomeComponent, outlet: "..." },                         connect route and component
       { path: "contact", component: ContactComponent }
     ];
 ---------------------------------------------------------------------------------------------------

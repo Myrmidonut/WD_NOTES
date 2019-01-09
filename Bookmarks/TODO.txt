@@ -314,6 +314,7 @@ Secret Santa:
       register
       login
       my groups
+
     main
       groups
       create group
@@ -321,10 +322,11 @@ Secret Santa:
     groups
       list
     group
-      set ready
       leave
       wishlist
+        entries
       partner
+        entries
       settings
     create
       name
@@ -334,6 +336,7 @@ Secret Santa:
     join
       name
       code
+
     footer
 --------------------------------------------
 3-1:
