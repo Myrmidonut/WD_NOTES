@@ -18,6 +18,9 @@ FOLDERS:
   process.cwd()                           directory of the node process
   __dirname                               directory of the script file
 ---------------------------------------------------------------------------------------------------
+START:
+  node ...                                launch server from file
+---------------------------------------------------------------------------------------------------
 INCLUDE:
   include ...                             include HMTL code from another file
 ---------------------------------------------------------------------------------------------------

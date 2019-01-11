@@ -316,7 +316,7 @@ Secret Santa:
       my groups
 
     main
-      groups
+      my groups
       create group
       join group
     groups
@@ -327,7 +327,6 @@ Secret Santa:
         entries
       partner
         entries
-      settings
     create
       name
       code
