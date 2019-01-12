@@ -1,0 +1,8 @@
+npm install --save dotenv
+--------------------
+require("dotenv").config()
+--------------------
+.env
+  DB=...
+--------------------
+process.env.DB

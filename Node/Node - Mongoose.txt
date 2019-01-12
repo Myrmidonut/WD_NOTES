@@ -14,7 +14,7 @@ SCHEMA:
   const catSchema = new mongoose.Schema({          define object for models
     name: String,
     age: Number,
-    temperament: String
+    temperament: [String]
   });
 ---------------------------------------------------------------------------------------------------
 MODEL:

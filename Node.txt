@@ -95,6 +95,7 @@ PACKAGES:
   multer                  handling files from forms
   helmet                  site security
   node-fetch              enable fetch
+  dotenv                  .env file
 ---------------------------------------------------------------------------------------------------
 BASIC START:
   app.js:

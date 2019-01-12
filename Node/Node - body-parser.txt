@@ -2,5 +2,6 @@ form sends data into request "body"
 
 parse request "body" for use
 -----
-let bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
+
 app.use(bodyParser.urlencoded({extended: false}));

@@ -284,23 +284,23 @@ FORMS:
     contact.component.ts:
       import { FormBuilder, FormGroup, Validators } from "@angular/forms";    import
 
-      messageForm: FormGroup;
+      messageForm: FormGroup;                                                 create new formgroup
       submitted = false;
       success = false;
 
       constructor(private formBuilder: FormBuilder) {                         make formbuilder available
         this.messageForm = this.formBuilder.group({                           setup form data
-          name: ["", Validators.required],
+          name: ["", Validators.required],                                    formfield with default value and validation
           message: ["", Validators.required]
         })
       }
 
       onSubmit() {                                                            submit function
-        this.submitted = true;
-        if (this.messageForm.invalid) {
+        this.submitted = true;                                                if submitted
+        if (this.messageForm.invalid) {                                       if invalid
           return;
         }
-        this.success = true;
+        this.success = true;                                                  if valid
       }
 
     contact.component.html:

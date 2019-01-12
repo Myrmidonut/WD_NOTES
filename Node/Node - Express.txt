@@ -50,19 +50,19 @@ ROUTES:
 
   ROUTE:
     app.route("...")                                              multiple routes to same URL
-      .get(function(req,res) {...})
-      .post(function(req,res) {...})
+      .get((req,res) => {...})
+      .post((req,res) => {...})
       ...
 
   GET:
-    app.get("...", function(req, res) {                           route with request and response
+    app.get("...", (req, res) => {                                route with request and response
       res.send("...");                                            output
     });
 
     app.get("*", ...                                              fallback route
 
   POST:
-    app.post("...", function(req, res) {
+    app.post("...", (req, res) => {
       res.send("...");
     });
 
@@ -70,7 +70,7 @@ ROUTES:
     app.use()                                                     runs on all requests
 
   LISTEN:
-    app.listen(process.env.PORT, process.env.IP, function() {     server
+    app.listen(process.env.PORT, process.env.IP, () =>{           server
       console.log("Server has started.");
     });
 ---------------------------------------------------------------------------------------------------

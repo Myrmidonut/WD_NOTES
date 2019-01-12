@@ -292,29 +292,34 @@ Secret Santa:
     set title
     generate invite code
     invite by email
-  
+  --------------------
   mongodb - mlab
   angular
   scss
   express
   passport
-  
+  mongoose
+  --------------------
   mobile first
-
+  --------------------
   routes:
-    get /
-    post authenticate /login
-    post validate /register
-    post authenticate /group/new
-    post authenticate /group/{id} (join group)
-    update authenticate /group/{id} (accept/decline, wishlist)
+    get     /
+    post    /login                    email, password
+    post    /register                 email, password, confirm password, username
 
+    post    /create                   groupname
+    post    /join                     groupname, code
+    update  /leave                    groupname, username
+    update  /mywishlist               groupname, username
+    post    /partnerwishlist          groupname, username
+
+    post    /mygroups                 username
+  --------------------
   components:
     nav
       register
       login
       my groups
-
     main
       my groups
       create group
@@ -335,8 +340,17 @@ Secret Santa:
     join
       name
       code
-
     footer
+  --------------------
+  database:
+    group         {}
+      name        string
+      code        string
+      id          id
+      members     {}
+        name      string
+        wishlist  array
+        partner   string
 --------------------------------------------
 3-1:
   favicon --- DONE
