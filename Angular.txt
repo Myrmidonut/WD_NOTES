@@ -207,16 +207,25 @@ STYLING:
       }">...</h1>
 ---------------------------------------------------------------------------------------------------
 ROUTING:
-  <a routerLink="..." name="...">...</a>                                         link
+  link:
+    <a routerLink="..." name="...">...</a>                              link
+  --------------------
+  routes:
+    app-routing.module.ts:
+      import { HomeComponent } from "./home/home.component";            import component
+      import { ContactComponent } from "./contact/contact.component";
 
-  app-routing.module.ts:
-    import { HomeComponent } from "./home/home.component";            import component
-    import { ContactComponent } from "./contact/contact.component";
+      const routes: Routes = [
+        { path: "", component: HomeComponent, outlet: "..." },          connect route and component
+        { path: "contact", component: ContactComponent }
+      ];
+  --------------------
+  redirect:
+    import { Router } from "@angular/router";                           import
 
-    const routes: Routes = [
-      { path: "", component: HomeComponent, outlet: "..." },                         connect route and component
-      { path: "contact", component: ContactComponent }
-    ];
+    constructor(private router: Router) {}                              enable
+
+    this.router.navigate(["/join"])                                     redirect
 ---------------------------------------------------------------------------------------------------
 SERVICES:
   allow code to be accessed from different components
@@ -253,7 +262,7 @@ HTTP CLIENT:
     constructor(private http: HttpClient) { }                     make http available
 
     getUsers() {
-      return this.http.get("https://reqres.in/api/users")         make get request
+      return this.http.get("...")                                 make get request to url
     }
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE HOOKS:
