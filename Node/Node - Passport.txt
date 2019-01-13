@@ -4,17 +4,62 @@ different entry points:
   ...
 
 makes HTTP sessions have states (information stay)
-
-packages:
+-----------------
+PACKAGES:
   Passport
   Passport Local
   Passport Local mongoose
 
-  npm install express
-              mongoose
-              passport
+  npm install passport
               passport-local
               passport-local-mongoose
-              body-parser
               express-session
-              ejs
+-----------------
+SETUP:
+  const passport = require("passport")
+  const LocalStrategy = require("passport-local")
+  const passportLocalMongoose = require("passport-local-mongoose")
+
+  UserSchema.plugin(passportLocalMongoose)
+
+  app.use(require("express-session")({
+    secret: "secret message",
+    resave: false,
+    saveUninitialized: false
+  }))
+  app.use(passport.initialize())
+  app.use(passport.session())
+
+  passport.use(new LocalStrategy(User.authenticate()))
+  passport.serializeUser(User.serializeUser())
+  passport.deserializeUser(User.deserializeUser())
+------------
+ROUTES:
+  in codeblock:
+    passport.authenticate("local")(req, res, function() {
+      ...
+    })
+  ------------
+  middleware:
+    app.post("/login", passport.authenticate("local", {
+      successRedirect: "/secret",
+      failureRedirect: "/login"
+    }), (req, res) => {
+      ...
+    })
+
+    app.get("/logout", (req, res) => {
+      req.logout();
+    })
+    ------------
+    access restricted pages:
+      function isLoggedIn(req, res, next) {
+        if (req.isAuthenticate()) {
+          return next()
+        }
+        res.redirect("/login")
+      }
+
+      app.get("/secret", isLoggedIn, (req, res) => {
+        res.render("secret")
+      })

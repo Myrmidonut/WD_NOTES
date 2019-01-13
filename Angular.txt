@@ -332,6 +332,21 @@ FORMS:
         <strong>Message:</strong>
         <span>{{ messageForm.controls.message.value }}</span>
       </div>
+  ---------
+  let body = new URLSearchParams();
+    body.set("groupname", formdata.groupname)
+    body.set("username", username)
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    }
+
+    this.httpClient.post("/create", body.toString(), httpOptions)
+    .subscribe(res => {
+      console.log(res)
+    })
 ---------------------------------------------------------------------------------------------------
 DEPENDENCY INJECTION:
   add imports to constructor()
