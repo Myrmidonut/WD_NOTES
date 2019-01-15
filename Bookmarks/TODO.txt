@@ -351,6 +351,11 @@ Secret Santa:
         name      string
         wishlist  array
         partner   string
+  --------------------
+  issues:
+    join with bad code
+    finish routes
+    wishlist send as json
 --------------------------------------------
 3-1:
   favicon --- DONE

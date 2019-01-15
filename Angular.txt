@@ -18,10 +18,8 @@ SERVE:
   http://localhost:4200/      local server address
 ---------------------------------------------------------------------------------------------------
 BUILD:
-  ng build                    write app in debug mode
-    /dist
-  ng build --prod             write app for production, reduced filesize
-    /dist
+  ng build                    write app in debug mode, to /dist
+  ng build --prod             write app for production, reduced filesize, to /dist
 
   options:
     --port ...                set port
