@@ -353,9 +353,15 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    join with bad code
-    finish routes
+    delete group route
     wishlist send as json
+    delete account route
+    bad login response
+    show owner in groups view
+    get partner wishlist
+    show members with partner
+    show launched groups
+    owner can launch, delete group, delete member, relaunch
 --------------------------------------------
 3-1:
   favicon --- DONE

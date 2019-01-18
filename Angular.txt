@@ -146,11 +146,9 @@ PIPES:
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
   repeat:
-    <li *ngFor="let hero of heroes">                    loop over heroes
-      {{hero.name}}
+    <li *ngFor="let hero of heroes; index as i">        loop with optional index
+      {{ hero }} {{ i }}
     </li>
-
-      *ngFor="let hero of heroes; let i = index"        loop with index
 
   condition:
     <li *ngIf="selectedHero">...</li>                   display if true
