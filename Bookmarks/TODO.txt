@@ -353,13 +353,24 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    delete group route
-    wishlist send to api as json
-    delete account route
+    delete group
+    delete account
+    delete member
+
+    partner view only when group launched
+    partner route error without partner
+
+    edit wishlist entries
+    convert wishlist links to full http://
+
     bad login response
+
     show owner in groups view
-    show launched groups
-    group, owner can launch, delete group, delete member, relaunch, invite
+    show launched status
+    leave group, owner notification
+    group, owner can launch, delete group, invite
+    members, owner can delete member
+
     my groups only when logged in
 --------------------------------------------
 3-1:
