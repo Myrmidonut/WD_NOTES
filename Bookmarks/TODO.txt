@@ -354,14 +354,13 @@ Secret Santa:
   --------------------
   issues:
     delete group route
-    wishlist send as json
+    wishlist send to api as json
     delete account route
     bad login response
     show owner in groups view
-    get partner wishlist
-    show members with partner
     show launched groups
-    owner can launch, delete group, delete member, relaunch
+    group, owner can launch, delete group, delete member, relaunch, invite
+    my groups only when logged in
 --------------------------------------------
 3-1:
   favicon --- DONE
