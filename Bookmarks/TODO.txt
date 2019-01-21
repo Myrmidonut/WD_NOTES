@@ -353,22 +353,34 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    delete account
+    routes:
+      delete account
 
-    error when loading partner after removing member
-    member leave group, owner notification
+    warnings:
+      show warning for delete and leave operations
 
-    going from group back to groups crashes, missing groupname
-    owner/member on group broken
+    group:
+      display launch status
+      update launched status from launching
 
-    edit wishlist entries
-    convert wishlist links to full http://
+    remove member:
+      owner remove member, generate new partner, warning
+      reload /members after removing member
 
-    bad login response
+    wishlist:
+      edit wishlist entries
+      convert wishlist links to full http://
 
-    show launched status
+    login:
+      bad login response
 
-    owner can invite to group
+    invite:
+      owner can invite to group
+
+    views:
+      members
+      partner
+      mywishlist
 --------------------------------------------
 3-1:
   favicon --- DONE
