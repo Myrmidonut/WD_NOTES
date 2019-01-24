@@ -367,9 +367,11 @@ Secret Santa:
       owner remove member, generate new partner, warning
       reload /members after removing member
 
-    wishlist:
+    mywishlist:
       edit wishlist entries
       convert wishlist links to full http://
+      textarea placeholder
+      input padding font size
 
     login:
       bad login response
@@ -377,10 +379,28 @@ Secret Santa:
     invite:
       owner can invite to group
 
+    main:
+      app title
+      introduction text
+      login
+      register
+      demo mode
+
+      show interface when logged in
+      40px height buttons
+
     views:
       members
       partner
       mywishlist
+
+      media queries full page view
+
+    notification system
+      group launched
+      member left (owner)
+      member joined (owner)
+      wishlist updated (partner)
 --------------------------------------------
 3-1:
   favicon --- DONE
