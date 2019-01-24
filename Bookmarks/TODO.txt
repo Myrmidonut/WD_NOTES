@@ -360,7 +360,6 @@ Secret Santa:
       show warning for delete and leave operations
 
     group:
-      display launch status
       update launched status from launching
 
     remove member:
@@ -370,8 +369,7 @@ Secret Santa:
     mywishlist:
       edit wishlist entries
       convert wishlist links to full http://
-      textarea placeholder
-      input padding font size
+      clear form after submit
 
     login:
       bad login response
@@ -386,14 +384,7 @@ Secret Santa:
       register
       demo mode
 
-      show interface when logged in
-      40px height buttons
-
     views:
-      members
-      partner
-      mywishlist
-
       media queries full page view
 
     notification system
