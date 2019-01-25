@@ -361,6 +361,7 @@ Secret Santa:
 
     group:
       update launched status from launching
+      owner show code
 
     remove member:
       owner remove member, generate new partner, warning
@@ -369,19 +370,16 @@ Secret Santa:
     mywishlist:
       edit wishlist entries
       convert wishlist links to full http://
-      clear form after submit
 
     login:
       bad login response
 
     invite:
       owner can invite to group
+      display code instead of in group
 
     main:
-      app title
       introduction text
-      login
-      register
       demo mode
 
     views:
