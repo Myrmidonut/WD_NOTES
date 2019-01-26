@@ -352,35 +352,32 @@ Secret Santa:
         wishlist  array
         partner   string
   --------------------
-  issues:
+  stuff:
+    login:
+      bad login response
+
     routes:
       delete account
-
+  --------------------
+  issues:
     warnings:
       show warning for delete and leave operations
 
     group:
       update launched status from launching
-      owner show code
 
     remove member:
       owner remove member, generate new partner, warning
-      reload /members after removing member
 
     mywishlist:
-      edit wishlist entries
-      convert wishlist links to full http://
-
-    login:
-      bad login response
+      edit entry
+      delete entry
 
     invite:
       owner can invite to group
-      display code instead of in group
 
     main:
       introduction text
-      demo mode
 
     views:
       media queries full page view
