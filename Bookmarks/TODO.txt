@@ -373,6 +373,9 @@ Secret Santa:
       edit entry
       delete entry
 
+      show new screen with form for new/edit entry
+      edit by index, save whole array, send whole array to db
+
     invite:
       owner can invite to group
 
