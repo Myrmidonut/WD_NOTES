@@ -363,24 +363,11 @@ Secret Santa:
     warnings:
       show warning for delete and leave operations
 
-    group:
-      update launched status from launching
-
     remove member:
       owner remove member, generate new partner, warning
 
-    mywishlist:
-      edit entry
-      delete entry
-
-      show new screen with form for new/edit entry
-      edit by index, save whole array, send whole array to db
-
     invite:
       owner can invite to group
-
-    main:
-      introduction text
 
     views:
       media queries full page view
