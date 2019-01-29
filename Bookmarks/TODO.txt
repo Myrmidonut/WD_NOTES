@@ -352,14 +352,12 @@ Secret Santa:
         wishlist  array
         partner   string
   --------------------
-  stuff:
-    login:
-      bad login response
+  issues:
+    demo mode
 
     routes:
       delete account
-  --------------------
-  issues:
+    
     warnings:
       show warning for delete and leave operations
 
