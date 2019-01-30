@@ -355,20 +355,10 @@ Secret Santa:
   issues:
     demo mode
 
-    routes:
-      delete account
-    
-    warnings:
-      show warning for delete and leave operations
-
-    remove member:
-      owner remove member, generate new partner, warning
+    delete account
 
     invite:
       owner can invite to group
-
-    views:
-      media queries full page view
 
     notification system
       group launched
