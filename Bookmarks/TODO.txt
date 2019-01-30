@@ -354,17 +354,18 @@ Secret Santa:
   --------------------
   issues:
     demo mode
+    center on screen
+    background image
+    christmas flavor
 
-    delete account
-
-    invite:
-      owner can invite to group
-
-    notification system
-      group launched
-      member left (owner)
-      member joined (owner)
-      wishlist updated (partner)
+    maybe;
+      delete account
+      owner can invite to group via mail
+      notification system
+        group launched
+        member left (owner)
+        member joined (owner)
+        wishlist updated (partner)
 --------------------------------------------
 3-1:
   favicon --- DONE
