@@ -353,10 +353,13 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    demo mode
     center on screen
     background image
     christmas flavor
+    buttons on mobile not pressed down
+    fit content to mobile screen
+
+    keep user logged in, coming back to main doesnt see username
 
     maybe;
       delete account
