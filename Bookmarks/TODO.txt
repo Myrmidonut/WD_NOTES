@@ -353,21 +353,16 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    font
-    explanation for icons
-    hide settings behind a button
-    check inputs
-    safe passwords
-    center on screen
     background image
+    background on mobile
     christmas flavor
-    buttons on mobile not interactive
-    fit content to mobile screen
-    hide disabled invite screen
 
     keep user logged in, coming back to main doesnt see username
 
     maybe:
+      buttons active styling for touch
+      login and register on one screen, confirm password and email on user screen
+      hide disabled invite screen
       delete account
       owner can invite to group via mail
       notification system
