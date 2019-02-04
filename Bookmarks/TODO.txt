@@ -353,11 +353,6 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    background image
-    background on mobile
-    christmas flavor
-
-    keep user logged in, coming back to main doesnt see username
 
     maybe:
       buttons active styling for touch
