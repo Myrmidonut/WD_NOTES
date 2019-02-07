@@ -124,11 +124,12 @@ REGULAR EXPRESSIONS:
 
   (...)               group, following regex is applied to the whole group
 
-  (...)(...)...\2...\1    group, numbers indicate which group is repeated at that position
+  (...)(...)...\2...\1    repeated group, exact
 
   [abc]               range
   [a-c]               range
   [a-c2-5]            multiple ranges
+    ^-]\ need escape
 
   .                   anything
 
@@ -140,7 +141,8 @@ REGULAR EXPRESSIONS:
   \s                  space, including new line, carriage return, tab, form feed
   \S                  not space
 
-  \...                special characters like ( )
+  \...                escape special characters
+    [\^$.|?*+(){}
 
   \r                  return
   \n                  newline
@@ -168,9 +170,6 @@ REGULAR EXPRESSIONS:
   (?!=...)            negative lookahead, not exists
 
   invert using uppercase letter
-
-  escape with:
-    \\...
 
   match:
     .match(myRegex);            returns array with matched regex
