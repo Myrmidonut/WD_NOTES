@@ -49,7 +49,8 @@ portfolio:
   seperate on github with projects
   cards with preview image, description, link to github code, link to live pages
   rework skills, make logos, add hover text, organize into frontend/backend
-  one favourite project per cert, others in a subfolder aside
+  one favourite project per certificate, others in a subfolder aside
+  smooth scrolling from navbar
 
   showcase:
     fcc
