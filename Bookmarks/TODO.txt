@@ -52,6 +52,11 @@ portfolio:
   one favourite project per certificate, others in a subfolder aside
   smooth scrolling from navbar
 
+  background: #1a1a1a
+  black/white theme
+  art deco?
+  jugendstil/art nouveau?
+
   showcase:
     fcc
       1: Product Landing Page
@@ -354,7 +359,7 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-
+    
     maybe:
       buttons active styling for touch
       login and register on one screen, confirm password and email on user screen

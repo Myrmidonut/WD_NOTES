@@ -347,6 +347,11 @@ FORMS:
       size="..."
       maxlength="..."
 
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+
     <button>...</button>          button, preferred over type="submit"
       type="submit"               send form data
       type="reset"                resetting all forms, bad practice
