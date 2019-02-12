@@ -54,7 +54,8 @@ portfolio:
 
   background: #1a1a1a
   black/white theme
-  art deco?
+  art deco
+  
   jugendstil/art nouveau?
 
   showcase:

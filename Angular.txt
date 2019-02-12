@@ -25,6 +25,13 @@ BUILD:
     --port ...                set port
     --host ...                set ip, default: localhost
 ---------------------------------------------------------------------------------------------------
+TEST:
+  ng test                     unit tests via Karma
+  ng e2e                      end-to-end tests via Protractor
+---------------------------------------------------------------------------------------------------
+HELP:
+  ng help
+---------------------------------------------------------------------------------------------------
 MEAN:
   ng new ...
   npm install --save express
@@ -111,11 +118,11 @@ COMPONENTS:
 DATA-BINDING:
   use data from the logic in the view
 
-  {{...}}                                                         binding from the logic
+  {{ ... }}                                                         binding from the logic
   
   HTML:                                                           property binding
     <button [title]="color">...</button>                          typescript
-    <button title="{{color}}">...</button>                        javascript
+    <button title="{{ color }}">...</button>                        javascript
 
   TS:
     constructor() {
@@ -141,7 +148,7 @@ TWO-WAY-BINDING:
   [(ngModel)]="..."                                     binding
 ---------------------------------------------------------------------------------------------------
 PIPES:
-  {{... | ...}}                                         modify bindings using pipe operator
+  {{ ... | ... }}                                         modify bindings using pipe operator
     uppercase
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
@@ -151,7 +158,7 @@ DIRECTIVES:
     </li>
 
   condition:
-    <li *ngIf="selectedHero">...</li>                   display if true
+    <li *ngIf="selectedHero === 1">...</li>             display if true
 ---------------------------------------------------------------------------------------------------
 EVENTS:
   <li (click)="...()">                                  execute function on click
@@ -239,6 +246,8 @@ SERVICES:
     import { DataService } from "../data.service";        import service
 
     constructor(private data: DataService) { }            make data available
+      private
+      public                                              public if html template needs access
 
     firstClick() {
       this.data.myFunction();                             access function
@@ -252,22 +261,44 @@ HTTP CLIENT:
       HttpClientModule                                            add to imports
     ]
 
-  data.service.ts:
-    import { HttpClient } from "@angular/common/http";            import
+  component:
+    import { HttpClient } from "@angular/common/http";
+    import { HttpHeaders } from '@angular/common/http';
 
-    constructor(private http: HttpClient) { }                     make http available
+    export class ... implements OnInit {
+      constructor(private httpClient: HttpClient) { }
 
-    getUsers() {
-      return this.http.get("...")                                 make get request to url
+      post() {
+        let body = new URLSearchParams()
+        body.set("username", formdata.username)
+
+        const httpOptions = {
+          headers: new HttpHeaders({
+            "Content-Type": "application/x-www-form-urlencoded"
+          })
+        }
+
+        this.httpClient.post<{                                    post
+          status: string,                                         returned data
+          groups: [string]
+          }>("/login", body.toString(), httpOptions)
+        .subscribe(res => {
+          ...
+        }
+      }
+    }
+
+    get() {
+      return this.http.get("/...")                                get
     }
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE HOOKS:
-  ngOnInit                        on component load
+  ngOnInit                              on component load
 ---------------------------------------------------------------------------------------------------
 FORMS:
   two approaches:
     template driven
-    reactive                      more control
+    reactive                            more control
 
     reactive:
       import in app.module.ts
@@ -311,6 +342,7 @@ FORMS:
     contact.component.html:
       <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">                create form
         <h5 *ngIf="success">Your form is valid!</h5>
+
         <label>
           Name:
           <input type="text" formControlName="name">
@@ -320,6 +352,7 @@ FORMS:
             </div>
           </div>
         </label>
+
         <label>
           Message:
           <input type="text" formControlName="message">
@@ -329,29 +362,17 @@ FORMS:
             </div>
           </div>
         </label>
+
         <input type="submit" value="Send message" class="cta">
       </form>
+
       <div *ngIf="submitted" class="results">
         <strong>Name:</strong>
         <span>{{ messageForm.controls.name.value }}</span>
         <strong>Message:</strong>
         <span>{{ messageForm.controls.message.value }}</span>
       </div>
-  ---------
-  let body = new URLSearchParams();
-    body.set("groupname", formdata.groupname)
-    body.set("username", username)
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded"
-      })
-    }
-
-    this.httpClient.post("/create", body.toString(), httpOptions)
-    .subscribe(res => {
-      console.log(res)
-    })
+    </form>
 ---------------------------------------------------------------------------------------------------
 DEPENDENCY INJECTION:
   add imports to constructor()
@@ -359,30 +380,3 @@ DEPENDENCY INJECTION:
 STUFF:
   #myInput>{{ myInput.focus() }}
 ---------------------------
-# SecretSanta
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
