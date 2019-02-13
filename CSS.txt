@@ -752,3 +752,23 @@ CENTERING:
     justify-content: center;
     align-items: center;
 ---------------------------------------------------------------------------------------------------
+NAVBAR:
+  navbar:
+    position: fixed;
+
+  footer:
+    position: fixed;
+    bottom: 0;
+
+  content:
+    margin-top: 50px;
+
+  anchors:
+    padding-top: 110px;
+    margin-top: -110px;
+
+  smooth scrolling:
+    html {
+      scroll-behavior: smooth;
+    }
+---------------------------------------------------------------------------------------------------

@@ -53,10 +53,42 @@ portfolio:
   smooth scrolling from navbar
 
   background: #1a1a1a
+  gold: #f9a602
   black/white theme
   art deco
-  
+
   jugendstil/art nouveau?
+
+  skills:
+    git
+    html5
+    css3
+    scss
+
+    javascript
+    php
+    python
+    ruby
+      c++
+      java
+
+    react
+    angular
+
+    node
+    express
+    passport
+    mongoose
+    mongodb
+    helmet
+    chai
+
+    laravel
+
+    sql
+    mongodb
+
+    d3
 
   showcase:
     fcc
