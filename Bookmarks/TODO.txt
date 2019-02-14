@@ -57,33 +57,28 @@ portfolio:
   black/white theme
   art deco
 
-  jugendstil/art nouveau?
-
   skills:
     git
     html5
     css3
-    scss
+    sass
 
     javascript
     php
     python
     ruby
-      c++
-      java
 
     react
     angular
 
-    node
-    express
-    passport
-    mongoose
-    mongodb
-    helmet
-    chai
-
     laravel
+    node
+      express
+      passport
+      mongoose
+      mongodb
+      helmet
+      chai
 
     sql
     mongodb
@@ -105,6 +100,14 @@ portfolio:
       Secret Santa
 
     Python Django ???
+
+  issues:
+    readme
+    heading background
+    all fcc projects
+    skills hover:
+      pop out
+      icon descriptions
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
@@ -392,7 +395,6 @@ Secret Santa:
         partner   string
   --------------------
   issues:
-    
     maybe:
       buttons active styling for touch
       login and register on one screen, confirm password and email on user screen
