@@ -90,7 +90,7 @@ portfolio:
       1: Product Landing Page
       2: Algorithms
       3: Pomodoro Clock
-      4: Heat Map or Choropleth Map
+      4: Choropleth Map
       5: Exercise Tracker ???
       6: Personal Library or Anonymous Message Board
 
@@ -105,9 +105,10 @@ portfolio:
     readme
     heading background
     all fcc projects
-    skills hover:
-      pop out
-      icon descriptions
+    anonymous
+      missing image
+      system.indexes shows up as board
+    certificates section
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
@@ -130,6 +131,14 @@ projects:
   
   <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
   by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 ---------------------------------------------------------------------------------------------------
 Campgrounds:
   ---
