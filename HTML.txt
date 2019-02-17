@@ -74,6 +74,13 @@ BROWSERS:
   Edge:
     Windows 10
 ---------------------------------------------------------------------------------------------------
+FAVICON:
+  at least 260x260
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  https://realfavicongenerator.net
+---------------------------------------------------------------------------------------------------
 COMMENTS:
   <!--                      comments, single or multiple lines
     ...

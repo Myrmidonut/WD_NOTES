@@ -19,7 +19,9 @@ SERVE:
 ---------------------------------------------------------------------------------------------------
 BUILD:
   ng build                    write app in debug mode, to /dist
-  ng build --prod             write app for production, reduced filesize, to /dist
+    --prod                    production, reduced filesize, to /dist
+    --aot                     faster page load
+    --output-path dist        specify folder
 
   options:
     --port ...                set port
@@ -62,7 +64,7 @@ FILES AND FOLDERS:
   
   src                         source code
   src/app                     folders for components, etc.
-  src/assets                  images, fonts, etc.
+  src/assets                  images, fonts, favicons, etc.
   src/environments            environment variables
   src/index.html              app root
   src/main.ts                 entry point for app

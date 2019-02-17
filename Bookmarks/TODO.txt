@@ -102,13 +102,17 @@ portfolio:
     Python Django ???
 
   issues:
-    readme
     heading background
     all fcc projects
-    anonymous
-      missing image
-      system.indexes shows up as board
     certificates section
+
+    secret-santa
+
+    etch-a-sketch
+      favicon
+      mobile
+
+    fcc projects with readmes
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
