@@ -87,12 +87,12 @@ portfolio:
 
   showcase:
     fcc
-      1: Product Landing Page
-      2: Algorithms
-      3: Pomodoro Clock
-      4: Choropleth Map
-      5: Exercise Tracker ???
-      6: Personal Library or Anonymous Message Board
+      1: Product Landing Page --- DONE
+      2: Algorithms --- REMOVED
+      3: Pomodoro Clock --- DONE
+      4: Choropleth Map --- DONE
+      5: Personal Library --- DONE
+      6: Anonymous Message Board --- DONE
 
     Projects:
       Yelp Camp
@@ -102,9 +102,10 @@ portfolio:
     Python Django ???
 
   issues:
-    heading background
-    all fcc projects
-    certificates section
+    portfolio:
+      heading background
+      all fcc projects on a card
+      images in readme
 
     secret-santa
 
@@ -112,7 +113,14 @@ portfolio:
       favicon
       mobile
 
-    fcc projects with readmes
+    yelp camp:
+      change to different store
+
+    fcc projects:
+      readmes
+        images
+          user stories
+          actual page
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
