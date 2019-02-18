@@ -97,7 +97,7 @@ portfolio:
     Projects:
       Yelp Camp
       Etch-a-Sketch
-      Secret Santa
+      Secret Santa --- DONE
 
     Python Django ???
 
@@ -121,6 +121,8 @@ portfolio:
         images
           user stories
           actual page
+
+    smooth scrolling on all
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
