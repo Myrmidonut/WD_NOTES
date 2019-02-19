@@ -98,11 +98,15 @@ WORKFLOW:
                                                             /database/migrations/....php
 ---------------------------------------------------------------------------------------------------
 REACT:
-  php artisan preset none                                       remove Vue and Bootstrap
-  php artisan preset react                                      add React
-  npm install                                                   install dependencies
-  npm run dev                                                   compile app
-  npm run watch                                                 show changes
+  setup:
+    php artisan preset none                                     remove Vue and Bootstrap
+    php artisan preset react                                    add React
+    npm install                                                 install dependencies
+    webpack.mix.js                                              build configuration
+
+  build:
+    npm run dev                                                 compile app
+    npm run watch                                               show changes
 
   changes:
     /resources/js/components/Example.js                         rename to App.js, change code

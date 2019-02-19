@@ -111,8 +111,9 @@ portfolio:
     secret-santa:
 
     etch-a-sketch:
-      favicon pencil-alt
       mobile
+        drawingboard
+        gallery
 
     campgrounds:
       readme images
