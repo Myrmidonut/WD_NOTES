@@ -102,6 +102,8 @@ PACKAGES:
   node-fetch              enable fetch
   dotenv                  .env file
   express-sanitizer       remove <script> from strings
+  passport                user authentication
+  connect-flash           show temporary status messages
 ---------------------------------------------------------------------------------------------------
 BASIC START:
   app.js:

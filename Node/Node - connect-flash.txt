@@ -1,0 +1,3 @@
+flash = require("connect-flash")      require
+
+app.use(flash())                      use

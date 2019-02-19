@@ -116,16 +116,6 @@ portfolio:
         gallery
 
     campgrounds:
-      readme images
-
-      require forms
-      validate and sanitize forms
-      comment date
-
-      messages
-        login success and fail
-        edit comment
-        edit campground
 
     fcc projects:
       readmes
