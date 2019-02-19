@@ -107,14 +107,23 @@ portfolio:
       all fcc projects on a card
       images in readme
 
-    secret-santa
+    secret-santa:
 
-    etch-a-sketch
-      favicon
+    etch-a-sketch:
+      favicon pencil-alt
       mobile
 
-    yelp camp:
-      change to different store
+    campgrounds:
+      readme images
+
+      require forms
+      validate and sanitize forms
+      comment date
+
+      messages
+        login success and fail
+        edit comment
+        edit campground
 
     fcc projects:
       readmes

@@ -760,6 +760,9 @@ NAVBAR:
     position: fixed;
     bottom: 0;
 
+  body:
+    padding-top: height of navbar
+
   content:
     margin-top: 50px;
 

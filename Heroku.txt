@@ -1,28 +1,30 @@
-install Heroku CLI
+COMMANDS:
+  install Heroku CLI
 
-heroku login                    save account details
+  heroku login                      save account details
+  heroku logs                       show error logs
+    --tail                          continuous logging
+  heroku run ...                    run linux commands on heroku
+  heroku open                       open website
 ---------------------------------------------------------------------------------------------------
-heroku login                    login
+NODE:
+  Git:
+    git init                        heroku needs a git repository
+    git add .
+    git commit -m "initial commit"
 
-git init                        heroku needs a git repository
-git add .
-git commit -m "initial commit"
+  New app:
+    heroku create                   create URL to heroku with git repository
+    git remote -v                   show that heroku is a remote for git
 
----- node:
-heroku create                   create URL to heroku with git repository
+  Push to Heroku:
+    git push heroku master          push to heroku
 
-git remote -v                   show that heroku is a remote for git
-
-git push heroku master          push to heroku
-
-heroku logs                     show error logs
-
-package.json:                   required for node on heroku
-  "scripts": {
-    "start": "node app.js"
-  }
-
-heroku run ...                  run linux commands on heroku
+  Setup:
+    package.json:                   required for node on heroku
+      "scripts": {
+        "start": "node app.js"
+      }
 ---------------------------------------------------------------------------------------------------
 LARAVEL:
   Git:

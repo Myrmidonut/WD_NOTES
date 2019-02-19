@@ -85,6 +85,11 @@ PACKAGES:
   
   nodemon                 restarts server on file changes
   
+  npm-check-updates       update package.json to latest versions
+    ncu -u                update
+    ncu --upgradeAll      update and changes package.json entries
+    npm install
+
   express                 routing
   ejs                     inserting JS into HTML
   body-parser             handling form POST

@@ -9,6 +9,7 @@ USE:
 ---------------------------------------------------------------------------------------------------
 CONNECT:
   mongoose.connect("mongodb://localhost/...");     connects to database or creates it first
+  mongoose.connect("mongodb://localhost:port/...", { useNewUrlParser: true })
 ---------------------------------------------------------------------------------------------------
 SCHEMA:
   const catSchema = new mongoose.Schema({          define object for models

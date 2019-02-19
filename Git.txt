@@ -74,6 +74,9 @@ SHORT VERSION:
   git reset HEAD ...                remove changes from staging
   git reset ...                     go back to an ID
 
+  git reset --hard <commidId> && git clean -f
+  git push -f
+
   git remote add origin ...         access to GitHub URL
   git remote add upstream ...       add upstream remote to a cloned repository to pull in changes
   git remote -v                     details of remote
