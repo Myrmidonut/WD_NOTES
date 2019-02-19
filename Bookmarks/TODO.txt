@@ -95,9 +95,9 @@ portfolio:
       6: Anonymous Message Board --- DONE
 
     Projects:
-      Yelp Camp
+      Camgrounds
       Etch-a-Sketch
-      Secret Santa --- DONE
+      Secret Santa
 
     Python Django ???
 
@@ -106,6 +106,7 @@ portfolio:
       heading background
       all fcc projects on a card
       images in readme
+      add campgrounds
 
     secret-santa:
 
