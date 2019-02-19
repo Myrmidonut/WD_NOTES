@@ -1,0 +1,5 @@
+const sanitizer = require("express-sanitizer")      require
+
+app.use(sanitizer())                                use
+
+const username = req.sanitize(req.body.username)    sanitize incoming data

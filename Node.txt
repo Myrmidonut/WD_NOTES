@@ -101,6 +101,7 @@ PACKAGES:
   helmet                  site security
   node-fetch              enable fetch
   dotenv                  .env file
+  express-sanitizer       remove <script> from strings
 ---------------------------------------------------------------------------------------------------
 BASIC START:
   app.js:
