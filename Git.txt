@@ -71,11 +71,13 @@ SHORT VERSION:
 
   git show HEAD                     show most recent commit
   git checkout HEAD ...             go back to most recent commit
+
   git reset HEAD ...                remove changes from staging
   git reset ...                     go back to an ID
 
-  git reset --hard <commidId> && git clean -f
-  git push -f
+  git reset --hard HEAD                             reset all changes since last commit
+  git reset --hard <commidId> && git clean -f       go back to specific commit
+  git push -f                                       push to github
 
   git remote add origin ...         access to GitHub URL
   git remote add upstream ...       add upstream remote to a cloned repository to pull in changes

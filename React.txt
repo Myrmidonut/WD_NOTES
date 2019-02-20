@@ -17,6 +17,7 @@ INSTALLATION:
   create-react-app:
     npm install -g create-react-app       install automated react app generator
     create-react-app ...                  create folder with basic react app
+    
     npm start                             start server running the app
     npm run build                         create optimized version in build folder
 

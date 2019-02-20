@@ -106,19 +106,16 @@ portfolio:
       heading background
       images in readme
       
-    secret-santa:
-
     etch-a-sketch:
       mobile
         drawingboard
         gallery
+    
+    secret-santa:
 
     campgrounds:
 
     fcc projects:
-      readme
-        user stories
-        actual page
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
