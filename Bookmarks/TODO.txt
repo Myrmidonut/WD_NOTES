@@ -104,10 +104,8 @@ portfolio:
   issues:
     portfolio:
       heading background
-      all fcc projects on a card
       images in readme
-      add campgrounds
-
+      
     secret-santa:
 
     etch-a-sketch:
@@ -118,12 +116,9 @@ portfolio:
     campgrounds:
 
     fcc projects:
-      readmes
-        images
-          user stories
-          actual page
-
-    smooth scrolling on all
+      readme
+        user stories
+        actual page
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co

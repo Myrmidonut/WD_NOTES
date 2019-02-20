@@ -1,0 +1,56 @@
+# Technical Documentation
+
+## Introduction
+
+
+This project is part of freeCodeCamps Data Visualization certificate.
+
+## Project Requirements
+
+
+## Project Data
+
+
+## Final Project
+
+
+## Preview Images
+### Main Screen:
+![ ](readme_images/ )
+
+-----------------------------------------------------------
+
+# Secret Santa
+
+## Introduction
+
+
+***
+
+## Final Project
+
+
+***
+
+## Behind the scenes
+### Frontend:
+* Angular
+
+### Backend:
+* Node
+* Express
+* Mongoose
+* Passport
+
+### Database:
+* MongoDB
+
+### Hosting:
+* Heroku
+* mLab
+
+***
+
+## Preview Images
+### Main Screen:
+![ ](readme_images/ )
