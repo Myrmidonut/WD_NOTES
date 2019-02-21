@@ -115,6 +115,12 @@ portfolio:
       drawingboard:
         media queries for width/height
         read width/height in js, change pixel size and calculation
+        mobile:
+          600 x 600 - 12 x 12
+          300 x 300 - 6 x 6
+          change with !important
+          touch
+          settings too tall
     
     secret-santa:
 
