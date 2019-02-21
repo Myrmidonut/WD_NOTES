@@ -105,8 +105,9 @@ REACT:
     webpack.mix.js                                              build configuration
 
   build:
-    npm run dev                                                 compile app
     npm run watch                                               show changes
+    npm run dev                                                 compile
+    npm run prod                                                compile minified
 
   changes:
     /resources/js/components/Example.js                         rename to App.js, change code

@@ -103,24 +103,13 @@ portfolio:
       
     etch-a-sketch:
       fast gallery drawing board switch error
-      mobile
-        drawingboard
-        gallery
-
-      vertical style:
-        drawing-board: margin-top: 60px; margin-bottom: 80px;
-        App: no background
-        main: min-height: 100%; background
 
       drawingboard:
-        media queries for width/height
         read width/height in js, change pixel size and calculation
         mobile:
           600 x 600 - 12 x 12
           300 x 300 - 6 x 6
-          change with !important
           touch
-          settings too tall
     
     secret-santa:
 
