@@ -60,8 +60,15 @@ EVENTS:
   .addEventListener("...", ...);          run a function when an event happens
     click                                 
     dblclick
+    contextmenu                           rightclick
+
     mouseover
     mouseout
+    mouseup
+    mousedown
+    mouseenter
+    mouseleave
+    mousemove
 
     keypress
     keydown
@@ -71,6 +78,13 @@ EVENTS:
     input                                 same as above without need for focus loss
 
     submit                                form submit
+
+    touchcancel
+    touchend
+    touchenter
+    touchleave
+    touchmove
+    touchstart
 
   .removeEventListener("...", ...)        event and function as arguments
 
