@@ -46,12 +46,6 @@ course project:
   on heroku
 ---------------------------------------------------------------------------------------------------
 portfolio:
-  seperate on github with projects
-  cards with preview image, description, link to github code, link to live pages
-  rework skills, make logos, add hover text, organize into frontend/backend
-  one favourite project per certificate, others in a subfolder aside
-  smooth scrolling from navbar
-
   background: #1a1a1a
   gold: #f9a602
   black/white theme
@@ -95,9 +89,10 @@ portfolio:
       6: Anonymous Message Board --- DONE
 
     Projects:
-      Camgrounds
+      Camgrounds --- DONE
       Etch-a-Sketch
-      Secret Santa
+      Secret Santa --- DONE
+      freeCodeCamp --- DONE
 
     Python Django ???
 
@@ -107,9 +102,19 @@ portfolio:
       images in readme
       
     etch-a-sketch:
+      fast gallery drawing board switch error
       mobile
         drawingboard
         gallery
+
+      vertical style:
+        drawing-board: margin-top: 60px; margin-bottom: 80px;
+        App: no background
+        main: min-height: 100%; background
+
+      drawingboard:
+        media queries for width/height
+        read width/height in js, change pixel size and calculation
     
     secret-santa:
 
