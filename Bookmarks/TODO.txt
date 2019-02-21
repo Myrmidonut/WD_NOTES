@@ -103,14 +103,8 @@ portfolio:
       
     etch-a-sketch:
       fast gallery drawing board switch error
+      touch not working
 
-      drawingboard:
-        read width/height in js, change pixel size and calculation
-        mobile:
-          600 x 600 - 12 x 12
-          300 x 300 - 6 x 6
-          touch
-    
     secret-santa:
 
     campgrounds:

@@ -3,6 +3,12 @@ DOM:
 
   background-color -> backgroundColor       naming rules for CSS
 ---------------------------------------------------------------------------------------------------
+LAYERS:
+  window
+  document
+  navigator
+  screen
+---------------------------------------------------------------------------------------------------
 SELECT:
   let ... = document...;
 
@@ -65,7 +71,7 @@ EVENTS:
     mouseover
     mouseout
     mouseup
-    mousedown
+    mousedown                             works on touch
     mouseenter
     mouseleave
     mousemove
@@ -118,6 +124,7 @@ EVENT BUBBLING:
     run event on html, then child, ..., then on the element
 
   element.stopPropagation()     stop event bubbling
+                                fires only one event listener
 
   event delegation:
     multiple elements with same behaviour: one event on the parent and bubble each child
