@@ -97,19 +97,27 @@ portfolio:
     Python Django ???
 
   issues:
-    portfolio:
-      heading background
-      images in readme
-      
     etch-a-sketch:
       fast gallery drawing board switch error
       touch not working
+
+      navbar settings blocking drawingboard
+
+      firefox:
+        account
+        navbar
+        settings
 
     secret-santa:
 
     campgrounds:
 
     fcc projects:
+      styling firefox
+        all api
+      submit button firefox
+
+    learn webpack
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co

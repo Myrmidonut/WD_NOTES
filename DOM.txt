@@ -128,3 +128,9 @@ EVENT BUBBLING:
 
   event delegation:
     multiple elements with same behaviour: one event on the parent and bubble each child
+---------------------------------------------------------------------------------------------------
+STUFF:
+  .innerWidth
+  .innerHeight
+
+  document.documentElement.clientWidth
