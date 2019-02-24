@@ -70,11 +70,14 @@ INSERT:
 
 QUERY:
   SELECT * FROM ...;                  select all
-    WHERE ...;                        filter with condition
-    WHERE ... AND ...;                filter with multiple conditions
-    WHERE ... IN (..., ...);          filter with IN
+    WHERE ...;                        condition
+    WHERE ... AND ...;                multiple conditions
+    WHERE ... IN (..., ...);          in
+    WHERE NOT ...;                    not
+
   SELECT ..., ... FROM ...;           select specific columns
     ODER BY ...;                      order result
+    
   SELECT ..., CASE WHEN ... THEN ... ELSE ... END ... FROM ...;
 
 AGGREGATE:
@@ -86,10 +89,12 @@ GROUP:
 
 JOIN:
   
-
 UPDATE:
   UPDATE ... SET ... WHERE ...;
   DELETE FROM ... WHERE ...;
+
+DELETE:
+  DELETE ... FROM ...;
 ---------------------------------------------------------------------------------------------------
 EXAMPLE:
   CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);

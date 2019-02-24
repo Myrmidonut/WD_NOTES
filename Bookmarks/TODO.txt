@@ -80,6 +80,9 @@ portfolio:
     d3
 
   showcase:
+    screenshots in 1300 x 800
+    portfolio previews in 400 x ...
+
     fcc
       1: Product Landing Page --- DONE
       2: Algorithms --- REMOVED
@@ -90,34 +93,22 @@ portfolio:
 
     Projects:
       Camgrounds --- DONE
-      Etch-a-Sketch
+      Etch-a-Sketch --- DONE (bugs)
       Secret Santa --- DONE
       freeCodeCamp --- DONE
 
     Python Django ???
 
   issues:
-    etch-a-sketch:
-      fast gallery drawing board switch error
-      touch not working
+    portfolio
 
-      navbar settings blocking drawingboard
+    etch-a-sketch
 
-      firefox:
-        account
-        navbar
-        settings
+    secret-santa
 
-    secret-santa:
+    campgrounds
 
-    campgrounds:
-
-    fcc projects:
-      styling firefox
-        all api
-      submit button firefox
-
-    learn webpack
+    fcc projects
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co
