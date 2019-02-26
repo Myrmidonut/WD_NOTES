@@ -4,5 +4,10 @@ require("dotenv").config()
 --------------------
 .env
   DB=...
+
+  strings
+  uppercase
+  underscores
+  no spaces around =
 --------------------
 process.env.DB

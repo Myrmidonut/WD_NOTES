@@ -25,24 +25,65 @@ INCLUDE:
   include ...                             include HMTL code from another file
 ---------------------------------------------------------------------------------------------------
 SETUP:
-  server.js:                                                    default setup
-    const express = require("express");
-    const apiRoutes = require('./routes/api.js');               enable /routes/api.js with app.route
+  app.js:
+    const express = require("express");                         enable express
+    const ...                                                   enable additional packages
+    const User = require("./models/user")                       enable models
+    const myRoutes = require('./routes/myRoutes.js');           enable routes
 
-    app.use(express.static("public"));                          search in /public/ for css, script
+    const app = express()
+    const port = process.env.PORT || 3000;                      port
 
-    app.route("/")                                              initial route
-      .get((req, res) => {
-        res.sendFile(process.cwd() + '/views/index.html')
-      })
+    connect to database                                         database
 
-    apiRoutes(app);                                             load routes file
+    app.use(express.static(path.join(__dirname, "dist")))       search in dist folder for css, script, ...
 
-    app.listen(process.env.PORT || 3000, () => {                start server
-      console.log("Listening on port " + process.env.PORT);
-    }
+    app.use(...)                                                setup additional packages
 
-    module.exports = app;
+    app.get('/', (req, res) => {                                initial route
+      res.sendFile(path.join(__dirname, "dist/index.html"))
+    })
+
+    app.use("/...", myRoutes)                                   load routes file
+
+    app.get('*', (req, res) => {                                fallback route
+      res.sendFile(path.join(__dirname, "dist/index.html"))
+    })
+
+    app.listen(port, () => {                                    start server
+      console.log(`Server running on port ${port}!`)
+    })
+---------------------------------------------------------------------------------------------------
+MODELS:
+  models/user.js:
+    const mongoose              = require("mongoose");
+    const passportLocalMongoose = require("passport-local-mongoose");
+
+    const UserSchema = new mongoose.Schema({
+      username: String,
+      password: String,
+      email: String,
+      groups: [String],
+      owner: [String]
+    })
+
+    UserSchema.plugin(passportLocalMongoose);
+
+    module.exports = mongoose.model("User", UserSchema);
+
+  app.js:
+    const User = require("./models/user")
+---------------------------------------------------------------------------------------------------
+ROUTES:
+  routes/account.js:
+    const express = require("express")
+    const router = express.Router()
+    const User = require("../models/user");
+
+    router.post('/login', (req, res, next) => {
+      ...
+
+    module.exports = router
 ---------------------------------------------------------------------------------------------------
 ROUTES:
   order of routes matters
@@ -104,22 +145,6 @@ ROUTES PARAMETERS:
     ?, +, *, ()
     -, . are literal
 ---------------------------------------------------------------------------------------------------
-MODELS/EXPORT:
-  /models folder:
-    campground.js:
-      var mongoose = require("mongoose");
-
-      var campgroundSchema = new mongoose.Schema({
-        name: String,
-        image: String,
-        description: String
-      });
-
-      module.exports = mongoose.model("Campground", campgroundSchema);
-
-  app.js:
-    var Campground = require("./models/campground");                        campgrounds.js file
----------------------------------------------------------------------------------------------------
 REDIRECT:
   res.redirect("...");                    load route
 ---------------------------------------------------------------------------------------------------
@@ -140,10 +165,3 @@ MIDDLEWARE:
       next();
     })
 ---------------------------------------------------------------------------------------------------
-ENV:
-  process.env                        global node object
-
-  strings
-  uppercase
-  underscores
-  no spaces around =
