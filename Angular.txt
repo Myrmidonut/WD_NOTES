@@ -1,8 +1,16 @@
 INSTALLATION:
-  npm install -g @angular/cli
+  npm install -g @angular/cli             install
+  npm install -g @angular/cli@latest      update
+---------------------------------------------------------------------------------------------------
+OVERVIEW:
+  TypeScript                  JavaScript extension
+  components                  building blocks
+  services                    sharing data between components
+  modules                     add functionality
+  observables                 
 ---------------------------------------------------------------------------------------------------
 NEW PROJECT:
-  ng new ...                  create new project      
+  ng new ...                  create new project
 ---------------------------------------------------------------------------------------------------
 STRUCTURES:
   ng generate modules ...     create modules
@@ -34,7 +42,7 @@ TEST:
 HELP:
   ng help
 ---------------------------------------------------------------------------------------------------
-MEAN:
+EXPRESS:
   ng new ...
   npm install --save express
   create app.js with project name
@@ -49,10 +57,10 @@ MEAN:
     const app = express()
     const port = 3000
 
-    app.use(express.static(path.join(__dirname, "dist/my-app")))
+    app.use(express.static(path.join(__dirname, "dist")))
 
     app.get('/', (req, res) => {
-      res.sendFile(path.join(__dirname, "dist/my-app/index.html"))
+      res.sendFile(path.join(__dirname, "dist/index.html"))
     })
 
     app.listen(port, () => console.log(`Server running on port ${port}!`))
@@ -64,6 +72,8 @@ FILES AND FOLDERS:
   
   src                         source code
   src/app                     folders for components, etc.
+    app.module.ts             lists all components
+    app-routing.module.ts     lists names for components used for routing
   src/assets                  images, fonts, favicons, etc.
   src/environments            environment variables
   src/index.html              app root
@@ -84,6 +94,8 @@ FILES AND FOLDERS:
 COMPONENTS:
   ng generate component ...                               create component
 
+  /src/app/...                                            component folder
+  --------------------
   files:
     TypeScript                                            logic
       example.component.ts
@@ -91,7 +103,7 @@ COMPONENTS:
       example.component.html
     CSS                                                   style
       example.component.css
-
+  --------------------
   TypeScript:
     import { Component, OnInit } from "@angular/core";    content
 
@@ -106,61 +118,50 @@ COMPONENTS:
       ngOnInit() { }                                      lifecycle-hook
       ...                                                 custom functions
     }
-
+  --------------------
   HTML:
     <p>
       ...
     </p>
-
+  --------------------
   CSS:
     p {
       ...;
     }
 ---------------------------------------------------------------------------------------------------
-DATA-BINDING:
+INTERPOLATION:
   use data from the logic in the view
 
-  {{ ... }}                                                         binding from the logic
-  
+  {{ ... }}                                                       comes from the logic
+  --------------------
   HTML:                                                           property binding
     <button [title]="color">...</button>                          typescript
-    <button title="{{ color }}">...</button>                        javascript
-
+    <button title="{{ color }}">...</button>                      javascript
+  --------------------
   TS:
-    constructor() {
-      this.color = this.generateRandomColor();
-    }
-
-    generateRandomColor() {
-      return "#" + (Math.random() * 0xFFFFFF << 0).toString(16);
-    }
-
-    public color: string;
----------------------------------------------------------------------------------------------------
-TWO-WAY-BINDING:
-  data flows from view to logic and back
-  needs to be enabled:
-    app.module.ts
-      import { FormsModule } from "@anguler/forms";     import
-      
-      imports: [
-        FormsModule
-      ]
-
-  [(ngModel)]="..."                                     binding
+    public color: string = "green"
 ---------------------------------------------------------------------------------------------------
 PIPES:
-  {{ ... | ... }}                                         modify bindings using pipe operator
+  {{ myVar | ... }}                                     modify bindings using pipe operator
     uppercase
+    lowercase
+    date
+    ...
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
-  repeat:
+  loop:
     <li *ngFor="let hero of heroes; index as i">        loop with optional index
       {{ hero }} {{ i }}
     </li>
-
+  --------------------
   condition:
     <li *ngIf="selectedHero === 1">...</li>             display if true
+---------------------------------------------------------------------------------------------------
+LIFECYCLE HOOKS:
+  ngOnInit()                                            on component load
+  ngOnChanges(changes: SimpleChanges)                   on input changes
+  ngOnDestroy()                                         on component destuction
+  ...
 ---------------------------------------------------------------------------------------------------
 EVENTS:
   <li (click)="...()">                                  execute function on click
@@ -191,9 +192,12 @@ EVENTS:
     (drop)
 ---------------------------------------------------------------------------------------------------
 STYLING:
+  /src/styles.scss                                global stylesheet
+  /src/app/component1/component.scss              local stylesheet
+  --------------------
   class:
     single:
-      <h1 [class.gray]="grayStyle">...</h1>                     if grayStyle is true add class gray
+      <h1 [class.gray]="grayStyle">...</h1>        applies .gray if grayStyle is true
 
     multiple:
       <h1 [ngClass]="{
@@ -201,7 +205,7 @@ STYLING:
         'large': !grayStyle
       }">...</h1>
   --------------------
-  style:
+  inline:
     single:
       <h1 [style.color]="grayStyle ? 'gray' : 'black'>...</h1>
 
@@ -235,25 +239,40 @@ ROUTING:
 SERVICES:
   allow code to be accessed from different components
 
-  ng generate service data                                 create service
-
+  ng generate service data                                  create service
+  --------------------
   data.service.ts:
     export class DataService {
-      myFunction() {                                       add function, etc.
+      myFunction() {                                        add function, etc.
         return console.log("first clicked");
       }
     }
-
+  --------------------
   home.component.ts:
-    import { DataService } from "../data.service";        import service
+    import { DataService } from "../data.service";          import service
 
-    constructor(private data: DataService) { }            make data available
+    constructor(private data: DataService) { }              make data available
       private
-      public                                              public if html template needs access
+      public                                                public if html template needs access
 
     firstClick() {
-      this.data.myFunction();                             access function
+      this.data.myFunction();                               access function
     }
+---------------------------------------------------------------------------------------------------
+MODULES:
+  enables more features for components
+
+  app.module.ts
+    import { ... } from "...";
+
+    imports: [
+      ...
+    ]
+
+  examples:
+    { AppRoutingModule } from "./app-routing.module"
+    { HttpClientModule } from "@angular/common/http"
+    { ReactiveFormsModule } from "@angular/forms"
 ---------------------------------------------------------------------------------------------------
 HTTP CLIENT:
   app.module.ts:
@@ -262,10 +281,16 @@ HTTP CLIENT:
     imports: [
       HttpClientModule                                            add to imports
     ]
-
+  --------------------
   component:
     import { HttpClient } from "@angular/common/http";
     import { HttpHeaders } from '@angular/common/http';
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    }
 
     export class ... implements OnInit {
       constructor(private httpClient: HttpClient) { }
@@ -274,16 +299,10 @@ HTTP CLIENT:
         let body = new URLSearchParams()
         body.set("username", formdata.username)
 
-        const httpOptions = {
-          headers: new HttpHeaders({
-            "Content-Type": "application/x-www-form-urlencoded"
-          })
-        }
-
         this.httpClient.post<{                                    post
           status: string,                                         returned data
           groups: [string]
-          }>("/login", body.toString(), httpOptions)
+          }>("...", body.toString(), httpOptions)
         .subscribe(res => {
           ...
         }
@@ -291,11 +310,8 @@ HTTP CLIENT:
     }
 
     get() {
-      return this.http.get("/...")                                get
+      return this.http.get("...")                                 get
     }
----------------------------------------------------------------------------------------------------
-LIFECYCLE HOOKS:
-  ngOnInit                              on component load
 ---------------------------------------------------------------------------------------------------
 FORMS:
   two approaches:
@@ -310,7 +326,7 @@ FORMS:
       FormGroup                         control one form
       FormBuilder                       easier control, control() group() array()
       Validator                         validate inputs
-
+  --------------------
   Example:
     app.module.ts:
       import { ReactiveFormsModule } from "@angular/forms";                   import
@@ -318,7 +334,7 @@ FORMS:
       imports: [
         ReactiveFormsModule                                                   add to imports
       ]
-    
+    --------------------
     contact.component.ts:
       import { FormBuilder, FormGroup, Validators } from "@angular/forms";    import
 
@@ -340,7 +356,7 @@ FORMS:
         }
         this.success = true;                                                  if valid
       }
-
+    --------------------
     contact.component.html:
       <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">                create form
         <h5 *ngIf="success">Your form is valid!</h5>
@@ -375,6 +391,18 @@ FORMS:
         <span>{{ messageForm.controls.message.value }}</span>
       </div>
     </form>
+---------------------------------------------------------------------------------------------------
+TWO-WAY-BINDING:
+  data flows from view to logic and back
+  needs to be enabled:
+    app.module.ts
+      import { FormsModule } from "@anguler/forms";     import
+      
+      imports: [
+        FormsModule
+      ]
+
+  [(ngModel)]="..."                                     binding
 ---------------------------------------------------------------------------------------------------
 DEPENDENCY INJECTION:
   add imports to constructor()
