@@ -134,3 +134,5 @@ STUFF:
   .innerHeight
 
   document.documentElement.clientWidth
+
+  document.title

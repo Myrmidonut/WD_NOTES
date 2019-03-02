@@ -215,6 +215,12 @@ STYLING:
         'font-size': !grayStyle ? '1em' : '4em'
       }">...</h1>
 ---------------------------------------------------------------------------------------------------
+TWO WAY BINDING:
+  needs FormsModule
+    import { FormsModule } from "@angular/forms"
+
+  <input [(ngModel)]="...">                           data flows between html and logic
+---------------------------------------------------------------------------------------------------
 ROUTING:
   link:
     <a routerLink="..." name="...">...</a>                              link
@@ -273,6 +279,7 @@ MODULES:
     { AppRoutingModule } from "./app-routing.module"
     { HttpClientModule } from "@angular/common/http"
     { ReactiveFormsModule } from "@angular/forms"
+    { FormsModule } from "@angular/forms"
 ---------------------------------------------------------------------------------------------------
 HTTP CLIENT:
   app.module.ts:

@@ -172,7 +172,7 @@ COMPONENTS:
   returns one root element per component
   use stateless when possible
   --------------------
-  functional:                               stateless
+  function:                                 stateless
     import React from "react"
 
     const Name = (props) => {               static render
@@ -202,6 +202,24 @@ COMPONENTS:
     }
 
     export default Name
+---------------------------------------------------------------------------------------------------
+HOOKS:
+  add state access to functional components
+  use at top leavel, not inside loops, etc.
+  use in function components
+  --------------------
+  Example:
+    const [count, setCount] = useState(0)
+
+    <p>You clicked {count} times</p>
+    <button onClick={() => setCount(count + 1)}>Click</button>
+
+    count                                       current state
+    setCount                                    function, called in event handler or otherwise
+    useState(...)                               sets initial state
+  --------------------
+  useState
+  useEffect(() => {...})                        runs on component changes
 ---------------------------------------------------------------------------------------------------
 PROPS:
   pass data or functions around
@@ -274,6 +292,18 @@ STATE:
         name: "..."
       }, e => {...});                         optional callback
     }
+
+    this.state.name                           read state
+  }
+  --------------------
+  const Name = () => {
+    const [name, setName] = useState("...")   declare state
+
+    test() {
+      setName("...")                          modify state
+    }
+
+    name                                      read state
   }
   --------------------
   reset:
