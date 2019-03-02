@@ -12,6 +12,43 @@ OVERVIEW:
     multiple HTML pages
     content rendered on server
     one ReactDOM.render() per widget
+
+  main:
+    Hello World
+    Introducing JSX
+    Rendering Elements
+    Components and Props
+    State and Lifecycle
+    Handling Events
+    Conditional Rendering
+    Lists and Keys
+    Forms
+    Lifting State Up
+    Composition vs Inheritance
+    Thinking In React
+
+  advanced:
+    Accessibility
+    Code-Splitting
+    Context
+    Error Boundaries
+    Forwarding Refs
+    Fragments
+    Higher-Order Components
+    Integrating with Other Libraries
+    JSX In Depth
+    Optimizing Performance
+    Portals
+    React Without ES6
+    React Without JSX
+    Reconciliation
+    Refs and the DOM
+    Render Props
+    Static Type Checking
+    Strict Mode
+    Typechecking With PropTypes
+    Uncontrolled Components
+    Web Components
 ---------------------------------------------------------------------------------------------------
 INSTALLATION:
   create-react-app:
@@ -98,8 +135,8 @@ FOLDERS:
 FILES:
   App.js:
     import React, { Component } from 'react';
-    import './App.css';
-    import Component1 from "./Component1/Component1";           import a component
+    import './App.css';                                         import stylesheet
+    import Component1 from "./Component1/Component1";           import component
 
     class App extends Component {
       render() {
@@ -113,7 +150,7 @@ FILES:
     }
 
     export default App;
-
+  --------------------
   index.js:
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -124,45 +161,12 @@ FILES:
     ReactDOM.render(<App />, document.getElementById('root'));
     registerServiceWorker();
 ---------------------------------------------------------------------------------------------------
-CODEPEN:
-  Babel
-  https://unpkg.com/react@16/umd/react.production.min.js
-  https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
-
-  <div id="root"></div>
-
-  class Component1 extends React.Component {
-    render() {
-      return (
-        <div>
-          ...
-        </div>
-      )
-    }
-  }
-
-  class App extends React.Component {
-    state = {}
-    function1() {}
-    render() {
-      return (
-        <div>
-          <Component1 ... />
-        </div>
-      )
-    }
-  }
-
-  ReactDOM.render(<App />, document.getElementById("root"));
----------------------------------------------------------------------------------------------------
-COMMENTS:
-  {/* ... */}
----------------------------------------------------------------------------------------------------
-CLASSES:
-  className="..."
----------------------------------------------------------------------------------------------------
 JSX:
   {...}                           run code in HTML
+
+  {/* ... */}                     comment
+
+  uses camelCase
 ---------------------------------------------------------------------------------------------------
 TAGS:
   self closing:
@@ -170,23 +174,19 @@ TAGS:
 
   non self closing:
     <div>...</div>                with content
-    or:
     <div />                       no content
 ---------------------------------------------------------------------------------------------------
 STYLES:
-  external:                                   global stylesheet
-    inside component folder:
-      Style.css
-      component:
-        import "./Style.css";
-        className="..."
-    
-    with css modules:                         local stylesheet, prefered method
-      Style.css
-      component:
-        import styles from "./Style.css";     or Styles.module.css
-        className={styles.name}
+  all styling is global
 
+  <div className="..." />                   set class
+  --------------------
+  App.css:                                  global stylesheet
+    import "./Style.css"
+
+  Component1.css:                           component stylesheet
+    import "./Component1.css"
+  --------------------
   inline:
     <div style={{color: "green", fontSize: "16px"}}>...</div>
 
@@ -194,76 +194,48 @@ STYLES:
       inside render:
         const styles = {...}
         <div style={styles}>...</div>
-
-  uses camelCase
-  px values only need number, otherwise use "4em", etc.
----------------------------------------------------------------------------------------------------
-BEHIND THE SCENES CODE:
-  return (
-    <div className="App">
-      <h1>Hi, I am a React App</h1>
-    </div>
-  );
-
-  equivalent to behind the scenes:
-    return React.createElement("div", {className: "App"},
-             React.createElement("h1", null, "Headline"));
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
   returns JSX or null
   returns one root element per component
   use stateless when possible
-
-  /components/Name.js:
-    import React, { Component } from "react";
-    ...                                     component Name
-    export default Name;
-
+  --------------------
   functional:                               stateless
-    const Name = (props) => {               static render, lowercase
+    import React from "react"
+
+    const Name = (props) => {               static render
       ...                                   JS
       return (
         <div>
           ...
-          {props.name}
-          {props.children}                  use content inside <name>...</name> in App.js
         </div>
       )
     }
 
+    export default Name
+  --------------------
   class:                                    stateful, access to state and lifecycle
-    class Name extends React {              dynamic render, uppercase
+    import React, { Component } from "react"
+
+    class Name extends React.Component {    dynamic render
       state = {...}                         set state
-      ...                                   methods
+      ...                                   JS
       render() {
         return (
           <div>
             ...
-            {this.props.name}
           </div>
         )
       }
     }
----------------------------------------------------------------------------------------------------
-REACT DOM RENDER:
-  ReactDOM.render(component, target)                    JSX
-  ReactDOM.render(<Component ...="..." />, target)      class Component with prop
 
-  target == document.getElementById("test")             example target
-
-  single page: one ReactDOM.render()
-  mixed multi page: one ReactDOM.render() per section
-
-  can use if/else inside render
-  {this.state.display === true && <h1>Displayed!</h1>}  render only if true
-
-  conditionals inside return
+    export default Name
 ---------------------------------------------------------------------------------------------------
 PROPS:
   pass data or functions around
 
   parent:
-    ... name="..." ...
+    <div name="..." />
 
   child:
     {props.name}                          stateless functional
@@ -293,12 +265,12 @@ PROPS:
           <button onClick={() => this.props.name2(e)}     function with argument
         )
       }
-
+  --------------------
   default:
     MyComponent.defaultProps = {name: "Jim"}
 
     override with <... name={"Tom"} ...>
-
+  --------------------
   type:
     MyComponent.propTypes = {name: PropTypes.func.isRequired}
       func
@@ -319,26 +291,26 @@ STATE:
   access methods inside the class with this.name
   use stateless functional components whenever possible
   create copy of state, change it, update old state
-
-  class Name extends React.Component {        example
-    state = {                                 set state
+  --------------------
+  class Name extends React.Component {
+    state = {                                 declare state
       name: "..."
     }
 
     test() {
       this.setState({                         modify state
         name: "..."
-      });
+      }, e => {...});                         optional callback
     }
   }
-
+  --------------------
   reset:
     initialState = this.state;
 
     clear() {
       this.setState(this.initialState)
     }
-
+  --------------------
   old:
     constructor(props) {
       super(props);
@@ -376,6 +348,22 @@ RENDER CONDITIONALLY:
         </div>
       );
     }
+---------------------------------------------------------------------------------------------------
+LISTS:
+  needs a key for efficient DOM updates
+  use map for lists with element and index
+
+  persons = (
+    <div>
+      {this.state.persons.map((person, index) => {
+        return <Person 
+          click={() => this.deletePersonHandler(index)}
+          name={person.name}
+          age={person.age} 
+          key={person.id} />
+      })}
+    </div>
+  )
 ---------------------------------------------------------------------------------------------------
 HTML:
   dangerouslySetInnerHTML={{__html: marked(props.text)}}      insert HTML
@@ -441,46 +429,16 @@ HIGHER ORDER COMPONENT:
           const aux = (props) => props.children;
           export default aux;
 ---------------------------------------------------------------------------------------------------
-LISTS:
-  needs a key for efficient DOM updates
-  use map for lists with element and index
-
-  persons = (
-    <div>
-      {this.state.persons.map((person, index) => {
-        return <Person 
-          click={() => this.deletePersonHandler(index)}
-          name={person.name}
-          age={person.age} 
-          key={person.id} />
-      })}
-    </div>
-  )
----------------------------------------------------------------------------------------------------
-TYPE VALIDATION:
-  check if the data passed in through props has the expected type
-
-  npm install --save prop-prop-types        install
-
-  import PropTypes from "prop-types";       import
-
-  class Name extends Component {...}        create class
-
-  Name.propTypes = {                        check prop types
-    type: PropTypes.string.isRequired
-  }
----------------------------------------------------------------------------------------------------
 LIFECYCLE:
   mount                                           first page load 
-  re-render                                       state changes
+  re-render                                       state change
 
   Create:
     constructor(props)                            call super(props), set up state
     componentWillMount()                          update state, optimize
     render()                                      prepare and structure JSX for DOM
-      render child components
+    render child components
     componentDidMount()                           API or server calls, dont update state
-
     componentWillUnmount()                        before removing component
 
   Update external:
@@ -488,74 +446,17 @@ LIFECYCLE:
     shouldComponentUpdate(nextProps, nextState)   re-render component if it returns true    
     componentWillUpdate()
     render()
-      render child components
+    render child components
     componentDidUpdate()                          called after component re-renders
 
   Update internal:
     shouldComponentUpdate(nextProps, nextState)
     componentWillUpdate()
     render()
-      render child components
+    render child components
     componentDidUpdate()
 
   componentDidCatch()
----------------------------------------------------------------------------------------------------
-SERVER:
-  ReactDOMServer.renderToString(<App />);
-
-  render page on server and send to client
----------------------------------------------------------------------------------------------------
-MODULES:
-  use css modules for local css styling:
-    npm run eject                           get access to configuration
-
-    config/webpack.config.dev.js,           change these files
-    config/webpack.config.prod.js:
-      - module
-        - test: /\.css$/
-          - use:
-            - options:
-              modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-
-    import classes from "/.App.css";        change css import
-    <div className={classes.App}>           change to use the class .App from App.css
-
-    :global .Post {...}                     set global styling
-    className="Post"
-
-  Radium:
-    add styling functionality
-
-    import Radium from "radium";
-    ...
-    export default Radium(App);
-
-    const style = {
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black"
-      }
-    };
-
-    for media queries and transformations:
-      App.js:
-        import Radium, { StyleRoot } from "radium";
-
-        return (
-          <StyleRoot>
-            <div>
-              ...
-            </div>
-          </StyleRoot>
-        );
-
-      Component.js:
-        const style = {
-          "@media (min-width: 500px)": {
-            width: "450px"
-          }
-        }
 ---------------------------------------------------------------------------------------------------
 DEBUGGING:
   chrome dev tools, sources:
@@ -594,4 +495,42 @@ DEBUGGING:
 
     wrap returned component inside <ErrorBoundary>...</ErrorBoundary>
     move key prop to ErrorBoundary
+---------------------------------------------------------------------------------------------------
+BEHIND THE SCENES CODE:
+  return (
+    <div className="App">
+      <h1>Hi, I am a React App</h1>
+    </div>
+  );
+
+  equivalent to behind the scenes:
+    return React.createElement("div", {className: "App"},
+             React.createElement("h1", null, "Headline"));
+---------------------------------------------------------------------------------------------------
+REACT DOM RENDER:
+  ReactDOM.render(component, target)                    JSX
+  ReactDOM.render(<Component ...="..." />, target)      class Component with prop
+
+  target == document.getElementById("test")             example target
+
+  single page: one ReactDOM.render()
+  mixed multi page: one ReactDOM.render() per section
+
+  can use if/else inside render
+  {this.state.display === true && <h1>Displayed!</h1>}  render only if true
+
+  conditionals inside return
+---------------------------------------------------------------------------------------------------
+TYPE VALIDATION:
+  check if the data passed in through props has the expected type
+
+  npm install --save prop-prop-types        install
+
+  import PropTypes from "prop-types";       import
+
+  class Name extends Component {...}        create class
+
+  Name.propTypes = {                        check prop types
+    type: PropTypes.string.isRequired
+  }
 ---------------------------------------------------------------------------------------------------
