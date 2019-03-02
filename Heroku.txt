@@ -6,6 +6,12 @@ COMMANDS:
     --tail                          continuous logging
   heroku run ...                    run linux commands on heroku
   heroku open                       open website
+  
+  heroku update                     update Heroku CLI
+---------------------------------------------------------------------------------------------------
+NAME CHANGE:
+  git remote rm heroku              remove Heroku remote
+  heroku git:remote -a ...          add Heroku remote
 ---------------------------------------------------------------------------------------------------
 NODE:
   Git:

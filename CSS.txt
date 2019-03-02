@@ -755,6 +755,10 @@ CENTERING:
 NAVBAR:
   navbar:
     position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
 
   footer:
     position: fixed;
@@ -762,14 +766,15 @@ NAVBAR:
 
   body:
     padding-top: height of navbar
-
+    padding-bottom: height of footer
+  --------------------
   content:
     margin-top: 50px;
 
   anchors:
     padding-top: 110px;
     margin-top: -110px;
-
+  --------------------
   smooth scrolling:
     html {
       scroll-behavior: smooth;
