@@ -12,43 +12,6 @@ OVERVIEW:
     multiple HTML pages
     content rendered on server
     one ReactDOM.render() per widget
-
-  main:
-    Hello World
-    Introducing JSX
-    Rendering Elements
-    Components and Props
-    State and Lifecycle
-    Handling Events
-    Conditional Rendering
-    Lists and Keys
-    Forms
-    Lifting State Up
-    Composition vs Inheritance
-    Thinking In React
-
-  advanced:
-    Accessibility
-    Code-Splitting
-    Context
-    Error Boundaries
-    Forwarding Refs
-    Fragments
-    Higher-Order Components
-    Integrating with Other Libraries
-    JSX In Depth
-    Optimizing Performance
-    Portals
-    React Without ES6
-    React Without JSX
-    Reconciliation
-    Refs and the DOM
-    Render Props
-    Static Type Checking
-    Strict Mode
-    Typechecking With PropTypes
-    Uncontrolled Components
-    Web Components
 ---------------------------------------------------------------------------------------------------
 INSTALLATION:
   create-react-app:
@@ -178,13 +141,14 @@ TAGS:
 ---------------------------------------------------------------------------------------------------
 STYLES:
   all styling is global
+  css modules add local styling
 
   <div className="..." />                   set class
   --------------------
   App.css:                                  global stylesheet
     import "./Style.css"
 
-  Component1.css:                           component stylesheet
+  Component1.css:                           global stylesheet
     import "./Component1.css"
   --------------------
   inline:
@@ -194,6 +158,14 @@ STYLES:
       inside render:
         const styles = {...}
         <div style={styles}>...</div>
+  --------------------
+  CSS modules:                                      create-react-app
+    import styles from "./Component1.module.css"    local stylesheet
+
+    <div className={styles.error} />                use local style
+  --------------------
+  Sass:
+    npm install node-sass                           create-react-app
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
   returns JSX or null
