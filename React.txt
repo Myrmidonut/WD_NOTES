@@ -189,7 +189,7 @@ COMPONENTS:
   class:                                    stateful, access to state and lifecycle
     import React, { Component } from "react"
 
-    class Name extends React.Component {    dynamic render
+    class Name extends Component {          dynamic render
       state = {...}                         set state
       ...                                   JS
       render() {
@@ -202,24 +202,6 @@ COMPONENTS:
     }
 
     export default Name
----------------------------------------------------------------------------------------------------
-HOOKS:
-  add state access to functional components
-  use at top leavel, not inside loops, etc.
-  use in function components
-  --------------------
-  Example:
-    const [count, setCount] = useState(0)
-
-    <p>You clicked {count} times</p>
-    <button onClick={() => setCount(count + 1)}>Click</button>
-
-    count                                       current state
-    setCount                                    function, called in event handler or otherwise
-    useState(...)                               sets initial state
-  --------------------
-  useState
-  useEffect(() => {...})                        runs on component changes
 ---------------------------------------------------------------------------------------------------
 PROPS:
   pass data or functions around
@@ -250,7 +232,7 @@ PROPS:
     class Comp1 ... :
       render() {                                          access props
         return (
-          <div>{this.props.name}</div>
+          <div>{this.props.name1}</div>                   state
           <button onClick={this.props.name2}></button>    function
           <button onClick={() => this.props.name2(e)}     function with argument
         )
@@ -282,7 +264,7 @@ STATE:
   use stateless functional components whenever possible
   create copy of state, change it, update old state
   --------------------
-  class Name extends React.Component {
+  class Name extends Component {
     state = {                                 declare state
       name: "..."
     }
@@ -324,6 +306,24 @@ STATE:
       this.handleChange = this.handleChange.bind(this)
     }
 ---------------------------------------------------------------------------------------------------
+HOOKS:
+  add state access to functional components
+  use at top leavel, not inside loops, etc.
+  use in function components
+  --------------------
+  Example:
+    const [count, setCount] = useState(0)
+
+    <p>You clicked {count} times</p>
+    <button onClick={() => setCount(count + 1)}>Click</button>
+
+    count                                       current state
+    setCount                                    function, called in event handler or otherwise
+    useState(...)                               sets initial state
+  --------------------
+  useState
+  useEffect(() => {...})                        runs on component changes
+---------------------------------------------------------------------------------------------------
 EVENTS:
   onClick={this.props.handleClick}
   onChange={this.props.handleChange}
@@ -331,12 +331,12 @@ EVENTS:
 RENDER CONDITIONALLY:
   set condition inside render but before return
   render variables inside return
-
+  --------------------
   example:
     render() {
       let persons = null;               reset
 
-      if (this.state.showPersons) {     condition
+      if (...) {                        condition
         persons = (
           <div>
             ...
@@ -354,14 +354,36 @@ RENDER CONDITIONALLY:
 LISTS:
   needs a key for efficient DOM updates
   use map for lists with element and index
-
+  --------------------
+  const NumberList = (props) => {
+    const numbers = props.numbers
+    const listItems = numbers.map((number) =>
+      <li key={number.toString()}>
+        {number}
+      </li>
+    )
+    return (
+      <ul>{listItems}</ul>
+    )
+  }
+  --------------------
+  const NumberList = (props) => {
+    const numbers = props.numbers;
+    return (
+      <ul>
+        {numbers.map((number) =>
+          <ListItem key={number.toString()}
+                    value={number} />
+        )}
+      </ul>
+    )
+  }
+  --------------------
   persons = (
     <div>
-      {this.state.persons.map((person, index) => {
+      {persons.map((person, index) => {
         return <Person 
-          click={() => this.deletePersonHandler(index)}
           name={person.name}
-          age={person.age} 
           key={person.id} />
       })}
     </div>
@@ -406,30 +428,6 @@ TWO WAY INTERACTION:
       );
     }
   }
----------------------------------------------------------------------------------------------------
-INTERVAL:
-  this.interval = setInterval(() => {               setInterval
-    ...
-  }, 1000);
-  
-  clearInterval(this.interval);                     clearInterval
----------------------------------------------------------------------------------------------------
-HIGHER ORDER COMPONENT:
-  return:
-    one parent element:
-      <div>...</div>
-
-    multiple adjacent elements:
-      array with keys
-
-      wrap in higher order component:
-        Component.js:
-          import Aux from "../../hoc/Aux";
-          <Aux>...</Aux>
-
-        hoc/Aux.js:
-          const aux = (props) => props.children;
-          export default aux;
 ---------------------------------------------------------------------------------------------------
 LIFECYCLE:
   mount                                           first page load 
@@ -535,4 +533,28 @@ TYPE VALIDATION:
   Name.propTypes = {                        check prop types
     type: PropTypes.string.isRequired
   }
+---------------------------------------------------------------------------------------------------
+INTERVAL:
+  this.interval = setInterval(() => {               setInterval
+    ...
+  }, 1000);
+  
+  clearInterval(this.interval);                     clearInterval
+---------------------------------------------------------------------------------------------------
+HIGHER ORDER COMPONENT:
+  return:
+    one parent element:
+      <div>...</div>
+
+    multiple adjacent elements:
+      array with keys
+
+      wrap in higher order component:
+        Component.js:
+          import Aux from "../../hoc/Aux";
+          <Aux>...</Aux>
+
+        hoc/Aux.js:
+          const aux = (props) => props.children;
+          export default aux;
 ---------------------------------------------------------------------------------------------------
