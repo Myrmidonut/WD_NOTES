@@ -61,6 +61,11 @@ CODE:
   <?php
     ...
   ?>                                no closing tag for pure php
+  --------------------
+  HTML:
+    <?php foreach ($myArr as $key => $value) : ?>
+      <li><?= $key $value; ?></li>
+    <?php endforeach; ?>
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   //                                single line
@@ -69,11 +74,13 @@ COMMENTS:
 OUTPUT:
   echo "...";                       output a string
   echo '...';
+  echo "... $var";                  output with variable
+  echo $var1 . "..." . $var2;       concatenation
 
   <?= "..."; ?>                     shorthand for <?php echo "..."; ?>
 
-  echo "... $var";                  output with variable
-  echo $var1 . "..." . $var2;       concatenation
+  printf("... %s", $...);           print with variable at $s
+    %.2f                            as float with decimal places
 
   var_dump(...);                    output any variable details
   print_r(...);                     alternative
@@ -89,13 +96,29 @@ ARITHMETIC:
   *             multiply
   /             divide
   %             mod
+
+  +=
+  -=
+  *=
+  /=
+  %=
+
+  ++...         add first, then use
+  ...++         use first, then add
 ---------------------------------------------------------------------------------------------------
 LOGIC:
-  &&                                and
-  ||                                or
-  !                                 not
-  ==                                equal
-  !=                                not equal
+  &&            and
+  ||            or
+  !             not
+---------------------------------------------------------------------------------------------------
+COMPARISON:
+  ==            equal
+  ===           equal with same type
+  !=            not equal
+  !==           not equal with same type
+
+  >             greater
+  <             less
 ---------------------------------------------------------------------------------------------------
 DATA TYPES:
   variables are automatically assigend a data type
@@ -118,6 +141,8 @@ VARIABLES:
 
   define("VAR", ...);               create a constant
   VAR                               access a constant
+
+  $var1 = &$var2                    create reference, show changes on original
 
   specify type:
     int $var = 1;                   "1" gets translated
@@ -145,6 +170,7 @@ ARRAYS:
   declaration:
     $myArr = [];                      create empty array
     $myArr = ["...", "..."];          create array
+    $myArr = array("...", "...");     old alternative
 
   elements:
     $myArr[0];                        access an element
@@ -200,7 +226,7 @@ CLASS:
 FUNCTIONS:
   function myFunc($arg1, $arg2 = ...) {     create a function, with arg and default value
     ... ;
-    return $test;
+    return $test;                           return
   }
 
   myFunc();                                 call a function
@@ -218,18 +244,43 @@ EXCEPTIONS:
   }
 ---------------------------------------------------------------------------------------------------
 STRING METHODS:
-  strlen(...);                      length
-  str_word_count(...);              number of words
-  strrev(...);                      reverse
-  strpos(..., ...);                 return position of text, otherwise FALSE
-  str_replace(..., ..., ...);       replace text with text in string
+  counting:
+    strlen(...);                      length
+    str_word_count(...);              number of words
 
-  ucwords(...);                     uppercase
+  whitespace:
+    trim(...);                        remove whitespace at beginning and end
+    ltrim(...);                       remove whitespaces at beginning
+    rtrim(...);                       remove whitespace at end
+
+  reverse:
+    strrev(...);                      reverse
+
+  search:
+    strpos(..., ...);                 return position of string, otherwise FALSE
+    strstr(..., "...");               return string starting at character
+
+  replace:
+    str_replace(..., ..., ...);       replace text with text in string
+
+  substring:
+    substr("...", ..., ...);          substring from first index to last
+
+  comparison:
+    strcmp(..., ...);                 returns number for size difference
+    strcasecmp(..., ...);             returns number for size difference, ignores case
+
+  capitalize:
+    strtoupper(...);                  uppercase
+    strtolower(...);                  lowercase
+    ucwords(...);                     first character capitalized
+    ucfirst(...);                     first character of each word capitalized
 
   sprintf("%s %s", "...", "...")    create string with attached placeholders
     %s string
 
-  explode("...", ...);              split at seperator and return as array
+  to array:
+    explode(" ", ...);                split at seperator and return as array
 ---------------------------------------------------------------------------------------------------
 ARRAY METHODS:
   array_filter($..., function ($...) {...});        return array of filtered elements
@@ -243,15 +294,23 @@ ARRAY METHODS:
   sort associative array:
     ksort($...);                                    ascending by key
     asort($...);                                    ascending by value
-    krsort($...);                                   descending by key
-    arsort($...);                                   descending by value
+    rksort($...);                                   descending by key
+    rasort($...);                                   descending by value
     
   usort($..., function($a, $b) {return $a <=> $b;}  sort by greater, return -1, 0, 1
+
+  iterate:
+    foreach($... as $...) {...}                     run on every element
+  
+  iterate associative array:
+    foreach($... as $... => $...) {...}             run on every key-value-pair
+
+  $... + $...                       
 
   sizeof($..., COUNT_RECURSIVE);    length of an array, optional recursive count
   count($...);                      see sizeof()  
   array_keys($...);                 return array of keys
-  implode("...", ...);              return string of elements with seperator
+  implode(" ", ...);                return string of elements with seperator
   list($..., $...) = $...;          create variables that correspond to array elements
   [$..., $...] = $...;              alternative
   ["..." => $...] = $...;           for associative array
@@ -265,10 +324,10 @@ CONDITIONS:
     } else {
       ...;
     }
-  
+  --------------------
   TERNARY:
     ... ? ... : ...                           if true do first, otherwise second
-
+  --------------------
   SWITCH:
     switch (...) {                            value to check
       case ...:                               if match
@@ -278,16 +337,17 @@ CONDITIONS:
       default:
         ...                                   default code
     }
-
+  --------------------
   NULL COALESCE:
     $var ?? "test"                            if $var doesn't exist use "test"
 ---------------------------------------------------------------------------------------------------
 LOOPS:
   FOR:
-    for ($i = 0; $i < 10; $i++){              for loop
+    for ($i = 0; $i < 10; $i++){
       ...;
+      break;                                  exit the loop
     }
-  
+  --------------------
   FOREACH:
     foreach ($myArr as $ele) {                loop over array
       ...;
@@ -296,23 +356,18 @@ LOOPS:
     foreach ($myArr as $key => $value) {      loop over associative array
       ...;
     }
-
-    in HTML:
-      <?php foreach ($myArr as $key => $value) : ?>
-        <li><?= $key $value; ?></li>
-      <?php endforeach; ?>
-  
-  WHILE:                                       while loop
+  --------------------
+  WHILE:
     $i = 0;
     while ($i < 10) {
       ...;
       $i++;
     }
-
-  DO WHILE:                                    do while loop
+  --------------------
+  DO WHILE:
     $i = 0;
     do {
-      ...;
+      ...;                                    run at least once
       $i++;
     } while ($i < 10);
 ---------------------------------------------------------------------------------------------------
