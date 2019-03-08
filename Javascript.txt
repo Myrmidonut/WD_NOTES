@@ -363,16 +363,19 @@ ARRAYS:
   ordered list of data
 
   declaration:
-    var myArray = [];                                         create an empty array
-    var myArray = [1, "two", [3, 4]];                         create an array
-    var myArray = new Array();                                create an empty array, slower
+    let myArray = []                                            create empty array
+    let myArray = [1, "two", [3, 4]]                            create array
+
+    let myArray = Array.of(..., ..., ...)                       create array from values
+    let myArray = Array.from(...)                               create array from object (string, ...)
+    let myArray = Array.from(..., e => ...)                     create array from object with changes to elements
   --------------------
   modify:
-    myArray[0] = ...;                                         modify element at index 0
+    myArray[0] = ...                                            modify element at index 0
   --------------------
   nesting:
-    myArray[3][4]                                             nested array
-    myArray[[1, 2], [3, 4]]                                   nested array
+    myArray[3][4]                                               nested array
+    myArray[[1, 2], [3, 4]]                                     nested array
   --------------------
   type check:
     typeof(...)                                                 arrays appear as objects
@@ -387,12 +390,41 @@ ARRAYS:
     may end with a trailing comma
 ---------------------------------------------------------------------------------------------------
 SYMBOLS:
-  let mySym = Symbol("Description")           identifier
-  let mySym = Symbol.for("...")               for multiple elements
+  identifier for variables
 
-  ...[mySym] = "Value"                        set symbol for variable
+  declaration:
+    let mySym = Symbol("Description")           for one element
+    let mySym = Symbol.for("...")               for multiple elements
+
+    ...[mySym] = "Value"                        set symbol for variable
   --------------------
-  mySym.toString()                            show description
+  mySym.toString()                              show description
+---------------------------------------------------------------------------------------------------
+SETS:
+  list of items with no duplicates
+
+  declaration:
+    let mySet = new Set()
+
+  methods:
+    .add(...)
+    .delete(...)
+    .has(...)
+    .size                             number of entries
+
+    for (let ... of ...)              loop
+---------------------------------------------------------------------------------------------------
+MAPS:
+  unordered list of key value pairs
+
+  declaration:
+    let myMap = new Map()
+
+  methods:
+    .set(..., ...)                    add pair
+    .get(...)                         get value for key
+    .size                             number of pairs
+    .foreach((value, key) => {})      loop
 ---------------------------------------------------------------------------------------------------
 OBJECTS:
   unordered list of data
@@ -692,6 +724,43 @@ DESTRUCTURING:
 
     [val1, val2] = [val2, val1]           switch positions
 ---------------------------------------------------------------------------------------------------
+PROMISES:
+  run code later
+  success or fail
+  states:
+    fulfilled
+    rejected
+    pending
+    settled
+  --------------------
+  overview:
+    let myProm = new Promise((resolove, reject) => {})
+
+    myProm.then(res => ...)
+          .catch(err => ...)
+  --------------------
+  immidiately:
+    let myProm = new Promise.resolve("...")
+    myProm.then(res => ...)
+  --------------------
+  timed:
+    let myProm = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("..."), 2000)
+    })
+
+    myProm.then(res => ...)
+  --------------------
+  fulfilled / rejected:
+    let myVal = ...
+
+    let myProm = new Promise((resolove, reject) => {
+      if (...) resolve("...")
+      else reject("...")
+    })
+
+    myProm.then(res => ...,
+                err => ...)
+---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   round:
     Math.round();                         round to nearest whole number
@@ -932,12 +1001,12 @@ LOOPS:
     } while (condition)
   ------------------------------
   FOR IN:
-    for (let char in "test") {                  iterable objects, by index
+    for (let i in "test") {                     iterable objects, by index
       ...
     }
   ------------------------------
   FOR OF:                                       
-    for (let char of "test") {                  iterable objects, by value
+    for (let val of "test") {                   iterable objects, by value
       ...
     }
 ---------------------------------------------------------------------------------------------------
