@@ -386,8 +386,17 @@ ARRAYS:
     adding elements at high indexes create undefined holes
     may end with a trailing comma
 ---------------------------------------------------------------------------------------------------
+SYMBOLS:
+  let mySym = Symbol("Description")           identifier
+  let mySym = Symbol.for("...")               for multiple elements
+
+  ...[mySym] = "Value"                        set symbol for variable
+  --------------------
+  mySym.toString()                            show description
+---------------------------------------------------------------------------------------------------
 OBJECTS:
   unordered list of data
+  contains variables and functions
 
   overview:
     var myObj = {property1, property2}
@@ -415,17 +424,18 @@ OBJECTS:
     myObj["key key"];                           calling multiword key
   --------------------
   modify:
-    myObj.key = ...;                            modify
-    myObj["key"] = ...                          alternative
-
-    myObj[key] = value;
+    myObj.key = ...                             modify
+    myObj[key] = ...                            alternative
   --------------------
-  stuff:
+  properties:
     .hasOwnProperty("...")                      check if property exists
+    Object.getOwnPropertyNames(...)             list all keys
 
-    delete myObj.key;                           delete property
+    delete myObj.key                            delete property
 
-    Object.keys(...);                           create array containing all keys
+    Object.keys(...)                            create array containing all keys
+    Object.values(...)                          create array containing all values
+    Object.values(...)                          create array containing arrays of key and value
 
     "key" in myObj                              check if property exists
 
@@ -466,44 +476,50 @@ CLASS:
     cannot be called through class instance
     often used for utility functions
   --------------------
-  Example:
-    class Student {
-      constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.tardies = 0;
-        this.scores = [];
-      }
+  class ... {
+    constructor() {
 
-      fullName() {
-        return `Full name is: ${this.firstName} ${this.lastName}`;
-      }
-
-      static enrollStudents(...students) {
-        return "Enrolling students";
-      }
+    }
+  }
+  --------------------
+  constructor:                                  run on instantiating
+    constructor(name) {
+      this._name = name
+    }
+  --------------------
+  getter:
+    get name() {                                get variable
+      return this._name
     }
 
-    let firstStudent = new Student("John", "Smith");
-    let secondStudent = new Student("Jane", "Doe");
-
-    firstStudent.fullName();
-    Student.enrollStudents([firstStudent, secondStudent]);
+  setter:
+    set name(name) {                            set variable
+      this._name = name
+    }
   --------------------
-  constructor:
-    function MyObj() {                          constructor, capitalized
-      let ... = ...;                            private property, changed only inside constructor
-      this.name = ...;
-    };
-
-    function MyObj(name) {this.name = name};    constructor with arguments
+  functions:
+    ...() {
+      ...
+    }
   --------------------
   instance:
-    var myIns = new MyObj();                    create instance with constructor
-    var myIns = new MyObj(...);                 create instance with arguments
+    let myIns = new MyObj();                    create instance with constructor
+    let myIns = new MyObj(...);                 create instance with arguments
+
+    myIns.name                                  get value
+    myIns.name = "..."                          set value
 
     myIns instanceof MyObj;                     true if created with constructor, prefered
     myIns.constructor === true                  true if created with constructor
+  --------------------
+  inheritance:
+    gets everything from parent class
+    can overwrite methods, etc.
+
+    class ... extends ... {
+      constructor() {}
+      ...
+    }
   --------------------
   prototype:
     MyObj.prototype = {                         shared for all instances
@@ -513,15 +529,15 @@ CLASS:
 
     MyObj.prototype.isPrototypeOf(myIns);       true if MyObj is the prototype for myIns
     Object.prototype.isPrototypeOf(MyObj.prototype)
-  --------------------
-  inheritance:
-    let parent = new Parent();                          not recommended
 
-    let parent = Object.create(Parent.prototype);       make instance of parent
-    Child.prototype = Object.create(Parent.prototype);  set prototype of child to instance of parent
-    Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
+    inheritance:
+      let parent = new Parent();                          not recommended
 
-    Child.prototype.name = function() {...};            add method after inheritance, overwrites
+      let parent = Object.create(Parent.prototype);       make instance of parent
+      Child.prototype = Object.create(Parent.prototype);  set prototype of child to instance of parent
+      Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
+
+      Child.prototype.name = function() {...};            add method after inheritance, overwrites
   --------------------
   mixin:
     let myMixin = function(obj) {         take object and give it a method, for unrelated objects
@@ -558,6 +574,30 @@ CLASS:
   --------------------
   this:
     .this                                 refers to the current object
+  --------------------
+  Example:
+    class Student {
+      constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tardies = 0;
+        this.scores = [];
+      }
+
+      fullName() {
+        return `Full name is: ${this.firstName} ${this.lastName}`;
+      }
+
+      static enrollStudents(...students) {
+        return "Enrolling students";
+      }
+    }
+
+    let firstStudent = new Student("John", "Smith");
+    let secondStudent = new Student("Jane", "Doe");
+
+    firstStudent.fullName();
+    Student.enrollStudents([firstStudent, secondStudent]);
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   declaration:
@@ -638,6 +678,19 @@ FUNCTIONS:
     calc...
     create...
     check...
+---------------------------------------------------------------------------------------------------
+DESTRUCTURING:
+  object:
+    let myObj = {...}
+    let {..., ...} = myObj                variables with values from object
+
+  array:
+    let myArr = [1, 2, 3]
+    let [,,myVal] = myArr                 third element
+
+    let [, ...last2] = myArr              last elements
+
+    [val1, val2] = [val2, val1]           switch positions
 ---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   round:
@@ -778,10 +831,10 @@ ARRAY METHODS:
 
   sort:
     .sort()                                   M, sort the array itself from lowest to highest value
-    .sort(function(a, b) {return b-a;});      sort high to low
-      return a-b                              sort low to high
-      return a>b                              sort alphabetically
-      return a<b                              sort reverse alphabetically
+    .sort((a, b) => b - a)                    sort high to low
+      a - b                                   sort low to high
+      a > b                                   sort alphabetically
+      a < b                                   sort reverse alphabetically
 
       if (a[1] < b[1]) return -1;             compare nested arrays
       if (a[1] > b[1]) return 1;
@@ -796,7 +849,7 @@ ARRAY METHODS:
 
   loop:
     for ... of
-
+  --------------------
   outputting an array converts it to a comma seperated string
 
   example:

@@ -268,17 +268,22 @@ CLASS:
       return $this->...;
     }
   --------------------
-  object:
-    $... = new ...();                       create instance of class
-    $...->...;                              access class variable
-    $...->...();                            access class method
+  inheritance:
+    only from one class
+    from multiple interfaces
 
-    $this                                   refers to the object itself
-      public $var;                          example
-      $this->var = ...;
+    object:                                 instance
+      $... = new ...();                     create instance of class
+      $...->...;                            access class variable
+      $...->...();                          access class method
+
+      $this                                 refers to the object itself
+        public $var;                        example
+        $this->var = ...;
   --------------------
-  ... instanceof ...                        check is object belongs to class
-  ... = clone ...;                          create clone of object
+  stuff:
+    ... instanceof ...                      check is object belongs to class
+    ... = clone ...;                        create clone of object
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   function myFunc($arg1, $arg2 = ...) {     create a function, with arg and default value
