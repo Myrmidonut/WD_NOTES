@@ -189,39 +189,96 @@ ARRAYS:
       $myArr["..."] = "...";          create/change value
 ---------------------------------------------------------------------------------------------------
 CLASS:
-  class ... {                               capitalized
-    public function __construct($...) {     constructor method, runs on instantiating, receives arg
-
+  class:
+    class ... {                             capitalized
+      ...
     }
 
-    protected ...
-    public ...
-    public static ...
-  }
+  subclass:
+    class ... extends ... {                 same as class, but overwrites with own properties
+      ...
+    }
 
-  instance:
-    $... = new ...(...);                    create instance of class with arg
+  abstract class:
+    abstract class ... {                    cannot be instantiated
+      abstract function ...() {
+        ...
+      }
+    }
+    
+  interface:
+    interface ... {                         create interface
+      public function ...();                empty function
+    }
+
+    class ... extends ... implements ... {
+      function ...() {                      set empty function
+        ...
+      }
+    }
+  --------------------
+  variables:
+    protected ...;                          can only be accessed inside the class and subclass
+    public ...;                             can be changed from anywhere
+    private ...;                            can only be accessed inside the class
+    public static ...;                      changes for every subclass
+    const ... = ...;                        never changes, capitalized
+
+    ...::$... = ...;                        access public static
+    ...::...;                               access const
+  --------------------
+  methods:
+    function ...() {                        method
+      ...
+    }
+
+    final function ...() {                  subclass cannot overwrite
+      ...
+    }
+
+    static function ...() {                 can be used without creating an object
+      ...
+    }
+
+    ...::...();                             access public static
+  --------------------
+  constructor:
+    public function __construct() {         run on object create
+      ...
+    }
+
+  destructor:
+    public function __destruct() {          run on object destroy
+      ...
+    }
+  }
+  --------------------
+  getter:
+    function __get(...) {                   access class variable
+      ...
+    }
+
+  setter:
+    function __set(..., ...) {              change class variable to new value
+      ...
+    }
+  --------------------
+  to string:
+    function __toString() {                 run on instance call
+      return $this->...;
+    }
+  --------------------
+  object:
+    $... = new ...();                       create instance of class
     $...->...;                              access class variable
     $...->...();                            access class method
 
-    $this                                   refers to the instance itself
+    $this                                   refers to the object itself
       public $var;                          example
       $this->var = ...;
-
-  Connection::make();                       public static
-
-  Example:
-    class Task {
-      protected $description;
-
-      protected $completed = false;
-
-      public function __construct($description) {
-        $this -> description = $description;
-      }
-    }
-
-    $task = new Task("Go to the store");
+  --------------------
+  ... instanceof ...                        check is object belongs to class
+  ... = clone ...;                          create clone of object
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   function myFunc($arg1, $arg2 = ...) {     create a function, with arg and default value
@@ -374,11 +431,8 @@ LOOPS:
 GLOBAL VARIABLES:
   $_GET                             shows up in the URL as ?name=abc&password=123
   $_GET["..."]                      to access GET data
-
   $_POST                            does not show up in the URL
-
   $_SERVER
-
   $_REQUEST
 ---------------------------------------------------------------------------------------------------
 DATE TIME:
@@ -404,14 +458,9 @@ EMAIL:
   $body = "...";
   $headers = "From ...";
 ---------------------------------------------------------------------------------------------------
-REMOVE SPACES:
-  $string = str_replace(' ', '', $string);        remove spaces
-  $string = preg_replace('/\s+/', '', $string);   remove all whitespace
----------------------------------------------------------------------------------------------------
+STUFF:
   die("...");                       halt execution and output ...
   htmlspecialchars(...);            sanitize
-
-  trim(..., "...")                  trim whitespace, optional characters to trim
   parse_url(..., PHP_URL_PATH);     retrieve section of a URL
-
   dd                                "die and dump"
+  rand(..., ...);                   random number between values
