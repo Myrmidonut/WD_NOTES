@@ -6,7 +6,7 @@ FILES:
         <script src="name.js"></script>
       </body>
     </html>
-
+  --------------------
   external:
     <html>
       <body>
@@ -15,7 +15,7 @@ FILES:
         </script>
       </body>
     </html>
-
+  --------------------
   type="text/javascript"                for old HTML4
 
   multiple <script></sript> possible
@@ -58,11 +58,11 @@ ERRORS:
   if(error) throw error;                stops execution and outputs error message
 ---------------------------------------------------------------------------------------------------
 OPERATORS:
+  operand1 operator operand2
+
   unary                                 one operand, -5
-  binary                                two operands, 5 - 5
-
-  operand                               
-
+  binary                                two operands, 5 - 5                           
+  --------------------
   arithmetic:
     +
     -
@@ -72,11 +72,11 @@ OPERATORS:
     --
     %
     **                                  exponent
-
+  --------------------
   concatenation:
     "ab" + "cd" == "abcd"               if either is a string, the result becomes a string
     myString += "ab";                   ads a string to the end
-
+  --------------------
   assignment:
     =
     +=                                  x = x + y
@@ -91,7 +91,7 @@ COMPARISON:
   only null == only undefined
 
   conversion to numbers, except for strict (not) equal
-
+  --------------------
   >                                     greater than
   <                                     less than
   >=                                    greater or equal
@@ -100,7 +100,7 @@ COMPARISON:
   ==                                    equal
   !==                                   strict/identity not equal, with type
   !=                                    not equal
-
+  --------------------
   comparing strings:
     letter by letter
     letter > number
@@ -111,7 +111,7 @@ LOGIC:
   &&                                    and, true if both true
   ||                                    or, true if at least one is true
   !                                     not
-
+  --------------------
   x = a || b || c;                      return first true or last value
   x = a && b && c;                      return first false or last value
 ---------------------------------------------------------------------------------------------------
@@ -119,18 +119,18 @@ REGULAR EXPRESSIONS:
   /.../               first occurence
   /.../g              global occurence
   /.../i              case insensitive
-
+  
   ...|...             or
-
+  
   (...)               group, following regex is applied to the whole group
 
   (...)(...)...\2...\1    repeated group, exact
-
+  
   [abc]               range
   [a-c]               range
   [a-c2-5]            multiple ranges
     ^-]\ need escape
-
+  
   .                   anything
 
   \d                  [0-9]
@@ -168,9 +168,7 @@ REGULAR EXPRESSIONS:
 
   (?=...)             positive lookahead, exists            
   (?!=...)            negative lookahead, not exists
-
-  invert using uppercase letter
-
+  --------------------
   match:
     .match(myRegex);            returns array with matched regex
 
@@ -180,6 +178,8 @@ REGULAR EXPRESSIONS:
 
   replace:
     .replace(myRegex, "...");   replace text in a string
+  --------------------
+  invert using uppercase letter
 ---------------------------------------------------------------------------------------------------
 PRECEDENCE:
   ()
@@ -195,23 +195,25 @@ PRECEDENCE:
               ||
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
-  let name;                             block-scope, prefered, cannot be redeclared
-  const NAME_NAME;                      block-scope, cannot be reassigned
-  var name;                             global scope, local scope inside function
+  declaration:
+    let name;                             block-scope, prefered, cannot be redeclared
+    const NAME_NAME;                      block-scope, cannot be reassigned
+    var name;                             global scope, local scope inside function
+  --------------------
+  assignment:
+    var name;                             undefined
+    var name = "test";                    string
+    var name = 1;                         number
+    var name = true;                      boolean
+    var name1 = "test",
+        name2 = 1;
+    var name = null;                      undefined
 
-  var name;                             undefined
-  var name = "test";                    string
-  var name = 1;                         number
-  var name = true;                      boolean
-  var name1 = "test",
-      name2 = 1;
-  var name = null;                      undefined
+    const NAME = ...;                     constant, value is known before execution
 
-  const NAME = ...;                     constant, value is known before execution
-
-  const array;                          entries can still be changed
-  Object.freeze(array);                 entries are locked too
-
+    const array;                          entries can still be changed
+    Object.freeze(array);                 entries are locked too
+  --------------------
   hoisting:
     declaration is at the start of the block
     assignment is at the position in the code
@@ -240,12 +242,12 @@ DATA TYPES:
     boolean                             true  false
     null                                represents empty, can be assigned to a variable
     undefined                           value of a variable without assignment
-
+  --------------------
   complex:
     object                              collection of data
       symbol                            unique identifiers for objects
       array                             an ordered object
-
+  --------------------
   type check:
     typeof ...                            return string with the datatype, error: typeof(null) returns object
       "number"
@@ -262,7 +264,7 @@ TYPE CONVERSION:
     String(...)
     .toString()
     ..toString()            directly on a number
-
+  --------------------
   to number:
     Number(...)
     .toNumber()
@@ -271,18 +273,7 @@ TYPE CONVERSION:
     null       -> 0
     true/false -> 1/0
     string     -> whitespace removed, becomes a number, empty becomes 0, error becomes NaN
-
-  mathematical operations create numbers, exception: + with a string creates a string
-  +... == Number(...)
-
-  addition with string creates string
-
-  1 + "2" == "12"                       number + string == string
-  1 - "2" == -1                         number - string == number
-  1 * "2" == 2                          number * string == number
-  " -9\n" + 5 == " -9\n5"
-  " -9\n" - 5 == -14
-
+  --------------------
   to boolean:
     Boolean(...)
       " "        -> true
@@ -293,6 +284,18 @@ TYPE CONVERSION:
       null       -> false
       undefined  -> false
       NaN        -> false
+  --------------------
+  math:
+    mathematical operations create numbers, exception: + with a string creates a string
+    +... == Number(...)
+
+    addition with string creates string
+
+    1 + "2" == "12"                       number + string == string
+    1 - "2" == -1                         number - string == number
+    1 * "2" == 2                          number * string == number
+    " -9\n" + 5 == " -9\n5"
+    " -9\n" - 5 == -14
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
   declaration:
@@ -300,16 +303,16 @@ NUMBERS:
     let x = 1.1;                        floating point
     let x = 1e3;                        1 x 10³ == 1000
     let x = -1e3;                       1 : 10³ == 1/1000
-
+  --------------------
   unusual numbers:
     7 / 0 == Infinity
     null + 1 == 1
     undefined + 1 == NaN
-
+  --------------------
   precision:
     0.1 + 0.2 == 0.3                    false, actually: 0.30000000000000004
     correction with .toFixed(2)
-
+  --------------------
   NaN / Infinite:
     isNaN(...);                         check if NaN
     isFinite(...);                      check if NaN, Infinity, -Infinity  
@@ -320,7 +323,7 @@ STRINGS:
     myString = '...';               string literal, singlequotes
     myString = `...`;               string literal, backticks, template literal, multiline
       `... ${...} ...`              allows embedding of variables and expressions into a string
-
+  --------------------
   escape character:
     \                               escape character to use special characters in a string
       \'                            '
@@ -331,11 +334,11 @@ STRINGS:
       \t                            tab
       \b                            backspace
       \f                            form feed
-
+  --------------------
   characters:
     myString[2]                     access to the third character, UNSAFE! convert to array first
     "..."[2]
-
+  --------------------
   infos:
     strings are immutable, it is not possible to change individual letters
 ---------------------------------------------------------------------------------------------------
@@ -347,10 +350,10 @@ BOOLEAN:
     null 
     undefined
     NaN
-
+  --------------------
   true:
     everthing else, check with !!var
-
+  --------------------
   true + false == 1
   let isGreater = 4 > 1;                isGreater == true
 
@@ -360,25 +363,25 @@ ARRAYS:
   ordered list of data
 
   declaration:
-    var myArray = [];                     create an empty array
-    var myArray = [1, "two", [3, 4]];     create an array
-    var myArray = new Array();            create an empty array, slower
-
+    var myArray = [];                                         create an empty array
+    var myArray = [1, "two", [3, 4]];                         create an array
+    var myArray = new Array();                                create an empty array, slower
+  --------------------
   modify:
-    myArray[0] = ...;                     modify element at index 0
-
+    myArray[0] = ...;                                         modify element at index 0
+  --------------------
   nesting:
-    myArray[3][4]                         nested array
-    myArray[[1, 2], [3, 4]]               nested array
-
-
-  typeof(...)                                               arrays appear as objects
-  Array.isArray(...)                                        check for an array
-  function isArray(x) {                                     check for an array in older browsers
-    return x.constructor.toString().indexOf("Array") > -1;
-  }
-  ... instanceof Array                                      returns true for arrays
-
+    myArray[3][4]                                             nested array
+    myArray[[1, 2], [3, 4]]                                   nested array
+  --------------------
+  type check:
+    typeof(...)                                                 arrays appear as objects
+    Array.isArray(...)                                          check for an array
+    function isArray(x) {                                       check for an array in older browsers
+      return x.constructor.toString().indexOf("Array") > -1;
+    }
+    ... instanceof Array                                        returns true for arrays
+  --------------------
   info:
     adding elements at high indexes create undefined holes
     may end with a trailing comma
@@ -389,10 +392,10 @@ OBJECTS:
   overview:
     var myObj = {property1, property2}
     property = key: value
-
+  --------------------
   declaration:
     var myObj = {};                             create an empty object        
-    var myObj = {...: ..., ...: ...};           create an object, key: value pairs (properties)
+    var myObj = {...: ..., ...: ...};           create an object with properties
     var myObj = {"... ...": ...}                multiword key
 
     var myObj = {...: [...] };                  array key
@@ -403,41 +406,41 @@ OBJECTS:
     var myObj = {...: {...: ..., ...: ...}};    subnamespace
 
     var myOby = [{...}, {...}];                 array of objects
-
+  --------------------
   call:
-    myObj.key;                            calling a property
-    myObj.key[0];                         calling an array property
-    myObj.meth();                         calling a method
-    myObj.key.key;                        calling subnamespace
-    myObj["key key"];                     calling multiword key
-
+    myObj.key;                                  calling a property
+    myObj.key[0];                               calling an array property
+    myObj.meth();                               calling a method
+    myObj.key.key;                              calling subnamespace
+    myObj["key key"];                           calling multiword key
+  --------------------
   modify:
-    myObj.key = ...;                      modify
-    myObj["key"] = ...                    alternative
+    myObj.key = ...;                            modify
+    myObj["key"] = ...                          alternative
 
     myObj[key] = value;
-
+  --------------------
   stuff:
-    .hasOwnProperty("...")                check if property exists
+    .hasOwnProperty("...")                      check if property exists
 
-    delete myObj.key;                     delete property
+    delete myObj.key;                           delete property
 
-    Object.keys(...);                     create array containing all keys
+    Object.keys(...);                           create array containing all keys
 
-    "key" in myObj                        check if property exists
+    "key" in myObj                              check if property exists
 
-    for...in loop:                        loop over all keys
+    loop:                                       loop over all keys
       for (let key in myObj) {
         alert(key);
         alert(user[key]);
       }
 
-    function isEmpty(obj) {               check if object has no properties
+    function isEmpty(obj) {                     check if object has no properties
       for (let key in obj) {
         return false;
       } else return true;
     }
-
+  --------------------
   infos:
     data items: properties
     functions: methods
@@ -462,7 +465,7 @@ CLASS:
     no instantiating
     cannot be called through class instance
     often used for utility functions
-
+  --------------------
   Example:
     class Student {
       constructor(firstName, lastName) {
@@ -486,7 +489,7 @@ CLASS:
 
     firstStudent.fullName();
     Student.enrollStudents([firstStudent, secondStudent]);
-
+  --------------------
   constructor:
     function MyObj() {                          constructor, capitalized
       let ... = ...;                            private property, changed only inside constructor
@@ -494,14 +497,14 @@ CLASS:
     };
 
     function MyObj(name) {this.name = name};    constructor with arguments
-
+  --------------------
   instance:
     var myIns = new MyObj();                    create instance with constructor
     var myIns = new MyObj(...);                 create instance with arguments
 
     myIns instanceof MyObj;                     true if created with constructor, prefered
     myIns.constructor === true                  true if created with constructor
-
+  --------------------
   prototype:
     MyObj.prototype = {                         shared for all instances
       constructor: MyObj,                       keep constructor definition
@@ -510,7 +513,7 @@ CLASS:
 
     MyObj.prototype.isPrototypeOf(myIns);       true if MyObj is the prototype for myIns
     Object.prototype.isPrototypeOf(MyObj.prototype)
-
+  --------------------
   inheritance:
     let parent = new Parent();                          not recommended
 
@@ -519,7 +522,7 @@ CLASS:
     Child.prototype.constructor = Child;                set instances of Child to be constructed by Child, and not Parent
 
     Child.prototype.name = function() {...};            add method after inheritance, overwrites
-
+  --------------------
   mixin:
     let myMixin = function(obj) {         take object and give it a method, for unrelated objects
       obj.name = function() {
@@ -549,10 +552,10 @@ CLASS:
 
     myModule.myMixin1(myIns);             set the method
     myIns.name1();                        use method
-
+  --------------------
   method:
     myMethod() {...}                      function not necessary inside objects
- 
+  --------------------
   this:
     .this                                 refers to the current object
 ---------------------------------------------------------------------------------------------------
@@ -562,14 +565,14 @@ FUNCTIONS:
       ...;
       return ...;                                 optional, will stop the function
     }
-
+  --------------------
   calling:
     myFunc;                                       passing the function on
     myFunc();                                     calling the function immediately
-
+  --------------------
   return:
     return comparison;                            return true or false
-
+  --------------------
   arguments:
     rest operator:
       function myFunc(...args) {}                 variable number of arguments, stored in array args
@@ -580,32 +583,27 @@ FUNCTIONS:
       Math.max(...arr);                           spreads array when multiple arguments are needed
 
       let arr2 = [...arr1];
-
+  --------------------
   event:
     let myFunc = function(e) {e...}               function with event object
-
+  --------------------
   arrow function:
-    let myFunc = (e) => {}                        arrow function, short version of declaration
-                                                  without {} return can be skipped
-
+    let myFunc = (e) => {}                        arrow function, immidiate return without {}
+  --------------------
   function expression:
     let myFunc = function func() {}               function expression
     let myFunc = function() {}                    anonymous function expression
     (function() {...})();                         executed anonymous function expression
-
+  --------------------
   prototype:
     Array.prototype.myFunc = function(func) {     prototype, this to call on the array
       func(this[i]);
     }
-
+  --------------------
   callback:
-    function myFunc(arg, function(err, data) {
-      if (err) {
-        console.log(err);
-      } else {
-        ...;
-      }
-    });
+    function myFunc(arg, function() {
+      ...
+    })
 
     function first(..., callback) {
       ...
@@ -615,7 +613,7 @@ FUNCTIONS:
     function second() {                           arguments from callback();
       ...
     }
-
+  --------------------
   currying:
     function name(a, b) {                         not curried
       return a + b;
@@ -626,7 +624,7 @@ FUNCTIONS:
         return a + b;
       }
     }
-
+  --------------------
   info:
     variables inside a function are only availabe in the function, scope!
     a function does only one thing
@@ -640,18 +638,6 @@ FUNCTIONS:
     calc...
     create...
     check...
----------------------------------------------------------------------------------------------------
-METHODS:
-  overview:
-    a function inside an object
-
-  declaration:
-    obj.func = function() {               creating the method
-      ...
-    }
-
-  calling:
-    obj.func();                           calling the method
 ---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   round:
@@ -893,12 +879,12 @@ LOOPS:
     } while (condition)
   ------------------------------
   FOR IN:
-    for (let char in "test") {                  on iterable objects, index
+    for (let char in "test") {                  iterable objects, by index
       ...
     }
   ------------------------------
   FOR OF:                                       
-    for (let char of "test") {                  on iterable objects, value
+    for (let char of "test") {                  iterable objects, by value
       ...
     }
 ---------------------------------------------------------------------------------------------------
@@ -943,7 +929,7 @@ FETCH:
   .then(...)                                                type of response
   .then(...)                                                use data from response
   .catch(...)                                               error handling
-
+  --------------------
   fetch object:
     method - GET, POST, PUT, DELETE, HEAD
     url - URL of the request
@@ -954,11 +940,11 @@ FETCH:
     redirect - follow, error, manual
     integrity - subresource integrity value
     cache - cache mode (default, reload, no-cache)
-
+  --------------------
   body can be:
     string (JSON.stringify), needs headers: {"Content-type": "application/json"}
     URLSearchParamsFormData
-
+  --------------------
   type of response:
     .clone()                                    create clone of response
     .redirect()                                 create new response with different URL
@@ -968,13 +954,13 @@ FETCH:
     .text()                                     return promise that resolves with a string
     .json()                                     return promise that resolves JSON
     .error()                                    returns object associated with a network error
-
+  --------------------
   Example:
     fetch(url)
     .then(response => response.json())
     .then(data => console.log(data[0]))
     .catch(error => console.log(error))
-
+  --------------------
   Example json or text response:
     fetch(url)        
     .then(response => response.text())
@@ -990,7 +976,7 @@ FETCH:
       }
     })
     .catch(error => console.log(error))
-
+  --------------------
   Example post form data:
     const submitForm = document.getElementById("submitForm");
     const jsonResult = document.getElementById("jsonResult");
@@ -1050,3 +1036,4 @@ LOCAL STORAGE:
     .removeItem
     .key
     .length)
+---------------------------------------------------------------------------------------------------
