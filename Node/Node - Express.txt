@@ -1,6 +1,28 @@
+GENERATOR:
+  creates basic express setup
+
+  npm install -g express-generator        install
+  --------------------
+  folders:
+    public/
+    routes/
+    views/
+  --------------------
+  commands:
+    express ...                           create folder containing the app
+      --view ...                          adds view engine, default jade
+      --css ...                           add css engine, default none
+
+    express -h                            show help
+  --------------------
+  example:
+    express myapp --view ejs --css sass
+    cd myapp
+    npm install
+---------------------------------------------------------------------------------------------------
 USE:
-  var express = require("express");
-  var app = express();
+  const express = require("express");
+  const app = express();
 ---------------------------------------------------------------------------------------------------
 FILES:
   app.use(express.static("public"));              search /public folder for images, css, js...
