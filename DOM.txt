@@ -10,31 +10,58 @@ LAYERS:
   screen
 ---------------------------------------------------------------------------------------------------
 SELECT:
-  let ... = document...;
-
   id:
-    document.getElementById("...")                select id
+    document.getElementById("...")
 
   class:
-    document.getElementsByClassName("...")        select class, creates nodelist
+    document.getElementsByClassName("...")        creates nodelist
 
-  element:
-    document.getElementsByTagName("...")          select tag, creates nodelist
+  tag:
+    document.getElementsByTagName("...")          creates nodelist
 
-  universal:
-    document.querySelector("...")                 CSS selector, only the first one
-    document.querySelectorAll("...")              CSS selector, all elements, creates nodelist
+  selector:
+    document.querySelector("...")                 only first found
+    document.querySelectorAll("...")              creates nodelist
 
   nodelist:
     array-like, [..., ...]  
 ---------------------------------------------------------------------------------------------------
+NODES:
+  document
+    .documentElement
+    .head
+    .body
+    .title
+
+  parent:
+    parentNode
+    parentElement
+
+  child:
+    childNodes                  everything inside the element
+    firstChild
+    lastChild
+
+    children                    all nodes inside the element
+    firstElementChild
+    lastElementChild
+
+  sibling:
+    previousSibling
+    nextSibling
+
+    prevousElementSibling
+    nextElementSibling
+---------------------------------------------------------------------------------------------------
 CREATE:
   document
     .createElement("...", options)          create element, optional options
-    .appendChild("...")                     add as last child of parent
+    .appendChild(new)                       add as last child of parent
     .insertBefore(new, next)                add before next inside parent
     .insertBefore(new, next.nextSibling);   add after next inside parent
-    .removeChild("...")                     remove from parent, return reference to child
+    .remove()                               remove element
+    .removeChild(parent)                    remove from parent, return reference to child
+    .replaceChild(new, old)                 replace element
 ---------------------------------------------------------------------------------------------------
 READ:
   .value                                    get value
