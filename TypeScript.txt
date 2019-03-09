@@ -1,12 +1,17 @@
 FILES:
-  .ng                                         file ending
+  .ts                                         file ending
+---------------------------------------------------------------------------------------------------
+COMPILER:
+  tsc ...                                     run file
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
+  values have to match the declared data type
+  --------------------
   var ...: string = "...";                    declaration with type
-  const
-  let
-
-  types:
+  let ...
+  const ...
+  --------------------
+  data types:
     string                                    string
     number                                    integer
     boolean                                   boolean
@@ -16,33 +21,126 @@ VARIABLES:
     string[]                                  array of strings
     number[]                                  array of integers
     any[]                                     array of dynamic types
-
-  undefined
-
-  enum
+---------------------------------------------------------------------------------------------------
+ENUM:
+  set of named constants
+  can use numbers or strings
+  dont mix data types
+  --------------------
+  declaration:
+    enum MyEnum {         capitalized
+      a = 5,              default value if not specified = 0
+      b                   value = previous value + 1
+    }
+  --------------------
+  use:
+    MyEnum.a
 ---------------------------------------------------------------------------------------------------
 INTERFACES:
   custom data type
+  --------------------
+  declaration:
+    interface MyInterface {                     create interface
+      myName: string;                           property
+      myOpt?: number;                           optional property
+      readonly myRead: boolean;                 read only property
+    }
+  --------------------
+  instance:
+    let ...: MyInterface = {                    create instance of interface
+      myName: "..."
+    }
 
-  interface MyInterface {                     create interface
-    myName: string;                           property
-    myOpt?: number;                           optional property
-    readonly myRead: boolean;                 read only property
-  }
-
-  var ...: MyInterface = {                    create instance of interface
-    myName: "..."
-  }
+    let ...: MyInterface[] = []                 create instance of interface array
 ---------------------------------------------------------------------------------------------------
 CLASSES:
+  class:
+    class ... {                             capitalized
+      public ...
 
+      constructor(private ...: ...) {
+        ...
+      }
 
+      ...
+    }
+  --------------------
+  subclass:
+    class ... extends ... {                 inherit everything from parent class, can overwrite
+      constructor(...: ..., ...: ...) {
+        super(..., ...)                     use parent class constructor with values from constructor
+      }
+
+      ...
+    }
+  --------------------
+  variables:
+    public ...                              default, can be left out
+    private ...                             only accessible inside the class
+    protected ...                           only accessible inside classes and subclasses
+    static ...                              shared by all instances
+    readonly ...                            readonly
+  --------------------
+  constructor:
+    constructor(private ...: ...) {         called when instantiating
+      ...
+    }
+  --------------------
+  methods:
+
+  --------------------
+  getter:
+    private _name: string                   underscore if used with getter and setter
+
+    get name(): string {
+      return this._name
+    }
+
+  setter:
+    set name(name: string) {
+      this._name = name
+    }
+  --------------------
+  instance:
+    let myIns = new ...(..., ...)           create from class with arguments for constructor
+
+    myIns.myMeth()                          call method
+
+    myIns.name = ...                        use setter
+    myIns.name                              use getter
+
+    ... instanceof ...                      check if instance belongs to class
+    ... in ...                              check if property exists in instance
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
-  var ... = function(...: ..., ...: ...): ... {     arguments and return type
+  arguments in call have to match declaration
+  --------------------
+  let ... = function(...: ..., ...: ...): ... {     arguments and return type
     ...
   }
+  --------------------
+  argument with default value:
+    ...=...
+  --------------------
+  optional argument:
+    ...?: ...
+  --------------------
+  unknown number or arguments:
+    ...values: string[]
+  --------------------
+  no return value:
+    function(): void {}
+---------------------------------------------------------------------------------------------------
+GENERIC FUNCTIONS:
+  accepts different data types
+  regular function with data type any loses the inpt utdata type
 
-  var ... = function(...=..., ...?: ...): ... {     default value, optional argument
+  function MyFunc<T>(val: T): ... {        data type marker
     ...
   }
+---------------------------------------------------------------------------------------------------
+GENERIC CLASSES:
+  class MyGen<T> {
+    ...
+  }
+---------------------------------------------------------------------------------------------------

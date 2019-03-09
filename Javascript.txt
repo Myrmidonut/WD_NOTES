@@ -263,7 +263,7 @@ TYPE CONVERSION:
   to string:
     String(...)
     .toString()
-    ..toString()            directly on a number
+    ..toString()                        directly on a number
   --------------------
   to number:
     Number(...)
@@ -272,7 +272,13 @@ TYPE CONVERSION:
     undefined  -> NaN
     null       -> 0
     true/false -> 1/0
-    string     -> whitespace removed, becomes a number, empty becomes 0, error becomes NaN
+    string     -> whitespace removed
+                  becomes a number
+                  empty becomes 0
+                  error becomes NaN
+
+    parseInt(..., ...)                   convert string to whole number, optional base
+    parseFloat(..., ...)                 convert string to decimal number
   --------------------
   to boolean:
     Boolean(...)
@@ -312,10 +318,6 @@ NUMBERS:
   precision:
     0.1 + 0.2 == 0.3                    false, actually: 0.30000000000000004
     correction with .toFixed(2)
-  --------------------
-  NaN / Infinite:
-    isNaN(...);                         check if NaN
-    isFinite(...);                      check if NaN, Infinity, -Infinity  
 ---------------------------------------------------------------------------------------------------
 STRINGS:
   declaration:
@@ -431,22 +433,26 @@ OBJECTS:
   contains variables and functions
 
   overview:
-    var myObj = {property1, property2}
+    let myObj = {
+      property1,
+      property2
+    }
+
     property = key: value
   --------------------
   declaration:
-    var myObj = {};                             create an empty object        
-    var myObj = {...: ..., ...: ...};           create an object with properties
-    var myObj = {"... ...": ...}                multiword key
+    let myObj = {};                             create an empty object        
+    let myObj = {...: ..., ...: ...};           create an object with properties
+    let myObj = {"... ...": ...}                multiword key
 
-    var myObj = {...: [...] };                  array key
+    let myObj = {...: [...] };                  array key
 
-    var myObj = {...: function() {} };          method key
-    var myObj = {...() {} };                    shorter
+    let myObj = {...: function() {} };          method key
+    let myObj = {...() {} };                    shorter
 
-    var myObj = {...: {...: ..., ...: ...}};    subnamespace
+    let myObj = {...: {...: ..., ...: ...}};    subnamespace
 
-    var myOby = [{...}, {...}];                 array of objects
+    let myOby = [{...}, {...}];                 array of objects
   --------------------
   call:
     myObj.key;                                  calling a property
@@ -461,27 +467,16 @@ OBJECTS:
   --------------------
   properties:
     .hasOwnProperty("...")                      check if property exists
+    
     Object.getOwnPropertyNames(...)             list all keys
 
-    delete myObj.key                            delete property
+    delete myObj.key                            delete property, slow
 
     Object.keys(...)                            create array containing all keys
     Object.values(...)                          create array containing all values
     Object.values(...)                          create array containing arrays of key and value
 
     "key" in myObj                              check if property exists
-
-    loop:                                       loop over all keys
-      for (let key in myObj) {
-        alert(key);
-        alert(user[key]);
-      }
-
-    function isEmpty(obj) {                     check if object has no properties
-      for (let key in obj) {
-        return false;
-      } else return true;
-    }
   --------------------
   infos:
     data items: properties
@@ -651,7 +646,7 @@ FUNCTIONS:
       arguments[]                                 array created from arguments
 
     spread operator:
-      arr = [...];
+      arr = [..., ...];
       Math.max(...arr);                           spreads array when multiple arguments are needed
 
       let arr2 = [...arr1];
@@ -713,14 +708,14 @@ FUNCTIONS:
 ---------------------------------------------------------------------------------------------------
 DESTRUCTURING:
   object:
-    let myObj = {...}
-    let {..., ...} = myObj                variables with values from object
+    let myObj = {a: ..., b: ...}
+    let {a, b} = myObj                    create variables with values from object
 
   array:
     let myArr = [1, 2, 3]
-    let [,,myVal] = myArr                 third element
+    let [,,myVal] = myArr                 create variable from third element
 
-    let [, ...last2] = myArr              last elements
+    let [, ...last2] = myArr              create variable from last elements
 
     [val1, val2] = [val2, val1]           switch positions
 ---------------------------------------------------------------------------------------------------
@@ -792,9 +787,9 @@ NUMBER METHODS:
   pi:
     Math.PI;                              pi
 
-  change base:
-    parseInt(..., ...);                   convert string to whole number, optional base
-    parseFloat(..., ...);                 convert string to decimal number
+  NaN / Infinite:
+    isNaN(...);                           check if NaN
+    isFinite(...);                        check if NaN, Infinity, -Infinity  
 
   see Math library for  more
 ---------------------------------------------------------------------------------------------------
@@ -915,9 +910,6 @@ ARRAY METHODS:
   destructure:
     let [a,,,b] = [1,2,3,4]                   a=1, b=4
     let [a, b,, ...arr] = [1,2,3,4,5]         a=1, b=2, arr=[4,5]
-
-  loop:
-    for ... of
   --------------------
   outputting an array converts it to a comma seperated string
 
@@ -1001,12 +993,12 @@ LOOPS:
     } while (condition)
   ------------------------------
   FOR IN:
-    for (let i in "test") {                     iterable objects, by index
+    for (let i in ...) {                        objects, arrays by index
       ...
     }
   ------------------------------
   FOR OF:                                       
-    for (let val of "test") {                   iterable objects, by value
+    for (let val of ...) {                      arrays by value
       ...
     }
 ---------------------------------------------------------------------------------------------------
