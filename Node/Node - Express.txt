@@ -12,13 +12,18 @@ GENERATOR:
     express ...                           create folder containing the app
       --view ...                          adds view engine, default jade
       --css ...                           add css engine, default none
+        scss: use sass and change app.js
 
     express -h                            show help
   --------------------
   example:
-    express myapp --view ejs --css sass
+    express myapp --view ejs --css sass   create app
+
     cd myapp
-    npm install
+    npm install                           install modules
+
+    DEBUG=myapp:* npm start               run app with debugging
+    set DEBUG=myapp:* & npm start         run app on windows
 ---------------------------------------------------------------------------------------------------
 USE:
   const express = require("express");
