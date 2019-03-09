@@ -201,13 +201,15 @@ VARIABLES:
     var name;                             global scope, local scope inside function
   --------------------
   assignment:
-    var name;                             undefined
-    var name = "test";                    string
-    var name = 1;                         number
-    var name = true;                      boolean
-    var name1 = "test",
+    let name;                             undefined
+    let name = "test";                    string
+    let name = 1;                         number
+    let name = true;                      boolean
+    let name1 = "test",
         name2 = 1;
-    var name = null;                      undefined
+    let name = null;                      undefined
+
+    let name = ... || ...                 with fallback value
 
     const NAME = ...;                     constant, value is known before execution
 
@@ -434,11 +436,14 @@ OBJECTS:
 
   overview:
     let myObj = {
-      property1,
-      property2
-    }
+      key1: value1,                             property, key-value-pair
+      key2: value2,
 
-    property = key: value
+      key3: function() {},                      function
+
+      get ...() {},                             getter
+      set ...() {}                              setter
+    }
   --------------------
   declaration:
     let myObj = {};                             create an empty object        
@@ -447,8 +452,8 @@ OBJECTS:
 
     let myObj = {...: [...] };                  array key
 
-    let myObj = {...: function() {} };          method key, can use this to access other keys
-    let myObj = {...() {} };                    shorter
+    let myObj = {...() {...} };                 method key
+    let myObj = {...: function() {...} };       alternative
 
     let myObj = {...: {...: ..., ...: ...}};    subnamespace
 
@@ -465,18 +470,37 @@ OBJECTS:
     myObj.key = ...                             modify
     myObj[key] = ...                            alternative
   --------------------
-  constructor:
-    function MyObj(arg1, arg2) {                constructor function
+  prototype function:
+    function MyObj(arg1, arg2) {                create object prototype
       this.arg1 = ...;                          variable
       this.name = function() {                  method
         ...
       }
     }
 
-    let ... = new MyObj(..., ...)               create object from constructor
+    let ... = new MyObj(..., ...)               create object from prototype
+  --------------------
+  prototype:
+    MyObj.prototype.size = ...                  add property to object prototype
+  --------------------
+  getter:
+    this._name = ...                            underscore if used with getter and setter
+
+    get name() {                                return a value
+      return this._name
+    }
+
+    myObj.name                                  call getter
+  --------------------
+  setter:
+    set name(name) {                            set a value
+      this._name = name
+    }
+
+    myObj.name = ...                            call setter
   --------------------
   properties:
-    .hasOwnProperty("...")                      check if property exists
+    myObj.hasOwnProperty("...")                 check if property exists
 
     Object.getOwnPropertyNames(...)             list all keys
 
@@ -513,15 +537,21 @@ CLASS:
     cannot be called through class instance
     often used for utility functions
   --------------------
-  class ... {
-    constructor() {
+  overview:
+    class ... {
+      constructor() {
 
+      }
+
+      get ...
+      set ...
+
+      functions ...
     }
-  }
   --------------------
   constructor:                                  run on instantiating
-    constructor(name) {
-      this._name = name
+    constructor(name) {                         uses argument in new call
+      this._name = name                         underscore if used with getter and setter
     }
   --------------------
   getter:
@@ -1006,12 +1036,12 @@ LOOPS:
     } while (condition)
   ------------------------------
   FOR IN:
-    for (let i in ...) {                        objects, arrays by index
+    for (let i in ...) {                        object by key, array by index
       ...
     }
   ------------------------------
   FOR OF:                                       
-    for (let val of ...) {                      arrays by value
+    for (let val of ...) {                      array by value
       ...
     }
 ---------------------------------------------------------------------------------------------------
