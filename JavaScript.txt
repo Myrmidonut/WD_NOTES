@@ -447,7 +447,7 @@ OBJECTS:
 
     let myObj = {...: [...] };                  array key
 
-    let myObj = {...: function() {} };          method key
+    let myObj = {...: function() {} };          method key, can use this to access other keys
     let myObj = {...() {} };                    shorter
 
     let myObj = {...: {...: ..., ...: ...}};    subnamespace
@@ -457,7 +457,7 @@ OBJECTS:
   call:
     myObj.key;                                  calling a property
     myObj.key[0];                               calling an array property
-    myObj.meth();                               calling a method
+    myObj.key();                                calling a method
     myObj.key.key;                              calling subnamespace
     myObj["key key"];                           calling multiword key
   --------------------
@@ -465,9 +465,19 @@ OBJECTS:
     myObj.key = ...                             modify
     myObj[key] = ...                            alternative
   --------------------
+  constructor:
+    function MyObj(arg1, arg2) {                constructor function
+      this.arg1 = ...;                          variable
+      this.name = function() {                  method
+        ...
+      }
+    }
+
+    let ... = new MyObj(..., ...)               create object from constructor
+  --------------------
   properties:
     .hasOwnProperty("...")                      check if property exists
-    
+
     Object.getOwnPropertyNames(...)             list all keys
 
     delete myObj.key                            delete property, slow
@@ -759,8 +769,8 @@ PROMISES:
 NUMBER METHODS:
   round:
     Math.round();                         round to nearest whole number
-    Math.floor(...);                      round down
     Math.ceil(...);                       round up
+    Math.floor(...);                      round down
     Math.trunc(...);                      remove decimal, not IE!
 
   decimals:
@@ -778,18 +788,21 @@ NUMBER METHODS:
     Math.max(..., ...);                   maximum of arguments
     Math.min(..., ...);                   minimum of arguments
 
+  absolute:
+    Math.abs(...)
+
   exponent:
-    Math.pow(base, exponent);             exponent
+    Math.pow(base, exponent)
 
   root:
-    Math.sqrt(...);                       root
+    Math.sqrt(...)
 
   pi:
-    Math.PI;                              pi
+    Math.PI
 
   NaN / Infinite:
-    isNaN(...);                           check if NaN
-    isFinite(...);                        check if NaN, Infinity, -Infinity  
+    isNaN(...)                            check if NaN
+    isFinite(...)                         check if NaN, Infinity, -Infinity  
 
   see Math library for  more
 ---------------------------------------------------------------------------------------------------
