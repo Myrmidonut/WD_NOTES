@@ -2,7 +2,7 @@ SCSS:
   new
   valid with CSS
   .scss file
-
+--------------------
 SASS:
   old
   uses indentation
@@ -16,14 +16,26 @@ COMPILING:
   sass --watch main.scss main.css   rebuild on change
 ---------------------------------------------------------------------------------------------------
 PARTIALS:
-  files start with _
+  files start with _            create modular stylesheets
 
-  @import "partial"             imports _partial.scss
+  @import "partial";            imports _partial.scss
 ---------------------------------------------------------------------------------------------------
 EXTENDING:
   ... {                         add rules from another selector
     @extend ...;
   }
+---------------------------------------------------------------------------------------------------
+PLACEHOLDER:
+  %... {                        only printed if used with @extend
+    ...;
+  }
+---------------------------------------------------------------------------------------------------
+COMMENTS:
+  // ...                        single line
+
+  /*                            multiple lines
+    ...
+  */
 ---------------------------------------------------------------------------------------------------
 NESTING SELECTORS:
   .parent {                     CSS: .parent .child {...}
@@ -47,14 +59,10 @@ VARIABLES:
   background: $color;           reference a variable
 ---------------------------------------------------------------------------------------------------
 DATA TYPES:
-  numbers:
-    8.11
-  strings:
-    "test"
-  booleans:
-    true, false
-  null:
-    empty value
+  number:     8.11
+  string:     "test"
+  boolean:    true, false
+  null:       empty value
 ---------------------------------------------------------------------------------------------------
 LISTS:
   entry1 entry2;                      seperates by spaces
@@ -66,20 +74,20 @@ MAPS:
   (key1: value1, key2: value2);       key-value pairs, values can be lists or maps
 ---------------------------------------------------------------------------------------------------
 MIXINS:
-  definition:                                 reuse blocks of code
-    @mixin ...($..., $...) {                  name with optional parameters
-      ...;
+  definition:                                   reuse blocks of code
+    @mixin myMix($..., $...) {                  name with optional parameters
+      ...;                                      css using parameters
     }
-
+  --------------------
   call:
-    @include ...(..., ...);                   call with values for parameters
-
+    @include myMix(..., ...);                   call with values for parameters
+  --------------------
   example:
     @mixin box-shadow($x, $y, $blur, $c) {
+      box-shadow: $x, $y, $blur, $c;
       -webkit-box-shadow: $x, $y, $blur, $c;
       -moz-box-shadow: $x, $y, $blur, $c;
       -ms-box-shadow: $x, $y, $blur, $c;
-      box-shadow: $x, $y, $blur, $c;
     }
 
     @include box-shadow(0px, 0px, 4px, #fff);
@@ -114,7 +122,7 @@ EACH:
           color: $color;
         }
       }
-
+  --------------------
   map:
     @each ..., ... in ... {}                                iterate over a map
 
@@ -132,7 +140,7 @@ WHILE:
     ...
     counter
   }
-
+  --------------------
   example:
     #x: 1;
     @while $x < 13 {
