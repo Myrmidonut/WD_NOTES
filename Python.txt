@@ -1,9 +1,13 @@
 SHELL:
   python                          open console
+  python3                         linux
   quit()                          quit console
 ---------------------------------------------------------------------------------------------------
 FILES:
   .py                             file ending
+---------------------------------------------------------------------------------------------------
+PIP:
+  python package manager
 ---------------------------------------------------------------------------------------------------
 IMPORT:
   modules:
@@ -14,31 +18,32 @@ IMPORT:
       turtle                      creating lines, shapes, etc.
       urllib                      connection to website
       math                        mathematics
-
+  --------------------
   files:
     import filename               importing a file, for example for a class
-
+  --------------------
   selected:
     from ... import ..., ...      only import the specified methods, variables
     from ... import *             import everything
-
+  --------------------
   call:
     moduleName.methodName()       when using import
     methodName()                  when using from ... import
-
+  --------------------
   content:
     classes
     functions
     variables
     constants
     ...
-
+  --------------------
   later methods overwrite earlier ones with same call name
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   #                               single line
+  
   '''                             multiple lines
-    ...
+  ...
   '''
 ---------------------------------------------------------------------------------------------------
 CODE BLOCKS:
@@ -49,6 +54,16 @@ LINE BREAK:
   ... \                           the statement continues in the next line
   ...
 ---------------------------------------------------------------------------------------------------
+INPUT / OUTPUT:
+  input:
+    var = input(prompt)           read from keyboard and convert to string
+    var = input("x: ")            with label
+  --------------------
+  output:
+    print("text", var)            print to screen, with newline
+    print(..., sep="#")           print with given seperator
+    print(..., end="...")         print with given symbol at the end, "" for no newline
+---------------------------------------------------------------------------------------------------
 OPERATORS:
   arithmetic:
     +                     addition
@@ -58,7 +73,7 @@ OPERATORS:
     //                    integer division
     **                    exponent
     %                     remainder
-
+  --------------------
   assignment:
     =
     +=
@@ -68,9 +83,6 @@ OPERATORS:
     //=
     %=
     **=
-
-  type conversion:
-    integer and float becomes float
 ---------------------------------------------------------------------------------------------------
 COMPARISON:
   <                       smaller
@@ -79,37 +91,38 @@ COMPARISON:
   >=                      greater or equal
   !=                      not equal
   ==                      equal
-
+  --------------------
   comparing strings:
     letter by letter
     smaller letter means the string is smaller
     shorter equal string means string is smaller
-
+  --------------------
   comparing lists:
     needs same type of elements
 ---------------------------------------------------------------------------------------------------
 LOGIC:
-  add                     AND
+  and                     AND
   or                      OR
   not                     NOT
-
+  --------------------
   chaining:
     ... <= ... < ...
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
   ... = ...               assignment
   ..., ... = ..., ...     multiple assignments
+
   NAME = ...              "constant", constants do not exist
 
   ...: ... = 20           set datatype, python 3.6
   age: int = 20
 
   id(...)                 return memory location
-
+  --------------------
   scope:
     local                 declared and available anywhere in a function, overwrites global
     global                available anywhere
-
+  --------------------
   naming convention:
     lowercase letters
     underscore
@@ -117,18 +130,18 @@ VARIABLES:
 
     begins with letter or underscore
 ---------------------------------------------------------------------------------------------------
-SCOPE:
-  local:
-    variables are only available inside the function where they are declared
-    overwrites global variables only inside a function
-
-  global:
-    variables are available anywhere
----------------------------------------------------------------------------------------------------
 DATA TYPES:
   dynamically typed               data type is set automatically
   strongly typed                  no automatic type conversion
-
+  --------------------
+  number
+  string
+  list
+  tuple
+  sequence
+  set
+  dictionary
+  --------------------
   boolean:
     bool
 
@@ -157,22 +170,37 @@ DATA TYPES:
     float(...)
     bool(...)
     str(...)
-
+  --------------------
   type(...)                       return data type
   isinstance(..., ...)            check if object belongs to a class, or data type
+---------------------------------------------------------------------------------------------------
+TYPE CONVERSION:
+  integer + float becomes float
+
+  ... = list(...)                 create list from tuple
+
+  ... = tuple(...)                create tuple from list
+---------------------------------------------------------------------------------------------------
+SCOPE:
+  local:
+    variables are only available inside the function where they are declared
+    overwrites global variables only inside a function
+  --------------------
+  global:
+    variables are available anywhere
 ---------------------------------------------------------------------------------------------------
 BOOLEAN:
   values:
     True
     False
-
+  --------------------
   falsy values:
     ""
     0, 0.0
     [], (), {}
     None                          null
     False
-
+  --------------------
   truthy values:
     everything else
 ---------------------------------------------------------------------------------------------------
@@ -188,10 +216,6 @@ STRINGS:
   ... = "..."                     double quotes
   ... = ""                        empty
   ... = """..."""                 multiple lines
-
-  characters:
-    ...[...]                      return character at index
-    ...[-...]                     return character at index counting backwards
 
   escape characters:
     \n                            newline
@@ -219,7 +243,7 @@ LISTS:
   elements:
     ...[...]                      return element at index
     ...[-...]                     return element at index counting backwards
-    ...[...:...]                  return elements ... to ...
+    ...[...:...]                  return elements from index to excluded index
 
   concatenation:
     ... = ... + ...               return new list with combined elements
@@ -246,23 +270,6 @@ SETS:
   create:
     ... = set()                   create empty set
     ... = {..., ...}              duplicate elements are removed
-
-  add(...)                        add an element
-  remove(...)                     remove an element
-  discard(...)                    like remove, but ignores error for not found
-  update(...)                     add multiple elements like list, tuple, string
-  clear()                         remove all elements
-
-  .issubset(...)                  return true if all elements are part of ...
-  .issuperset(...)                return true if all elements of ... are available
-  .union(...)                     return new set of combined elements
-  ... = ... | ...                 union
-  .intersection(...)              return new set with elements in both sets
-  ... = ... & ...                 intersection
-  .difference(...)                return new set with elements from ... removed
-  ... = ... - ...                 difference
-  .symmetric_difference(...)      return new set with elements that are only in one set
-  ... = ... ^ ...                 symmetric difference
 ---------------------------------------------------------------------------------------------------
 DICTIONARY:
   2 dimensional list, not ordered
@@ -272,51 +279,39 @@ DICTIONARY:
     ... = {}                      empty
     ... = {                       with key value pairs
       "..." : "...",
-      "..." : "...",
+      "..." : "..."
     }
 
   elements:
     ...[...]                      show value for a key
     ...[...] = ...                add/update element
-    del ...[...]                  delete element
-    len(...)                      return number of elements
-    ... in ...                    return true if exists
-    ... not in...                 return true if not exists
-
-  methods:
-    .keys()                       return all keys
-    .values()                     return all values
-    .items                        return tuples of elements
-    .get(..., ...)                return value for key, else None, optional default instead of None
-    .pop(...)                     return value for key and remove key
-    .popitem()                    return a random element as tuple and remove it
-    ... = ....copy()              create copy
-    .clear()                      remove all elements
 ---------------------------------------------------------------------------------------------------
 CLASS OBJECT:
   create:
     class ...(...):               capital letter, optional inherited parent class
-      def __init__(self, ...):    constructor, optional, automatic creation of empty constructor
+      def __init__(self, ...):    optional constructor, arguments
         self. ...                 
-        self.__... = ...          private, only available inside the object
+        self.__... = ...          private, set to argument
+
       def ...(self, ...):         instance method
         ...
 
+      __... = ...                 private variable
+  --------------------
   object:
-    ... = ...(...)                creat object from class with constructor argument
+    ... = ...(...)                create object from class with constructor argument
 
     .attribute
     .method(arguments)
-
+  --------------------
   getter:
-    def get_...(self):            accessor method
-      return self....
-
+    def get_name(self):           getter method
+      return self.__name
+  --------------------
   setter:
-    det set_...(self, ...):       mutator method
-      #validation
-      self.... = ...
-
+    det set_name(self, name):     setter method, usually with validation
+      self.__name = name
+  --------------------
   inheritance:
     class ...(..., ...):          inherits all methods of parent classes (..., ...)
       super().__init__()          calls parents class methods
@@ -328,7 +323,7 @@ CLASS OBJECT:
       __new__()                   creates object
       __init__()                  initialize attributes
       __str__()                   return string representing the object
-  ---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   absolute:
     abs(...)                      return absolute value
@@ -366,6 +361,10 @@ STRING METHODS:
     .rfind(...)                   return last index of ..., else return -1
     .count(...)                   return number of occurrences of ...
 
+  check:
+    .isalpha()                    only letters
+    .isalnum()                    only numbers
+
   membership:
     "..." in ...                  check if string exists in another string
     "..." not in ...              check if string not exists in another string
@@ -373,7 +372,7 @@ STRING METHODS:
   replace:
     .replace(..., ...)            return new string with replaced substring
 
-  slice:
+  substring:
     ...[...:...]                  return characters from index ... to excluding ...
     ...[:...]                     return characters up to index ...
     ...[...:]                     return characters from index ... to the end
@@ -386,7 +385,8 @@ STRING METHODS:
     .title()                      return new string with first char of every word capitalized
     .swapcase()                   return new string after swapping upper and lower
     .strip()                      return new string with no whitespace at beginning and end
-    .strip("..."")                return new string with no ... at beginning and end
+    .strip("...")                 return new string with no ... at beginning and end
+    .split(" ")                   return list, split at given character
 
   ascii:
     ord("...")                    return ASCII for character
@@ -399,7 +399,7 @@ STRING METHODS:
     format(..., "...")
 ---------------------------------------------------------------------------------------------------
 LIST METHODS:
-  list():
+  create:
     ... = list(..., ...)          create list from entries
           list("...")             split string and create list
           list(range(...))        create list with range
@@ -415,8 +415,8 @@ LIST METHODS:
     max(...)                      return greatest value
 
   slice:
-    ...[...:...]                  return list from ... to ...-1
-    ...[:...]                     return list from start to ...-1
+    ...[...:...]                  return list from ... to excluded ...
+    ...[:...]                     return list from start to excluded ...
     ...[...:]                     return list from ... to end
 
   membership:
@@ -437,6 +437,7 @@ LIST METHODS:
     .pop()                        return last element and remove it
     .pop([...])                   return element at index and remove it
     .clear()                      remove all elements
+    del ...[...]                  remove elememnt at index
 
   search:
     .index(...)                   return index of first occurence
@@ -445,16 +446,60 @@ LIST METHODS:
   sort:
     .sort()                       sort low to high
     .reverse()                    reverse order
----------------------------------------------------------------------------------------------------
-INPUT / OUTPUT:
-  input:
-    var = input(prompt)           read from keyboard and convert to string
-    var = input("x: ")            with label
 
-  output:
-    print("text", var)            print to screen, with newline
-    print(..., sep="#")           print with given seperator
-    print(..., end="...")         print with given symbol at the end, "" for no newline
+  combine:
+    ... = list1 + list2           combine two lists
+---------------------------------------------------------------------------------------------------
+SET METHODS:
+  add:
+    add(...)                      add an element
+    update(...)                   add multiple elements like list, tuple, string
+
+  remove:
+    remove(...)                   remove an element
+    discard(...)                  like remove, but ignores error for not found
+    clear()                       remove all elements
+
+  compare:
+    .issubset(...)                return true if all elements are part of ...
+    .issuperset(...)              return true if all elements of ... are available
+
+  combine:
+    .union(...)                   return new set of combined elements
+    ... = ... | ...               union
+    .intersection(...)            return new set with elements in both sets
+    ... = ... & ...               intersection
+    .difference(...)              return new set with elements from ... removed
+    ... = ... - ...               difference
+    .symmetric_difference(...)    return new set with elements that are only in one set
+    ... = ... ^ ...               symmetric difference
+---------------------------------------------------------------------------------------------------
+DICTIONARY METHODS:
+  length:
+    len(...)                      return number of elements
+
+  remove:
+    del ...["..."]                delete element
+    .pop(...)                     return value for key and remove key
+    .popitem()                    return a random element as tuple and remove it
+    .clear()                      remove all elements
+
+  search:
+    ... in ...                    return true if exists
+    ... not in...                 return true if not exists
+
+  keys:
+    .keys()                       return all keys
+
+  values:
+    .values()                     return all values
+    .get(..., ...)                return value for key, else None, optional default instead of None
+
+  copy:
+    ... = ....copy()              create copy
+
+
+    .items                        return tuples of elements
 ---------------------------------------------------------------------------------------------------
 CONDITIONS:
   IF:
@@ -466,14 +511,14 @@ CONDITIONS:
       ...
 
     pass                          empty block
-  ------------------------------
+  --------------------
   TERNARY:
     ... = ... if ... else ...     statement1, condition, statement2
 ---------------------------------------------------------------------------------------------------
 LOOPS:
   FOR:
     for ... in ...:               element in iterable data
-      ...
+      ...                         statement
 
     example:
       test = ["a", "b", "c"]
@@ -488,25 +533,27 @@ LOOPS:
       example:
         for i in range (3, 11, 2):
           print i                 i is 3, 5, 7, 9
-  ------------------------------
+  --------------------
   WHILE:
+    i = 0;                        initial value
     while ...:                    condition
-      ...                         statements
+      ...                         statement
+      i++;                        increment
 
     example:
       x = 0
       while x < 10:                   
         x += 1
-  ------------------------------
+  --------------------
   BREAK CONTINUE:
     break:
-      for ...:                      exit parent loop if break gets called
+      for ...:                    exit parent loop if break gets called
         if ...:
           break
         ...
 
     continue:
-      for ...:                      jump to next iteration is continue gets called
+      for ...:                    jump to next iteration is continue gets called
         if ...:
           continue
         ...
@@ -517,20 +564,20 @@ FUNCTIONS:
       ...
       return ...                  optional, terminate, return None without
       return (..., ...)           multiple values as tuple
-
-    arguments:
-      ...(... = ...)              default
-      ...(...: ...)               data type
-      ...(...: ... = ...)         default data type
-      ...(*...)                   variable arguments as tuple
-      ...(**...)                  variable arguments as keywords
-
+  --------------------
+  arguments:
+    ...(... = ...)                default
+    ...(...: ...)                 data type
+    ...(...: ... = ...)           default data type
+    ...(*...)                     variable arguments as tuple
+    ...(**...)                    variable arguments as keywords
+  --------------------
   call:
     ...(...)                      call
     ...(...=...)                  call with keyword, order not important
 
     ... = ...(...)                call with assignment of return value
-
+  --------------------
   always call after declaration
   if the argument is mutable, changes will be applied to it
 ---------------------------------------------------------------------------------------------------
@@ -543,36 +590,39 @@ FILE HANDLING:
 
     with open("...", "...") as file_object:   closes the file automatically
       ...
-
+  --------------------
   close:
     .close()
-
+  --------------------
   methods:
-    .read(...)                    return string of specified amount of characters, or whole file
+    .mode                         get mode for file
+    .name                         get file name
+    .read(...)                    return string of whole file, optional number of characters
     .readline()                   return string of single line
     .readlines()                  return list of strings of lines
     .write(...)                   return number of characters written after writing
     .seek(..., ...)               move file pointer
     .tell()                       return position of file pointer
-
-  os.path                         module
+  --------------------
+  os:
+    .path                         module
     .isfile(...)                  return true if file exists at path
+    .rename(...)                  rename a file
+    .remove(...)                  delete a file
+    .listdir(r"...")              read filenames in directory
+    .getcwd()                     reads current working directory
+    .chdir(r"...")                switch to the directory
 ---------------------------------------------------------------------------------------------------
 STUFF:
   urllib.urlopen("...")           open a connection to a website
   connection.read()
   connection.close()
-  os.rename()                     rename a file
-  os.listdir(r"...")              read filenames in directory
-  os.getcwd()                     reads current working directory
-  os.chdir(r"...")                switch to the directory
+  
   windows.exitonclick()           close windows on mouse click
 
   .is_integer()                   checks if a float is a whole number                                
 ---------------------------------------------------------------------------------------------------
-
-
-def fizz_buzz(input):
+  def fizz_buzz(input):
     if input % 3 == 0 and input % 5 == 0:
          return "fizzbuzz"
     elif input % 3 == 0:
