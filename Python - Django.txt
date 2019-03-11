@@ -7,6 +7,16 @@ OVERVIEW:
   main urls.py connects urls and urls.py in apps
   app urls.py connects functions in views.py
 ---------------------------------------------------------------------------------------------------
+WORKFLOW:
+  create project
+  create apps
+  create views
+  create app urls
+  create project urls
+  create models
+  make migration
+  migrate
+---------------------------------------------------------------------------------------------------
 SERVER:
   python3 manage.py runserver           run server at localhost:8000
 ---------------------------------------------------------------------------------------------------
@@ -25,25 +35,65 @@ PROJECT:
       wsgi.py                           server entry point
 ---------------------------------------------------------------------------------------------------
 APPS:
+  apps are selfcontained python packages
+  --------------------
   create:
     python3 manage.py startapp myapp    create app inside project folder
   --------------------
   files and folders:
-    __init__.py
-    admin.py
-    apps.py
-    migrations/
+    __init__.py                         indicates paython package
+    admin.py                            admin panel
+    apps.py                             settings
+    migrations/                         migrations
       __init__.py
-    models.py
-    tests.py
-    views.py
+    models.py                           models
+    tests.py                            tests
+    views.py                            views
 ---------------------------------------------------------------------------------------------------
 VIEWS:
-  myapp/views.py:
-    from django.http import HttpResponse
+  response:
+    myapp/views.py:
+      from django.http import HttpResponse
 
-    def index(request):
-      return HttpResponse("Hello world.")
+      def index(request):
+        return HttpResponse("Hello world.")             response text
+  --------------------
+  render:
+    myapp/templates/index.html                          template
+
+    myapp/views.py:
+      from django.http import HttpResponse
+
+      def index(request):
+        data = ...
+        return render(request, "index.html", data)      render template
+  --------------------
+  database:
+    myapp/views.py:
+      from .models import MyModel
+  
+      def index(request):
+        data = MyModel.objects.all()                    all entries
+               MyModel.objects.filter()                 filtered entries
+               MyModel.objects.get()                    single entry
+               MyModel.objects.save()                   create new or update entry
+---------------------------------------------------------------------------------------------------
+TEMPLATES:
+  can receive data from view
+  --------------------
+  folder:
+    myApp/templates/
+  --------------------
+  template tag:
+    {% ... %}                                 code
+    {{ ... }}                                 display data
+  --------------------
+  loop:
+    <ul>
+      {% for product in products %}
+        <li>{{ product.name }}</li>
+      {% endfor %}
+    </ul>
 ---------------------------------------------------------------------------------------------------
 URLS:
   connect a view to a URL with a URLconf
@@ -58,48 +108,61 @@ URLS:
   --------------------
   mysite/urls.py:                                 root URLconf
     from django.contrib import admin
-    from django.urls import include, path
+    from django.urls import path, include
 
     urlpatterns = [
-      path("myapp/", include("myapp.urls")),      link to app URLconf
-      path("admin/", admin.site.urls)
+      path("admin/", admin.site.urls),
+      path("myapp/", include("myapp.urls"))       link to app URLconf
     ]
 ---------------------------------------------------------------------------------------------------
 DATABASES:
   SQLite by default
   --------------------
-  migrate:
-    python3 manage.py migrate
+  migration:
+    build migration from models:
+      python3 manage.py makemigrations myapp
 
-  update model and save as migration:
-    python3 manage.py makemigrations myapp
+    migrate:
+      python3 manage.py migrate
 
-    ...migrate again to apply changes
+    id field is added automatically
   --------------------
   model:
-    myapp/models.py:
+    myapp/models.py:                                      app
       from django.db import models
 
-      class Question(models.Model):
-        question_text = models.CharField(max_length=200)
-        pub_date = models.DateTimeField('date published')
+      class MyModel(models.Model):                        model
+        name = models.CharField(max_length=255)
+        price = models.FloatField()
+        stock = models.IntegerField()
+        image_url = models.CharField(max_length=2083)
 
-      class Choice(models.Model):
-        question = models.ForeignKey(Question, on_delete=models.CASCADE)
-        choice_text = models.CharField(max_length=200)
-        votes = models.IntegerField(default=0)
-
-    mysite/settings.py:
+    mysite/settings.py:                                   project
       INSTALLED_APPS = [
-        "myapp.apps.MyappConfig",                     add model to configuration
-        ...
+        ...,
+        "myapp.apps.MyappConfig"                          enable app
       ]
-  --------------------
-  API:
-    python3 manage.py shell
+---------------------------------------------------------------------------------------------------
+SHELL:
+  python3 manage.py shell
 ---------------------------------------------------------------------------------------------------
 ADMIN:
-  python3 manage.py createsuperuser
+  create admin user:
+    python3 manage.py createsuperuser
+  --------------------
+  open admin panel:
+    access site using /admin
+  --------------------
+  add models to admin panel:
+    myapp/admin.py:                                       app specific
+      from .models import MyModel                         import model
 
-  access site using /admin
+      admin.site.register(MyModel)                        register model with admin
+  --------------------
+  change display in admin panel:
+    myapp/admin.py:
+      class MyAppAdmin(admin.ModelAdmin):
+        list_display = ("name", "price", "stock")         show these columns
+
+      admin.site.register(MyApp, MyAppAdmin)              register model with options with admin
 ---------------------------------------------------------------------------------------------------

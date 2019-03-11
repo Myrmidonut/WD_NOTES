@@ -19,6 +19,8 @@ SCRIPT:
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ---------------------------------------------------------------------------------------------------
 VUE INSTANCE:
+  root element
+  --------------------
   index.html:
     <div id="app">                              element
       {{ message }}
@@ -54,20 +56,23 @@ VUE INSTANCE:
     destroyed
 ---------------------------------------------------------------------------------------------------
 COMPONENTS:
-  index.js:
-    Vue.component("todo-item", {
-      props: [..., ...],
-      data: {...},
-      computed: {...},
-      watch: {...}
-      template: "<li>...</li>",
-      methods: {...: ...}
-    })
-
+  every component gets its own instance
+  one root element
+  --------------------
   index.html:
     <div id="app">
       <todo-item></todo-item>
     </div>
+  --------------------
+  index.js:
+    Vue.component("todo-item", {
+      props: [..., ...],
+      data: function() {return {...}},          has to be a function
+      computed: {...},
+      watch: {...}
+      template: `<li>...</li>`,                 `...` or "..." with newline characters
+      methods: {...: ...}
+    })
 ---------------------------------------------------------------------------------------------------
 INTERPOLATION:
   can contain a single expression
@@ -268,4 +273,11 @@ CLASSES:
       ...: ...
     }
   }
+---------------------------------------------------------------------------------------------------
+STYLE:
+  v-bind:style="{ ... }
+  :style
+---------------------------------------------------------------------------------------------------
+SLOTS:
+
 ---------------------------------------------------------------------------------------------------
