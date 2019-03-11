@@ -31,7 +31,10 @@ VUE INSTANCE:
       el: "#app",                               target element
       data: {                                   data
         message: "Hello Vue"
-      }
+      },
+      computed: {                               computed
+        test: function() {...}
+      },
       methods: {                                method
         reverse: function() {...}
       },
@@ -49,6 +52,22 @@ VUE INSTANCE:
     mounted: function() {...}
     updated
     destroyed
+---------------------------------------------------------------------------------------------------
+COMPONENTS:
+  index.js:
+    Vue.component("todo-item", {
+      props: [..., ...],
+      data: {...},
+      computed: {...},
+      watch: {...}
+      template: "<li>...</li>",
+      methods: {...: ...}
+    })
+
+  index.html:
+    <div id="app">
+      <todo-item></todo-item>
+    </div>
 ---------------------------------------------------------------------------------------------------
 INTERPOLATION:
   can contain a single expression
@@ -69,25 +88,87 @@ INTERPOLATION:
     <div :title="message">                      shorthand
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
-  v-bind:
-    <div v-bind:href="...">
+  v-bind
+  v-if                                          condition
+  v-show                                        condition
+  v-for                                         loop
+  v-on                                          event
+  v-model                                       two way binding
+---------------------------------------------------------------------------------------------------
+CONDITIONAL RENDERING:
+  v-if:                                         if
+    <div v-if="...">                            display if true
+  
+  v-else-if:                                    else if
+    <div v-else-if="...">
+  
+  v-else:                                       else
+    <div v-else>
+  
+  shared elements dont get rerendered
+  key="..." triggers rerender
+  use for rare changes
+  --------------------
+  v-show:                                       v-show
+    <div v-show="...">
 
-    <div :href="...">                           shorthand
-  --------------------
-  v-if:                                         condition
-    <div v-if="seen">                           display if seen == true
-  --------------------
-  v-for:                                        loop
-    <li v-for="todo in todos">                  loop over todos array
-      {{ todo.text }}
+  always rendered, but sets display: none
+  use for many changes
+---------------------------------------------------------------------------------------------------
+LIST RENDERING:
+  array and object:
+    <li v-for="item in items">                  loop over items
+      {{ item.text }}
     </li>
+
+    <li v-for="item of items">                  alternative with of
   --------------------
-  v-on:                                         event
-    <button v-on:click="myFunc">                click event runs method
+  key:
+    v-bind:key="item.id"                        use key for tracking
+  --------------------
+  array:
+    <li v-for="(item, index) in items">         with index
+  --------------------
+  object:
+    <li v-for="(value, key) in items">          with key and value
+  --------------------
+  range:
+    <li v-for="n in 10">                        10 times, starts at 1
+---------------------------------------------------------------------------------------------------
+EVENTS:
+  click:
+    <button v-on:click="myFunc">                runs method
+    <button v-on:click="myFunc(...)">           with argument
+    <button v-on:click="myFunc($event)          access to element
 
     <button @click="myFunc">                    shorthand
     
     <button v-on:click.prevent="myFunc">        prevent default
+  --------------------
+  click modifiers:
+    .stop                                       prevents propagation
+    .prevent                                    disables submit behavior
+    .capture                                    run first when inner element was targeted
+    .self                                       ignore events on inner elements
+    .once
+    .passive
+  --------------------
+  mouse modifiers:
+    .left                                       
+    .right
+    .middle
+  --------------------
+  keyup:
+    <input v-on:keyup.enter="...">
+---------------------------------------------------------------------------------------------------
+FORMS:
+  elements:
+    input
+    textarea
+    select
+
+  default values are ignored
+  syncs after input event
   --------------------
   v-model:                                      two way binding
     data: {
@@ -96,21 +177,24 @@ DIRECTIVES:
 
     {{ message }}
     <input v-model="message">                   input
+  --------------------
+  modifiers:
+    .lazy                                       sync every change
+    .number                                     convert to number
+    .trim                                       remove whitespace
 ---------------------------------------------------------------------------------------------------
-COMPONENTS:
-  index.js:
-    Vue.component("todo-item", {
-      props: [..., ...],
-      template: "<li>...</li>",
-      methods: {
-        ...: ...
-      }
-    })
+ARRAYS:
+  Vue cannot detect changes to individual elements
 
-  index.html:
-    <div id="app">
-      <todo-item></todo-item>
-    </div>
+  data: {
+    items: [1, 2, 3],
+    user: {
+      name: "..."
+    }
+  }
+
+  Vue.set(app.items, index, newValue)           change element
+  Vue.set(app.user, "key", value)               add object property
 ---------------------------------------------------------------------------------------------------
 DATA:
   data: {                                       data storage
@@ -120,7 +204,21 @@ DATA:
 
   this.key1                                     use entry
 ---------------------------------------------------------------------------------------------------
+COMPUTED:
+  runs only when its data has changed
+  uses previous result instead
+  --------------------
+  <div>{{ message }}</div>
+
+  computed: {                                   computed storage
+    message: function() {
+      return ...
+    }
+  }
+---------------------------------------------------------------------------------------------------
 METHODS:
+  runs every time when called
+  --------------------
   methods: {                                    method storage
     key: function() {
       ...
@@ -161,15 +259,13 @@ CLASSES:
   v-bind:class="{..., ...}"                     multiple classes
   v-bind:class="{ active: isActive == true}     show active class if isActive == true
   v-bind:class="[ {...: ...}, ... ]             array
----------------------------------------------------------------------------------------------------
-COMPUTED VALUES:
-  <div :class="theme()"></div>
+  --------------------
+  v-bind:class="myClass"                        alternative
 
-  methods: {
-    theme: function() {
-      return {
-        ...
-      }
+  data: {
+    myClass: {
+      ...: ...,
+      ...: ...
     }
   }
 ---------------------------------------------------------------------------------------------------

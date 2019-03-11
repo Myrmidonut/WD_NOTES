@@ -11,8 +11,9 @@ GENERATOR:
   commands:
     express ...                           create folder containing the app
       --view ...                          adds view engine, default jade
+      --no-view                           no view engine
       --css ...                           add css engine, default none
-        scss: use sass and change app.js
+        scss: use sass and change option in app.js
 
     express -h                            show help
   --------------------
