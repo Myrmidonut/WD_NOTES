@@ -18,9 +18,9 @@ SCRIPT:
   production:
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ---------------------------------------------------------------------------------------------------
-MAIN:
+VUE INSTANCE:
   index.html:
-    <div id="app">
+    <div id="app">                              element
       {{ message }}
     </div>
 
@@ -34,53 +34,63 @@ MAIN:
       }
       methods: {                                method
         reverse: function() {...}
-      }
+      },
+      mounted: function() {...}                 lifecycle hook
     })
 
     app.message = "..."                         change data
+  --------------------
+  changes to data trigger rerender
+  --------------------
+  methods:
+    app.$watch("a", function(new, old) {...})   runs when app.a changes
+  --------------------
+  lifecycle hooks:
+    mounted: function() {...}
+    updated
+    destroyed
+---------------------------------------------------------------------------------------------------
+INTERPOLATION:
+  can contain a single expression
+  --------------------
+  {{ ... }}                                     text
+  --------------------
+  v-text:                                       text
+    <div v-text="message">
+  --------------------
+  v-html:                                       html
+    <div v-html="message">
+  --------------------
+  v-bind:                                       attribute
+    <div v-bind:title="message">
+
+    <div v-bind:disabled="isDisabled">          null, undefined, false
+
+    <div :title="message">                      shorthand
 ---------------------------------------------------------------------------------------------------
 DIRECTIVES:
-  v-text:                                       text
-    <div v-text="message"></div>                {{ message }} alternative
-  --------------------
-  v-html:                                       text with html tags
-    data: {
-      message: "..."
-    }
+  v-bind:
+    <div v-bind:href="...">
 
-    <div v-html="message"></div>
+    <div :href="...">                           shorthand
   --------------------
   v-if:                                         condition
-    data: {
-      seen: true
-    }
-
-    <div v-if="seen">...</div>                  display if seen == true
+    <div v-if="seen">                           display if seen == true
   --------------------
   v-for:                                        loop
-    data: {
-      todos: [
-        { text: "..." },
-        { text: "..." }
-      ]
-    }
-
-    <li v-for="todo in todos">                  loop over array
+    <li v-for="todo in todos">                  loop over todos array
       {{ todo.text }}
     </li>
   --------------------
   v-on:                                         event
-    methods: {
-      reverse: function() {                     function
-        this.message = ...
-      }
-    }
+    <button v-on:click="myFunc">                click event runs method
 
-    {{ message }}
-    <button v-on:click="reverse">...</button>   click event
+    <button @click="myFunc">                    shorthand
+    
+    <button v-on:click.prevent="myFunc">        prevent default
   --------------------
   v-model:                                      two way binding
-    data: {                                     data
+    data: {
       message: "..."
     }
 
@@ -90,13 +100,34 @@ DIRECTIVES:
 COMPONENTS:
   index.js:
     Vue.component("todo-item", {
-      template: "<li>...</li>
+      props: [..., ...],
+      template: "<li>...</li>",
+      methods: {
+        ...: ...
+      }
     })
 
   index.html:
     <div id="app">
       <todo-item></todo-item>
     </div>
+---------------------------------------------------------------------------------------------------
+DATA:
+  data: {                                       data storage
+    key1: value1,
+    key2: value2
+  }
+
+  this.key1                                     use entry
+---------------------------------------------------------------------------------------------------
+METHODS:
+  methods: {                                    method storage
+    key: function() {
+      ...
+    }
+  }
+
+  key()                                         use method
 ---------------------------------------------------------------------------------------------------
 PROPS:
   data gets passed to template via props
@@ -120,4 +151,25 @@ PROPS:
       v-bind:todo="item"                        todo prop
       v-bind:key="item.id">                     required key
     </todo-item>
+---------------------------------------------------------------------------------------------------
+TEMPLATE:
+  <template v-if="true">                        hidden outer element
+    ...
+  </template>
+---------------------------------------------------------------------------------------------------
+CLASSES:
+  v-bind:class="{..., ...}"                     multiple classes
+  v-bind:class="{ active: isActive == true}     show active class if isActive == true
+  v-bind:class="[ {...: ...}, ... ]             array
+---------------------------------------------------------------------------------------------------
+COMPUTED VALUES:
+  <div :class="theme()"></div>
+
+  methods: {
+    theme: function() {
+      return {
+        ...
+      }
+    }
+  }
 ---------------------------------------------------------------------------------------------------
