@@ -1,0 +1,123 @@
+CLI:
+  install:
+    npm install -g @vue/CLI
+
+  create:
+    vue create ...
+
+  server:
+    npm run serve
+
+  build:
+    npm run build
+---------------------------------------------------------------------------------------------------
+SCRIPT:
+  development:
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  --------------------
+  production:
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+---------------------------------------------------------------------------------------------------
+MAIN:
+  index.html:
+    <div id="app">
+      {{ message }}
+    </div>
+
+    <script src="index.js"></script>
+  --------------------
+  index.js:
+    const app = new Vue({                       create instance
+      el: "#app",                               target element
+      data: {                                   data
+        message: "Hello Vue"
+      }
+      methods: {                                method
+        reverse: function() {...}
+      }
+    })
+
+    app.message = "..."                         change data
+---------------------------------------------------------------------------------------------------
+DIRECTIVES:
+  v-text:                                       text
+    <div v-text="message"></div>                {{ message }} alternative
+  --------------------
+  v-html:                                       text with html tags
+    data: {
+      message: "..."
+    }
+
+    <div v-html="message"></div>
+  --------------------
+  v-if:                                         condition
+    data: {
+      seen: true
+    }
+
+    <div v-if="seen">...</div>                  display if seen == true
+  --------------------
+  v-for:                                        loop
+    data: {
+      todos: [
+        { text: "..." },
+        { text: "..." }
+      ]
+    }
+
+    <li v-for="todo in todos">                  loop over array
+      {{ todo.text }}
+    </li>
+  --------------------
+  v-on:                                         event
+    methods: {
+      reverse: function() {                     function
+        this.message = ...
+      }
+    }
+
+    {{ message }}
+    <button v-on:click="reverse">...</button>   click event
+  --------------------
+  v-model:                                      two way binding
+    data: {                                     data
+      message: "..."
+    }
+
+    {{ message }}
+    <input v-model="message">                   input
+---------------------------------------------------------------------------------------------------
+COMPONENTS:
+  index.js:
+    Vue.component("todo-item", {
+      template: "<li>...</li>
+    })
+
+  index.html:
+    <div id="app">
+      <todo-item></todo-item>
+    </div>
+---------------------------------------------------------------------------------------------------
+PROPS:
+  data gets passed to template via props
+
+  index.js:
+    Vue.component("todo-item", {
+      props: ["todo"],                          props
+      template: "<li>{{ todo.text }}</li>       template
+    })
+
+    data: {
+      groceryList: [                            data
+        { id: 0, text: "..." },
+        { id: 1, text: "..." }
+      ]
+    }
+
+  index.html:
+    <todo-item
+      v-for="item in grocerList"                loop
+      v-bind:todo="item"                        todo prop
+      v-bind:key="item.id">                     required key
+    </todo-item>
+---------------------------------------------------------------------------------------------------
