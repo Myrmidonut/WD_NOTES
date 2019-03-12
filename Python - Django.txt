@@ -82,11 +82,37 @@ TEMPLATES:
   can receive data from view
   --------------------
   folder:
-    myApp/templates/
+    templates/
+
+  file:
+    base.html                                     main template page
+
+  settings.py:
+    TEMPLATES = [
+      {
+        'DIRS': [
+          os.path.join(BASE_DIR, "templates")     register templates path
+        ]
+      }
+    ]
   --------------------
   template tag:
-    {% ... %}                                 code
-    {{ ... }}                                 display data
+    {% ... %}                                     code
+    {{ ... }}                                     display data
+  --------------------
+  content blocks:
+    base.html:
+      ...
+      {% block content %}                         render code inside the block
+      {% endblock %}
+      ...
+
+    index.html:
+      {% extends "base.html" %}                   add code to main template file
+
+      {% block content %}                         content block
+        ...
+      {% endblock %}
   --------------------
   loop:
     <ul>
