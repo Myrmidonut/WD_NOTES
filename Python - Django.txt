@@ -9,11 +9,16 @@ OVERVIEW:
 ---------------------------------------------------------------------------------------------------
 WORKFLOW:
   create project
-  create apps
-  create views
-  create app urls
-  create project urls
-  create models
+    create template
+    create project urls
+    adjust settings
+
+  create app
+    create view
+    create template
+    create app urls
+    create model
+
   make migration
   migrate
 ---------------------------------------------------------------------------------------------------
@@ -81,17 +86,16 @@ VIEWS:
 TEMPLATES:
   can receive data from view
   --------------------
-  folder:
-    templates/
+  files:
+    templates/base.html                           project template page
 
-  file:
-    base.html                                     main template page
-
+    myapp/templates/myapp/index.html              app template page
+  --------------------
   settings.py:
     TEMPLATES = [
       {
         'DIRS': [
-          os.path.join(BASE_DIR, "templates")     register templates path
+          os.path.join(BASE_DIR, "templates")     project templates path
         ]
       }
     ]

@@ -144,6 +144,40 @@ projects:
 Campgrounds:
   ---
 --------------------------------------------
+Shopping List:
+  features:
+    shopping list
+      card
+      title
+      collapse toggle
+      archive button
+      text input
+      list of entries
+        entry
+        delete entry
+        edit entry
+        checked off
+    archive
+      card
+      title
+      collapse toggle, collapsed by default
+      list of entries
+      reactivate
+      delete
+    account
+      sign up
+      register
+      email
+      password
+    nav bar
+      home
+      sign up
+      register
+  --------------------
+  set up db
+  set up vue
+  send data as json
+--------------------------------------------
 Etch-a-Sketch:
   features:
     color picker --- DONE
@@ -159,6 +193,7 @@ Etch-a-Sketch:
     show register and login error for unique mail --- DONE
     serverside authentication on saving --- DONE
     load more - buttons for galleries --- DONE
+    favicon --- DONE
 
     removed:
       setting for showing borders around dots --- REMOVED
@@ -171,7 +206,6 @@ Etch-a-Sketch:
       login after register
       show loading on gallery buttons
       minify app.js
-      favicon
 
       gallery title
       gallery owner
