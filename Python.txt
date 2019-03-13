@@ -146,13 +146,13 @@ DATA TYPES:
   dynamically typed               data type is set automatically
   strongly typed                  no automatic type conversion
   --------------------
-  number
-  string
-  list
-  tuple
+  number        0.1
+  string        "..."
+  list          [..., ...]              array
+  tuple         (..., ...)              immutable array
   sequence
-  set
-  dictionary
+  set           {..., ...}              unordered list, unique elements
+  dictionary    {...: ..., ...: ...}    key-value pairs
   --------------------
   boolean:
     bool

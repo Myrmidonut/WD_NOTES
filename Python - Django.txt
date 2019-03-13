@@ -145,7 +145,7 @@ URLS:
       path("myapp/", include("myapp.urls"))       link to app URLconf
     ]
 ---------------------------------------------------------------------------------------------------
-DATABASES:
+MODEL:
   SQLite by default
   --------------------
   migration:
@@ -172,6 +172,17 @@ DATABASES:
         ...,
         "myapp.apps.MyappConfig"                          enable app
       ]
+
+    fields:
+      CharField(max_length=255)
+      FloatField()
+      IntegerField()
+      ForeignKey(..., on_delete=models.CASCADE, null=True)
+      DateField()
+      BooleanField()
+
+      default=False
+      null=True
 ---------------------------------------------------------------------------------------------------
 SHELL:
   python3 manage.py shell
