@@ -98,6 +98,10 @@ VIEWS:
                MyModel.objects.filter()                 filtered entries
                MyModel.objects.get()                    single entry
                MyModel.objects.save()                   create new or update entry
+               MyModel.objects.values("...", "...")     specific fields
+                 "...__..."                             go up to foreign key data
+
+        data = list(MyModel.objects.values())           convert to dictionary for JSON return
 ---------------------------------------------------------------------------------------------------
 FORMS:
   {% csrf_token %}                    for post
