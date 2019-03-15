@@ -174,9 +174,28 @@ Shopping List:
       sign up
       register
   --------------------
-  set up db
-  set up vue
-  send data as json
+  list:
+    new --- DONE
+    update
+      archive --- DONE
+      collapse --- DONE
+      title --- DONE
+
+  entry:
+    new
+    update
+      text
+      amount
+      check
+    delete
+
+  styling
+
+  production build
+
+  host
+    page
+    db
 --------------------------------------------
 Etch-a-Sketch:
   features:

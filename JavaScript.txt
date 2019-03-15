@@ -1074,18 +1074,31 @@ JSON:
   toJSON();
 ---------------------------------------------------------------------------------------------------
 FETCH:
-  fetch(..., {                                              URL
-    method: "post",                                         method
-    body: new URLSearchParams(                              required for post
-        new FormData(formElement)                           data from form
+  let headers = new Headers()                   header           
+  headers.append("X-CSRFToken", ...)
+
+  let body = new FormData()                     body
+  body.append("...", ...)
+
+  fetch("...", {
+    method: "post",                             method
+    headers: headers,
+    body: body
+  })
+  .then(res => res.json())                      response type
+  .then(data => {
+    ...                                         use response
+  .catch()                                      catch error
+  })
+  --------------------
+  alternative:
+    body: new URLSearchParams(                  required for post
+        new FormData(formElement)               data from form
         {
-          name: "test"                                      manual fields
+          name: "test"                          manual fields
         }
       )
     })
-  .then(...)                                                type of response
-  .then(...)                                                use data from response
-  .catch(...)                                               error handling
   --------------------
   fetch object:
     method - GET, POST, PUT, DELETE, HEAD
