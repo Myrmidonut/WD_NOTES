@@ -4,7 +4,7 @@ BIG O NOTATION:
   ------------------------------
   TIME COMPLEXITY:
     how many calculations
-
+    --------------------
     reductions:
       O(2n)           => O(n)
       O(500)          => O(1)
@@ -13,7 +13,7 @@ BIG O NOTATION:
       O(n + 19)       => O(n)
       O(1000n + 50)   => O(n)
       O(n² + 5n + 8)  => O(n²)
-
+    --------------------
     rules:
       arithmetic operation    => constant
       variable assignment     => constant
@@ -23,7 +23,7 @@ BIG O NOTATION:
       loop                    => length of loop times inside of loop
       
       two loops are better than nested loops
-
+    --------------------
     fast                                            slow
     O(1)
       O(log n)
@@ -35,9 +35,10 @@ BIG O NOTATION:
   ------------------------------
   SPACE COMPLEXITY:
     how many items
-
-    auxillary space complexity: only algorithm without inputs
-
+    --------------------
+    auxillary space complexity:
+      only algorithm without inputs
+    --------------------
     rules:
       primitives        => constant
         boolean
@@ -50,13 +51,13 @@ BIG O NOTATION:
   ------------------------------
   LOGARITHM:
     log_2(a) = b  => 2^b = a
-
+    --------------------
     splitting in half:
       log n splits
   ------------------------------
   ARRAYS (JS):
     ordered -> slow
-
+    --------------------
     Access          => O(1)
     Insert
       beginning     => O(n)     .shift
@@ -65,7 +66,7 @@ BIG O NOTATION:
       beginning     => O(n)     .unshift
       end           => O(1)     .pop
     Search          => O(n)     for unsorted
-
+    --------------------
     Methods:
       .push         => O(1)
       .pop          => O(1)
@@ -83,12 +84,12 @@ BIG O NOTATION:
   ------------------------------
   OBJECTS (JS):
     unordered -> very fast
-
+    --------------------
     Access              => O(1)
     Insert              => O(1)
     Remove              => O(1)
     Search              => O(n)
-
+    --------------------
     Methods:
       Object.keys()     => O(n)
       Object.values()   => O(n)
@@ -101,7 +102,7 @@ PROBLEMS:
   break it down
   solve and simplify
   look back and refactor
-
+  --------------------
   UNDERSTAND:
     Restate in own words.
 
@@ -179,7 +180,7 @@ RECURSION:
 
   Javascript:
     function calls are managed by the call stack
-  ------------------------------
+  --------------------
   Example:
     function countDown(num) {
       if (num <= 0) {
@@ -190,7 +191,7 @@ RECURSION:
       num--;
       countDown(num);
     }
-
+  --------------------
   Example:
     function sumRange(num) {
       if (num === 0) return 1;
@@ -210,7 +211,7 @@ SEARCH:
     Best:     O(1)
     Average:  O(n)
     Worst:    O(n)
-  ------------------------------
+  --------------------
   Binary Search:
     divide and conquer
     sorted
@@ -222,14 +223,14 @@ SEARCH:
     Best:     O(1)
     Average:  O(log n)
     Worst:    O(log n)
-  ------------------------------
+  --------------------
   Naive String Search:
     2 loops
     first loops over bigger string
     second loops over smaller string, starts at first loops position
 
     O(n²)
-  ------------------------------
+  --------------------
   KNP:
 
 ---------------------------------------------------------------------------------------------------
@@ -241,20 +242,20 @@ PRIMITIVE SORTS:
   Insertion/Bubble:
     fast on nearly sorted arrays
     good for streams of data
-  ------------------------------
+  --------------------
   BUBBLE SORT:
     largest element moves to the end
 
     compare two elements and swap if wrong order
     check next pair
-
+    --------------------
     Time:
       Best:     O(n)
       Average:  O(n²)
       Worst:    O(n²)
-
+    --------------------
     Space:      O(1)
-
+    --------------------
     Code:
       function bubbleSort(arr) {
         let noSwaps;
@@ -285,14 +286,14 @@ PRIMITIVE SORTS:
     find new smallest element
     move to front afer whole pass
     repeat with next element
-
+    --------------------
     Time:
       Best:     O(n²)
       Average:  O(n²)
       Worst:    O(n²)
-
+    --------------------
     Space:      O(1)
-
+    --------------------
     Code:
       function selectionSort(arr) {
         for (let i = 0; i < arr.length; i++) {
@@ -317,14 +318,14 @@ PRIMITIVE SORTS:
   INSERTION SORT:
     check if next element is bigger than elements in previous subarray
     repeat
-
+    --------------------
     Time:
       Best:     O(n)
       Average:  O(n²)
       Worst:    O(n²)
-
+    --------------------
     Space:      O(1)
-
+    --------------------
     Code:
       function insertionSort(arr) {
         for (let i = 1; i < arr.length; i++) {
@@ -352,7 +353,7 @@ COMPARISON SORTS:
     split in half until single element arrays
     join two arrays and sort them
     repeat joining arrays
-
+    --------------------
     Time:
       Best:     O(n log n)
       Average:  O(n log n)
@@ -360,9 +361,9 @@ COMPARISON SORTS:
 
       O(log n) splits in half
       O(n) comparisons per merge
-
+    --------------------
     Space:      O(n)
-
+    --------------------
     Code:
       function mergeSort(arr) {
         if (arr.length <= 1) return arr;
@@ -414,7 +415,7 @@ COMPARISON SORTS:
     repeat with next main element
 
     Ideally the pivot is the median of the data set.
-
+    --------------------
     Time:
       Best:     O(n log n)
       Average:  O(n log n)
@@ -429,9 +430,9 @@ COMPARISON SORTS:
         sorted data, pivot is minimum or maximum
         O(n) splits
         O(n) comparisons per split
-
+    --------------------
     Space:      O(log n)
-
+    --------------------
     Code:
       function pivot(arr, start = 0, end = arr.length + 1) {
         function swap(array, i, j) {
@@ -475,17 +476,17 @@ RADIX SORT:
   go through list and group elements by last digit, no digit equals 0
   return into list group after group and starting with first inserted element
   loop as many times as digits in longest number
-
+  --------------------
   Time:
     Best:     O(nk)
     Average:  O(nk)
     Worst:    O(nk)
-
+  --------------------
   Space:      O(n + k)
 
-  n: length of array
-  k: number of digits on average
-
+    n: length of array
+    k: number of digits on average
+  --------------------
   Code:
     function getDigit(num, i) {
       return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
@@ -533,7 +534,7 @@ DATA STRUCTURES:
     no random Access
 
     good for insert and delete
-
+    --------------------
     Code:
       class Node {
 
