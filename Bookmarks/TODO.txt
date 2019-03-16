@@ -182,12 +182,12 @@ Shopping List:
       title --- DONE
 
   entry:
-    new
+    new --- DONE
     update
-      text
-      amount
-      check
-    delete
+      text --- DONE
+      amount --- DONE
+      check --- DONE
+    delete --- DONE
 
   styling
 
