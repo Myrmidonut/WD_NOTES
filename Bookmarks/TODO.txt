@@ -189,6 +189,21 @@ Shopping List:
       check --- DONE
     delete --- DONE
 
+  archive:
+    collapse --- DONE
+    restore --- DONE
+
+  collapse:
+    archive --- DONE
+    list --- DONE
+
+  account:
+    frontend
+    backend
+
+  autosave on leaving input field
+  clear inputs after adding new row, new list
+
   styling
 
   production build
