@@ -225,21 +225,9 @@ Notes:
   --------------------
   setup:
     production build --- DONE
-    host
+    host --- DONE
       page --- DONE
       db --- DONE
-
-    pip3 freeze > requirements.txt
-    runtime.txt
-    python manage.py collectstatic
-
-    migrate
-
-    python-decouple
-    psycopg2
-    psycopg2-binary==2.7.7
-    whitenoise
-    gunicorn==19.9.0
 --------------------------------------------
 Etch-a-Sketch:
   features:

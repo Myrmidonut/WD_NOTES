@@ -1,5 +1,6 @@
 INSTALL:
-  pip3 install django
+  create virtual environment first
+  pip install django
 ---------------------------------------------------------------------------------------------------
 OVERVIEW:
   one project with multiple apps
@@ -8,10 +9,13 @@ OVERVIEW:
   app urls.py connects functions in views.py
 ---------------------------------------------------------------------------------------------------
 WORKFLOW:
+  create virtual environment
+
   create project
     create template
     create project urls
     adjust settings
+    create static
 
   create app
     create view
@@ -22,8 +26,84 @@ WORKFLOW:
   make migration
   migrate
 ---------------------------------------------------------------------------------------------------
+PRODUCTION BUILD:
+  pip freeze > requirements.txt            modules used
+    python-decouple
+    psycopg2
+    psycopg2-binary==2.7.7
+    whitenoise
+    gunicorn==19.9.0
+  --------------------
+  runtime.txt                               python version
+    python python-3.7.2
+  --------------------
+  secret keys as environment variables
+  --------------------
+  settings.py
+    DEBUG = False
+
+    ALLOWED_HOSTS = [
+      "127.0.0.1",
+      config("ALLOWED_HOST")
+    ]
+
+    MIDDLEWARE = [
+      'whitenoise.middleware.WhiteNoiseMiddleware'
+    
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    STATIC_URL = '/static/'
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+  --------------------
+  python manage.py collectstatic            build static folder
+  --------------------
+  migrate                                   migrate database
+---------------------------------------------------------------------------------------------------
+LOGGING:
+  settings.py:
+    LOGGING = {
+      'version': 1,
+      'disable_existing_loggers': False,
+      'formatters': {
+        'verbose': {
+          'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+          'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+          'format': '%(levelname)s %(message)s'
+        },
+      },
+      'handlers': {
+        'file': {
+          'level': 'DEBUG',
+          'class': 'logging.FileHandler',
+          'filename': 'mysite.log',
+          'formatter': 'verbose'
+        },
+      },
+      'loggers': {
+        'django': {
+          'handlers':['file'],
+          'propagate': True,
+          'level':'DEBUG',
+        },
+        'MYAPP': {
+          'handlers': ['file'],
+          'level': 'DEBUG',
+        },
+      }
+    }
+---------------------------------------------------------------------------------------------------
+MODULES:
+  Django
+  psycopg2-binary
+  python-decouple
+  whitenoise
+  gunicorn
+---------------------------------------------------------------------------------------------------
 SERVER:
-  python3 manage.py runserver           run server at localhost:8000
+  python manage.py runserver           run server at localhost:8000
 ---------------------------------------------------------------------------------------------------
 PROJECT:
   a project contains multiple apps
@@ -43,7 +123,7 @@ APPS:
   apps are selfcontained python packages
   --------------------
   create:
-    python3 manage.py startapp myapp    create app inside project folder
+    python manage.py startapp myapp    create app inside project folder
   --------------------
   files and folders:
     __init__.py                         indicates paython package
@@ -177,10 +257,10 @@ MODEL:
   --------------------
   migration:
     build migration from models:
-      python3 manage.py makemigrations myapp
+      python manage.py makemigrations myapp
 
     migrate:
-      python3 manage.py migrate
+      python manage.py migrate
 
     id field is added automatically
   --------------------
@@ -212,11 +292,11 @@ MODEL:
       null=True
 ---------------------------------------------------------------------------------------------------
 SHELL:
-  python3 manage.py shell
+  python manage.py shell
 ---------------------------------------------------------------------------------------------------
 ADMIN:
   create admin user:
-    python3 manage.py createsuperuser
+    python manage.py createsuperuser
   --------------------
   open admin panel:
     access site using /admin
