@@ -240,15 +240,6 @@ Notes:
     psycopg2-binary==2.7.7
     whitenoise
     gunicorn==19.9.0
-
-    "ENGINE": "django.db.backends.postgresql_psycopg2",
-    "NAME": "nqaqkcbs",
-    "USER": "nqaqkcbs",
-    "PASSWORD": "9teKKRTlZEz3ICkeX6U5RsNj3b6sQHj-",
-    "HOST": "manny.db.elephantsql.com",
-    "PORT": "5432"
-
-    SECRET_KEY = '_^$#)upmjer0&hbicpl#rz%2oix408v&-ho5pf(0j)z_11@k^-'
 --------------------------------------------
 Etch-a-Sketch:
   features:
