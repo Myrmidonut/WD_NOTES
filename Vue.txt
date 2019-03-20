@@ -17,6 +17,9 @@ SCRIPT:
   --------------------
   production:
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  --------------------
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
 ---------------------------------------------------------------------------------------------------
 VUE INSTANCE:
   root element
@@ -282,3 +285,16 @@ STYLE:
 SLOTS:
 
 ---------------------------------------------------------------------------------------------------
+FILTERS:
+  {{ message | capitalize }}
+  <div v-bind:id="rawId | formatId"></div>
+
+  {{ message | filterA | filterB }}
+
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }

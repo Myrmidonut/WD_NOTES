@@ -144,7 +144,7 @@ projects:
 Campgrounds:
   ---
 --------------------------------------------
-Shopping List:
+Notes:
   features:
     shopping list
       card
@@ -174,43 +174,81 @@ Shopping List:
       sign up
       register
   --------------------
-  list:
-    new --- DONE
-    update
-      archive --- DONE
+  closed issues:
+    list:
+      new --- DONE
+      update
+        archive --- DONE
+        collapse --- DONE
+        title --- DONE
+    entry:
+      new --- DONE
+      update
+        text --- DONE
+        amount --- DONE
+        check --- DONE
+      delete --- DONE
+    archive:
       collapse --- DONE
-      title --- DONE
+      restore --- DONE
+    collapse:
+      archive --- DONE
+      list --- DONE
+    add date in db --- DONE
+      added --- DONE
+      updated --- DONE
+    create string from date in db --- DONE
+    remove amount field --- DONE
+    clear inputs after adding new row, new list --- DONE
+    show checked status --- DONE
+    add user in db --- DONE
+      send username --- DONE
+      send lists based on username --- DONE
+    user in frontend --- DONE
+      sign in --- DONE
+      sign out --- DONE
+      sign up --- DONE
+      reset cookie after sign in --- DONE
+      get all after --- DONE
+        sign in --- DONE
+        sign out --- DONE
+      sign in after sign up --- DONE
+    archive/restore-button --- DONE
+    delete from archive --- DONE
+    favicon --- DONE
+  --------------------
+  open issues:
+    sort lists by date, newest first
+    autosave on leaving input field
 
-  entry:
-    new --- DONE
-    update
-      text --- DONE
-      amount --- DONE
-      check --- DONE
-    delete --- DONE
+    styling --- DONE
+  --------------------
+  setup:
+    production build --- DONE
+    host
+      page --- DONE
+      db --- DONE
 
-  archive:
-    collapse --- DONE
-    restore --- DONE
+    pip3 freeze > requirements.txt
+    runtime.txt
+    python manage.py collectstatic
 
-  collapse:
-    archive --- DONE
-    list --- DONE
+    migrate
 
-  account:
-    frontend
-    backend
+    python-decouple
+    psycopg2
+    psycopg2-binary==2.7.7
+    whitenoise
+    gunicorn==19.9.0
 
-  autosave on leaving input field
-  clear inputs after adding new row, new list
+    "ENGINE": "django.db.backends.postgresql_psycopg2",
+    "NAME": "nqaqkcbs",
+    "USER": "nqaqkcbs",
+    "PASSWORD": "9teKKRTlZEz3ICkeX6U5RsNj3b6sQHj-",
+    "HOST": "manny.db.elephantsql.com",
+    "PORT": "5432"
 
-  styling
-
-  production build
-
-  host
-    page
-    db
+    SECRET_KEY = '_^$#)upmjer0&hbicpl#rz%2oix408v&-ho5pf(0j)z_11@k^-'
 --------------------------------------------
 Etch-a-Sketch:
   features:
