@@ -216,12 +216,10 @@ Notes:
     archive/restore-button --- DONE
     delete from archive --- DONE
     favicon --- DONE
+    autosave on leaving input field --- DONE
   --------------------
   open issues:
     sort lists by date, newest first
-    autosave on leaving input field
-
-    styling --- DONE
   --------------------
   setup:
     production build --- DONE
