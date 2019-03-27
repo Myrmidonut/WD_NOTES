@@ -9,6 +9,7 @@ SETUP:
 NPM:
   basic:
     npm init                      create package.json
+      -y                          with default values
     npm install --save ...        add packages
     node ...                      start server
 

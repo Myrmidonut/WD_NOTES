@@ -4,10 +4,11 @@ DOM:
   background-color -> backgroundColor       naming rules for CSS
 ---------------------------------------------------------------------------------------------------
 LAYERS:
-  window
-  document
-  navigator
-  screen
+  window                    browser tab
+    document                html elements
+    screen                  window dimensions
+
+    navigator
 ---------------------------------------------------------------------------------------------------
 SELECT:
   id:

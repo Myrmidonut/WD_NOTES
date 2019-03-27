@@ -64,8 +64,10 @@ portfolio:
 
     react
     angular
+    vue
 
     laravel
+    django
     node
       express
       passport
@@ -110,6 +112,86 @@ portfolio:
     campgrounds
 
     fcc projects
+---------------------------------------------------------------------------------------------------
+APPLICATION:
+  Bewerbungstext
+  -----
+  linke spalte:
+    persönliche Details
+      github
+      linkedin
+      portfolio
+    skills
+
+  rechte spalte:
+    Projekte
+    Zertifizierungen
+    arbeitserfahrung
+    ausbildung
+  -----
+  Sehr geehrte Herr / Frau ...,
+
+  ich bin ein full stack web developer und bin an Ihrem Unternehmen 
+  als Arbeitgeber interessiert. Ich habe Erfahrung sowohl im Frontend- 
+  als auch im Backend-Bereich, in der Qualitätssicherung, der 
+  Datenvisualisierung und in der Arbeit mit Datenbanken und API 
+  Anbindungen.
+
+  Bei der Gestaltung von Webseiten berücksichtige ich immer die User 
+  Experience und Responsive Design Prinzipien.
+
+  ----
+
+  Ich habe meine Fertigkeiten durch Zertifizierungen im freeCodeCamp 
+  Curriculum und durch Projekte in Eigeninitiative erlangt. Meine 
+  Projekte und Abschlussarbeiten sind auf meinem Portfolio inklusive
+  GitHub Links einsehbar.
+
+  -----
+
+  Meine Projekte sind gezielt auf unterschiedlichen 
+  Frontend-Backend-Kombinationen aufgebaut. Es mir wichtig die Vor- 
+  und Nachteile der unterschiedlichen Umgebungen durch eigene 
+  Erfahrungen zu erkennen und einen Überblick über aktuelle 
+  Möglichkeiten zu behalten.
+  
+  -----
+
+  Im Detail habe ich diese Technologien eingesetzt:
+
+  Frontend:
+    HTML5
+    CSS3
+    Sass
+    JavaScript/TypeScript
+
+    Angular
+    React
+    Vue
+    
+  Backend:
+    Express
+    Laravel
+    Django
+
+    MongoDB
+    SQL
+
+    Node
+    PHP
+    Python
+    Ruby
+
+  Qualitätssicherung und Testing:
+    git
+    Chai
+    Helmet
+
+  Datenvisualisierung:
+    D3
+
+  Details zu den Projekten sind auf meinem Portfolio und unter 
+  GitHub zu sehen.
 ---------------------------------------------------------------------------------------------------
 projects:
   check on sizzy.co

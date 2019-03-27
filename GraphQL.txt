@@ -1,0 +1,30 @@
+OVERVIEW:
+  GraphQL:
+    one endpoint
+    sends flexible data back for a request
+
+  REST:
+    always sends whole data for a request
+    or many small endpoints/complex endpoints
+---------------------------------------------------------------------------------------------------
+QUERY:
+  {
+    query {             operation type
+      user {            endpoint
+        name            requested fields
+        age
+      }
+    }
+  }
+---------------------------------------------------------------------------------------------------
+OPERATION TYPES:
+  query                 retrieve data
+  mutation              manipulate data
+  subscription          realtime data exchange
+---------------------------------------------------------------------------------------------------
+RESOLVERS:
+  server operations
+
+---------------------------------------------------------------------------------------------------
+PLAYGROUND:
+  IDE to interact with a GraphQL API directly

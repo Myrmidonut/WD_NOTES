@@ -405,7 +405,7 @@ SYMBOLS:
   mySym.toString()                              show description
 ---------------------------------------------------------------------------------------------------
 SETS:
-  list of items with no duplicates
+  list of unique elementes
 
   declaration:
     let mySet = new Set()

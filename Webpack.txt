@@ -1,0 +1,302 @@
+bundles files
+---------------------------------------------------------------------------------------------------
+INSTALLATION:
+  npm init
+
+  npm install --save-dev webpack webpack-cli
+---------------------------------------------------------------------------------------------------
+SETUP:
+  package.json:
+    "scripts": {
+      "start": "webpack --config webpack.config.js"       default script
+    }
+  ------------------
+  src/index.js                                            default entry point
+---------------------------------------------------------------------------------------------------
+BUILD:
+  npm start                     build
+
+  dist/                         production folder
+    main.js
+---------------------------------------------------------------------------------------------------
+FILES:
+  export default ...
+
+  import ... from "..."
+---------------------------------------------------------------------------------------------------
+CONFIG:
+  webpack.config.js:
+    const path = require("path")
+
+    module.exports = {
+      mode: "development",                        not minified
+      devtool: "none",                            optional readable code
+      entry: "./src/index.js",                    entry file
+      output: {
+        filename: "main.[contentHash].js",        output file with hash
+        path: path.resolve(__dirname, "dist")     /dist/
+      },
+      plugins: [],                                plugins
+      module: {                                   loaders
+        rules: []
+      }
+    }
+---------------------------------------------------------------------------------------------------
+LOADERS:
+  preprocess files:
+    style:
+      style-loader                                                  adds to DOM
+      css-loader                                                    loads css
+      sass-loader                                                   loads sass
+  ------------------
+  install:
+    npm install --save-dev style-loader css-loader                  install loaders
+      sass-loader node-sass                                         sass
+  ------------------
+  webpack.config.js:
+    module.exports = {
+      module: {
+        rules: [
+          {
+            test: /\.scss$/,                                        file ending
+            use: ["style-loader", "css-loader", "sass-loader"]      loaders, reverse order
+          }
+        ]
+      }
+    }
+  ------------------
+  index.js:
+    import "./main.scss"                                            import scss file
+---------------------------------------------------------------------------------------------------
+CACHE BUSTING:
+  change output filename with hash to force reload
+  needs html-webpack-plugin to find hashed file dynamically
+  ------------------
+  webpack.config.js:
+    module.exports = {
+      output: {
+        filename: "main.[contentHash].js"
+---------------------------------------------------------------------------------------------------
+PLUGINS:
+  webpack.config.js:
+    var HtmlWebpackPlugin = require("html-webpack-plugin")
+
+    module.exports = {
+      plugins: [new HtmlWebpackPlugin()]
+    }
+  ------------------
+  html-webpack-plugin:
+    npm install --save-dev html-webpack-plugin
+
+    create bare index.html file with hashed script
+    can use a template html file
+
+    src/template.html
+
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./src/template.html"
+      })
+    ]
+---------------------------------------------------------------------------------------------------
+DEV / PROD:
+  dev runs from memory
+  prod builds /dist/ folder
+
+  split into:
+    webpack.common.js
+    webpack.prod.js
+    webpack.dev.js
+  ------------------
+  installation:
+    npm install --save-dev webpack-merge
+  ------------------
+  package.json:
+    "scripts": {
+      "start": "webpack --config webpack.dev.js",         npm start
+      "build": "webpack --config webpack.prod.js"         npm run build
+    }
+  ------------------
+  common:                                                 shared code
+    module.exports = {
+      entry: ...
+      module: ...
+      plugins: ...
+    }
+  ------------------
+  prod:
+    const common = require("./webpack.common")            import shared
+    const merge = require("webpack-merge")                merge with shared
+
+    module.exports = merge(common, {
+      mode: "production",
+      output: {
+        filename: "main.[contentHash].js",
+        path: path.resolve(__dirname, "dist")
+      }
+    })
+  ------------------
+  dev:
+    const common = require("./webpack.common")            import shared
+    const merge = require("webpack-merge")                merge with shared
+
+    module.exports = merge(common, {
+      mode: "development",
+      output: {
+        filename: "main.js",
+        path: path.resolve(__dirname, "dist")
+      }
+    })
+---------------------------------------------------------------------------------------------------
+DEV SERVER:
+  reloads page on change
+  ------------------
+  installation:
+    npm install --save-dev webpack-dev-server
+  ------------------
+  webpack.dev.js:
+    "scripts": {
+      "start": "webpack-dev-server --config webpack.dev.js --open"
+    }
+---------------------------------------------------------------------------------------------------
+ASSETS:
+  replace and hash img src filenames
+
+  /src/assets/                        folder
+  ------------------
+  installation:
+    npm install --save-dev html-loader
+    npm install --save-dev file-loader
+  ------------------
+  webpack.common.js:
+    module.exports = {
+      module: {
+        rules: [
+          {
+            test: /\.html$/,
+            use: ["html-loader"]
+          },
+          {
+            test: /\.(svg|png|jpg|gif)$/,
+            use: {
+              loader: "file-loader",
+              options: {
+                name: "[name].[hash].[ext]",
+                outputPath: "imgs"
+              }
+            }
+          }
+        ]
+      }
+    }
+---------------------------------------------------------------------------------------------------
+CLEANUP:
+  remove old hashed build files
+  only for production
+  ------------------
+  installation:
+    npm install --save-dev clean-webpack-plugin
+  ------------------
+  webpack.prod.js:
+    const CleanWebpackPlugin = require("clean-webpack-plugin")
+
+    module.exports = merge(common, {
+      plugins: [
+        new CleanWebpackPlugin()
+      ]
+    })
+---------------------------------------------------------------------------------------------------
+VENDOR:
+  multiple entry points
+
+  main.scss:
+    @import "~bootstrap/scss/bootstrap"
+
+  vendor.js:
+    import "bootstrap"
+
+  ------------------
+  webpack.common.js:
+    module.exports = {
+      entry: {
+        main: "./src/index.js",
+        vendor: "./src/vendor.js"
+      }
+    }
+  ------------------
+  webpack.prod.js:
+    module.exports = merge(common, {
+      output: {
+        filename: "[name].[contentHas].bundle.js"
+      }
+    })
+  ------------------
+  webpack.dev.js:
+    module.exports = merge(common, {
+      output: {
+        filename: "[name].bundle.js"
+      }
+    })
+---------------------------------------------------------------------------------------------------
+CSS:
+  builds css file for production
+  ------------------
+  installation:
+    npm install --save-dev mini-css-extract-css
+  ------------------
+  webpack.dev.js:
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+    module.exports = merge(common, {
+      module: {
+        rules: [
+          {
+            test: /\.scss$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              "css-loader",
+              "sass-loader"
+            ]
+          },
+        ]
+      }
+    })
+---------------------------------------------------------------------------------------------------
+MINIFY:
+  minify css/js/html for production
+  ------------------
+  installation:
+    npm install --save-dev optimize-css-assets-webpack-plugin
+  ------------------
+  webpack.prod.js:
+    const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+    const TerserPlugin = require("terser-webpack-plugin")
+    const HtmlWebpackPlugin = require("html-webpack-plugin")
+
+    module.exports = merge(common, {
+      optimization: {
+        minimizer: [
+          new OptimizeCssAssetsPlugin(),          CSS
+          new TerserPlugin()                      JS
+          new HtmlWebpackPlugin({                 HTML
+            template: "./src/template.html",
+            minify: {
+              removeAttributeQuotes: true,
+              collapseWhitespace: true,
+              removeComments: true
+            }
+          })
+        ]
+      }
+  ------------------
+  webpack.dev.js:
+    const HtmlWebpackPlugin = require("html-webpack-plugin")
+
+    module.exports = merge(common, {
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: "./src/template.html"
+        })
+      ]
+    })
+---------------------------------------------------------------------------------------------------
