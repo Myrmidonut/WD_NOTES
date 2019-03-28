@@ -1,11 +1,17 @@
 OVERVIEW:
-  GraphQL:
-    one endpoint
-    sends flexible data back for a request
+  one endpoint
+  sends flexible data back for a request
 
-  REST:
-    always sends whole data for a request
-    or many small endpoints/complex endpoints
+  schema            describes query type
+  root              contains all resolvers
+  resolver          one resolver per endpoint
+---------------------------------------------------------------------------------------------------
+SETUP:
+  many modules for different languages and frameworks
+
+  Express:
+    express-graphql
+    graphql
 ---------------------------------------------------------------------------------------------------
 QUERY:
   {
@@ -17,14 +23,226 @@ QUERY:
     }
   }
 ---------------------------------------------------------------------------------------------------
-OPERATION TYPES:
-  query                 retrieve data
-  mutation              manipulate data
-  subscription          realtime data exchange
----------------------------------------------------------------------------------------------------
-RESOLVERS:
-  server operations
-
----------------------------------------------------------------------------------------------------
-PLAYGROUND:
+GRAPHIQL:
   IDE to interact with a GraphQL API directly
+
+  app.use("/graphql", graphqlHttp({
+    grapiql: true
+  }))
+
+  /graphql                                default for testing the API
+---------------------------------------------------------------------------------------------------
+DATA TYPES:
+  String
+  Int
+  Float
+  Boolean
+  ID
+
+  [String]                      list of strings
+
+  can be null
+  ...! cannot be null
+---------------------------------------------------------------------------------------------------
+OPERATION TYPES:
+  query                         retrieve data
+  mutation                      manipulate data
+  subscription                  realtime data exchange
+---------------------------------------------------------------------------------------------------
+SCHEMA:
+  describes data types
+  variables
+  functions used in resolvers
+  --------------------
+  const schema = buildSchema(`
+    type Query {
+      name: String
+    }
+  `)
+  --------------------
+  TYPE:
+    type User {
+      id: Int
+      name: String
+    }
+  --------------------
+  QUERY:
+    type Query {                          read data
+      users: [User]                       array of users
+      user(id: Int): User                 single user
+    }
+  --------------------
+  MUTATION:
+    type Mutation {                       change data
+      createUser(name: String): User
+    }
+  --------------------
+  INPUT:
+    type ...Input
+---------------------------------------------------------------------------------------------------
+ROOT:
+  contains resolvers
+  called by the schema
+  --------------------
+  const root = {                                root
+    myFunc: function({arg1, arg2}) {            resolver
+      ...
+      return ...
+    }
+  }
+---------------------------------------------------------------------------------------------------
+FRONTEND:
+  variable:
+    {
+      query: `{
+        hello
+      }
+    }
+
+    body: JSON.stringify({                  fetch body
+      query: "{ hello }"
+    })
+  --------------------
+  function:
+    const first = 1;
+    const second = 2;
+
+    const query = `query MyFunc($first: Int!, $second: Int) {
+      myFunc(arg1: $first, arg2: $second)
+    }`
+
+    body: JSON.stringify({                  fetch body
+      query,
+      variables: { dice, sides },
+    })
+  --------------------
+  example:
+    fetch('/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({query: "{ hello }"})
+    })
+    .then(r => r.json())
+    .then(data => console.log('data returned:', data));
+---------------------------------------------------------------------------------------------------
+EXPRESS:
+  app.js:
+    const express = require("express")
+    const graphqlHttp = require("express-graphql")
+    const { buildSchema } = require("graphql")
+
+    const app = express()
+
+    const schema = buildSchema(`                        schema
+      type Query {
+        name: String!
+      }
+    `)
+
+    const root = {                                      root
+      random: () => {                                   resolver for API endpoint
+        return Math.random()
+      }
+    }
+
+    app.use("/graphql", graphqlHttp({                   use GraphQL
+      schema: schema
+      rootValue: root
+      graphiql: true
+    }))
+
+    app.listen(3000)
+---------------------------------------------------------------------------------------------------
+EXAMPLE:
+  const express         = require('express');
+  const graphqlHTTP     = require('express-graphql');
+  const { buildSchema } = require('graphql');
+
+  // Construct a schema, using GraphQL schema language
+  const schema = buildSchema(`
+    input MessageInput {
+      content: String
+      author: String
+    }
+
+    type Message {
+      id: ID!
+      content: String
+      author: String
+    }
+
+    type Query {
+      getMessage(id: ID!): Message
+    }
+
+    type Mutation {
+      createMessage(input: MessageInput): Message
+      updateMessage(id: ID!, input: MessageInput): Message
+    }
+  `);
+
+  // If Message had any complex fields, we'd put them on this object.
+  class Message {
+    constructor(id, {content, author}) {
+      this.id = id;
+      this.content = content;
+      this.author = author;
+    }
+  }
+
+  // Maps username to content
+  let fakeDatabase = {};
+
+  const root = {
+    getMessage: function ({id}) {
+      if (!fakeDatabase[id]) {
+        throw new Error('no message exists with id ' + id);
+      }
+      return new Message(id, fakeDatabase[id]);
+    },
+
+    createMessage: function ({input}) {
+      // Create a random id for our "database".
+      const id = require('crypto').randomBytes(10).toString('hex');
+
+      fakeDatabase[id] = input;
+      return new Message(id, input);
+    },
+
+    updateMessage: function ({id, input}) {
+      if (!fakeDatabase[id]) {
+        throw new Error('no message exists with id ' + id);
+      }
+
+      // This replaces all old data, but some apps might want partial update.
+      fakeDatabase[id] = input;
+      return new Message(id, input);
+    },
+  };
+
+  const app = express();
+  
+  app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  }));
+
+  app.listen(4000, () => {
+    console.log('Running a GraphQL API server at localhost:4000/graphql');
+  });
+
+  // frontend:
+
+  mutation {
+    createMessage(input: {
+      author: "andy",
+      content: "hope is a good thing",
+    }) {
+      id
+    }
+  }
+---------------------------------------------------------------------------------------------------
