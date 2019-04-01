@@ -164,3 +164,7 @@ STUFF:
   document.documentElement.clientWidth
 
   document.title
+
+  button > * {                              eventlistener on button with i inside
+    pointer-events: none;
+  }
