@@ -157,6 +157,10 @@ EVENT BUBBLING:
   event delegation:
     multiple elements with same behaviour: one event on the parent and bubble each child
 ---------------------------------------------------------------------------------------------------
+LOADING:
+  window.onload = myFunc                    when the whole page with css and scripts is loaded
+  document.onload = myFunc                  when the DOM is loaded
+---------------------------------------------------------------------------------------------------
 STUFF:
   .innerWidth
   .innerHeight
