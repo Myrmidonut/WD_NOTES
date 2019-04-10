@@ -4,6 +4,134 @@ INSTALLATION:
   npm init
 
   npm install --save-dev webpack webpack-cli
+
+  all in one:
+    npm install --save-dev webpack webpack-cli style-loader css-loader sass-loader node-sass 
+    html-webpack-plugin webpack-merge webpack-dev-server html-loader file-loader 
+    clean-webpack-plugin mini-css-extract-plugin optimize-css-assets-webpack-plugin
+    --------------------
+    files:
+      src/assets/
+      src/index.js
+        import "./main.scss"
+      src/vendor.js
+      src/main.scss
+      src/template.html
+    --------------------
+    package.json:
+      "scripts": {
+        "start": "webpack-dev-server --config webpack.dev.js --open",
+        "build": "webpack --config webpack.prod.js",
+    --------------------
+    webpack.common.js:
+      module.exports = {
+        entry: {
+          main: "./src/index.js",
+          vendor: "./src/vendor.js"
+        },
+        module: {
+          rules: [
+            {
+              test: /\.html$/,
+              use: ["html-loader"]
+            },
+            {
+              test: /\.(svg|png|jpg|gif)$/,
+              use: {
+                loader: "file-loader",
+                options: {
+                  name: "[name].[hash].[ext]",
+                  outputPath: "imgs"
+                }
+              }
+            }
+          ]
+        }
+      }
+    --------------------
+    webpack.dev.js:
+      const path = require("path")
+      const common = require("./webpack.common")
+      const merge = require("webpack-merge")
+      const HtmlWebpackPlugin = require("html-webpack-plugin")
+
+      module.exports = merge(common, {
+        mode: "development",
+        output: {
+          filename: "[name].bundle.js",
+          path: path.resolve(__dirname, "dist")
+        },
+        module: {
+          rules: [
+            {
+              test: /\.scss$/,
+              use: [
+                "style-loader",
+                "css-loader",
+                "sass-loader"
+              ]
+            }
+          ]
+        },
+        plugins: [
+          new HtmlWebpackPlugin({
+            template: "./src/template.html"
+          })
+        ]
+      })
+    --------------------
+    webpack.prod.js:
+      const path = require("path")
+      const common = require("./webpack.common")
+      const merge = require("webpack-merge")
+      const CleanWebpackPlugin = require("clean-webpack-plugin")
+      const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+      const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+      const TerserPlugin = require("terser-webpack-plugin")
+      const HtmlWebpackPlugin = require("html-webpack-plugin")
+
+      module.exports = merge(common, {
+        mode: "production",
+        output: {
+          filename: "[name].[contentHas].bundle.js",
+          path: path.resolve(__dirname, "dist")
+        },
+        optimization: {
+          minimizer: [
+            new OptimizeCssAssetsPlugin(),
+            new TerserPlugin(),
+            new HtmlWebpackPlugin({
+              template: "./src/template.html",
+              minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                removeComments: true
+              }
+            })
+          ]
+        },
+        plugins: [
+          new MiniCssExtractPlugin({
+            filename: "[name].[contentHash].css"
+          }),
+          new CleanWebpackPlugin(),
+          new HtmlWebpackPlugin({
+            template: "./src/template.html"
+          })
+        ],
+        module: {
+          rules: [
+            {
+              test: /\.scss$/,
+              use: [
+                MiniCssExtractPlugin.loader,
+                "css-loader",
+                "sass-loader"
+              ]
+            },
+          ]
+        }
+      })
 ---------------------------------------------------------------------------------------------------
 SETUP:
   package.json:
@@ -13,8 +141,9 @@ SETUP:
   ------------------
   src/index.js                                            default entry point
 ---------------------------------------------------------------------------------------------------
-BUILD:
-  npm start                     build
+RUN:
+  npm start                     development, start script
+  npm run build                 production, build script
 
   dist/                         production folder
     main.js
@@ -242,7 +371,7 @@ CSS:
   builds css file for production
   ------------------
   installation:
-    npm install --save-dev mini-css-extract-css
+    npm install --save-dev mini-css-extract-plugin
   ------------------
   webpack.dev.js:
     const MiniCssExtractPlugin = require("mini-css-extract-plugin")

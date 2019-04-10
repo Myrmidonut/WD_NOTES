@@ -1,25 +1,29 @@
-FILES:
-  +-app
-  | +-assets
-  | | +-images
-  | | +-javascripts
-  | | +-stylesheets
-  | +-controllers
-  | +-helpers
-  | +-mailers
-  | +-models
-  | +-views
-  +-config
-  +-db
-  +-features
-  +-lib
-  +-log
-  +-public
-  +-script
-  +-spec
----------------------------------------------------------------------------------------------------
-VERSION:
-  5.2.0 (9. April 2018)
+FILES AND FOLDERS:
+  app/                      project files
+    assets/
+      images/
+      javascripts/
+      stylesheets/
+    controllers/
+    models/
+    views/
+  bin/                      start scripts
+  config/                   routes, database configs
+  db/                       database schema, migration
+  lib/                      modules
+  log/                      logging
+  public/                   static files, assets
+  storage/
+  test/                     tests
+  tmp/                      temporary files
+  vendor/                   third party files
+  --------------------
+  .ruby-version             ruby version
+  Gemfile                   gem dependencies
+  package.json              npm dependencies
+  Rakefile                  tasks
+  --------------------
+  .erb                      embedded ruby, html + ruby
 ---------------------------------------------------------------------------------------------------
 MVC:
   Model           ActiveRecord                      data
@@ -31,48 +35,146 @@ MVC:
   actions collect information for the view
   view only displays information
 ---------------------------------------------------------------------------------------------------
-create rails application:
-  rails new ...
+COMMANDS:
+  project:
+    rails new myproject                       create project
+    rails new myproject --api                 create project as API
 
-start server inside rails application folder:
-  bin/rails server                      unix
-  ruby bin\rails server                 windows
+  server:
+    rails s                                   start server
 
-  http://localhost:3000                 local server address
+  console:
+    rails c                                   open console
 
-minimum: controller + view
+  controller:
+    rails g controller Mycontroller index     create controller and view
 
-create controller named Welcome, with action named index:
-  ruby bin\rails generate controller Welcome index
+  model:
+    rails g model Mymodel                     create model
+
+  database:
+    rails db:migrate                          migrate
+    rails db:seed                             seed
+    rails db                                  open db console
 ---------------------------------------------------------------------------------------------------
-CONTROLLER FILE:
-  app/controllers/pages_controller.rb     controller file
-    def home                              name of the page
+PROJECT:
+  create:
+    rails new ...                         create new project
+    rails new ... --api                   create as API only
+  --------------------
+  serve:
+    rails server                          start server
+    rails s                               shortcut
+
+    http://localhost:3000                 local server address
+---------------------------------------------------------------------------------------------------
+CONTROLLER:
+  create:
+    rails generate controller Welcome index         create controller, route and view
+    rails g controller Welcome index                shortcut
+  --------------------
+  app/controllers/welcome_controller.rb             controller
+    def index
+      articles = Article.order("created_at DESC")
     end
 
-    def about
+    def show
+      article = Article.find(params[:id])
     end
 ---------------------------------------------------------------------------------------------------
-VIEWS FILE:
-  app/views/pages/home.html.erb           matches controller name
-  app/views/pages/about.html.erb
+VIEW:
+  app/views/welcome/index.html.erb        matches controller name
+  --------------------
+  <% ... %>                               ruby without output
+  <%= ... %>                              ruby with output
+  <%# ... %>                              comment
 ---------------------------------------------------------------------------------------------------
-ROUTES FILE:
-  config/routes.rb                        matches controller names
+MODEL:
+  app/models/...
+  --------------------
+  create:
+    rails g model MyModel ...:...         create model and migration with fields
+      string
+      text
+      references
+      integer
+      boolean
+      timestamps
+  --------------------
+  required:                               inside model
+    validates :title, presence: true
+    validates :body, presence: true
+---------------------------------------------------------------------------------------------------
+MIGRATION:
+  db/migrate/...
+  --------------------
+  migrate:
+    rails db:migrate                      run migration files
+---------------------------------------------------------------------------------------------------
+FAKER:
+  create dummy data for db
+  --------------------
+  Gemfile:
+    group :development do
+      gem "faker"                         add Faker gem
+    end
+
+  bundle install                          install Faker gem
+  --------------------
+  db/seeds.rb:
+    5.times do                            setup dummy data
+      Article.create({
+        title: Faker::Book.title,
+        body: Faker::Lorem.sentence
+      })
+    end
+  --------------------
+  rails db:seed                           populate database
+---------------------------------------------------------------------------------------------------
+ROUTE:
+  rails routes                            list all routes
+  --------------------
+  config/routes.rb:                       matches controller names
     Rails.application.routes.draw do            
       get 'welcome/index'                 requests to welcome/index go to welcome controller index
       root 'welcome#index'                requests to root go to welcome controller index
     end
 ---------------------------------------------------------------------------------------------------
-Chain of accessing the website:
-  routes.rb -> pages_controller.rb -> home.html.erb
+API:
+  rails new ... --api
+  --------------------
+  app/controllers/api/v1/articles_controller.rb:
+    module Api
+      module V1
+        class ArticlesController < ApplicationController
+          def index
+            articles = Article.order("created_at DESC");
+
+            render json: {
+              status: "success",
+              message: "Loaded articles",
+              data: articles
+            }, status: ok
+          end
+        end
+      end
+    end
+  --------------------
+  consig/routes.rb:
+    Rails.application.routes.draw do
+      namespace "api" do
+        namespace "v1" do
+          resources :articles
+        end
+      end
+    end
 ---------------------------------------------------------------------------------------------------
-
-
-
-
-app/views/layouts/application.html.erb
-  <body>
-    <%= yield %>                        home.html.erb gets injected
------
-app/assets/stylesheets/application.css  CSS file
+STUFF:
+  chain of accessing the website:
+    routes.rb -> pages_controller.rb -> home.html.erb
+  --------------------
+  app/views/layouts/application.html.erb
+    <body>
+      <%= yield %>                        home.html.erb gets injected
+  --------------------
+  app/assets/stylesheets/application.css  CSS file

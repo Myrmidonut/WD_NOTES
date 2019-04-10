@@ -53,6 +53,25 @@ GITHUB:
       **...**                       bold
       *...*                         cursive
 ---------------------------------------------------------------------------------------------------
+GITIGNORE:
+  .gitignore                        filename
+
+  #...                              comment
+
+  example:
+    # env
+    *.env
+
+    # compiled output
+    /dist
+
+    # dependencies
+    /node_modules
+
+    # System Files
+    .DS_Store
+    Thumbs.db
+---------------------------------------------------------------------------------------------------
 SHORT VERSION:
   git init                          create .git folder
   git status                        show changes
