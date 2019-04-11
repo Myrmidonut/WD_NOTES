@@ -1,3 +1,9 @@
+SETUP:
+  install ruby
+
+  gem install bundler
+  gem install rails
+---------------------------------------------------------------------------------------------------
 FILES AND FOLDERS:
   app/                      project files
     assets/
@@ -40,6 +46,9 @@ COMMANDS:
     rails new myproject                       create project
     rails new myproject --api                 create project as API
 
+  gems:
+    bundle install                            install from Gemfile
+
   server:
     rails s                                   start server
 
@@ -73,7 +82,7 @@ CONTROLLER:
     rails generate controller Welcome index         create controller, route and view
     rails g controller Welcome index                shortcut
   --------------------
-  app/controllers/welcome_controller.rb             controller
+  app/controllers/welcome_controller.rb:            controller
     def index
       articles = Article.order("created_at DESC")
     end
@@ -160,7 +169,7 @@ API:
       end
     end
   --------------------
-  consig/routes.rb:
+  config/routes.rb:
     Rails.application.routes.draw do
       namespace "api" do
         namespace "v1" do
@@ -168,6 +177,10 @@ API:
         end
       end
     end
+  --------------------
+  authentication:
+    rails g model User name email password_digest
+    rails db:migrate
 ---------------------------------------------------------------------------------------------------
 STUFF:
   chain of accessing the website:
