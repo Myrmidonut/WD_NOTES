@@ -54,6 +54,7 @@ COMMANDS:
 
   console:
     rails c                                   open console
+    exit                                      close console
 
   controller:
     rails g controller Mycontroller index     create controller and view
@@ -105,14 +106,18 @@ MODEL:
     rails g model MyModel ...:...         create model and migration with fields
       string
       text
-      references
+      references                          links to another model
       integer
       boolean
       timestamps
   --------------------
-  required:                               inside model
-    validates :title, presence: true
-    validates :body, presence: true
+  user.rb:
+    class User < ApplicationRecord
+      has_secure_password                 for bcrypt
+
+      validates :name, presence: true
+      validates :email, presence: true, uniqueness: true
+    end
 ---------------------------------------------------------------------------------------------------
 MIGRATION:
   db/migrate/...
