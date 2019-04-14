@@ -135,15 +135,6 @@ NUMBERS:
 
     srand x                       enter a seed, following random numbers stay the same for this seed
     rand
-
-  math:
-    Math::PI                      pi
-    Math::E                       e
-    Math.sin(...)                 sin
-    Math.cos(...)                 cos
-    Math.tan(...)                 tan
-    Math.log(...)                 log
-    Math.sqrt(...)                root
 ---------------------------------------------------------------------------------------------------
 STRINGS:
   declaration:
@@ -504,23 +495,30 @@ BLOCK:
     end
 ---------------------------------------------------------------------------------------------------
 MATH:
-  Math.sqrt(...)                            square root
+  Math::PI                      pi
+  Math::E                       e
+  Math.sin(...)                 sin
+  Math.cos(...)                 cos
+  Math.tan(...)                 tan
+  Math.log(...)                 log
+  Math.sqrt(...)                square root
 ---------------------------------------------------------------------------------------------------
 FILES:
   create:
     myFile = File.new("...", "w")
+
+  read:
+    myFile = File.read("...")
 
   write:
     myFile.puts("...")
 
   close:
     myFile.close                            required after write
-
-  read:
-    myFile = File.read("...")
-
-  load "..."                                execute file
-
+  
+  load:
+    load "..."                              execute code from file
+  --------------------
   File.open("...") do |i|
     ...
   end
