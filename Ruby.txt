@@ -33,6 +33,7 @@ COMMENTS:
 ---------------------------------------------------------------------------------------------------
 OUTPUT:
   print ...                     without linebreak
+  printf ...                    with format
   puts ...                      with linebreak, converts to string first
 ---------------------------------------------------------------------------------------------------
 INPUT:
@@ -204,25 +205,36 @@ STRINGS:
 ---------------------------------------------------------------------------------------------------
 SYMBOLS:
   :my_symbol                      stored only once, referenced, saves data
+
+  a simple string, its name is the value
 ---------------------------------------------------------------------------------------------------
 ARRAYS:
   declaration:
-    my_array = ["a", 1, true, [1,2]]   create array
+    my_array = ["a", 1, true, [1,2]]    create array
   --------------------
   entries:
-    my_array[0]                        access to entries
+    my_array[0]                         access to entries
+    my_array[0, 2]                      array with two elements from index 0
   --------------------
   methods:
-    my_array << ...                 add an entry to the end
-    .push(...)                      add an entry to the end, more common
-    .unshift(...)                   add an entry to the front
-    .shift                          remove the first entry
-    .pop                            remove the last entry
+    .length                         number of elements
+    .size                           alternative
 
-    .first                          first entry
-    .last                           access the last entry
-    .max                            show highest entry
-    .include?(...)                  check if an entry is present, returns true
+    .push(..., ...)                 add entries to end, return array
+    .unshift(..., ...)              add entries to front, return array
+    .shift                          remove and return first element
+    .shift(...)                     remove number of entries, return array
+    .pop                            remove and return last element
+    .pop(...)                       remove number of entries, return array
+    .concat(...)                    add array to the end, return array
+
+    .first                          return first element
+    .last                           return last element
+    .max                            return highest element
+    .include?(...)                  return true if element exists
+    .values_at(..., ...)            return array with elements at indexes
+    .count(...)                     return number of found elements
+    .empty?                         return true if empty array
 
     .sort                           sort lowest to highest
     .shuffle                        randomize order
@@ -236,44 +248,105 @@ ARRAYS:
     .chars
 ---------------------------------------------------------------------------------------------------
 HASH:
+  key-value pairs
+  --------------------
   declaration:
     my_hash = Hash.new(0)                         create hash
   
     my_hash = {test1: "...", test2: "..."}        key and value pairs
-    my_hash = {"..." => "...", "..." => "..."}    old style, hashrocket: =>
+    my_hash = {"..." => "...", "..." => "..."}    alternative, hashrocket
   --------------------
   access:
-    my_hash[:test1]                               output values of a key
+    my_hash[:...]                                 get value of key
+    my_hash[:...] = ...                           create pair
   --------------------
   methods:
     .keys                                         list of keys
     .values                                       list of values
     .length                                       amount of pairs
+
+    .delete(:...)                                 remove pair and return value
+
+    .has_key?(:...)                               return true if key exists
+    .has_value?(...)                              return true is value exists
+    .empty?                                       return true if empty
+    .size                                         return number of pairs
+
+    .update(...)                                  overwrite with new hash
+    .merge(...)                                   merge with new hash
 ---------------------------------------------------------------------------------------------------
-TIME:
-  Time.new                                        current time
-  Time.mktime(year, month, day, hour, minute)     specific time, one or more entries, rest are 0
+ENUMERABLES:
+  iterable special class
+  --------------------
+  class My_enum
+    include Enumerable
 
-  my_time + x                                     add seconds
----------------------------------------------------------------------------------------------------
-CLASS:
-  class my_object
-    attr_accessor :..., :...          define attributes for instances
-
-    def initialize                    called at creation
-      @... = ...
-    end
-
-    def my_method                     define methods
-      @var                            local instance variable
-      ...
+    def each
+      yield "..."
+      yield "..."
     end
   end
+
+  enum_inst = My_enum.new
+
+  enum_inst.each do |i|
+    ...
+  end
+---------------------------------------------------------------------------------------------------
+CLASS:
+  class:
+    class My_class
+      attr_accessor :..., :...        getter and setter
+
+      def initialize                  called at creation
+        @... = ...
+      end
+
+      def get_name                    getter alternative
+        @name
+      end
+
+      def set_name(new_name)          setter alternative
+        @name = new_name
+      end
+
+      def my_method                   method
+        @var                          local instance variable
+        ...
+      end
+    end
   --------------------
   instance:
-    my_instance = my_object.new       create instance
+    my_instance = My_class.new        create instance
 
     my_instance.my_method             call method on instance
+  --------------------
+  inheritance:
+    class My_sub_class < My_class     inherit everything from parent
+      def my_method                   override methods
+        ...
+      end
+    end
+  --------------------
+  @...                                instance variable
+  @@...                               class variable
+---------------------------------------------------------------------------------------------------
+MODULES:
+  My_module.rb:
+    module My_module                  create module
+      attr_accessor :name, :...
+
+      def my_method
+        puts self.name
+      end
+    end
+  --------------------
+  import with filename:
+    require "my_module"               for gems
+    require_relative "my_module"      relative path to current file
+  --------------------
+  import in class:
+    include My_module                 import methods into class
 ---------------------------------------------------------------------------------------------------
 CONDITION:
   if:
@@ -347,13 +420,13 @@ LOOPS:
       ...
     end
 
+    my_hash.each do |key, value|                loop over hash with counters
+      ...
+    end
+
     myArray.each {                              shorthand
       |i| ...
     }
-
-    my_hash.each do |k, v|                      loop over hash, key and value
-      ...
-    end
   --------------------
   .map:
     my_array.map { |i| i + 10 }                 create a new array from output
@@ -396,27 +469,6 @@ EXCEPTIONS:
     ...
   end
 ---------------------------------------------------------------------------------------------------
-CLASSES:
-  class myClass                             capital letter is common for class names
-    attr_accessor :test                     
-
-    def initialize(.., ..)                  optional
-      @myVar = ...                          instance variable, needs @
-    end
-
-    def myMethod
-      ...
-    end
-  end
-  --------------------
-  @...                                      instance variable
-  @@...                                     class variable
-  --------------------
-  test = myClass.new                        create a new object
-  test.myMethod
-  --------------------
-  test.inspect                              show the values of the object
----------------------------------------------------------------------------------------------------
 PROC:
   declaration:
     my_proc = Proc.new do |...|             with parameter |...|
@@ -451,28 +503,31 @@ BLOCK:
       ...
     end
 ---------------------------------------------------------------------------------------------------
-INHERITANCE:
-  class Admin < User                        Admin gets all methods from User
-    def method                              method from User
-      super                                 add new statements to the method
-      statement
-    end
-  end
-  admin_user = Admin.new("Jane", "Smith")
-  puts admin_user.inspect
-  admin_user.say_name
----------------------------------------------------------------------------------------------------
-USEFUL METHODS:
+MATH:
   Math.sqrt(...)                            square root
 ---------------------------------------------------------------------------------------------------
 FILES:
-  myFile = File.new("...", "w")             create file
+  create:
+    myFile = File.new("...", "w")
 
-  myFile.puts("...")                        write to file
+  write:
+    myFile.puts("...")
 
-  myFile.close                              close file
+  close:
+    myFile.close                            required after write
 
-  myFile = File.read("...")                 read file
+  read:
+    myFile = File.read("...")
 
   load "..."                                execute file
+
+  File.open("...") do |i|
+    ...
+  end
+---------------------------------------------------------------------------------------------------
+TIME:
+  Time.new                                        current time
+  Time.mktime(year, month, day, hour, minute)     specific time, one or more entries, rest are 0
+
+  my_time + x                                     add seconds
 ---------------------------------------------------------------------------------------------------
