@@ -5,66 +5,65 @@ COMMANDS:
   irb                           open interactive ruby shell
     clear
     exit
-
+  --------------------
   ruby ...                      open file
   ruby -v                       version
-
+  --------------------
   rvm:
     rvm list known
     rvm install ruby-2.4.2
-
+  --------------------
   gem:
-    gem search ...                search gem
-    gem install ...               install gem with dependencies
-    gem uninstall ...             uninstall gem
-    gem list                      show installed gem
-    gem server                    show doc for installed gems in browser
-    gem fetch ...                 download gem without installing
-    gem unpack ...                extract gem
+    gem search ...              search gem
+    gem install ...             install gem with dependencies
+    gem uninstall ...           uninstall gem
+    gem list                    show installed gem
+    gem server                  show doc for installed gems in browser
+    gem fetch ...               download gem without installing
+    gem unpack ...              extract gem
 
-    ri ...                        show doc for installed gem
+    ri ...                      show doc for installed gem
 ---------------------------------------------------------------------------------------------------
 COMMENTS:
   # ...                         single line
+  
   =begin                        multiple lines
     ...
   =end
 ---------------------------------------------------------------------------------------------------
-LOGIC:
-  <                             smaller
-  >                             greater
-  <=                            smaller equal
-  >=                            greater equal
-  ==                            equal
-  !=                            not equal
-  && / and                      and
-  || / or                       or
-  !  / not                      not
-
-  comparing string:
-    z > a
-    A > a
-    Z > A
----------------------------------------------------------------------------------------------------
 OUTPUT:
-  print                         output without linebreak
-    print "\"                   create linebreak
-
-  puts                          output with linebreak, converts to string first
-    puts "abc" + "123"          concatenation
-    puts "test #{test}"         output test and the value of variable test 
+  print ...                     without linebreak
+  puts ...                      with linebreak, converts to string first
 ---------------------------------------------------------------------------------------------------
 INPUT:
-  gets                          takes input including enter
+  gets                          read input including enter
   gets.chomp                    cuts of enter
+---------------------------------------------------------------------------------------------------
+DATA TYPES:
+  everything is an object
+  .class                        check data type
+  --------------------
+  number
+    integer
+      Bignum
+      Fixnum
+    float
+  boolean
+  string
+  hash
+  array
+  symbol
+  --------------------
+  nil                           empty value
 ---------------------------------------------------------------------------------------------------
 VARIABLES:
   string_case_is_used
 
-  my_var = 1                    number
-  my_var = "test"               string
+  assignment:
+    my_var = ...
 
-  nil                           empty value
+  constant:
+    MY_CONST = ...              warning for changes
 ---------------------------------------------------------------------------------------------------
 SCOPE:
   local                         method
@@ -77,18 +76,54 @@ CONVERSION:
   .to_i                         to integer, round down, until isnt possible and stops there, or zero
   .to_f                         to float
   .to_a                         to array
+  .to_sym                       to symbol
+---------------------------------------------------------------------------------------------------
+COMPARISON:
+  <                             smaller
+  >                             greater
+  <=                            smaller equal
+  >=                            greater equal
+  ==                            equal
+  !=                            not equal
+  --------------------
+  comparing strings:
+    z > a
+    A > a
+    Z > A
+---------------------------------------------------------------------------------------------------
+LOGIC:
+  &&                            and
+  and
+
+  ||                            or
+  or
+
+  !                             not
+  not
+---------------------------------------------------------------------------------------------------
+ARITHMETIC:
+  +
+  -
+  *
+  /
+  **                            exponent
+  %                             modulus
+---------------------------------------------------------------------------------------------------
+BOOLEAN:
+  true:
+    0
+  
+  false:
+    nil
 ---------------------------------------------------------------------------------------------------
 NUMBERS:
-  integer and float:
-    20                            integer
-    20.0                          float
+  integer:
+    20
+    9/2 = 4
 
-    integers stay as integers:
-      9/2 = 4
-
-  operators:
-    **                            exponent
-    %                             modulus
+  float:
+    20.0
+    9/2 = 4.5
 
   format:
     "%02d", 5 == "05"             d: integer, 0: lead with zeros, 2: take up 2 characters
@@ -112,6 +147,7 @@ NUMBERS:
 STRINGS:
   declaration:
     my_string = "..."             create string
+    my_string = '...'
 
   substring:
     my_string[0..4]               substring
@@ -126,21 +162,40 @@ STRINGS:
 
   methods:
     .length                       length of string
+    .size                         alternative
+
+    .count("...")                 count listed characters
+    .count("^...")                count not listed characters
+    .include?("...")              check if contains string
+    .start_with?("...")           check if starts with string
+    .index("...", ...)            return index of first occurence, optional start
+    .equal?("...")                check if equal
 
     .capitalize                   first character upper case
     .downcase                     all lower case
     .upcase                       all upper case
     .swapcase                     alternate upper and lower
 
+    .lstrip                       remove whitespace at the start
+    .rstrip                       remove whitespace at the end
+    .strip                        remove whitespace at start and end
+
+    .chop                         remove last character
+    .chomp("...")                 remove specified last characters
+    .delete("...")                remove all specified characters
+
     .split                        split into array at spaces
-      .split(",")                 split at ,
+    .split("...")                 split at characters
 
     .sub("...","...")             find and replace first
     .gsub("...","...")            find and replace all
 
-    .center(...)                  center string, with line length
-    .ljust ...                    aligned left, with line length as spaces
-    .rjust ...                    aligned right, with line length as spaces
+    .center(..., "...")           center string, line length, fill character
+    .ljust(..., "...")            align left, line length, fill character
+    .rjust(..., "...")            align right, line length, fill character
+
+  new line:
+    \n
 
   escape character:
     \...
@@ -153,10 +208,10 @@ SYMBOLS:
 ARRAYS:
   declaration:
     my_array = ["a", 1, true, [1,2]]   create array
-
+  --------------------
   entries:
     my_array[0]                        access to entries
-
+  --------------------
   methods:
     my_array << ...                 add an entry to the end
     .push(...)                      add an entry to the end, more common
@@ -186,10 +241,10 @@ HASH:
   
     my_hash = {test1: "...", test2: "..."}        key and value pairs
     my_hash = {"..." => "...", "..." => "..."}    old style, hashrocket: =>
-  
+  --------------------
   access:
     my_hash[:test1]                               output values of a key
-
+  --------------------
   methods:
     .keys                                         list of keys
     .values                                       list of values
@@ -214,88 +269,132 @@ CLASS:
       ...
     end
   end
-
+  --------------------
   instance:
-    my_instance = my_object.new         create instance
+    my_instance = my_object.new       create instance
 
-    my_instance.my_method               call method on instance
+    my_instance.my_method             call method on instance
 ---------------------------------------------------------------------------------------------------
-IF:
-  if condition                              condition can be in ()
-    ...
-  elsif condition
-    ...
-  else
-    ...
-  end
+CONDITION:
+  if:
+    if condition                      condition can be in ()
+      ...
+    elsif condition
+      ...
+    else
+      ...
+    end
+  
+    ... if condition                  alternative
+  --------------------
+  unless:
+    unless condition
+      ...
+    else
+      ...
+    end
+  --------------------
+  case:
+    case ...                          expression
+    when ..., ...                     multuiple conditions
+      ...
+      exit
+    when ...                          condition
+      ...
+      exit
+    else                              default
+      ...
+    end
 ---------------------------------------------------------------------------------------------------
 TERNARY:
-  condition ? statement1 : statemment2       alternative
+  condition ? statement1 : statemment2          alternative
 ---------------------------------------------------------------------------------------------------
 LOOPS:
   for:
-    for i in 0..x                               for
-      ..
+    for i in ...                                for, array, range, ...
+      ...
     end
-
+  --------------------
   while:
-    while i < 10 do                             while
-      ...
-      i += 1
-    end
-
-  unless:
-    unless condition                            unless
+    while ... do                                while
       ...
     end
+  --------------------
+  loop:
+    loop do                                     loop
+      ...
+    end
+  --------------------
+  until:
+    until ...                                   until
+      ...
+    end
+  --------------------
+  break ...                                     stop the loop, optional condition
+  next ...                                      jump to next iteration, optional condition
+  --------------------
+  .times:
+    x.times do                                  loop x times
+      ...
+    end
 
-  break                                         stop the loop
-  next                                          jump to next iteration
+    x.times do |i|                              loop x times with counter
+      ...
+    end
+  --------------------
+  .each:
+    my_array.each do |i|                        loop over array with counter
+      ...
+    end
 
-  methods:
-    .times:
-      x.times do                                loop x times
-        ...
-      end
+    myArray.each {                              shorthand
+      |i| ...
+    }
 
-      x.times do |i|                            loop x times with counter
-        ...
-      end
-
-    .each:
-      my_array.each do |i|                      loop over array with counter
-        ...
-      end
-
-      myArray.each {                            shorthand
-        |i| ...
-      }
-
-      my_hash.each do |k, v|                    loop over hash, key and value
-        ...
-      end
-
-    .map:
-      my_array.map { |i| i + 10 }               create a new array from output
+    my_hash.each do |k, v|                      loop over hash, key and value
+      ...
+    end
+  --------------------
+  .map:
+    my_array.map { |i| i + 10 }                 create a new array from output
 ---------------------------------------------------------------------------------------------------
-METHODS:
+FUNCTIONS:
+  functions always return the value of the last expression
+  --------------------
   declaration:
-    def my_method                           create method, last statement will be returned
+    def my_func
       ...
+      return ...                            optional return
     end
 
-    def my_method(argument1, ...)           with arguments, () not necessary
-    def my_method(*arguments)               with variable number of arguments
-    def my_method(argument1=25)             with default value, can be overwritten in call
-
+    def my_method(..., ...)                 with arguments, () not necessary
+    def my_method(*...)                     with variable number of arguments
+    def my_method(...=...)                  with default value, can be overwritten in call
+  --------------------
   calling:
-    my_method                               run method
-    my_method(..., ...)                     run method with arguments, () is optional
-
+    my_method                               run function
+    my_method(..., ...)                     run function with arguments, () is optional
+  --------------------
   ...!                                      change variable directly
   ...?                                      return true or false, convention
+---------------------------------------------------------------------------------------------------
+EXCEPTIONS:
+  begin
+    ...                                     expression
+  rescue
+    ...                                     runs on error
+    exit
+  end
+  --------------------
+  def ...
+    raise my_error, ..., unless ...
+  end
 
-  methods always return the value of the last expression
+  begin
+    ...
+  rescue my_error
+    ...
+  end
 ---------------------------------------------------------------------------------------------------
 CLASSES:
   class myClass                             capital letter is common for class names
@@ -309,13 +408,13 @@ CLASSES:
       ...
     end
   end
-
+  --------------------
   @...                                      instance variable
   @@...                                     class variable
-
+  --------------------
   test = myClass.new                        create a new object
   test.myMethod
-
+  --------------------
   test.inspect                              show the values of the object
 ---------------------------------------------------------------------------------------------------
 PROC:
@@ -323,10 +422,10 @@ PROC:
     my_proc = Proc.new do |...|             with parameter |...|
       ...
     end
-
+  --------------------
   calling:
     my_proc.call "..."                      with parameter "..."
-
+  --------------------
   steps:
     define method
     make proc
@@ -365,3 +464,15 @@ INHERITANCE:
 ---------------------------------------------------------------------------------------------------
 USEFUL METHODS:
   Math.sqrt(...)                            square root
+---------------------------------------------------------------------------------------------------
+FILES:
+  myFile = File.new("...", "w")             create file
+
+  myFile.puts("...")                        write to file
+
+  myFile.close                              close file
+
+  myFile = File.read("...")                 read file
+
+  load "..."                                execute file
+---------------------------------------------------------------------------------------------------
