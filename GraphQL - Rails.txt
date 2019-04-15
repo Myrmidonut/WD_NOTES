@@ -1,0 +1,184 @@
+SETUP:
+  rails new ... --api
+  rails db:create
+
+  gem "graphql"
+  gem "bcrypt"
+  gem development "graphiql-rails"
+
+  bundle update
+
+  rails g graphql:install
+---------------------------------------------------------------------------------------------------
+GRAPHIQL:
+  config/application.rb:
+    require "sprockets/railtie"
+  --------------------
+  config/routes.eb:
+    Rails.application.routes.draw do
+      if Rails.env.development?
+        mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+      end
+    end
+  --------------------
+  GraphiQL:
+    https://localhost:3000/graphiql
+
+    {
+      testField
+    }
+---------------------------------------------------------------------------------------------------
+QUERIES:
+  model:
+    rails g model Link url:string description:text
+    rails db:migrate
+  --------------------
+  console:  
+    Link.create url: "...", description: "..."
+  --------------------
+  type:
+    app/graphql/types/link_type.rb:
+      module Types
+        class LinkType < BaseObject
+          field :id, ID, null: false
+          field :url, String, null: false
+          field :description, String, null: false
+        end
+      end
+  --------------------
+  resolver:
+    app/graphql/types/query_type.rb:
+      module Types
+        class QueryType < Types::BaseObject
+          field :all_links, [LinkType], null: false
+
+          def all_links
+            Link.all
+          end
+        end
+      end
+---------------------------------------------------------------------------------------------------
+MUTATIONS:
+  parent of all mutations:
+    app/graphql/mutations/base_mutation.rb:
+      module Mutations
+        class BaseMutation < GraphQL::Schema::Mutation
+          null false
+        end
+      end
+  --------------------
+  mutation with arguments:
+    app/graphql/mutations/create_link.rb:
+      module Mutations
+        class CreateLink < BaseMutation
+          argument :description, String, required: true     passed to resolver
+          argument :url, String, required: true
+
+          type Types::LinkType                              return type
+
+          def resolve(description: nil, url: nil)
+            Link.create!(
+              description: description,
+              url: url,
+            )
+          end
+        end
+      end
+  --------------------
+  mutation type:
+    app/graphql/types/mutation_type.rb:
+      module Types
+        class MutationType < Types::BaseObject
+          field :create_link, mutation: Mutations::CreateLink
+        end
+      end
+---------------------------------------------------------------------------------------------------
+AUTHENTICATION:
+  encrypt password with bcrypt
+  --------------------
+  model:
+    rails g model User name email password_digest
+    rails db:migrate
+
+    app/models/user.rb:
+      class User < ApplicationRecord
+        has_secure_password
+
+        validates :name, presence: true
+        validates :email, presence: true, uniqueness: true
+      end
+  --------------------
+  user type:
+    app/graphql/types/user_type.rb:
+      module Types
+        class UserType < BaseObject
+          field :id, ID, null: false
+          field :name, String, null: false
+          # we are exposing `email` just for tutorial purposes
+          # in real application shouldn't leak user emails
+          field :email, String, null: false
+        end
+      end
+  --------------------
+  authentication type:
+    app/graphql/tyes/auth_provider_email_input.rb:
+      module Types
+        class AuthProviderEmailInput < BaseInputObject
+          graphql_name "AUTH_PROVIDER_EMAIL"
+
+          argument :email, String, required: true
+          argument :password, String, required: true
+        end
+      end
+  --------------------
+  mutation:
+    app/graphql/mutations/create_user.rb:
+      module Mutations
+        class CreateUser < BaseMutation
+          class AuthProviderSignupData < Types::BaseInputObject
+            argument :email, Types::AuthProviderEmailInput, required: false
+          end
+
+          argument :name, String, required: true
+          argument :auth_provider, AuthProviderSignupData, required: false
+
+          type Types::UserType
+
+          def resolve(name: nil, auth_provider: nil)
+            User.create!(
+              name: name,
+              email: auth_provider&.[](:email)&.[](:email),
+              password: auth_provider&.[](:email)&.[](:password)
+            )
+          end
+        end
+      end
+  --------------------
+  mutation type:
+    module Types
+      class MutationType < Types::BaseObject
+        field :create_user, mutation: Mutations::CreateUser
+        field :create_link, mutation: Mutations::CreateLink
+      end
+    end
+  --------------------
+  GraphiQL:
+    mutation {
+      createUser (
+        name: "Jim",
+        authProvider: {
+          email: {
+            email: "jim@mail.com",
+            password: "1234"
+          }
+        }
+      ) {
+        id
+        email
+        name
+      }
+    }
+---------------------------------------------------------------------------------------------------
+SIGN IN:
+  create token for users with jwt
+  --------------------

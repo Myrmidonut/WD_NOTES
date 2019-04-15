@@ -242,14 +242,17 @@ HASH:
   key-value pairs
   --------------------
   declaration:
-    my_hash = Hash.new(0)                         create hash
+    my_hash = Hash.new                            create hash
   
-    my_hash = {test1: "...", test2: "..."}        key and value pairs
-    my_hash = {"..." => "...", "..." => "..."}    alternative, hashrocket
+    my_hash = {...: ..., ...: ...}                symbol as key
+    my_hash = {"..." => ..., "..." => ...}        anything as key, hashrocket
   --------------------
-  access:
+  keys:
     my_hash[:...]                                 get value of key
+    my_hash["..."]
+
     my_hash[:...] = ...                           create pair
+    my_hash["..."] = ...
   --------------------
   methods:
     .keys                                         list of keys

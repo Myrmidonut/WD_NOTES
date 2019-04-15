@@ -415,7 +415,11 @@ TRANSITIONS:
   transition: all 0.3s;               transition effect on all elements of 0.3 seconds, background, etc.
 ---------------------------------------------------------------------------------------------------
 TRANSFORM:
+  transform-origin: top;              transformation center, multiple values
+
   transform: scale(...);              change size, unitless
+             scaleX(...);
+             scaleY(...);
              skewX(...);              skew along Y-axis in degree
              skewY(...);              skew along Y-axis in degree
              rotate(...);             rotate in degree

@@ -796,6 +796,39 @@ PROMISES:
     myProm.then(res => ...,
                 err => ...)
 ---------------------------------------------------------------------------------------------------
+ASYNC/AWAIT:
+  any function can be async
+  returns a promise
+  await has to finish before program continues
+  get data in sync, use data async
+
+  async:
+    async function myFunc() {...}         creates promise
+
+    myFunc().then(...)                    use promise
+
+  await:
+    async function myFunc() {
+      await ...                           continue after finishing it
+      ...
+    }
+
+  all:
+    await Promise.all([                   continue after finishing all
+      ...
+      ...
+    ])
+    ...
+
+  try catch:
+    async function myFunc() {
+      try {
+        ...
+      } catch (e) {
+        ...
+      }
+    }
+---------------------------------------------------------------------------------------------------
 NUMBER METHODS:
   round:
     Math.round();                         round to nearest whole number
