@@ -2,9 +2,10 @@ SETUP:
   rails new ... --api
   rails db:create
 
-  gem "graphql"
-  gem "bcrypt"
-  gem development "graphiql-rails"
+  gem "graphql"                         GraphQL
+  gem "bcrypt"                          secure password
+  gem development "graphiql-rails"      GraphiQL
+  gem "jwt"                             authorization token
 
   bundle update
 
@@ -23,10 +24,6 @@ GRAPHIQL:
   --------------------
   GraphiQL:
     https://localhost:3000/graphiql
-
-    {
-      testField
-    }
 ---------------------------------------------------------------------------------------------------
 QUERIES:
   model:
@@ -39,9 +36,9 @@ QUERIES:
   type:
     app/graphql/types/link_type.rb:
       module Types
-        class LinkType < BaseObject
-          field :id, ID, null: false
-          field :url, String, null: false
+        class LinkType < BaseObject                     model name
+          field :id, ID, null: false                    same fields as model
+          field :url, String, null: false               
           field :description, String, null: false
         end
       end
@@ -52,11 +49,20 @@ QUERIES:
         class QueryType < Types::BaseObject
           field :all_links, [LinkType], null: false
 
-          def all_links
+          def all_links                                 query as allLinks
             Link.all
           end
         end
       end
+  --------------------
+  graphiql:
+    query {
+      allLinks {
+        id
+        description
+        url
+      }
+    }
 ---------------------------------------------------------------------------------------------------
 MUTATIONS:
   parent of all mutations:
@@ -182,3 +188,208 @@ AUTHENTICATION:
 SIGN IN:
   create token for users with jwt
   --------------------
+  mutation:
+    app/graphql/mutations/sign_in_user.rb:
+      module Mutations
+        class SignInUser < BaseMutation
+          null true
+
+          argument :email, Types::AuthProviderEmailInput, required: false
+
+          field :token, String, null: true
+          field :user, Types::UserType, null: true
+
+          def resolve(email: nil)
+            return unless email
+
+            user = User.find_by email: email[:email]
+
+            return unless user
+            return unless user.authenticate(email[:password])
+
+            crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+            token = crypt.encrypt_and_sign("user-id:#{ user.id }")
+
+            { user: user, token: token }
+          end
+        end
+      end
+  --------------------
+  mutation type:
+    app/graphql/types/mutations_type.rb:
+      module Types
+        class MutationType < BaseObject
+          field :create_user, mutation: Mutations::CreateUser
+          field :create_link, mutation: Mutations::CreateLink
+          field :signin_user, mutation: Mutations::SignInUser
+        end
+      end
+---------------------------------------------------------------------------------------------------
+AUTHENTICATION REQUESTS:
+  app/controllers/graphql_controller.rb:
+    ...
+    context = {
+      session: session,
+      current_user: current_user
+    }
+    ...
+
+    private
+
+    def current_user
+      # if we want to change the sign-in strategy, this is the place to do it
+      return unless session[:token]
+
+      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+      token = crypt.decrypt_and_verify session[:token]
+      user_id = token.gsub('user-id:', '').to_i
+      User.find_by id: user_id
+    rescue ActiveSupport::MessageVerifier::InvalidSignature
+      nil
+    end
+
+    ...
+---------------------------------------------------------------------------------------------------
+LINKING USERS:
+  rails g migration add_user_id_link
+  --------------------
+  migration:
+    db/migrate/...add_user_id_link.rb:
+      class AddUserIdLink < ActiveRecord::Migration[5.2]
+        def change
+          change_table :links do |t|
+            t.references :user, foreign_key: true
+          end
+        end
+      end
+  --------------------
+  rails db:migrate
+  --------------------
+  model:
+    class Link < ApplicationRecord
+      belongs_to :user
+    end
+  --------------------
+  type:
+    app/graphql/types/link_type.rb:
+      module Types
+        class LinkType < BaseObject
+          field :id, ID, null: false
+          field :url, String, null: false
+          field :description, String, null: false
+          field :posted_by, UserType, null: true, method: :user
+        end
+      end
+  --------------------
+  resolver:
+    app/graphql/mutations/create_link.rb:
+      module Mutations
+        class CreateLink < BaseMutation
+          argument :description, String, required: true
+          argument :url, String, required: true
+
+          type Types::LinkType
+
+          def resolve(description: nil, url:nil)
+            Link.create!(
+              description: description,
+              url: url,
+              user: context[:current_user]
+            )
+          end
+        end
+      end
+---------------------------------------------------------------------------------------------------
+TESTING:
+  mutations tests:
+    test/graphql/mutations/
+  --------------------
+  create_link_test.rb:
+    require 'test_helper'
+
+    class Mutations::CreateLinkTest < ActiveSupport::TestCase
+      def perform(user: nil, **args)
+        Mutations::CreateLink.new(object: nil, context: {}).resolve(args)
+      end
+
+      test 'create a new link' do
+        link = perform(
+          url: 'http://example.com',
+          description: 'description',
+        )
+
+        assert link.persisted?
+        assert_equal link.description, 'description'
+        assert_equal link.url, 'http://example.com'
+      end
+    end
+  --------------------
+  create_user_test.rb:
+    require 'test_helper'
+
+    class Mutations::CreateUserTest < ActiveSupport::TestCase
+      def perform(args = {})
+        Mutations::CreateUser.new(object: nil, context: {}).resolve(args)
+      end
+
+      test 'create new user' do
+        user = perform(
+          name: 'Test User',
+          auth_provider: {
+            email: {
+              email: 'email@example.com',
+              password: '[omitted]'
+            }
+          }
+        )
+
+        assert user.persisted?
+        assert_equal user.name, 'Test User'
+        assert_equal user.email, 'email@example.com'
+      end
+    end
+  --------------------
+  sign_in_user_test.rb:
+    require 'test_helper'
+
+    class Mutations::SignInUserTest < ActiveSupport::TestCase
+      def perform(args = {})
+        Mutations::SignInUser.new(object: nil, context: { session: {} }).resolve(args)
+      end
+
+      def create_user
+        User.create!(
+          name: 'Test User',
+          email: 'email@example.com',
+          password: '[omitted]',
+        )
+      end
+
+      test 'success' do
+        user = create_user
+
+        result = perform(
+          email: {
+            email: user.email,
+            password: user.password
+          }
+        )
+
+        assert result[:token].present?
+        assert_equal result[:user], user
+      end
+
+      test 'failure because no credentials' do
+        assert_nil perform
+      end
+
+      test 'failure because wrong email' do
+        create_user
+        assert_nil perform(email: { email: 'wrong' })
+      end
+
+      test 'failure because wrong password' do
+        user = create_user
+        assert_nil perform(email: { email: user.email, password: 'wrong' })
+      end
+    end
