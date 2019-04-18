@@ -1,0 +1,45 @@
+INSTALLATION:
+  npm install --save sequelize
+
+  npm install --save pg pg-hstore # Postgres
+  npm install --save mysql2
+  npm install --save mariadb
+  npm install --save sqlite3
+  npm install --save tedious # Microsoft SQL Server
+---------------------------------------------------------------------------------------------------
+BUILD:
+  sequelize init
+---------------------------------------------------------------------------------------------------
+ENVIRONMENT VARIABLES:
+  rename config/config.json to config.js
+  --------------------
+  config/config.js:
+    require('dotenv').config()
+
+    const dbDetails = {
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOST,
+      dialect: 'mysql'
+    }
+
+    module.exports = {
+      development: dbDetails,
+      production: dbDetails
+    }
+  --------------------
+  .env:
+    NODE_ENV=development
+    DB_HOST=localhost
+    DB_USERNAME=root
+    DB_PASSWORD=
+    DB_NAME=graphql_jwt_auth
+  --------------------
+  models/index.js:
+    const config = require(__dirname + '/../config/config.js')[env];
+---------------------------------------------------------------------------------------------------
+MODEL:
+  sequelize model:generate --name User --attributes username:string,email:string,password:string
+  sequelize db:migrate
+---------------------------------------------------------------------------------------------------

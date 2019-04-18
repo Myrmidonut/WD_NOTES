@@ -1,6 +1,18 @@
 PACKAGES:
   express-graphql
   graphql
+
+  Express, GraphQL, token authentication, SQL:
+    express
+    graphql
+    express-graphql
+    body-parser
+    bcrypt
+    express-jwt
+    jsonwebtoken
+    dotenv
+    sequelize
+    mysql2
 ---------------------------------------------------------------------------------------------------
 GRAPHIQL:
   app.use("/graphql", graphqlHttp({
@@ -66,8 +78,8 @@ EXPRESS:
     }
 
     app.use("/graphql", graphqlHttp({                   use GraphQL
-      schema: schema
-      rootValue: root
+      schema: schema,
+      rootValue: root,
       graphiql: true
     }))
 

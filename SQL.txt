@@ -38,7 +38,7 @@ GUIS:
   Adminer (free)
 ---------------------------------------------------------------------------------------------------
 CONSOLE COMMANDS:
-  mysql -u root                       open interface
+  mysql -u root -p                    open interface
 
   create database ...;                create a database
   use ...;                            open database
