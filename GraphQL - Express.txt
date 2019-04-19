@@ -2,7 +2,7 @@ PACKAGES:
   express-graphql
   graphql
 
-  Express, GraphQL, token authentication, SQL:
+  Express, GraphQL, JWT, SQL:
     express
     graphql
     express-graphql
@@ -90,87 +90,7 @@ EXPRESS:
       random
     }
 ---------------------------------------------------------------------------------------------------
-EXAMPLE:
-  const express         = require('express');
-  const graphqlHTTP     = require('express-graphql');
-  const { buildSchema } = require('graphql');
-
-  // Construct a schema, using GraphQL schema language
-  const schema = buildSchema(`
-    input MessageInput {
-      content: String
-      author: String
-    }
-
-    type Message {
-      id: ID!
-      content: String
-      author: String
-    }
-
-    type Query {
-      getMessage(id: ID!): Message
-    }
-
-    type Mutation {
-      createMessage(input: MessageInput): Message
-      updateMessage(id: ID!, input: MessageInput): Message
-    }
-  `);
-
-  // If Message had any complex fields, we'd put them on this object.
-  class Message {
-    constructor(id, {content, author}) {
-      this.id = id;
-      this.content = content;
-      this.author = author;
-    }
-  }
-
-  // Maps username to content
-  let fakeDatabase = {};
-
-  const root = {
-    getMessage: function ({id}) {
-      if (!fakeDatabase[id]) {
-        throw new Error('no message exists with id ' + id);
-      }
-      return new Message(id, fakeDatabase[id]);
-    },
-
-    createMessage: function ({input}) {
-      // Create a random id for our "database".
-      const id = require('crypto').randomBytes(10).toString('hex');
-
-      fakeDatabase[id] = input;
-      return new Message(id, input);
-    },
-
-    updateMessage: function ({id, input}) {
-      if (!fakeDatabase[id]) {
-        throw new Error('no message exists with id ' + id);
-      }
-
-      // This replaces all old data, but some apps might want partial update.
-      fakeDatabase[id] = input;
-      return new Message(id, input);
-    },
-  };
-
-  const app = express();
-  
-  app.use('/graphql', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-  }));
-
-  app.listen(4000, () => {
-    console.log('Running a GraphQL API server at localhost:4000/graphql');
-  });
-
-  // frontend:
-
+FRONTEND:
   mutation {
     createMessage(input: {
       author: "andy",
@@ -180,3 +100,123 @@ EXAMPLE:
     }
   }
 ---------------------------------------------------------------------------------------------------
+EXAMPLE WITH AUTH:
+  server.js:
+    const express = require("express")
+    const bodyParser = require("body-parser")
+    const jwt = require("express-jwt")
+    const graphqlHTTP = require('express-graphql');
+    require("dotenv").config()
+
+    const schema = require("./graphql/schema")
+    const root = require("./graphql/root")
+    const port = 3000
+    const app = express()
+
+    const auth = jwt({
+      secret: process.env.JWT_SECRET,
+      credentialsRequired: false
+    })
+
+    app.use(bodyParser.json())
+    app.use(auth)
+
+    app.use((err, req, res, next) => {
+      if (err.name === 'UnauthorizedError') {
+        console.log("Bad token.")
+      }
+
+      next()
+    });
+
+    app.use('/graphql', graphqlHTTP(req => ({
+      schema: schema,
+      rootValue: root,
+      context: {
+        req: req
+      },
+      graphiql: true
+    })))
+
+    app.listen(port, () => {
+      console.log(`Express server running on http://localhost:${port}/graphql`)
+    })
+  --------------------
+  graphql/schema.js:
+    const { buildSchema } = require("graphql")
+
+    const schema = buildSchema(`
+      type User {
+        id: Int!
+        username: String!
+        email: String!
+      }
+
+      type Query {
+        me: User
+      }
+
+      type Mutation {
+        signup (username: String!, email: String!, password: String!): String
+        login (email: String!, password: String!): String
+      }
+    `)
+
+    module.exports = schema
+  --------------------
+  graphql/root.js:
+    const bcrypt = require("bcrypt")
+    const jsonwebtoken = require("jsonwebtoken")
+    const { User } = require('../models')
+
+    const root = {
+      async me(args, { req }) {
+        if (!req.user) {
+          throw new Error('You are not authenticated.')
+        }
+
+        return await User.findByPk(req.user.id)
+      },
+
+      async signup({ username, email, password }) {
+        const old_user = await User.findOne({ where: { email } })
+
+        if (old_user) {
+          throw new Error('Email already registered.')
+        }
+
+        const user = await User.create({
+          username,
+          email,
+          password: await bcrypt.hash(password, 10)
+        })
+
+        return jsonwebtoken.sign(
+          { id: user.id, email: user.email },
+          process.env.JWT_SECRET,
+          { expiresIn: '1y' }
+        )
+      },
+
+      async login({ email, password }) {
+        const user = await User.findOne({ where: { email } })
+
+        if (!user) {
+          throw new Error('No user with that email.')
+        }
+
+        const valid = await bcrypt.compare(password, user.password)
+
+        if (!valid) {
+          throw new Error('Incorrect password.')
+        }
+
+        return jsonwebtoken.sign(
+          { id: user.id, email: user.email },
+          process.env.JWT_SECRET,
+          { expiresIn: '1d' }
+        )
+      }
+    }
+
+    module.exports = root
