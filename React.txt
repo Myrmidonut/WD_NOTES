@@ -278,6 +278,8 @@ STATE:
     this.state.name                           read state
   }
   --------------------
+  import React, { useState } from "react"
+
   const Name = () => {
     const [name, setName] = useState("...")   declare state
 
@@ -308,7 +310,7 @@ STATE:
 ---------------------------------------------------------------------------------------------------
 HOOKS:
   add state access to functional components
-  use at top leavel, not inside loops, etc.
+  use at top level, not inside loops, etc.
   use in function components
   --------------------
   Example:

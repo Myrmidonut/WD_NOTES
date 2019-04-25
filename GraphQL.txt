@@ -71,7 +71,22 @@ FRONTEND:
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({query: "{ hello }"})
+
+      body: JSON.stringify({                query
+        query: `{
+          hello
+        }`
+      })
+
+      body: JSON.stringify({                mutation
+        query: `mutation {
+          hello(
+            name: "..."
+            age: ...
+          )
+        }`
+      })
+      
     })
     .then(r => r.json())
     .then(data => console.log('data returned:', data));
