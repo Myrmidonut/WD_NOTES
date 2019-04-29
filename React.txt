@@ -36,7 +36,7 @@ EXPRESS:
 
   server.js:
     const path    = require("path");
-    const port    = 8080;
+    const port    = 4000;
 
     app.use(express.static(path.join(__dirname, 'build')));
 
@@ -45,7 +45,7 @@ EXPRESS:
     });
 
   package.json:
-    "proxy": "http://localhost:8080"
+    "proxy": "http://localhost:4000"
 
   npm run build
   node server.js
@@ -309,11 +309,26 @@ STATE:
     }
 ---------------------------------------------------------------------------------------------------
 HOOKS:
-  add state access to functional components
+  state access in functional components
+  lifecycle methods in functional components
   use at top level, not inside loops, etc.
-  use in function components
+  --------------------
+  state:
+    initialize state:
+      const [count, setCount] = useState(0)
+
+    access state:
+      count
+    
+    modify state:
+      setCount(...)
+  --------------------
+  effect:
+    useEffect(() => {...})                      runs on component changes
   --------------------
   Example:
+    import React, { useState, useEffect } from 'react';
+    ...
     const [count, setCount] = useState(0)
 
     <p>You clicked {count} times</p>
@@ -322,9 +337,6 @@ HOOKS:
     count                                       current state
     setCount                                    function, called in event handler or otherwise
     useState(...)                               sets initial state
-  --------------------
-  useState
-  useEffect(() => {...})                        runs on component changes
 ---------------------------------------------------------------------------------------------------
 EVENTS:
   onClick={this.props.handleClick}

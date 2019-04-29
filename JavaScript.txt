@@ -690,6 +690,14 @@ FUNCTIONS:
       Math.max(...arr);                           spreads array when multiple arguments are needed
 
       let arr2 = [...arr1];
+    
+    pass by value:                                argument will not be modified
+      numbers
+      strings
+
+    pass by reference:                            argument gets modified
+      arrays
+      objects
   --------------------
   event:
     let myFunc = function(e) {e...}               function with event object
@@ -921,6 +929,7 @@ ARRAY METHODS:
 
   copy:
     .slice()                                  return copy of array
+    let arr1 = [..., ...arr2, ...];           copy with spread operator
 
   reverse:
     .reverse()                                M, reverse the array itself
@@ -944,8 +953,6 @@ ARRAY METHODS:
   extract:
     .slice(..., ...)                          return array from index to optional exclusive index
                                               negative index counts from back
-  copy:
-    let arr1 = [..., ...arr2, ...];           copy with spread operator
 
   combine:
     .concat(...)                              return merged array
