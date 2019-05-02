@@ -42,9 +42,6 @@ fcc projects on github and glitch:
     4 Stock Price Checker --- DONE --- CHECKED
     5 Anonymous Message Board --- DONE ---CHECKED
 ---------------------------------------------------------------------------------------------------
-course project:
-  on heroku
----------------------------------------------------------------------------------------------------
 portfolio:
   background: #1a1a1a
   gold: #f9a602
@@ -99,49 +96,26 @@ portfolio:
       Secret Santa --- DONE
       freeCodeCamp --- DONE
 
-    Python Django ???
     Ruby on Rails ???
-
-  issues:
-    portfolio
-
-    etch-a-sketch
-
-    secret-santa
-
-    campgrounds
-
-    fcc projects
 ---------------------------------------------------------------------------------------------------
 projects:
-  check on sizzy.co
-  landscape mode
-  favicons
-  improve styling on frontend libraries
-  improve styling on responsive
-  rework JS
   github:
     readme
     images of the interface
     description
     link to live
-  on github (pages) --- DONE
-  update code --- DONE
-  remove fcc tester --- DONE
-  remove codepen files --- DONE
-  add styling for backend --- 5: DONE --- 6: DONE
-  react: switch to functional components --- DONE
   
-  <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
-  by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
+  favicon:
+    <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon">
+    by <a href="https://github.com/Myrmidonut/fcc_api_timestamp" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 ---------------------------------------------------------------------------------------------------
 Campgrounds:
   ---
@@ -176,156 +150,33 @@ Notes:
       sign up
       register
   --------------------
-  closed issues:
-    list:
-      new --- DONE
-      update
-        archive --- DONE
-        collapse --- DONE
-        title --- DONE
-    entry:
-      new --- DONE
-      update
-        text --- DONE
-        amount --- DONE
-        check --- DONE
-      delete --- DONE
-    archive:
-      collapse --- DONE
-      restore --- DONE
-    collapse:
-      archive --- DONE
-      list --- DONE
-    add date in db --- DONE
-      added --- DONE
-      updated --- DONE
-    create string from date in db --- DONE
-    remove amount field --- DONE
-    clear inputs after adding new row, new list --- DONE
-    show checked status --- DONE
-    add user in db --- DONE
-      send username --- DONE
-      send lists based on username --- DONE
-    user in frontend --- DONE
-      sign in --- DONE
-      sign out --- DONE
-      sign up --- DONE
-      reset cookie after sign in --- DONE
-      get all after --- DONE
-        sign in --- DONE
-        sign out --- DONE
-      sign in after sign up --- DONE
-    archive/restore-button --- DONE
-    delete from archive --- DONE
-    favicon --- DONE
-    autosave on leaving input field --- DONE
-  --------------------
   open issues:
     sort lists by date, newest first
-  --------------------
-  setup:
-    production build --- DONE
-    host --- DONE
-      page --- DONE
-      db --- DONE
 --------------------------------------------
 Etch-a-Sketch:
-  features:
-    color picker --- DONE
-    add db entries --- DONE
-    styling --- DONE
-    open on click in gallery --- DONE
-    delete drawing if owner --- DONE
-    copy drawing to own --- DONE
-    eraser --- DONE
-    draw on first click --- DONE
-    hover effect on buttons --- DONE
-    show only 5 latest personal --- DONE
-    show register and login error for unique mail --- DONE
-    serverside authentication on saving --- DONE
-    load more - buttons for galleries --- DONE
-    favicon --- DONE
+  open:
+    show success for register / login
+    login after register
+    show loading on gallery buttons
+    minify app.js
 
-    removed:
-      setting for showing borders around dots --- REMOVED
-      value on settings sliders --- REMOVED
-      90s mode, white on blue colors --- REMOVED
-      lock to high grid size --- REMOVED
-
-    open:
-      show success for register / login
-      login after register
-      show loading on gallery buttons
-      minify app.js
-
-      gallery title
-      gallery owner
-      show account name
-      show drawing title in gallery and drawingboard
-      mobile
-      token
+    gallery title
+    gallery owner
+    show account name
+    show drawing title in gallery and drawingboard
+    mobile
+    token
   --------------------
   bugs:
-    first settings update after page refresh reloads drawingboard --- DONE
-    save needs two presses to update board --- DONE
-    reset twice breaks drawingboard --- DONE
-    going back from gallery deletes current drawing --- DONE
-    drawing not working correctly after gallery --- DONE
-    authentication not working on heroku, localhost ? --- DONE
-    show personal drawings in gallery --- DONE
-    changing gridSize not clearing board, clear after second resize --- DONE
-    save drawing requires title --- DONE
-    login resets current drawing with defaults --- DONE
-    personal gallery not loading without login --- DONE
-    logging in on gallery shows error from setting default values of hidden settings component --- DONE
-    saving drawing after opening from gallery reloads whole page --- DONE
-    settings saved instantly --- DONE
-    change reset to clear --- DONE
-    change settings position --- DONE
-    keep only latest and personal galleries --- DONE
-    grid items border same color as background --- DONE
-    save drawing needs title when logging in after creating image --- DONE
-    close modal after login --- DONE
-    close modal when clicking on navbar --- DONE
-    settings open after gallery --- DONE
-    settings overlay modal --- DONE
-    close settings when clicking somewhere else --- DONE
-    gallery hight goes out of bounds --- DONE
-    settings dont change after gallery, grid size, intensity -> settings into new component --- DONE
-    settings back to app default after gallery --- DONE
-    large drawings too big for border on gallery --- DONE
-    opacity going above 1.0 --- DONE
-
-    open:
-      gallery on small screens too high
-      gallery background not covering whole screen
-      load/save settings timeout crossover
-      c password field is required too wide
+    gallery on small screens too high
+    gallery background not covering whole screen
+    load/save settings timeout crossover
+    c password field is required too wide
   --------------------
   check on firefox
   performance
   --------------------
-  heroku:
-    saveDrawing post /api/save 500
-
-    works:
-      login
-      register
-      account
-      gallery
-
-  save a drawing
-    title
-    username if authenticated
-      delete/edit by owner
-    anonymous if not authenticated
-      delete/edit by anyone
-  --------------------
   frontend:
-    react
-    favicon
-    font
-    --------------------
     navbar:
       gallery:
         recent sketches
@@ -364,10 +215,6 @@ Etch-a-Sketch:
         logout
     --------------------
     mobile view with interface button
-  --------------------
-  backend:
-    Laravel
-    heroku
   --------------------
   database:
     elephantsql
@@ -429,15 +276,6 @@ Secret Santa:
     set title
     generate invite code
     invite by email
-  --------------------
-  mongodb - mlab
-  angular
-  scss
-  express
-  passport
-  mongoose
-  --------------------
-  mobile first
   --------------------
   routes:
     get     /
@@ -502,75 +340,5 @@ Secret Santa:
         member joined (owner)
         wishlist updated (partner)
 --------------------------------------------
-3-1:
-  favicon --- DONE
-
-3-4:
-  bigger font on buttons --- DONE
-  favicon --- DONE
-
-3-5:
-  timer font color to opposite
-  session top --- DONE
-  headline --- DONE
-  favicon --- DONE
-  responsive --- DONE
-  background less tall --- DONE
-  font stand off ground --- DONE
-  timer speed for final --- DONE
---------------------------------------------
-4-4:
-  show state borders
---------------------------------------------
-5-all:
-  padding for <code> --- DONE
-  links/forms for example api calls --- DONE
-  header/footer/main --- DONE
---------------------------------------------
-6-1:
-  show available conversions --- DONE
-
-6-2:
-  jquery --- DONE
-  fetch not sending formdata --- DONE
-  issue.html with jquery --- DONE
-  get list of issues --- DONE
-  get list of projects --- DONE
-  empty project not added to list of projects --- INTENDED
-  sort issues by open/closed --- IGNORED
-  open project and create project forms --- DONE
-
-6-3:
-  border around each book --- DONE
-  border around comments inside book border --- DONE
-  update comment count on book --- DONE
-  add comment layout --- DONE
-  reload after delete book -- DONE
-  new comment shows on top of list, ok after reload --- DONE
-  tests --- DONE
-
-6-4:
-  multiple stocks liked --- DONE
-  multiple stocks not returning re_likes for both --- DONE
-  single not returning updated for found-updated --- DONE
-  check for mongodb code instead of mongoose --- DONE
-  functional tests on 6-4 --- DONE
-
-6-5:
-  faulty test --- DONE
-  update user stories --- DONE
-  jquery on board --- DONE
-  jquery on thread --- DONE
-  use partials --- DONE
-  show list of boards --- DONE
-  stay on board page after new reply --- INTENDED
-  in board, event listeners get duplicated --- DONE
-  in board, create reply shows json --- DONE
-
-6-all:
-  back to previous page links --- DONE
-  style --- DONE
-  layout --- DONE
-  jquery --- DONE
-  header/footer/main --- DONE
-  check for partials possibility --- DONE
+Dungeons:
+  

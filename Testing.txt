@@ -1,0 +1,74 @@
+OVERVIEW:
+  workflow:
+    write a test
+    run the test
+    test will fail
+    write code that passes the test
+    refactor
+  --------------------
+  TDD:
+    Test Driven Development
+    
+    checking the code
+  --------------------
+  BDD:
+    Behavior Drive Development
+
+    checking the output
+---------------------------------------------------------------------------------------------------
+MOCHA + CHAI:
+  install:
+    npm install --save-dev mocha CHAI
+  --------------------
+  package.json:
+    "scripts": {
+      "test": "mocha",
+    },
+  --------------------
+  run tests:
+    npm test                        for "test": "mocha"
+    npm run mocha                   for "mocha": "mocha"
+  --------------------
+  file:
+    /test/test.js
+  --------------------
+  BDD:
+    expect:
+      const expect = require("chai").expect
+      expect(foo).to.be.a('string')
+
+    should:
+      const should = require('chai').should()
+      foo.should.be.a('string')
+  --------------------
+  TDD:
+    assert:
+      const assert = require('chai').assert
+      assert.typeOf(foo, 'string', 'foo is a string')
+  --------------------
+  example:
+    /test/test.js:
+      const expect = require("chai").expect
+
+      describe('test that chai work', () => {
+        const foo = 'bar';
+
+        it('multiples two numbers', () => {
+          expect(3 * 3).to.equal(9);
+        })
+
+        it('check the typeof a value', () => {
+          expect(foo).to.be.a('string');
+        })
+
+        it('finds length of a value', () => {
+          expect(foo).to.have.lengthOf(3);
+        })
+      })
+  --------------------
+  expect:
+    expect(...)
+        .to.be.a("...")                               string, object, null, undefined, error, ...
+        .to.equal(...)
+        .to.have.lengthOf(...)
+        .to.have.property("...").with.lengthOf(...)
