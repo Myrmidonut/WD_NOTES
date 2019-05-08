@@ -868,6 +868,12 @@ NUMBER METHODS:
   root:
     Math.sqrt(...)
 
+  logarithm:
+    Math.log(...)                         base e
+    Math.log2(...)                        base 2
+    Math.log10(...)                       base 10
+    Math.log(...) / Math.log(n)           base n
+
   pi:
     Math.PI
 
