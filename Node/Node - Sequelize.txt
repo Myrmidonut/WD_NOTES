@@ -53,6 +53,9 @@ QUERIES:
   .update(..., ...)
   .create(...)
 
+  options:
+    raw: true                         return only table data
+
   example:
     MyModel.findOne({
       where: {

@@ -445,80 +445,115 @@ Dungeons:
 
   ---
 
-  - random color scheme for whole map
-  - character design screen
-  - create gear for loot
-  - use potion
-  - use bandage
-  - break up fight into rounds
-  - create character
-  - open character
-  - show list of characters
-  - remove effects
+  ISSUES:
+    - frontend:
+      - random color scheme for whole map
+      - character design screen
+      - create character
+      - select character
+      - show list of characters
+      - login / register screen
+      - load encounter
+      - crafting
 
-  - rework
-    - healing
-      - food after encounter
-      - potion for effects
-      - bandage during fight
-    - recipe system
+    - backend:
+      - create gear for loot
+      - use potion
+      - use bandage
+      - break up fight into rounds
+      - remove effects
+      - return error if entry not found on database
+      - load encounter
+
+    - rework:
+      - healing
+        - food after encounter
+        - potion for effects
+        - bandage during fight
+      - recipe system
 
 ---
 
-  - login
-    - receive user data
-    - receive characters
+  PROJECT FLOW:
+    - login --- DONE
+      - receive: --- DONE
+        - email --- DONE
+        - password --- DONE
+      - return: --- DONE
+        - username --- DONE
+        - list of characters --- DONE
+          - name --- DONE
+          - class --- DONE
+          - level --- DONE
+          - id --- DONE
 
-  - create character
-    - name
-    - class
-    - save to database
+    - create character
+      - show class specialties (frontend)
+      - receive: --- DONE
+        - name --- DONE
+        - class --- DONE
+      - save to database --- DONE
+      - select character --- DONE
 
-  - select character
-    - build player object from database
-      - reset health
-      - remove effects
-    - show details
+    - select character
+      - receive: --- DONE
+        - id --- DONE
+      - build player object from database --- DONE
+        - reset health --- DONE
+        - remove effects --- DONE
+        - reset room  --- DONE
+      - return:
+        - player
+        - show details (frontend)
+        - show first room (frontend)
 
-  - play
-    - load resting area
-      - crafting
-
-  - enter room
-    - load encounter
-      - use potions
-      - win
-        - clear room
-        - get loot
+    - encounter
+      - room 0
         - crafting
-        - healing
-      - lose
-        - reset from database
+          - save to db
+        - go to next room (frontend)
+      - room 1 - 10
+        - use potions
+        - apply effects
+        - fight/trap/empty
+        - win
+          - clear room
+          - get loot
+          - crafting
+          - healing
+          - save to player
+          - increase room counter
+          - go to next room (frontend)
+        - lose
+          - reset from database
 
-  - win map
-    - level up
-    - save to database
+    - win map
+      - clear rooms 0 to 10
+      - level up
+      - save to database
 
   ---
 
-  - cleared maps counter?
-  - shop?
-    - buy weapons/armor?
-  - pet?
-    - bonus perception?
-    - helps in fight?
-    - finds random loot?
-  - weather?
-    - reduce effects with clothing?
-    - reduced perception?
-    - reduced fighting skills?
-  - wounds from traps / monsters?
-    - heal with material?
-  - crafting
-    - tools?
-  - weapon effect
-    if hit
-      chance to apply effect
+  IDEAS:
+    - unique character names
+    - cleared maps counter
+    - shop
+      - buy weapons/armor
+    - pet
+      - bonus perception
+      - helps in fight
+      - finds random loot
+    - weather
+      - reduce effects with clothing
+      - reduced perception
+      - reduced fighting skills
+    - wounds from traps / monsters
+      - heal with material
+    - crafting
+      - tools
+    - weapon effect
+      - if hit
+        - chance to apply effect
     
   ---
 
