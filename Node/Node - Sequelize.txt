@@ -8,7 +8,10 @@ INSTALLATION:
   npm install --save tedious # Microsoft SQL Server
 ---------------------------------------------------------------------------------------------------
 BUILD:
-  sequelize init
+  sequelize init                initialize project
+
+  sequelize db:create           create database
+  sequelize db:drop             drop database
 ---------------------------------------------------------------------------------------------------
 ENVIRONMENT VARIABLES:
   rename config/config.json to config.js
@@ -43,3 +46,32 @@ MODEL:
   sequelize model:generate --name User --attributes username:string,email:string,password:string
   sequelize db:migrate
 ---------------------------------------------------------------------------------------------------
+QUERIES:
+  .findOne(...)
+  .findAll()
+  .destroy(...)
+  .update(..., ...)
+  .create(...)
+
+  example:
+    MyModel.findOne({
+      where: {
+        ...: ...,
+        ...: ...
+      }
+    }).then(... => {
+      ...
+    })
+---------------------------------------------------------------------------------------------------
+DATATYPES:
+  STRING
+  TEXT
+  INTEGER
+  FLOAT
+  DATE
+  BOOLEAN
+---------------------------------------------------------------------------------------------------
+MIGRATIONS:
+  sequelize db:migrate                    run migration
+  sequelize db:migrate:undo               undo last migration
+  sequelize db:migrate:undo:all           undo all migrations

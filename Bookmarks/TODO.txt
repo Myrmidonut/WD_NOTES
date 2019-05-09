@@ -456,16 +456,31 @@ Dungeons:
   - show list of characters
   - remove effects
 
+  - rework
+    - healing
+      - food after encounter
+      - potion for effects
+      - bandage during fight
+    - recipe system
+
 ---
 
   - login
     - receive user data
     - receive characters
 
+  - create character
+    - name
+    - class
+    - save to database
+
   - select character
-    - reset health
-    - remove effects
-    - create copy of character
+    - build player object from database
+      - reset health
+      - remove effects
+    - show details
+
+  - play
     - load resting area
       - crafting
 
@@ -478,8 +493,7 @@ Dungeons:
         - crafting
         - healing
       - lose
-        - back to last save point
-        - load copy
+        - reset from database
 
   - win map
     - level up

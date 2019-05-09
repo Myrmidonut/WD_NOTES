@@ -512,6 +512,9 @@ OBJECTS:
 
     "key" in myObj                              check if property exists
   --------------------
+  copy:
+    JSON.parse(JSON.stringify(...))             create deep copy, does not work with functions
+  --------------------
   infos:
     data items: properties
     functions: methods
