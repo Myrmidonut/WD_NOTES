@@ -464,6 +464,7 @@ Dungeons:
       - remove effects
       - return error if entry not found on database
       - load encounter
+      - store current character on the backend for next room call
 
     - rework:
       - healing
@@ -475,6 +476,14 @@ Dungeons:
 ---
 
   PROJECT FLOW:
+    - register --- DONE
+      - receive: --- DONE
+        - username --- DONE
+        - email --- DONE
+        - password --- DONE
+      - return: --- DONE
+        - username --- DONE
+
     - login --- DONE
       - receive: --- DONE
         - email --- DONE
@@ -493,7 +502,9 @@ Dungeons:
         - name --- DONE
         - class --- DONE
       - save to database --- DONE
-      - select character --- DONE
+      - return: --- DONE
+        - player --- DONE
+      - select character
 
     - select character
       - receive: --- DONE
@@ -501,31 +512,35 @@ Dungeons:
       - build player object from database --- DONE
         - reset health --- DONE
         - remove effects --- DONE
-        - reset room  --- DONE
+        (- reset room  --- DONE)
       - return:
         - player
         - show details (frontend)
-        - show first room (frontend)
+        - room
 
-    - encounter
+    - room
+      - show room (frontend)
       - room 0
         - crafting
-          - save to db
+          - save to db 
         - go to next room (frontend)
       - room 1 - 10
-        - use potions
-        - apply effects
-        - fight/trap/empty
-        - win
-          - clear room
-          - get loot
-          - crafting
-          - healing
-          - save to player
-          - increase room counter
-          - go to next room (frontend)
-        - lose
-          - reset from database
+        - encounter
+
+    - encounter
+      - use potions
+      - apply effects
+      - fight/trap/empty
+      - win
+        - clear room
+        - get loot
+        - crafting
+        - healing
+        - save to player
+        - increase room counter
+        - go to next room (frontend)
+      - lose
+        - reset from database
 
     - win map
       - clear rooms 0 to 10
