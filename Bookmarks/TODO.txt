@@ -458,6 +458,9 @@ Dungeons:
 
     - backend:
       - create gear for loot
+        - weapon
+        - armor
+        - tool
       - use potion
       - use bandage
       - break up fight into rounds
@@ -465,6 +468,7 @@ Dungeons:
       - return error if entry not found on database
       - load encounter
       - store current character on the backend for next room call
+      - loot functions
 
     - rework:
       - healing
@@ -472,6 +476,22 @@ Dungeons:
         - potion for effects
         - bandage during fight
       - recipe system
+        - basic
+        - improved
+        - excellent
+        - perfect
+        - supreme
+        - if loot = recipe
+          - potion/bandage
+          - upgrade to next higher
+      - weapons
+        - always find class weapons
+          - improve through upgrades
+            - increase one of
+              - hit chance
+              - crit chance
+              - damage
+      - remove gold from loot chance
 
 ---
 
@@ -526,6 +546,8 @@ Dungeons:
         - go to next room (frontend)
       - room 1 - 10
         - encounter
+      - room 11
+        - level up
 
     - encounter
       - use potions
