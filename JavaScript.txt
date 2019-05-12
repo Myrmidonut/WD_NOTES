@@ -508,7 +508,7 @@ OBJECTS:
 
     Object.keys(...)                            create array containing all keys
     Object.values(...)                          create array containing all values
-    Object.values(...)                          create array containing arrays of key and value
+    Object.entries(...)                         create array containing arrays of key and value
 
     "key" in myObj                              check if property exists
   --------------------
