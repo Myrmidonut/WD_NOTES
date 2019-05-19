@@ -1226,15 +1226,14 @@ LOCATION:
 ---------------------------------------------------------------------------------------------------
 USEFUL FUNCTIONS:
   setTimeout(function, ms);             execution after time in ms
+  
   setInterval(function, ms);            repeated execution after time in ms
 
   String.fromCharCode(...);             get value from ASCII code
 ---------------------------------------------------------------------------------------------------
 IMPORT:
   import { ..., ... } from "...";       import functions from a file, ./...
-
   import * as ... from ...;             import everything from a file into an object
-
   import ... from "...";                import default value from a file, can have another name
 ---------------------------------------------------------------------------------------------------
 EXPORT:
@@ -1255,4 +1254,33 @@ LOCAL STORAGE:
     .removeItem
     .key
     .length)
+---------------------------------------------------------------------------------------------------
+WEBSOCKET:
+  overview:
+    send and receive data from a server without having to request it
+
+  url:
+    wss://
+  
+  connect to server:
+    const webSocket = new WebSocket(url, protocols);      optional protocols
+
+  send data:
+    string
+    Blob
+    ArrayBuffer
+
+    webSocket.onopen = function (event) {
+      webSocket.send("..."); 
+    };
+
+    webSocket.send(JSON.stringify(msg));                  for JSON
+
+  receive data:
+    webSocket.onmessage = function (event) {
+      console.log(event.data);
+    }
+
+  close connection:
+    webSocket.close();
 ---------------------------------------------------------------------------------------------------

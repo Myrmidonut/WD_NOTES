@@ -35,3 +35,9 @@ REQUESTS:
 ---------------------------------------------------------------------------------------------------
 AUTHENTICATION:
   APIs can require authentication for requests
+---------------------------------------------------------------------------------------------------
+HTTP/2:
+  breaks down HTTP requests into independent blocks
+  compresses headers
+  removes wait times
+---------------------------------------------------------------------------------------------------

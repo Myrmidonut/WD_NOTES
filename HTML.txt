@@ -74,6 +74,20 @@ BROWSERS:
   Edge:
     Windows 10
 ---------------------------------------------------------------------------------------------------
+SEO:
+  Search Engine Optimization
+
+  tags:
+    <meta name="description" content="...">             search result description
+    <meta name="robots" content="index, follow">        allow page and links indexing
+    <title>...</title>                                  search result link
+    <meta name="viewport" ...>                          for mobile search results
+    <link rel="canonical" href="...">                   main site for duplicate hostings
+    
+    <h1>, <h2>, ...                                     search result lists
+    
+    alt="..."                                           alternative text
+---------------------------------------------------------------------------------------------------
 FAVICON:
   at least 260x260
 

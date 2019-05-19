@@ -459,7 +459,6 @@ Dungeons:
     - backend:
       - break up fight into rounds
       - healing between rounds
-      - max upgrade on consumables
       - return error if entry not found on database
       - store current character on the backend for next room call
 
@@ -561,11 +560,8 @@ Dungeons:
       - reduced fighting skills
     - wounds from traps / monsters
       - heal with material
-    - crafting
-      - tools
-    - weapon effect
-      - if hit
-        - chance to apply effect
+    - weapon effects
+      - chance to apply effects on hit
     
   ---
 
