@@ -92,7 +92,7 @@ ERRORS:
 ---------------------------------------------------------------------------------------------------
 ARITHMETIC:
   +             add
-  -             subtrac
+  -             subtract
   *             multiply
   /             divide
   %             mod
@@ -286,13 +286,15 @@ CLASS:
     ... = clone ...;                        create clone of object
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
-  function myFunc($arg1, $arg2 = ...) {     create a function, with arg and default value
-    ... ;
-    return $test;                           return
-  }
-
-  myFunc();                                 call a function
-
+  create:
+    function myFunc($arg1, $arg2 = ...) {   with arguments and default value
+      ... ;
+      return $test;                         return
+    }
+  --------------------
+  call:
+    myFunc();                               call
+  --------------------
   closure:                                  anonymous function
     myFunc(..., function() {...});          as callback
 

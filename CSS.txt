@@ -18,7 +18,7 @@ STYLE:
     <body>
       <tag style="color:red;"></tag>
     </body>
-
+  --------------------
   internal:
     <head>
       <style type="text/css">
@@ -26,7 +26,7 @@ STYLE:
         #name2 {properties;}
       </style>
     </head>
-
+  --------------------
   external:
     <head>
       <link rel="stylesheet" href="name.css">     type="text/css" not necessary
@@ -34,7 +34,7 @@ STYLE:
 ---------------------------------------------------------------------------------------------------
 @-RULES:                                      top of the file
   metadata:
-    @import "stlyes2.css";                    imports a .css file
+    @import "styles2.css";                    imports a .css file
     @charset
 
   conditional information, nested statements:
@@ -69,12 +69,12 @@ SPECIFICITY:
   later styles overwrite previous ones
   more specific styles overwrite others
   all styles are first applied and then evaluated
-
+  --------------------
   !important > inline > id > (pseudo-)class, attribute > (pseudo-)element
                 1000    100               10                     1
-
+  --------------------
   p {color: blue !important;}             overwrites everything
-
+  --------------------
   ... {
   ...: inherit;                           same as its parent
   ...: initial;                           same as the browser default, else set to inherit
@@ -116,16 +116,16 @@ SELECTORS:
     #name {}                              id, once per page, one per element
 
     .name1.name2 {}                       has both classes
-
+  --------------------
   multiple:
     element1, element2 {}                 multiple elements
-
+  --------------------
   combinator:
     element1 element2 {}                  descendant, element2 inside element1
     element1 > element2 {}                child, element2 inside element1, first level only
     element1 + element2 {}                adjacent, element2 directly after element1
     element1 ~ element2 {}                sibling, element2 after element1
-
+  --------------------
   attribute:
     [attribute] {}                        attribute
     [attribute="value"] {}                attribute and value
@@ -136,7 +136,7 @@ SELECTORS:
     [attribute*="value"]                  attribute and value that contains value
 
     element[attribute] {}                 element with attribute
-
+  --------------------
   pseudo-class:
     element
       :link {}                            link
@@ -159,7 +159,7 @@ SELECTORS:
         odd                               equal to 2n
         even                              equal to 2n-1
         a formula like an+b, with a being the cycle size, n the counter and b the offset
-
+  --------------------
   pseudo-element:
     element
       ::after {content: ...;}             content after the element, can be empty
@@ -170,12 +170,14 @@ SELECTORS:
       ::backdrop {}
 ---------------------------------------------------------------------------------------------------
 BOX MODEL:
-   _____________________________
-  |margin ______________________          between border and next element
-  |      |border _______________
-  |      |      |padding _______          between content and border
-  |      |      |       |content
+  box:
+     _____________________________
+    |margin ______________________        between border and next element
+    |      |border _______________
+    |      |      |padding _______        between content and border
+    |      |      |       |content
 
+  --------------------
   * {                                     show outlines around the boxes
      outline: 1px solid red !important;
   }
@@ -197,7 +199,7 @@ BOX:
       top/bottom margins overlap, left/right don't
 
     negative values allowed
-
+  --------------------
   border:
     border: width style color;                    shorthand
     border-width: ...;
@@ -208,7 +210,7 @@ BOX:
     border-radius: 50px                           creates a circle: radius = width/2 = 50%
                    20px / 50px;                   elliptical corners
                    20px 10px 50px 0;              top-left -right bottom-right -left
-
+  --------------------
   border image:
     border-image: url("...") 40 round;            shorthand
     border-image-source: url("...");              image for border
@@ -217,13 +219,13 @@ BOX:
                          repeat;                  sides are repeated until filled
                          round;                   sides are repeated and stretched until filled
                          space;                   sides are repeated and spaced until filled
-
+  --------------------
   padding:
     padding: 5px;                               area between content and border
     padding: 1px 2px;                           top and bottom, left and right
     padding: 1px 2px 3px 4px;                   top, right, bottom, left
     padding-top: 5px;                         
-
+  --------------------
   overflow:                                     content bigger than box, needs block element with height
     auto;                                       hidden with scrollbars
     hidden;                                     hidden without scrollbars
@@ -232,29 +234,31 @@ BOX:
 
     overflow-x: ...;
     overflow-y: ...;
-
+  --------------------
   background-clip:                              color/image size
     border-box;                                 default, border + padding + content
     padding-box;                                padding + content
     content-box;                                content
-
+  --------------------
   box-sizing:
     content-box                                 default, box-size = width/height + padding + border
     border-box                                  box-size = width/height
-
+  --------------------
   outline:                                      on top of the box, around the border
     outline: width style color;                 shorthand
              none;                              no outline on buttons when clicked
 ---------------------------------------------------------------------------------------------------
 SIZE:
-  width: 50%; 100px;                  width of content
-  min-width: 300px;
-  max-width: 700px; 
-
-  height: 100px;                      height of content
-  min-height: 100px;
-  max-height: 200px;
-
+  width:
+    width: 50%; 100px;                  width of content
+    min-width: 300px;
+    max-width: 700px;
+  --------------------
+  height:
+    height: 100px;                      height of content
+    min-height: 100px;
+    max-height: 200px;
+  --------------------
   responsive image:                   image will shrink if its width is bigger than parents min-width
     display: block;                   block
     max-width: 100%;                  shrinking
@@ -321,7 +325,7 @@ FONTS:
   monospace                                 Courier New, Lucida Console
 
   max 2 - 3 fonts per page
-
+  --------------------
   web fonts:
     Google Fonts:
       <link href="..." rel="stylesheet">
@@ -331,7 +335,7 @@ FONTS:
         font-family: "...";
         src: url("...");
       }
-
+  --------------------
   color: black;                             color
 
   font: style variant weight size family;   shorthand, size: font-size/line-height
@@ -377,7 +381,7 @@ TABLES:
 
   caption:
     caption-side: bottom;             moves caption below the table
-
+  --------------------
   keep it simple and flexible
   fixed table-layout with width on th
   use collapsed borders
@@ -442,7 +446,7 @@ ANIMATION:
          p0________                     p3   1/1
         x: duration
         y: change
-
+  --------------------
   @keyframes ... {                      match animation-name
     0% {                                property at start
       ...
@@ -451,7 +455,7 @@ ANIMATION:
       ...
     }
   }
-
+  --------------------
   top, bottom, left, right for moving elements
 ---------------------------------------------------------------------------------------------------
 SHADOWS:
@@ -461,19 +465,20 @@ SHADOWS:
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4),         slight grey shadow
                  0px 8px 13px rgba(0,0,0,0.1),
                  0px 18px 23px rgba(0,0,0,0.1);
-
+  --------------------
   box:
     box-shadow: 0 0 35px rgba(0,0,0,0.3);             allround
     box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
                 inset ...;                            shadow inside the box, offsets inverted 
-
+  --------------------
   filter:
     filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.7)); shadow that follows the exact shape
     not supported in older browsers
-
+  --------------------
   big container:
     box-shadow: 2px 2px 20px;
                 5px 5px 20px;
+
   small container:
     box-shadow: 1px 1px 10px;
 
@@ -520,9 +525,9 @@ DISPLAY:
     table;                            table layout without using a table
     flex;                             aligns elements evenly
     grid;                             aligns elements in a grid
-
+  --------------------
   visibility: hidden; visible;        hides the element, still takes up space
-  
+  --------------------
   opacity: 0;                         transparancy, 0.0 - 1.0
 ---------------------------------------------------------------------------------------------------
 FLOAT:
@@ -531,12 +536,12 @@ FLOAT:
     right;        right side of parent
     none;         default
     inherit;      same as parent
-
+  --------------------
   clear:          stop an active float
     left;         left side
     right;        right side
     both;         both sides, recommended
-
+  --------------------
   parent element requires a width
   careful with float order
   clear floats
@@ -551,26 +556,26 @@ POSITION:
         parent              with position: relative;
     fixed;                  element is moved relative to the viewport, removed from flow
     sticky;                 relative/fixed hybrid, experimental
-
+  --------------------
   offsets for position:
     top: ...;
     bottom: ...;
     left: ...;
     right: ...;
-
+  --------------------
   vertical-align: ...;      align item vertically with other items in parent
     top
     middle
     bottom
     ...
-
+  --------------------
   z-index:                  overlapping order
     auto; 0;                default, descending in source order
     1; -1;                  higher numbers on top
 ---------------------------------------------------------------------------------------------------
 CSS TABLES:
   lay out elements as if they are inside a table
-
+  
   form
     display: table;
   form div
@@ -591,7 +596,7 @@ FLEXBOX:
     flex-wrap: nowrap;                fit all items, default
                wrap;                  wrap left to right into new row
                wrap-reverse;          wrap right to left into new row
-
+  --------------------
   horizontal main axis:
     orientation:
       flex-direction: row;              horizontal, default
@@ -613,7 +618,7 @@ FLEXBOX:
                        center;          center
                        space-around;    even distribution with extra space
                        space-between;   even distribution
-
+  --------------------
   vertical cross axis:
     position of items:
       align-items: stretch;             stretched to container height or longest item, default
@@ -622,7 +627,7 @@ FLEXBOX:
                    flex-end;            end of cross axis
                    start;
                    end;
-
+  --------------------
   flex item:                          vertical cross axis
     flex: grow shrink basis;          shorthand, prefered
     flex-grow: ...;                   amount of slots an item occupies, growing, unitless
@@ -654,13 +659,13 @@ GRID:
   px to % conversion:
   column width px / total width px = column width %
   gutter width px / total width px = gutter width %
-  
+  --------------------
   html:
     <div class="container">
       <div class="item">...</div>
       ...
     </div>
-  
+  --------------------
   grid container:
     display: grid;                      default one column, everything evenly spaced
              inline-grid;
@@ -677,7 +682,6 @@ GRID:
         auto-fill                       repeat amount depending on size of container
         auto-fit                        same, with stretching and collapsing
       minmax(20px, 80px)                variable size, minimum and maximum
-
 
     grid-row-gap: 10px;                 space between rows
     grid-column-gap: 20px;              space between columns
@@ -698,7 +702,7 @@ GRID:
                    start;               top of cell
                    center;              centered
                    end;                 bottom of cell   
-
+  --------------------
   grid items:
     grid-row-start: 1;                  element starts in row 1
     grid-row-end: 3;                    and ends in row 2, not 3!
@@ -727,10 +731,10 @@ RESPONSIVENESS:
     max-width: 100%;            fit container, dont stretch
     display: block;             in own line
     height: auto;               keep aspect ratio
-
+  --------------------
   image for retina display:
     width / height at half of the original
-
+  --------------------
   units:
     10vw                        10% of viewport width
     10vh                        10% of viewport height
@@ -742,11 +746,11 @@ CENTERING:
   text:
     text-align: center;                 horizontal
     line-height: ...;                   vertical, 100% of parent
-
+  --------------------
   image:
     display: block;                     horizontal
     margin: auto;
-
+  --------------------
   div, block element:
     margin: auto;                       horizontal
     width: ...%;

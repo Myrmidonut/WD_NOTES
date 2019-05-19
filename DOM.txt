@@ -13,17 +13,17 @@ LAYERS:
 SELECT:
   id:
     document.getElementById("...")
-
+  --------------------
   class:
     document.getElementsByClassName("...")        creates nodelist
-
+  --------------------
   tag:
     document.getElementsByTagName("...")          creates nodelist
-
+  --------------------
   selector:
     document.querySelector("...")                 only first found
     document.querySelectorAll("...")              creates nodelist
-
+  --------------------
   nodelist:
     array-like, [..., ...]  
 ---------------------------------------------------------------------------------------------------
@@ -33,11 +33,11 @@ NODES:
     .head
     .body
     .title
-
+  --------------------
   parent:
     parentNode
     parentElement
-
+  --------------------
   child:
     childNodes                  everything inside the element
     firstChild
@@ -46,7 +46,7 @@ NODES:
     children                    all nodes inside the element
     firstElementChild
     lastElementChild
-
+  --------------------
   sibling:
     previousSibling
     nextSibling
@@ -74,12 +74,12 @@ MANIPULATE:
   text:
     .innerHTML = "...";                     change text and code, treats everything as text and code
     .textContent = "...";                   change text, treats everything as text
-
+  --------------------
   style:
     .style                                  change styling
       .color = "..."
     .style.cssText = "..."                  change multiple styles
-
+  --------------------
   attribute:
     .getAttribute("...");   
     .setAttribute("...", "...");            change attribute: name, value
@@ -119,15 +119,15 @@ EVENTS:
     touchleave
     touchmove
     touchstart
-
+  --------------------
   .removeEventListener("...", ...)        event and function as arguments
-
+  --------------------
   default behaviour:
     e.preventDefault()                    prevent default behaviour
-
+  --------------------
   form:
     .reset()                              set fields to default
-
+  --------------------
   event handler property:
     element
       .onclick                            click
@@ -136,24 +136,24 @@ EVENTS:
       .ondbclick                          doubleclick
       .onmouseover                        hover
       .onmouseout                         stop hover
-
+  --------------------
   window
     .onkeypress                           keypress up or down
     .onkeydown                            keypress down
     .onkeyup                              keypress up
-
+  --------------------
   window.open(..., "_blank");             open url in new window
 ---------------------------------------------------------------------------------------------------
 EVENT BUBBLING:
   bubbling: browser default
     run event on the element, then parent, ..., then on html
-
+  --------------------
   capturing:
     run event on html, then child, ..., then on the element
-
+  --------------------
   element.stopPropagation()     stop event bubbling
                                 fires only one event listener
-
+  --------------------
   event delegation:
     multiple elements with same behaviour: one event on the parent and bubble each child
 ---------------------------------------------------------------------------------------------------

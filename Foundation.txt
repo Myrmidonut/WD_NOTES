@@ -1,0 +1,45 @@
+INSTALLATION:
+  package manager
+  foundation CLI
+  CDN
+  complete/custom files
+---------------------------------------------------------------------------------------------------
+ICONS:
+  seperate download:
+    Foundation Icon Fonts
+---------------------------------------------------------------------------------------------------
+grid:
+  old:
+    <div class="row">
+
+  new:
+    <div class="grid-container">
+
+top-bar
+typography
+  heading
+  paragraph
+  links
+  alignment
+  float
+  code
+  blockquote
+  lists
+  visibility
+button
+  colored
+  size
+  hollow
+form
+table
+menu
+icons
+callout
+progress bar
+label
+badge
+breadcrumb
+paginantion
+grid
+card
+media object

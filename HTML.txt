@@ -53,13 +53,13 @@ PLANNING:
       links to terms and conditions
       site language
       accessibility
-
+  --------------------
   non-common elements:
     main
       content
     aside
       content
-
+  --------------------
   list the content
   sort it into groups for different pages
   create a rough sketch of the sitemap
@@ -70,13 +70,13 @@ BROWSERS:
      9:               Mar 2011
     10: Windows 8     Sep 2012
     11: Windows 8.1   Oct 2013
-    
+  --------------------
   Edge:
     Windows 10
 ---------------------------------------------------------------------------------------------------
 SEO:
   Search Engine Optimization
-
+  --------------------
   tags:
     <meta name="description" content="...">             search result description
     <meta name="robots" content="index, follow">        allow page and links indexing
@@ -101,10 +101,11 @@ COMMENTS:
   -->
 ---------------------------------------------------------------------------------------------------
 ELEMENTS:
-  <element attribute="value">           element
-    content
-  </element>
-
+  schema:
+    <element attribute="value">         element
+      content
+    </element>
+  --------------------
   block elements:                       in new line, linebreak, width of parent, height of content
     <div>
     <hr>
@@ -115,7 +116,7 @@ ELEMENTS:
     <table>
     <form>
     <h1>
-
+  --------------------
   inline elements:                      no linebreak, width of content, height of content
     <a>
     <button>
@@ -123,8 +124,9 @@ ELEMENTS:
     <input>
     <label>
     <span>    
-                          
-  <br/>                                 / optional, to show a self closing tag
+  --------------------
+  self closing:
+    <br/>                               / optional, to show a self closing tag
 ---------------------------------------------------------------------------------------------------
 CONTAINERS:
   <header>                  global header
@@ -160,34 +162,34 @@ FORMATING:
   <h1>...</h1>              header 1-6, one h1 per page, no more than 3 kinds, SEO
   <br>                      linebreak
   <p>...</p>                paragraph, linebreak
-
+  --------------------
   <strong>...</strong>      bold, old: <b>...</b>
   <em>...</em>              italic, old: <i>...</i>
   <ins>...</ins>            underlined, old: <u>...</u>
   <sup>...</sup>            superscript
   <sub>...</sub>            subscript
   <del>...</del>            crossed out
-
+  --------------------
   <hr>                      line
-
+  --------------------
   <time datetime="2016-01-20">...</time>    time and date
-
+  --------------------
   <abbr title="...">...</abbr>              abbrevation
-
+  --------------------
   <blockquote cite="...">...</blockquote>   blocked quotation, indented
   <q cite="...">...</q>                     inline quotation
   <cite>...</cite>                          citation, name of the source
-
+  --------------------
   <address>...</address>                    address of html document owner
-
+  --------------------
   <pre>...</pre>                            keep whitespaces
-
+  --------------------
   <code>...</code>                          display computer code
   <pre><code>...</code></pre>               display computer code with whitespaces
   <var>...</var>                            variable
   <kbd>...</kbd>                            input
   <samp>...</samp>                          output
-
+  --------------------
   <bdo dir="rtl">...</bdo>                  text direction, right-to-left
 ---------------------------------------------------------------------------------------------------
 LINKS:
@@ -213,7 +215,7 @@ LINKS:
       &bcc=...
       &amp;subject=...
       &amp;body=...
-
+  --------------------
   don't write link in a link
   don't repeat the URL
   don't use the same text for different links
@@ -222,7 +224,7 @@ LINKS:
   use relative URLs when possible, shorter and faster
 
   indicate that a link goes to a PDF, etc.
-
+  --------------------
   default styling:
     unvisited: underline, blue
     visited: underline, purple
@@ -239,12 +241,12 @@ IMAGES:
     alt="..."                     description of the image, don't repeat text, accessibility, SEO
     alt=""                        for decorative images
     title="..."                   tooltip, further information, actual article text prefered
-
+  --------------------
   <figure>                        HTML5 for keeping image and subtitle together
     <img>...</img>
     <figcaption>...</figcaption>  same as title="..."
   </figure>
-
+  --------------------
   <img usemap="#...">                 image with clickable areas
   <map name="...">                    matching name
     <area shape="..."                 rect, circle
@@ -252,7 +254,7 @@ IMAGES:
           alt="..."
           href="..." >
   </map>
-
+  --------------------
   use HTML for images with meaning
   use CSS for background images
   use CSS for changing width and height
@@ -262,7 +264,7 @@ LISTS:
   unordered:
     <ul>...</ul>            points
       <li>...</li>          entries
-
+  --------------------
   ordered:
     <ol>...</ol>            numbers
       <li>...</li>          entries
@@ -270,7 +272,7 @@ LISTS:
       start="10"            starts at 10
       reversed              reversed list
       type="1"              symbols: 1, a, A, i, I
-
+  --------------------
   description:
     <dl>...</dl>              description list
       <dt>...</dt>            headline
@@ -313,14 +315,15 @@ TABLES:
   tables can be nested, but not advised regarding accessibility
 ---------------------------------------------------------------------------------------------------
 FORMS:
-  <form>...</form>                    form, linebreak, at least action and method
-    action="..."                      URL to send data to, send to same page without it
-                                      https to http(s): encrypted
-                                      http to http(s): not encrypted, browser warning
-    method="post"                     send data, sensitive data
-      URL/?name1=value1&name2=value2
-      enctype="multipart/for-data"    sending data
-    method="get"                      request data
+  form:
+    <form>...</form>                    form, linebreak, at least action and method
+      action="..."                      URL to send data to, send to same page without it
+                                        https to http(s): encrypted
+                                        http to http(s): not encrypted, browser warning
+      method="post"                     send data, sensitive data
+        URL/?name1=value1&name2=value2
+        enctype="multipart/for-data"    sending data
+      method="get"                      request data
 
     set at least action and method
 
@@ -330,7 +333,8 @@ FORMS:
     all data to the sever without exception has to be checked and sanitized
     limit incoming data, allow only what is necessary
     store uploaded files on a different server
-
+  --------------------
+  input:
     <input>                       input box, default is text
       type="text"                 text
         name="..."                required to send data
@@ -372,39 +376,45 @@ FORMS:
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-
+  --------------------
+  button:
     <button>...</button>          button, preferred over type="submit"
       type="submit"               send form data
       type="reset"                resetting all forms, bad practice
       type="button"               custom behavior
     <input type="button">         alternative
            type="submit"          button, only text as label
-
+  --------------------
+  textarea:
     <textarea>...</textarea>      text with multiple lines
       rows="10"
       cols="10"
       wrap="soft" "hard"
       placeholder="..."
-
+  --------------------
+  select:
     <select>...</select>          dropdown
       name="..."
       <option>...</option>        entries
         value="..."               data
         selected                  default selected
         multiple                  chose more than one entry
-
+  --------------------
+  label:
     <label for="...">...</label>  label, for = id, recommended
     <input id="...">              for accessibilty, for= and id= has to be equal
 
     <label for="...">             label alternative
       ... <input id="...">
     </label>
-
+  --------------------
+  fieldset:
     <form>
       <fieldset>                  creates a border
         <legend>                  title inside the border
           ...
-
+  --------------------
+  tabindex:
     tabindex="..."                negative values only focus, for div...p...
                                   1, 2, ..., -1, -2, ..., no tabindex, 0
 ---------------------------------------------------------------------------------------------------
@@ -412,39 +422,40 @@ FORMS VALIDATION:
   display explicit error message
   permissive input
   point out the error
-
+  --------------------
   CSS:
-   input:valid                    
-   input:invalid                  
+    input:valid                    
+    input:invalid                  
+  --------------------
+  HTML:
+    <input>
+      pattern="..."                 match for input
+        a                           a
+        1                           1
+        .                           any character
+        abc                         abc
+        a*                          a, zero or more times
+        a+                          a, one or more times
+        [^a]                        not a
+        a|b                         a or b
+        [abc]                       a, b or c
+        [^abc]                      not a, b or c
+        [a-z]                       any character from a to z
+        [A-Z]                       any character from A to Z
+        [A-Za-z]                    any character from A to Z and a to z
+        a{5}                        a five times
+        a{5,7}                      a five to seven times
 
-  <input>
-    pattern="..."                 match for input
-      a                           a
-      1                           1
-      .                           any character
-      abc                         abc
-      a*                          a, zero or more times
-      a+                          a, one or more times
-      [^a]                        not a
-      a|b                         a or b
-      [abc]                       a, b or c
-      [^abc]                      not a, b or c
-      [a-z]                       any character from a to z
-      [A-Z]                       any character from A to Z
-      [A-Za-z]                    any character from A to Z and a to z
-      a{5}                        a five times
-      a{5,7}                      a five to seven times
+      title="5 to 10"               error code for pattern
+      required                      checks for the correct input
 
-    title="5 to 10"               error code for pattern
-    required                      checks for the correct input
-
-    minlength="..."               minimum length
-    maxlength="..."               maximum length
-    min="..."                     minimum for type="number"
-    max="..."                     maximum for type="number"
-
-  Validate.js                     JavaScript library
-  Validation                      jQuery library
+      minlength="..."               minimum length
+      maxlength="..."               maximum length
+      min="..."                     minimum for type="number"
+      max="..."                     maximum for type="number"
+  --------------------
+  Validate.js                       JavaScript library
+  Validation                        jQuery library
 ---------------------------------------------------------------------------------------------------
 IFRAMES:
   <iframe src="...">...</iframe>  insert a webpage, videos, etc. with fallback text
@@ -453,11 +464,11 @@ IFRAMES:
     frameborder="0" or "1"        no border around the page
     allowfullscreen
     sandbox                       higher security settings in modern browsers
-
+  --------------------
   load the iframe src after the rest of the page via JavaScript for speed
   always use https for the embedded src
   always use sandbox
-
+  --------------------
   <embed>                         rarely used, old style
   <object>                        rarely used, old style
 ---------------------------------------------------------------------------------------------------
@@ -478,7 +489,7 @@ VIDEOS:
       "none"
       "auto"
       "metadata"
-
+  --------------------
   <video width height controls ...>         plays first available codec
     <source src="..." type="video/mp4">     only src and type
     <source src="..." type="video/webm">
@@ -493,7 +504,7 @@ VIDEO SUBTITLES:
       captions                                                        description of dialog and sounds
       timed descriptions                                              description of the video
   </audio> or </video>
-
+  --------------------
   Requires a WebVTT (.vtt) file.
 ---------------------------------------------------------------------------------------------------
 AUDIO:
@@ -508,7 +519,7 @@ AUDIO:
       "none"
       "auto"
       "metadata"
-
+  --------------------
   <audio>                                 plays first available codec
     <source src="..." type="audio/mp3">
     <source src="..." type="audio/ogg">
@@ -521,35 +532,34 @@ VECTOR GRAPHICS:
   </svg>
 
   <img src="..." alt="..." height="..." width="...">    quick way, can be nested, no manipulation
-
+  --------------------
   created using shapes and path information
   created with algorithms
   lightweight
-
+  --------------------
   raster images: Bitmap, PNG, JPEG, GIF
   vector images: SVG
 ---------------------------------------------------------------------------------------------------
 CANVAS:
   <canvas id="..." width="..." height="..."></canvas>     empty canvas
-
+  --------------------
   drawing is done with JavaScript
 ---------------------------------------------------------------------------------------------------
 RESPONSIVENESS:
   resolution switching          smaller image sizes for smaller screens
   art direction                 cropped image for smaller screens
-
+  --------------------
   viewport = hardware resolution / device pixel ratio
 
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   get the real viewport width
-
+  --------------------
   use relative sizes instead of absolute sizes
-
+  --------------------
   buttons:
     48px size between buttons for mobile access
     min-width: 48px;
     min-height: 48px;
-
 ---------------------------------------------------------------------------------------------------
 RESPONSIVENESS WITH RESOLUTION SWITCHING:
   <img>
@@ -566,7 +576,7 @@ RESPONSIVENESS WITH RESOLUTION SWITCHING:
 
   check device pixel ratio
   load image
-
+  --------------------
   example 1:
     <img srcset="...320w.jpg 320w,
                  ...480w.jpg 480w,
@@ -575,7 +585,7 @@ RESPONSIVENESS WITH RESOLUTION SWITCHING:
                 (max-width: 480px) 440px,
                 990px"
          src="...800w.jpg" alt="...">
-
+  --------------------
   example 2:
     <img srcset="...320w.jpg,
                  ...480w.jpg 1.5x,
@@ -592,10 +602,11 @@ RESPONSIVENESS WITH ART DIRECTION:
 
   check width
   display first result
-
+  --------------------
   example:
     <picture>
       <source media="(max-width: 799px)" srcset="...480w.jpg">
       <source media="(min-width: 800px") srcset="...800w.jpg">
       <img src="...800w.jpg" alt="...">
     </picture>
+---------------------------------------------------------------------------------------------------
