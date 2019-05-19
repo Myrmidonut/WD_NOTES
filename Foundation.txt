@@ -4,42 +4,268 @@ INSTALLATION:
   CDN
   complete/custom files
 ---------------------------------------------------------------------------------------------------
-ICONS:
-  seperate download:
-    Foundation Icon Fonts
+NAVBAR:
+  <div class="top-bar">
+
+    <div class="top-bar-left">
+
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Site title</li>
+        <li>
+          <a href="#">One</a>
+          <ul class="menu vertical">
+            <li><a href="#">Four</a></li>
+            <li><a href="#">Five</a></li>
+            <li><a href="#">Six</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+
+    </div>
+
+    <div class="top-bar-right">
+
+      <ul class="menu">
+        <li><input type="search" placeholder="search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+
+    </div>
+
+  </div>
 ---------------------------------------------------------------------------------------------------
-grid:
+CONTAINER:
+  <div class="grid-container">
+---------------------------------------------------------------------------------------------------
+GRID:
+  <div class="grid-x">
+
+    <div class="cell large-8 medium-6 small-8">
+      ...
+    </div>
+
+    <div class="cell large-4 medium-6 small-4">
+      ...
+    </div>
+
+  </div>
+
   old:
     <div class="row">
+---------------------------------------------------------------------------------------------------
+HEADER:
+  <h1>
+    <small>...</small>                reduced size
 
-  new:
-    <div class="grid-container">
+    class="subheader"                 lighter color
+---------------------------------------------------------------------------------------------------
+PARAGRAPHS:
+  class="lead"                        bigger text
+  class="stat"                        very big text
+---------------------------------------------------------------------------------------------------
+TEXT ALIGNMENT:
+  class="text-left">                  left aligned
+  class="text-center">                centered
+  class="text-right">                 right aligned
+  class="text-justify">               justified
+---------------------------------------------------------------------------------------------------
+FLOAT:
+  <div class="callout clearfix">
+    class="float-left"                float left
+    class="float-right"               float right
+  </div>
+---------------------------------------------------------------------------------------------------
+CODE:
+  special styling
 
-top-bar
-typography
-  heading
-  paragraph
-  links
-  alignment
-  float
-  code
-  blockquote
-  lists
-  visibility
-button
-  colored
-  size
-  hollow
-form
-table
-menu
-icons
-callout
-progress bar
-label
-badge
-breadcrumb
-paginantion
-grid
-card
-media object
+BLOCKQUOTE:
+  special styling
+
+LINKS:
+  special styling
+---------------------------------------------------------------------------------------------------
+LISTS:
+  <ul>
+    class="no-bullet"               removes bullets
+---------------------------------------------------------------------------------------------------
+VISIBILITY:
+  class="hide">                     hidden
+  class="invisible">                invisible
+
+  class="show-for-medium">          show on medium screen or larger
+  class="show-for-large">           show on large screen or larger
+
+  class="hide-for-small-only">      hide on small screen
+  class="hide-for-medium-only">     hide on medium screen
+  class="hide-for-large-only">      hide on large screen
+
+  class="show-for-landscape">       show on landscape
+  class="show-for-portrait">        show on portrait
+---------------------------------------------------------------------------------------------------
+BUTTONS:
+  class="button"
+
+  color:
+    class="success"
+    class="secondary"
+    class="warning"
+    class="alert"
+    class="disabled"
+
+  size:
+    class="tiny"
+    class="small"
+    class="large"
+    class="expanded"
+    class="expanded large"
+
+  hollow:
+    class="success hollow"
+    class="warning hollow"
+    class="alert hollow"
+    class="secondary hollow"
+---------------------------------------------------------------------------------------------------
+FORMS:
+  fieldset:
+    class="fieldset"
+
+  input group:
+    <div class="input-group">
+      <span class="input-group-label">@</span>
+      <input class="input-group-field" type="email">
+      <div class="input-group-button">
+        <input type="submit" class="button" value="Submit">
+      </div>
+    </div>
+
+  switch:
+    <div class="switch">
+      <input class="switch-input" id="mySwitch" type="checkbox" name="exampleSwitch">
+      <label class="switch-paddle" for="mySwitch">
+        <span class="show-for-sr">Enabled</span>
+      </label>
+    </div>
+
+  slider:
+    <div class="slider" data-slider data-initial-start="0" data-end="20">
+      <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+      <span class="slider-fill" data-slider-fill></span>
+      <input type="hidden">
+    </div>
+---------------------------------------------------------------------------------------------------
+TABLE:
+  class="striped hover stack table-scroll
+---------------------------------------------------------------------------------------------------
+MENU:
+  <ul>
+    class="menu"
+    class="vertical menu"
+    class="simple menu"
+
+  <li>
+    class="menu-text"
+    class="active"
+---------------------------------------------------------------------------------------------------
+ICONS
+  requires icon pack Foundation Icon Fonts
+
+  class="icon-top"
+
+  <i class="fi-list"></i>
+---------------------------------------------------------------------------------------------------
+CALLOUT:
+  <div>
+    class="callout"
+    class="callout secondary"
+    class="callout success"
+    class="callout warning"
+    class="callout alert"
+---------------------------------------------------------------------------------------------------
+PROGRESS BARS:
+  <div class="success progress" role="progressbar">
+    <div class="progress-meter" style="width: 25%">
+      <p class="progress-meter-text">25%</p>
+    </div>
+  </div>
+
+  <div class="warning progress" role="progressbar">
+    <div class="progress-meter" style="width: 50%">
+      <p class="progress-meter-text">50%</p>
+    </div>
+  </div>
+
+  <div class="alert progress" role="progressbar">
+    <div class="progress-meter" style="width: 75%">
+      <p class="progress-meter-text">75%</p>
+    </div>
+  </div>
+---------------------------------------------------------------------------------------------------
+LABELS:
+  <span>
+    class="success label"
+    class="secondary label"
+    class="warning label"
+    class="alert label"
+---------------------------------------------------------------------------------------------------
+BADGES:
+  <span>
+    class="success badge"
+    class="secondary badge"
+    class="warning badge"
+    class="alert badge"
+---------------------------------------------------------------------------------------------------
+BREADCRUMBS:
+  <nav role="navigation">
+    <ul class="breadcrumbs">
+      <li><a href="#">Home</a></li>
+      <li class="disabled"><a href="#">Disabled</a></li>
+      <li><a href="#">Posts</a></li>
+      <li>My Post</li>
+    </ul>
+  </nav>
+---------------------------------------------------------------------------------------------------
+PAGINATION:
+  <ul class="pagination" role="navigation">
+    <li class="disabled">Previous</li>
+    <li class="current">1</li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li class="ellipsis"></li>
+    <li><a href="#">13</a></li>
+    <li><a href="#">14</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+---------------------------------------------------------------------------------------------------
+CARDS:
+  <div class="card">
+
+    <div class="card-divider">
+      ...
+    </div>
+
+    <img src="...">
+    
+    <div class="card-section">
+      ...
+    </div>
+
+  </div>
+---------------------------------------------------------------------------------------------------
+MEDIA OBJECT:
+  <div class="media-object">
+
+    <div class="media-object-section">
+      <div class="thumbnail">
+        <img src="...">
+      </div>
+    </div>
+
+    <div class="media-object-section">
+      ...
+    </div>
+
+  </div>
+---------------------------------------------------------------------------------------------------
