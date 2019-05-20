@@ -76,12 +76,12 @@ OUTPUT:
   echo '...';
   echo "... $var";                  output with variable
   echo $var1 . "..." . $var2;       concatenation
-
+  --------------------
   <?= "..."; ?>                     shorthand for <?php echo "..."; ?>
-
+  --------------------
   printf("... %s", $...);           print with variable at $s
     %.2f                            as float with decimal places
-
+  --------------------
   var_dump(...);                    output any variable details
   print_r(...);                     alternative
 ---------------------------------------------------------------------------------------------------
@@ -123,14 +123,14 @@ COMPARISON:
 DATA TYPES:
   variables are automatically assigend a data type
   default: null
-
+  --------------------
+  boolean                     true, false
   integer                     whole numbers
   float                       decimal numbers
   string                      strings
-  boolean                     true, false
   array                       multiple elements
   object                      defined by a class
-
+  --------------------
   casting:
     (...) (...);              cast to different data type
     (integer) (12 / 5);       
@@ -138,32 +138,41 @@ DATA TYPES:
 VARIABLES:
   $var = "...";                     create a variable
   $var                              access a variable
-
+  --------------------
   define("VAR", ...);               create a constant
   VAR                               access a constant
-
+  --------------------
   $var1 = &$var2                    create reference, show changes on original
-
+  --------------------
   specify type:
     int $var = 1;                   "1" gets translated
     bool $var = true;               1, "test" gets translated
 
     declare(strict_type=1);         disable translating
-
+  --------------------
   $$var                             access a variable with the name stored inside the variable
   !$var                             check if variable exists or if it is empty
+---------------------------------------------------------------------------------------------------
+SCOPE:
+  local                             created and accessed only inside a function
+  global                            created and accessed only outside of functions
+
+  static $... = ...;                remember value through multiple function calls
+
+  global $...;                      access global variable inside a function
+  $GLOBALS["index"]                 array of global variabls, index is name without $
 ---------------------------------------------------------------------------------------------------
 BOOLEANS:
   true
   false
-
+  --------------------
   $var
   !$var
 ---------------------------------------------------------------------------------------------------
 STRINGS:
   $myStr = "...";                     create a string
   $myStr = '...';                     alternative
-
+  --------------------
   .=                                  add to a string
 ---------------------------------------------------------------------------------------------------
 ARRAYS:
@@ -171,18 +180,20 @@ ARRAYS:
     $myArr = [];                      create empty array
     $myArr = ["...", "..."];          create array
     $myArr = array("...", "...");     old alternative
-
+  --------------------
   elements:
     $myArr[0];                        access an element
     $myArr[0] = "...";                create/change an element
 
     $myArr[] = "...";                 add to the end of the array
     unset($myArr["..."];              remove an element
-
+  --------------------
   associative array:
     declaration:
-      $myArr = ["..." => ...,         key, value pairs
-                "..." => ...]
+      $myArr = [
+        "..." => ...,         key, value pairs
+        "..." => ...
+      ]
 
     elements:
       $myArr["..."]                   access value
@@ -193,19 +204,19 @@ CLASS:
     class ... {                             capitalized
       ...
     }
-
+  --------------------
   subclass:
     class ... extends ... {                 same as class, but overwrites with own properties
       ...
     }
-
+  --------------------
   abstract class:
     abstract class ... {                    cannot be instantiated
       abstract function ...() {
         ...
       }
     }
-    
+  --------------------
   interface:
     interface ... {                         create interface
       public function ...();                empty function
@@ -321,11 +332,11 @@ STRING METHODS:
     strrev(...);                      reverse
 
   search:
-    strpos(..., ...);                 return position of string, otherwise FALSE
+    strpos(..., ...);                 return position of string, otherwise FALSE, (string, search)
     strstr(..., "...");               return string starting at character
 
   replace:
-    str_replace(..., ..., ...);       replace text with text in string
+    str_replace(..., ..., ...);       replace text with text in string, (original, replacement, string)
 
   substring:
     substr("...", ..., ...);          substring from first index to last
