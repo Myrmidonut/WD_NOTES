@@ -213,13 +213,20 @@ STYLING:
       <h1 [ngStyle]="{
         'color': grayStyle ? 'gray' : 'black',
         'font-size': !grayStyle ? '1em' : '4em'
-      }">...</h1>
+      }">...</h1>                      
 ---------------------------------------------------------------------------------------------------
-TWO WAY BINDING:
-  needs FormsModule
-    import { FormsModule } from "@angular/forms"
+TWO-WAY-BINDING:
+  data flows between html and logic
 
-  <input [(ngModel)]="...">                           data flows between html and logic
+  needs FormsModule:
+    app.module.ts
+      import { FormsModule } from "@anguler/forms";       import
+      
+      imports: [
+        FormsModule
+      ]
+
+  <input [(ngModel)]="...">                               binding
 ---------------------------------------------------------------------------------------------------
 ROUTING:
   link:
@@ -398,18 +405,6 @@ FORMS:
         <span>{{ messageForm.controls.message.value }}</span>
       </div>
     </form>
----------------------------------------------------------------------------------------------------
-TWO-WAY-BINDING:
-  data flows from view to logic and back
-  needs to be enabled:
-    app.module.ts
-      import { FormsModule } from "@anguler/forms";     import
-      
-      imports: [
-        FormsModule
-      ]
-
-  [(ngModel)]="..."                                     binding
 ---------------------------------------------------------------------------------------------------
 DEPENDENCY INJECTION:
   add imports to constructor()

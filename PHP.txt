@@ -71,6 +71,33 @@ COMMENTS:
   //                                single line
   /* ... */                         multiple lines
 ---------------------------------------------------------------------------------------------------
+FILE I/O:
+  open:
+    fopen("...", "...")             filename and mode, returns pointer or false
+
+    modes:
+      r                             read only
+      r+                            read and write
+      w                             write only, zero length, creates file
+      w+                            read and write only, zero length, creates file
+      a                             write only, creates file
+      a+                            read and write, creates file
+  --------------------
+  close:
+    fclose(...)                     requires pointer, returs true or false
+  --------------------
+  read:
+    fread(..., ...)                 pointer and length in bytes
+  --------------------
+  write:
+    fwrite(..., ...)                requires pointer and string
+  --------------------
+  file length:
+    filesize("...")                 filename
+  --------------------
+  file exists:
+    file_exist(...)                 filename
+---------------------------------------------------------------------------------------------------
 OUTPUT:
   echo "...";                       output a string
   echo '...';
@@ -83,7 +110,8 @@ OUTPUT:
     %.2f                            as float with decimal places
   --------------------
   var_dump(...);                    output any variable details
-  print_r(...);                     alternative
+  --------------------
+  print_r(...);                     output values of variable
 ---------------------------------------------------------------------------------------------------
 ERRORS:
   php.ini                           display error messages in the browser, disable for final!
@@ -295,6 +323,23 @@ CLASS:
   stuff:
     ... instanceof ...                      check is object belongs to class
     ... = clone ...;                        create clone of object
+  --------------------
+  example:
+    class person {
+      var $name;
+
+      function set_name($new_name) {
+        $this->name = $new_name;
+      }
+  
+      function get_name() {
+        return $this->name;
+      }
+    }
+
+    $stefan = new person();
+    $stefan->set_name("Stefan Mischook");
+    echo "Stefan's full name: " . $stefan->get_name();
 ---------------------------------------------------------------------------------------------------
 FUNCTIONS:
   create:

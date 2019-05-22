@@ -640,10 +640,10 @@ FLEXBOX:
                 start;
                 end;
 
-    justif-self: stretch;             position of item on main-axis
-                 center;
-                 start;
-                 end;
+    justify-self: stretch;            position of item on main-axis
+                  center;
+                  start;
+                  end;
 
     order: 0;                         order of items, default
            -1;
