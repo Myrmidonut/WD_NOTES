@@ -341,7 +341,7 @@ FONTS:
   font: style variant weight size family;   shorthand, size: font-size/line-height
   font-family: "Arial", serif;              font with fallback fonts, serif, sans-serif, monospace
   font-size: 200%;
-  font-weight: bold;                        light (300), normal (400), bold (700)
+  font-weight: bold;                        thin(100) light(300) regular(400) medium(500) bold(700) black(900)
   font-style: italic;                       normal, italic, oblique
   
   text-decoration: none;                    none, overline, underline, line-through
